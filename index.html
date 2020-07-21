@@ -39,7 +39,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -60,10 +60,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -103,13 +100,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -155,15 +152,9 @@
 <main id="content">
 
 <div class="home-splash">
-  <div class="container">
+  <div class="container-md">
     <div class="row flex-md-center flex-md-items-center pb-2 mb-2 border-b">
-      <div class="col-6 col-sm-4 col-xl-3 mx-auto mx-md-0">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="logo-home img-fluid">
-  <title>Figuration</title>
-  <path fill="#246" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.4.3 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM162 55v10h-58v38h49v21h-49v58H81V45h81v10z"/>
-  <path fill="#fff" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
-</svg>
-
+      <div class="col-8 col-sm-4 col-xl-3 mx-auto mx-md-0 pb-0_5 pb-sm-0"><img src="/assets/brand/figuration-solid.png" class="logo-home img-fluid" alt="Figuration">
       </div>
       <div class="w-100 d-md-none"></div>
       <div class="col-sm-9 col-md-7 col-lg-6 mx-auto mx-md-0 text-center text-md-start">
@@ -174,13 +165,15 @@
 
         <div class="row text-center text-md-start">
           <div class="col-md-auto">
-            <a href="/4.0/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download 4.0.0-beta.5');">Download</a>
+            <a href="/4.0/get-started/quick-start/" class="btn btn-home btn-start w-100" onclick="ga('send', 'event', 'Homepage', 'Get Started', 'Get Started 4.0.0');">Get Started</a>
           </div>
-          <!--<div class="w-100 d-md-none"></div> -->
-          <div class="col-md-auto">
-            Current version: <strong>4.0.0-beta.5</strong>
+          <div class="col-md-auto mt-1 mt-md-0">
+            <a href="/4.0/get-started/download/" class="btn btn-home btn-download w-100" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download 4.0.0');">Download</a>
+          </div>
+          <div class="col-12 mt-1">
+            Current version: <strong>v4.0.0</strong>
             <br />
-            <a href="https://github.com/cast-org/figuration/releases/tag/v4.0.0-beta.5" class="text-light small">Read the Changelog</a>
+            <a href="https://github.com/cast-org/figuration/releases/tag/v4.0.0" class="text-light small">Read the Changelog</a>
             <br />
             <a href="/4.0/get-started/migration/" class="text-light small">View v3 to v4 migration notes</a>
           </div>
@@ -198,7 +191,7 @@
         </div>
         <p>Mobile first design for phones, tablets, and desktops.</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
         <h2>Accessible</h2>
         <div class="home-icons mb-0_5" aria-hidden="true">
           <span class="far fa-keyboard"></span>
@@ -206,7 +199,7 @@
         </div>
         <p>Accessibility for keyboard and screen reader users.</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
         <h2>Flexible</h2>
         <div class="home-icons mb-0_5" aria-hidden="true">
           <span class="far fa-hand-pointer"></span>
@@ -218,7 +211,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container-md">
   <div class="row pb-1 border-b">
     <div class="col-sm-5 offset-sm-1 text-center">
       <h2>Faster Development</h2>
@@ -239,33 +232,42 @@
   </div>
 </div>
 
-<div class="container border-b py-2">
+<div class="container-md border-b py-2">
   <div class="row text-center text-md-start">
     <div class="col-md-6">
-      <h2>Get Started Now</h2>
+      <h2>
+        <span class="home-icon-box bg-info text-light"><span class="fas fa-paper-plane" aria-hidden="true"></span></span>
+        Get Started Now
+      </h2>
       <p>Quickly get up and running with Figuration by including the compiled CSS and JavaScript in your document. Add the following CDN links in the <code>&lt;head&gt;</code> of your HTML document.</p>
       <p>More information is available on the <a href="/4.0/get-started/quick-start/">Quick Start page</a>.</p>
     </div>
     <div class="col-md-6 home-feature">
       
-      <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.5/dist/css/figuration.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-cw3QuaONUz9Ve2rSKmgo+AlCSSr9g/ZxX0ao7JBSrh5JUsZekrglEELVrOwR0fn9<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://code.jquery.com/jquery-3.5.1.slim.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.5/dist/js/figuration.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-qxJIAaCm2yIk7HvSXNiSadX6nVf5VaAO9zw+rIsjkAl3cpu4CEnsupskg4ZvPL4i<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+      <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/figuration@4.0.0/dist/css/figuration.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-P6dy13hw7YRs+a7a6i6OvXmIorDy5MA9mIpurUQMOe7zxXevsqcBXcFcCQy63TeE<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://code.jquery.com/jquery-3.5.1.slim.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/figuration@4.0.0/dist/js/figuration.min.js<span class="token punctuation">"</span></span> <span class="token attr-name">integrity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sha384-XqIV+6/aPbInuDsESPata3SBmFPBP6fSRj8dE/LgKX9dkNoGJeLRa8/q9jUo0vW4<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>anonymous<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
       <div class="small">CDN services are provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.</div>
     </div>
   </div>
 </div>
 
-<div class="container border-b py-2">
+<div class="container-md border-b py-2">
   <div class="row text-center text-md-start">
     <div class="col-md-6 pb-1 pb-md-0">
-      <h2>Flexbox Enabled</h2>
+      <h2>
+        <span class="home-icon-box bg-success-600 text-light"><span class="fas fa-th-large" aria-hidden="true"></span></span>
+        Flexbox Enabled
+      </h2>
       <p>Many of Figuration's components, but not all, are built using flexbox.  This means enhanced layout and alignment control, but it does come at the cost of not being able to support older browsers.</p>
     </div>
     <div class="col-md-6 border-t border-md-t-0 border-md-s pt-2 pt-md-0">
-      <h2>Sass Source</h2>
+      <h2>
+        <span class="home-icon-box bg-secondary text-light"><span class="fab fa-sass" aria-hidden="true"></span></span>
+        Sass Source
+      </h2>
       <div class="media">
-        <img src="/assets/img/sass.svg" class="d-flex me-1" width="64" alt="Sass logo">
+        <a href="http://sass-lang.com/"><img src="/assets/img/sass.svg" class="d-flex me-1" width="64" alt="Sass logo"></a>
         <div class="media-body">
-          <p class="mb-0">Figuration compiles and uses standard CSS for it's output, but on the source side we use the power of <a href="http://sass-lang.com/">Sass</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> for faster and consistent development.</p>
+          <p class="mb-0">Figuration compiles and uses standard CSS for its output, but on the source side we use the power of <a href="http://sass-lang.com/">Sass</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> for faster and consistent development.</p>
         </div>
       </div>
     </div>
@@ -274,12 +276,15 @@
 
 <div class="container py-2">
   <div class="row text-center text-md-start">
-    <div class="col-sm-6 col-lg-4">
-      <h2>Browser Support</h2>
+    <div class="col-md-6 col-lg-5">
+      <h2>
+        <span class="home-icon-box bg-primary-600 text-light"><span class="fas fa-columns" aria-hidden="true"></span></span>
+        Browser Support
+      </h2>
       <p>Most current browers are supported.  Additional details can be found on the <a href="/4.0/get-started/browsers-and-devices/">Browsers &amp; Devices page</a>.</p>
     </div>
-    <div class="col-sm-6 col-lg-8 home-feature">
-      <ul class="list list-horizontal flex-wrap flex-center text-center small">
+    <div class="col-md-6 col-lg-7 home-feature">
+      <ul class="list list-horizontal flex-wrap flex-center text-center small mt-0_5 mt-md-0">
         <li class="list-item"><img src="/assets/img/chrome.png" class="d-block" alt="" />Chrome</li>
         <li class="list-item"><img src="/assets/img/firefox.png" class="d-block" alt="" />Firefox</li>
         <li class="list-item"><img src="/assets/img/internet-explorer.png" class="d-block" alt="" />IE 11+</li>
@@ -293,6 +298,7 @@
 </div>
 
 <div class="cf-feed">
+  <!---
   <div class="container">
     <div class="row">
       <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
@@ -300,16 +306,10 @@
       </div>
     </div>
   </div>
+  -->
 </div>
 
 </main>
-
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
 
 <footer class="cf-footer fs-small py-1">
   <div class="container">
@@ -319,8 +319,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.

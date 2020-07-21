@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav2" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav2" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,14 +264,34 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Flexbox</h1>
 
-      <p class="fs-large font-weight-sbold">Flexbox is now a full-time part of Figuration. Many components, but not all, are flexbox enabled. Flexbox allows for greater layout flexibility, making sizing and alignment of elements much easier.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Flexbox</h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#whats-included">What&#39;s Included </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#why-flexbox">Why Flexbox? </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#browser-support">Browser Support </a></li></ul></nav><h2 id="whats-included">What's Included <a class="direct-link" href="#whats-included">#</a></h2>
+          <p class="fs-large font-weight-sbold">Flexbox is now a full-time part of Figuration. Many components, but not all, are flexbox enabled. Flexbox allows for greater layout flexibility, making sizing and alignment of elements much easier.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#whats-included">What's Included </a>
+            		</li>
+
+                    <li><a href="#why-flexbox">Why Flexbox? </a>
+            		</li>
+
+                    <li><a href="#browser-support">Browser Support </a>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="whats-included">What's Included <a class="direct-link" href="#whats-included"></a></h2>
 <p>Flexbox support is available for a number of Figuration's components:</p>
 <ul>
 <li><a href="/4.0/layout/grid/">Grid Layout</a></li>
@@ -306,7 +311,7 @@
 </ul>
 <p>Vendor prefixes are provided in our compiled CSS with <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> via Grunt. Some bugs in IE10-11's Flexbox implementation are worked around via <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>.</p>
 <p>If you need a reference for working with flexbox, there is an excellent resource over at CSS Tricks with <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a>.</p>
-<h2 id="why-flexbox">Why Flexbox? <a class="direct-link" href="#why-flexbox">#</a></h2>
+<h2 id="why-flexbox">Why Flexbox? <a class="direct-link" href="#why-flexbox"></a></h2>
 <p>In a nutshell, flexbox provides simpler and more flexible layout options in CSS. More specifically, it provides:</p>
 <ul>
 <li>Easy vertical alignment of content within a parent element.</li>
@@ -314,11 +319,13 @@
 <li>Easy CSS-only equal height columns for your grid-based layouts.</li>
 </ul>
 <p>All these things are possible outside flexbox, but typically require extra hacks and workarounds to do right.</p>
-<h2 id="browser-support">Browser Support <a class="direct-link" href="#browser-support">#</a></h2>
+<h2 id="browser-support">Browser Support <a class="direct-link" href="#browser-support"></a></h2>
 <p>Using flexbox means <strong>reduced browser and device support</strong>, but mostly for older technology.</p>
 <p>Visit <a href="https://caniuse.com/#feat=flexbox">Can I use...</a> for details on browser support of flexbox.</p>
 <p>There are also a number of browser bugs and cross-browser issues with flexbox.  Some of which do not have possible workarounds, while there are other that do.  Check out the <a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> repository for additional information.</p>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -326,13 +333,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -341,8 +341,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -377,7 +380,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -394,28 +397,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

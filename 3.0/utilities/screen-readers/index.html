@@ -64,7 +64,7 @@
 <body>
 <a class="skipnav" href="#content">Skip to main content</a>
 <div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
-  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">Figuration v4 is now available!</a>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
   <a class="navbar-brand" href="/" aria-label="CAST Figuration">
@@ -109,7 +109,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.5</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -313,20 +313,20 @@
 
       <p>Hide content without sacrificing accessibility.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#screen-reader-only-content">Screen Reader Only Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#hiding-content">Hiding Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#invisible-content">Invisible Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#useful-resources">Useful Resources </a></li></ul></nav><h2 id="screen-reader-only-content">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content">#</a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#screen-reader-only-content">Screen Reader Only Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#hiding-content">Hiding Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#invisible-content">Invisible Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#useful-resources">Useful Resources </a></li></ul></nav><h2 id="screen-reader-only-content">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
 <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.</p>
 <p>There are also responsive variants available in the form <code>.sr-only{-breakpoint}-{up/down}</code>.  For example, to visually hide content, <strong>except for screen readers</strong>, for a <code>sm</code> or smaller screens you would use <code>.sr-only-sm-down</code>.</p>
 <p>These classes are exceptionally useful helping to follow <a href="/3.0/get-started/accessibility">accessibility best practices</a>.</p>
 <p><strong>Heads up!</strong> There is no <code>.sr-only-*</code> class created for the smallest breakpoint and no <code>.sr-only-*-down</code> class created for the largest breakpoint, <code>.sr-only-xs</code> and <code>.sr-only-xl-down</code> respectively, since they are functionally equivalent to using <code>.sr-only</code>.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sr-only sr-only-focusable<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sr-only-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.skip-navigation {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only;</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only-focusable;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="hiding-content">Hiding Content <a class="direct-link" href="#hiding-content">#</a></h2>
+<h2 id="hiding-content">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
 <p>Force an element to be hidden (including for screen readers) with the use of <code>.d{-breakpoint}-none</code> and <code>.d{-breakpoint}-down-none</code> classes.</p>
 <p>A section on the <a href="/3.0/utilities/display/#responsively-hiding-content">display utilities page</a> gives more detail about how these classes and breakpoints are related.</p>
-<h2 id="invisible-content">Invisible Content <a class="direct-link" href="#invisible-content">#</a></h2>
+<h2 id="invisible-content">Invisible Content <a class="direct-link" href="#invisible-content"></a></h2>
 <p>The <code>.invisible</code> and <code>.visible</code> classes can be used to toggle only the <code>visibility</code> of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 <p>The <a href="/3.0/utilities/visibility/">visibility utilities page</a> gives more detail.</p>
-<h2 id="useful-resources">Useful Resources <a class="direct-link" href="#useful-resources">#</a></h2>
+<h2 id="useful-resources">Useful Resources <a class="direct-link" href="#useful-resources"></a></h2>
 <p>Still have questions?  There are some links to external resources avaiable in the <a href="/3.0/get-started/accessibility/#screen-reader-only-content">screen reader section on the Accessibility page</a></p>
 
     </main>
@@ -344,8 +344,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -403,22 +406,6 @@
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

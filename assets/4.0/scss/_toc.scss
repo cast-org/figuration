@@ -1,69 +1,116 @@
-.cf-toc-list {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    margin-bottom: $list-margin-bottom;
-    margin-left: 0;
-    @include font-size(.9375rem);
+.cf-toc-align {
+    margin-right: $grid-gutter-width / -2;
+    margin-left: $grid-gutter-width / -2;
+}
 
-    .cf-toc-list {
+.cf-content-lead,
+.cf-content-toc,
+.cf-content {
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+
+    @include media-breakpoint-up(md) {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+}
+
+.cf-toc {
+    ol {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
         padding: 0;
-        margin-bottom: 0;
         margin-left: $list-margin-left;
-        border-left: 0;
-    }
-}
+        list-style: disc;
+        @include font-size(.9375rem);
 
-@include media-breakpoint-up(xl) {
-    .cf-content > .cf-toc,
-    .cf-toc-header {
-        display: none;
-    }
-}
-
-.cf-toc-side {
-    order: 1;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    .cf-toc {
-        @supports (position: sticky) {
-            position: sticky;
-            top: 4.375rem;
-            max-height: calc(100vh - 4.375rem);
-            overflow-x: visible;
-            overflow-y: auto;
+        ol {
+            margin: .125rem 0 -.125rem $list-margin-left;
         }
-
-        padding: .25rem 0 .25rem 1rem;
-        margin: 0;
-        list-style: none;
-        border-left: 1px solid $border-color;
     }
 
-    .cf-toc-list {
-        @include font-size(.875rem);
-        @include list-unstyled();
-    }
-
-    .cf-toc-list .cf-toc-list {
-        margin-top: .125rem;
-    }
-
-    .cf-toc-item {
+    li {
         margin-bottom: .125rem;
     }
+}
 
-    .cf-toc-link {
-        padding: .125rem .25rem;
-
-        &.active {
-            background-color: palette($primary, 75);
-        }
+@include media-breakpoint-up(lg) {
+    .cf-sidebar {
+        width: 20%;
     }
-
-    .cf-toc-list > .cf-toc-item::before {
-        content: none;
+    .cf-main {
+        width: 80%;
     }
 }
 
+@supports (display: grid) {
+    .cf-toc-align {
+        @include media-breakpoint-up(lg) {
+            display: grid;
+            grid-template-areas: "lead toc" "content toc";
+            grid-template-columns: 3.25fr 1fr;
+            grid-template-rows: auto 1fr;
+        }
+        @include media-breakpoint-up(xl) {
+            grid-template-columns: 4fr 1fr;
+        }
+    }
+
+    .cf-content-toc {
+        grid-area: toc;
+    }
+    .cf-content-lead {
+        grid-area: lead;
+    }
+    .cf-content {
+        grid-area: content;
+        min-width: 1px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        .cf-content-toc {
+            padding: 1rem;
+            border-left: 1px solid $border-color;
+
+            @supports (position: sticky) {
+                position: sticky;
+                top: 3.375rem;
+                max-height: calc(100vh - 3.375rem);
+                overflow-x: visible;
+                overflow-y: auto;
+            }
+        }
+    }
+
+    .cf-toc {
+        @include media-breakpoint-up(lg) {
+            ol {
+                margin-left: 0;
+                list-style: none;
+                @include font-size(.875rem);
+            }
+
+            a {
+                color: palette($text-muted, 600);
+                text-decoration: none;
+
+
+                @include hover-focus() {
+                    color: palette($text-muted, 700);
+                    text-decoration: underline;
+                }
+            }
+
+            .active {
+                background-color: palette($info, 100);
+            }
+        }
+    }
+}

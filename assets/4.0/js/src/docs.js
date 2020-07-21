@@ -6,7 +6,7 @@
 /* global ClipboardJS, Holder */
 
 /*!
- * Figuration (v4.0.0-beta.5)
+ * Figuration (v4.0.0)
  * http://figuration.org
  * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -65,11 +65,6 @@
         font: 'sans-serif',
         fontweight: 'normal'
     });
-
-    var addAnchors = function() {
-        var selector = '.cf-content > h2, .cf-content > h3, .cf-content > h4, .cf-content > h5';
-        $(selector).wrapInner('<div></div>');
-    };
 
     var addClipboard = function() {
         // Insert copy to clipboard button before .highlight
@@ -149,19 +144,16 @@
         }
     };
 
-    var sectionToc = function() {
+    var pageToc = function() {
         var $toc = $('.cf-toc').eq(0);
         if (!$toc.length) { return; }
 
         $toc.attr('aria-label', 'Page');
-        var $clone = $toc.clone();
-
-        // Ouput new section toc
-        $('.cf-toc-side').append($clone);
 
         // Add scrollspy here - using <body> data attributes comes too early
         $('body').CFW_Scrollspy({
-            target: '.cf-toc-side'
+            offset: 75,
+            target: '.cf-toc ol'
         });
     };
 
@@ -237,11 +229,10 @@
     });
 
     $(window).ready(function() {
-        addAnchors();
         addClipboard();
         toplinkAffix();
         paletteHex();
-        sectionToc();
+        pageToc();
         docsDirection();
 
         // Indeterminate checkbox example

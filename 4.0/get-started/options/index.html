@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav1" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav1" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,46 +264,120 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Customization Options</h1>
 
-      <p class="fs-large font-weight-sbold">Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Customization Options</h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#customizing-options">Customizing Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#importing">Importing </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#variable-defaults">Variable Defaults </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-maps">Sass Maps </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#changing-map-defaults">Changing Map Defaults </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#adding-to-a-map">Adding to a Map </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#removing-from-a-map">Removing from a Map </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#global-options">Global Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#color">Color </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#component-sizes">Component Sizes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#encoding-svg">Encoding SVG </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#css-variables">CSS Variables </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#available-variables">Available Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#breakpoint-variables">Breakpoint Variables </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li></ul></li></ul></nav><h2 id="customizing-options">Customizing Options <a class="direct-link" href="#customizing-options">#</a></h2>
+          <p class="fs-large font-weight-sbold">Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#customizing-options">Customizing Options </a>
+            		</li>
+
+                    <li><a href="#importing">Importing </a>
+            		</li>
+
+                    <li><a href="#variable-defaults">Variable Defaults </a>
+            		</li>
+
+                    <li><a href="#sass-maps">Sass Maps </a>
+            
+                <ol>
+                    
+                    <li><a href="#changing-map-defaults">Changing Map Defaults </a>
+            		</li>
+
+                    <li><a href="#adding-to-a-map">Adding to a Map </a>
+            		</li>
+
+                    <li><a href="#removing-from-a-map">Removing from a Map </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#global-options">Global Options </a>
+            		</li>
+
+                    <li><a href="#color">Color </a>
+            		</li>
+
+                    <li><a href="#component-sizes">Component Sizes </a>
+            		</li>
+
+                    <li><a href="#encoding-svg">Encoding SVG </a>
+            		</li>
+
+                    <li><a href="#css-variables">CSS Variables </a>
+            
+                <ol>
+                    
+                    <li><a href="#available-variables">Available Variables </a>
+            		</li>
+
+                    <li><a href="#examples">Examples </a>
+            		</li>
+
+                    <li><a href="#breakpoint-variables">Breakpoint Variables </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="customizing-options">Customizing Options <a class="direct-link" href="#customizing-options"></a></h2>
 <p>Whenever possible, avoid modifying Figurations's core files. For Sass, that means creating your own stylesheet that imports Figuration so you can modify and extend it. Assuming you've downloaded our source files or are using a package manager, you'll have a file structure that looks like this:</p>
 <pre class="language-text"><code class="language-text">your-project/<br>+-- scss<br>|   +-- custom.scss<br>+-- node_modules/<br>    +-- figuration<br>        +-- js<br>        +-- scss</code></pre>
 <p>If you are using a download version of our source files, you may need to manually setup something similar to that structure, keeping Figuration's source files separate from your own.</p>
 <pre class="language-text"><code class="language-text">your-project/<br>+-- scss<br>|   +-- custom.scss<br>+-- figuration<br>    +-- js<br>    +-- scss</code></pre>
-<h2 id="importing">Importing <a class="direct-link" href="#importing">#</a></h2>
+<h2 id="importing">Importing <a class="direct-link" href="#importing"></a></h2>
 <p>In your <code>custom.scss</code>, you will import Figuration's source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our JavaScript included in order to become interactive.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// custom.scss</span><br><span class="token comment">// Recommended structure for importing Figuration into your</span><br><span class="token comment">// project allowing for use of Figuration's Sass functions</span><br><span class="token comment">// in your custom setting overrides</span><br><br><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Custom - your setting overrides</span><br><span class="token comment">// typically go in this location</span><br><br><span class="token comment">// Required - settings</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><br><span class="token comment">// Custom - your setting removals</span><br><span class="token comment">// typically go in this location</span><br><br><span class="token comment">// Required - mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/root";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/images";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/buttons";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/grid";</span><br><span class="token selector">...</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// custom.scss</span><br><span class="token comment">// Recommended structure for importing Figuration into your</span><br><span class="token comment">// project allowing for use of Figuration's Sass functions</span><br><span class="token comment">// in your custom setting overrides</span><br><br><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Custom - your setting overrides</span><br><span class="token comment">// typically go in this location</span><br><br><span class="token comment">// Required - settings</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><br><span class="token comment">// Custom - your setting removals</span><br><span class="token comment">// typically go in this location</span><br><br><span class="token comment">// Required - mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/root";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/images";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/buttons";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/grid";</span><br><span class="token selector">...</span></code></pre>
 <p>With that setup in place, you can begin to modify any of the Sass variables and maps in your <code>custom.scss</code>. You can also start to add parts of Figuration under the <code>// Optional</code> section as needed.</p>
-<h2 id="variable-defaults">Variable Defaults <a class="direct-link" href="#variable-defaults">#</a></h2>
+<h2 id="variable-defaults">Variable Defaults <a class="direct-link" href="#variable-defaults"></a></h2>
 <p>Every Sass variable, or setting, in Figuration includes the <code>!default</code> flag allowing you to override the variable's default value in your own Sass without modifying Figuration's source code. Copy and paste variables as needed, modify their values, and remove the <code>!default</code> flag. If a variable has already been assigned, then it won't be re-assigned by the default values.</p>
 <p>You will find the complete list of Figuration's setting variables in <code>scss/_settings.scss</code>. Some variables are set to <code>null</code>, these variables don't output the property unless they are overridden in your configuration.</p>
 <p>Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Figuration's Sass files.</p>
 <p>Here's an example that changes the <code>background-color</code> and <code>color</code> for the <code>&lt;body&gt;</code> when importing and compiling Figuration via grunt:</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Custom - your setting overrides</span><br><span class="token variable-line"><span class="token variable">$body-bg</span><span class="token punctuation">:</span> #000;</span><br><span class="token variable-line"><span class="token variable">$body-color</span><span class="token punctuation">:</span> #fff;</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Custom - your setting overrides</span><br><span class="token variable-line"><span class="token variable">$body-bg</span><span class="token punctuation">:</span> #000;</span><br><span class="token variable-line"><span class="token variable">$body-color</span><span class="token punctuation">:</span> #fff;</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
 <p>Repeat as necessary for any variable in Figuration, including the global options below.</p>
 <p>Sometimes you may need to pull in other variables that you did not plan on.  This is due of the order in which the Sass fils are proceesed, and also the use of various functions, that may require their configuration settings to be copied over to your <code>custom.scss</code>.</p>
-<h2 id="sass-maps">Sass Maps <a class="direct-link" href="#sass-maps">#</a></h2>
+<h2 id="sass-maps">Sass Maps <a class="direct-link" href="#sass-maps"></a></h2>
 <p>Figuration uses a bunch of Sass maps, key-value pairs, to generate certain portions of related CSS. Sass maps are used for grid breakpoints, colors, component sizing, and more.</p>
 <p>Just like Sass variables, all Sass maps include the <code>!default</code> flag and can be overridden and extended.</p>
 <p>Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but makes <em>removing</em> items from a map slightly more difficult.</p>
-<h3 id="changing-map-defaults">Changing Map Defaults <a class="direct-link" href="#changing-map-defaults">#</a></h3>
+<h3 id="changing-map-defaults">Changing Map Defaults <a class="direct-link" href="#changing-map-defaults"></a></h3>
 <p>Change a pre-defined color in the <code>$base-colors</code> map, by adding the following to your custom Sass file:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"primary"</span><span class="token selector">: #004dd1</span><span class="token selector">,</span><br>  <span class="token string">"danger"</span><span class="token selector">: #bb1f11</span><br><span class="token selector">);</span></code></pre>
-<h3 id="adding-to-a-map">Adding to a Map <a class="direct-link" href="#adding-to-a-map">#</a></h3>
-<p>To add another color option to <code>$base-colors</code>, add a new key-value pair.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"new-color"</span><span class="token selector">: #990099</span><br><span class="token selector">);</span></code></pre>
-<h3 id="removing-from-a-map">Removing from a Map <a class="direct-link" href="#removing-from-a-map">#</a></h3>
+<h3 id="adding-to-a-map">Adding to a Map <a class="direct-link" href="#adding-to-a-map"></a></h3>
+<p>Add new colors to <code>$base-colors</code>, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new <code>$custom-colors</code> map and merge it with <code>$base-colors</code>.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Create your own map</span><br><span class="token variable-line"><span class="token variable">$custom-colors</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"custom-color"</span><span class="token selector">: #909</span><br><span class="token selector">);</span><br><br><span class="token comment">// Merge the maps</span><br><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> map-merge(<span class="token variable">$base-colors</span>, <span class="token variable">$custom-colors</span>);</span></code></pre>
+<h3 id="removing-from-a-map">Removing from a Map <a class="direct-link" href="#removing-from-a-map"></a></h3>
 <p>To remove colors from <code>$base-colors</code>, use <code>map-remove()</code>. The same method can be used with other Sass maps.</p>
 <p>However, you will need to insert this setting after the <em>Required</em> sections and before the <em>Core and Components</em> section.</p>
 <p>Also note, that each component will inherit the <code>$base-colors</code> map, unless previously overridden, before the removal occurs.  This means is you may need to remove the colors again for each component where desired.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Custom map removals go in this location</span><br><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> map-remove(<span class="token variable">$base-colors</span>, </span><span class="token string">"warning"</span><span class="token selector">, </span><span class="token string">"light"</span><span class="token selector">, </span><span class="token string">"dark"</span><span class="token selector">);</span><br><span class="token variable-line"><span class="token variable">$btn-colors</span><span class="token punctuation">:</span> map-remove(<span class="token variable">$btn-colors</span>, </span><span class="token string">"warning"</span><span class="token selector">, </span><span class="token string">"light"</span><span class="token selector">, </span><span class="token string">"dark"</span><span class="token selector">);</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
-<h2 id="global-options">Global Options <a class="direct-link" href="#global-options">#</a></h2>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Custom map removals go in this location</span><br><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> map-remove(<span class="token variable">$base-colors</span>, </span><span class="token string">"warning"</span><span class="token selector">, </span><span class="token string">"light"</span><span class="token selector">, </span><span class="token string">"dark"</span><span class="token selector">);</span><br><span class="token variable-line"><span class="token variable">$btn-colors</span><span class="token punctuation">:</span> map-remove(<span class="token variable">$btn-colors</span>, </span><span class="token string">"warning"</span><span class="token selector">, </span><span class="token string">"light"</span><span class="token selector">, </span><span class="token string">"dark"</span><span class="token selector">);</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
+<h2 id="global-options">Global Options <a class="direct-link" href="#global-options"></a></h2>
 <p>You can find and customize these variables for key global options in our <code>_settings.scss</code> file.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -394,9 +453,9 @@
   </table>
 </div>
 There are additional options in our `_settings_options.scss` that can be used to optionally disable the CSS generation for certain sets, or subsets, of components and utilities.  More information about these setting options can be found on the respective pages for each component and utility.
-<h2 id="color">Color <a class="direct-link" href="#color">#</a></h2>
+<h2 id="color">Color <a class="direct-link" href="#color"></a></h2>
 <p>Learn about Figuration's colors, themes, palette system, and how to more about customizing it over on the <a href="/4.0/content/color/">color documentation page</a>.</p>
-<h2 id="component-sizes">Component Sizes <a class="direct-link" href="#component-sizes">#</a></h2>
+<h2 id="component-sizes">Component Sizes <a class="direct-link" href="#component-sizes"></a></h2>
 <p>The button, button group, pagination, form-control and input-group components all use the same base sizing settings for consistency.</p>
 <p>By using a map, we can be sure the components are all the same height when horizontally aligned.</p>
 <p>You can modify, remove, or add additional sizes, beyond the default sizing, by redefining the <code>$component-sizes</code> map.  The <code>null</code> values will use the component's default line-height and <code>em</code> padding for the that particular size variant.</p>
@@ -404,25 +463,25 @@ There are additional options in our `_settings_options.scss` that can be used to
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Used for button, button groups, pagination, form-control, and input-group</span><br><span class="token variable-line"><span class="token variable">$component-sizes</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"xsmall"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     ($font-size-base * .75)</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   null</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"small"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     ($font-size-base * .875)</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   null</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"large"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     ($font-size-base * 1.125)</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   null</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"xlarge"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     null</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     ($font-size-base * 1.25)</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   null</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><br><span class="token selector">);</span></code></pre>
 <p>If you wish to have more concise control over components, you can always force the sizing values to fit your needs.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Used for button, button groups, pagination, form-control, and input-group</span><br><span class="token variable-line"><span class="token variable">$component-sizes</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"xsmall"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .1875rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     .375rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     .75rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"small"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .25rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     .5rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     .875rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"large"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .625rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     1.25rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     1.25rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"xlarge"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .75rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     1.5rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     1.5rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><br><span class="token selector">);</span></code></pre>
-<h2 id="encoding-svg">Encoding SVG <a class="direct-link" href="#encoding-svg">#</a></h2>
+<h2 id="encoding-svg">Encoding SVG <a class="direct-link" href="#encoding-svg"></a></h2>
 <p>An <code>encode-svg</code> function is available in our SASS to encode the <code>&lt;</code>, <code>&gt;</code> and <code>#</code> characters for SVG images provided through data URLs. These characters need to be encoded to properly render the background images in some browsers, such as IE.</p>
 <pre class="language-css"><code class="language-css">$<span class="token property">form-checkradio-radio-icon</span><span class="token punctuation">:</span> <span class="token function">encode-svg</span><span class="token punctuation">(</span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'>&lt;circle fill='#{$form-checkradio-checked-color}' r='3'/>&lt;/svg>"<span class="token punctuation">)</span></span><span class="token punctuation">)</span> !default<span class="token punctuation">;</span></code></pre>
-<h2 id="css-variables">CSS Variables <a class="direct-link" href="#css-variables">#</a></h2>
+<h2 id="css-variables">CSS Variables <a class="direct-link" href="#css-variables"></a></h2>
 <p>Figuration includes some <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties (variables)</a> in its compiled CSS. These provide easy access to commonly used values like the theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.</p>
-<h3 id="available-variables">Available Variables <a class="direct-link" href="#available-variables">#</a></h3>
+<h3 id="available-variables">Available Variables <a class="direct-link" href="#available-variables"></a></h3>
 <p>Here are the variables we include (note that the <code>:root</code> is required). They're located in our <code>_root.scss</code> file.</p>
 <pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span><br>  <span class="token property">--color-primary</span><span class="token punctuation">:</span> #0055e9<span class="token punctuation">;</span><br>  <span class="token property">--color-secondary</span><span class="token punctuation">:</span> #5e7182<span class="token punctuation">;</span><br>  <span class="token property">--color-info</span><span class="token punctuation">:</span> #1680a4<span class="token punctuation">;</span><br>  <span class="token property">--color-success</span><span class="token punctuation">:</span> #0e8a16<span class="token punctuation">;</span><br>  <span class="token property">--color-warning</span><span class="token punctuation">:</span> #f8c223<span class="token punctuation">;</span><br>  <span class="token property">--color-danger</span><span class="token punctuation">:</span> #d42314<span class="token punctuation">;</span><br>  <span class="token property">--color-light</span><span class="token punctuation">:</span> #eff1f3<span class="token punctuation">;</span><br>  <span class="token property">--color-dark</span><span class="token punctuation">:</span> #343e48<span class="token punctuation">;</span><br>  <span class="token property">--color-uibase</span><span class="token punctuation">:</span> #5e7182<span class="token punctuation">;</span><br>  <span class="token property">--color-gray</span><span class="token punctuation">:</span> #666<span class="token punctuation">;</span><br>  <span class="token property">--breakpoint-xs</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><br>  <span class="token property">--breakpoint-sm</span><span class="token punctuation">:</span> 36em<span class="token punctuation">;</span><br>  <span class="token property">--breakpoint-md</span><span class="token punctuation">:</span> 48em<span class="token punctuation">;</span><br>  <span class="token property">--breakpoint-lg</span><span class="token punctuation">:</span> 62em<span class="token punctuation">;</span><br>  <span class="token property">--breakpoint-xl</span><span class="token punctuation">:</span> 75em<span class="token punctuation">;</span><br>  <span class="token property">--font-family-sans-serif</span><span class="token punctuation">:</span> -apple-system<span class="token punctuation">,</span> BlinkMacSystemFont<span class="token punctuation">,</span> <span class="token string">"Segoe UI"</span><span class="token punctuation">,</span> Roboto<span class="token punctuation">,</span> <span class="token string">"Noto Sans"</span><span class="token punctuation">,</span> <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">,</span> <span class="token string">"Apple Color Emoji"</span><span class="token punctuation">,</span> <span class="token string">"Segoe UI Emoji"</span><span class="token punctuation">,</span> <span class="token string">"Segoe UI Symbol"</span><span class="token punctuation">,</span> <span class="token string">"Noto Color Emoji"</span><span class="token punctuation">;</span><br>  <span class="token property">--font-family-serif</span><span class="token punctuation">:</span> Georgia<span class="token punctuation">,</span> <span class="token string">"Times New Roman"</span><span class="token punctuation">,</span> Times<span class="token punctuation">,</span> serif<span class="token punctuation">;</span><br>  <span class="token property">--font-family-monospace</span><span class="token punctuation">:</span> SFMono-Regular<span class="token punctuation">,</span> Menlo<span class="token punctuation">,</span> Monaco<span class="token punctuation">,</span> Consolas<span class="token punctuation">,</span> <span class="token string">"Liberation Mono"</span><span class="token punctuation">,</span> <span class="token string">"Courier New"</span><span class="token punctuation">,</span> monospace<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<h3 id="examples">Examples <a class="direct-link" href="#examples">#</a></h3>
+<h3 id="examples">Examples <a class="direct-link" href="#examples"></a></h3>
 <p>CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we are resetting the font and link styles with CSS variables.</p>
 <pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span><br>  <span class="token property">font</span><span class="token punctuation">:</span> 1rem/1.5 <span class="token function">var</span><span class="token punctuation">(</span>--font-family-sans-serif<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><span class="token selector">a</span> <span class="token punctuation">{</span><br>  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--color-primary<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<h3 id="breakpoint-variables">Breakpoint Variables <a class="direct-link" href="#breakpoint-variables">#</a></h3>
+<h3 id="breakpoint-variables">Breakpoint Variables <a class="direct-link" href="#breakpoint-variables"></a></h3>
 <p>While breakpoints are included in the CSS variables (e.g., <code>--breakpoint-md</code>), <strong>these are not supported in media queries</strong>, but they can still be used <em>within</em> rulesets in media queries. <a href="https://www.w3.org/TR/css-variables-1/#using-variables">Learn more in the spec.</a> The intention of including the breakpoints as CSS variables is for use in JavaScript. See some information about <a href="https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care#working_with_custom_properties_in_javascript">working with custom properties in JavaScript</a>.</p>
 <p>Here's an example of <strong>what's not supported:</strong></p>
 <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--breakpoint-sm<span class="token punctuation">)</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  ...<br><span class="token punctuation">}</span></code></pre>
 <p>And here's an example of <strong>what is supported:</strong></p>
 <pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 48em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.custom-element</span> <span class="token punctuation">{</span><br>    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--color-primary<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>Here are some Customization options, or Sass variables, that can be customized for generating the root CSS variables.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -471,9 +530,11 @@ There are additional options in our `_settings_options.scss` that can be used to
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -481,13 +542,6 @@ There are additional options in our `_settings_options.scss` that can be used to
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -496,8 +550,11 @@ There are additional options in our `_settings_options.scss` that can be used to
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -532,7 +589,7 @@ There are additional options in our `_settings_options.scss` that can be used to
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -549,28 +606,12 @@ There are additional options in our `_settings_options.scss` that can be used to
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav5" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav5" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,18 +264,68 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Links</h1>
 
-      <p class="fs-large font-weight-sbold">Various design treatments for anchor elements.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Links</h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#stretchable-links">Stretchable Links </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#using-with-cards">Using with Cards </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#using-with-custom-components">Using with Custom Components </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#using-with-columns">Using with Columns </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#using-with-multiple-links">Using with Multiple Links </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#identifying-the-containing-block">Identifying the Containing Block </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li></ul></li></ul></nav><h2 id="stretchable-links">Stretchable Links <a class="direct-link" href="#stretchable-links">#</a></h2>
+          <p class="fs-large font-weight-sbold">Various design treatments for anchor elements.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#stretchable-links">Stretchable Links </a>
+            
+                <ol>
+                    
+                    <li><a href="#examples">Examples </a>
+            
+                <ol>
+                    
+                    <li><a href="#using-with-cards">Using with Cards </a>
+            		</li>
+
+                    <li><a href="#using-with-custom-components">Using with Custom Components </a>
+            		</li>
+
+                    <li><a href="#using-with-columns">Using with Columns </a>
+            		</li>
+
+                    <li><a href="#using-with-multiple-links">Using with Multiple Links </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#identifying-the-containing-block">Identifying the Containing Block </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="stretchable-links">Stretchable Links <a class="direct-link" href="#stretchable-links"></a></h2>
 <p>Make any HTML element or component clickable by “stretching” a nested link via CSS.</p>
 <p>Add <code>.link-stretch</code> to a link to make its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block">containing block</a> clickable via a <code>::after</code> pseudo element. In most cases, this means that an element with <code>position: relative;</code> that contains a link with the <code>.link-stretch</code> class is clickable.</p>
-<h3 id="examples">Examples <a class="direct-link" href="#examples">#</a></h3>
-<h4 id="using-with-cards">Using with Cards <a class="direct-link" href="#using-with-cards">#</a></h4>
+<h3 id="examples">Examples <a class="direct-link" href="#examples"></a></h3>
+<h4 id="using-with-cards">Using with Cards <a class="direct-link" href="#using-with-cards"></a></h4>
 <p>By default, cards have <code>position: relative</code>, so in this case you can safely add the <code>.link-stretch</code> class to a link in the card without any other HTML changes.</p>
 <div class="cf-example">
 <div class="card" style="width: 18rem;">
@@ -305,7 +340,7 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 18rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-img<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img-fluid card-img-top<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Card image cap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Card with stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Go somewhere<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h4 id="using-with-custom-components">Using with Custom Components <a class="direct-link" href="#using-with-custom-components">#</a></h4>
+<h4 id="using-with-custom-components">Using with Custom Components <a class="direct-link" href="#using-with-custom-components"></a></h4>
 <p>Most custom components do not have <code>position: relative</code> by default, so we need to add the <code>.position-relative</code> here to prevent the link from stretching outside the parent element.</p>
 <div class="cf-example">
 <div class="media border position-relative">
@@ -318,10 +353,10 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>media border position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>me-1<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Generic placeholder image<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>media-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>Custom component with stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Go somewhere<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h4 id="using-with-columns">Using with Columns <a class="direct-link" href="#using-with-columns">#</a></h4>
+<h4 id="using-with-columns">Using with Columns <a class="direct-link" href="#using-with-columns"></a></h4>
 <p>Columns are also <code>position: relative</code> by default, so clickable columns only require the <code>.link-stretch</code> class on a link. However, stretching a link over an entire <code>.row</code> requires <code>.position-static</code> on the column and <code>.position-relative</code> on the row.</p>
 <div class="cf-example">
-<div class="row no-gutters bg-light position-relative">
+<div class="row g-0 bg-light position-relative">
   <div class="col-md-6 mb-md-0 p-md-1">
     <img class="me-1" data-src="holder.js/100px128" alt="Generic placeholder image">
   </div>
@@ -332,8 +367,8 @@
   </div>
 </div>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row no-gutters bg-light position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-6 mb-md-0 p-md-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>me-1<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Generic placeholder image<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-6 position-static p-1 ps-md-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mt-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Columns with stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Go somewhere<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h4 id="using-with-multiple-links">Using with Multiple Links <a class="direct-link" href="#using-with-multiple-links">#</a></h4>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row g-0 bg-light position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-6 mb-md-0 p-md-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>me-1<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Generic placeholder image<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-6 position-static p-1 ps-md-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mt-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Columns with stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Go somewhere<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="using-with-multiple-links">Using with Multiple Links <a class="direct-link" href="#using-with-multiple-links"></a></h4>
 <p>Multiple links and tap targets are not recommended with stretched links. However, some <code>position</code> and <code>z-index</code> styles can help should this be required.</p>
 <pre class="language-css"><code class="language-css"><span class="token selector">.has-link-stretch a:not(.link-stretch)</span> <span class="token punctuation">{</span><br>  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span><br>  <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
 <div class="cf-example">
@@ -352,7 +387,7 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card has-link-stretch<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 18rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-img<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img-fluid card-img-top<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Card image cap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Card with stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>The 'Unstretched' link will also clickable, and will 'sit' above the stretched link due to its higher <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>z-index<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span> value.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>d-flex flex-between<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#stretched<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stretched<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#unstretched<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Unstretched<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="identifying-the-containing-block">Identifying the Containing Block <a class="direct-link" href="#identifying-the-containing-block">#</a></h3>
+<h3 id="identifying-the-containing-block">Identifying the Containing Block <a class="direct-link" href="#identifying-the-containing-block"></a></h3>
 <p>If the stretched link doesn't seem to work, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block">containing block</a> will probably be the cause. The following CSS properties will make an element the containing block:</p>
 <ul>
 <li>A <code>position</code> value other than <code>static</code></li>
@@ -378,8 +413,8 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 18rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-img<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img-fluid card-img-top<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Card image cap<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Card with stretched links<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Some quick example text to build on the card title and make up the bulk of the card's content.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>link-stretch text-danger<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stretched link will not work here, because <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>position: relative<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span> is added to the link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-text bg-light<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      This <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-warning link-stretch<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>stretched link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> will only be spread over the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>p<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span>-tag, because a transform is applied to it.<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -419,9 +454,11 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -429,13 +466,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -444,8 +474,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -480,7 +513,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -497,28 +530,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

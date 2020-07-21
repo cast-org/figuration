@@ -64,7 +64,7 @@
 <body>
 <a class="skipnav" href="#content">Skip to main content</a>
 <div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
-  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">Figuration v4 is now available!</a>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
   <a class="navbar-brand" href="/" aria-label="CAST Figuration">
@@ -109,7 +109,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.5</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -313,11 +313,11 @@
 
       <p>Affix is used to handle the positioning of components based on the scroll position of the window with top and bottom boundaries.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#example">Example </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#positioning-via-css">Positioning via CSS </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixoptions">.CFW_Affix(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixcheckposition">.CFW_Affix(&#39;checkPosition&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixdispose">.CFW_Affix(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li></ul></nav><h2 id="example">Example <a class="direct-link" href="#example">#</a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#example">Example </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#positioning-via-css">Positioning via CSS </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixoptions">.CFW_Affix(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixcheckposition">.CFW_Affix(&#39;checkPosition&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_affixdispose">.CFW_Affix(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li></ul></nav><h2 id="example">Example <a class="direct-link" href="#example"></a></h2>
 <p>The 'floating' of the 'top of page' link at the bottom of the screen, is a live demo of the widget.</p>
-<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
+<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
 <p>Use the affix widget via data attributes or manually with your own JavaScript. <strong :.text-danger="">In both situations, you must provide CSS for the positioning of your content.</strong></p>
-<h3 id="positioning-via-css">Positioning via CSS <a class="direct-link" href="#positioning-via-css">#</a></h3>
+<h3 id="positioning-via-css">Positioning via CSS <a class="direct-link" href="#positioning-via-css"></a></h3>
 <p>The affix widget toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this widget) to handle the actual positions.</p>
 <p>Here's how the affix widget works:</p>
 <ul>
@@ -326,13 +326,13 @@
 <li>If a <code>bottom</code> offset is defined, scrolling past it should replace <code>.affix</code> with <code>.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code>position: absolute;</code> when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.</li>
 </ul>
 <p>Follow the above steps to set your CSS for either of the usage options below.</p>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
+<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>To easily add affix behavior to any element, just add <code>data-cfw=&quot;affix&quot;</code> to the element you want to spy on. Use offsets to define when to toggle the pinning of an element.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>affix<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-affix-top</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>60<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-affix-bottom</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>200<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Call the affix widget via JavaScript:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAffix'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Affix</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  top<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span><br>  <span class="token function-variable function">bottom</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.footer'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">outerHeight</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="options">Options <a class="direct-link" href="#options">#</a></h3>
+<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-affix-</code>, as in <code>data-cfw-affix-top=&quot;200&quot;</code>.</p>
 <table class="table table-scroll table-bordered table-striped">
   <thead>
@@ -364,16 +364,16 @@
     </tr>
 </tbody>
 </table>
-<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
-<h4 id="cfw_affixoptions"><code>.CFW_Affix(options)</code> <a class="direct-link" href="#cfw_affixoptions">#</a></h4>
+<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<h4 id="cfw_affixoptions"><code>.CFW_Affix(options)</code> <a class="direct-link" href="#cfw_affixoptions"></a></h4>
 <p>Activates an element to be affixed. Accepts an optional options object.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAffix'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Affix</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  top<span class="token operator">:</span> <span class="token number">10</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="cfw_affixcheckposition"><code>.CFW_Affix('checkPosition')</code> <a class="direct-link" href="#cfw_affixcheckposition">#</a></h4>
+<h4 id="cfw_affixcheckposition"><code>.CFW_Affix('checkPosition')</code> <a class="direct-link" href="#cfw_affixcheckposition"></a></h4>
 <p>Recalculates the state of the affix based on the dimensions, position, and scroll position of the relevant elements. The <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code> classes are added to or removed from the affixed content according to the new state. This method needs to be called whenever the dimensions of the affixed content or the target element are changed, to ensure correct positioning of the affixed content.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAffix'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Affix</span><span class="token punctuation">(</span><span class="token string">'checkPosition'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="cfw_affixdispose"><code>.CFW_Affix('dispose')</code> <a class="direct-link" href="#cfw_affixdispose">#</a></h4>
+<h4 id="cfw_affixdispose"><code>.CFW_Affix('dispose')</code> <a class="direct-link" href="#cfw_affixdispose"></a></h4>
 <p>Disables the affix functionality and removes any <code>.affix</code>, <code>.affix-top</code>, or <code>.affix-bottom</code> from the designated element.</p>
-<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
 <p>CFW's affix widget exposes a few events for hooking into affix functionality.</p>
 <table class="table table-scroll table-bordered table-striped">
   <thead>
@@ -429,8 +429,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -488,22 +491,6 @@
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

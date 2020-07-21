@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,22 +264,67 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Accordion <small class="text-muted">accordion.js</small></h1>
 
-      <p class="fs-large font-weight-sbold">Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Accordion <small class="text-muted">accordion.js</small></h1>
 
-      <div class="cf-callout cf-callout-info cf-callout-dep">
+          <p class="fs-large font-weight-sbold">Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#notices">Notices </a>
+            		</li>
+
+                    <li><a href="#examples">Examples </a>
+            
+                <ol>
+                    
+                    <li><a href="#basic-example">Basic Example </a>
+            		</li>
+
+                    <li><a href="#using-cards">Using Cards </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#usage">Usage </a>
+            
+                <ol>
+                    
+                    <li><a href="#via-data-attributes">Via Data Attributes </a>
+            		</li>
+
+                    <li><a href="#via-javascript">Via JavaScript </a>
+            		</li>
+
+                    <li><a href="#methods">Methods </a>
+            		</li>
+
+                    <li><a href="#events">Events </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="notices">Notices <a class="direct-link" href="#notices"></a></h2>
+<div class="cf-callout cf-callout-info cf-callout-dep">
 <p class="h5">Widget Dependencies</p>
 <p>Accordion requires the following:</p>
 <ul>
 <li><a href="/4.0/widgets/collapse/">Collapse widget</a> for the base functionality.</li>
 </ul>
 </div>
-<div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#basic-example">Basic Example </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#using-cards">Using Cards </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_accordion">.CFW_Accordion() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_accordiondispose">.CFW_Accordion(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li></ul></nav><h2 id="examples">Examples <a class="direct-link" href="#examples">#</a></h2>
-<h3 id="basic-example">Basic Example <a class="direct-link" href="#basic-example">#</a></h3>
+<h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
+<h3 id="basic-example">Basic Example <a class="direct-link" href="#basic-example"></a></h3>
 <p>A simple accordion.</p>
 <div class="cf-example">
 <div data-cfw="accordion">
@@ -313,7 +343,7 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#accordion0<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>open<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion0<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#accordion1<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#accordion2<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="using-cards">Using Cards <a class="direct-link" href="#using-cards">#</a></h3>
+<h3 id="using-cards">Using Cards <a class="direct-link" href="#using-cards"></a></h3>
 <p>Here some cards are used along with a bit of added styling to provide some layout.</p>
 <div class="cf-example">
 <div data-cfw="accordion" class="accordion">
@@ -358,19 +388,33 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#card0<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>open<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card0<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#card1<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#card2<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Collapse Toggle #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>To achieve the above layout, the following styling was used.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.accordion {</span><br>  <span class="token selector">> .card {</span><br><span class="token property-line">    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden;</span><br><br><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">not(</span><span class="token punctuation">:</span><span class="token property">first-of-type)</span> {</span><br><span class="token property-line">      <span class="token property">.card-header</span><span class="token punctuation">:</span><span class="token property">first-child</span> {</span><br><span class="token atrule-line">        <span class="token atrule">@include</span> border-radius(0);</span><br>      <span class="token selector">}</span><br><br><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">not(</span><span class="token punctuation">:</span><span class="token property">last-of-type)</span> {</span><br><span class="token property-line">      <span class="token property">border-bottom</span><span class="token punctuation">:</span> 0;</span><br><span class="token atrule-line">        <span class="token atrule">@include</span> border-radius(0);</span><br>      <span class="token selector">}</span><br>    <span class="token selector">}</span><br><br><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">first-of-type</span><span class="token punctuation">:</span><span class="token property">not(</span><span class="token punctuation">:</span><span class="token property">last-of-type)</span> {</span><br><span class="token property-line">      <span class="token property">border-bottom</span><span class="token punctuation">:</span> 0;</span><br><span class="token atrule-line">      <span class="token atrule">@include</span> border-bottom-radius(0);</span><br>    <span class="token selector">}</span><br><br><span class="token property-line">    <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token property">last-of-type</span><span class="token punctuation">:</span><span class="token property">not(</span><span class="token punctuation">:</span><span class="token property">first-of-type)</span> {</span><br><span class="token atrule-line">      <span class="token atrule">@include</span> border-top-radius(0);</span><br>    <span class="token selector">}</span><br><br>    <span class="token selector">.card-header {</span><br><span class="token property-line">      <span class="token property">margin-bottom</span><span class="token punctuation">:</span> -<span class="token variable">$card-border-width</span>;</span><br>    <span class="token selector">}</span><br>  <span class="token selector">}</span><br><span class="token selector">}</span></code></pre>
-<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
+<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
 <p>To set up an accordion, all collapse items to be associated must be contained within the same ancestor element that is designated the accordion conatiner.</p>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
+<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>Add <code>data-cfw=&quot;accordion&quot;</code> to the ancestor element that contains all the collapse items to be associated.</p>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
-<p>Call the accordion via JavaScript:</p>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
+<p>Activates an element as an accordion listener.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAccordion'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Accordion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
-<h4 id="cfw_accordion"><code>.CFW_Accordion()</code> <a class="direct-link" href="#cfw_accordion">#</a></h4>
-<p>Activates the element as an accordion listener.</p>
-<h4 id="cfw_accordiondispose"><code>.CFW_Accordion('dispose')</code> <a class="direct-link" href="#cfw_accordiondispose">#</a></h4>
-<p>Removes the accordion listener and data from the element. Falls back to non-associated, or individual, collapse controls.</p>
-<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<p>Method calls should be made on the accordion container.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Removes the event listeners and data from the accordion container element. Falls back to non-associated, or individual, collapse controls.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAccordion'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Accordion</span><span class="token punctuation">(</span><span class="token string">'dispose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the accordion element.</p>
 <p>You can also get the collapse events as indicated in the <a href="/4.0/widgets/collapse/">Collapse widget</a> due to event bubbling.</p>
 <div class="table-scroll">
@@ -383,13 +427,16 @@
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.accordion</td>
+        <td><code>init.cfw.accordion</code></td>
         <td>This event fires after the accordion item is initialized.</td>
       </tr>
     </tbody>
   </table>
 </div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAccordion'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'init.cfw.accordion'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -397,13 +444,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -412,8 +452,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -448,7 +491,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -465,28 +508,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

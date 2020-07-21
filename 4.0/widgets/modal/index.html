@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,26 +264,145 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Modal <small class="text-muted">modal.js</small></h1>
 
-      <p class="fs-large font-weight-sbold">The Modal widget allows you to add dialog style windows to your site or application.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Modal <small class="text-muted">modal.js</small></h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#important-notes">Important Notes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#modal-components">Modal Components </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#live-demo">Live Demo </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrolling-long-content">Scrolling Long Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrollable-body">Scrollable Body </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#vertically-centered">Vertically Centered </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#grid-usage">Grid Usage </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tooltips-and-popovers">Tooltips and Popovers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#optional-sizes">Optional Sizes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#side-aligned">Side Aligned </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#static-backdrop">Static Backdrop </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fullscreen-modal">Fullscreen Modal </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-triggers">Close Triggers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#alter-animation">Alter Animation </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#dynamic-heights">Dynamic Heights </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#with-fixed-position-content">With Fixed Position Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaloptions">.CFW_Modal(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaltoggle">.CFW_Modal(&#39;toggle&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalshow">.CFW_Modal(&#39;show&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalhide">.CFW_Modal(&#39;hide&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalunlink">.CFW_Modal(&#39;unlink&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaldispose">.CFW_Modal(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#server-side-apps">Server-side Apps </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#key-commands">Key Commands </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#enforced-focus">Enforced Focus </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#modal-fullscreen">modal-fullscreen() </a></li></ul></li></ul></li></ul></nav><h2 id="important-notes">Important Notes <a class="direct-link" href="#important-notes">#</a></h2>
+          <p class="fs-large font-weight-sbold">The Modal widget allows you to add dialog style windows to your site or application.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#important-notes">Important Notes </a>
+            		</li>
+
+                    <li><a href="#examples">Examples </a>
+            
+                <ol>
+                    
+                    <li><a href="#modal-components">Modal Components </a>
+            		</li>
+
+                    <li><a href="#live-demo">Live Demo </a>
+            		</li>
+
+                    <li><a href="#scrolling-long-content">Scrolling Long Content </a>
+            		</li>
+
+                    <li><a href="#scrollable-body">Scrollable Body </a>
+            		</li>
+
+                    <li><a href="#vertically-centered">Vertically Centered </a>
+            		</li>
+
+                    <li><a href="#grid-usage">Grid Usage </a>
+            		</li>
+
+                    <li><a href="#tooltips-and-popovers">Tooltips and Popovers </a>
+            		</li>
+
+                    <li><a href="#optional-sizes">Optional Sizes </a>
+            		</li>
+
+                    <li><a href="#side-aligned">Side Aligned </a>
+            		</li>
+
+                    <li><a href="#static-backdrop">Static Backdrop </a>
+            		</li>
+
+                    <li><a href="#fullscreen-modal">Fullscreen Modal </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#usage">Usage </a>
+            
+                <ol>
+                    
+                    <li><a href="#via-data-attributes">Via Data Attributes </a>
+            		</li>
+
+                    <li><a href="#via-javascript">Via JavaScript </a>
+            		</li>
+
+                    <li><a href="#close-triggers">Close Triggers </a>
+            		</li>
+
+                    <li><a href="#alter-animation">Alter Animation </a>
+            		</li>
+
+                    <li><a href="#dynamic-heights">Dynamic Heights </a>
+            		</li>
+
+                    <li><a href="#with-fixed-position-content">With Fixed Position Content </a>
+            		</li>
+
+                    <li><a href="#options">Options </a>
+            		</li>
+
+                    <li><a href="#methods">Methods </a>
+            		</li>
+
+                    <li><a href="#events">Events </a>
+            		</li>
+
+                    <li><a href="#server-side-apps">Server-side Apps </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#accessibility">Accessibility </a>
+            
+                <ol>
+                    
+                    <li><a href="#key-commands">Key Commands </a>
+            		</li>
+
+                    <li><a href="#enforced-focus">Enforced Focus </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            
+                <ol>
+                    
+                    <li><a href="#modal-fullscreen">modal-fullscreen() </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="important-notes">Important Notes <a class="direct-link" href="#important-notes"></a></h2>
 <ul>
 <li>Modals get positioned over everything else in the document and remove scroll from the <code>&lt;body&gt;</code> so that modal content scrolls instead.</li>
 <li>By default, clicking on the modal &quot;backdrop&quot; will automatically close the modal.</li>
 <li>Figuration only supports one modal at a time.  Nested modals are not supported, as this can cause difficult usability and accessibility issues.</li>
 <li>Modals use <code>position: fixed</code>. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the <code>&lt;body&gt;</code> element. Putting modal HTML within a fixed position element will adversely affect placement.</li>
 <li>There are some caveats regarding using modals on mobile devices. See <a href="/4.0/get-started/browsers-and-devices/#modals-and-dropdowns-on-mobile">our browser support docs</a> for details.</li>
-<li>Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</li>
+<li>Embedding YouTube videos in modals requires additional JavaScript, not included in Figuration, to automatically stop playback and more. <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</li>
 <li>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus"><code>autofocus</code></a> HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:</li>
 </ul>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterShow.cfw.modal'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myInput'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">'focus'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="examples">Examples <a class="direct-link" href="#examples">#</a></h2>
-<h3 id="modal-components">Modal Components <a class="direct-link" href="#modal-components">#</a></h3>
+<h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
+<h3 id="modal-components">Modal Components <a class="direct-link" href="#modal-components"></a></h3>
 <p>Below is a static modal example (meaning its <code>position</code> and <code>display</code> have been overridden). Included are the modal header, modal body (required for <code>padding</code>), and modal footer (optional). It is highly suggested to include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.</p>
 <div class="cf-example">
 <div class="modal">
@@ -320,7 +424,7 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Modal title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Close<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Modal body content<span class="token entity" title="&hellip;">&amp;hellip;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Save changes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="live-demo">Live Demo <a class="direct-link" href="#live-demo">#</a></h3>
+<h3 id="live-demo">Live Demo <a class="direct-link" href="#live-demo"></a></h3>
 <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page. Examples of tooltips, popover, and scroll handling included.</p>
 <div class="modal" id="modalLive">
   <div class="modal-dialog">
@@ -366,7 +470,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Button trigger --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalLive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Launch demo modal<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalLive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Modal title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Close<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        ...<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Save changes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="scrolling-long-content">Scrolling Long Content <a class="direct-link" href="#scrolling-long-content">#</a></h3>
+<h3 id="scrolling-long-content">Scrolling Long Content <a class="direct-link" href="#scrolling-long-content"></a></h3>
 <p>When modals become too long for the user's viewport or device, they scroll independent of the page itself.  Try the demo below for an example.</p>
 <div class="modal" id="modalScroll">
   <div class="modal-dialog">
@@ -400,7 +504,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Button trigger --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalScroll<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Scrolling modal<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalScroll<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Modal title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Close<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        ...<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Save changes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="scrollable-body">Scrollable Body <a class="direct-link" href="#scrollable-body">#</a></h3>
+<h3 id="scrollable-body">Scrollable Body <a class="direct-link" href="#scrollable-body"></a></h3>
 <p>Add <code>.modal-dialog-scrollable</code> to <code>.modal-dialog</code> where the <code>.modal-body</code> is the scrollable region, and the entire modal fits within the viewport height.</p>
 <div class="modal" id="modalScrollBody">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -434,7 +538,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Button trigger --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalScrollBody<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Scrollable modal body<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalScrollBody<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Modal title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Close<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        ...<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Save changes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="vertically-centered">Vertically Centered <a class="direct-link" href="#vertically-centered">#</a></h3>
+<h3 id="vertically-centered">Vertically Centered <a class="direct-link" href="#vertically-centered"></a></h3>
 <p>Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center the modal.</p>
 <div class="modal" id="modalCenter">
   <div class="modal-dialog modal-dialog-centered">
@@ -525,7 +629,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Button trigger --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalCenterBody<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Centered, scrolling modal body<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalCenterBody<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-centered modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Modal title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Close<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        ...<br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-dismiss</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Save changes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="grid-usage">Grid Usage <a class="direct-link" href="#grid-usage">#</a></h3>
+<h3 id="grid-usage">Grid Usage <a class="direct-link" href="#grid-usage"></a></h3>
 <p>To take advantage of the grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
 <div class="modal" id="modalGrid">
   <div class="modal-dialog">
@@ -575,7 +679,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container-fluid<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.col-md-4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-4 offset-md-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.col-md-4 .offset-md-4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-3 offset-md-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.col-md-3 .offset-md-3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-2 offset-md-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.col-md-2 .offset-md-4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-6 offset-md-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.col-md-6 .offset-md-3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>        Level 1: .col-sm-9<br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-8 col-sm-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            Level 2: .col-8 .col-sm-6<br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-4 col-sm-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>            Level 2: .col-4 .col-sm-6<br>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="tooltips-and-popovers">Tooltips and Popovers <a class="direct-link" href="#tooltips-and-popovers">#</a></h3>
+<h3 id="tooltips-and-popovers">Tooltips and Popovers <a class="direct-link" href="#tooltips-and-popovers"></a></h3>
 <p><a href="/4.0/widgets/tooltip/">Tooltips</a> and <a href="/4.0/widgets/popover/">popovers</a> can be placed within modal as needed.  When modals are closed, any tooltips or popovers within are also automatically dismissed.</p>
 <div class="modal" id="modalTips">
   <div class="modal-dialog">
@@ -600,7 +704,7 @@
   </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>Popover in a modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Popover title<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>popover<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-popover-content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Popover body content is set in this attribute.<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-popover-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>forward<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> triggers a popover on click.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>Tooltips in a modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> and <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>that link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> have tooltips on hover.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="optional-sizes">Optional Sizes <a class="direct-link" href="#optional-sizes">#</a></h3>
+<h3 id="optional-sizes">Optional Sizes <a class="direct-link" href="#optional-sizes"></a></h3>
 <p>Modals have two optional sizes, provided by Figuration's base CSS, available via modifier classes to be placed on a <code>.modal-dialog</code>.</p>
 <div class="modal" id="modalLg">
   <div class="modal-dialog modal-lg">
@@ -633,7 +737,7 @@
   <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSm">Small modal</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Large modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalLg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Large modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalLg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-lg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Small modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalSm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Small modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalSm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="side-aligned">Side Aligned <a class="direct-link" href="#side-aligned">#</a></h3>
+<h3 id="side-aligned">Side Aligned <a class="direct-link" href="#side-aligned"></a></h3>
 <p>Position a modal to the side of the page with a <code>.modal-dialog-side-start</code> or <code>.modal-dialog-side-end</code> modifier class placed on a the <code>.modal-dialog</code>. Side aligned modals can be used with <code>.modal-dialog-scrollable</code>, and can also use the sizing classes.</p>
 <div class="modal" id="modalSideStart">
   <div class="modal-dialog modal-dialog-side-start">
@@ -690,7 +794,7 @@
   <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">End side modal</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Large modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalSideStart<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Start side modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalSideStart<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-side-start<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Small modal --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalSideEnd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>End side modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalSideEnd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="static-backdrop">Static Backdrop <a class="direct-link" href="#static-backdrop">#</a></h3>
+<h3 id="static-backdrop">Static Backdrop <a class="direct-link" href="#static-backdrop"></a></h3>
 <p>When <code>backdrop</code> option is set to <code>static</code>, the modal will not close when clicking outside it. Click the button below to try it.</p>
 <div class="modal" id="modalStaticBackdrop">
   <div class="modal-dialog">
@@ -713,7 +817,7 @@
   <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-backdrop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>static<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalStaticBackdrop<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Static backdrop modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalStaticBackdrop<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="fullscreen-modal">Fullscreen Modal <a class="direct-link" href="#fullscreen-modal">#</a></h3>
+<h3 id="fullscreen-modal">Fullscreen Modal <a class="direct-link" href="#fullscreen-modal"></a></h3>
 <p>Enlarge a modal to fill the entire viewport with a <code>.modal-fullscreen</code> modifider class placed on the <code>.modal-dialog</code>.</p>
 <div class="modal" id="modalFullscreen">
   <div class="modal-dialog modal-fullscreen">
@@ -911,25 +1015,25 @@
 <button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdCenterScroll">Fullscreen centered, scrolling body</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Fullscreen modals at `md` breakpoint and below --></span><br><br><span class="token comment">&lt;!-- Scrollable body above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Centered above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-centered<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Centered and scrollable body above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
+<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
 <p>The modal widget toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
+<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>Activate a modal without writing JavaScript. Set <code>data-cfw=&quot;modal&quot;</code> on a controller element, like a button, along with a <code>data-cfw-modal-target=&quot;#foo&quot;</code> or <code>href=&quot;#foo&quot;</code> to target a specific modal to toggle.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#foo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Launch modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Modal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="close-triggers">Close Triggers <a class="direct-link" href="#close-triggers">#</a></h3>
+<h3 id="close-triggers">Close Triggers <a class="direct-link" href="#close-triggers"></a></h3>
 <p>Any an element with a data attribute of <code>data-cfw-dismiss=&quot;modal&quot;</code> within the modal element will act as a close trigger for the modal.  There can be multiple close triggers, such as a header/titlebar close and a cancel button in the footer.</p>
-<h3 id="alter-animation">Alter Animation <a class="direct-link" href="#alter-animation">#</a></h3>
+<h3 id="alter-animation">Alter Animation <a class="direct-link" href="#alter-animation"></a></h3>
 <p>In Sass settings, The <code>$modal-transform-fade</code> setting determines the transform state of <code>.modal-dialog</code> before the modal fade-in animation, the <code>$modal-transform-in</code> setting determines the transform of <code>.modal-dialog</code> at the end of the modal fade-in animation.</p>
 <p>If you want for example a zoom-in animation, you can set <code>$modal-transform-fade: scale(.75)</code>.</p>
-<h3 id="dynamic-heights">Dynamic Heights <a class="direct-link" href="#dynamic-heights">#</a></h3>
+<h3 id="dynamic-heights">Dynamic Heights <a class="direct-link" href="#dynamic-heights"></a></h3>
 <p>If the height of a modal changes while it is open, you will need to call <code>$('#myModal').CFW_Modal('handleUpdate');</code> to readjust the modal's position and backdrop.</p>
-<h3 id="with-fixed-position-content">With Fixed Position Content <a class="direct-link" href="#with-fixed-position-content">#</a></h3>
+<h3 id="with-fixed-position-content">With Fixed Position Content <a class="direct-link" href="#with-fixed-position-content"></a></h3>
 <p>Since the scrollbar is removed from the <code>&lt;body&gt;</code> when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the <a href="/4.0/utilities/position/">fixed positioning utility</a> classes, (<code>.fixed-top</code> and <code>.fixed-bottom</code>), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the <code>padding-right</code> CSS value will be reset.</p>
 <p>There is also an additional special classname that the modal widget will look for when adjusting padding values.  Simply add the <code>.is-fixed</code> class to your element, and it will automatically be handled.</p>
-<h3 id="options">Options <a class="direct-link" href="#options">#</a></h3>
+<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-modal-</code>, as in <code>data-cfw-modal-animate=false</code>.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -943,31 +1047,31 @@
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target modal.</td>
+        <td>The selector of the target modal.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If modal targets should fade and slide in.</td>
       </tr>
       <tr>
-        <td>unlink</td>
+        <td><code>unlink</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>unlink</code> method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
       </tr>
       <tr>
-        <td>dispose</td>
+        <td><code>dispose</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>dispose</code> method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
       </tr>
       <tr>
-        <td>backdrop</td>
+        <td><code>backdrop</code></td>
         <td>boolean or the string <code>'static'</code></td>
         <td><code>true</code></td>
         <td>
@@ -976,13 +1080,13 @@
          </td>
       </tr>
       <tr>
-        <td>keyboard</td>
+        <td><code>keyboard</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>Closes the modal when escape key is pressed.</td>
       </tr>
       <tr>
-        <td>show</td>
+        <td><code>show</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Shows the modal when initialized.</td>
@@ -990,21 +1094,43 @@
     </tbody>
   </table>
 </div>
-<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
-<h4 id="cfw_modaloptions"><code>.CFW_Modal(options)</code> <a class="direct-link" href="#cfw_modaloptions">#</a></h4>
-<p>Activates a modal dialog. Accepts an optional options <code>object</code>.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Modal</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  animate<span class="token operator">:</span> <span class="token boolean">false</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="cfw_modaltoggle"><code>.CFW_Modal('toggle')</code> <a class="direct-link" href="#cfw_modaltoggle">#</a></h4>
-<p>Toggles a modal dialog to be shown or hidden.</p>
-<h4 id="cfw_modalshow"><code>.CFW_Modal('show')</code> <a class="direct-link" href="#cfw_modalshow">#</a></h4>
-<p>Shows a modal dialog.</p>
-<h4 id="cfw_modalhide"><code>.CFW_Modal('hide')</code> <a class="direct-link" href="#cfw_modalhide">#</a></h4>
-<p>Hides a modal dialog.</p>
-<h4 id="cfw_modalunlink"><code>.CFW_Modal('unlink')</code> <a class="direct-link" href="#cfw_modalunlink">#</a></h4>
-<p>Hides the modal, removes events and attributes from both trigger and modal.</p>
-<h4 id="cfw_modaldispose"><code>.CFW_Modal('dispose')</code> <a class="direct-link" href="#cfw_modaldispose">#</a></h4>
-<p>Calls the <code>unlink</code> method, and then removes the modal from the DOM.</p>
-<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<p>Method calls can be made on either the trigger or the target <code>&lt;div class=&quot;modal&quot;&gt;</code> element.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>toggle</code></td>
+        <td>Toggles a modal dialog to be shown or hidden.</td>
+      </tr>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows a modal dialog.</td>
+      </tr>
+      <tr>
+        <td><code>hide</code></td>
+        <td>Hides a modal dialog.</td>
+      </tr>
+      <tr>
+        <td><code>unlink</code></td>
+        <td>Hides the modal, removes events and attributes from both trigger and modal.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Calls the <code>unlink</code> method, and then removes the modal from the DOM.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Modal</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the target <code>&lt;div class=&quot;modal&quot;&gt;</code> element.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -1016,50 +1142,50 @@
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.modal</td>
+        <td><code>init.cfw.modal</code></td>
         <td>This event fires after the modal item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.modal</td>
+        <td><code>beforeShow.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>show</code> method is called.</td>
       </tr>
       <tr>
-        <td>scrollbarSet.cfw.modal</td>
+        <td><code>scrollbarSet.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.modal</td>
+        <td><code>afterShow.cfw.modal</code></td>
         <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>scrollbarReset.cfw.modal</td>
+        <td><code>scrollbarReset.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
       </tr>
       <tr>
-        <td>beforeHide.cfw.modal</td>
+        <td><code>beforeHide.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>hide</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterHide.cfw.modal</td>
+        <td><code>afterHide.cfw.modal</code></td>
         <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>beforeUnlink.cfw.modal</td>
+        <td><code>beforeUnlink.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
       </tr>
       <tr>
-        <td>afterUnlink.cfw.modal</td>
+        <td><code>afterUnlink.cfw.modal</code></td>
         <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
       </tr>
       <tr>
-        <td>dispose.cfw.modal</td>
+        <td><code>dispose.cfw.modal</code></td>
         <td>This event is fired immediately before the modal item is removed from the DOM.</td>
       </tr>
     </tbody>
   </table>
 </div>
-<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterHide.cfw.modal'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="server-side-apps">Server-side Apps <a class="direct-link" href="#server-side-apps">#</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterHide.cfw.modal'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="server-side-apps">Server-side Apps <a class="direct-link" href="#server-side-apps"></a></h3>
 <p>Modals are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the modal content after the initial page load.</p>
 <p>A quick example:<br /></p>
 <ol>
@@ -1076,13 +1202,13 @@
   <li>Initialize the modal: <code>$('#myModal').CFW_Modal(options);</code> with desired options.</li>
   <li>Show modal: <code>$('#myModal').CFW_Modal('show');</code></li>
 </ol>
-<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility">#</a></h2>
-<h3 id="key-commands">Key Commands <a class="direct-link" href="#key-commands">#</a></h3>
+<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility"></a></h2>
+<h3 id="key-commands">Key Commands <a class="direct-link" href="#key-commands"></a></h3>
 <p>The following key commands are handled when focus is inside the modal:</p>
 <ul>
 <li><kbd>Esc</kbd> - Close the modal</li>
 </ul>
-<h3 id="enforced-focus">Enforced Focus <a class="direct-link" href="#enforced-focus">#</a></h3>
+<h3 id="enforced-focus">Enforced Focus <a class="direct-link" href="#enforced-focus"></a></h3>
 <p>In order to keep assistive technology users from interacting with the rest of the page when a modal is open, the focus is automatically forced back to the modal when a user tries to navigate out.</p>
 <p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the modal, focus will be moved to the <strong>top of the modal</strong>.</p>
 <p>When navigation <strong>backward</strong>, out the <em>top</em> of the modal, focus will be moved back to the <strong>top of the modal</strong>.</p>
@@ -1090,8 +1216,8 @@
 <pre class="language-js"><code class="language-js"><span class="token comment">// This needs to be loaded after Figuration's JavaScript</span><br><span class="token comment">// PLEASE DO NOT DO THIS!!! - Just here for reference</span><br>$<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>CFW_Modal<span class="token punctuation">.</span><span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">enforceFocus</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token comment">// SERIOUSLY DO NOT DO THIS!!!</span></code></pre>
 <p>However, we do not advise disabling it completely, but overriding the function to handle the focus conditionally.</p>
 <pre class="language-js"><code class="language-js"><span class="token comment">// This needs to be loaded after Figuration's JavaScript</span><br>$<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>CFW_Modal<span class="token punctuation">.</span><span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">enforceFocus</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><span class="token keyword">var</span> $selfRef <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>  <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><br>    <span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">'focusin.cfw.modal'</span><span class="token punctuation">)</span> <span class="token comment">// guard against infinite focus loop</span><br>    <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'focusin.cfw.modal'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>document <span class="token operator">!==</span> e<span class="token punctuation">.</span>target <span class="token operator">&amp;&amp;</span> $selfRef<span class="token punctuation">.</span>$targetElm<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!==</span> e<span class="token punctuation">.</span>target <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>$selfRef<span class="token punctuation">.</span>$targetElm<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span><br>        <span class="token comment">// Add conditions here</span><br>        <span class="token comment">// In this case items with a 'focusuable-item' class</span><br>        <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">$</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>parentNode<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasClass</span><span class="token punctuation">(</span><span class="token string">'focusuable-item'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>          $selfRef<span class="token punctuation">.</span>$targetElm<span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">'focus'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for the modal component.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -1484,11 +1610,13 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
-<h4 id="modal-fullscreen">modal-fullscreen() <a class="direct-link" href="#modal-fullscreen">#</a></h4>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h4 id="modal-fullscreen">modal-fullscreen() <a class="direct-link" href="#modal-fullscreen"></a></h4>
 <p>Enable fullscreen mode on a <code>.modal-dialog</code>.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> modal-fullscreen();</span></code></pre>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -1496,13 +1624,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -1511,8 +1632,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -1547,7 +1671,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -1564,28 +1688,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

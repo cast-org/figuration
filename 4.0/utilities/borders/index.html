@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav5" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav5" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,14 +264,106 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Borders</h1>
 
-      <p class="fs-large font-weight-sbold">Easily manipulate borders on your images or other elements.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Borders</h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#border-radius">Border Radius </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#sizes">Sizes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#removing">Removing </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#circles">Circles </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#pills">Pills </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#borders">Borders </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#adding-borders">Adding Borders </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#removing-borders">Removing Borders </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-borders">Responsive Borders </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#border-radius-2">border-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-top-radius">border-top-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-end-radius">border-end-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-bottom-radius">border-bottom-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-start-radius">border-start-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-top-start-radius">border-top-start-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-top-end-radius">border-top-end-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-bottom-start-radius">border-bottom-start-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#border-bottom-end-radius">border-bottom-end-radius() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#radius-sides">radius-sides() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#radius-corners">radius-corners() </a></li></ul></li></ul></li></ul></nav><h2 id="border-radius">Border Radius <a class="direct-link" href="#border-radius">#</a></h2>
+          <p class="fs-large font-weight-sbold">Easily manipulate borders on your images or other elements.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#border-radius">Border Radius </a>
+            
+                <ol>
+                    
+                    <li><a href="#sizes">Sizes </a>
+            		</li>
+
+                    <li><a href="#removing">Removing </a>
+            		</li>
+
+                    <li><a href="#circles">Circles </a>
+            		</li>
+
+                    <li><a href="#pills">Pills </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#borders">Borders </a>
+            
+                <ol>
+                    
+                    <li><a href="#adding-borders">Adding Borders </a>
+            		</li>
+
+                    <li><a href="#removing-borders">Removing Borders </a>
+            		</li>
+
+                    <li><a href="#responsive-borders">Responsive Borders </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            
+                <ol>
+                    
+                    <li><a href="#border-radius-2">border-radius() </a>
+            		</li>
+
+                    <li><a href="#border-top-radius">border-top-radius() </a>
+            		</li>
+
+                    <li><a href="#border-end-radius">border-end-radius() </a>
+            		</li>
+
+                    <li><a href="#border-bottom-radius">border-bottom-radius() </a>
+            		</li>
+
+                    <li><a href="#border-start-radius">border-start-radius() </a>
+            		</li>
+
+                    <li><a href="#border-top-start-radius">border-top-start-radius() </a>
+            		</li>
+
+                    <li><a href="#border-top-end-radius">border-top-end-radius() </a>
+            		</li>
+
+                    <li><a href="#border-bottom-start-radius">border-bottom-start-radius() </a>
+            		</li>
+
+                    <li><a href="#border-bottom-end-radius">border-bottom-end-radius() </a>
+            		</li>
+
+                    <li><a href="#radius-sides">radius-sides() </a>
+            		</li>
+
+                    <li><a href="#radius-corners">radius-corners() </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="border-radius">Border Radius <a class="direct-link" href="#border-radius"></a></h2>
 <p>Add a class to your element to round the corners.  You can target various sides of an element using the format <code>.radius{-side}</code>.</p>
 <p>Where <em>sides</em> is one of:</p>
 <ul>
@@ -331,7 +408,7 @@
   </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Sides --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-t<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-b<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-e<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-s<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Corners --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>round-te<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>round-ts<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>round-be<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>round-bs<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<h3 id="sizes">Sizes <a class="direct-link" href="#sizes">#</a></h3>
+<h3 id="sizes">Sizes <a class="direct-link" href="#sizes"></a></h3>
 <p>A few sizes are available, the default border-radius size, along with <code>small</code> and <code>large</code> variants. Responsive classes are built in the form <code>.radius{-side}-{size}</code>.</p>
 <div class="cf-example">
   <img data-src="holder.js/100x100?text=Small" class="radius-small" alt="Placeholder iamge slightly rounded corners" />
@@ -339,13 +416,13 @@
   <img data-src="holder.js/100x100?text=Large" class="radius-large" alt="Placeholder image with more rounded corners" />
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-small<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-large<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<h3 id="removing">Removing <a class="direct-link" href="#removing">#</a></h3>
+<h3 id="removing">Removing <a class="direct-link" href="#removing"></a></h3>
 <p>There is also the special case size of <code>0</code> (zero) to remove  a radius.</p>
 <div class="cf-example">
 <button type="button" class="btn radius-s-0">Button</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-s-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="circles">Circles <a class="direct-link" href="#circles">#</a></h3>
+<h3 id="circles">Circles <a class="direct-link" href="#circles"></a></h3>
 <p>When elements are of a square (1:1) aspect ratio, you can create a circle using <code>.radius-circle</code>.  If the element has an unequal aspect ratio, you will get more on an elipse shape.</p>
 <div class="cf-example">
   <img data-src="holder.js/100x100/?text=Circle" class="radius-circle" width="100" height="100" alt="Completely round" />
@@ -353,16 +430,16 @@
   <img data-src="holder.js/50x100/?text=Elipse" class="radius-circle" width="50" height="100" alt="Vertical elipse" />
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-circle<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-circle<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-circle<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<h3 id="pills">Pills <a class="direct-link" href="#pills">#</a></h3>
+<h3 id="pills">Pills <a class="direct-link" href="#pills"></a></h3>
 <p>Create a 'pill' shape with <code>.radius-pill</code>.</p>
 <div class="cf-example">
   <img data-src="holder.js/100x50/?text=Pill" class="radius-pill" width="100" height="50" alt="Rounded pill image" />
   <img data-src="holder.js/75x32/?text=Pill" class="radius-pill" width="75" height="32" alt="Rounded pill image" />
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-pill<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radius-pill<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>75<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>32<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<h2 id="borders">Borders <a class="direct-link" href="#borders">#</a></h2>
+<h2 id="borders">Borders <a class="direct-link" href="#borders"></a></h2>
 <p>Add or remove borders on all or just one side with border utilities</p>
-<h3 id="adding-borders">Adding Borders <a class="direct-link" href="#adding-borders">#</a></h3>
+<h3 id="adding-borders">Adding Borders <a class="direct-link" href="#adding-borders"></a></h3>
 <p>Quickly add the default component border to an element with the <code>.border{-side}</code> utility classes.</p>
 <p>Available border addition utilities are:</p>
 <ul>
@@ -405,7 +482,7 @@
 <span class="border-s bg-gray-50 p-0_5" style="width: 3rem;">'start'</span>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border bg-gray-50 p-0_5 mb-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  This div container has a border on all sides, and some padding added.<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-x bg-gray-50 p-0_5 mb-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  This div container has a border on the left and right sides, and some padding added.<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-y bg-gray-50 p-0_5 mb-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  This div container has a border on the top and bottom sides, and some padding added.<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-t bg-gray-50 p-0_5<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'top'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-e bg-gray-50 p-0_5<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'end'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-b bg-gray-50 p-0_5<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'bottom'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-s bg-gray-50 p-0_5<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'start'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="removing-borders">Removing Borders <a class="direct-link" href="#removing-borders">#</a></h3>
+<h3 id="removing-borders">Removing Borders <a class="direct-link" href="#removing-borders"></a></h3>
 <p>Remove the border on a given side of an element with the <code>.border{-side}-0</code> utility classes.</p>
 <p>Available border removal utilities are:</p>
 <ul>
@@ -443,7 +520,7 @@
 <button type="button" class="btn radius-0 border-y-0">top and bottom</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>all<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-t-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>top<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-e-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'end'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-b-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>bottom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-s-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>'start'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-x-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>left and right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn radius-0 border-y-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>top and bottom<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="responsive-borders">Responsive Borders <a class="direct-link" href="#responsive-borders">#</a></h3>
+<h3 id="responsive-borders">Responsive Borders <a class="direct-link" href="#responsive-borders"></a></h3>
 <p>Add or remove borders with responsive border utility classes in the form of <code>.border{-breakpoint}{-side}{-0}</code>.</p>
 <p>For example to have a border on the sides of an element up to and including the <code>md</code> breakpoint, and then at the <code>lg</code> breakpoint switch to only having top and bottom borders, you would do the following:</p>
 <div class="cf-example">
@@ -452,8 +529,8 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>border-x border-lg-x-0 border-lg-y bg-light p-0_5<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">max-width</span><span class="token punctuation">:</span> 18rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Sample container<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -609,9 +686,9 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.</p>
-<h4 id="border-radius-2">border-radius() <a class="direct-link" href="#border-radius-2">#</a></h4>
+<h4 id="border-radius-2">border-radius() <a class="direct-link" href="#border-radius-2"></a></h4>
 <p>Apply a border radius to an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -636,7 +713,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-top-radius">border-top-radius() <a class="direct-link" href="#border-top-radius">#</a></h4>
+<h4 id="border-top-radius">border-top-radius() <a class="direct-link" href="#border-top-radius"></a></h4>
 <p>Apply a border radius the corners on the top side of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-top-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -661,7 +738,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-end-radius">border-end-radius() <a class="direct-link" href="#border-end-radius">#</a></h4>
+<h4 id="border-end-radius">border-end-radius() <a class="direct-link" href="#border-end-radius"></a></h4>
 <p>Apply a border radius the corners on the end side of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-end-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -686,7 +763,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-bottom-radius">border-bottom-radius() <a class="direct-link" href="#border-bottom-radius">#</a></h4>
+<h4 id="border-bottom-radius">border-bottom-radius() <a class="direct-link" href="#border-bottom-radius"></a></h4>
 <p>Apply a border radius the corners on the bottom side of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-bottom-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -711,7 +788,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-start-radius">border-start-radius() <a class="direct-link" href="#border-start-radius">#</a></h4>
+<h4 id="border-start-radius">border-start-radius() <a class="direct-link" href="#border-start-radius"></a></h4>
 <p>Apply a border radius the corners on the start side of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-start-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -736,7 +813,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-top-start-radius">border-top-start-radius() <a class="direct-link" href="#border-top-start-radius">#</a></h4>
+<h4 id="border-top-start-radius">border-top-start-radius() <a class="direct-link" href="#border-top-start-radius"></a></h4>
 <p>Apply a border radius on the top start corner of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-top-start-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -761,7 +838,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-top-end-radius">border-top-end-radius() <a class="direct-link" href="#border-top-end-radius">#</a></h4>
+<h4 id="border-top-end-radius">border-top-end-radius() <a class="direct-link" href="#border-top-end-radius"></a></h4>
 <p>Apply a border radius on the top end corner of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-top-end-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -786,7 +863,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-bottom-start-radius">border-bottom-start-radius() <a class="direct-link" href="#border-bottom-start-radius">#</a></h4>
+<h4 id="border-bottom-start-radius">border-bottom-start-radius() <a class="direct-link" href="#border-bottom-start-radius"></a></h4>
 <p>Apply a border radius on the bottom start corner of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-bottom-start-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -811,7 +888,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="border-bottom-end-radius">border-bottom-end-radius() <a class="direct-link" href="#border-bottom-end-radius">#</a></h4>
+<h4 id="border-bottom-end-radius">border-bottom-end-radius() <a class="direct-link" href="#border-bottom-end-radius"></a></h4>
 <p>Apply a border radius on the bottom end corner of an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> border-bottom-end-radius($radius);</span></code></pre>
 <div class="table-scroll">
@@ -836,7 +913,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="radius-sides">radius-sides() <a class="direct-link" href="#radius-sides">#</a></h4>
+<h4 id="radius-sides">radius-sides() <a class="direct-link" href="#radius-sides"></a></h4>
 <p>Generate component size border radius utility classes for use with an element's sides.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> radius-sides($radius, $size);</span></code></pre>
 <div class="table-scroll">
@@ -869,7 +946,7 @@
     </tbody>
   </table>
 </div>
-<h4 id="radius-corners">radius-corners() <a class="direct-link" href="#radius-corners">#</a></h4>
+<h4 id="radius-corners">radius-corners() <a class="direct-link" href="#radius-corners"></a></h4>
 <p>Generate component size border radius utility classes for use with an element's individual corners.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> radius-corners($radius, $size);</span></code></pre>
 <div class="table-scroll">
@@ -902,6 +979,8 @@
     </tbody>
   </table>
 </div>
+        </div>
+      </div>
     </main>
   </div>
 
@@ -909,13 +988,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -924,8 +996,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -960,7 +1035,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -977,28 +1052,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

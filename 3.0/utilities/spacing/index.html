@@ -64,7 +64,7 @@
 <body>
 <a class="skipnav" href="#content">Skip to main content</a>
 <div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
-  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">Figuration v4 is now available!</a>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
   <a class="navbar-brand" href="/" aria-label="CAST Figuration">
@@ -109,7 +109,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.5</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -357,7 +357,7 @@
 <p>(You can add more sizes by adding entries to the <code>$spacers</code> Sass map variable.)</p>
 <p>Here are some representative examples of these classes:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.mt-0 {</span><br><span class="token property-line">  <span class="token property">margin-top</span><span class="token punctuation">:</span> 0 <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.ms-1 {</span><br><span class="token property-line">  <span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.mt-md-1 {</span><br><span class="token property-line">  <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.px-1_5 {</span><br><span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 1.5) <span class="token important">!important</span>;</span><br><span class="token property-line">  <span class="token property">padding-right</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 1.5) <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.p-2 {</span><br><span class="token property-line">  <span class="token property">padding</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 2) (<span class="token variable">$spacer</span> <span class="token operator">*</span> 2) <span class="token important">!important</span>;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="horizontal-centering">Horizontal Centering <a class="direct-link" href="#horizontal-centering">#</a></h2>
+<h2 id="horizontal-centering">Horizontal Centering <a class="direct-link" href="#horizontal-centering"></a></h2>
 <p>Additionally, we also include an <code>.mx-auto</code> class for horizontally centering fixed-width block level content— an element with <code>display: block;</code> and a defined <code>width</code>—by setting the horizontal margins to <code>auto</code>.</p>
 <div class="cf-example">
   <div class="mx-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
@@ -381,8 +381,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -440,22 +443,6 @@
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

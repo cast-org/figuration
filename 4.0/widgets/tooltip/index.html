@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,21 +264,117 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Tooltip <small class="text-muted">tooltip.js</small></h1>
 
-      <p class="fs-large font-weight-sbold">Add stylized tooltips to items for contextual or informational support.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Tooltip <small class="text-muted">tooltip.js</small></h1>
 
-      <div class="cf-callout cf-callout-info cf-callout-dep">
+          <p class="fs-large font-weight-sbold">Add stylized tooltips to items for contextual or informational support.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#notices">Notices </a>
+            		</li>
+
+                    <li><a href="#overview">Overview </a>
+            		</li>
+
+                    <li><a href="#examples">Examples </a>
+            
+                <ol>
+                    
+                    <li><a href="#live-demo">Live Demo </a>
+            		</li>
+
+                    <li><a href="#four-directions">Four Directions </a>
+            		</li>
+
+                    <li><a href="#toggle-example">Toggle Example </a>
+            		</li>
+
+                    <li><a href="#tooltip-with-html">Tooltip with HTML </a>
+            		</li>
+
+                    <li><a href="#viewport-constrainment">Viewport Constrainment </a>
+            		</li>
+
+                    <li><a href="#disabled-elements">Disabled Elements </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#usage">Usage </a>
+            
+                <ol>
+                    
+                    <li><a href="#via-data-attributes">Via Data Attributes </a>
+            		</li>
+
+                    <li><a href="#via-javascript">Via JavaScript </a>
+            		</li>
+
+                    <li><a href="#close-triggers">Close Triggers </a>
+            		</li>
+
+                    <li><a href="#options">Options </a>
+            		</li>
+
+                    <li><a href="#methods">Methods </a>
+            		</li>
+
+                    <li><a href="#events">Events </a>
+            		</li>
+
+                    <li><a href="#server-side-apps">Server-side Apps </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#accessibility">Accessibility </a>
+            
+                <ol>
+                    
+                    <li><a href="#consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users </a>
+            		</li>
+
+                    <li><a href="#key-commands">Key Commands </a>
+            		</li>
+
+                    <li><a href="#focus-handling">Focus Handling </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="notices">Notices <a class="direct-link" href="#notices"></a></h2>
+<div class="cf-callout cf-callout-info cf-callout-dep">
 <p class="h5">Widget Dependencies</p>
 <p>Tooltip requires the following:</p>
 <ul>
 <li>The third-party library <a href="https://popper.js.org/">Popper.js</a> to provide dynamic positioning and viewport detection.</li>
 </ul>
 </div>
-<div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#overview">Overview </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#live-demo">Live Demo </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#four-directions">Four Directions </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#toggle-example">Toggle Example </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tooltip-with-html">Tooltip with HTML </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#viewport-constrainment">Viewport Constrainment </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#disabled-elements">Disabled Elements </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-triggers">Close Triggers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltipoptions">.CFW_Tooltip(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltiptoggle">.CFW_Tooltip(&#39;toggle&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltipshow">.CFW_Tooltip(&#39;show&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltiphide">.CFW_Tooltip(&#39;hide&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltiplocateupdate">.CFW_Tooltip(&#39;locateUpdate&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltipunlink">.CFW_Tooltip(&#39;unlink&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tooltipdispose">.CFW_Tooltip(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#server-side-apps">Server-side Apps </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#key-commands">Key Commands </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#focus-handling">Focus Handling </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li></ul></li></ul></nav><h2 id="overview">Overview <a class="direct-link" href="#overview">#</a></h2>
+<h2 id="overview">Overview <a class="direct-link" href="#overview"></a></h2>
 <p>Important notes about using the tooltip widget:</p>
 <ul>
 <li>Specify <code>container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
@@ -301,8 +382,8 @@
 <li>Tooltips for <code>.disabled</code> or <code>disabled</code> elements must be triggered on a wrapper element.</li>
 <li>When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use <code>.text-nowrap</code> on your <code>&lt;a&gt;</code>s to avoid this behavior.</li>
 </ul>
-<h2 id="examples">Examples <a class="direct-link" href="#examples">#</a></h2>
-<h3 id="live-demo">Live Demo <a class="direct-link" href="#live-demo">#</a></h3>
+<h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
+<h3 id="live-demo">Live Demo <a class="direct-link" href="#live-demo"></a></h3>
 <div class="cf-example cf-example-bottom">
   <p>
     Lorem ipsum dolor sit amet,
@@ -314,7 +395,7 @@
      libero odio nec enim.
   </p>
 </div>
-<h3 id="four-directions">Four Directions <a class="direct-link" href="#four-directions">#</a></h3>
+<h3 id="four-directions">Four Directions <a class="direct-link" href="#four-directions"></a></h3>
 <p>Four options are available: top, forward (right), bottom, and reverse (left) aligned.</p>
 <p><strong>Heads up!</strong> When using the right-to-left, <code>rtl</code>, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.</p>
 <div class="cf-example">
@@ -332,12 +413,12 @@
 </button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-container</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Tooltip on top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Tooltip on top<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-container</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>forward<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Forward tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Forward tooltip<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-container</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bottom<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Tooltip on bottom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Tooltip on bottom<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-container</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>reverse<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Reverse tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Reverse tooltip<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="toggle-example">Toggle Example <a class="direct-link" href="#toggle-example">#</a></h3>
+<h3 id="toggle-example">Toggle Example <a class="direct-link" href="#toggle-example"></a></h3>
 <div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="tooltip" title="Click the trigger or close button to close me." data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click">Click to toggle tooltip</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-info<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Click the trigger or close button to close me.<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-placement</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>forward<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tooltip-trigger</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>click<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Click to toggle tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="tooltip-with-html">Tooltip with HTML <a class="direct-link" href="#tooltip-with-html">#</a></h3>
+<h3 id="tooltip-with-html">Tooltip with HTML <a class="direct-link" href="#tooltip-with-html"></a></h3>
 <div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-html="true" data-cfw-tooltip-placement="forward" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
 </div>
@@ -354,7 +435,7 @@ $('#html-tooltip').CFW_Tooltip({
 </script>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-info<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>html-tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tooltip with HTML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#html-tooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  html<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  placement<span class="token operator">:</span> <span class="token string">'forward'</span><span class="token punctuation">,</span><br>  title<span class="token operator">:</span> <span class="token string">'&lt;span aria-hidden="true">&amp;middot;&lt;/span> &lt;em>Tooltip&lt;/em> &lt;u>with&lt;/u> &lt;b>HTML&lt;/b>'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="viewport-constrainment">Viewport Constrainment <a class="direct-link" href="#viewport-constrainment">#</a></h3>
+<h3 id="viewport-constrainment">Viewport Constrainment <a class="direct-link" href="#viewport-constrainment"></a></h3>
 <p>Keep tooltips in their place with the <code>viewport</code> option.</p>
 <div class="cf-example">
 <div class="container-viewport" id="viewport-tooltip">
@@ -378,7 +459,7 @@ $('#html-tooltip').CFW_Tooltip({
 </script>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container-viewport<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport-tooltip<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Test viewport constraints for tooltips.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn tooltip-viewport-bottom<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>This should be shifted to the right<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Shift Right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn tooltip-viewport-right<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>This should be shifted down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Shift Down<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn float-end tooltip-viewport-bottom<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>This should be shifted to the left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Shift Left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn tooltip-viewport-right btn-bottom<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>This should be shifted up<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Shift Up<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.tooltip-viewport-right'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>    placement<span class="token operator">:</span> <span class="token string">'forward'</span><span class="token punctuation">,</span><br>    viewport<span class="token operator">:</span> <span class="token string">'#viewport-tooltip'</span><span class="token punctuation">,</span><br>    padding<span class="token operator">:</span> <span class="token number">2</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.tooltip-viewport-bottom'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>    placement<span class="token operator">:</span> <span class="token string">'bottom'</span><span class="token punctuation">,</span><br>    viewport<span class="token operator">:</span> <span class="token string">'#viewport-tooltip'</span><span class="token punctuation">,</span><br>    padding<span class="token operator">:</span> <span class="token number">2</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="disabled-elements">Disabled Elements <a class="direct-link" href="#disabled-elements">#</a></h3>
+<h3 id="disabled-elements">Disabled Elements <a class="direct-link" href="#disabled-elements"></a></h3>
 <p>Elements with the <code>disabled</code> attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> and override the <code>pointer-events</code> on the disabled element.</p>
 <div class="cf-example">
 <span class="d-inline-block" data-cfw="tooltip" title="Tooltip for disabled item">
@@ -386,17 +467,17 @@ $('#html-tooltip').CFW_Tooltip({
 </span>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>d-inline-block<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltip<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Tooltip for disabled item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">></span></span>Disabled button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
+<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
 <p>The tooltip widget, by default, generates content and markup on demand, and by default places tooltips after their trigger element.</p>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
+<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>The required markup for a tooltip is only a <code>data-cfw=&quot;tooltip&quot;</code> attribute and <code>title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to top by the widget).</p>
 <p>If the tooltip item is already created, you can link to it using <code>data-cfw-tooltip-target=&quot;#someTooltip&quot;</code>, or <code>href=&quot;#someTooltip&quot;</code>. The proper <code>role</code> and <code>aria-</code> attributes will be automatically created to link the trigger and target elements.</p>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Enable manually with:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="close-triggers">Close Triggers <a class="direct-link" href="#close-triggers">#</a></h3>
+<h3 id="close-triggers">Close Triggers <a class="direct-link" href="#close-triggers"></a></h3>
 <p>Any element with a data attribute of <code>data-cfw-dismiss=&quot;tooltip&quot;</code> within the tooltip element will act as a close trigger for the tooltip.</p>
-<h3 id="options">Options <a class="direct-link" href="#options">#</a></h3>
+<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-tooltip</code>, as in <code>data-cfw-tooltip-placement=&quot;forward&quot;</code>.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -410,19 +491,19 @@ $('#html-tooltip').CFW_Tooltip({
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target tooltip.</td>
+        <td>The selector of the target tooltip.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If tooltip items should fade in and out.</td>
       </tr>
       <tr>
-        <td>placement</td>
+        <td><code>placement</code></td>
         <td>string | object | function</td>
         <td><code>'top'</code></td>
         <td>
@@ -454,13 +535,13 @@ function myTipAlign(tip, trigger) {
         </td>
       </tr>
       <tr>
-        <td>trigger</td>
+        <td><code>trigger</code></td>
         <td>string</td>
         <td><code>'hover focus'</code></td>
         <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
       </tr>
       <tr>
-        <td>delay</td>
+        <td><code>delay</code></td>
         <td>number| object</td>
         <td><code>show:0, hide:250</code></td>
         <td>
@@ -470,13 +551,13 @@ function myTipAlign(tip, trigger) {
         </td>
       </tr>
       <tr>
-        <td>container</td>
+        <td><code>container</code></td>
         <td>string | false</td>
         <td><code>false</code></td>
         <td>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></td>
       </tr>
       <tr>
-        <td>viewport</td>
+        <td><code>viewport</code></td>
         <td>string | element | function</td>
         <td><code>'scrollParent'</code></td>
         <td>
@@ -486,13 +567,13 @@ function myTipAlign(tip, trigger) {
         </td>
       </tr>
       <tr>
-        <td>padding</td>
+        <td><code>padding</code></td>
         <td>integer</td>
         <td><code>0</code></td>
         <td>Spacing, in pixels, to keep the tooltip away from the viewport edge.</td>
       </tr>
       <tr>
-        <td>html</td>
+        <td><code>html</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>
@@ -501,49 +582,49 @@ function myTipAlign(tip, trigger) {
         </td>
       </tr>
       <tr>
-        <td>closetext</td>
+        <td><code>closetext</code></td>
         <td>string</td>
         <td><code>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</code></td>
         <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
       </tr>
       <tr>
-        <td>closesrtext</td>
+        <td><code>closesrtext</code></td>
         <td>string</td>
         <td><code>'Close'</code></td>
         <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
       </tr>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target tooltip.</td>
+        <td>The selector of the target tooltip.</td>
       </tr>
       <tr>
-        <td>title</td>
+        <td><code>title</code></td>
         <td>string | function</td>
         <td><code>''</code></td>
         <td>Default title value if <code>title</code> attribute isn't present.</td>
       </tr>
       <tr>
-        <td>unlink</td>
+        <td><code>unlink</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>unlink</code> method should be called when the tooltip is hidden.  This leaves the tooltip behind in the DOM.</td>
       </tr>
       <tr>
-        <td>dispose</td>
+        <td><code>dispose</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>dispose</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
       </tr>
       <tr>
-        <td>show</td>
+        <td><code>show</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Show the tooltip automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
       </tr>
       <tr>
-        <td>popperConfig</td>
+        <td><code>popperConfig</code></td>
         <td>null | object</td>
         <td><code>null</code></td>
         <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
@@ -551,23 +632,47 @@ function myTipAlign(tip, trigger) {
     </tbody>
   </table>
 </div>
-<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
-<h4 id="cfw_tooltipoptions"><code>.CFW_Tooltip(options)</code> <a class="direct-link" href="#cfw_tooltipoptions">#</a></h4>
-<p>Activates a tooltip on a given element. Accepts an optional options <code>object</code>.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  placement<span class="token operator">:</span> <span class="token string">'forward'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="cfw_tooltiptoggle"><code>.CFW_Tooltip('toggle')</code> <a class="direct-link" href="#cfw_tooltiptoggle">#</a></h4>
-<p>Toggles a tooltip item to be shown or hidden.</p>
-<h4 id="cfw_tooltipshow"><code>.CFW_Tooltip('show')</code> <a class="direct-link" href="#cfw_tooltipshow">#</a></h4>
-<p>Shows an element's tooltip.</p>
-<h4 id="cfw_tooltiphide"><code>.CFW_Tooltip('hide')</code> <a class="direct-link" href="#cfw_tooltiphide">#</a></h4>
-<p>Hides an element's tooltip.</p>
-<h4 id="cfw_tooltiplocateupdate"><code>.CFW_Tooltip('locateUpdate')</code> <a class="direct-link" href="#cfw_tooltiplocateupdate">#</a></h4>
-<p>Update the positioning of a tooltip. Can be useful after an AJAX content update.</p>
-<h4 id="cfw_tooltipunlink"><code>.CFW_Tooltip('unlink')</code> <a class="direct-link" href="#cfw_tooltipunlink">#</a></h4>
-<p>Hides the tooltip, removes events and attributes from both trigger and tooltip.</p>
-<h4 id="cfw_tooltipdispose"><code>.CFW_Tooltip('dispose')</code> <a class="direct-link" href="#cfw_tooltipdispose">#</a></h4>
-<p>Calls the <code>unlink</code> method, and then removes the tooltip from the DOM.</p>
-<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<p>Method calls can be made on either the trigger or the target <code>&lt;div class=&quot;tooltip&quot;&gt;</code> element.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>toggle</code></td>
+        <td>Toggles a tooltip item to be shown or hidden.</td>
+      </tr>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows an element's tooltip.</td>
+      </tr>
+      <tr>
+        <td><code>hide</code></td>
+        <td>Hides an element's tooltip.</td>
+      </tr>
+      <tr>
+        <td><code>locateUpdate</code></td>
+        <td>Update the positioning of a tooltip. Can be useful after an AJAX content update.</td>
+      </tr>
+      <tr>
+        <td><code>unlink</code></td>
+        <td>Hides the tooltip, removes events and attributes from both trigger and tooltip.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Calls the <code>unlink</code> method, and then removes the tooltip from the DOM.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the toggle/trigger element.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -579,46 +684,46 @@ function myTipAlign(tip, trigger) {
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.tooltip</td>
+        <td><code>init.cfw.tooltip</code></td>
         <td>This event fires after the tooltip item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.tooltip</td>
+        <td><code>beforeShow.cfw.tooltip</code></td>
         <td>This event is fired immediately when the <code>show</code> method is called.  If the tooltip container is not present, it is created just after this event is called.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.tooltip</td>
+        <td><code>afterShow.cfw.tooltip</code></td>
         <td>This event is fired when a tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>beforeHide.cfw.tooltip</td>
+        <td><code>beforeHide.cfw.tooltip</code></td>
         <td>This event is fired immediately when the <code>hide</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterHide.cfw.tooltip</td>
+        <td><code>afterHide.cfw.tooltip</code></td>
         <td>This event is fired when a tooltip has been hidden from the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>inserted.cfw.tooltip</td>
+        <td><code>inserted.cfw.tooltip</code></td>
         <td>This event is fired after the <code>beforeShow.cfw.tooltip</code> event when the tooltip has been added to the DOM.</td>
       </tr>
       <tr>
-        <td>beforeUnlink.cfw.tooltip</td>
+        <td><code>beforeUnlink.cfw.tooltip</code></td>
         <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
       </tr>
       <tr>
-        <td>afterUnlink.cfw.tooltip</td>
+        <td><code>afterUnlink.cfw.tooltip</code></td>
         <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
       </tr>
       <tr>
-        <td>dispose.cfw.tooltip</td>
+        <td><code>dispose.cfw.tooltip</code></td>
         <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
       </tr>
     </tbody>
   </table>
 </div>
-<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterHide.cfw.tooltip'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something&amp;hellip;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="server-side-apps">Server-side Apps <a class="direct-link" href="#server-side-apps">#</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTooltip'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterHide.cfw.tooltip'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something&amp;hellip;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="server-side-apps">Server-side Apps <a class="direct-link" href="#server-side-apps"></a></h3>
 <p>Tooltips are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the tooltip content after the initial page load.</p>
 <p>A quick example:<br /></p>
 <ol>
@@ -635,23 +740,23 @@ function myTipAlign(tip, trigger) {
   <li>Initialize the tooltip: <code>$('#myTooltip').CFW_Tooltip(options);</code> with desired options.</li>
   <li>Show tooltip: <code>$('#myTooltip').CFW_Tooltip('show');</code></li>
 </ol>
-<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility">#</a></h2>
-<h3 id="consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users <a class="direct-link" href="#consider-keyboard-and-assistive-technology-users">#</a></h3>
+<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility"></a></h2>
+<h3 id="consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users <a class="direct-link" href="#consider-keyboard-and-assistive-technology-users"></a></h3>
 <p>You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code>&lt;span&gt;</code>s) can be made focusable by adding the <code>tabindex=&quot;0&quot;</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.</p>
-<h3 id="key-commands">Key Commands <a class="direct-link" href="#key-commands">#</a></h3>
+<h3 id="key-commands">Key Commands <a class="direct-link" href="#key-commands"></a></h3>
 <p>The following key commands are handled when focus is inside the toolip:</p>
 <ul>
 <li><kbd>Esc</kbd> - Close the tooltip (when using <code>trigger: click</code>)</li>
 </ul>
-<h3 id="focus-handling">Focus Handling <a class="direct-link" href="#focus-handling">#</a></h3>
+<h3 id="focus-handling">Focus Handling <a class="direct-link" href="#focus-handling"></a></h3>
 <p>Tooltips have additional focus handling when using keyboard navigation.</p>
 <p>If navigating from <strong>above</strong> the tooltip's trigger (typically with the <code>tab</code> key), the trigger becomes focused, the next <strong>forward</strong> focus will move from the trigger to the <strong>first focusable item</strong> inside the tooltip.</p>
 <p>If navigating from <strong>below</strong> the tooltip's trigger (typically with the <code>shift</code>-<code>tab</code> key combination), when the trigger is focused, focus will be moved from the trigger to the <strong>last focusable item</strong> inside the tooltip.</p>
 <p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the tooltip, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the <code>container</code> option is used, the focus will move to next logical item.  Otherwise, when using <code>container: body</code>, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.</p>
 <p>When navigating <strong>backward</strong>, out the <em>top</em> of the tooltip, the focus will be moved to the trigger.</p>
 <p>This will not necessarily work with some assistive technologies reading modes.</p>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for the tooltip component.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -852,9 +957,11 @@ function myTipAlign(tip, trigger) {
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -862,13 +969,6 @@ function myTipAlign(tip, trigger) {
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -877,8 +977,11 @@ function myTipAlign(tip, trigger) {
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -913,7 +1016,7 @@ function myTipAlign(tip, trigger) {
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -930,28 +1033,12 @@ function myTipAlign(tip, trigger) {
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

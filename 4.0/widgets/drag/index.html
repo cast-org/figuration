@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,22 +264,60 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Drag <small class="text-muted">drag.js</small></h1>
 
-      <p class="fs-large font-weight-sbold">A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Drag <small class="text-muted">drag.js</small></h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#disabled">Disabled </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_dragoptions">.CFW_Drag(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_dragdispose">.CFW_Drag(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#event-properties">Event Properties </a></li></ul></li></ul></nav><h2 id="examples">Examples <a class="direct-link" href="#examples">#</a></h2>
+          <p class="fs-large font-weight-sbold">A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#examples">Examples </a>
+            		</li>
+
+                    <li><a href="#disabled">Disabled </a>
+            		</li>
+
+                    <li><a href="#usage">Usage </a>
+            
+                <ol>
+                    
+                    <li><a href="#via-javascript">Via JavaScript </a>
+            		</li>
+
+                    <li><a href="#options">Options </a>
+            		</li>
+
+                    <li><a href="#methods">Methods </a>
+            		</li>
+
+                    <li><a href="#events">Events </a>
+            		</li>
+
+                    <li><a href="#event-properties">Event Properties </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
 <p>An example can be found with the draggable popover on the <a href="/4.0/widgets/popover/#draggable-example">Popover widget</a> page.</p>
-<h2 id="disabled">Disabled <a class="direct-link" href="#disabled">#</a></h2>
+<h2 id="disabled">Disabled <a class="direct-link" href="#disabled"></a></h2>
 <p>If the element on which the drag widget is attached to is disabled either by <code>.disabled</code> or <code>:disabled</code> then the <code>dragStart</code> action will not occur.  The same is true if a handle is defined, and the handle is marked as disabled.</p>
-<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
+<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Call the widget manually with options:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  handle <span class="token operator">:</span> <span class="token string">'#myDragHandle'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="options">Options <a class="direct-link" href="#options">#</a></h3>
+<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via JavaScript.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -308,23 +331,38 @@
     </thead>
     <tbody>
       <tr>
-        <td>handle</td>
+        <td><code>handle</code></td>
         <td>string</td>
         <td><code>null</code></td>
         <td>
-          <p>The selector (jQuery style) for the element where dragging is allow to begin.</p>
+          <p>The selector for the element where dragging is allow to begin.</p>
           <p>The handle must be a descendant of the element where the drag is attached.</p>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
-<h4 id="cfw_dragoptions"><code>.CFW_Drag(options)</code> <a class="direct-link" href="#cfw_dragoptions">#</a></h4>
-<p>Activates the equalizer widget. Accepts an optional options <code>object</code>.</p>
-<h4 id="cfw_dragdispose"><code>.CFW_Drag('dispose')</code> <a class="direct-link" href="#cfw_dragdispose">#</a></h4>
-<p>Disables the drag functionality.</p>
-<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  handle<span class="token operator">:</span> <span class="token string">'#myDragHandle'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<p>Method calls should be made on the drag element.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Disables the drag functionality.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token string">'dispose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the item where the drag is attached.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -336,26 +374,26 @@
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.drag</td>
+        <td><code>init.cfw.drag</code></td>
         <td>This event fires after the drag widget is initialized.</td>
       </tr>
       <tr>
-        <td>dragStart.cfw.drag</td>
+        <td><code>dragStart.cfw.drag</code></td>
         <td>This event fires when the drag item or handle is activated.</td>
       </tr>
       <tr>
-        <td>drag.cfw.drag</td>
+        <td><code>drag.cfw.drag</code></td>
         <td>This event fires as the item is being moved.</td>
       </tr>
       <tr>
-        <td>dragEnd.cfw.drag</td>
+        <td><code>dragEnd.cfw.drag</code></td>
         <td>This event fires when the drag item or handle is released.</td>
       </tr>
     </tbody>
   </table>
 </div>
-<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'drag.cfw.drag'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="event-properties">Event Properties <a class="direct-link" href="#event-properties">#</a></h3>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'drag.cfw.drag'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="event-properties">Event Properties <a class="direct-link" href="#event-properties"></a></h3>
 <p>Each event callback, except for <code>init.cfw.drag</code>, returns the following additional properties.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -367,49 +405,52 @@
     </thead>
     <tbody>
       <tr>
-        <td>startX</td>
+        <td><code>startX</code></td>
         <td>The horizontal location of the <code>dragStart.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>startY</td>
+        <td><code>startY</code></td>
         <td>The vertical location of the <code>dragStart.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>pageX</td>
+        <td><code>pageX</code></td>
         <td>The horizontal location of the <code>drag.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>pageY</td>
+        <td><code>pageY</code></td>
         <td>The vertical location of the <code>drag.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>deltaX</td>
+        <td><code>deltaX</code></td>
         <td>The horizontal distance moved from <code>startX</code>.</td>
       </tr>
       <tr>
-        <td>deltaY</td>
+        <td><code>deltaY</code></td>
         <td>The vertical distance moved from <code>startX</code>.</td>
       </tr>
       <tr>
-        <td>originalX</td>
+        <td><code>originalX</code></td>
         <td>The starting horizontal position of the drag "target" element..</td>
       </tr>
       <tr>
-        <td>originalY</td>
+        <td><code>originalY</code></td>
         <td>The starting vertical position of the drag "target" element.</td>
       </tr>
       <tr>
-        <td>offsetX</td>
-        <td>The moved horizontal position of the drag "target" element..</td>
+        <td><code>offsetX</code></td>
+        <td>The moved horizontal position of the drag "target" element, the sum of <code>originalX</code> and <code>deltaX</code>.</td>
       </tr>
       <tr>
-        <td>offsetY</td>
-        <td>The moved vertical position of the drag "target" element.</td>
+        <td><code>offsetY</td>
+        <td>The moved vertical position of the drag "target" element, the sum of <code>originalY</code> and <code>deltaY</code>.</td>
       </tr>
     </tbody>
   </table>
 </div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'drag.cfw.drag'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">someFunction</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>offsetY<span class="token punctuation">,</span> e<span class="token punctuation">.</span>offsetX<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -417,13 +458,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -432,8 +466,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -468,7 +505,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -485,28 +522,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

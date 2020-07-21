@@ -124,6 +124,10 @@ html[dir="rtl"] .cf-links .nav-item {
   transition: opacity 0.2s ease-in-out 0.1s;
 }
 
+.direct-link::after {
+    content: "#";
+}
+
 @media (prefers-reduced-motion: reduce) {
   .direct-link {
     -webkit-transition: none;

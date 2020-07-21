@@ -64,7 +64,7 @@
 <body>
 <a class="skipnav" href="#content">Skip to main content</a>
 <div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
-  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">Figuration v4 is now available!</a>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
   <a class="navbar-brand" href="/" aria-label="CAST Figuration">
@@ -109,7 +109,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.5</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -313,22 +313,22 @@
 
       <p>Place a component outside the normal document flow.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#warnings">Warnings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#common-positioning">Common Positioning </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#quick-positioning">Quick Positioning </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-top">Fixed Top </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-bottom">Fixed Bottom </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sticky-top">Sticky Top </a></li></ul></li></ul></nav><h2 id="warnings">Warnings <a class="direct-link" href="#warnings">#</a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#warnings">Warnings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#common-positioning">Common Positioning </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#quick-positioning">Quick Positioning </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-top">Fixed Top </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-bottom">Fixed Bottom </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sticky-top">Sticky Top </a></li></ul></li></ul></nav><h2 id="warnings">Warnings <a class="direct-link" href="#warnings"></a></h2>
 <p>Be sure you understand the ramifications of fixed and absolute position in your project; you may need to add aditional CSS.</p>
 <p>The sticky utilities uses CSS's <code>position: sticky</code>, which isn't fully supported in all browsers.  Additional support information can be found over at <a href="https://caniuse.com/#feat=css-sticky">Can I Use</a>.</p>
 <p><strong>IE11 and IE10 will render <code>position: sticky</code> as <code>position: relative</code>.</strong> As such, we wrap the styles in a <code>@supports</code> query, limiting the stickiness to only browsers that can render it properly.</p>
-<h2 id="common-positioning">Common Positioning <a class="direct-link" href="#common-positioning">#</a></h2>
+<h2 id="common-positioning">Common Positioning <a class="direct-link" href="#common-positioning"></a></h2>
 <p>Responsive variants of common positioning types can be used in the form of <code>.position{breakpoint}-(type}</code>. Please refer to how our <a href="/3.0/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position-static<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position-absolute<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position-fixed<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>position-sticky<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="quick-positioning">Quick Positioning <a class="direct-link" href="#quick-positioning">#</a></h2>
+<h2 id="quick-positioning">Quick Positioning <a class="direct-link" href="#quick-positioning"></a></h2>
 <p>There are also some quick positioning utilities available, but they are not responsive.</p>
-<h3 id="fixed-top">Fixed Top <a class="direct-link" href="#fixed-top">#</a></h3>
+<h3 id="fixed-top">Fixed Top <a class="direct-link" href="#fixed-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fixed-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="fixed-bottom">Fixed Bottom <a class="direct-link" href="#fixed-bottom">#</a></h3>
+<h3 id="fixed-bottom">Fixed Bottom <a class="direct-link" href="#fixed-bottom"></a></h3>
 <p>Position an element at the bottom of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fixed-bottom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="sticky-top">Sticky Top <a class="direct-link" href="#sticky-top">#</a></h3>
+<h3 id="sticky-top">Sticky Top <a class="direct-link" href="#sticky-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sticky-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 
@@ -347,8 +347,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -406,22 +409,6 @@
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

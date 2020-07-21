@@ -64,7 +64,7 @@
 <body>
 <a class="skipnav" href="#content">Skip to main content</a>
 <div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
-  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">Figuration v4 is now available!</a>
 </div>
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
   <a class="navbar-brand" href="/" aria-label="CAST Figuration">
@@ -109,7 +109,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.5</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -313,7 +313,7 @@
 
       <p>Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#containers">Containers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-breakpoints">Responsive Breakpoints </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#breakpoint-nomenclature">Breakpoint Nomenclature </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#z-index">Z-index </a></li></ul></nav><h2 id="containers">Containers <a class="direct-link" href="#containers">#</a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#containers">Containers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-breakpoints">Responsive Breakpoints </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#breakpoint-nomenclature">Breakpoint Nomenclature </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#z-index">Z-index </a></li></ul></nav><h2 id="containers">Containers <a class="direct-link" href="#containers"></a></h2>
 <p>Containers are the most basic layout element in Figuration and are <strong>required when using the grid system</strong>. Choose from a responsive, fixed-width container (meaning its <code>max-width</code> changes at each breakpoint) or fluid-width (meaning it's <code>100%</code> wide all the time).</p>
 <p>While containers <em>can</em> be nested, most layouts do not require a nested container.</p>
 <div class="cf-example">
@@ -335,7 +335,7 @@
   </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container-fluid<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="responsive-breakpoints">Responsive Breakpoints <a class="direct-link" href="#responsive-breakpoints">#</a></h2>
+<h2 id="responsive-breakpoints">Responsive Breakpoints <a class="direct-link" href="#responsive-breakpoints"></a></h2>
 <p>Since Figuration is developed to be mobile first, we use a handful of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">media queries</a> to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.</p>
 <p>For accessibility reasons, the Sass internally maps the pixel defined breakpoints into <code>em</code> values.  We assume a 16px default root font size, since this is the default for most browsers.</p>
 <div class="cf-callout cf-callout-info">
@@ -364,7 +364,7 @@
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Example</span><br><span class="token comment">// Medium devices (tablets, 48em/768px) up to Extra Large devices (desktops, 75em/1200px)</span><br><span class="token atrule-line"><span class="token atrule">@media</span> (min-width: 48em) and (max-width: 74.9375em) { ... }</span></code></pre>
 <p>The Sass mixin for targeting the same screen size range would be:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> media-breakpoint-between(md, xl) { ... }</span></code></pre>
-<h2 id="breakpoint-nomenclature">Breakpoint Nomenclature <a class="direct-link" href="#breakpoint-nomenclature">#</a></h2>
+<h2 id="breakpoint-nomenclature">Breakpoint Nomenclature <a class="direct-link" href="#breakpoint-nomenclature"></a></h2>
 <p>Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to <strong>not</strong> use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding <code>$enable-bp-smallest</code> option referenced in the <a href="/3.0/get-started/options/#global-options">Global Options</a> settings.</p>
 <p>Classes that apply to all breakpoints, from <code>xs</code> to <code>xl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.</p>
 <p>Building from the base component or utility name, most classes are named using the format <code>.base-{direction}-{dimension}</code> for <code>xs</code> and <code>.base-{breakpoint}-{direction}-{dimension}</code> for <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.  In the case of some utilites that have abbreviated names, such as the <a href="/3.0/utilities/spacing">spacing utilities</a>, the format is <code>.abbr{direction}-{breakpoint}-{dimension}</code>.</p>
@@ -378,7 +378,7 @@
 <p class="text-xl-end">Right aligned text on viewports sized XL (extra-large) or wider.</p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on all viewport sizes. (<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>No <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>xs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span> class designation!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span>)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-sm-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized SM (small) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-md-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized MD (medium) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-lg-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized LG (large) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-xl-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized XL (extra-large) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="z-index">Z-index <a class="direct-link" href="#z-index">#</a></h2>
+<h2 id="z-index">Z-index <a class="direct-link" href="#z-index"></a></h2>
 <p>Several Figuration components utilize <code>z-index</code>, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.</p>
 <p>Customizing these values is most likely not needed, and we don't recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$zindex-dropdown</span><span class="token punctuation">:</span>          1000 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-sticky</span><span class="token punctuation">:</span>            1010 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-fixed</span><span class="token punctuation">:</span>             1020 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-popover</span><span class="token punctuation">:</span>           1030 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-tooltip</span><span class="token punctuation">:</span>           1040 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-modal-backdrop</span><span class="token punctuation">:</span>    1050 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-modal</span><span class="token punctuation">:</span>             1060 !default;</span></code></pre>
@@ -400,8 +400,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -459,22 +462,6 @@
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

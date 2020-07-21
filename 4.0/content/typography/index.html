@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -62,10 +62,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
-<div class="bg-success-200 text-black text-center py-0_25 px-1">
-  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
-  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
-</div>
+
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
@@ -105,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.5
+    v4.0.0
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.5</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -158,15 +155,13 @@
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
-</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
-        </span>
-      </a>
-      <div id="sidenav1">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
           <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
@@ -178,10 +173,8 @@
           <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span>
-      </a>
-      <div id="sidenav2">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
@@ -189,10 +182,8 @@
           <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav3" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Content</span>
-        </span>
-      </a>
-      <div id="sidenav3">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav3" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Content</span>
+        </span></button><div id="sidenav3">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
           <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
@@ -205,10 +196,8 @@
           <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span>
-      </a>
-      <div id="sidenav4">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
           <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
@@ -225,10 +214,8 @@
           <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span>
-      </a>
-      <div id="sidenav5">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
           <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
@@ -250,10 +237,8 @@
           <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
           </ul>
       </div>
-    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span>
-      </a>
-      <div id="sidenav6">
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
         <ul class="nav flex-column mb-0 pb-0_25">
           <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
           <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
@@ -279,14 +264,118 @@
 </nav>
 
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">Typography</h1>
 
-      <p class="fs-large font-weight-sbold">Simple and easily customized typography for headings, body text, lists, and more.</p>
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Typography</h1>
 
-      <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#global-settings">Global Settings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#headings">Headings </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#customizing-headings">Customizing Headings </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#lead">Lead </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#inline-text-elements">Inline Text Elements </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#text-utilities">Text Utilities </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#abbreviations">Abbreviations </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#blockquotes">Blockquotes </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#naming-a-source">Naming a Source </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#alignment">Alignment </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#lists">Lists </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#unstyled">Unstyled </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#styled">Styled </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#description-list-alignment">Description List Alignment </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-typography">Responsive Typography </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#common-settings">Common Settings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fluid-responsive-typography">Fluid Responsive Typography </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#settings">Settings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#safari-issue">Safari Issue </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scaled-responsive-typography">Scaled Responsive Typography </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#settings-2">Settings </a></li></ul></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li></ul></li></ul></nav><h2 id="global-settings">Global Settings <a class="direct-link" href="#global-settings">#</a></h2>
+          <p class="fs-large font-weight-sbold">Simple and easily customized typography for headings, body text, lists, and more.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#global-settings">Global Settings </a>
+            		</li>
+
+                    <li><a href="#headings">Headings </a>
+            
+                <ol>
+                    
+                    <li><a href="#customizing-headings">Customizing Headings </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#lead">Lead </a>
+            		</li>
+
+                    <li><a href="#inline-text-elements">Inline Text Elements </a>
+            		</li>
+
+                    <li><a href="#text-utilities">Text Utilities </a>
+            		</li>
+
+                    <li><a href="#abbreviations">Abbreviations </a>
+            		</li>
+
+                    <li><a href="#blockquotes">Blockquotes </a>
+            
+                <ol>
+                    
+                    <li><a href="#naming-a-source">Naming a Source </a>
+            		</li>
+
+                    <li><a href="#alignment">Alignment </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#lists">Lists </a>
+            
+                <ol>
+                    
+                    <li><a href="#unstyled">Unstyled </a>
+            		</li>
+
+                    <li><a href="#styled">Styled </a>
+            		</li>
+
+                    <li><a href="#description-list-alignment">Description List Alignment </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#responsive-typography">Responsive Typography </a>
+            
+                <ol>
+                    
+                    <li><a href="#common-settings">Common Settings </a>
+            		</li>
+
+                    <li><a href="#fluid-responsive-typography">Fluid Responsive Typography </a>
+            
+                <ol>
+                    
+                    <li><a href="#settings">Settings </a>
+            		</li>
+
+                    <li><a href="#safari-issue">Safari Issue </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#scaled-responsive-typography">Scaled Responsive Typography </a>
+            
+                <ol>
+                    
+                    <li><a href="#settings-2">Settings </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="global-settings">Global Settings <a class="direct-link" href="#global-settings"></a></h2>
 <p>Figuration sets basic global display, typography, and link styles. For even more control, check out the <a href="/4.0/utilities/typography/">utility classes</a>.</p>
 <ul>
 <li>Use a <a href="/4.0/content/reboot/#native-font-stack">native font stack</a> that selects the best <code>font-family</code> for each OS and device.</li>
@@ -297,7 +386,7 @@
 <li>Use <code>$body-bg</code> to set a <code>background-color</code> on the <code>&lt;body&gt;</code> (<code>#fff</code> by default).</li>
 </ul>
 <p>These styles can be found within <code>_reboot.scss</code>, and the global variables are defined in <code>_settings.scss</code>. Make sure to set <code>$font-size-base</code> using <code>rem</code> units.</p>
-<h2 id="headings">Headings <a class="direct-link" href="#headings">#</a></h2>
+<h2 id="headings">Headings <a class="direct-link" href="#headings"></a></h2>
 <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>, are available.</p>
 <div class="cf-example">
 <h1>h1. Example heading</h1>
@@ -318,7 +407,7 @@
 <p class="h6">h6. Example heading</p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h1. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h2. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h3. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h4. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h5. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>h6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>h6. Example heading<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="customizing-headings">Customizing Headings <a class="direct-link" href="#customizing-headings">#</a></h3>
+<h3 id="customizing-headings">Customizing Headings <a class="direct-link" href="#customizing-headings"></a></h3>
 <p>Create lighter, secondary text in any heading with a generic <code>&lt;small&gt;</code> tag or the <code>.small</code> class.</p>
 <p>You can also use the included utility classes to recolor the secondary text.</p>
 <div class="cf-example">
@@ -332,7 +421,7 @@
 </h3>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span><br>  Fancy display heading<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>small</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-muted<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>With secondary text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>small</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span><br>  Fancy display heading<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>small</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>With secondary text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>small</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="lead">Lead <a class="direct-link" href="#lead">#</a></h2>
+<h2 id="lead">Lead <a class="direct-link" href="#lead"></a></h2>
 <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
 <div class="cf-example">
 <p class="lead">
@@ -340,7 +429,7 @@
 </p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lead<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="inline-text-elements">Inline Text Elements <a class="direct-link" href="#inline-text-elements">#</a></h2>
+<h2 id="inline-text-elements">Inline Text Elements <a class="direct-link" href="#inline-text-elements"></a></h2>
 <p>The exmple below shows inline HTML5 tags that are used to provide semantic meaning to text.</p>
 <div class="cf-example">
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
@@ -368,9 +457,9 @@
 <li><code>.text-decoration-underline</code> will apply the same visual styles as <code>&lt;u&gt;</code>.</li>
 <li><code>.text-decoration-line-through</code> will apply the same visual styles as <code>&lt;s&gt;</code>.</li>
 </ul>
-<h2 id="text-utilities">Text Utilities <a class="direct-link" href="#text-utilities">#</a></h2>
+<h2 id="text-utilities">Text Utilities <a class="direct-link" href="#text-utilities"></a></h2>
 <p>Change text alignment, transform, style, weight, and color with our <a href="/4.0/utilities/typography/#text-alignment">text utilities</a>.</p>
-<h2 id="abbreviations">Abbreviations <a class="direct-link" href="#abbreviations">#</a></h2>
+<h2 id="abbreviations">Abbreviations <a class="direct-link" href="#abbreviations"></a></h2>
 <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.</p>
 <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
 <div class="cf-example">
@@ -378,7 +467,7 @@
 <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>abbr</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>attribute<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>attr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>abbr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>abbr</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HyperText Markup Language<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>initialism<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>HTML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>abbr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="blockquotes">Blockquotes <a class="direct-link" href="#blockquotes">#</a></h2>
+<h2 id="blockquotes">Blockquotes <a class="direct-link" href="#blockquotes"></a></h2>
 <p>For quoting blocks of content from another source within your document. Wrap <code>&lt;blockquote class=&quot;blockquote&quot;&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</p>
 <div class="cf-example">
 <blockquote class="blockquote">
@@ -386,7 +475,7 @@
 </blockquote>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>blockquote<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="naming-a-source">Naming a Source <a class="direct-link" href="#naming-a-source">#</a></h3>
+<h3 id="naming-a-source">Naming a Source <a class="direct-link" href="#naming-a-source"></a></h3>
 <p>Add a <code>&lt;footer class=&quot;blockquote-footer&quot;&gt;</code> for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
 <div class="cf-example">
 <blockquote class="blockquote">
@@ -395,7 +484,7 @@
 </blockquote>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>blockquote<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>blockquote-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Someone famous in <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cite</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Source Title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Source Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cite</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="alignment">Alignment <a class="direct-link" href="#alignment">#</a></h3>
+<h3 id="alignment">Alignment <a class="direct-link" href="#alignment"></a></h3>
 <p>Use <a href="/4.0/utilities/typography/#text-alignment">text alignment utilities</a> to alter the layout of the blockquote.</p>
 <div class="cf-example">
 <blockquote class="blockquote text-center">
@@ -411,9 +500,9 @@
 </blockquote>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>blockquote text-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mb-0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>blockquote-footer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Someone famous in <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cite</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Source Title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Source Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cite</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="lists">Lists <a class="direct-link" href="#lists">#</a></h2>
+<h2 id="lists">Lists <a class="direct-link" href="#lists"></a></h2>
 <p>See the <a href="/4.0/content/reboot/#lists">rebooted list styles</a> for the default layouts.</p>
-<h3 id="unstyled">Unstyled <a class="direct-link" href="#unstyled">#</a></h3>
+<h3 id="unstyled">Unstyled <a class="direct-link" href="#unstyled"></a></h3>
 <p>Remove the default <code>list-style</code> and left margin on list items (immediate children only). <strong>This only applies to immediate children list items</strong>, meaning you will need to add the class for any nested lists as well.</p>
 <div class="cf-example">
 <ul class="list-unstyled">
@@ -428,9 +517,9 @@
 </ul>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list-unstyled<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Unstyled List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Unstyled List Item<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Nested List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Nested List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Unstyled List Item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="styled">Styled <a class="direct-link" href="#styled">#</a></h3>
+<h3 id="styled">Styled <a class="direct-link" href="#styled"></a></h3>
 <p>Even more layout and style options are available for lists with Figuration's <a href="/4.0/components/lists/">list component</a>.  This component includes indented unstyled lists, stylized bulleted and ordered lists, horizontal lists, and lists with dividers between items.</p>
-<h3 id="description-list-alignment">Description List Alignment <a class="direct-link" href="#description-list-alignment">#</a></h3>
+<h3 id="description-list-alignment">Description List Alignment <a class="direct-link" href="#description-list-alignment"></a></h3>
 <p>Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer terms, you can optionally add a <code>.text-truncate</code> class to truncate the text with an ellipsis.</p>
 <div class="cf-example">
 <dl class="row">
@@ -453,7 +542,7 @@
 </dl>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Description lists<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>A description list is perfect for defining terms.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Euismod<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9 offset-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Donec id elit non mi porta gravida at eget metus.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Malesuada porta<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Etiam porta sem malesuada magna mollis euismod.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-3 text-truncate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Truncated term is truncated<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Nesting<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-9<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Nested definition list<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-sm-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="responsive-typography">Responsive Typography <a class="direct-link" href="#responsive-typography">#</a></h2>
+<h2 id="responsive-typography">Responsive Typography <a class="direct-link" href="#responsive-typography"></a></h2>
 <p><em>Responsive typography</em> refers to scaling an element's <code>font-size</code> within a series of media queries.</p>
 <p>Figuration, by default, does not have responsive typography enabled. However, we have included two different methods to enable this functionality.</p>
 <ul>
@@ -472,7 +561,7 @@
 <ul>
 <li>Can generate a large amount of CSS.  Enabling the <code>$responsive-font-size-generate-static</code> setting will generate a large amount of the CSS.  Compressing the CSS, with gzip or other methods, will reduce the CSS file size impact due to the large amount of repeating strings.</li>
 </ul>
-<h3 id="common-settings">Common Settings <a class="direct-link" href="#common-settings">#</a></h3>
+<h3 id="common-settings">Common Settings <a class="direct-link" href="#common-settings"></a></h3>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -505,13 +594,13 @@
     </tbody>
   </table>
 </div>
-<h3 id="fluid-responsive-typography">Fluid Responsive Typography <a class="direct-link" href="#fluid-responsive-typography">#</a></h3>
+<h3 id="fluid-responsive-typography">Fluid Responsive Typography <a class="direct-link" href="#fluid-responsive-typography"></a></h3>
 <p>A smooth responsive sizing of text based on the viewport dimensions, by default this is the viewport width <code>vw</code> dimension.  As the viewport size is reduced, font sizes are</p>
 <p>Using Figuration's default settings, a Sass input:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> font-size(2.5rem);</span><br><span class="token selector">}</span></code></pre>
 <p>Will generate the CSS output:</p>
 <pre class="language-css"><code class="language-css"><span class="token selector">.element,<br>.font-size-static .element, .element.font-size-static</span> <span class="token punctuation">{</span><br>  <span class="token property">font-size</span><span class="token punctuation">:</span> 2.5rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 75em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.element</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>1.3rem + 1.6vw<span class="token punctuation">)</span> <span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
-<h4 id="settings">Settings <a class="direct-link" href="#settings">#</a></h4>
+<h4 id="settings">Settings <a class="direct-link" href="#settings"></a></h4>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -544,23 +633,23 @@
     </tbody>
   </table>
 </div>
-<h4 id="safari-issue">Safari Issue <a class="direct-link" href="#safari-issue">#</a></h4>
+<h4 id="safari-issue">Safari Issue <a class="direct-link" href="#safari-issue"></a></h4>
 <p>There is a known issue with Safari where it does not always recalculate the value of vw in a calc()-function for font-sizes in iframes.<br>
 <a href="https://github.com/MartijnCuppens/rfs#known-issues">More information and a workaround can be found over at Martijn Cuppen's Responsive font-size mixin</a>.</p>
-<h3 id="scaled-responsive-typography">Scaled Responsive Typography <a class="direct-link" href="#scaled-responsive-typography">#</a></h3>
+<h3 id="scaled-responsive-typography">Scaled Responsive Typography <a class="direct-link" href="#scaled-responsive-typography"></a></h3>
 <p>This variant of the responsive typography uses a stepped scale, making the font scale and sizing consistent across all widths of a breakpoint.</p>
 <p>By default the font size is scaled downwards at each decreasing breakpoint level from largest to smallest.</p>
 <p>Using Figuration's default settings, a Sass input:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> font-size(2.5rem);</span><br><span class="token selector">}</span></code></pre>
 <p>Will generate the CSS output:</p>
 <pre class="language-css"><code class="language-css"><span class="token selector">.element</span> <span class="token punctuation">{</span><br>  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.9375rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 36em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.element</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> 2.078125rem<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 48em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.element</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> 2.21875rem<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 62em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.element</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> 2.359375rem<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 75em<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><br>  <span class="token selector">.element</span> <span class="token punctuation">{</span><br>    <span class="token property">font-size</span><span class="token punctuation">:</span> 2.5rem<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token selector">.font-size-static .element, .element.font-size-static</span> <span class="token punctuation">{</span><br>  <span class="token property">font-size</span><span class="token punctuation">:</span> 2.5rem<span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
-<h4 id="settings-2">Settings <a class="direct-link" href="#settings-2">#</a></h4>
+<h4 id="settings-2">Settings <a class="direct-link" href="#settings-2"></a></h4>
 <p>Scaled responsive typography only has one setting, <code>$responsive-font-size-scale-factor</code>, a Sass map that aligns with Figuration's <a href="/4.0/layout/grid/#grid-options">grid breakpoints</a>.  Each breakpoint level gets an associated scaling value.  The following example shows the default settings for the scaling values.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$responsive-font-size-scale-factor</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">  <span class="token property">xs</span><span class="token punctuation">:</span> .625,</span><br><span class="token property-line">  <span class="token property">sm</span><span class="token punctuation">:</span> .71875,</span><br><span class="token property-line">  <span class="token property">md</span><span class="token punctuation">:</span> .8125,</span><br><span class="token property-line">  <span class="token property">lg</span><span class="token punctuation">:</span> .90625,</span><br><span class="token property-line">  <span class="token property">xl</span><span class="token punctuation">:</span> 1</span><br><span class="token selector">)</span></code></pre>
 <p>It is also possible to change the settings so font size grows as the breakpoint size increases, as shown in the following example.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$responsive-font-size-scale-factor</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">  <span class="token property">xs</span><span class="token punctuation">:</span> 1,</span><br><span class="token property-line">  <span class="token property">sm</span><span class="token punctuation">:</span> 1.09375,</span><br><span class="token property-line">  <span class="token property">md</span><span class="token punctuation">:</span> 1.1875,</span><br><span class="token property-line">  <span class="token property">lg</span><span class="token punctuation">:</span> 1.28125,</span><br><span class="token property-line">  <span class="token property">xl</span><span class="token punctuation">:</span> 1.375</span><br><span class="token selector">);</span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference">#</a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables">#</a></h3>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for the typography CSS styles.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -793,9 +882,11 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
+        </div>
+      </div>
     </main>
   </div>
 
@@ -803,13 +894,6 @@
     <a href="#content">Top of Page <span class="caret"></span></a>
   </div>
 </div>
-<style>
-.cf-footer-cast-logo {
-    width: 9.645rem;
-    height: 3rem;
-}
-</style>
-
 <footer class="cf-footer fs-small py-1">
   <div class="container">
     <ul class="list list-horizontal font-weight-bold">
@@ -818,8 +902,11 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.5
+      <strong>Latest version:</strong> 4.0.0
       <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
       Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
@@ -854,7 +941,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
     if (!window.docsearch) {
@@ -871,28 +958,12 @@
         algoliaOptions: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformData: function(hits) {
+            return hits.map(function(hit) {
                 // Prevent jumping to first header
                 if (hit.anchor === 'content') {
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
-                }
-                // Remove anchor symbols
-                if (hit.hierarchy.lvl2 !== null) {
-                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl3 !== null) {
-                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl4 !== null) {
-                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl5 !== null) {
-                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
-                }
-                if (hit.hierarchy.lvl6 !== null) {
-                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
                 }
                 return hit;
             });

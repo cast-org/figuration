@@ -24,6 +24,8 @@
 
 .cf-sidebar-header {
     margin-bottom: .125rem;
+    margin-left: 0;
+    white-space: nowrap;
 }
 
 .cf-links {
@@ -49,13 +51,19 @@
         }
     }
 
-    a {
+    .nav-link {
         display: block;
+        width: 100%;
         padding: 0;
         color: $uibase-700;
+        text-align: left;
         text-decoration: none;
+        background-color: transparent;
+        border-width: 0;
+        @include border-radius(0);
 
         .nav-link-inner {
+            display: inline-block;
             padding: .125rem .5rem;
         }
 
@@ -74,12 +82,6 @@
                 @include border-radius($border-radius);
             }
         }
-
-        &.disabled {
-            color: $navbar-light-disabled-color;
-            background-color: transparent;
-            border-color: transparent;
-        }
     }
 
     .has-children {
@@ -96,7 +98,7 @@
                 @include caret-down($caret-border-width);
             }
         }
-        .nav-link {
+        .nav-link:not(.cf-sidebar-header) {
             margin-left: 1rem;
         }
     }
