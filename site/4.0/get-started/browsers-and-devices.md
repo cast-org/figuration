@@ -14,7 +14,7 @@ Alternative browsers which use the latest version of WebKit, Blink, or Gecko, wh
 
 We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions.
 
-You can find our supported range of browsers and their versions [in our `.browserslistrc`]({{ site.repo }}/blob/v4-dev/.browserslistrc):
+You can find our supported range of browsers and their versions [in our `.browserslistrc`]({{ site.repo }}/blob/master/.browserslistrc):
 
 {% capture highlight %}
 # https://github.com/browserslist/browserslist#readme
@@ -22,14 +22,14 @@ You can find our supported range of browsers and their versions [in our `.browse
 >= 1%
 last 1 major version
 not dead
-Chrome >= 57
-Firefox >= 52
+Chrome >= 60
+Firefox >= 60
 Edge >= 15
 Explorer >= 11
 iOS >= 10
 Safari >= 10
 Android >= 6
-Opera >= 44
+not ExplorerMobile <= 11
 {% endcapture %}
 {% renderHighlight highlight, "text" %}
 

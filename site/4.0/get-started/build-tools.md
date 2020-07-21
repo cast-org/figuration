@@ -53,7 +53,7 @@ In order to reduce potential issues with browser rounding, our build process has
 
 Figuration uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. [See our `.browserslistrc`]({{ site.repo }}/blob/v4-dev/.browserslistrc) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. [See our `.browserslistrc`]({{ site.repo }}/blob/master/.browserslistrc) for details.
 
 ## postcss-flexbugs-fixes
 
