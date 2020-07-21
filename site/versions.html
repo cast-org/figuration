@@ -9,7 +9,7 @@ toc: false
 <h2>{{ group.set}}</h2>
 <ul>
   {%- for subver in group.versions -%}
-  <li><a href="{{ site.url }}/{{ subver.path }}/"{{ isActive }}>{{ subver.ver}}</a></li>
+  <li><a href="{{ site.url }}/{{ subver.path }}/">{{ subver.ver}}</a></li>
   {% endfor -%}
 </ul>
 {% endfor -%}

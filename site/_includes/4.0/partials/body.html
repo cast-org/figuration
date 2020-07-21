@@ -7,23 +7,23 @@
     </div>
 
     <main class="col-md-9 col-xl-10 cf-main">
-        <div class="cf-toc-align">
-            <div class="cf-content-lead">
-                <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
 
-                {% if description %}<p class="fs-large font-weight-sbold">{{ description }}</p>{% endif %}
-            </div>
-            {% if toc %}
-            <div class="cf-content-toc">
-                <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
-                {{ content | contentWrap | toc }}
-            </div>
-            {% endif %}
-            <div class="cf-content">
-                {{ content }}
-            </div>
+          {% if description %}<p class="fs-large font-weight-sbold">{{ description }}</p>{% endif %}
         </div>
-    </div>
+        {% if toc %}
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          {{ content | contentWrap | toc }}
+        </div>
+        {% endif %}
+        <div class="cf-content">
+          {{ content }}
+        </div>
+      </div>
+    </main>
   </div>
 
   <div class="toplink">
