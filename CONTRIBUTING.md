@@ -99,7 +99,7 @@ and/or [`/figuration/js/`](js) instead.
 
 Similarly, when contributing to Figuration's documentation, you should edit the
 documentation source files in
-[the `/figuration/docs/` directory of the `v4-dev` branch](docs).
+[the `/figuration/docs/` directory of the `master` branch](docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Figuration Core Team.
 
@@ -121,8 +121,8 @@ included in the project:
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout v4-dev
-   git pull upstream v4-dev
+   git checkout master
+   git pull upstream master
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -141,7 +141,7 @@ included in the project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream v4-dev
+   git pull [--rebase] upstream master
    ```
 
 6. Push your topic branch up to your fork:
@@ -151,7 +151,7 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `v4-dev` branch.
+    with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
