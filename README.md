@@ -21,10 +21,10 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 **Latest Release**
 [![npm version](https://img.shields.io/npm/v/figuration)](https://www.npmjs.com/package/figuration)
-[![CSS size](http://img.badgesize.io/cast-org/figuration/v4.0.0/dist/css/figuration.min.css?label=CSS%20size)](https://github.com/cast-org/figuration/tree/v4.0.0/dist/css/figuration.min.css)
-[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0/dist/css/figuration.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/cast-org/figuration/tree/v4.0.0/dist/css/figuration.min.css)
-[![JS size](http://img.badgesize.io/cast-org/figuration/v4.0.0/dist/js/figuration.min.js?label=JS%20size)](https://github.com/cast-org/figuration/tree/v4.0.0/dist/js/figuration.min.js)
-[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/v4.0.0/dist/js/figuration.min.js)
+[![CSS size](http://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?label=CSS%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
+[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
+[![JS size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?label=JS%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
+[![JS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
 
 **Dependencies**
 [![peerDependencies Status](https://david-dm.org/cast-org/figuration/v4-dev/peer-status.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=peer)
