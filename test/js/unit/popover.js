@@ -1,7 +1,14 @@
 $(function() {
     'use strict';
 
-    QUnit.module('CFW_Popover');
+    QUnit.module('CFW_Popover', {
+        beforeEach: function() {
+            $(window).scrollTop(0);
+        },
+        afterEach: function() {
+            $('#qunit-fixture').empty();
+        }
+    });
 
     QUnit.test('should be defined on jquery object', function(assert) {
         assert.expect(1);
@@ -10,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Popover();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -72,7 +79,7 @@ $(function() {
 
     QUnit.test('should not duplicate HTML object', function(assert) {
         assert.expect(6);
-        var $div = $('<div/>').html('i has content');
+        var $div = $('<div></div>').html('i has content');
 
         var $popover = $('<a href="#">popover</a>')
             .appendTo('#qunit-fixture')
@@ -137,7 +144,7 @@ $(function() {
             .CFW_Popover({
                 title: 'Test',
                 content: 'Test',
-                template: '<div class="popover foobar"><div class="popover-arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
+                template: '<div class="popover foobar"></div>'
             })
             .CFW_Popover('show');
 
@@ -150,7 +157,7 @@ $(function() {
 
     QUnit.test('should dispose popover', function(assert) {
         assert.expect(7);
-        var $popover = $('<div />')
+        var $popover = $('<div></div>')
             .appendTo('#qunit-fixture')
             .CFW_Popover({
                 trigger: 'hover'
@@ -214,12 +221,12 @@ $(function() {
 
         var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
             .appendTo('#qunit-fixture')
-                .on('afterHide.cfw.popover afterShow.cfw.popover', function() {
-                    assert.ok(false, 'should not fire any popover events');
-                })
+            .on('afterHide.cfw.popover afterShow.cfw.popover', function() {
+                assert.ok(false, 'should not fire any popover events');
+            })
             .CFW_Popover('hide');
 
-        assert.strictEqual($popover.data('cfw.popover'), undefined, 'should not initialize the popover');
+        assert.strictEqual(typeof $popover.data('cfw.popover'), 'undefined', 'should not initialize the popover');
     });
 
     QUnit.test('should throw an error when template contains multiple top-level elements', function(assert) {
@@ -227,7 +234,9 @@ $(function() {
         assert.throws(function() {
             $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
                 .appendTo('#qunit-fixture')
-                .CFW_Popover({ template: '<div>Foo</div><div>Bar</div>' })
+                .CFW_Popover({
+                    template: '<div>Foo</div><div>Bar</div>'
+                })
                 .CFW_Popover('show');
         }, new Error('popover `template` option must consist of exactly 1 top-level element!'));
     });
@@ -289,7 +298,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        $('<a href="#" />')
+        $('<a href="#"></a>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.popover', function() {
                 assert.strictEqual($('.popover .popover-header').text(), '4', 'title number has been converted to string');
@@ -325,5 +334,17 @@ $(function() {
             });
 
         $popover.trigger($.Event('click'));
+    });
+
+    QUnit.test('should not force "trigger=\'clicked\'" when drag enabled and "trigger=\'manual\'"', function(assert) {
+        assert.expect(1);
+        var $popover = $('<a href="#" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                drag: true,
+                trigger: 'manual'
+            });
+
+        assert.strictEqual($popover.data('cfw.popover').settings.trigger, 'manual', 'trigger is manual');
     });
 });

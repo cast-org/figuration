@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): accordion.js
+ * Figuration (v4.0.0): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,7 +8,7 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_Accordion requires CFW_Collapse');
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_Accordion requires CFW_Collapse'); }
 
     var CFW_Widget_Accordion = function(element) {
         this.$element = $(element);
@@ -56,21 +56,20 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.accordion');
             if (!data) {
-                $this.data('cfw.accordion', (data = new CFW_Widget_Accordion(this)));
+                $this.data('cfw.accordion', data = new CFW_Widget_Accordion(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Accordion = Plugin;
     $.fn.CFW_Accordion.Constructor = CFW_Widget_Accordion;
-
-})(jQuery);
+}(jQuery));

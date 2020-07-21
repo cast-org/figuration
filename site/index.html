@@ -1,0 +1,170 @@
+---
+layout: home
+---
+
+<div class="home-splash">
+  <div class="container-md">
+    <div class="row flex-md-center flex-md-items-center pb-2 mb-2 border-b">
+      <div class="col-8 col-sm-4 col-xl-3 mx-auto mx-md-0 pb-0_5 pb-sm-0">
+        {%- comment -%}
+        {% include "./icons/figuration-solid.svg", class: "logo-home img-fluid" %}
+        {% endcomment -%}
+        <img src="{{ site.path }}/assets/brand/figuration-solid.png" class="logo-home img-fluid" alt="Figuration">
+      </div>
+      <div class="w-100 d-md-none"></div>
+      <div class="col-sm-9 col-md-7 col-lg-6 mx-auto mx-md-0 text-center text-md-start">
+        <h1>CAST Figuration</h1>
+        <p class="lead">
+          A feature rich, responsive, mobile first, accessible, front-end framework.
+        </p>
+
+        <div class="row text-center text-md-start">
+          <div class="col-md-auto">
+            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/quick-start/" class="btn btn-home btn-start w-100" onclick="ga('send', 'event', 'Homepage', 'Get Started', 'Get Started {{ site.version.current }}');">Get Started</a>
+          </div>
+          <div class="col-md-auto mt-1 mt-md-0">
+            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/download/" class="btn btn-home btn-download w-100" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.version.current }}');">Download</a>
+          </div>
+          <div class="col-12 mt-1">
+            Current version: <strong>v{{ site.version.current }}</strong>
+            <br />
+            <a href="{{ site.changelog }}" class="text-light small">Read the Changelog</a>
+            <br />
+            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/migration/" class="text-light small">View v3 to v4 migration notes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center mx-n1">
+      <div class="col-sm-4">
+        <h2>Responsive</h2>
+        <div class="home-icons mb-0_5" aria-hidden="true">
+          <span class="fas fa-mobile-alt"></span>
+          <span class="fas fa-tablet-alt"></span>
+          <span class="fas fa-desktop"></span>
+        </div>
+        <p>Mobile first design for phones, tablets, and desktops.</p>
+      </div>
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
+        <h2>Accessible</h2>
+        <div class="home-icons mb-0_5" aria-hidden="true">
+          <span class="far fa-keyboard"></span>
+          <span class="fas fa-users"></span>
+        </div>
+        <p>Accessibility for keyboard and screen reader users.</p>
+      </div>
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
+        <h2>Flexible</h2>
+        <div class="home-icons mb-0_5" aria-hidden="true">
+          <span class="far fa-hand-pointer"></span>
+          <span class="fas fa-mouse-pointer"></span>
+        </div>
+        <p>Usable with both touch and mouse driven navigation.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-md">
+  <div class="row pb-1 border-b">
+    <div class="col-sm-5 offset-sm-1 text-center">
+      <h2>Faster Development</h2>
+      <div class="home-icons mb-0_5" aria-hidden="true">
+        <span class="fas fa-cubes"></span>
+        <span class="fas fa-cogs"></span>
+      </div>
+      <p>Our selection of reusable components, interactive widgets, and customization options can speed up development time.</p>
+    </div>
+    <div class="col-sm-5 text-center">
+      <h2>Detailed Documentation</h2>
+      <div class="home-icons mb-0_5" aria-hidden="true">
+        <span class="fas fa-book"></span>
+        <span class="fas fa-code"></span>
+      </div>
+      <p>We have provided multiple examples, code samples, and additional information to help everyone get building.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-md border-b py-2">
+  <div class="row text-center text-md-start">
+    <div class="col-md-6">
+      <h2>
+        <span class="home-icon-box bg-info text-light"><span class="fas fa-paper-plane" aria-hidden="true"></span></span>
+        Get Started Now
+      </h2>
+      <p>Quickly get up and running with Figuration by including the compiled CSS and JavaScript in your document. Add the following CDN links in the <code>&lt;head&gt;</code> of your HTML document.</p>
+      <p>More information is available on the <a href="{{ site.path }}/{{ site.version.docs }}/get-started/quick-start/">Quick Start page</a>.</p>
+    </div>
+    <div class="col-md-6 home-feature">
+      {% capture highlight %}
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+      {% endcapture %}
+      {% renderHighlight highlight, "html" %}
+      <div class="small">CDN services are provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.</div>
+    </div>
+  </div>
+</div>
+
+<div class="container-md border-b py-2">
+  <div class="row text-center text-md-start">
+    <div class="col-md-6 pb-1 pb-md-0">
+      <h2>
+        <span class="home-icon-box bg-success-600 text-light"><span class="fas fa-th-large" aria-hidden="true"></span></span>
+        Flexbox Enabled
+      </h2>
+      <p>Many of Figuration's components, but not all, are built using flexbox.  This means enhanced layout and alignment control, but it does come at the cost of not being able to support older browsers.</p>
+    </div>
+    <div class="col-md-6 border-t border-md-t-0 border-md-s pt-2 pt-md-0">
+      <h2>
+        <span class="home-icon-box bg-secondary text-light"><span class="fab fa-sass" aria-hidden="true"></span></span>
+        Sass Source
+      </h2>
+      <div class="media">
+        <a href="http://sass-lang.com/"><img src="{{ site.path }}/assets/img/sass.svg" class="d-flex me-1" width="64" alt="Sass logo"></a>
+        <div class="media-body">
+          <p class="mb-0">Figuration compiles and uses standard CSS for its output, but on the source side we use the power of <a href="http://sass-lang.com/">Sass</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> for faster and consistent development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-2">
+  <div class="row text-center text-md-start">
+    <div class="col-md-6 col-lg-5">
+      <h2>
+        <span class="home-icon-box bg-primary-600 text-light"><span class="fas fa-columns" aria-hidden="true"></span></span>
+        Browser Support
+      </h2>
+      <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.path }}/{{ site.version.docs }}/get-started/browsers-and-devices/">Browsers &amp; Devices page</a>.</p>
+    </div>
+    <div class="col-md-6 col-lg-7 home-feature">
+      <ul class="list list-horizontal flex-wrap flex-center text-center small mt-0_5 mt-md-0">
+        <li class="list-item"><img src="{{ site.path }}/assets/img/chrome.png" class="d-block" alt="" />Chrome</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/firefox.png" class="d-block" alt="" />Firefox</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/internet-explorer.png" class="d-block" alt="" />IE 11+</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/edge.png" class="d-block" alt="" />Edge</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/safari.png" class="d-block" alt="" />Safari</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/android.png" class="d-block" alt="" />Android 6+</li>
+        <li class="list-item"><img src="{{ site.path }}/assets/img/opera.png" class="d-block" alt="" />Opera</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cf-feed">
+  <!---
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+        <a class="twitter-timeline" data-height="300" data-chrome="nofooter" data-aria-polite="assertive" href="{{ site.twitter.home }}">Tweets by figuration_org</a> <script async src="//platform.twitter.com/widgets.js"></script>
+      </div>
+    </div>
+  </div>
+  -->
+</div>

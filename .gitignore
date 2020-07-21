@@ -1,5 +1,7 @@
 # Ignore docs files
 _gh_pages
+_siteout
+site/**/dist
 
 # Ignore folders
 node_modules
@@ -12,6 +14,7 @@ vendor/bundle
 
 # Jekyll metadata
 docs/.jekyll-metadata
+docs/.jekyll-cache
 
 # Ignore extensions
 *.diff

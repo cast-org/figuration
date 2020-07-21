@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Card</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+<script src="../../site/assets/4.0/js/vendor/holder.min.js"></script>
+<script>
+Holder.addTheme("gray", {
+    bg: "#999",
+    fg: "#111",
+    size: 12,
+    font: 'sans-serif',
+    fontweight: "normal"
+});
+</script>
+
+<style>
+.card-deck-col {
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: stretch;
+    margin-bottom: 0;
+}
+.card-deck-col > .card {
+    flex-basis: auto;
+    width: calc(100% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+@media (min-width: 35em) {
+    .card-deck-col > .card {
+        width: calc(50% - 2rem);
+    }
+}
+@media (min-width: 62em) {
+    .card-deck-col > .card {
+       width: calc(25% - 2rem);
+    }
+}
+
+.row-segements [class^="col-"] {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(34,68,102,.15);
+    border: 1px solid rgba(34,68,102,.2);
+}
+
+.card-header,
+.card-footer {
+    background-color: red;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Card</h1>
+
+    <h2>Horizontal Card</h2>
+
+    <div class="card card-horizontal">
+        <div class="card-col col-5">
+            <img src="../../site/assets/4.0/img/test.gif" class="img-fluid card-img-top card-img-bottom" alt="Placeholder image">
+        </div>
+        <div class="card-col col">
+            <div class="card-header">Header</div>
+            <div class="card-body">Card Body</div>
+            <div class="card-footer">Footer</div>
+        </div>
+    </div>
+
+    <div class="card card-horizontal-sm">
+        <div class="card-col col-sm-5">
+            <img src="../../site/assets/4.0/img/test.gif" class="img-fluid card-img-top card-img-bottom" alt="Placeholder image">
+        </div>
+        <!-- using `.col-sm` due to pixel rounding -->
+        <div class="card-col col-sm">
+            <div class="card-header">Header</div>
+            <div class="card-body">Card Body</div>
+            <div class="card-footer">Footer</div>
+        </div>
+    </div>
+
+    <div class="card card-horizontal-md-reverse">
+        <div class="card-col col-md-5">
+            <img src="../../site/assets/4.0/img/test.gif" class="img-fluid card-img-top card-img-bottom" alt="Placeholder image">
+        </div>
+        <div class="card-col col-md">
+            <div class="card-header">Header</div>
+            <div class="card-body">Card Body</div>
+            <div class="card-footer">Footer</div>
+        </div>
+    </div>
+
+    <div class="card card-horizontal-lg">
+        <div class="card-col col-lg">
+            <div class="card-header">Header</div>
+            <div class="card-body">Card Body</div>
+            <div class="card-footer">Footer</div>
+        </div>
+        <div class="card-col col-lg-5">
+            <img src="../../site/assets/4.0/img/test.gif" class="img-fluid card-img-top card-img-bottom" alt="Placeholder image">
+        </div>
+    </div>
+
+    <div class="card card-horizontal-xl-reverse">
+        <div class="card-col col-xl">
+            <div class="card-header">Header</div>
+            <div class="card-body">Card Body</div>
+            <div class="card-footer">Footer</div>
+        </div>
+        <div class="card-col col-xl-5">
+            <img src="../../site/assets/4.0/img/test.gif" class="img-fluid card-img-top card-img-bottom" alt="Placeholder image">
+        </div>
+    </div>
+</div>
+
+<div class="container mt-1 border border-danger">
+    <h2>Deck</h2>
+
+    <div class="row row-segements">
+        <div class="col-4">.col-4</div>
+        <div class="col-4">.col-4</div>
+        <div class="col-4">.col-4</div>
+    </div>
+
+    <div class="card-deck-sm">
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <div class="card">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">Nested Card</div>
+                    <div class="card-footer">Footer</div>
+                </div>
+                <div class="card">
+                    <div class="card-body">Nested Card</div>
+                </div>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row row-segements">
+        <div class="col-3">.col-3</div>
+        <div class="col-3">.col-3</div>
+        <div class="col-3">.col-3</div>
+        <div class="col-3">.col-3</div>
+    </div>
+
+    <div class="card-deck-sm">
+        <div class="card">
+            <div class="card-body">
+                Card 1
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                Card 2
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                Card 3
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                Card 4
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Group</h2>
+
+    <div class="card-group-sm">
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body">Nested Card</div>
+            <div class="card-footer">Footer</div>
+          </div>
+          <div class="card">
+            <div class="card-body">Nested Card</div>
+          </div>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Card Group w/ Equalize</h2>
+
+    <div class="card-group-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
+      <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="card-footer">Footer</div>
+      </div>
+      <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="card-footer">Footer</div>
+      </div>
+      <div class="card">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="card-footer">Footer</div>
+      </div>
+    </div>
+
+    <h3>Card Group - Single card</h3>
+
+    <div class="card-group-sm">
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Footer Alignment - Flexbox Only</h2>
+
+    <h3>Deck</h3>
+    <div class="card-deck-md">
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+
+    <h3>Group</h3>
+
+    <div class="card-group-md">
+      <div class="card">
+          <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>Altering Deck Column Count</h2>
+
+    <div class="card-deck card-deck-col">
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <div class="card">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">Nested Card</div>
+                    <div class="card-footer">Footer</div>
+                </div>
+                <div class="card">
+                    <div class="card-body">Nested Card</div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="img-fluid card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

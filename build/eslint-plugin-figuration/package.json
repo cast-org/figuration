@@ -1,0 +1,15 @@
+{
+  "name": "eslint-plugin-figuration",
+  "version": "0.0.1",
+  "description": "eslint - Figuration variant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "http://figuration.org",
+  "author": "CAST, Inc.",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": "^6.0.0"
+  }
+}

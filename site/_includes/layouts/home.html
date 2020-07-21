@@ -1,0 +1,4 @@
+{%- assign pathVersion = version.docs | valueIfEmpty: site.version.docs | prepend: "/" -%}
+{%- assign pathLayouts = pathVersion | prepend: "." | append: "/layouts" -%}
+{%- assign templateHome = pathLayouts | append: "/home.html" -%}
+{% include templateHome %}

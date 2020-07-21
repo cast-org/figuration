@@ -1,34 +1,50 @@
-@keyframes progress-bar-stripes {
-    from { background-position: $progress-height 0; }
-    to { background-position: 0 0; }
-}
+@if $enable-progress {
 
-.progress {
-    display: flex;
-    height: $progress-height;
-    overflow: hidden; // Force rounded corners by cropping
-    font-size: $progress-font-size;
-    background-color: $progress-bg;
-    @include border-radius($progress-border-radius);
-    @include box-shadow($progress-box-shadow);
-}
+    @if $enable-transitions and $enable-progress-animated {
+        @keyframes progress-bar-stripes {
+            0% { background-position-x: $progress-height; }
+        }
+    }
 
-.progress-bar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: $progress-bar-color;
-    text-align: center;
-    background-color: $progress-bar-bg;
-    @include box-shadow($progress-bar-box-shadow);
-    @include transition($progress-bar-transition);
-}
+    .progress {
+        display: flex;
+        height: $progress-height;
+        overflow: hidden; // Force rounded corners by cropping
+        @include font-size($progress-font-size);
+        background-color: $progress-bg;
+        @include border-radius($progress-border-radius);
+        @include box-shadow($progress-box-shadow);
+    }
 
-.progress-bar-striped {
-    @include gradient-striped();
-    background-size: $progress-height $progress-height;
-}
+    .progress-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        color: $progress-bar-color;
+        text-align: center;
+        white-space: nowrap;
+        background-color: $progress-bar-bg;
+        @include box-shadow($progress-bar-box-shadow);
+        @include transition($progress-bar-transition);
+    }
 
-.progress-bar-animated {
-    animation: progress-bar-stripes $progress-bar-animation-timing;
+    @if $enable-progress-striped {
+        .progress-bar-striped {
+            @include gradient-striped();
+            background-size: $progress-height $progress-height;
+        }
+    }
+
+    @if $enable-transitions and $enable-progress-animated {
+        .progress-bar-animated {
+            animation: progress-bar-stripes $progress-bar-animation-timing;
+
+            @if $enable-transitions-reduced {
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none;
+                }
+            }
+        }
+    }
 }

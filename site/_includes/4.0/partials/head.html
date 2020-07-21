@@ -1,0 +1,33 @@
+{%- comment -%}`partials` is assigned in the parent layout template{%- endcomment -%}
+
+{%- assign head_favicon = pathPartials | append: "/head_favicon.html" -%}
+{%- assign head_social = pathPartials | append: "/head_social.html" -%}
+{%- assign head_analytics = pathPartials | append: "/head_analytics.html" -%}
+{%- assign head_styles = pathPartials | append: "/head_styles.html" -%}
+{%- assign head_scripts = pathPartials | append: "/head_scripts.html" -%}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ description | default: site.description | smartify }}">
+<meta name="author" content="{{ site.author }}">
+
+{% if site.environment == "production" -%}
+<meta name="docsearch:language" content="{{ site.language }}">
+<meta name="docsearch:version" content="{{ version.docs | valueIfEmpty: site.version.docs }}">
+{%- endif %}
+
+<title>
+  {%- if layout == "home" -%}
+    {{ site.title }} - {{ site.description }}
+  {%- else -%}
+    {{ title }} &#124; {{ site.title }} (v{{ version.docs }})
+  {%- endif -%}
+</title>
+
+<link rel="canonical" href="{{site.url }}{{ page.url }}">
+
+{% include head_favicon %}
+{%- include head_social %}
+{%- include head_analytics %}
+{%- include head_styles %}
+{%- include head_scripts %}

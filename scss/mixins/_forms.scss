@@ -1,49 +1,328 @@
-// Form validation states
-//
-// Used in _forms.scss to generate the form validation CSS for warnings, errors,
-// and successes.
-
-@mixin form-control-validation($color-name) {
-    $color:        palette-context($color-name);
-    $bg:           palette-context($color-name, $level-context-bg);
-    $border:       palette-context($color-name, $level-context-border);
-    $border-hover: palette-context($color-name, $level-context-hover-border);
-
-    // Color the label and help text
-    .form-control-feedback,
-    .form-control-label,
-    .form-check-label,
-    .custom-control {
-        color: $color;
+// Calculate input height
+// Make inputs the height of their button counterpart (line-height + padding + border)
+@function calc-input-height-inner($padding-y, $line-height) {
+    @if $padding-y == null and $line-height == null {
+        @return null;
     }
-    // Set the border and box shadow on specific inputs to match
-    .form-control,
-    .custom-select,
-    .custom-file-control {
-        border-color: $border;
+    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
 
-        &:focus {
-            border-color: $border-hover;
-            @if ($enable-shadows) {
-                box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
-            } @else {
-                box-shadow: $input-focus-box-shadow-outer;
+    $height-inner: #{$height-font} unquote("+") #{$height-padding};
+
+    @return calc(#{$height-inner});
+}
+
+@function calc-input-height-outer($padding-y, $line-height) {
+    @if $padding-y == null and $line-height == null {
+        @return null;
+    }
+    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
+    $height-border:  $input-border-width * 2;
+
+    $height-inner: #{$height-font} unquote("+") #{$height-padding};
+    $height-outer: #{$height-inner} unquote("+") #{$height-border};
+
+    @return calc(#{$height-outer});
+}
+
+// Form validation states
+// Generate the form validation CSS for valid and invalid states.
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+@mixin form-validation-state-selector($state) {
+    @if ($state == "valid" or $state == "invalid") {
+        .was-validated #{if(&, "&", "")}:#{$state},
+        #{if(&, "&", "")}.is-#{$state} {
+            @content;
+        }
+    } @else {
+        #{if(&, "&", "")}.is-#{$state} {
+            @content;
+        }
+    }
+}
+
+@mixin form-validation-state-selector-icon($state) {
+    @if ($state == "valid" or $state == "invalid") {
+        .was-validated &.has-validation-icon:#{$state},
+        &.has-validation-icon.is-#{$state} {
+            @content;
+        }
+    } @else {
+        &.has-validation-icon.is-#{$state} {
+            @content;
+        }
+    }
+}
+
+@mixin form-validation-state($state, $color, $icon) {
+    @if $enable-form-validation-feedback {
+        .#{$state}-feedback {
+            display: none;
+            width: 100%;
+            margin-top: $form-feedback-margin-top;
+            @include font-size($form-feedback-font-size);
+            color: $color;
+        }
+    }
+
+    @if $enable-form-validation-tooltip {
+        .#{$state}-tooltip {
+            position: absolute;
+            top: 100%;
+            z-index: 5;
+            display: none;
+            max-width: 100%; // Contain to parent when possible
+            padding: $tooltip-padding-y $tooltip-padding-x;
+            margin-top: .125rem;
+            @include font-size($tooltip-font-size);
+            color: color-auto-contrast($color);
+            background-color: rgba($color, $tooltip-opacity);
+            @include border-radius($tooltip-border-radius);
+        }
+    }
+
+    %validation-feedback-tooltip-show-#{$state} {
+        display: block;
+    }
+
+    @include form-validation-state-selector($state) {
+        @if $enable-form-validation-feedback {
+            ~ .#{$state}-feedback {
+                @extend %validation-feedback-tooltip-show-#{$state};
+            }
+        }
+
+        @if $enable-form-validation-tooltip {
+            ~ .#{$state}-tooltip {
+                @extend %validation-feedback-tooltip-show-#{$state};
             }
         }
     }
 
-    // Set validation states also for addons
-    .input-group-addon {
-        color: $color;
-        background-color: $bg;
-        border-color: $color;
+    @if $enable-form-control {
+        .form-control {
+            @include form-validation-state-selector($state) {
+                border-color: $color;
+
+                &:focus {
+                    border-color: $color;
+                    @if $enable-shadows {
+                        @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                    } @else {
+                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                    }
+                }
+            }
+
+            @if $enable-form-validation-icon {
+                @include form-validation-state-selector-icon($state) {
+                    //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
+                    background-image: $icon;
+                    background-repeat: no-repeat;
+                    background-position: right $form-feedback-icon-offset center;
+                    background-size: $form-feedback-icon-width $form-feedback-icon-height;
+                }
+            }
+        }
+    }
+
+    @if $enable-form-control and $enable-form-validation-icon {
+        .form-control:not(textarea):not(select) {
+            @include form-validation-state-selector-icon($state) {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+            }
+        }
+
+        // Apply both the select indicator and validaton icons.
+        // stylelint-disable-next-line selector-no-qualifying-type
+        select.form-control:not([size]):not([size="1"]):not([multiple]) {
+            @include form-validation-state-selector-icon($state) {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                background-image: $form-select-indicator-image, $icon;
+                background-repeat: no-repeat, no-repeat;
+                background-position: $form-select-indicator-position, $form-feedback-select-icon-position;
+                background-size: $form-select-indicator-width $form-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
+            }
+        }
+
+        // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
+        // otherwise icon can become obscured by the scrollbar.
+        // stylelint-disable selector-no-qualifying-type
+        select.form-control[size]:not([size="1"]),
+        select.form-control[multiple],
+        textarea.form-control {
+            @include form-validation-state-selector-icon($state) {
+                padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                background-position: left $form-feedback-icon-offset center;
+            }
+        }
+        // stylelint-enable selector-no-qualifying-type
+    }
+
+    @if $enable-form-check {
+        @include form-validation-state-selector($state) {
+            ~ .form-check-label {
+                color: $color;
+            }
+        }
+    }
+
+    @if $enable-form-check and ($enable-form-check-checkradio or $enable-form-check-switch) {
+        .form-check-input {
+            @include form-validation-state-selector($state) {
+                ~ .form-check-label {
+                    &::before {
+                        border-color: $color;
+                    }
+                }
+
+                &:checked {
+                    ~ .form-check-label {
+                        &::before {
+                            background-color: $color;
+                            border-color: $color;
+                        }
+                    }
+                }
+
+                &:focus {
+                    ~ .form-check-label {
+                        &::before {
+                            @if $enable-shadows {
+                                @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                            } @else {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-form-check and $enable-form-check-switch {
+        .form-switch .form-check-input {
+            @include form-validation-state-selector($state) {
+                ~ .form-check-label {
+                    &::before {
+                        background-color: color-auto-contrast($color);
+                        border-color: $color;
+                    }
+                    &::after {
+                        background-color: $color;
+                        border-color: $color;
+                    }
+                }
+
+                &:checked {
+                    ~ .form-check-label {
+                        &::before {
+                            background-color: color-auto-contrast($color);
+                            border-color: $color;
+                        }
+                        &::after {
+                            background-color: $color;
+                            border-color: $color;
+                        }
+                    }
+                }
+
+                &:focus {
+                    ~ .form-check-label {
+                        &::before {
+                            @if $enable-shadows {
+                                @include box-shadow($form-switch-track-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                            } @else {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            }
+                        }
+                        &::after {
+                            box-shadow: $form-switch-thumb-focus-box-shadow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Form file
+    @if $enable-form-file {
+        .form-file-input {
+            @include form-validation-state-selector($state) {
+                ~ .form-file-label {
+                    border-color: $color;
+                }
+
+                &:focus {
+                    ~ .form-file-label {
+                        border-color: $color;
+                        @if $enable-shadows {
+                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                        } @else {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
+                    }
+                }
+
+                &:focus-within {
+                    ~ .form-file-label {
+                        border-color: $color;
+                        @if $enable-shadows {
+                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                        } @else {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-sizing {
+        @each $size, $dims in $input-sizes {
+            $sz-padding-x:     map-get($dims, "padding-x");
+
+            @if $sz-padding-x != null {
+                @if $enable-form-validation-icon {
+                    @if $enable-form-control {
+                        .form-control-#{$size}:not(textarea),
+                        .input-group-#{$size} > .form-control:not(textarea) {
+                            @include form-validation-state-selector-icon($state) {
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                            }
+                        }
+
+                        textarea.form-control-#{$size},
+                        .input-group-#{$size} > textarea.form-control {
+                            @include form-validation-state-selector-icon($state) {
+                                padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                            }
+                        }
+
+                        select.form-control-#{$size},
+                        .input-group-#{$size} > select.form-control {
+                            @include form-validation-state-selector-icon($state) {
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+
+                                &[size]:not([size="1"]),
+                                &[multiple] {
+                                    padding-right: $sz-padding-x;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-border-focus` variable.
+// which defaults to the `@input-focus-border-color` variable.
 //
 // We highly encourage you to not customize the default value, but instead use
 // this to tweak colors on an as-needed basis. This aesthetic change is based on
@@ -58,10 +337,40 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
         outline: 0;
-        @if ($enable-shadows) {
-            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        @if $enable-shadows {
+            @include box-shadow($input-box-shadow, $input-focus-box-shadow);
         } @else {
-            box-shadow: $input-focus-box-shadow-outer;
+            // Avoid using mixin so we can pass custom focus shadow properly
+            box-shadow: $input-focus-box-shadow;
         }
+    }
+}
+
+// Form Range
+@mixin form-range-track() {
+    box-sizing: border-box;
+    width: 100%;
+    height: $form-range-track-height;
+    margin: 0 $form-range-thumb-focus-box-shadow-width;
+    color: transparent;
+    cursor: $form-range-track-cursor;
+    border: $form-range-track-border;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
+}
+
+@mixin form-range-thumb() {
+    box-sizing: border-box;
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    background-color: $form-range-thumb-bg;
+    border: $form-range-thumb-border;
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
+    @include transition($input-transition);
+    appearance: none;
+
+    &:active {
+        background-color: $form-range-thumb-active-bg;
     }
 }

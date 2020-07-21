@@ -1,0 +1,15 @@
+{%- assign pathVersion = version.docs | valueIfEmpty: site.version.docs | prepend: "/" -%}
+{%- capture aliasURL -%}
+{{ site.path }}{%- if usePathVersion %}{{ pathVersion }}{% endif -%}/{{ destination }}
+{%- endcapture -%}
+<!doctype html>
+<html lang="{{ site.language }}">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="{{ site.url | append: aliasURL }}">
+  <script>location="{{ aliasURL }}"</script>
+  <meta http-equiv="refresh" content="0; url={{ aliasURL }}">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="{{ aliasURL }}">Click here if you are not redirected.</a>
+</html>

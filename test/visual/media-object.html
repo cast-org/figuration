@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Media Object</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+<script src="../../site/assets/4.0/js/vendor/holder.min.js"></script>
+<script>
+Holder.addTheme("gray", {
+    bg: "#999",
+    fg: "#111",
+    size: 12,
+    font: 'sans-serif',
+    fontweight: "normal"
+});
+</script>
+
+<style>
+.media {
+    border: 1px solid blue;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container"><div class="row"><div class="col-sm-10 col-md-8 col-lg-6 col-xl-4">
+    <h1>Media Object</h1>
+
+    <div class="media">
+        <a href="#" class="d-flex me-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+        <div class="media-body">
+            <h4>Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="media">
+        <div class="media-body">
+            <h4>Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+        <a href="#" class="d-flex ms-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+    </div>
+
+    <hr>
+
+    <div class="media">
+        <img data-src="holder.js/64x64" class="d-flex me-1" alt="Placeholder image">
+        <div class="media-body">
+            <h4>Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+        <a href="#" class="d-flex flex-self-start badge badge-pill badge-primary" aria-label="Close"><span aria-hidden="true">X</span></a>
+    </div>
+
+
+    <hr>
+
+    <h2>Nested media</h2>
+
+    <div class="media">
+        <a href="#" class="d-flex me-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+        <div class="media-body">
+            <h4>Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <div class="media">
+                <a href="#" class="d-flex me-1">
+                    <img data-src="holder.js/64x64" alt="Placeholder image">
+                </a>
+                <div class="media-body">
+                    <h4>Nested media heading</h4>
+                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Media alignment</h2>
+
+    <div class="media">
+        <a href="#" class="d-flex me-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+        <div class="media-body">
+            <h4>Top aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <a href="#" class="d-flex flex-self-center me-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+        <div class="media-body">
+            <h4>Middle aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <a href="#" class="d-flex flex-self-end me-1">
+            <img data-src="holder.js/64x64" alt="Placeholder image">
+        </a>
+        <div class="media-body">
+            <h4>Bottom aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Media list</h2>
+
+    <ul class="list-unstyled">
+        <li class="media">
+            <a href="#" class="d-flex me-1">
+                <img data-src="holder.js/64x64" alt="Placeholder image">
+            </a>
+            <div class="media-body">
+                <h4>Media heading</h4>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                <!-- Nested media object -->
+                <div class="media">
+                    <a href="#" class="d-flex me-1">
+                        <img data-src="holder.js/64x64" alt="Placeholder image">
+                    </a>
+                    <div class="media-body">
+                        <h4>Nested media heading</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                        <!-- Nested media object -->
+                        <div class="media">
+                            <a href="#" class="d-flex me-1">
+                                <img data-src="holder.js/64x64" alt="Placeholder image">
+                            </a>
+                            <div class="media-body">
+                                <h4>Nested media heading</h4>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nested media object -->
+                <div class="media">
+                    <a href="#" class="d-flex me-1">
+                        <img data-src="holder.js/64x64" alt="Placeholder image">
+                    </a>
+                    <div class="media-body">
+                        <h4>Nested media heading</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="media">
+            <div class="media-body">
+                <h4>Media heading</h4>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            </div>
+            <a href="#" class="d-flex ms-1">
+                <img data-src="holder.js/64x64" alt="Placeholder image">
+            </a>
+        </li>
+    </ul>
+
+</div></div></div>
+
+</body>
+</html>

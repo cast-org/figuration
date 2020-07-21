@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): equalize.js
+ * Figuration (v4.0.0): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -34,7 +34,7 @@
 
             // Get group ID
             var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+            if (typeof groupID === 'undefined' || (groupID.length <= 0)) { return; }
 
             // Find target by id/css selector
             this.$target = $(groupID, this.$element);
@@ -52,14 +52,14 @@
                         $selfRef._equalize();
                     }
                 });
-            } else {
-                this.$target.CFW_mutationListen();
-                this.$element
-                    .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', $.proxy(this._equalize, this));
             }
 
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this._equalize, this), this.settings.throttle));
+            this.$target.CFW_mutationListen();
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .on('mutate.cfw.mutate', this._equalize.bind(this));
+
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle(this._equalize.bind(this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
@@ -67,11 +67,11 @@
         },
 
         _hasNested : function() {
-            return (this.$element.find('[data-cfw="equalize"]').length > 0);
+            return this.$element.find('[data-cfw="equalize"]').length > 0;
         },
 
         _isNested : function() {
-            return (this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0);
+            return this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0;
         },
 
         _isStacked : function($targetElm) {
@@ -143,9 +143,11 @@
         },
 
         _applyHeight : function($nodes, callback) {
-            var heights = $nodes.map(function() {
+            var heights = $nodes
+                .map(function() {
                     return $(this).outerHeight(false);
-                }).get();
+                })
+                .get();
 
             if (this.settings.minimum) {
                 var min = Math.min.apply(null, heights);
@@ -174,7 +176,7 @@
         },
 
         dispose : function() {
-            this.$window.off('.cfw.equalize.' +  this.instance);
+            this.$window.off('.cfw.equalize.' + this.instance);
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -192,7 +194,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -200,15 +202,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.equalize', (data = new CFW_Widget_Equalize(this, options)));
+                $this.data('cfw.equalize', data = new CFW_Widget_Equalize(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Equalize = Plugin;
     $.fn.CFW_Equalize.Constructor = CFW_Widget_Equalize;
-
-})(jQuery);
+}(jQuery));

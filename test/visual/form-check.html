@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Form Check</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+</head>
+<body>
+
+<div class="container mb-2">
+
+<h1>Form Check</h1>
+
+<h2>Base</h2>
+
+<div>
+    <input type="checkbox" id="basecheck0" checked>
+    <label class="mb-0" for="basecheck0">Base checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div>
+    <input type="checkbox" id="basecheck1" disabled>
+    <label class="mb-0" for="basecheck1">Base disabled checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div>
+    <input type="checkbox" id="basecheck2" disabled checked>
+    <label class="mb-0" for="basecheck2">Base disabled checked checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+
+<br>
+
+<div>
+    <input type="radio" id="baseradio0" name="baseradio" checked>
+    <label class="mb-0" for="baseradio0">Base radio</label>
+</div>
+<div>
+    <input type="radio" id="baseradio1" name="baseradio">
+    <label class="mb-0" for="baseradio1">Base radio</label>
+</div>
+<div>
+    <input type="radio" id="baseradio2" name="baseradio" disabled>
+    <label class="mb-0" for="baseradio2">Base disabled radio</label>
+</div>
+<div>
+    <input type="radio" id="baseradio3" name="disbaseradio" disabled checked>
+    <label class="mb-0" for="baseradio3">Base disabled checked radio</label>
+</div>
+
+<br>
+
+<h2>Default input</h2>
+
+<div class="form-check">
+    <input type="checkbox" id="defcheck0" checked>
+    <label class="form-check-label" for="defcheck0">Default checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check">
+    <input type="checkbox" id="defcheck1" disabled>
+    <label class="form-check-label" for="defcheck1">Default disabled checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check">
+    <input type="checkbox" id="defcheck2" disabled checked>
+    <label class="form-check-label" for="defcheck2">Default disabled checked checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+
+<br>
+
+<div class="form-check">
+    <input type="radio" id="defradio0" name="defradio" checked>
+    <label class="form-check-label" for="defradio0">Default radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" id="defradio1" name="defradio">
+    <label class="form-check-label" for="defradio1">Default radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" id="defradio2" name="defradio" disabled>
+    <label class="form-check-label" for="defradio2">Default disabled radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" id="defradio3" name="disdefradio" disabled checked>
+    <label class="form-check-label" for="defradio3">Default disabled checked radio</label>
+</div>
+
+<br>
+
+<h2>Custom input</h2>
+
+<div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check0" checked>
+    <label class="form-check-label" for="check0">Custom checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input showindeterminate" type="checkbox" id="check1">
+    <label class="form-check-label" for="check1">Indeterminate custom checkbox</label>
+    <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript—there's no HTML attribute for this.</small>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check2">
+    <label class="form-check-label" for="check2">Custom checkbox with a really long label to see what layout becomes when the text content wraps to the next line, but this needs a large amount of text to make sure the wrapping occurs.</label>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check3" disabled>
+    <label class="form-check-label" for="check3">Disabled custom checkbox</label>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check4" disabled checked>
+    <label class="form-check-label" for="check4">Disabled custom checkbox</label>
+</div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check5">
+    <label class="form-check-label" for="check5">Custom checkbox in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check6" checked>
+    <label class="form-check-label" for="check6">Checked custom checkbox in a disabled fieldset</label>
+  </div>
+</fieldset>
+
+<br>
+
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio0" name="radios" checked>
+  <label class="form-check-label" for="radio0">Custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio1" name="radios">
+  <label class="form-check-label" for="radio1">Custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio2" name="radios" disabled>
+  <label class="form-check-label" for="radio2">Disabled custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio3" name="radiosdis" disabled checked>
+  <label class="form-check-label" for="radio3">Disabled checked custom radio</label>
+</div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="radio" id="radio4" name="radiosfsdisfs">
+    <label class="form-check-label" for="radio4">Custom radio in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="radio" id="radio5" name="radiosfsdisfs" checked>
+    <label class="form-check-label" for="radio5">Checked custom radio in a disabled fieldset</label>
+  </div>
+</fieldset>
+
+<br>
+
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch0">
+  <label class="form-check-label" for="switch0">Custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch1" disabled>
+  <label class="form-check-label" for="switch1">Disabled custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch2" disabled checked>
+  <label class="form-check-label" for="switch2">Disabled checked custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+
+<br>
+
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradio0" name="switchradio" checked>
+  <label class="form-check-label" for="switchradio0">Custom switch radio</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradio1" name="switchradio">
+  <label class="form-check-label" for="switchradio1">Custom switch radio</label>
+</div>
+
+<br>
+
+<h2>External label</h2>
+
+<div class="form-group row">
+    <label class="col-md-auto" for="nolabel0">External label</label>
+    <div class="col">
+        <div class="form-check form-checkradio">
+            <input class="form-check-input" type="checkbox" id="nolabel0" checked>
+            <label class="form-check-label" for="nolabel0"></label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-md-auto" for="nolabel1">External label</label>
+    <div class="col">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="nolabel1" checked>
+            <label class="form-check-label" for="nolabel1"></label>
+        </div>
+    </div>
+</div>
+
+<h2>Inline</h2>
+
+<div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inline0" checked>
+    <label class="form-check-label" for="inline0">Inline checkbox</label>
+</div>
+<div class="form-check form-checkradio d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inline1" checked>
+    <label class="form-check-label" for="inline1">Inline custom checkbox</label>
+</div>
+<div class="form-check form-checkradio d-inline-block me-1">
+    <input class="form-check-input" type="radio" id="inline2" checked>
+    <label class="form-check-label" for="inline2">Inline custom radio</label>
+</div>
+<div class="form-check form-switch d-inline-block">
+    <input class="form-check-input" type="checkbox" id="inline3" checked>
+    <label class="form-check-label" for="inline3">Inline custom switch</label>
+</div>
+
+<h2>Sizing</h2>
+
+<div class="form-check form-checkradio fs-xlarge">
+    <input class="form-check-input" type="checkbox" id="resize0" checked>
+    <label class="form-check-label" for="resize0">Resized custom checkbox</label>
+</div>
+<div class="form-check form-checkradio fs-xlarge">
+    <input class="form-check-input" type="radio" id="resize1" checked>
+    <label class="form-check-label" for="resize1">Resized custom radio</label>
+</div>
+<div class="form-check form-switch fs-xlarge">
+    <input class="form-check-input" type="checkbox" id="resize2" checked>
+    <label class="form-check-label" for="resize2">Resized custom switch</label>
+</div>
+
+</div>
+
+<script>
+    var showind = document.getElementsByClassName("showindeterminate");
+    for (var i = 0; i < showind.length; i++) {
+        showind[i].indeterminate = true;
+    }
+</script>
+
+</body>
+</html>

@@ -1,7 +1,14 @@
 $(function() {
     'use strict';
 
-    QUnit.module('CFW_Tab');
+    QUnit.module('CFW_Tab', {
+        beforeEach: function() {
+            $(window).scrollTop(0);
+        },
+        afterEach: function() {
+            $('#qunit-fixture').empty();
+        }
+    });
 
     QUnit.test('should be defined on jquery object', function(assert) {
         assert.expect(1);
@@ -10,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Tab();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -18,11 +25,11 @@ $(function() {
 
     QUnit.test('should activate element by tab id', function(assert) {
         assert.expect(2);
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home">Home</a></li>'
-            + '<li><a href="#profile">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home">Home</a></li>' +
+            '<li><a href="#profile">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
 
         $(tabsHTML).find('li:last a').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
@@ -33,11 +40,11 @@ $(function() {
 
     QUnit.test('should activate element by pill id', function(assert) {
         assert.expect(2);
-        var pillsHTML = '<ul class="pills">'
-            + '<li><a href="#home">Home</a></li>'
-            + '<li><a href="#profile">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var pillsHTML = '<ul class="pills">' +
+            '<li><a href="#home">Home</a></li>' +
+            '<li><a href="#profile">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
 
         $(pillsHTML).find('li:last a').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
@@ -50,7 +57,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div class="tab"/>')
+        $('<div class="tab"></div>')
             .on('beforeShow.cfw.tab', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeShow event fired');
@@ -66,11 +73,11 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -94,11 +101,11 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -122,11 +129,11 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -151,11 +158,11 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -175,13 +182,27 @@ $(function() {
         $last.CFW_Tab('show');
     });
 
+    QUnit.test('parent list items should get role="presentation"', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('li[role="presentation"]').length, 0, 'both parent <li> do not have role="presentation"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('li[role="presentation"]').length, 2, 'both parent <li> have role="presentation"');
+    });
+
     QUnit.test('selected tab should have aria-selected', function(assert) {
         assert.expect(8);
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
         var $tabsObj = $('.tabs');
 
@@ -209,11 +230,11 @@ $(function() {
     QUnit.test('should not show if trigger disabled by class', function(assert) {
         assert.expect(0);
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab" class="disabled">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" class="disabled">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -230,11 +251,11 @@ $(function() {
     QUnit.test('should not show if trigger disabled by attribute', function(assert) {
         assert.expect(0);
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -245,6 +266,96 @@ $(function() {
                 assert.ok('false', 'beforeShow event fired');
             });
 
+        $last.CFW_Tab('show');
+    });
+
+    QUnit.test('should add `.in` to tab panes if animation is enabled (default)', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                setTimeout(function() {
+                    assert.strictEqual($panes.filter('.in').length, 1);
+                    done();
+                }, 1);
+            });
+
+        $last.CFW_Tab('show');
+    });
+
+    QUnit.test('should not add `.in` to tab panes if animation is disabled', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab" data-cfw-tab-animate=false>Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" data-cfw-tab-animate=false>Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                setTimeout(function() {
+                    assert.strictEqual($panes.filter('.in').length, 0);
+                    done();
+                }, 1);
+            });
+
+        $last.CFW_Tab('show');
+    });
+
+    QUnit.test('should remove `.in` from tab panes when they become inactive', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                setTimeout(function() {
+                    assert.strictEqual($panes.first().hasClass('in'), false);
+                    assert.strictEqual($panes.last().hasClass('in'), true);
+                    done();
+                }, 1);
+            });
+
+        assert.strictEqual($panes.first().hasClass('in'), true);
+        assert.strictEqual($panes.last().hasClass('in'), false);
         $last.CFW_Tab('show');
     });
 });

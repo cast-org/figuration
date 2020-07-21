@@ -1,15 +1,7 @@
 // Switch color variants
-@mixin switch-variant($indicator-bg, $active-control-bg, $active-indicator-bg) {
-    .switch-control {
-        &::before {
-            background-color: $indicator-bg;
-        }
-    }
-
+@mixin switch-variant($active-indicator-bg) {
     .switch-input {
         &:checked ~ .switch-control {
-            background-color: $active-control-bg;
-
             &::before {
                 background-color: $active-indicator-bg;
             }
@@ -18,11 +10,12 @@
 }
 
 // Switch sizes
-@mixin switch-size($font-size, $border-radius, $border-width, $outer-height, $inner-height) {
+@mixin switch-size($font-size, $line-height, $border-radius, $border-width, $outer-height, $inner-height) {
     .switch-control {
         width: ($font-size * $switch-width-multiplier);
         height: $outer-height;
-        font-size: $font-size;
+        @include font-size($font-size);
+        line-height: $line-height;
         @include border-radius($border-radius);
 
         &::before {
@@ -30,9 +23,9 @@
         }
     }
 
-    .switch-description {
-        font-size: $font-size;
-    }
+    //.switch-description {
+    //    @include font-size($font-size);
+    //}
 
     &.switch-rounded {
         .switch-control {

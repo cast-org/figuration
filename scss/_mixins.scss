@@ -1,11 +1,11 @@
 // Toggles
 // Used in conjunction with global variables to enable certain theme features.
 @import "mixins/box-shadow";
+@import "mixins/font-size";
 @import "mixins/gradients";
 @import "mixins/transition";
 
 // Utilities
-@import "mixins/background";
 @import "mixins/border";
 @import "mixins/breakpoints";
 @import "mixins/hover";
@@ -13,15 +13,12 @@
 @import "mixins/screen-reader";
 @import "mixins/reset-text";
 @import "mixins/text-emphasis";
-@import "mixins/text-hide";
 @import "mixins/text-truncate";
 @import "mixins/visibility";
 
 // Components
 @import "mixins/alert";
-@import "mixins/badge";
 @import "mixins/buttons";
-@import "mixins/cards";
 @import "mixins/caret";
 @import "mixins/divider";
 @import "mixins/forms";
@@ -29,8 +26,10 @@
 @import "mixins/pagination";
 @import "mixins/switch";
 @import "mixins/tables";
+@import "mixins/modal";
 
 // Layout
 @import "mixins/clearfix";
+@import "mixins/containers";
 @import "mixins/grid";
 @import "mixins/float";

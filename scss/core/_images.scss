@@ -1,31 +1,39 @@
-// Fluid images
-// Keep images from scaling beyond the width of their parents.
-.img-fluid {
-    @include img-fluid;
-}
+@if $enable-img {
+    // Fluid images
+    // Keep images from scaling beyond the width of their parents.
+    @if $enable-img-fluid {
+        .img-fluid {
+            @include img-fluid();
+        }
+    }
 
-// Image thumbnails
-.img-thumbnail {
-    padding: $thumbnail-padding;
-    background-color: $thumbnail-bg;
-    border: $thumbnail-border-width solid $thumbnail-border-color;
-    @include border-radius($thumbnail-border-radius);
-    @include box-shadow($thumbnail-box-shadow);
+    // Image thumbnails
+    @if $enable-img-thumbnail {
+        .img-thumbnail {
+            padding: $thumbnail-padding;
+            background-color: $thumbnail-bg;
+            border: $thumbnail-border-width solid $thumbnail-border-color;
+            @include border-radius($thumbnail-border-radius);
+            @include box-shadow($thumbnail-box-shadow);
 
-    // Keep them at most 100% wide
-    @include img-fluid;
+            // Keep them at most 100% wide
+            @include img-fluid();
+        }
+    }
 }
 
 // Figures
-.figure {
-    // Ensures the caption's text aligns with the image.
-    display: inline-block;
-}
-.figure-img {
-    margin-bottom: $figure-spacer-y;
-    line-height: 1;
-}
-.figure-caption {
-    font-size: $figure-caption-font-size;
-    color: $figure-caption-color;
+@if $enable-figure {
+    .figure {
+        // Ensures the caption's text aligns with the image.
+        display: inline-block;
+    }
+    .figure-img {
+        margin-bottom: $figure-spacer-y;
+        line-height: 1;
+    }
+    .figure-caption {
+        @include font-size($figure-caption-font-size);
+        color: $figure-caption-color;
+    }
 }

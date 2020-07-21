@@ -1,16 +1,21 @@
-.jumbotron {
-    padding: $jumbotron-padding-xs-y $jumbotron-padding-xs-x;
-    margin-bottom: $jumbotron-padding-y;
-    background-color: $jumbotron-bg;
-    @include border-radius($jumbotron-border-radius);
+@if $enable-jumbotron {
+    .jumbotron {
+        padding: $jumbotron-padding-xs-y $jumbotron-padding-xs-x;
+        margin-bottom: $jumbotron-padding-y;
+        color: $jumbotron-color;
+        background-color: $jumbotron-bg;
+        @include border-radius($jumbotron-border-radius);
 
-    @include media-breakpoint-up(#{$jumbotron-breakpoint}) {
-        padding: $jumbotron-padding-y $jumbotron-padding-x;
+        @include media-breakpoint-up(#{$jumbotron-breakpoint}) {
+            padding: $jumbotron-padding-y $jumbotron-padding-x;
+        }
     }
-}
 
-.jumbotron-full {
-    padding-right: 0;
-    padding-left: 0;
-    @include border-radius(0);
+    @if $enable-jumbotron-fluid {
+        .jumbotron-fluid {
+            padding-right: 0;
+            padding-left: 0;
+            @include border-radius(0);
+        }
+    }
 }

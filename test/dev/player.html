@@ -2,18 +2,18 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Figuration Widget: Player</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
-<link rel="stylesheet" href="../../docs/assets/fonts/fontawesome/css/fontawesome-all.min.css">
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+<link rel="stylesheet" href="../../site/assets/4.0/fonts/fontawesome/css/all.min.css">
 
-<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script type="text/javascript" src="../../js/util.js"></script>
 <script type="text/javascript" src="../../js/drag.js"></script>
 <script type="text/javascript" src="../../js/dropdown.js"></script>
-<script type="text/javascript" src="../../js/slider.js"></script>
 <script type="text/javascript" src="../../js/player.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>
 
@@ -28,9 +28,7 @@ function myLog(item) {
 
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
-    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-reverse');
-    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-reverse');
-    $(e.target).closest('[data-cfw="player"]').find('.player-text-describe-wrapper').addClass('dropup dropdown-menu-reverse');
+    $(e.target).closest('[data-cfw="player"]').find('.dropdown-menu').addClass('dropup dropreverse');
 });
 </script>
 
@@ -100,8 +98,9 @@ body {
 .player-seek label {
     display: none;
 }
-.player-seek .slider.slider-horizontal {
+.player-seek input[type="range"] {
     width: 100px;
+    min-width: 100px;
 }
 .player-mute {
     display: inline-block;
@@ -130,8 +129,9 @@ body {
 .player-volume label {
     display: none;
 }
-.player-volume .slider.slider-horizontal {
+.player-volume input[type="range"] {
     width: 80px;
+    min-width: 80px;
 }
 .player-fullscreen {
     display: inline-block;
@@ -178,13 +178,13 @@ body {
     max-height: 100%;
     margin: 0;
     padding: 0;
-	background: #000000;
+	background: #000;
 }
 .player-fulldisplay .player-wrapper {
     position: absolute;
-    left: 0;
-    bottom: 20px;
     right: 0;
+    bottom: 20px;
+    left: 0;
     margin-top: 0;
     text-align: center;
 }
@@ -197,7 +197,7 @@ body {
 }
 */
 .player-fulldisplay .player {
-    display: inline-block;
+    display: inline-flex;
     background-color: #000000;
     color: #FFFFFF;
     border-radius: 5px;
@@ -261,17 +261,12 @@ body {
          -o-transition: all 0.1s;
             transition: all 0.1s;
 }
-
 .player-notime .player-time-current,
 .player-notime .player-time-duration,
 .player-notime .player-seek,
 .player-live .player-time-duration,
 .player-live .player-seek {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
+    visibility: hidden;
 }
 
 .player-description {
@@ -384,9 +379,9 @@ body {
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -398,8 +393,8 @@ body {
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="" data-cfw-player="volume">
             <!--
@@ -409,24 +404,24 @@ body {
             value: 1
             -->
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+        <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls>
-        <source src="../../docs/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
+        <source src="../../site/assets/4.0/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg">
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Ambient Acoustic by StrangerEight</h2>
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -438,87 +433,87 @@ body {
             <span class="progress-bar" role="progressbar" data-cfw-player="seek-buffer"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="" data-cfw-player="volume">
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+        <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls>
-        <source src="../../docs/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
+        <source src="../../site/assets/4.0/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg">
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Drumroll by Heigh-hoo</h2>
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
             <span class="player-seek" data-cfw-player="seek">
-            	<label>Seek slider<input type="text" /></label>
+                <input type="range" class="form-range" aria-label="Seek">
             </span>
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="player-volume" data-cfw-player="volume">
-            <label>Volume slider<input type="text" /></label>
+            <input type="range" class="form-range" aria-label="Volume">
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+        <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls preload="none">
-        <source src="../../docs/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
+        <source src="../../site/assets/4.0/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg">
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Niagara Falls</h2>
 <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
-            <source src="../../docs/assets/video/niagara_falls.mp4" type="video/mp4" />
-            <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+        <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls>
+            <source src="../../site/assets/4.0/video/niagara_falls.mp4" type="video/mp4">
+            <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default>
             <p>HTML5 video not supported</p>
         </video>
     </div>
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
             </span>
             <span class="player-time" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
             <span class="player-mute" data-cfw-player="mute">
-                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
             </span>
             <span class="player-volume" data-cfw-player="volume">
-                <label>Volume slider<input type="text" /></label>
+                <input type="range" class="form-range" aria-label="Volume">
             </span>
-            <div class="dropup dropleft" style="display: inline-block; position: relative;">
-                <button type="button" class="btn btn-default player-speed" data-cfw="dropdown" data-cfw-dropdown-target="#speed0" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button>
+            <div style="display: inline-block; position: relative;">
+                <button type="button" class="btn btn-icon player-speed" data-cfw="dropdown" data-cfw-dropdown-target="#speed0" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button>
                 <ul class="dropdown" id="speed0" style="min-width: 75px; width: 75px; text-align: center;">
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 0.25); return false;">0.25&times;</a></li>
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 0.5); return false;">0.5&times;</a></li>
@@ -528,242 +523,244 @@ body {
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 2); return false;">2&times;</a></li>
                 </ul>
             </div>
-            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
-                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
             </span>
         </div>
     </div>
 </div>
-<hr />
+
+<hr>
 
 <h2 class="h4">Niagara Falls</h2>
 <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none">
-            <source src="../../docs/assets/video/niagara_falls.mp4">
-            <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
-            <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+        <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls preload="none">
+            <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+            <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
+            <track src="../../site/assets/4.0/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es">
         </video>
     </div>
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
             </span>
             <span class="player-time" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
 
             <span class="player-mute" data-cfw-player="mute">
-                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
             </span>
             <span class="player-volume" data-cfw-player="volume">
-                <label>Volume slider<input type="text" /></label>
+                <input type="range" class="form-range" aria-label="Volume">
             </span>
-            <!-- <button type="button" class="btn btn-default player-speed" data-cfw-player="speed" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button> -->
-            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+            <!-- <button type="button" class="btn btn-icon player-speed" data-cfw-player="speed" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button> -->
+            <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
-                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
             </span>
         </div>
     </div>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Transcript testing</h2>
 <div class="video-transcript">
     <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="2" role="region" aria-label="video player">
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none">
-                <source src="../../docs/assets/video/niagara_falls.mp4">
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
-                <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls preload="none">
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
+                <track src="../../site/assets/4.0/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es">
             </video>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                        <input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
+<hr>
+
 <h2 class="h4">Transcript as toggle</h2>
 <div class="video-transcript">
     <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player" data-cfw-player-transcript-option="false" data-cfw-player-transcript=0>
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
-                <source src="../../docs/assets/video/niagara_falls.mp4" type="video/mp4" />
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls>
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4" type="video/mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default>
                 <p>HTML5 video not supported</p>
             </video>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<hr />
-<hr />
+<hr>
 
-<h2 class="h4">Niagara Falls</h2>
+<h2 class="h4">Transcript with options</h2>
 <div class="video-transcript">
     <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
-                <source src="../../docs/assets/video/niagara_falls.mp4">
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls>
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
             </video>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Transcript + Caption testing</h2>
 <div class="video-transcript">
     <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="1" role="region" aria-label="video player">
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none">
-                <source src="../../docs/assets/video/niagara_falls.mp4">
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
-                <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls preload="none">
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default>
+                <track src="../../site/assets/4.0/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es">
             </video>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Description testing</h2>
 <div class="video-transcript">
@@ -771,101 +768,142 @@ body {
     <!-- <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="0" data-cfw-player-transcript-describe="false" role="region" aria-label="video player"> -->
     <div data-cfw="player" id="desc1" class="video-wrapper" role="region" aria-label="video player" data-cfw-player-media-describe="true">
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none">
-            <!-- <video poster="../../docs/assets/video/niagara_falls.jpg" controls> -->
-                <source src="../../docs/assets/video/niagara_falls.mp4" data-src-describe="../../docs/assets/video/niagara_falls-describe-en.mp4">
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
-                <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
-                <track src="../../docs/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
-                <track src="../../docs/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls preload="none">
+            <!-- <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls> -->
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4" data-src-describe="../../site/assets/4.0/video/niagara_falls-describe-en.mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
+                <track src="../../site/assets/4.0/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es">
+                <track src="../../site/assets/4.0/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en">
+                <track src="../../site/assets/4.0/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es">
             </video>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
                 </span>
                 <span class="player-describe" data-cfw-player="description">
-                    <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
-                    <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-icon on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-icon off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
-<hr />
+<hr>
 
 <h2 class="h4">Custom Caption Wrapper</h2>
 <div class="video-transcript">
     <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
         <div class="embed-fluid">
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
-                <source src="../../docs/assets/video/niagara_falls.mp4">
-                <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
+            <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls>
+                <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+                <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
             </video>
             <div class="player-caption-display" data-cfw-player="caption-display"></div>
         </div>
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
     </div>
 </div>
 
+<h2 class="h4">Using Range Inputs</h2>
+<div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="../../site/assets/4.0/video/niagara_falls.jpg" controls>
+            <source src="../../site/assets/4.0/video/niagara_falls.mp4">
+            <track src="../../site/assets/4.0/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en">
+            <track src="../../site/assets/4.0/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es">
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control" data-cfw-player="control">
+                <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            </span>
+            <span class="player-time me-0_25" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek form-inline" data-cfw-player="seek">
+                	<input type="range" class="form-range" aria-label="Seek">
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+
+            <span class="player-mute me-0_25" data-cfw-player="mute">
+                <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+            </span>
+            <span class="player-volume form-inline me-0_25" data-cfw-player="volume">
+                <input type="range" class="form-range" aria-label="Volume">
+            </span>
+            <button type="button" class="btn btn-icon me-0_25" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-icon me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+            <span class="player-fullscreen" data-cfw-player="fullscreen">
+                <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+
 <!--
 <pre id="output" style="margin-top: 2em;"></pre>
-<input type="button" onclick="javascript:clearLog();" value="Clear"/>
+<input type="button" onclick="javascript:clearLog();" value="Clear">
 -->
 
 <script type="text/javascript">

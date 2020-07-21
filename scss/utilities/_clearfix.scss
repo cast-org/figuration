@@ -1,3 +1,5 @@
-.clearfix {
-    @include clearfix();
+@if $enable-utility-clearfix {
+    .clearfix {
+        @include clearfix();
+    }
 }

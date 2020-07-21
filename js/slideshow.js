@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): slideshow.js
+ * Figuration (v4.0.0): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,7 +8,7 @@
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Tab) throw new Error('CFW_Slideshow requires CFW_Tab');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_Slideshow requires CFW_Tab'); }
 
     var CFW_Widget_Slideshow = function(element, options) {
         this.$element = $(element);
@@ -90,7 +90,7 @@
                 this.$element.CFW_trigger('next.cfw.slideshow');
                 $tabs.eq(currIndex + 1).CFW_Tab('show');
             }
-            if (this.settings.loop && currIndex == ($tabs.length - 1)) {
+            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
                 $tabs.eq(0).CFW_Tab('show');
             }
@@ -121,9 +121,13 @@
         },
 
         _actionsKeydown : function(e) {
-            // 37-left, 38-up, 39-right, 40-down
-            var k = e.which;
-            if (!/(37|38|39|40)/.test(k)) { return; }
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var REGEX_KEYS = new RegExp(KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT);
+
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -131,20 +135,21 @@
             var $tabs = this._getTabs();
             var index = this._currIndex($tabs);
 
-            if ((k == 38 || k == 37)) { // up & left
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) {
                 if (index > 0) {
                     index--;
                 } else if (index === 0) {
                     index = $tabs.length - 1;
                 }
             }
-            if ((k == 39 || k == 40)) { // down & right
+            if (e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT) {
                 if (index < $tabs.length - 1) {
                     index++;
-                } else if (index == $tabs.length - 1) {
+                } else if (index === $tabs.length - 1) {
                     index = 0;
                 }
             }
+            /* eslint-disable-next-line no-bitwise */
             if (!~index) { index = 0; }  // force first item
 
             var nextTab = $tabs.eq(index);
@@ -169,7 +174,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -177,15 +182,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.Slideshow', (data = new CFW_Widget_Slideshow(this, options)));
+                $this.data('cfw.Slideshow', data = new CFW_Widget_Slideshow(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Slideshow = Plugin;
     $.fn.CFW_Slideshow.Constructor = CFW_Widget_Slideshow;
-
-})(jQuery);
+}(jQuery));

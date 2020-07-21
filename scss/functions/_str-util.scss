@@ -14,3 +14,21 @@
 
     @return $string;
 }
+
+// Encode SVG data URLs into CSS friendly versions, otherwise
+// pass through the original string.
+// From https://codepen.io/kevinweber/pen/dXWoRw
+@function encode-svg($string) {
+    @if str-index($string, "data:image/svg+xml") {
+        @each $char, $encoded in $encode-svg-chars{
+            // Do not escape the url brackets
+            @if str-index($string, "url(") == 1 {
+                $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+            } @else {
+                $string: str-replace($string, $char, $encoded);
+            }
+        }
+    }
+
+    @return $string;
+}

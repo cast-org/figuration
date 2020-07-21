@@ -1,72 +1,34 @@
 // stylelint-disable declaration-no-important
 
 // Display utilities
-@each $bp in map-keys($grid-breakpoints) {
-    $bprule: breakpoint-designator($bp);
+@if $enable-utility-display {
+    @each $bp in $utility-display-breakpoints {
+        $bprule: breakpoint-designator($bp);
 
-    @include media-breakpoint-up($bp) {
-        .d#{$bprule}-none { display: none !important; }
-        .d#{$bprule}-block { display: block !important; }
-        .d#{$bprule}-flex { display: flex !important; }
-        .d#{$bprule}-inline { display: inline !important; }
-        .d#{$bprule}-inline-block { display: inline-block !important; }
-        .d#{$bprule}-inline-flex { display: inline-flex !important; }
-        .d#{$bprule}-table { display: table !important; }
-        .d#{$bprule}-table-row { display: table-row !important; }
-        .d#{$bprule}-table-cell { display: table-cell !important; }
-    }
+        @include media-breakpoint-up($bp) {
+            @each $value in $utility-display {
+                .d#{$bprule}-#{$value} { display: $value !important; }
+            }
+        }
 
-    // Skip largest breakpoint for down (equivalent to `.d-none`)
-    @if breakpoint-max($bp, $grid-breakpoints) != null {
-        .d-#{$bp}-down-none {
-            @include media-breakpoint-down($bp) {
-                display: none !important;
+        // Skip largest breakpoint for down (equivalent to `.d-none`)
+        @if $enable-utility-display-down-none {
+            @if breakpoint-max($bp, $grid-breakpoints) != null {
+                .d-#{$bp}-down-none {
+                    @include media-breakpoint-down($bp) {
+                        display: none !important;
+                    }
+                }
             }
         }
     }
-}
 
-// Print display utilities
-.print-show-block {
-    @media print {
-        display: block !important;
-    }
-}
-.print-show-inline {
-    @media print {
-        display: inline !important;
-    }
-}
-.print-show-inline-block {
-    @media print {
-        display: inline-block !important;
-    }
-}
-
-.print-only-block {
-    display: none !important;
-
-    @media print {
-        display: block !important;
-    }
-}
-.print-only-inline {
-    display: none !important;
-
-    @media print {
-        display: inline !important;
-    }
-}
-.print-only-inline-block {
-    display: none !important;
-
-    @media print {
-        display: inline-block !important;
-    }
-}
-
-.print-hide {
-    @media print {
-        display: none !important;
+    // Print display utilities
+    @if $enable-utility-display-print {
+        @media print {
+            @each $value in $utility-display {
+                .print-#{$value} { display: $value !important; }
+            }
+        }
     }
 }

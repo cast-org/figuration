@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): scrollspy.js
+ * Figuration (v4.0.0): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -32,7 +32,7 @@
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle(this.process.bind(this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
@@ -50,7 +50,7 @@
             var offsetMethod = 'offset';
             var offsetBase = 0;
 
-            if (!$.isWindow(this.$scrollElement[0])) {
+            if (this.$scrollElement[0] !== null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
                 offsetMethod = 'position';
                 offsetBase   = this.$scrollElement.scrollTop();
             }
@@ -66,11 +66,11 @@
                     var href  = $el.attr('data-cfw-scrollspy-target') || $el.attr('href');
                     var $href = /^#./.test(href) && $(href);
 
-                    return ($href
-                        && $href.length
-                        && $href.is(':visible')
-                        // && $el.is(':visible')
-                        && [[$href[offsetMethod]().top + offsetBase, href]]) || null;
+                    return ($href &&
+                        $href.length &&
+                        $href.is(':visible') &&
+                        // && $el.is(':visible') &&
+                        [[$href[offsetMethod]().top + offsetBase, href]]) || null;
                 })
                 .sort(function(a, b) { return a[0] - b[0]; })
                 .each(function() {
@@ -88,24 +88,34 @@
             var activeTarget = this.activeTarget;
             var i;
 
-            if (this.scrollHeight != scrollHeight) {
+            if (this.scrollHeight !== scrollHeight) {
                 this.refresh();
             }
 
             if (scrollTop >= maxScroll) {
-                return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
+                var target = targets[targets.length - 1];
+
+                if (activeTarget !== target) {
+                    this.activate(target);
+                }
+                return;
             }
 
             if (activeTarget && scrollTop < offsets[0] && offsets[0] > 0) {
                 this.activeTarget = null;
-                return this.clear();
+                this.clear();
+                return;
             }
 
             for (i = offsets.length; i--;) {
-                activeTarget != targets[i]
-                    && scrollTop >= offsets[i]
-                    && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
-                    && this.activate(targets[i]);
+                var isActiveTarget = activeTarget !== targets[i] &&
+                    scrollTop >= offsets[i] &&
+                    (typeof offsets[i + 1] === 'undefined' ||
+                    scrollTop < offsets[i + 1]);
+
+                if (isActiveTarget) {
+                    this.activate(targets[i]);
+                }
             }
         },
 
@@ -155,7 +165,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -163,15 +173,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.scrollspy', (data = new CFW_Widget_Scrollspy(this, options)));
+                $this.data('cfw.scrollspy', data = new CFW_Widget_Scrollspy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Scrollspy = Plugin;
     $.fn.CFW_Scrollspy.Constructor = CFW_Widget_Scrollspy;
-
-})(jQuery);
+}(jQuery));

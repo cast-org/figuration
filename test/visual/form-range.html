@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Form Range</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Form Range</h1>
+
+<div class="mb-1">
+    <div>
+        <label for="browserRange">Browser default range</label>
+    </div>
+    <input type="range" id="browserRange">
+</div>
+<div class="mb-1">
+    <label for="customRange1">Example range</label>
+    <input type="range" class="form-range" id="customRange1">
+</div>
+<div class="mb-1">
+    <label for="customRange2">Example range - range 0-5</label>
+    <input type="range" class="form-range" min="0" max="5" value="1" id="customRange2">
+</div>
+<div class="mb-1">
+    <label for="customRange3">Example range - range 0-5 + step 0.5</label>
+    <input type="range" class="form-range" min="0" max="5" step="0.5" value="2.5" id="customRange3">
+</div>
+<div class="mb-1">
+    <label for="customRange4">Disabled</label>
+    <input type="range" class="form-range" id="customRange4" disabled>
+</div>
+<div class="for-group form-row">
+    <label for="customRange5" class="col-sm-2 mb-0">Example range</label>
+    <div class="col-sm-10">
+        <input type="range" class="form-range" id="customRange5">
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

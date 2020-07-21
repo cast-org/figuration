@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Form</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+<style>
+.form-control + .form-control {
+    margin-top: .5rem;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Form</h1>
+
+<h2>Standard Inputs</h2>
+
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleSelect1">Example select</label>
+        <select class="form-control" id="exampleSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleSelect2">Example multiple select</label>
+        <select multiple class="form-control" id="exampleSelect2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleTextarea">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputColor">Color input</label>
+        <input type="color" value="#117dba" id="exampleInputColor">
+    </div>
+    <fieldset class="form-group">
+        <legend>Radio buttons</legend>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <label for="optionsRadios1" class="form-check-label">Option one is this and that&mdash;be sure to include why it's great</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <label for="optionsRadios2" class="form-check-label">Option two can be something else and selecting it will deselect option one</label>
+        </div>
+        <div class="form-check disabled">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            <label for="optionsRadios3" class="form-check-label">Option three is disabled</label>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <legend>Checkbox</legend>
+        <div class="form-check">
+            <input id="check1" type="checkbox" class="form-check-input">
+            <label for="check1" class="form-check-label"> Check me out</label>
+        </div>
+    </fieldset>
+    <div class="form-group">
+        <label for="formControlRange">Example Range input</label>
+        <input type="range" id="formControlRange">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<h2>Readonly</h2>
+<form>
+    <div class="form-group">
+        <label for="inputReadonly">Example Readonly input</label>
+        <input class="form-control" type="text" placeholder="Readonly input" id="inputReadonly" readonly>
+    </div>
+</form>
+
+<h2>Readonly Static Controls</h2>
+<form>
+    <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+
+<form class="form-inline">
+    <div class="form-group me-0_5">
+        <label for="inputEmail2" class="sr-only">Email</label>
+        <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
+    </div>
+    <div class="form-group me-0_5">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm identity</button>
+</form>
+
+<h2>Checkbox</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" disabled>
+        <label class="form-check-label" for="defaultCheck3">Disabled checkbox</label>
+    </div>
+</div>
+
+<h2>Radio</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">Default radio</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">Second default radio</label>
+    </div>
+    <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+        <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+    </div>
+</div>
+
+<h2>Checkbox (inline)</h2>
+<div class="mb-1">
+    <div class="form-check d-inline-block me-1">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check d-inline-block me-1">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check d-inline-block">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
+
+<h2>Radio (inline)</h2>
+<div class="mb-1">
+    <div class="form-check d-inline-block me-1">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check d-inline-block me-1">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check d-inline-block">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
+
+<h2>Select Sizing Comparison:</h2>
+<form class="row">
+  <div class="col-md-2 text-end">
+    <button type="button" class="btn btn-primary btn-xsmall">Test</button>
+  </div>
+  <div class="col-md-1">
+    <label class="form-label form-label-xsmall">Label</label>
+  </div>
+  <fieldset class="form-group col-md-1">
+    <label for="size0-2" class="sr-only">Example label</label>
+    <input type="text" class="form-control-static form-control-xsmall" id="size0-2" value="Static">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size0-0" class="sr-only">Example label</label>
+    <input type="text" class="form-control form-control-xsmall" id="size0-0" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size0-1" class="sr-only">Example select</label>
+    <select class="form-control form-control-xsmall" id="size0-1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+</form>
+<form class="row">
+  <div class="col-md-2 text-end">
+    <button type="button" class="btn btn-primary btn-small">Test</button>
+  </div>
+  <div class="col-md-1">
+    <label class="form-label form-label-small">Label</label>
+  </div>
+  <fieldset class="form-group col-md-1">
+    <label for="size1-2" class="sr-only">Example label</label>
+    <input type="text" class="form-control-static form-control-small" id="size1-2" value="Static">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size1-0" class="sr-only">Example label</label>
+    <input type="text" class="form-control form-control-small" id="size1-0" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size1-1" class="sr-only">Example select</label>
+    <select class="form-control form-control-small" id="size1-1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+</form>
+<form class="row">
+  <div class="col-md-2 text-end">
+    <button type="button" class="btn btn-primary">Test</button>
+  </div>
+  <div class="col-md-1">
+    <label class="form-label">Label</label>
+  </div>
+  <fieldset class="form-group col-md-1">
+    <label for="size2-2" class="sr-only">Example label</label>
+    <input type="text" class="form-control-static" id="size2-2" value="Static">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size2-0" class="sr-only">Example label</label>
+    <input type="text" class="form-control" id="size2-0" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size2-1" class="sr-only">Example select</label>
+    <select class="form-control" id="size2-1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+</form>
+<form class="row">
+  <div class="col-md-2 text-end">
+    <button type="button" class="btn btn-primary btn-large">Test</button>
+  </div>
+  <div class="col-md-1">
+    <label class="form-label form-label-large">Label</label>
+  </div>
+  <fieldset class="form-group col-md-1">
+    <label for="size3-2" class="sr-only">Example label</label>
+    <input type="text" class="form-control-static form-control-large" id="size3-2" value="Static">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size3-0" class="sr-only">Example label</label>
+    <input type="text" class="form-control form-control-large" id="size3-0" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size3-1" class="sr-only">Example select</label>
+    <select class="form-control form-control-large" id="size3-1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+</form>
+<form class="row">
+  <div class="col-md-2 text-end">
+    <button type="button" class="btn btn-primary btn-xlarge">Test</button>
+  </div>
+  <div class="col-md-1">
+    <label class="form-label form-label-xlarge">Label</label>
+  </div>
+  <fieldset class="form-group col-md-1">
+    <label for="size4-2" class="sr-only">Example label</label>
+    <input type="text" class="form-control-static form-control-xlarge" id="size4-2" value="Static">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size4-0" class="sr-only">Example label</label>
+    <input type="text" class="form-control form-control-xlarge" id="size4-0" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group col-md-3">
+    <label for="size4-1" class="sr-only">Example select</label>
+    <select class="form-control form-control-xlarge" id="size4-1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+</form>
+
+<hr>
+
+<h2>Select Sizing:</h2>
+<div class="mb-1">
+    <select class="form-control form-control-xlarge">
+        <option>Extra large select</option>
+    </select>
+    <select class="form-control form-control-large">
+        <option>Large select</option>
+    </select>
+    <select class="form-control">
+        <option>Default select</option>
+    </select>
+    <select class="form-control form-control-small">
+        <option>Small select</option>
+    </select>
+    <select class="form-control form-control-xsmall">
+        <option>Extra small select</option>
+    </select>
+</div>
+
+<hr>
+
+<h2>Select Sizing w/ validation icons:</h2>
+<form class="needs-validation" novalidate>
+    <div class="form-group">
+        <select class="form-control form-control-xlarge has-validation-icon" aria-describedby="ifb-sel-0 vfb-sel-0" required>
+            <option value="">Extra large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-0" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-0" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-large has-validation-icon" aria-describedby="ifb-sel-1 vfb-sel-1" required>
+            <option value="">Large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-1" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-1" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control has-validation-icon" aria-describedby="ifb-sel-2 vfb-sel-2" required>
+            <option value="">Default select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-2" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-2" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-small has-validation-icon" aria-describedby="ifb-sel-3 vfb-sel-3" required>
+            <option value="">Small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-3" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-3" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-xsmall has-validation-icon" aria-describedby="ifb-sel-4 vfb-sel-4" required>
+            <option value="">Extra small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-4" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-4" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control has-validation-icon" aria-describedby="ifb-sel-5 vfb-sel-5" size="3" required>
+            <option value="">Default select</option>
+            <option value="1">one</option>
+            <option value="2">two</option>
+            <option value="3">three</option>
+            <option value="4">four</option>
+            <option value="5">five</option>
+        </select>
+        <div id="ifb-sel-5" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-5" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
+
+<hr>
+
+<h2>Static and Label Sizing:</h2>
+<div class="form-group row">
+    <label for="staticSize0" class="col-sm-2 form-label form-label-xsmall">Email</label>
+    <div class="col-sm-10">
+        <input id="staticSize0" type="text" readonly class="form-control-static form-control-xsmall" value="email@example.com">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="staticSize1" class="col-sm-2 form-label form-label-small">Email</label>
+    <div class="col-sm-10">
+        <input id="staticSize1" type="text" readonly class="form-control-static form-control-small" value="email@example.com">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="staticSize2" class="col-sm-2 form-label">Email</label>
+    <div class="col-sm-10">
+        <input id="staticSize2" type="text" readonly class="form-control-static" value="email@example.com">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="staticSize3" class="col-sm-2 form-label form-label-large">Email</label>
+    <div class="col-sm-10">
+        <input id="staticSize3" type="text" readonly class="form-control-static form-control-large" value="email@example.com">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="staticSize4" class="col-sm-2 form-label form-label-xlarge">Email</label>
+    <div class="col-sm-10">
+        <input id="staticSize4" type="text" readonly class="form-control-static form-control-xlarge" value="email@example.com">
+    </div>
+</div>
+
+<hr>
+
+<h2>Misc Sizing</h2>
+<div class="row mb-1">
+    <div class="col">
+        <input type="text" class="form-control" aria-label="Name" value="Some Name">
+    </div>
+    <div class="col">
+        <div class="input-group"><div class="input-group-text" id="msize0-addon">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="msize0-addon"><button class="btn" type="button">Button</button></div>
+    </div>
+    <div class="col">
+        <select class="form-control">
+            <option value="">Default select</option>
+            <option value="1">one</option>
+            <option value="2">two</option>
+            <option value="3">three</option>
+            <option value="4">four</option>
+            <option value="5">five</option>
+        </select>
+    </div>
+    <div class="col">
+        <input type="date" class="form-control" aria-label="Name">
+    </div>
+</div>
+
+<hr>
+
+<h2>Static and Label Sizing:</h2>
+
+<h2>On Backgrounds</h2>
+
+<div class="row mb-1">
+    <div class="col">
+        <div class="p-0_5"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-primary"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-secondary"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-success"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-info"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-warning"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-danger"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-light"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-dark"><input type="text" class="form-control" placeholder="something"></div>
+    </div>
+    <div class="col">
+        <div class="p-0_5"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-primary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-secondary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-success"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-info"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-warning"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-danger"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-light"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-dark"><select class="form-control"><option>Select</option></select></div>
+    </div>
+</div>
+<div class="row mb-1">
+    <div class="col">
+        <div class="p-0_5"><div class="form-file"><input type="file" class="form-file-input" id="customFile0"><label class="form-file-label" for="customFile0"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-primary"><div class="form-file"><input type="file" class="form-file-input" id="customFile1"><label class="form-file-label" for="customFile1"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-secondary"><div class="form-file"><input type="file" class="form-file-input" id="customFile2"><label class="form-file-label" for="customFile2"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-success"><div class="form-file"><input type="file" class="form-file-input" id="customFile3"><label class="form-file-label" for="customFile3"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-info"><div class="form-file"><input type="file" class="form-file-input" id="customFile4"><label class="form-file-label" for="customFile4"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-warning"><div class="form-file"><input type="file" class="form-file-input" id="customFile5"><label class="form-file-label" for="customFile5"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-danger"><div class="form-file"><input type="file" class="form-file-input" id="customFile6"><label class="form-file-label" for="customFile6"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-light"><div class="form-file"><input type="file" class="form-file-input" id="customFile7"><label class="form-file-label" for="customFile7"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-dark"><div class="form-file"><input type="file" class="form-file-input" id="customFile8"><label class="form-file-label" for="customFile8"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+    </div>
+    <div class="col">
+        <div class="p-0_5"><div class="input-group"><div class="input-group-text" id="color-addon0">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-primary"><div class="input-group"><div class="input-group-text" id="color-addon1">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon1"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-secondary"><div class="input-group"><div class="input-group-text" id="color-addon2">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon2"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-success"><div class="input-group"><div class="input-group-text" id="color-addon3">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon3"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-info"><div class="input-group"><div class="input-group-text" id="color-addon4">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon4"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-warning"><div class="input-group"><div class="input-group-text" id="color-addon5">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon5"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-danger"><div class="input-group"><div class="input-group-text" id="color-addon6">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon6"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-light"><div class="input-group"><div class="input-group-text" id="color-addon7">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon7"><button class="btn" type="button">Button</button></div></div>
+        <div class="p-0_5 bg-dark"><div class="input-group"><div class="input-group-text" id="color-addon8">@</div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon8"><button class="btn" type="button">Button</button></div></div>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+<div class="container">
+  <div class="row mb-1">
+    <div class="col-auto">
+      <label for="row-input0" class="form-label">Label of some length</label>
+      <input id="row-input0" type="text" class="form-control">
+    </div>
+    <div class="col-auto">
+      <label for="row-input1" class="form-label">Label of some length</label>
+      <select id="row-input1" class="form-control">
+        <option selected="">Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label for="row-input2" class="form-label">Label of some length</label>
+      <div class="form-file">
+        <input id="row-input2" type="file" class="form-file-input">
+        <label for="row-input2" class="form-file-label">
+          <span class="form-file-text">Choose file...</span>
+          <span class="form-file-button">Browse</span>
+        </label>
+       </div>
+    </div>
+  </div>
+
+  <div class="mb-1">
+    <fieldset class="border">
+      <legend class="bg-light py-0_5 px-1 mb-0 border-bottom">
+      Title
+      </legend>
+      <div class="p-1">
+        Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue.
+      </div>
+    </fieldset>
+  </div>
+
+
+    <div class="form-file form-file-xsmall mb-1">
+      <input type="file" class="form-file-input" id="formFileSize0">
+      <label class="form-file-label" for="formFileSize0">
+        <span class="form-file-text">Extra small choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="form-file form-file-small mb-1">
+      <input type="file" class="form-file-input" id="formFileSize1">
+      <label class="form-file-label" for="formFileSize1">
+        <span class="form-file-text">Small choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="form-file mb-1">
+      <input type="file" class="form-file-input" id="formFileSize2">
+      <label class="form-file-label" for="formFileSize2">
+        <span class="form-file-text">Default choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="form-file form-file-large mb-1">
+      <input type="file" class="form-file-input" id="formFileSize3">
+      <label class="form-file-label" for="formFileSize3">
+        <span class="form-file-text">Large choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="form-file form-file-xlarge">
+      <input type="file" class="form-file-input" id="formFileSize4">
+      <label class="form-file-label" for="formFileSize4">
+        <span class="form-file-text">Extra large choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

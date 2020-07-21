@@ -1,0 +1,4 @@
+**/*.min.js
+**/vendor/
+/dist/
+/_gh_pages/

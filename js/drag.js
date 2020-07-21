@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): drag.js
+ * Figuration (v4.0.0): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -47,7 +47,7 @@
         },
 
         _dragStartOn : function() {
-            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', $.proxy(this._dragStart, this));
+            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', this._dragStart.bind(this));
             // prevent image dragging in IE...
             if (this.$element[0].attachEvent) {
                 this.$element[0].attachEvent('ondragstart', this._dontStart);
@@ -55,7 +55,7 @@
         },
 
         _dragStartOff : function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             $(document).off('.cfw.dragin.' + this.instance);
             this.$element.off('.cfw.dragstart');
         },
@@ -64,9 +64,12 @@
             var $selfRef = this;
 
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).length) {
+            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
                 return;
             }
+
+            // check for disabled element
+            if (this.$element.is('.disabled, :disabled')) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;
@@ -159,7 +162,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -167,18 +170,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.drag', (data = new CFW_Widget_Drag(this, options)));
+                $this.data('cfw.drag', data = new CFW_Widget_Drag(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Drag = Plugin;
     $.fn.CFW_Drag.Constructor = CFW_Widget_Drag;
-
-})(jQuery);
+}(jQuery));

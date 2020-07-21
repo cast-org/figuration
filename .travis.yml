@@ -1,34 +1,29 @@
-﻿#sudo: false
-dist: trusty
+﻿addons:
+  chrome: stable
+  sauce_connect:
+    enabled: true
+    tunnel_domains: lh
+  hosts:
+    - lh
+
 language: node_js
 
 git:
     depth: 3
 
-# For now, only build 'push' items on master or development branches
-# http://stackoverflow.com/questions/31882306/
-# Most contributions should come through pull requests
-# Should help limit overloading on Sauce tests
-# Disable for now as we are limit concurrent jobs through Travis settings
-#branches:
-#    only:
-#        - master
-
 node_js:
-    - "6"
-    - "8"
+    - "10"
+    - "12"
 
 before_install:
-    - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
+  - google-chrome-stable --product-version
 
 install:
-    - bundle install --jobs=3
     - npm install
 
 cache:
     directories:
         - node_modules
-        - vendor/bundle
 
 env:
     global:
@@ -39,8 +34,8 @@ env:
 matrix:
     fast_finish: true
     exclude:
-        - node_js: "8"
+        - node_js: "12"
           env: TEST_SAUCE="false"
     include:
-        - node_js: "8"
+        - node_js: "12"
           env: TEST_SAUCE="true"

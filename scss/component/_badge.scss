@@ -1,71 +1,60 @@
-// Base class
-.badge {
-    display: inline-block;
-    padding: $badge-padding-y $badge-padding-x;
-    font-size: $badge-font-size;
-    font-weight: $badge-font-weight;
-    line-height: 1;
-    color: $badge-color;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border: $badge-border-width solid transparent;
-    @include border-radius($badge-border-radius);
-
-    // Empty badges collapse automatically
-    &:empty {
-        display: none;
-    }
-
-    // Default color (linked badges get darker on :hover)
-    @include badge-variant($badge-color, $badge-bg, $badge-link-hover-color, $badge-hover-bg);
-}
-
-// Quick fix for badges in buttons
-.btn .badge {
-    position: relative;
-    top: -1px;
-}
-
-// Add hover effects, but only for links
-// stylelint-disable selector-no-qualifying-type
-a.badge {
-    text-decoration: none;
-
-    @include hover-focus {
-        color: $badge-link-hover-color;
+@if $enable-badge {
+    // Base class
+    .badge {
+        display: inline-block;
+        padding: $badge-padding-y $badge-padding-x;
+        font-family: $badge-font-family;
+        @include font-size($badge-font-size);
+        font-weight: $badge-font-weight;
+        line-height: $badge-line-height;
+        color: $badge-color;
+        text-align: center;
         text-decoration: none;
+        white-space: nowrap;
+        vertical-align: baseline;
+        background-color: $badge-bg;
+        border: $badge-border-width solid transparent;
+        @include border-radius($badge-border-radius);
+
+        // Empty badges collapse automatically
+        &:empty {
+            display: none;
+        }
+
+        @if $enable-badge-close {
+            .close {
+                padding-right: $badge-close-padding-x;
+                padding-left: $badge-close-padding-x;
+                margin-right: -$badge-close-padding-x;
+                @include font-size($badge-close-font-size);
+            }
+        }
     }
-}
-// stylelint-enable selector-no-qualifying-type
 
-// Pill
-.badge-pill {
-    padding-right: $badge-pill-padding-x;
-    padding-left: $badge-pill-padding-x;
-    @include border-radius($badge-pill-border-radius);
-}
-
-// Colors (linked badges get darker on :hover)
-@each $theme, $colors in $context-themes {
-    $color:       map-get($colors, "control-color");
-    $bg:          map-get($colors, "control-bg");
-    $hover-color: map-get($colors, "control-hover-color");
-    $hover-bg:    map-get($colors, "control-hover-bg");
-
-    .badge-#{$theme} {
-        @include badge-variant($color, $bg, $hover-color, $hover-bg);
+    // Quick fix for badges in buttons
+    @if $enable-btn {
+        .btn .badge {
+            position: relative;
+            top: -1px;
+        }
     }
-}
 
-// Outline (linked badges get color fill on :hover)
-.badge-outline {
-    @include badge-outline-variant($badge-bg);
-}
-@each $theme, $colors in $context-themes {
-    $color: map-get($colors, "control-bg");
+    // Badge group
+    @if $enable-badge-group {
+        .badge-group {
+            display: inline-flex;
+            vertical-align: baseline;
 
-    .badge-outline-#{$theme} {
-        @include badge-outline-variant($color);
+            > .badge {
+                &:not(:first-child) {
+                    margin-left: -$badge-border-width;
+                    @include border-start-radius(0);
+                }
+
+                &:not(:last-child) {
+                    @include border-end-radius(0);
+                }
+            }
+        }
     }
 }

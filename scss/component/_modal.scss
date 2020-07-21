@@ -3,160 +3,356 @@
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and shit
 
+@if $enable-modal {
+    .modal-open {
+        // Kill the scroll on the body
+        overflow: hidden;
 
-// Kill the scroll on the body
-.modal-open {
-    overflow: hidden;
-}
-
-// Container that the modal scrolls within
-.modal {
-    direction: ltr #{"/*rtl:ignore*/"};
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: $zindex-modal;
-    display: none;
-    overflow: hidden;
-    // Prevent Chrome on Windows from adding a focus outline. For details, see
-    // https://github.com/twbs/bootstrap/pull/10951.
-    outline: 0;
-    // Don't use `-webkit-overflow-scrolling: touch;` due to a
-    // iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-    // See also https://github.com/twbs/bootstrap/issues/17695
-    //-webkit-overflow-scrolling: touch;
-
-    // When fading in the modal, animate it to slide down
-    &.fade .modal-dialog {
-        @if $enable-transitions {
-            transition: $modal-transition;
-            transform: translate(0, -25%);
+        .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
         }
     }
-    &.in .modal-dialog { transform: translate(0, 0); }
-}
-.modal-open .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
 
-// Shell div to position the modal with bottom padding
-.modal-dialog {
-    direction: ltr;
-    position: relative;
-    width: auto;
-    margin: $modal-dialog-margin;
-    // Allow clicks to pass through for custom click handling to close modal
-    pointer-events: none;
-}
+    // Container that the modal scrolls within
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: $zindex-modal;
+        display: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        direction: ltr #{"/*rtl:ignore*/"};
+        // Prevent Chrome on Windows from adding a focus outline. For details, see
+        // https://github.com/twbs/bootstrap/pull/10951.
+        outline: 0;
+        // Don't use `-webkit-overflow-scrolling: touch;` due to a
+        // iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+        // See also https://github.com/twbs/bootstrap/issues/17695
+        //-webkit-overflow-scrolling: touch;
 
-.modal-dialog-centered {
-    display: flex;
-    align-items: center;
-    min-height: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-
-    .modal-content {
-        margin-top: $modal-dialog-margin;
-        margin-bottom: $modal-dialog-margin;
+        &.fade .modal-dialog {
+            @include transition($modal-transition);
+            transform: $modal-transform-fade;
+        }
     }
-}
 
-// Actual modal
-.modal-content {
-    position: relative;
-    width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-    // Override the `pointer-events: none;` in the .modal-dialog
-    pointer-events: auto;
-    background-color: $modal-content-bg;
-    background-clip: padding-box;
-    border: $modal-content-border-width solid $modal-content-border-color;
-    @include border-radius($modal-border-radius);
-    @include box-shadow($modal-content-xs-box-shadow);
-    // Remove focus outline from opened modal
-    outline: 0;
-}
-
-// Modal background
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: $zindex-modal-backdrop;
-    background-color: $modal-backdrop-bg;
-
-    // Fade for backdrop
-    &.fade { opacity: 0; }
-    &.in { opacity: $modal-backdrop-opacity; }
-}
-
-// Modal header
-// Top section of the modal w/ title and dismiss
-.modal-header {
-    padding: $modal-header-padding-y $modal-header-padding-x;
-    border-bottom: $modal-header-border-width solid $modal-header-border-color;
-    @include border-top-radius($modal-inner-border-radius);
-    @include clearfix;
-
-    // Close icon
-    .close {
-        padding: $modal-close-padding-y $modal-close-padding-x;
-        margin: (-$modal-header-padding-y) (-$modal-header-padding-x);
-    }
-}
-
-// Title text within header
-.modal-title {
-    margin: 0;
-    line-height: $modal-title-line-height;
-}
-
-// Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
-.modal-body {
-    position: relative;
-    padding: $modal-inner-padding-y $modal-inner-padding-x;
-}
-
-// Footer (for actions)
-.modal-footer {
-    padding: $modal-footer-padding-y $modal-footer-padding-x;
-    text-align: right; // right align buttons
-    border-top: $modal-footer-border-width solid $modal-footer-border-color;
-    @include border-bottom-radius($modal-inner-border-radius);
-    @include clearfix(); // clear it in case folks use .float-* classes on buttons
-}
-
-// Scale up the modal
-@include media-breakpoint-up(#{$modal-breakpoint}) {
-    // Automatically set modal's width for larger viewports
+    // Shell div to position the modal
     .modal-dialog {
-        max-width: $modal-md;
-        margin: $modal-dialog-sm-up-margin-y auto;
+        position: relative;
+        display: flex;
+        width: auto;
+        margin: $modal-dialog-margin;
+        direction: ltr;
+        // Allow clicks to pass through for custom click handling to close modal
+        pointer-events: none;
     }
 
-    .modal-dialog-centered {
-        margin-top: 0;
-        margin-bottom: 0;
+    @if $enable-modal-scrollable {
+        .modal-dialog-scrollable {
+            max-height: calc(100% - #{$modal-dialog-margin * 2});
+
+            .modal-content {
+                max-height: calc(100vh - #{$modal-dialog-margin * 2});  // IE10/11
+                overflow: hidden;
+            }
+
+            .modal-header,
+            .modal-footer {
+                flex-shrink: 0;
+            }
+
+            .modal-body {
+                overflow-y: auto;
+            }
+        }
+    }
+
+    @if $enable-modal-centered {
+        .modal-dialog-centered {
+            align-items: center;
+            min-height: calc(100% - #{$modal-dialog-margin * 2});
+
+            // Extend `modal-dialog-centered` to full viewport height
+            // to allow centered modal in IE
+            &::before {
+                display: block;
+                height: calc(100vh - #{$modal-dialog-margin * 2});
+                //stylelint-disable-next-line declaration-block-no-duplicate-properties
+                height: min-content; // Reset height to 0 except on IE
+                content: "";
+            }
+
+            @if $enable-modal-scrollable {
+                // Ensure `.modal-body` shows scrollbar (IE10/11)
+                &.modal-dialog-scrollable {
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
+
+                    .modal-content {
+                        max-height: none;
+                    }
+
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal.fade & {
+                transform: translate($modal-transform-side-offset, 0);
+            }
+        }
+    }
+
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            min-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal.fade & {
+                transform: translate(-$modal-transform-side-offset, 0);
+            }
+        }
+    }
+
+    .modal.in .modal-dialog {
+        transform: $modal-transform-in;
+    }
+
+    // Close is blocked animation
+    .modal.modal-blocked .modal-content {
+        @include transition($modal-transition);
+        transform: $modal-transform-blocked;
+    }
+
+    // Actual modal
+    .modal-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
+        color: $modal-content-color;
+        // Override the `pointer-events: none;` in the .modal-dialog
+        pointer-events: auto;
+        background-color: $modal-content-bg;
+        background-clip: padding-box;
+        border: $modal-content-border-width solid $modal-content-border-color;
+        @include border-radius($modal-border-radius);
+        @include box-shadow($modal-content-box-shadow);
+        // Remove focus outline from opened modal
+        outline: 0;
+    }
+
+    %modal-side-content {
+        // IE fix to get modal full height
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            min-height: 100vh;
+        }
+        @include border-radius(0);
+    }
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start .modal-content {
+            border-width: 0 $modal-content-border-width 0 0;
+            @extend %modal-side-content;
+        }
+    }
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end .modal-content {
+            border-width: 0 0 0 $modal-content-border-width;
+            @extend %modal-side-content;
+        }
+    }
+
+    // Modal background
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: $zindex-modal-backdrop;
+        width: 100vw;
+        height: 100vh;
+        background-color: $modal-backdrop-bg;
+
+        // Fade for backdrop
+        &.fade { opacity: 0; }
+        &.in { opacity: $modal-backdrop-opacity; }
+    }
+
+    // Modal header
+    // Top section of the modal w/ title and dismiss
+    @if $enable-modal-header {
+        .modal-header {
+            display: flex;
+            align-items: flex-start; // Keep items aligned to the top
+            justify-content: space-between; // Seperate title and close items to each side
+            padding: $modal-header-padding-y $modal-header-padding-x;
+            border-bottom: $modal-header-border-width solid $modal-header-border-color;
+            @include border-top-radius($modal-inner-border-radius);
+
+            // Close icon
+            .close {
+                // Make sure close appears 'after' the title
+                order: 1;
+                padding: $modal-close-padding-y $modal-close-padding-x;
+                // Left auto margin keeps close pushed to the right side even when no title
+                margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
+            }
+        }
+    }
+
+    // Title text within header
+    @if $enable-modal-title {
+        .modal-title {
+            margin: 0;
+            line-height: $modal-title-line-height;
+        }
+    }
+
+    // Modal body
+    // Where all modal content resides (sibling of `.modal-header` and `.modal-footer`)
+    @if $enable-modal-body {
+        .modal-body {
+            position: relative;
+            // Make body as tall as possible if there is a height defined on `.modal-content`
+            flex: 1 1 auto;
+            padding: $modal-body-padding-y $modal-body-padding-x;
+        }
+    }
+
+    %modal-side-body {
+        flex-shrink: 0;
+    }
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+
+    // Footer (for actions)
+    @if $enable-modal-footer {
+        .modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; // right align buttons
+            padding: $modal-footer-padding-y $modal-footer-padding-x;
+            border-top: $modal-footer-border-width solid $modal-footer-border-color;
+            @include border-bottom-radius($modal-inner-border-radius);
+
+            // Simulate spaces between footer elements with margins
+            > :not(:first-child) { margin-left: .25rem; }
+            > :not(:last-child) { margin-right: .25rem; }
+        }
+    }
+
+    // Scale up the modal
+    @include media-breakpoint-up(#{$modal-breakpoint}) {
+        // Automatically set modal's width for larger viewports
+        .modal-dialog {
+            max-width: $modal-md;
+            margin: $modal-dialog-bp-up-margin-y auto;
+        }
 
         .modal-content {
-            margin-top: $modal-dialog-sm-up-margin-y;
-            margin-bottom: $modal-dialog-sm-up-margin-y;
+            @include box-shadow($modal-content-bp-up-box-shadow);
+        }
+
+        @if $enable-modal-scrollable {
+            .modal-dialog-scrollable {
+                max-height: calc(100% - #{$modal-dialog-bp-up-margin-y * 2});
+
+                .modal-content {
+                    max-height: calc(100vh - #{$modal-dialog-bp-up-margin-y * 2});
+                }
+            }
+        }
+
+        @if $enable-modal-centered {
+            .modal-dialog-centered {
+                min-height: calc(100% - #{$modal-dialog-bp-up-margin-y * 2});
+
+                &::before {
+                    height: calc(100vh - #{$modal-dialog-bp-up-margin-y * 2});
+                    //stylelint-disable-next-line declaration-block-no-duplicate-properties
+                    height: min-content; // Reset height to 0 except on IE
+                }
+            }
+        }
+
+        .modal-sm { max-width: $modal-sm; }
+    }
+
+    @include media-breakpoint-up(#{$modal-lg-breakpoint}) {
+        .modal-lg { max-width: $modal-lg; }
+    }
+
+    // Ovveride heights for scrollable side variant
+    @if $enable-modal-scrollable {
+        %modal-side-scrollable {
+            max-height: 100%;
+
+            .modal-content {
+                max-height: 100vh;
+            }
+
+            .modal-body {
+                flex-shrink: 1;
+            }
+        }
+        @if $enable-modal-side-start {
+            .modal-dialog-side-start.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
+        }
+        @if $enable-modal-side-end {
+            .modal-dialog-side-end.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
         }
     }
 
-    .modal-content {
-        @include box-shadow($modal-content-sm-up-box-shadow);
+    @if $enable-modal-fullscreen {
+        .modal-fullscreen {
+            @include modal-fullscreen();
+        }
     }
 
-    .modal-sm { max-width: $modal-sm; }
-}
+    @if $enable-modal-fullscreen-responsive {
+        @each $bp in $modal-fullscreen-breakpoints {
 
-@include media-breakpoint-up(#{$modal-lg-breakpoint}) {
-    .modal-lg { max-width: $modal-lg; }
+            // Skip largest for down (equivalent to `.modal-fullscreen`)
+            @if breakpoint-max($bp, $grid-breakpoints) != null {
+                @include media-breakpoint-down($bp) {
+                    .modal-fullscreen-#{$bp}-down {
+                        @include modal-fullscreen();
+                    }
+                }
+            }
+        }
+    }
 }

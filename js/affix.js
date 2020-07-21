@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): affix.js
+ * Figuration (v4.0.0): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -35,8 +35,8 @@
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
-                .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
+                .on('scroll.cfw.affix',  this.checkPosition.bind(this))
+                .on('click.cfw.affix',  this.checkPositionDelayed.bind(this));
 
             this.$element.CFW_trigger('init.cfw.affix');
 
@@ -48,19 +48,28 @@
             var position     = this.$element.offset();
             var targetHeight = this.$target.height();
 
-            if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false;
-
-            if (this.affixed == 'bottom') {
-                if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom';
-                return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom';
+            if (offsetTop !== null && this.affixed === 'top') {
+                return scrollTop < offsetTop ? 'top' : false;
             }
 
-            var initializing   = this.affixed == null;
-            var colliderTop    = initializing ? scrollTop : position.top;
+            if (this.affixed === 'bottom') {
+                if (offsetTop !== null) {
+                    return scrollTop + this.unpin <= position.top ? false : 'bottom';
+                }
+
+                return scrollTop + targetHeight <= scrollHeight - offsetBottom ? false : 'bottom';
+            }
+
+            var initializing = this.affixed === null;
+            var colliderTop = initializing ? scrollTop : position.top;
             var colliderHeight = initializing ? targetHeight : height;
 
-            if (offsetTop != null && scrollTop <= offsetTop) return 'top';
-            if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom';
+            if (offsetTop !== null && scrollTop <= offsetTop) {
+                return 'top';
+            }
+            if (offsetBottom !== null && colliderTop + colliderHeight >= scrollHeight - offsetBottom) {
+                return 'bottom';
+            }
 
             return false;
         },
@@ -70,11 +79,12 @@
             this.$element.removeClass(CFW_Widget_Affix.RESET).addClass('affix');
             var scrollTop = this.$target.scrollTop();
             var position  = this.$element.offset();
-            return (this.pinnedOffset = position.top - scrollTop);
+            this.pinnedOffset = position.top - scrollTop;
+            return this.pinnedOffset;
         },
 
         checkPositionDelayed : function() {
-            setTimeout($.proxy(this.checkPosition, this), 1);
+            setTimeout(this.checkPosition.bind(this), 1);
         },
 
         checkPosition : function() {
@@ -85,16 +95,20 @@
             var offsetBottom = this.settings.bottom;
             var scrollHeight =  Math.max($(document).height(), $(document.body).height());
 
-            if (typeof offsetTop == 'function')    { offsetTop    = offsetTop(this.$element); }
-            if (typeof offsetBottom == 'function') { offsetBottom = offsetBottom(this.$element); }
+            if (typeof offsetTop === 'function') {
+                offsetTop    = offsetTop(this.$element);
+            }
+            if (typeof offsetBottom === 'function') {
+                offsetBottom = offsetBottom(this.$element);
+            }
 
             var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
-            if (this.affixed != affix) {
-                if (this.unpin != null) {
+            if (this.affixed !== affix) {
+                if (this.unpin !== null) {
                     this.$element.css({
-                        'top': '',
-                        'position': ''
+                        top: '',
+                        position: ''
                     });
                 }
 
@@ -106,7 +120,7 @@
                 }
 
                 this.affixed = affix;
-                this.unpin = (affix == 'bottom') ? this.getPinnedOffset() : null;
+                this.unpin = affix === 'bottom' ? this.getPinnedOffset() : null;
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
@@ -114,7 +128,7 @@
                     .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
-            if (affix == 'bottom') {
+            if (affix === 'bottom') {
                 this.$element.offset({
                     top: scrollHeight - height - offsetBottom
                 });
@@ -137,7 +151,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -145,15 +159,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.affix', (data = new CFW_Widget_Affix(this, options)));
+                $this.data('cfw.affix', data = new CFW_Widget_Affix(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Affix = Plugin;
     $.fn.CFW_Affix.Constructor = CFW_Widget_Affix;
-
-})(jQuery);
+}(jQuery));

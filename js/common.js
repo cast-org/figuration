@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): common.js
+ * Figuration (v4.0.0): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,8 +10,6 @@
 
     var cfwList = {
         '[data-cfw-dismisss="alert"]': 'CFW_Alert',
-        '[data-cfw="button"]': 'CFW_Button',
-        '[data-cfw="buttons"]': 'CFW_Button',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',
@@ -24,33 +22,36 @@
         '[data-cfw="slideshow"]': 'CFW_Slideshow',
         '[data-cfw="scrollspy"]': 'CFW_Scrollspy',
         '[data-cfw="lazy"]': 'CFW_Lazy',
-        '[data-cfw="slider"]': 'CFW_Slider',
         '[data-cfw="equalize"]': 'CFW_Equalize',
         '[data-cfw="player"]': 'CFW_Player'
     };
 
     $.fn.CFW_Init = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]();
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]();
+                });
+            }
         }
         return this;
     };
 
     $.fn.CFW_Dispose = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]('dispose');
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]('dispose');
+                });
+            }
         }
         return this;
     };
@@ -60,4 +61,4 @@
             $(document.body).CFW_Init();
         }
     });
-})(jQuery);
+}(jQuery));

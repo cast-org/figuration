@@ -1,7 +1,14 @@
 $(function() {
     'use strict';
 
-    QUnit.module('CFW_Alert');
+    QUnit.module('CFW_Alert', {
+        beforeEach: function() {
+            $(window).scrollTop(0);
+        },
+        afterEach: function() {
+            $('#qunit-fixture').empty();
+        }
+    });
 
     QUnit.test('should be defined on jquery object', function(assert) {
         assert.expect(1);
@@ -10,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Alert();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -18,10 +25,10 @@ $(function() {
 
     QUnit.test('should fade element out on clicking .close (no transition)', function(assert) {
         assert.expect(1);
-        var alertHTML = '<div class="alert alert-danger">'
-            + '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div class="alert alert-danger">' +
+            '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', 'none').appendTo($('#qunit-fixture'));
         var $close = $alert.find('.close');
         $close
@@ -33,10 +40,10 @@ $(function() {
     QUnit.test('should fade element out on clicking .close (with transition)', function(assert) {
         assert.expect(1);
         var done = assert.async();
-        var alertHTML = '<div class="alert alert-danger">'
-            + '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div class="alert alert-danger">' +
+            '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', '.05s').appendTo($('#qunit-fixture'));
         var $close = $alert.find('.close');
         $alert
@@ -51,10 +58,10 @@ $(function() {
 
     QUnit.test('should remove element when clicking .close (no transition)', function(assert) {
         assert.expect(2);
-        var alertHTML = '<div class="alert alert-danger">'
-            + '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div class="alert alert-danger">' +
+            '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
         var $close = $alert.find('.close');
         assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom');
@@ -67,10 +74,10 @@ $(function() {
     QUnit.test('should remove element when clicking .close (with transition)', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var alertHTML = '<div class="alert alert-danger">'
-            + '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div class="alert alert-danger">' +
+            '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', '.05s').appendTo('#qunit-fixture');
         var $close = $alert.find('.close');
         assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom');
@@ -87,7 +94,7 @@ $(function() {
     QUnit.test('should not fire afterClose when beforeClose is prevented', function(assert) {
         assert.expect(1);
         var done = assert.async();
-        $('<div class="alert"/>')
+        $('<div class="alert"></div>')
             .on('beforeClose.cfw.alert', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeClose event fired');
@@ -101,10 +108,10 @@ $(function() {
 
     QUnit.test('should remove target element when clicking .close (no transition)', function(assert) {
         assert.expect(2);
-        var alertHTML = '<div id="test">'
-            + '<a class="close" href="#test" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div id="test">' +
+            '<a class="close" href="#test" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
         var $close = $alert.find('.close');
         assert.notEqual($('#qunit-fixture').find('#test').length, 0, 'element added to dom');
@@ -117,10 +124,10 @@ $(function() {
     QUnit.test('should remove target element when clicking .close (with transition)', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var alertHTML = '<div id="test">'
-            + '<a class="close" href="#test" data-cfw-dismiss="alert">&times;</a>'
-            + '<p><strong>Danger!</strong> There is definitaly some error now.</p>'
-            + '</div>';
+        var alertHTML = '<div id="test">' +
+            '<a class="close" href="#test" data-cfw-dismiss="alert">&times;</a>' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>';
         var $alert = $(alertHTML).css('transition', '.05s').appendTo('#qunit-fixture');
         var $close = $alert.find('.close');
         assert.notEqual($('#qunit-fixture').find('#test').length, 0, 'element added to dom');

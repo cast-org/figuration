@@ -1,0 +1,27 @@
+{%- assign pathPartials = pathVersion | prepend: "." | append: "/partials" -%}
+
+{%- assign head = pathPartials | append: "/head.html" -%}
+{%- assign skiplink = pathPartials | append: "/skiplink.html" -%}
+{%- assign notification = pathPartials | append: "/notification.html" -%}
+{%- assign topnav = pathPartials | append: "/topnav.html" -%}
+{%- assign body = pathPartials | append: "/body.html" -%}
+{%- assign footer = pathPartials | append: "/footer.html" -%}
+{%- assign algolia = pathPartials | append: "/algolia.html" -%}
+
+<!doctype html>
+<html lang="{{ site.language }}">
+<head>
+{% include head %}
+</head>
+<body>
+{% include skiplink %}
+{% include notification %}
+{% include topnav %}
+{% include body %}
+{% include footer -%}
+
+{% if site.environment == "production" -%}
+{% include algolia %}
+{% endif -%}
+</body>
+</html>

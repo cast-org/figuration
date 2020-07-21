@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): modal.js
+ * Figuration (v4.0.0): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -68,10 +68,9 @@
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
-            this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', this.toggle.bind(this));
 
             this.$target.data('cfw.modal', this);
 
@@ -111,7 +110,8 @@
             this.escape();
             this.resize();
 
-            this.$target.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
+            this.$target
+                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
                     if (e) { e.preventDefault(); }
                     $selfRef.hide();
                 })
@@ -119,7 +119,7 @@
 
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
                 $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
-                    if ($(e.target).is($selfRef.$target)) $selfRef.ignoreBackdropClick = true;
+                    if ($(e.target).is($selfRef.$target)) { $selfRef.ignoreBackdropClick = true; }
                 });
             });
 
@@ -143,6 +143,7 @@
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
+                .removeAttr('aria-modal')
                 .off('.dismiss.cfw.modal');
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
@@ -153,11 +154,12 @@
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
-            this.$dialog.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$dialog.CFW_transition(null, this._hideComplete.bind(this));
         },
 
         _showComplete : function() {
             var $selfRef = this;
+            var $modalBody = this.$dialog.find('.modal-body');
 
             if (this.settings.animate) {
                 this.$target.addClass('fade');
@@ -167,13 +169,22 @@
                 this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$target.show().scrollTop(0);
+            this.$target.show();
+
+            if ($modalBody.length) {
+                $modalBody.scrollTop(0); // scrollable body variant
+            }
+            this.$dialog.scrollTop(0); // fullscreen variant
+            this.$target.scrollTop(0);
 
             this.adjustDialog();
 
-            this.$target[0].offsetWidth; // Force Reflow
+            $.CFW_reflow(this.$target[0]); // Force Reflow
 
-            this.$target.addClass('in').removeAttr('aria-hidden');
+            this.$target
+                .addClass('in')
+                .removeAttr('aria-hidden')
+                .attr('aria-modal', true);
 
             // Mutation handler
             this.$target
@@ -187,12 +198,12 @@
             this.enforceFocus();
             this.enforceFocusLast();
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
-            }
+            };
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -218,7 +229,7 @@
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
             });
-            this.$element && this.$element.trigger('focus');
+            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -238,9 +249,9 @@
             // is last tabbable item in document - otherwise focus drops off page
             if (!this.$focusLast) {
                 this.$focusLast = $(document.createElement('span'))
-                .addClass('modal-focuslast')
-                .attr('tabindex', 0)
-                .appendTo(this.$target);
+                    .addClass('modal-focuslast')
+                    .attr('tabindex', 0)
+                    .appendTo(this.$target);
             }
             if (this.$focusLast) {
                 this.$focusLast
@@ -253,21 +264,29 @@
 
         escape : function() {
             var $selfRef = this;
-            if (this.isShown && this.settings.keyboard) {
+            var KEYCODE_ESC = 27;
+
+            if (!this.isShown) {
+                this.$target.off('keydown.dismiss.cfw.modal');
+            }
+
+            if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    if (e.which == 27) {
-                        e.preventDefault();
-                        $selfRef.hide();
+                    if (e.which === KEYCODE_ESC) {
+                        if ($selfRef.settings.keyboard) {
+                            e.preventDefault();
+                            $selfRef.hide();
+                        } else {
+                            $selfRef.hideBlocked();
+                        }
                     }
                 });
-            } else if (!this.isShown) {
-                this.$target.off('keydown.dismiss.cfw.modal');
             }
         },
 
         resize : function() {
             if (this.isShown) {
-                $(window).on('resize.cfw.modal', $.proxy(this.handleUpdate, this));
+                $(window).on('resize.cfw.modal', this.handleUpdate.bind(this));
             } else {
                 $(window).off('resize.cfw.modal');
             }
@@ -275,7 +294,7 @@
 
         // these following methods are used to handle overflowing modals
         handleUpdate : function() {
-            if (this.settings.backdrop) this.adjustBackdrop();
+            if (this.settings.backdrop) { this.adjustBackdrop(); }
             this.adjustDialog();
         },
 
@@ -303,7 +322,7 @@
 
         checkScrollbar : function() {
             var rect = document.body.getBoundingClientRect();
-            this.bodyIsOverflowing = rect.left + rect.right < window.innerWidth;
+            this.bodyIsOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
             this.scrollbarWidth = $.CFW_measureScrollbar();
             this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },
@@ -313,30 +332,40 @@
             var sideName = this.scrollbarSide.capitalize();
 
             if (this.bodyIsOverflowing) {
+                // Notes about below padding/margin calculations:
+                // node.style.paddingRight returns: actual value or '' if not set
+                // $(node).css('padding-right') returns: calculated value or 0 if not set
+
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.padding-dim', this.style['padding' + sideName] || '');
-                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
+                    var actualPadding = this.style['padding' + sideName];
+                    var calculatedPadding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.padding-dim', actualPadding)
+                        .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update sticky element margin
                 $(this.stickyContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.margin-dim', this.style['margin' + sideName] || '');
-                    var margin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('margin-' + $selfRef.scrollbarSide, -(margin + $selfRef.scrollbarWidth));
+                    var actualMargin = this.style['margin' + sideName];
+                    var calculatedMargin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.margin-dim', actualMargin)
+                        .css('margin-' + $selfRef.scrollbarSide, calculatedMargin - $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update body padding
-                this.$body.data('cfw.padding-dim', document.body.style['padding' + sideName] || '');
-                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
-                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
+                var actualPadding = document.body.style['padding' + sideName];
+                var calculatedPadding = parseFloat(this.$body.css('padding-' + $selfRef.scrollbarSide));
+                this.$body
+                    .data('cfw.padding-dim', actualPadding)
+                    .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
             }
 
             this.$target
-                .on('touchmove.cfw.modal', $.proxy(this._scrollBlock, this))
+                .on('touchmove.cfw.modal', this._scrollBlock.bind(this))
                 .CFW_trigger('scrollbarSet.cfw.modal');
         },
 
@@ -362,7 +391,7 @@
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
-            if (typeof padding !== undefined) {
+            if (typeof padding !== 'undefined') {
                 this.$body.css('padding-' + this.scrollbarSide, padding);
                 this.$body.removeData('cfw.padding-dim');
             }
@@ -373,6 +402,13 @@
         },
 
         _scrollBlock : function(e) {
+            // Allow scrolling for scrollable modal body
+            var $content = this.$target.find('.modal-dialog-scrollable');
+            if ($content.length && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
+                e.stopPropagation();
+                return;
+            }
+
             var top = this.$target[0].scrollTop;
             var totalScroll = this.$target[0].scrollHeight;
             var currentScroll = top + this.$target[0].offsetHeight;
@@ -389,7 +425,7 @@
         backdrop : function(callback) {
             var $selfRef = this;
 
-            var animate = (this.settings.animate) ? 'fade' : '';
+            var animate = this.settings.animate ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
                 this.$backdrop = $(document.createElement('div'))
@@ -402,12 +438,14 @@
                         return;
                     }
                     if (e.target !== e.currentTarget) { return; }
-                    $selfRef.settings.backdrop == 'static'
-                        ? $selfRef.$target.trigger('focus')
-                        : $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef.hideBlocked();
+                    } else {
+                        $selfRef.hide();
+                    }
                 });
 
-                this.$backdrop[0].offsetWidth; // Force Reflow
+                $.CFW_reflow(this.$backdrop[0]); // Force Reflow
 
                 this.$backdrop.addClass('in');
 
@@ -417,7 +455,7 @@
 
                 var callbackRemove = function() {
                     $selfRef.removeBackdrop();
-                    callback && callback();
+                    if (callback) { callback(); }
                 };
 
                 this.$backdrop.CFW_transition(null, callbackRemove);
@@ -427,8 +465,25 @@
         },
 
         removeBackdrop : function() {
-            this.$backdrop && this.$backdrop.remove();
-            this.$backdrop = null;
+            if (this.$backdrop) {
+                this.$backdrop.remove();
+                this.$backdrop = null;
+            }
+        },
+
+        hideBlocked : function() {
+            var $selfRef = this;
+            if (!this.$target.CFW_trigger('beforeHide.cfw.modal')) {
+                return;
+            }
+
+            var complete = function() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target.removeClass('modal-blocked');
+            };
+
+            this.$target.addClass('modal-blocked');
+            this.$dialog.CFW_transition(null, complete);
         },
 
         unlink : function() {
@@ -482,7 +537,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -490,18 +545,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.modal', (data = new CFW_Widget_Modal(this, options)));
+                $this.data('cfw.modal', data = new CFW_Widget_Modal(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
-
-})(jQuery);
+}(jQuery));

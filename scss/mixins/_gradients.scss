@@ -20,7 +20,7 @@
 }
 
 // Striped diagonal gradient
-@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 135deg) {
+@mixin gradient-striped($color: rgba(255,255,255,.25), $angle: 135deg) {
     background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
 }
 

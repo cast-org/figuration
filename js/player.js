@@ -1,6 +1,7 @@
+/* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): player.js
+ * Figuration (v4.0.0): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,18 +10,17 @@
     'use strict';
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/audio.js
-    function audioTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var audioTest = function() {
         var elem = document.createElement('audio');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
                 bool.mp3  = elem.canPlayType('audio/mpeg;').replace(/^no$/, '');
-                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') .replace(/^no$/, '');
+                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') || elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, '');
 
                 // Mimetypes accepted:
                 // http://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
@@ -28,18 +28,18 @@
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
                 bool.m4a  = (elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')).replace(/^no$/, '');
             }
-        } catch (e) { }
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/video.js
-    function videoTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var videoTest = function() {
         var elem = document.createElement('video');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool = new Boolean(bool);
@@ -51,10 +51,11 @@
                 bool.vp9 = elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, '');
                 bool.hls = elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, '');
             }
-        } catch (e){}
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     var html5 = {
         audio: null,
@@ -117,14 +118,14 @@
     };
 
     CFW_Widget_Player.DEFAULTS = {
-        mediaDescribe: false,       // Show description source media
-        textDescribe: -1,           // Text-based description off
-        textDescribeAnnounce: false,// If text-based description should announced by screen readers
-        textDescribeVisible: true,  // If text-based description should be visible
-        transcript: -1,             // Default transcript off
-        transcriptScroll : true,    // Scroll transcript
-        transcriptDescribe: true,   // Show descriptions in transcript
-        transcriptOption : true     // Show transcript options
+        mediaDescribe: false,        // Show description source media
+        textDescribe: -1,            // Text-based description off
+        textDescribeAnnounce: false, // If text-based description should announced by screen readers
+        textDescribeVisible: true,   // If text-based description should be visible
+        transcript: -1,              // Default transcript off
+        transcriptScroll : true,     // Scroll transcript
+        transcriptDescribe: true,    // Show descriptions in transcript
+        transcriptOption : true      // Show transcript options
     };
 
     CFW_Widget_Player.prototype = {
@@ -132,17 +133,17 @@
             this.$media = this.$element.find('audio, video');
             this.media = this.$media[0];
 
-            if (this.media == null) {
-                return false;
+            if (typeof this.media === 'undefined') {
+                return;
             }
 
-            if (this.media.nodeName == 'VIDEO') {
+            if (this.media.nodeName.toLowerCase() === 'video') {
                 this.type = 'video';
             }
 
-            if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
+            if ((this.type === 'audio' && !html5.audio) || (this.type === 'video' && !html5.video)) {
                 this.$media.CFW_trigger('noSupport.cfw.player');
-                return false;
+                return;
             }
 
             // Save source items for later use
@@ -197,12 +198,14 @@
             }
 
             var isLoaded = setInterval(function() {
+                var NETWORK_NO_SOURCE = 3;
+                var TIMEOUT_MAX_COUNT = 75;
                 if ($selfRef.media.readyState > 0) {
                     clearInterval(isLoaded);
                     $selfRef.loadComplete();
                     return;
                 }
-                if ($selfRef.media.networkState === 3 || timeout === 75) {
+                if ($selfRef.media.networkState === NETWORK_NO_SOURCE || timeout === TIMEOUT_MAX_COUNT) {
                     clearInterval(isLoaded);
                     $selfRef.error();
                     return;
@@ -234,13 +237,14 @@
                 $selfRef.muteStatus();
                 $selfRef.volumeStatus();
             });
-            if (this.type == 'video') {
+            if (this.type === 'video') {
                 // http://stackoverflow.com/questions/9621499/fullscreen-api-which-events-are-fired
                 $(document).on('webkitfullscreenchange mozfullscreenchange MSFullscreenChange fullscreenchange', function() {
                     $selfRef.fullscreenStatus();
                 });
                 this.$player.on('mouseenter mouseleave', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mouseenter': {
                             $selfRef.over = true;
@@ -251,9 +255,11 @@
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$element.on('mousemove mousedown mouseup keydown keyup touchmove touchstart touchend', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mousedown':
                         case 'touchstart': {
@@ -269,6 +275,7 @@
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$media.on('click', function() {
                     $selfRef.toggle();
@@ -408,7 +415,7 @@
         },
 
         playedStatus : function(force) {
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (!this.played) {
                 if (force || this.media.played.length > 0) {
                     this.played = true;
@@ -421,7 +428,7 @@
             this.status.duration    = this.media.duration;
             this.status.currentTime = this.media.currentTime;
             this.status.remaining   = this.status.duration - this.status.currentTime;
-            if (this.status.remaining < 0) this.status.remaining = 0;
+            if (this.status.remaining < 0) { this.status.remaining = 0; }
 
             var $durElm = this.$player.find('[data-cfw-player="time-duration"]');
             var $curElm = this.$player.find('[data-cfw-player="time-current"]');
@@ -466,51 +473,57 @@
         seekStatus : function() {
             var $seekElm = this.$player.find('[data-cfw-player="seek"]');
 
-            if ($seekElm.find('input').length) {
-                this.seekSlider();
+            if ($seekElm.find('input[type="range"]').length) {
+                this.seekRange();
             } else if ($seekElm.hasClass('progress')) {
                 this.seekProgress();
             }
         },
 
-        seekSlider : function() {
+        seekRange : function() {
             var $selfRef = this;
 
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
+            var $seekElm = this.$player.find('[data-cfw-player="seek"]');
+            var $inputElm = $seekElm.find('input[type="range"]').eq(0);
 
-            if (this.$sliderSeek == null) {
-                this.$sliderSeek = this.$player.find('[data-cfw-player="seek"]');
-                this.$sliderSeek.CFW_Slider({
+            if (this.$sliderSeek === null) {
+                this.$sliderSeek = $inputElm;
+
+                $inputElm.prop({
                     min: 0,
                     max: this.media.duration,
                     step: 1 // 1-second step
                 });
-                this.$sliderSeek.on('slid.cfw.slider', function() {
-                    var newTime = $(this).data('cfw.slider').val0;
-                    $selfRef.seekTo(newTime);
-                });
-                // Pause while scrubbing
-                var $sliderControls = this.$sliderSeek.add(this.$sliderSeek.find('.slider-thumb'));
-                $sliderControls.on('keydown.cfw.slider dragStart.cfw.slider', function(e) {
-                    if (e.type == 'keydown' && (!/(37|38|39|40|33|34|35|36)/.test(e.which))) { return; }
-                    if (e.type == 'keydown') { e.stopPropagation; }
-                    $sliderControls.off('keyup.cfw.slider dragEnd.cfw.slider');
-                    if ($selfRef.scrubPlay == null) {
-                        $selfRef.scrubPlay = !$selfRef.media.paused;
-                    }
+
+                // Update on both `onchange` and `oninput` events. Seems to
+                // help with jumping back to previous timestamp.
+                $inputElm.on('change input', function() {
+                    var newTime = parseFloat($inputElm.val());
+                    // Pause/resume when changing
+                    var isPaused = $selfRef.media.paused;
                     $selfRef.media.pause();
-                    $(e.currentTarget).one('keyup.cfw.slider dragEnd.cfw.slider', function(e) {
-                        if (e.type == 'keyup') { e.stopPropagation; }
-                        if ($selfRef.scrubPlay === true) {
-                            $selfRef.media.play();
-                        }
-                        $selfRef.scrubPlay = null;
+                    $selfRef.seekTo(newTime);
+                    if (!isPaused) {
+                        $selfRef.media.play();
+                    }
+                });
+
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
                     });
                 });
             }
 
-            var $inputElm = this.$sliderSeek.find('input').eq(0);
-            this.$sliderSeek.CFW_Slider('changeValue', this.media.currentTime, $inputElm, true);
+            $inputElm.val(this.media.currentTime);
+
+            // Output a more meaningful description text
+            var timeText = this.timeSplit(this.media.currentTime) + ' / ' + this.timeSplit(this.media.duration);
+            $inputElm.attr('aria-valuetext', timeText);
         },
 
         seekProgress : function() {
@@ -522,7 +535,8 @@
             var cp = (this.media.currentTime / this.media.duration) * 100;
             if (cp > 100) { cp = 100; }
 
-            $curElm.attr({
+            $curElm
+                .attr({
                     'aria-valuemin' : 0,
                     'aria-valuemax' : 100,
                     'aria-valuenow' : cp
@@ -540,8 +554,9 @@
 
         seekIncrement : function(delta) {
             var time = this.media.currentTime + delta;
-            var newTime = (time < 0) ? 0 : ((time > this.media.duration) ? this.media.duration : time);
-            this.seekTo(newTime);
+            if (time < 0) { time = 0; }
+            if (time > this.media.duration) { time = this.media.duration; }
+            this.seekTo(time);
         },
 
         seekTo : function(timestamp) {
@@ -587,25 +602,34 @@
         },
 
         volumeStatus : function() {
-            var $selfRef = this;
             var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
-            if ($volElm.find('input').length <= 0) { return; }
+            if ($volElm.find('input[type="range"]').length) {
+                this.volumeRange();
+            }
+        },
+
+        volumeRange : function() {
+            var $selfRef = this;
+            var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
             if (!this.support.mute) {
                 this._controlDisable($volElm);
                 return;
             }
+            var $inputElm = $volElm.find('input[type="range"]').eq(0);
 
-            if (this.$volSeek == null) {
-                this.$volSeek = $volElm;
-                this.$volSeek.CFW_Slider({
+            if (this.$volSeek === null) {
+                this.$volSeek = $inputElm;
+                $inputElm.prop({
                     min: 0,
                     max: 1,
                     step: 0.05  // 5% increment
                 });
-                this.$volSeek.on('slid.cfw.slider', function() {
-                    var newVol = parseFloat($(this).data('cfw.slider').val0);
+
+                // Update on both `onchange` and `oninput` events.
+                $inputElm.on('change input', function() {
+                    var newVol = parseFloat($inputElm.val());
 
                     if (newVol === 0) {
                         $selfRef.media.muted = true;
@@ -614,28 +638,37 @@
                         $selfRef.media.volume = newVol;
                     }
                 });
+
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
+                    });
+                });
             }
 
-            var $inputElm = this.$volSeek.find('input').eq(0);
+            // Update range value and output text to percentage
             if (!this.media.muted) {
-                this.$volSeek.CFW_Slider('changeValue', this.media.volume, $inputElm, true);
+                $inputElm.val(this.media.volume);
+                var level = parseInt(this.media.volume * 100, 10);
+                $inputElm.attr('aria-valuetext', level + '%');
             } else {
-                this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
+                $inputElm.val(0);
+                $inputElm.attr('aria-valuetext', '0%');
             }
-
-            // Alter volume slider label to percentage
-            var level = parseInt($selfRef.media.volume * 100, 10);
-            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
             var vol = (this.media.volume * 100) + delta;
-            var newVol = (vol < 0) ? 0 : ((vol > 100) ? 100 : parseInt(vol, 10));
-            this.media.volume = newVol / 100;
+            if (vol < 0) { vol = 0; }
+            if (vol > 100) { vol = 100; }
+            this.media.volume = parseInt(vol, 10) / 100;
         },
 
         loop : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 // set on/off
                 this.media.loop = setting;
             } else {
@@ -646,7 +679,7 @@
         },
 
         speed : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 this.media.playbackRate = setting;
             }
         },
@@ -667,25 +700,35 @@
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
-            return ($fsNode.is(this.$element));
+            return $fsNode.is(this.$element);
         },
 
         fullscreen : function() {
-            if (this.type == 'audio') { return; }
+            if (this.type === 'audio') { return; }
             if (this.isFullScreen()) {
                 // Exit fullscreen
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-                else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-                else if (document.msExitFullscreen) document.msExitFullscreen();
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             } else {
                 // Go fullscreen
                 // (Note: can be called on document, but here the specific element is used as it will also ensure that the element's children, e.g. the custom controls, go fullscreen also)
                 var videoContainer = this.$element[0];
-                if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-                else if (videoContainer.mozRequestFullScreen) videoContainer.mozRequestFullScreen();
-                else if (videoContainer.webkitRequestFullScreen) videoContainer.webkitRequestFullScreen();
-                else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
+                if (videoContainer.requestFullscreen) {
+                    videoContainer.requestFullscreen();
+                } else if (videoContainer.mozRequestFullScreen) {
+                    videoContainer.mozRequestFullScreen();
+                } else if (videoContainer.webkitRequestFullScreen) {
+                    videoContainer.webkitRequestFullScreen();
+                } else if (videoContainer.msRequestFullscreen) {
+                    videoContainer.msRequestFullscreen();
+                }
             }
         },
 
@@ -703,11 +746,11 @@
         },
 
         _srcHasAlternate : function(name) {
-            return (this.$sources[0].hasAttribute('data-src-' + name));
+            return this.$sources[0].hasAttribute('data-src-' + name);
         },
 
         _srcIsAlternate : function(name) {
-            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+            return this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src');
         },
 
         _srcLoadAlternate : function(name) {
@@ -723,7 +766,7 @@
             this.$media
                 .one('loadeddata', function() {
                     $selfRef.seekTo(currTime);
-                    if (!isPaused) {  $selfRef.media.play(); }
+                    if (!isPaused) { $selfRef.media.play(); }
                 });
             this.media.load();
         },
@@ -749,16 +792,16 @@
 
             var tracks = this.media.textTracks;
             if (tracks.length <= 0) {
-                return null;
+                return;
             }
 
             var validTracks = [];
             var descTracks = [];
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].kind == 'captions' || tracks[i].kind == 'subtitles') {
+                if (tracks[i].kind === 'captions' || tracks[i].kind === 'subtitles') {
                     validTracks.push(i);
                 }
-                if (tracks[i].kind == 'descriptions') {
+                if (tracks[i].kind === 'descriptions') {
                     descTracks.push(i);
                 }
             }
@@ -785,7 +828,7 @@
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Use toggle style
                 this.$player.on('click', '[data-cfw-player="caption"]', function(e) {
                     e.preventDefault();
@@ -797,10 +840,9 @@
                     $selfRef._focusControl(this);
                 });
 
-                if (this.media.textTracks[0].mode == 'showing') {
+                if (this.media.textTracks[0].mode === 'showing') {
                     this.trackSet(0);
                 }
-
             } else {
                 // Build menu
                 var wrapper = '<span class="player-caption-wrapper"></span>';
@@ -818,7 +860,7 @@
                 var tracks = this.media.textTracks;
 
                 for (var j = 0; j < tracks.length; j++) {
-                    if (tracks[j].mode == 'showing') {
+                    if (tracks[j].mode === 'showing') {
                         this.trackSet(j);
                     }
                 }
@@ -836,7 +878,9 @@
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ target: '#' + menuID });
+                $captionElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             this.trackStatus();
@@ -858,12 +902,12 @@
             this.trackCurrent = trackID;
 
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].mode == 'showing') {
+                if (tracks[i].mode === 'showing') {
                     tracks[i].mode = 'hidden';
                 }
                 if (i === trackID) {
                     // tracks[i].mode = 'showing';
-                    tracks[i].mode = (this.$captionWrapper !== null) ? 'hidden' : 'showing';
+                    tracks[i].mode = this.$captionWrapper !== null ? 'hidden' : 'showing';
                 }
             }
 
@@ -886,9 +930,9 @@
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Toggle style
-                if (this.trackCurrent == -1) {
+                if (this.trackCurrent === -1) {
                     $captionElm.removeClass('active');
                     this._pressedState($captionElm, false);
                 } else {
@@ -905,7 +949,7 @@
                     .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
-                    if (i == this.trackCurrent) {
+                    if (i === this.trackCurrent) {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
                         $captionPar.find('[data-cfw-player-track="' + i + '"]')
@@ -928,7 +972,7 @@
                 return;
             }
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Use toggle style
                 $tsElm.removeClass('active');
                 this._pressedState($tsElm, false);
@@ -965,12 +1009,14 @@
                     $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
                     // Add scroll toggle
-                    var scrollCheck = (this.settings.transcriptScroll) ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
+                    var scrollCheck = this.settings.transcriptScroll ? 'checked' : '';
+                    var scrollID = 'transcriptScroll-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + ' id="' + scrollID + '"> <label class="form-check-label" for="' + scrollID + '">Auto-scroll</label></div></li>');
                     $menu.append($menuItem);
                     // Add description toggle
-                    var descCheck = (this.settings.transcriptDescribe) ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
+                    var descCheck = this.settings.transcriptDescribe ? 'checked' : '';
+                    var descID = 'transcriptDescribe-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + ' id="' + descID + '"> <label class="form-check-label" for="' + descID + '">Show Description</label></div></li>');
                     $menu.append($menuItem);
                 }
 
@@ -995,7 +1041,9 @@
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ target: '#' + menuID });
+                $tsElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             // Show transcript if set
@@ -1010,23 +1058,23 @@
             if (this.trackValid.length <= 0) {
                 return;
             }
-            if (this.trackValid.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackValid.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
             // No update if same track is selected
-            if (trackID == this.scriptCurrent) {
+            if (trackID === this.scriptCurrent) {
                 return;
             }
 
-            if (trackID == -1 && this.$scriptElm !== null) {
+            if (trackID === -1 && this.$scriptElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
-                    return;
-                }
+            }
+
+            if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
+                return;
             }
 
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
@@ -1038,7 +1086,7 @@
             this.$element.removeClass('player-scriptshow');
 
             if ($tsElm.length) {
-                if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+                if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                     // Update toggle
                     $tsElm.removeClass('active');
                     this._pressedState($tsElm, false);
@@ -1060,7 +1108,7 @@
 
             this.scriptCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.scriptCues = null;
                 this.descCues = null;
                 this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
@@ -1072,9 +1120,7 @@
         scriptLoad : function(forced) {
             var $selfRef = this;
 
-            if (forced === undefined) {
-                forced = false;
-            }
+            if (typeof forced === 'undefined') { forced = false; }
 
             this.$media.off('loadeddata.cfw.player.script');
 
@@ -1087,7 +1133,7 @@
             }
 
             // Preload all tracks to stop future `load` event triggers on transcript change
-            var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
+            var hold = this.trackCurrent === -1 ? null : tracks[this.trackCurrent].mode;
 
             for (var i = 0; i < tracksLength; i++) {
                 tracks[i].mode = 'hidden';
@@ -1104,7 +1150,7 @@
             if (this.scriptCurrent !== -1) {
                 var descLang = tracks[this.scriptCurrent].language;
                 for (var j = 0; j < tracksLength; j++) {
-                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                    if (descLang === tracks[j].language && tracks[j].kind === 'descriptions') {
                         if ($selfRef.settings.transcriptDescribe) {
                             $selfRef.descCurrent = j;
                         }
@@ -1122,7 +1168,7 @@
             // Test again for text-based description
             var textDescAvailable = false;
             for (var k = 0; k < tracksLength; k++) {
-                if ('descriptions' == tracks[k].kind) {
+                if (tracks[k].kind === 'descriptions') {
                     textDescAvailable = true;
                 }
             }
@@ -1133,11 +1179,11 @@
                 this._controlEnable($textDescControl);
             }
 
-            function scriptLoad2(forced) {
+            var scriptLoad2 = function(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
-                var cues = ($selfRef.scriptCurrent == -1) ? null : tracks[$selfRef.scriptCurrent].cues;
-                var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
-                var textDescCues = ($selfRef.textDescribeCurrent == -1) ? null : tracks[$selfRef.textDescribeCurrent].cues;
+                var cues = $selfRef.scriptCurrent === -1 ? null : tracks[$selfRef.scriptCurrent].cues;
+                var descCues = $selfRef.descCurrent === -1 ? null : tracks[$selfRef.descCurrent].cues;
+                var textDescCues = $selfRef.textDescribeCurrent === -1 ? null : tracks[$selfRef.textDescribeCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -1152,7 +1198,7 @@
                 $selfRef.descCues = descCues;
                 $selfRef.textDescribeCues = textDescCues;
                 $selfRef.scriptProcess();
-            }
+            };
 
             // Short delay to next part
             setTimeout(function() {
@@ -1163,7 +1209,7 @@
         scriptProcess : function() {
             var $selfRef = this;
 
-            if (this.scriptCues == null && this.descCues == null) {
+            if (this.scriptCues === null && this.descCues === null) {
                 return;
             }
 
@@ -1199,20 +1245,18 @@
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
             this.$element.addClass('player-scriptshow');
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Update toggle state
                 $tsElm.addClass('active');
                 this._pressedState($tsElm, true);
-            } else {
+            } else if ($tsElm.length) {
                 // Update transcript menu
-                if ($tsElm.length) {
-                    var $tsPar = $tsElm.parent();
-                    $tsElm.addClass('active');
-                    $tsPar.addClass('active');
-                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
-                        .addClass('active')
-                        .attr('aria-pressed', 'true');
-                }
+                var $tsPar = $tsElm.parent();
+                $tsElm.addClass('active');
+                $tsPar.addClass('active');
+                $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
+                    .addClass('active')
+                    .attr('aria-pressed', 'true');
             }
 
             // Remove any existing transcript container
@@ -1247,14 +1291,12 @@
                         addCaption(this.$scriptElm, captions[capIdx]);
                         capIdx += 1;
                     }
-                } else {
-                    if (descIdx < descriptions.length) {
-                        addDescription(this.$scriptElm, descriptions[descIdx]);
-                        descIdx += 1;
-                    } else if (capIdx < captions.length) {
-                        addCaption(this.$scriptElm, captions[capIdx]);
-                        capIdx += 1;
-                    }
+                } else if (descIdx < descriptions.length) {
+                    addDescription(this.$scriptElm, descriptions[descIdx]);
+                    descIdx += 1;
+                } else if (capIdx < captions.length) {
+                    addCaption(this.$scriptElm, captions[capIdx]);
+                    capIdx += 1;
                 }
             }
 
@@ -1347,12 +1389,14 @@
                 $menuItem = $('<li class="dropdown-divider"></li>');
                 $menu.append($menuItem);
                 // Add announce toggle
-                var announceCheck = (this.settings.textDescribeAnnounce) ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
+                var announceCheck = this.settings.textDescribeAnnounce ? 'checked' : '';
+                var announceID = 'textDescribeAnnounce-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + ' id="' + announceID + '"> <label class="form-check-label" for="' + announceID + '">Announce with Screen Reader</label></div></li>');
                 $menu.append($menuItem);
                 // Add visibility toggle
-                var visibleCheck = (this.settings.textDescribeVisible) ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
+                var visibleCheck = this.settings.textDescribeVisible ? 'checked' : '';
+                var visibleID = 'textDescribeVisible-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + ' id="' + visibleID + '"> <label class="form-check-label" for="' + visibleID + '">Visible Description</label></div></li>');
                 $menu.append($menuItem);
             }
 
@@ -1378,7 +1422,9 @@
                 });
             }
 
-            $tdElm.CFW_Dropdown({ target: '#' + menuID });
+            $tdElm.CFW_Dropdown({
+                target: '#' + menuID
+            });
 
             this.textDescriptionSet(this.settings.textDescribe);
         },
@@ -1389,18 +1435,16 @@
             if (this.trackDescription.length <= 0) {
                 return;
             }
-            if (this.trackDescription.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackDescription.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
-            if (trackID == -1 && this.$textDescribeElm !== null) {
+            if (trackID === -1 && this.$textDescribeElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTextDescriptionHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
-                    return;
-                }
+            } else if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
+                return;
             }
 
             if (this.$textDescribeElm !== null) {
@@ -1439,7 +1483,7 @@
 
             this.textDescribeCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.textDescribeCues = null;
                 this.$media.CFW_trigger('afterTextDescriptionHide.cfw.player');
             } else {
@@ -1507,8 +1551,6 @@
         },
 
         activityStatus : function(bool) {
-            /* jshint -W053 */
-            bool = !!bool;
             if (bool !== this.userActive) {
                 this.userActive = bool;
                 if (bool) {
@@ -1527,7 +1569,7 @@
         },
 
         captionDisplayUpdate : function(activeCues) {
-            if (this.$captionWrapper == null) { return; }
+            if (this.$captionWrapper === null) { return; }
 
             if (this.trackCurrent === -1 || activeCues === null || activeCues.length <= 0) {
                 // Clear and hide caption area - nothing to show
@@ -1553,7 +1595,7 @@
             if (!/(32|33|34|35|36|37|38|39|40|70|77)/.test(e.which)) { return; }
 
             // Ignore space use on button/role="button" items
-            if (e.which == 32 || 'button' === e.target.tagName || 'button' === $(e.target).role('attr')) { return; }
+            if (e.which === 32 || e.target.tagName === 'button' || $(e.target).attr('role') === 'button') { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -1610,30 +1652,20 @@
                     this.mute();
                     break;
                 }
+                default:
             }
         },
 
         _pressedState : function($node, state) {
-            var update = false;
-
             if ($node.length <= 0) { return; }
 
             // True button
             var nodeName = $node.get(0).nodeName.toLowerCase();
-            if ('button' === nodeName) {
-                update = true;
-            }
-
             // role="button"
             var nodeRole = $node.attr('role');
-            if ('button' === nodeRole) {
-                update = true;
-            }
-
-            if (update) {
+            if (nodeName === 'button' || nodeRole === 'button') {
                 $node.attr('aria-pressed', state);
             }
-            return;
         },
 
         _focusControl : function(control) {
@@ -1685,7 +1717,7 @@
 
         _cuechangeEnable : function(trackID, namespace, callback) {
             var $selfRef = this;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 $(this.media.textTracks[trackID])
                     .on('cuechange.cfw.player.' + namespace, function() {
                         callback.call($selfRef, this.activeCues);
@@ -1701,7 +1733,7 @@
 
             // Artificially trigger a cuechange - in case already in middle of a cue
             var cueEvent;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 cueEvent = $.Event('cuechange');
                 $(this.media.textTracks[trackID]).trigger(cueEvent);
             } else {
@@ -1723,10 +1755,10 @@
                 this.$scriptElm.remove();
             }
             if (this.$sliderSeek) {
-                this.$sliderSeek.CFW_Slider('dispose');
+                this.$sliderSeek.off();
             }
             if (this.$volSeek) {
-                this.$volSeek.CFW_Slider('dispose');
+                this.$volSeek.off();
             }
             if ($.hasData(this.$player.find('[data-cfw-player="caption"]'))) {
                 this.$player.find('[data-cfw-player="caption"]').CFW_Dropdown('dispose');
@@ -1774,7 +1806,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1782,15 +1814,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.player', (data = new CFW_Widget_Player(this, options)));
+                $this.data('cfw.player', data = new CFW_Widget_Player(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Player = Plugin;
     $.fn.CFW_Player.Constructor = CFW_Widget_Player;
-
-})(jQuery);
+}(jQuery));

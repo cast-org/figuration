@@ -1,0 +1,15 @@
+---
+layout: doc
+title: Versions
+description: Available hosted version of Figuration documentation.
+toc: false
+---
+
+{%- for group in versions %}
+<h2>{{ group.set}}</h2>
+<ul>
+  {%- for subver in group.versions -%}
+  <li><a href="{{ site.url }}/{{ subver.path }}/">{{ subver.ver}}</a></li>
+  {% endfor -%}
+</ul>
+{% endfor -%}

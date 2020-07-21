@@ -1,0 +1,7 @@
+---
+layout: alias
+usePathVersion: true
+destination: "content/reboot/"
+sitemapIgnore: true
+permalink: "/content/reboot/"
+---

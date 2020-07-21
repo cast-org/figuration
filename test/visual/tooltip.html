@@ -2,37 +2,31 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Figuration - Tooltip</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
 
-<!--
-<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
-<script type="text/javascript" src="../../dist/js/figuration.js"></script>
--->
-
-<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/util.js"></script>
-<script type="text/javascript" src="../../js/drag.js"></script>
-<script type="text/javascript" src="../../js/collapse.js"></script>
-<script type="text/javascript" src="../../js/dropdown.js"></script>
-<script type="text/javascript" src="../../js/tab.js"></script>
-<script type="text/javascript" src="../../js/affix.js"></script>
-<script type="text/javascript" src="../../js/tooltip.js"></script>
-<script type="text/javascript" src="../../js/popover.js"></script>
-<script type="text/javascript" src="../../js/modal.js"></script>
-<script type="text/javascript" src="../../js/tab-responsive.js"></script>
-<script type="text/javascript" src="../../js/accordion.js"></script>
-<script type="text/javascript" src="../../js/slideshow.js"></script>
-<script type="text/javascript" src="../../js/scrollspy.js"></script>
-<script type="text/javascript" src="../../js/alert.js"></script>
-<script type="text/javascript" src="../../js/button.js"></script>
-<script type="text/javascript" src="../../js/lazy.js"></script>
-<script type="text/javascript" src="../../js/slider.js"></script>
-<script type="text/javascript" src="../../js/equalize.js"></script>
-<script type="text/javascript" src="../../js/common.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/drag.js"></script>
+<script src="../../js/collapse.js"></script>
+<script src="../../js/dropdown.js"></script>
+<script src="../../js/tab.js"></script>
+<script src="../../js/affix.js"></script>
+<script src="../../js/tooltip.js"></script>
+<script src="../../js/popover.js"></script>
+<script src="../../js/modal.js"></script>
+<script src="../../js/tab-responsive.js"></script>
+<script src="../../js/accordion.js"></script>
+<script src="../../js/slideshow.js"></script>
+<script src="../../js/scrollspy.js"></script>
+<script src="../../js/alert.js"></script>
+<script src="../../js/lazy.js"></script>
+<script src="../../js/equalize.js"></script>
+<script src="../../js/common.js"></script>
 
 <style>
 .tooltip .tooltip-body {
@@ -45,36 +39,36 @@
 </head>
 <body>
 
-<button class="btn btn-default float-start" title="Tooltip at start" data-cfw="tooltip" data-cfw-tooltip-placement="reverse auto">Tooltip at start</button>
+<button class="btn float-start" title="Tooltip at start" data-cfw="tooltip" data-cfw-tooltip-placement="reverse auto">Tooltip at start</button>
 
-<button class="btn btn-default" title="Tooltip at top" data-cfw="tooltip" data-cfw-tooltip-placement="top auto">Tooltip at top</button>
+<button class="btn" title="Tooltip at top" data-cfw="tooltip" data-cfw-tooltip-placement="top auto">Tooltip at top</button>
 
-<button class="btn btn-default float-end" title="Tooltip at end" data-cfw="tooltip" data-cfw-tooltip-placement="forward auto">Tooltip at end</button>
+<button class="btn float-end" title="Tooltip at end" data-cfw="tooltip" data-cfw-tooltip-placement="forward auto">Tooltip at end</button>
 
-<button class="btn btn-default" style="position: absolute; left: 0; bottom: 0;" title="Tooltip at bottom" data-cfw="tooltip" data-cfw-tooltip-placement="bottom auto">Tooltip at bottom</button>
+<button class="btn" style="position: absolute; left: 0; bottom: 0;" title="Tooltip at bottom" data-cfw="tooltip" data-cfw-tooltip-placement="bottom auto">Tooltip at bottom</button>
 
-<button class="btn btn-default" style="position: absolute; left: 12rem; bottom: 0;" title="Tooltip at bottom" data-cfw="tooltip" data-cfw-tooltip-placement="forward">Tooltip at bottom</button>
+<button class="btn" style="position: absolute; left: 12rem; bottom: 0;" title="Tooltip at bottom" data-cfw="tooltip" data-cfw-tooltip-placement="forward">Tooltip at bottom</button>
 
 
-<button class="btn btn-default" title="Popover at top" data-cfw="popover" data-cfw-popover-placement="top auto" data-cfw-popover-drag="true" data-cfw-popover-content="Wow">Popover at top</button>
-<button class="btn btn-default" title="Popover at top" data-cfw="popover" data-cfw-popover-placement="top auto" data-cfw-popover-drag="true" data-cfw-popover-content="Wow">Popover at top</button>
+<button class="btn" title="Popover at top" data-cfw="popover" data-cfw-popover-placement="top auto" data-cfw-popover-drag="true" data-cfw-popover-content="Wow">Popover at top</button>
+<button class="btn" title="Popover at top" data-cfw="popover" data-cfw-popover-placement="top auto" data-cfw-popover-drag="true" data-cfw-popover-content="Wow">Popover at top</button>
 
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#saveModal">New</button>
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#saveModal">Modal</button>
 
 <div class="modal" id="saveModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <button id="btnTest" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
-                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+                <button id="btnTest0" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
+                <p>This <button type="button"  class="btn" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-cfw-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="save">Save</button>
+                <button type="button" class="btn btn-primary" id="save0">Save</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -84,16 +78,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <button id="btnTest" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
-                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+                <button id="btnTest1" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
+                <p>This <button type="button"  class="btn" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-cfw-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="save">Save</button>
+                <button type="button" class="btn btn-primary" id="save1">Save</button>
             </div>
         </div>
     </div>

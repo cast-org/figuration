@@ -1,0 +1,258 @@
+@if $enable-form {
+
+    // Checkboxes and radios
+    //
+    // Indent the labels to position radios/checkboxes as hanging controls.
+    @if $enable-form-check {
+        .form-check {
+            display: block;
+            min-height: calc(1em * #{$line-height-base});
+            padding-left: $form-check-gutter;
+            margin-bottom: $form-check-margin-bottom;
+
+            > input {
+                margin-left: -$form-check-gutter;
+
+                // stylelint-disable selector-no-qualifying-type
+                &[disabled],
+                &:disabled {
+                    ~ .form-check-label {
+                        opacity: $form-check-label-disabled-opacity;
+                    }
+                    // Get custom input to roughly match the parent label's opacity
+                    // Fixes issue with not going semi-transparent in disabled fieldsets
+                    ~ .form-check-label::before,
+                    ~ .form-check-label::after {
+                        opacity: .999;
+                    }
+                }
+                // stylelint-enable selector-no-qualifying-type
+            }
+        }
+
+        .form-check-label {
+            display: inline;
+            margin-bottom: 0; // Override default `<label>` bottom margin
+            font-weight: $form-check-label-font-weight;
+            color: $form-check-label-color;
+            cursor: $form-check-label-cursor;
+        }
+    }
+
+    %form-check-input-hide {
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+
+    @if $enable-form-check and $enable-form-check-checkradio {
+        .form-checkradio {
+            padding-left: $form-checkradio-gutter;
+
+            .form-check-input {
+                width: $form-checkradio-size;
+                height: $form-checkradio-size;
+                margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) / 2);
+                margin-left: calc(#{$form-checkradio-gutter} * -1);
+                @extend %form-check-input-hide;
+            }
+
+            .form-check-label {
+                &::before {
+                    display: inline-block;
+                    float: left;
+                    width: $form-checkradio-size;
+                    height: $form-checkradio-size;
+                    margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) / 2);
+                    margin-left: calc(#{$form-checkradio-gutter} * -1);
+                    content: "";
+                    background-color: $form-checkradio-bg;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: $form-checkradio-icon-size;
+                    border: $form-checkradio-border-width solid $form-checkradio-border-color;
+                    @include box-shadow($form-checkradio-box-shadow);
+                    @include transition($input-transition);
+                    color-adjust: exact;
+                }
+            }
+
+            .form-check-input[type="checkbox"] ~ .form-check-label {
+                &::before {
+                    @include border-radius($form-checkradio-checkbox-border-radius);
+                }
+            }
+
+            .form-check-input[type="radio"] ~ .form-check-label {
+                &::before {
+                    // stylelint-disable-next-line property-blacklist
+                    border-radius: $form-checkradio-radio-border-radius;
+                }
+            }
+
+            .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label {
+                &::before {
+                    filter: brightness(92.5%);
+                }
+            }
+
+            .form-check-input:focus ~ .form-check-label {
+                &::before {
+                    border-color: $form-checkradio-focus-border-color;
+                    outline: 0;
+                    @if $enable-shadows {
+                        @include box-shadow($form-checkradio-box-shadow, $form-checkradio-focus-box-shadow);
+                    } @else {
+                        box-shadow: $form-checkradio-focus-box-shadow;
+                    }
+                }
+            }
+
+            .form-check-input:checked ~ .form-check-label {
+                &::before {
+                    background-color: $form-checkradio-checked-bg;
+                    border-color: $form-checkradio-checked-border-color;
+                    @include box-shadow($form-checkradio-checked-box-shadow);
+                }
+            }
+
+            .form-check-input:checked:focus ~ .form-check-label {
+                &::before {
+                    @include box-shadow($form-checkradio-checked-box-shadow, $form-checkradio-focus-box-shadow);
+                }
+            }
+
+            .form-check-input[type="checkbox"]:checked ~ .form-check-label {
+                &::before {
+                    background-image: $form-checkradio-checkbox-icon;
+                }
+            }
+
+            .form-check-input[type="radio"]:checked ~ .form-check-label {
+                &::before {
+                    background-image: $form-checkradio-radio-icon;
+                }
+            }
+
+            .form-check-input[type="checkbox"]:indeterminate ~ .form-check-label {
+                &::before {
+                    background-color: $form-checkradio-indeterminate-bg;
+                    background-image: $form-checkradio-indeterminate-icon;
+                    border-color: $form-checkradio-indeterminate-border-color;
+                }
+            }
+        }
+    }
+
+    // Switch
+    @if $enable-form-check and $enable-form-check-switch {
+        .form-switch {
+            position: relative;
+            padding-left: $form-switch-gutter;
+
+            .form-check-input {
+                @extend %form-check-input-hide;
+                top: 0;
+                left: 0;
+                width: $form-switch-width;
+                height: $form-switch-track-height;
+                margin-left: 0;
+                transform: translateY(.5em * $line-height-base) translateY($form-switch-track-height / -2);
+            }
+
+            .form-check-label {
+                &::before,
+                &::after {
+                    position: absolute;
+                    display: inline-block;
+                    content: "";
+                    @include transition($switch-transition);
+                    color-adjust: exact;
+                }
+
+                // Track
+                &::before {
+                    top: 0;
+                    //top: calc(((1em * #{$line-height-base}) - #{$form-switch-track-height}) / 2);
+                    left: 0;
+                    width: $form-switch-width;
+                    height: $form-switch-track-height;
+                    background-color: $form-switch-track-bg;
+                    border: $form-switch-track-border-width solid $form-switch-track-border-color;
+                    @include border-radius($form-switch-track-border-radius);
+                    @include box-shadow($form-switch-track-box-shadow);
+                    transform: translateY(.5em * $line-height-base) translateY($form-switch-track-height / -2);
+                }
+
+                // Thumb
+                &::after {
+                    top: 0;
+                    //top: calc(((1em * #{$line-height-base}) - #{$form-switch-thumb-height}) / 2);
+                    left: $form-switch-thumb-offset;
+                    width: $form-switch-thumb-width;
+                    height: $form-switch-thumb-height;
+                    background-color: $form-switch-thumb-bg;
+                    border: $form-switch-thumb-border-width solid $form-switch-thumb-border-color;
+                    @include border-radius($form-switch-thumb-border-radius);
+                    @include box-shadow($form-switch-thumb-box-shadow);
+                    transform: translateY(.5em * $line-height-base) translateY($form-switch-thumb-height / -2);
+                }
+            }
+
+            .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label {
+                &::before,
+                &::after {
+                    filter: brightness(92.5%);
+                }
+            }
+
+            .form-check-input:focus ~ .form-check-label {
+                &::before {
+                    background-color: $form-switch-track-focus-bg;
+                    border-color: $form-switch-track-focus-border-color;
+                    outline: 0;
+                    @if $enable-shadows {
+                        @include box-shadow($form-switch-track-box-shadow, $form-switch-track-focus-box-shadow);
+                    } @else {
+                        box-shadow: $form-switch-track-focus-box-shadow;
+                    }
+                }
+                &::after {
+                    background-color: $form-switch-thumb-focus-bg;
+                    border-color: $form-switch-thumb-focus-border-color;
+                    outline: 0;
+                    @if $enable-shadows {
+                        @include box-shadow($form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow);
+                    } @else {
+                        box-shadow: $form-switch-thumb-focus-box-shadow;
+                    }
+                }
+            }
+
+            .form-check-input:checked ~ .form-check-label {
+                &::before {
+                    background-color: $form-switch-track-checked-bg;
+                    border-color: $form-switch-track-checked-border-color;
+                    @include box-shadow($form-switch-track-checked-box-shadow);
+                }
+                &::after {
+                    left: calc(#{$form-switch-width} - #{$form-switch-thumb-width} - #{$form-switch-thumb-offset});
+                    background-color: $form-switch-thumb-checked-bg;
+                    border-color: $form-switch-thumb-checked-border-color;
+                    @include box-shadow($form-switch-thumb-checked-box-shadow);
+                }
+            }
+
+            .form-check-input:checked:focus ~ .form-check-label {
+                &::before {
+                    @include box-shadow($form-switch-track-checked-box-shadow, $form-switch-track-focus-box-shadow);
+                }
+                &::after {
+                    @include box-shadow($form-switch-thumb-checked-box-shadow, $form-switch-thumb-focus-box-shadow);
+                }
+            }
+        }
+    }
+}

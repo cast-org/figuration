@@ -1,6 +1,7 @@
+
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): tooltip.js
+ * Figuration (v4.0.0): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -22,7 +23,7 @@
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
-        viewport        : 'body',           // Viewport to constrain tooltip within
+        viewport        : 'scrollParent',   // Viewport to constrain tooltip within
         padding         : 0,                // Padding from viewport edge
         html            : false,            // Use HTML or text insertion mode
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
@@ -31,11 +32,18 @@
         show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
-        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
+        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>',
+        gpuAcceleration : true,
+        popperConfig    : null
+
     };
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Tooltip widget requires Popper.js (https://popper.js.org)');
+            }
+
             this.type = type;
             this.$element = $(element);
             this.$target = null;
@@ -57,12 +65,15 @@
                 keyShift: false,
                 keyTab : false
             };
+            this.popper = null;
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
-
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.$element.attr('data-cfw', this.type);
 
@@ -101,7 +112,7 @@
         getSettings : function(options) {
             var parsedData = this.$element.CFW_parseData(this.type, this.getDefaults());
             var settings = $.extend({}, this.getDefaults(), parsedData, options);
-            if (settings.delay && typeof settings.delay == 'number') {
+            if (settings.delay && typeof settings.delay === 'number') {
                 settings.delay = {
                     show: settings.delay,
                     hide: settings.delay
@@ -117,17 +128,16 @@
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof($e.attr('data-cfw-' + this.type +  '-original-title')) != 'string') {
-                $e.attr('data-cfw-' + this.type +  '-original-title', $e.attr('title') || '').attr('title', '');
+            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
             }
         },
 
         getTitle : function() {
-            var title;
             var $e = this.$element;
             var s = this.settings;
 
-            title = (typeof s.title == 'function' ? s.title.call($e[0]) :  s.title) || $e.attr('data-cfw-' + this.type +  '-original-title');
+            var title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -138,7 +148,6 @@
 
             if (this.dynamicTip) {
                 var title = this.getTitle();
-
                 if (this.settings.html) {
                     $inner.html(title);
                 } else {
@@ -146,7 +155,7 @@
                 }
             }
 
-            $tip.removeClass('fade in top bottom reverse forward');
+            $tip.removeClass('fade in');
         },
 
         linkTip : function() {
@@ -154,9 +163,14 @@
             this.instance = this.$element.CFW_getID('cfw-' + this.type);
             this.targetID = this.$target.CFW_getID('cfw-' + this.type);
 
+            var attrRole = 'tooltip';
+            if (this.type !== 'tooltip' && this.isDialog) {
+                attrRole = 'dialog';
+            }
+
             // Set ARIA attributes on target
             this.$target.attr({
-                'role': (this.type == 'tooltip' ? 'tooltip' : (this.isDialog ? 'dialog' : 'tooltip')),
+                'role': attrRole,
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
@@ -167,36 +181,36 @@
 
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
-                if (eventType == 'click' || eventType == 'manual') {
+                if (eventType === 'click' || eventType === 'manual') {
                     this.isDialog = true;
                 }
-                if (eventType == 'click') {
+                if (eventType === 'click') {
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
-                        .on('click.cfw.' + this.type, $.proxy(this.toggle, this));
+                        .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
-                    if (this.$target != null && !this.closeAdded) {
+                    if (this.$target !== null && !this.closeAdded) {
                         // Check for pre-existing close buttons
-                        if (!this.$target.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
-                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type +  '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
+                        if (!this.$target.find('[data-cfw-dismiss="' + this.type + '"]').length) {
+                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type + '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
                             $close.prependTo(this.$target);
                             this.closeAdded = true;
                         }
                     }
-                } else if (eventType != 'manual') {
+                } else if (eventType !== 'manual') {
                     // Hover/focus events
-                    var eventIn  = (eventType == 'hover') ? 'mouseenter' : 'focusin';
-                    var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
+                    var eventIn  = eventType === 'hover' ? 'mouseenter' : 'focusin';
+                    var eventOut = eventType === 'hover' ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$element.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$element.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$target.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$target.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
             }
@@ -205,8 +219,8 @@
                 // Key handling for closing
                 this.$target.off('keydown.cfw.' + this.type + '.close')
                     .on('keydown.cfw.' + this.type + '.close', function(e) {
-                        var code = e.charCode || e.which;
-                        if (code && code == 27) {// if ESC is pressed
+                        var KEYCODE_ESC = 27;
+                        if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
@@ -255,10 +269,10 @@
 
         enter : function(e) {
             if (e) {
-                this.inState[e.type == 'focusin' ? 'focus' : 'hover'] = true;
+                this.inState[e.type === 'focusin' ? 'focus' : 'hover'] = true;
             }
 
-            if ((this.$target && this.$target.hasClass('in')) || this.hoverState == 'in') {
+            if ((this.$target && this.$target.hasClass('in')) || this.hoverState === 'in') {
                 this.hoverState = 'in';
                 return;
             }
@@ -267,17 +281,20 @@
 
             this.hoverState = 'in';
 
-            if (!this.settings.delay.show) { return this.show(); }
+            if (!this.settings.delay.show) {
+                this.show();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'in') { $selfRef.show(); }
+                if ($selfRef.hoverState === 'in') { $selfRef.show(); }
             }, this.settings.delay.show);
         },
 
         leave : function(e) {
             if (e) {
-                this.inState[e.type == 'focusout' ? 'focus' : 'hover'] = false;
+                this.inState[e.type === 'focusout' ? 'focus' : 'hover'] = false;
             }
 
             if (this._isInState()) { return; }
@@ -285,11 +302,14 @@
             clearTimeout(this.delayTimer);
 
             this.hoverState = 'out';
-            if (!this.settings.delay.hide) { return this.hide(); }
+            if (!this.settings.delay.hide) {
+                this.hide();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'out') { $selfRef.hide(); }
+                if ($selfRef.hoverState === 'out') { $selfRef.hide(); }
             }, this.settings.delay.hide);
         },
 
@@ -313,11 +333,11 @@
             // Create/link the tooltip container
             if (!this.$target) {
                 var target = this.createTip();
-                if (target.length <= 0) { return false; }
+                if (target.length <= 0) { return; }
                 this.dynamicTip = true;
                 this.$target = target;
             }
-            if (this.$target.length != 1) {
+            if (this.$target.length !== 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
             this.$target.data('cfw.' + this.type, this);
@@ -337,7 +357,8 @@
                         $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
+                        var KEYCODE_TAB = 9;
+                        if (e.which === KEYCODE_TAB) {
                             $selfRef._tabReset();
                         }
                     });
@@ -345,15 +366,9 @@
                 // Inject focus helper item at start to fake loss of focus going out the top
                 if (!this.$focusFirst) {
                     this.$focusFirst = $(document.createElement('span'))
-                    .addClass(this.type + '-focusfirst')
-                    .attr('tabindex', 0);
-
-                    var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
-                    if ($dialog.length) {
-                        this.$focusFirst.prependTo($dialog);
-                    } else {
-                        this.$focusFirst.prependTo(this.$target);
-                    }
+                        .addClass(this.type + '-focusfirst')
+                        .attr('tabindex', 0)
+                        .prependTo(this.$target);
                 }
                 if (this.$focusFirst) {
                     this.$focusFirst
@@ -378,9 +393,9 @@
                 // Also helps if tip has last tabbable item in document - otherwise focus drops off page
                 if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
-                    .addClass(this.type + '-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
+                        .addClass(this.type + '-focuslast')
+                        .attr('tabindex', 0)
+                        .appendTo(this.$target);
                 }
                 if (this.$focusLast) {
                     this.$focusLast
@@ -442,10 +457,7 @@
                 $('body').children().on('mouseover', null, $.noop);
             }
 
-            // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, $.proxy(this.locateTip, this));
-
-            this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
+            this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
 
         hide : function(force) {
@@ -454,7 +466,7 @@
             // Handle delayed show and target not created
             if (!this.$target) { return; }
 
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (force) {
                 this._hideComplete();
                 return;
@@ -480,14 +492,14 @@
                 $('body').children().off('mouseover', null, $.noop);
             }
 
-            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$target.CFW_transition(null, this._hideComplete.bind(this));
 
             this.hoverState = null;
         },
 
         unlink : function(force) {
             var $selfRef = this;
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             clearTimeout(this.delayTimer);
 
             this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
@@ -515,7 +527,6 @@
 
             this.$element = null;
             this.$target = null;
-            this.$viewport = null;
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
@@ -534,6 +545,10 @@
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
+            if (this.popper) {
+                this.popper.destroy();
+            }
+            this.popper = null;
 
             this._unlinkCompleteExt();
 
@@ -541,8 +556,7 @@
         },
 
         _unlinkCompleteExt : function() {
-            // unlink complete extend
-            return;
+            // intentionally empty - unlink complete extend
         },
 
         dispose : function() {
@@ -564,83 +578,62 @@
             var $tip = this.$target;
             $tip.detach();
 
-            if (typeof placement == 'object') {
+            var shadowRoot = $().CFW_findShadowRoot(this.$element[0]);
+            if (shadowRoot !== null && !this.settings.container) {
+                this.settings.container = 'body';
+            }
+
+            if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                $tip.offset(placement);
-                $tip.addClass('in');
+            }
+            if (this.settings.container) {
+                // Container placement
+                $tip.appendTo(this.settings.container);
             } else {
-                // Standard Placement
-                if (this.settings.container) {
-                    $tip.appendTo(this.settings.container);
-                } else {
-                    $tip.insertAfter(this.$element);
-                }
+                // Default placement
+                $tip.insertAfter(this.$element);
             }
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
+        locateUpdate : function() {
+            if (this.popper !== null) {
+                this.popper.scheduleUpdate();
+            }
+        },
+
         locateTip : function() {
-            var $tip = this.$target;
-
-            $tip.removeClass('top reverse bottom forward')
-                .css({ top: 0, left: 0, display: 'block' });
-
-            var placement = typeof this.settings.placement == 'function' ?
-                this.settings.placement.call(this, this.$target[0], this.$element[0]) :
-                this.settings.placement;
-            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
+            var placement = typeof this.settings.placement === 'function'
+                ? this.settings.placement.call(this, this.$target[0], this.$element[0])
+                : this.settings.placement;
 
             this._insertTip(placement);
 
-            if (typeof placement == 'object') {
+            if (typeof placement === 'object') {
                 // Custom placement
+                this.$target.offset(placement);
+                this.$target.addClass('in');
                 return;
             }
 
             // Standard Placement
             var autoToken = /\s?auto?\s?/i;
-            var autoPlace = autoToken.test(placement);
-            if (autoPlace) {
-                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+            var autoFlip = autoToken.test(this.settings.placement);
+            placement = this.settings.placement.replace(autoToken, '');
+            // Allow for 'auto' placement
+            if (!placement.trim().length) {
+                placement = 'auto';
             }
+            var attachment = this._getAttachment(placement);
+            this._addAttachmentClass(attachment);
 
-            $tip.addClass(placement);
+            this.$target.addClass('in');
 
-            var pos          = this._getPosition();
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (autoPlace) {
-                var orgPlacement = placement;
-
-                var viewportDim = this.getViewportBounds();
-
-                if (directionVal === 'rtl') {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
-                                placement;
-
-                } else {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
-                                placement;
-                }
-
-                $tip.removeClass(orgPlacement)
-                    .addClass(placement);
-            }
-
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
-
-            this._applyPlacement(calculatedOffset, placement);
+            this.popper = new Popper(this.$element[0], this.$target[0], this._getPopperConfig(attachment, autoFlip));
         },
 
         _showComplete : function() {
@@ -658,7 +651,7 @@
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
-                    $selfRef.locateTip();
+                    $selfRef.locateUpdate();
                 });
             this.$element
                 .attr('data-cfw-mutate', '')
@@ -681,15 +674,22 @@
                 $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
             }
 
+            this._showExt();
+
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
-            if (prevHoverState == 'out') { this.leave(); }
+            if (prevHoverState === 'out') { this.leave(); }
+        },
+
+        _showExt : function() {
+            // intentionally empty - show complete extend
         },
 
         _hideComplete : function() {
+            this._cleanTipClass();
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
                 .off('mutate.cfw.mutate')
@@ -700,7 +700,6 @@
                 .off('.cfw.' + this.type)
                 .off('mutate.cfw.mutate')
                 .removeClass('in')
-                .css('display', 'none')
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
@@ -713,7 +712,11 @@
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -726,11 +729,21 @@
             this.follow = false;
 
             // Only remove dynamically created tips
-            if (this.hoverState != 'in' && this.dynamicTip) {
+            if (this.hoverState !== 'in' && this.dynamicTip) {
                 this._removeDynamicTip();
             }
 
+            if (this.popper) {
+                this.popper.destroy();
+            }
+
+            this._hideExt();
+
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+        },
+
+        _hideExt : function() {
+            // intentionally empty - hide complete extend
         },
 
         _removeDynamicTip : function() {
@@ -749,187 +762,114 @@
             this.$target = null;
         },
 
-        _getPosition : function() {
-            var $element = this.$element;
-            var el = $element[0];
-            var isBody = el.tagName == 'BODY';
-
-            var elRect = el.getBoundingClientRect();
-            elRect = $.extend({}, elRect, {
-                top: elRect.top + window.pageYOffset,
-                left: elRect.left + window.pageXOffset
-            });
-
-            var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset();
-            // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
-            if ($element[0].className instanceof SVGAnimatedString) {
-                elOffset = {};
-            }
-
-            var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() };
-            var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
-            return $.extend({}, elRect, scroll, outerDims, elOffset);
-        },
-
-        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
-            if (directionVal === 'rtl') {
-                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            } else {
-                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            }
-
-        },
-
-        _applyPlacement : function(offset, placement) {
-            var $tip   = this.$target;
-            var width  = $tip[0].getBoundingClientRect().width;
-            var height = $tip[0].getBoundingClientRect().height;
-
-            // manually read margins because getBoundingClientRect includes difference
-            // includes protection against NaN
-            var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
-            var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
-
-            offset.top  = offset.top  + marginTop;
-            offset.left = offset.left + marginLeft;
-
-            // $.fn.offset doesn't round pixel values
-            // so we use setOffset directly with our own function B-0
-            $.offset.setOffset($tip[0], $.extend({
-                using: function(props) {
-                    $tip.css({
-                        top: Math.round(props.top),
-                        left: Math.round(props.left)
-                    });
-                }
-            }, offset), 0);
-
-            $tip.addClass('in');
-
-            // check to see if placing tip in new offset caused the tip to resize itself
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (placement == 'top' && actualHeight != height) {
-                offset.top = offset.top + height - actualHeight;
-            }
-
-            var delta = this._getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
-
-            if (delta.left) {
-                offset.left += delta.left;
-            } else {
-                offset.top += delta.top;
-            }
-
-            var isVertical          = /top|bottom/.test(placement);
-            var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
-            var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
-
-            $tip.offset(offset);
-            this._replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical);
-        },
-
-        getViewportBounds : function() {
-            var $viewport = this.$viewport;
-            var elRect = $viewport[0].getBoundingClientRect();
-
-
-            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
-                // fixed and absolute elements should be tested against the window
-                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
-            }
-
-            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
-
-            // Double check elements inside fixed and aboslute elements against the viewport
-            if ($viewport.is('body')) {
-                var $node = this.$element;
-                while ($node.length && !($node.is('body') || $node.is('html'))) {
-                    if ((/fixed|absolute/).test($node.css('position'))) {
-                        var screenBounds = this.getScreenSpaceBounds($viewport);
-                        viewportBoundary = $.extend({}, viewportBoundary, {
-                            width : Math.max(viewportBoundary.width, screenBounds.width),
-                            height: Math.max(viewportBoundary.height, screenBounds.height)
-                        });
-                        break;
+        _cleanTipClass : function() {
+            var regex = new RegExp('(^|\\s)cfw-' + this.type + '\\S+', 'g');
+            if (this.$target) {
+                var items = this.$target[0].className.match(regex);
+                if (items !== null) {
+                    for (var i = items.length; i--;) {
+                        this.$target[0].classList.remove(items[i].trim());
                     }
-                    $node = $node.offsetParent();
                 }
             }
-
-            return $.extend({}, elRect, viewportBoundary);
         },
 
-        getScreenSpaceBounds : function($viewport) {
-            return {
-                top: $viewport.scrollTop(),
-                left: $viewport.scrollLeft(),
-                width: $(window).width(),
-                height: $(window).height()
+        _handlePopperPlacementChange : function(popperData) {
+            this._cleanTipClass();
+            this._addAttachmentClass(this._getAttachment(popperData.placement));
+        },
+
+        _addAttachmentClass : function(attachment) {
+            if (this.$target) {
+                this.$target.addClass('cfw-' + this.type + '-' + attachment);
+            }
+        },
+
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getViewport : function() {
+            var viewport = this.settings.viewport;
+
+            if (typeof viewport === 'function') {
+                viewport = this.settings.viewport.call(this, this.$element);
+            }
+
+            var $viewportElm = $(viewport);
+
+            if (this._isElement($viewportElm)) {
+                viewport = $viewportElm[0];
+            }
+
+            return viewport;
+        },
+
+        _getAttachment : function(placement) {
+            if (this.$element) {
+                var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+                var isRTL = Boolean(directionVal === 'rtl');
+                var attachmentMap = {
+                    AUTO: 'auto',
+                    TOP: 'top',
+                    FORWARD: isRTL ? 'left' : 'right',
+                    RIGHT: 'right',
+                    BOTTOM: 'bottom',
+                    REVERSE: isRTL ? 'right' : 'left',
+                    LEFT: 'left'
+                };
+                return attachmentMap[placement.toUpperCase()];
+            }
+            return CFW_Widget_Tooltip.DEFAULTS.placement;
+        },
+
+        _getPopperConfig : function(attachment, autoFlip) {
+            var $selfRef = this;
+            var defaultConfig = {
+                placement: attachment,
+                modifiers: {
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this._getViewport()
+                    },
+                    computeStyle : {
+                        gpuAcceleration: this.settings.gpuAcceleration
+                    }
+                },
+                onCreate: function(data) {
+                    if (data.originalPlacement !== data.placement) {
+                        $selfRef._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
+                }
             };
-        },
 
-        _getViewportAdjustedDelta : function(placement, pos, actualWidth, actualHeight) {
-            var delta = { top: 0, left: 0 };
-            if (!this.$viewport) return delta;
-
-            var viewportPadding = this.settings.padding;
-            var viewportDimensions = this.getViewportBounds();
-
-            if (/forward|reverse/.test(placement)) {
-                var topEdgeOffset    = pos.top - viewportPadding;
-                var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
-
-                if (topEdgeOffset < viewportDimensions.top) { // top overflow
-                    delta.top = viewportDimensions.top - topEdgeOffset;
-                } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-                    delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
-                }
-            } else {
-
-                var leftEdgeOffset  = pos.left - viewportPadding;
-                var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
-                if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-                    delta.left = viewportDimensions.left - leftEdgeOffset;
-                } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-                    delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
-                }
-            }
-
-            return delta;
-        },
-
-        _replaceArrow : function(delta, dimension, isVertical) {
-            this._arrow()
-                .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
-                .css(isVertical ? 'top' : 'left', '');
-        },
-
-        _arrow : function() {
-            if (!this.$arrow) {
-                this.$arrow = this.$target.find('.tooltip-arrow');
-            }
-            return this.$arrow;
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
         },
 
         _isInState : function() {
             for (var key in this.inState) {
-                if (this.inState[key]) return true;
+                if (this.inState[key]) { return true; }
             }
             return false;
         },
 
         // Set flags for `tab` key interactions
         _tabSet : function(e) {
+            var KEYCODE_TAB = 9;
             this._tabReset();
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 this.flags.keyTab = true;
                 if (e.shiftKey) { this.flags.keyShift = true; }
             }
@@ -963,7 +903,7 @@
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -978,7 +918,7 @@
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -987,13 +927,23 @@
             return selectables.eq(nextIndex);
         },
 
+        /*
+         * jQuery UI Focusable 1.12.1
+         * http://jqueryui.com
+         *
+         * Copyright jQuery Foundation and other contributors
+         * Released under the MIT license.
+         * http://jquery.org/license
+         */
         _focusable : function(element, isTabIndexNotNaN) {
             var map;
             var mapName;
             var $img;
+            var focusableIfVisible;
+            var fieldset;
             var nodeName = element.nodeName.toLowerCase();
 
-            if ('area' === nodeName) {
+            if (nodeName === 'area') {
                 map = element.parentNode;
                 mapName = map.name;
                 if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
@@ -1003,17 +953,31 @@
                 return $img.length > 0 && $img.is(':visible');
             }
 
-            return (/^(input|select|textarea|button|object)$/.test(nodeName) ?
-                !element.disabled :
-                'a' === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                $(element).is(':visible');
+            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
+                focusableIfVisible = !element.disabled;
+
+                if (focusableIfVisible) {
+                    // Form controls within a disabled fieldset are disabled.
+                    // However, controls within the fieldset's legend do not get disabled.
+                    // Since controls generally aren't placed inside legends, we skip
+                    // this portion of the check.
+                    fieldset = $(element).closest('fieldset')[0];
+                    if (fieldset) {
+                        focusableIfVisible = !fieldset.disabled;
+                    }
+                }
+            } else if (nodeName === 'a') {
+                focusableIfVisible = element.href || isTabIndexNotNaN;
+            } else {
+                focusableIfVisible = isTabIndexNotNaN;
+            }
+
+            return focusableIfVisible && $(element).is(':visible');
         },
 
         _tabItems : function($node) {
             var $selfRef = this;
-            if ($node === undefined) { $node = $(document); }
+            if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
@@ -1023,7 +987,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1031,18 +995,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.tooltip', (data = new CFW_Widget_Tooltip(this, options)));
+                $this.data('cfw.tooltip', data = new CFW_Widget_Tooltip(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
-
-})(jQuery);
+}(jQuery));

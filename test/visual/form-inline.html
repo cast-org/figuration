@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Form: Inline</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+</head>
+<body>
+
+<div class="container mb-1">
+    <h1>Form: Inline</h1>
+
+    <h2>Text Input and Button</h2>
+
+    <form class="form-inline mb-1">
+        <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+            <label for="inlineName0" class="form-label me-sm-0_5">Name</label>
+            <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
+        </div>
+        <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+            <label for="inlineEmail0" class="form-label me-sm-0_5">Email</label>
+            <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Send invitation</button>
+    </form>
+
+    <h2>Text Input, Checkbox, and Button</h2>
+
+    <form class="form-inline mb-1">
+        <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlineEmail1">Email address</label>
+            <input type="email" class="form-control" id="inlineEmail1" placeholder="Email Address">
+        </div>
+        <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlinePassword1">Password</label>
+            <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
+        </div>
+        <div class="form-check mb-0_5 me-sm-0_5 mb-sm-0">
+            <input id="checkbox-0" class="form-check-input" type="checkbox">
+            <label for="checkbox-0" class="form-check-label" >Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+
+    <h2>Input Group</h2>
+
+    <form class="form-inline mb-1">
+        <div class="form-group me-sm-0_5">
+            <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-text">$</div>
+                <input type="text" class="form-control" id="inputAmount2" placeholder="Amount">
+                <div class="input-group-text">.00</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Transfer cash</button>
+    </form>
+
+    <h2>Select</h2>
+
+    <form class="form-inline mb-1">
+        <label class="me-sm-0_5" for="inlinePref4">Preference</label>
+        <select class="form-control mb-0_5 me-sm-0_5 mb-sm-0" id="inlinePref4">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <div class="form-check form-checkradio mb-0_5 me-sm-0_5 mb-sm-0">
+            <input id="checkbox-1" class="form-check-input" type="checkbox">
+            <label for="checkbox-1" class="form-check-label">Remember my preference</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>

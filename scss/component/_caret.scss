@@ -1,6 +1,67 @@
-.caret {
-    @include caret(down, $caret-width);
+%caret-base {
+    display: inline-block;
+    width: $caret-width;
+    text-align: center;
 }
-.open .caret {
-    @include caret-up($caret-width);
+%caret-after {
+    @include caret(null, null);
 }
+
+@if $enable-utility-caret {
+    .caret {
+        @extend %caret-base;
+
+        &::after {
+            @extend %caret-after;
+            @include caret-down($caret-border-width);
+        }
+    }
+    .open > .caret {
+        &::after {
+            @include caret-up($caret-border-width);
+        }
+    }
+
+    .caretup {
+        @extend %caret-base;
+
+        &::after {
+            @extend %caret-after;
+            @include caret-up($caret-border-width);
+        }
+    }
+    .open > .caretup {
+        &::after {
+            @include caret-down($caret-border-width);
+        }
+    }
+
+    .caretstart {
+        @extend %caret-base;
+
+        &::after {
+            @extend %caret-after;
+            @include caret-start($caret-border-width);
+        }
+    }
+    .open > .caretstart {
+        &::after {
+            @include caret-end($caret-border-width);
+        }
+    }
+
+    .caretend {
+        @extend %caret-base;
+
+        &::after {
+            @extend %caret-after;
+            @include caret-end($caret-border-width);
+        }
+    }
+    .open > .caretend {
+        &::after {
+            @include caret-start($caret-border-width);
+        }
+    }
+}
+

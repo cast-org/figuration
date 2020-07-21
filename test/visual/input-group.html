@@ -1,0 +1,859 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Input Group</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+<link rel="stylesheet" href="../../site/assets/4.0/fonts/fontawesome/css/all.min.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+<style>
+.input-group {
+    margin-bottom: 1rem;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container"><div class="row"><div class="col-sm-10 col-md-8 col-lg-6">
+<h1>Input Group</h1>
+
+<div class="input-group">
+  <div class="input-group-text" id="basic-addon1">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon3">
+  <div class="input-group-text" id="basic-addon3">@example.com</div>
+</div>
+
+<hr>
+
+<label for="basic-url0">Your vanity URL</label>
+<div class="input-group">
+  <div class="input-group-text" id="basic-addon5">https://example.com/users/</div>
+  <input type="text" class="form-control" id="basic-url0" aria-describedby="basic-addon5">
+</div>
+
+<hr>
+
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-text" id="basic-addon7">@</div>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon8">
+  </div>
+</div>
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-text" id="basic-addon8">@</div>
+    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon8">
+  </div>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">$</div>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <div class="input-group-text">.00</div>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">$</div>
+  <div class="input-group-text">.00</div>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">
+    <input type="checkbox" aria-label="Checkbox for following text input">
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">
+    <input type="radio" aria-label="Radio button for following text input">
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with radio button">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">
+    <input type="checkbox" aria-label="Checkbox for following text input">
+  </div>
+  <div class="input-group-text">$</div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <div class="input-group-text">$</div>
+  <div class="input-group-text">.00</div>
+  <input type="text" class="form-control" aria-label="Text input with radio button">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <button class="btn" type="button">Go!</button>
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+</div>
+
+<hr>
+
+<div class="input-group">
+  <button class="btn" type="button">Go!</button>
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <button class="btn" type="button">Go!</button>
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+  <button class="btn" type="button">Go!</button>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <button class="btn" type="button">Go!</button>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <button class="btn" type="button">Go!</button>
+</div>
+
+<hr>
+
+<div class="input-group">
+  <button class="btn" type="button">Hate it</button>
+  <input type="text" class="form-control" placeholder="Product name" aria-label="Product name">
+  <button class="btn" type="button">Love it</button>
+</div>
+
+<hr>
+
+<div class="input-group">
+    <div class="input-group-text">%</div>
+    <textarea class="form-control" rows="5"></textarea>
+</div>
+
+<hr>
+
+<div class="input-group">
+    <textarea class="form-control" rows="5"></textarea>
+    <button class="btn" type="button">Go!</button>
+</div>
+
+<div class="d-flex">
+  <div class="input-group">
+    <button type="button" class="btn btn-secondary" data-cfw="dropdown">
+      Action <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    <div class="input-group-text">.00</div>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
+</div>
+
+<hr>
+
+<div class="d-flex">
+  <div class="input-group">
+    <select class="form-control" aria-label="Select one">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
+</div>
+
+<hr>
+
+<div class="d-flex">
+  <div class="input-group">
+    <select class="form-control" aria-label="Select one">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
+</div>
+
+<hr>
+
+<h2>Input group sizes</h2>
+
+<div class="input-group input-group-xlarge">
+  <div class="input-group-text" id="sizing-addon1">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
+</div>
+<div class="input-group input-group-large">
+  <div class="input-group-text" id="sizing-addon2">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
+</div>
+<div class="input-group">
+  <div class="input-group-text" id="sizing-addon3">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon3">
+</div>
+<div class="input-group input-group-small">
+  <div class="input-group-text" id="sizing-addon4">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
+</div>
+<div class="input-group input-group-xsmall">
+  <div class="input-group-text" id="sizing-addon5">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon5">
+</div>
+
+<h2>Input group size w/ icon buttons</h2>
+
+<div class="input-group input-group-xlarge">
+  <button type="button" class="btn btn-icon" aria-label="Icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+</div>
+<div class="input-group input-group-large">
+  <button type="button" class="btn btn-icon" aria-label="Icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+</div>
+<div class="input-group">
+  <button type="button" class="btn btn-icon" aria-label="Icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+</div>
+<div class="input-group input-group-small">
+  <button type="button" class="btn btn-icon" aria-label="Icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+</div>
+<div class="input-group input-group-xsmall">
+  <button type="button" class="btn btn-icon" aria-label="Icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+</div>
+
+<h2>Input group size w/ select</h2>
+
+<div class="input-group input-group-xlarge">
+    <select class="form-control" aria-label="Select one">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+</div>
+<div class="input-group input-group-large">
+    <select class="form-control" aria-label="Select one">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+</div>
+<div class="input-group">
+    <select class="form-control" aria-label="Select one">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+</div>
+<div class="input-group input-group-small">
+    <select class="form-control" aria-label="Select one">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+</div>
+<div class="input-group input-group-xsmall">
+    <select class="form-control" aria-label="Select one">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <button class="btn" type="button">Go!</button>
+</div>
+
+<h2>Input group size w/ file input</h2>
+<div class="input-group input-group-xsmall mb-1">
+  <button class="btn btn-outline-primary" type="button">Button</button>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="formFileSize0">
+    <label class="form-file-label" for="formFileSize0">
+      <span class="form-file-text">Extra small choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+<div class="input-group input-group-small mb-1">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="formFileSize1">
+    <label class="form-file-label" for="formFileSize1">
+      <span class="form-file-text">Small choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+  <button class="btn btn-outline-primary" type="button">Button</button>
+</div>
+<div class="input-group mb-1">
+  <button class="btn btn-outline-primary" type="button">Button</button>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="formFileSize2">
+    <label class="form-file-label" for="formFileSize2">
+      <span class="form-file-text">Default choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+<div class="input-group input-group-large mb-1">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="formFileSize3">
+    <label class="form-file-label" for="formFileSize3">
+      <span class="form-file-text">Large choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+  <button class="btn btn-outline-primary" type="button">Button</button>
+</div>
+<div class="input-group input-group-xlarge mb-1">
+  <button class="btn btn-outline-primary" type="button">Button</button>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="formFileSize4">
+    <label class="form-file-label" for="formFileSize4">
+      <span class="form-file-text">Extra large choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+
+
+<h2>Margin Check</h2>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <button class="btn btn-outline-primary" type="button">All</button>
+        <button class="btn btn-outline-success" type="button">Yes</button>
+        <button class="btn btn-outline-danger" type="button">No</button>
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <button class="btn btn-outline-primary" type="button">All</button>
+        <button class="btn btn-outline-primary" type="button">All</button>
+		<input type="text" class="form-control">
+		<input type="text" class="form-control">
+        <button class="btn btn-outline-success" type="button">Yes</button>
+        <button class="btn btn-outline-danger" type="button">No</button>
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <button class="btn btn-outline-primary" type="button">All</button>
+        <button class="btn btn-outline-primary" type="button">All</button>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <button class="btn btn-outline-success" type="button">Yes</button>
+        <button class="btn btn-outline-danger" type="button">No</button>
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <button class="btn btn-outline-primary" type="button">All</button>
+        <button class="btn btn-outline-primary" type="button">All</button>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <button class="btn btn-outline-success" type="button">Yes</button>
+        <button class="btn btn-outline-danger" type="button">No</button>
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <input type="text" class="form-control">
+        <input type="text" class="form-control">
+        <button class="btn btn-outline-primary" type="button">Ok</button>
+        <button class="btn btn-outline-primary" type="button">Ok</button>
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <button class="btn btn-outline-primary" type="button">Ok</button>
+        <button class="btn btn-outline-primary" type="button">Ok</button>
+        <input type="text" class="form-control">
+        <input type="text" class="form-control">
+    </div>
+</form>
+
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-text">Something:</div>
+        <div class="btn-check">
+            <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
+            <label for="radio0-0" class="btn btn-outline-primary">Ok</label>
+        </div>
+        <div class="btn-check">
+            <input id="radio0-1" type="radio" name="radio0" class="btn-check-input">
+            <label for="radio0-1" class="btn btn-outline-success">Yes</label>
+        </div>
+        <div class="btn-check">
+            <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
+            <label for="radio0-2" class="btn btn-outline-danger">No</label>
+        </div>
+    </div>
+</form>
+
+<h2>Input group button dropdown</h2>
+<div class="row mb-1">
+  <div class="col-lg-6">
+    <div class="input-group">
+        <button type="button" class="btn btn-secondary" data-cfw="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+      </ul>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+      <button type="button" class="btn btn-secondary input-group-end" data-cfw="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu dropreverse">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="input-group">
+  <button type="button" class="btn btn-secondary" data-cfw="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+  </ul>
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <button type="button" class="btn btn-secondary" data-cfw="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu dropreverse">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+  </ul>
+</div>
+
+<h2>Segmented Buttons</h2>
+
+<div class="input-group mb-1">
+    <button type="button" class="btn btn-outline-secondary">Action</button>
+    <button type="button" class="btn btn-icon btn-outline-secondary" data-cfw="dropdown" aria-label="Toggle Dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <button type="button" class="btn btn-outline-secondary">Action</button>
+    <button type="button" class="btn btn-icon btn-outline-secondary input-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu dropreverse">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
+</div>
+
+
+<div class="input-group">
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <button type="button" class="btn btn-icon btn-outline-secondary input-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu dropreverse">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
+    <button type="button" class="btn btn-outline-secondary">Action</button>
+</div>
+
+<div class="input-group">
+    <button type="button" class="btn btn-icon btn-outline-secondary input-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu dropreverse">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
+    <button type="button" class="btn btn-outline-secondary">Action</button>
+    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+</div>
+
+<h2>Custom File</h2>
+
+<div class="input-group">
+   <div class="input-group-text">Upload</div>
+   <div class="form-file">
+    <input type="file" class="form-file-input" id="form-file-1">
+    <label class="form-file-label" for="form-file-1">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+
+<div class="input-group">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="form-file-2">
+    <label class="form-file-label" for="form-file-2">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+  <div class="input-group-text">Upload</div>
+</div>
+
+<div class="input-group">
+  <button class="btn btn-outline-secondary" type="button">Button</button>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="form-file-3">
+    <label class="form-file-label" for="form-file-3">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+
+<div class="input-group">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="form-file-4">
+    <label class="form-file-label" for="form-file-4">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+  <button class="btn btn-outline-secondary" type="button">Button</button>
+</div>
+
+<h2>Button Check</h2>
+<form class="mb-1">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Some input..." aria-label="Username">
+        <div class="btn-check">
+            <input id="checkbox0" type="checkbox" class="btn-check-input">
+            <label for="checkbox0" class="btn btn-info">Single toggle</label>
+        </div>
+    </div>
+</form>
+
+<div class="input-group">
+    <div class="btn-check">
+        <input id="btn-check-0" type="checkbox" class="btn-check-input">
+        <label for="btn-check-0" class="btn">Checkbox Button</label>
+    </div>
+    <input type="text" aria-label="Text input with checkbox buttons" class="form-control">
+    <div class="btn-check">
+        <input id="btn-check-1" type="checkbox" class="btn-check-input">
+        <label for="btn-check-1" class="btn">Checkbox Button</label>
+    </div>
+</div>
+
+<h2>Addon Placement</h2>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <input type="text" class="form-control">
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <input type="text" class="form-control">
+    <input type="text" class="form-control">
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control">
+</div>
+
+<h2>Validation</h2>
+<p>
+    Input group validation does not support multiple inputs, multiple selects,
+    or validation feedback on custom file inputs due to CSS selector limitation.
+</p>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control is-invalid input-group-end" required="">
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control is-invalid" required="">
+    <div class="input-group-text input-group-end">Addon</div>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <input type="text" class="form-control is-invalid" required="">
+    <div class="input-group-text input-group-end">Addon</div>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <button type="button" class="btn">Button</button>
+    <input type="text" class="form-control is-invalid input-group-end" required="">
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control is-invalid" required="">
+    <button type="button" class="btn input-group-end">Button</button>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <button type="button" class="btn">Button</button>
+    <input type="text" class="form-control is-invalid" required="">
+    <button type="button" class="btn input-group-end">Button</button>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <select class="form-control is-invalid input-group-end">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <select class="form-control is-invalid">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+    <div class="input-group-text input-group-end">Addon</div>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <select class="form-control is-invalid">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+    <div class="input-group-text input-group-end">Addon</div>
+    <div class="invalid-feedback">Example invalid feedback.</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <div class="form-file">
+      <input type="file" class="form-file-input is-invalid" id="validate-file-1">
+      <label class="form-file-label" for="validate-file-1">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+</div>
+
+<div class="input-group">
+    <div class="form-file">
+      <input type="file" class="form-file-input is-invalid" id="validate-file-2">
+      <label class="form-file-label" for="validate-file-2">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="input-group-text">Addon</div>
+</div>
+
+<div class="input-group">
+    <div class="input-group-text">Addon</div>
+    <div class="form-file">
+      <input type="file" class="form-file-input is-invalid" id="validate-file-3">
+      <label class="form-file-label" for="validate-file-3">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+    </div>
+    <div class="input-group-text">Addon</div>
+</div>
+
+</div></div></div>
+
+</body>
+</html>

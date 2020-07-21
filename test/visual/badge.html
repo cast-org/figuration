@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Badge</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
+
+</head>
+<body>
+
+<div class="container mb-1">
+
+<h1>Badge</h1>
+
+<h2>Auto Sizing</h2>
+
+<div class="mb-1">
+    <h1>Example heading <span class="badge">New</span></h1>
+    <h2>Example heading <span class="badge">New</span></h2>
+    <h3>Example heading <span class="badge">New</span></h3>
+    <h4>Example heading <span class="badge">New</span></h4>
+    <h5>Example heading <span class="badge">New</span></h5>
+    <h6>Example heading <span class="badge">New</span></h6>
+</div>
+
+<h2>Color</h2>
+<p>
+    <span class="badge">Default</span>
+    <span class="badge bg-primary">Primary</span>
+    <span class="badge bg-secondary">Secondary</span>
+    <span class="badge bg-success">Success</span>
+    <span class="badge bg-info">Info</span>
+    <span class="badge bg-warning text-body">Warning</span>
+    <span class="badge bg-danger">Danger</span>
+    <span class="badge bg-light text-dark">Light</span>
+    <span class="badge bg-dark">Dark</span>
+</p>
+
+<h2>Outline</h2>
+<p>
+    <span class="badge bg-transparent border-primary text-primary">Primary</span>
+    <span class="badge bg-transparent border-secondary text-secondary">Secondary</span>
+    <span class="badge bg-transparent border-success text-success">Success</span>
+    <span class="badge bg-transparent border-info text-info">Info</span>
+    <span class="badge bg-transparent border-warning text-warning">Warning</span>
+    <span class="badge bg-transparent border-danger text-danger">Danger</span>
+    <span class="badge bg-transparent border-light text-light">Light</span>
+    <span class="badge bg-transparent border-dark text-dark">Dark</span>
+</p>
+
+<h2>Pill</h2>
+<p>
+    <span class="badge radius-pill">Default</span>
+    <span class="badge radius-pill bg-primary">Primary</span>
+    <span class="badge radius-pill bg-secondary">Secondary</span>
+    <span class="badge radius-pill bg-success">Success</span>
+    <span class="badge radius-pill bg-info">Info</span>
+    <span class="badge radius-pill bg-warning text-body">Warning</span>
+    <span class="badge radius-pill bg-danger">Danger</span>
+    <span class="badge radius-pill bg-light text-dark">Light</span>
+    <span class="badge radius-pill bg-dark">Dark</span>
+</p>
+
+<h2>Dismissable</h2>
+<p>
+    <span class="badge bg-primary">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+    <span class="badge radius-pill bg-success">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+</p>
+<p>
+    <span class="badge bg-info" id="alert-badge">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss" data-cfw-dismiss="alert" data-cfw-alert-target="#alert-badge">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+</p>
+
+<h2>Badge Group</h2>
+<div class="badge-group mb-1">
+    <span class="badge bg-dark">version</span>
+    <span class="badge bg-success">v4.0.0</span>
+</div>
+
+<div class="badge-group mb-1">
+    <span class="badge bg-dark">build</span>
+    <span class="badge bg-danger">error</span>
+</div>
+
+<div class="badge-group mb-1">
+    <span class="badge radius-pill radius-e-0 bg-dark">response</span>
+    <span class="badge radius-pill radius-s-0 bg-light text-dark">none</span>
+</div>
+
+<div class="badge-group mb-1">
+    <span class="badge bg-primary">comments</span>
+    <span class="badge bg-transparent border-primary text-primary">9</span>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,26 +1,36 @@
 // stylelint-disable declaration-no-important
 
-// Special backgrounds
-@include bg-variant(".bg-inverse", map-get($inverse-color, "color"), map-get($inverse-color, "bg"), map-get($inverse-color, "hover-bg"));
-@include bg-variant(".bg-faded", inherit, $faded-bg, $faded-hover-bg);
-
-// Contextual backgrounds
-@each $theme, $colors in $context-themes {
-    $color:    map-get($colors, "control-color");
-    $bg:       map-get($colors, "control-bg");
-    $hover-bg: map-get($colors, "control-hover-bg");
-
-    @include bg-variant(".bg-#{$theme}", $color, $bg, $hover-bg);
-}
-
-// Palette colors
-@if $enable-palette {
-    @each $theme, $color in $palette-themes {
-        @each $level in $palette-levels {
-            @include bg-palette-variant(".bg-#{$theme}-#{$level}", $color, $level, $level-bg-hover-delta);
+@if $enable-utility-bg {
+    // Contextual backgrounds
+    @if $enable-utility-bg-colors {
+        @if (type-of($utility-bg-colors) == "map" and length($utility-bg-colors) != 0) {
+            @each $theme, $color in $utility-bg-colors {
+                .bg-#{$theme} {
+                    background-color: $color !important;
+                }
+            }
         }
     }
-}
 
-// Transparent background
-.bg-transparent { background-color: transparent !important; }
+    // Palette colors
+    @if $enable-palette and $enable-utility-bg-palette {
+        $palette-colors-bg: $palette-colors !default;
+        $palette-levels-bg: $palette-levels !default;
+
+        @each $theme, $color in $palette-colors-bg {
+            @each $level in $palette-levels-bg {
+                .bg-#{$theme}-#{$level} {
+                    background-color: palette($color, $level) !important;
+                }
+            }
+        }
+    }
+
+    // Special background colors
+    @if $enable-utility-bg-special {
+        .bg-body { background-color: $body-bg !important; }
+        .bg-white { background-color: $white !important; }
+        .bg-black { background-color: $black !important; }
+        .bg-transparent { background-color: transparent !important; }
+    }
+}

@@ -1,10 +1,10 @@
 /*!
- * Figuration (v3.0.5)
+ * Figuration (v4.0.0)
  * http://figuration.org
- * Copyright 2013-2018 CAST, Inc.
+ * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2018  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2020  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): util.js
+ * Figuration (v4.0.0): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -33,23 +33,14 @@ if (typeof jQuery === 'undefined') {
     // Private util helpers
     // =====
 
+    /* eslint-disable-next-line no-extend-native */
     String.prototype.capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     };
 
-    function doCallback(callback) {
+    var doCallback = function(callback) {
         if (callback) { callback(); }
-    }
-
-    function escapeId(selector) {
-        // Escape IDs in case of special selectors (selector = '#myId:something')
-        // $.escapeSelector does not exist in jQuery < 3
-        selector = typeof $.escapeSelector === 'function' ?
-            $.escapeSelector(selector).substr(1) :
-            selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
-
-        return selector;
-    }
+    };
 
     // =====
     // TransitionEnd support/emulation
@@ -58,7 +49,7 @@ if (typeof jQuery === 'undefined') {
     var transition = false;
     var TRANSITION_END = 'cfwTransitionEnd';
 
-    function CFW_transitionEndTest() {
+    var CFW_transitionEndTest = function() {
         var div = document.createElement('div');
 
         var transitionEndEvents = {
@@ -70,35 +61,44 @@ if (typeof jQuery === 'undefined') {
 
         // Test for browser specific event name to bind
         for (var eventName in transitionEndEvents) {
-            if (div.style[eventName] !== undefined) {
-                return { end: transitionEndEvents[eventName] };
+            if (typeof div.style[eventName] !== 'undefined') {
+                return {
+                    end: transitionEndEvents[eventName]
+                };
             }
         }
 
         // No browser transitionEnd support - use custom event name
-        return { end: TRANSITION_END };
-    }
+        return {
+            end: TRANSITION_END
+        };
+    };
 
     // Get longest CSS transition duration
-    function CFW_transitionCssDuration($node) {
-        var durationArray = [0]; // Set a min value -- otherwise get `Infinity`
+    var CFW_transitionCssDuration = function($node) {
+        var timeArray = [0]; // Set a min value -- otherwise get `Infinity`
+        var MILLISECONDS_MULTIPLIER = 1000;
+        var DURATION_PRECISION = 2;
+
         $node.each(function() {
-            var durations = $node.css('transition-duration') || $node.css('-webkit-transition-duration') || $node.css('-moz-transition-duration') || $node.css('-ms-transition-duration') || $node.css('-o-transition-duration');
-            if (durations) {
-                var times = durations.split(',');
-                for (var i = times.length; i--;) { // Reverse loop should be faster
-                    durationArray = durationArray.concat(parseFloat(times[i]));
+            var $this = $(this);
+            var transitionDuration = $this.css('transition-duration');
+            var transitionDelay = $this.css('transition-delay');
+
+            if (transitionDuration && transitionDelay) {
+                var durations = transitionDuration.split(',');
+                var delays = transitionDelay.split(',');
+                for (var i = durations.length; i--;) {
+                    timeArray = timeArray.concat(parseFloat(durations[i]) + parseFloat(delays[i]));
                 }
             }
         });
 
-        var duration = Math.max.apply(Math, durationArray); // http://stackoverflow.com/a/1379560
-        duration = duration * 1000; // convert to milliseconds
+        var duration = Math.max.apply(Math, timeArray); // http://stackoverflow.com/a/1379560
+        return duration.toPrecision(DURATION_PRECISION) * MILLISECONDS_MULTIPLIER; // convert to milliseconds
+    };
 
-        return duration;
-    }
-
-    function CFW_transitionEndEmulate(start, complete) {
+    var CFW_transitionEndEmulate = function(start, complete) {
         var duration = CFW_transitionCssDuration(this);
 
         if (duration) {
@@ -125,9 +125,9 @@ if (typeof jQuery === 'undefined') {
             doCallback(complete);
         }
         return this;
-    }
+    };
 
-    function CFW_transitionEndSpecial() {
+    var CFW_transitionEndSpecial = function() {
         return {
             bindType: transition.end,
             delegateType: transition.end,
@@ -135,12 +135,13 @@ if (typeof jQuery === 'undefined') {
                 if ($(e.target).is(this)) {
                     return e.handleObj.handler.apply(this, arguments);
                 }
-                return undefined;
+                return undefined; /* eslint-disable-line no-undefined */
             }
         };
-    }
+    };
 
     transition = CFW_transitionEndTest();
+    $.fn.CFW_transitionDuration = CFW_transitionCssDuration;
     $.fn.CFW_transition = CFW_transitionEndEmulate;
     $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
 
@@ -151,27 +152,30 @@ if (typeof jQuery === 'undefined') {
     // Includes touch recognition fix for IE11
     // Partially from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
     /* global DocumentTouch */
-    var msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
-    var isTouch = (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
+    var msTouch = typeof window.navigator.msMaxTouchPoints === 'undefined' ? false : window.navigator.msMaxTouchPoints;
+    var isTouch = false;
+    if (('ontouchstart' in window) || msTouch || (window.DocumentTouch && document instanceof DocumentTouch)) {
+        isTouch = true;
+    }
     $.CFW_isTouch = isTouch;
 
     // =====
     // Mutation Helper
     // =====
 
-    // Not available in IE 10-, need polyfill (see docs for recommendation)
-    var CFW_MutationObserverTest = function() {
-        return ('MutationObserver' in window) ? window.MutationObserver : false;
-    }();
+    // Not available in IE 10-, need a polyfill
+    var CFW_MutationObserverTest = (function() {
+        return 'MutationObserver' in window ? window.MutationObserver : false;
+    }());
     var CFW_mutationObserver = CFW_MutationObserverTest;
 
-    function CFW_mutationObserved(records, $node) {
+    var CFW_mutationObserved = function(records, $node) {
         if (!MutationObserver) { return; }
         var $target = $(records[0].target);
         if ($target.is($node)) { return; } // Ignore elements own mutation
         var $parent = $target.parents('[data-cfw-mutate]').first();
         $parent.triggerHandler('mutate.cfw.mutate');
-    }
+    };
 
     $.fn.CFW_mutateTrigger = function() {
         this.find('[data-cfw-mutate]').each(function() {
@@ -184,7 +188,9 @@ if (typeof jQuery === 'undefined') {
         if (!CFW_mutationObserver) { return this; }
         this.each(function() {
             var elmObserver = $(this).data('cfw-mutationobserver');
-            elmObserver && elmObserver.disconnect();
+            if (typeof elmObserver !== 'undefined') {
+                elmObserver.disconnect();
+            }
             $(this).removeData('cfw-mutationobserver')
                 .off('mutated.cfw.mutate');
         });
@@ -236,30 +242,32 @@ if (typeof jQuery === 'undefined') {
         var proxyImg = new Image();
         var $proxyImg = $(proxyImg);
 
-        if (instance === undefined) {
+        if (typeof instance === 'undefined') {
             instance = '';
         } else {
             instance = '.' + instance;
         }
 
-        function _doCallback() {
-            $img
-                .add($proxyImg)
-                .off('load.cfw.imageLoaded' + instance);
+        var _doCallback = function() {
+            $proxyImg
+                .off('load.cfw.imageLoaded' + instance)
+                .remove();
             callback();
-        }
+        };
 
-        function _isImageComplete() {
-            return img.complete && img.naturalWidth !== undefined;
-        }
+        var _isImageComplete = function() {
+            return img.complete && typeof img.naturalWidth !== 'undefined';
+        };
 
-        if (_isImageComplete() && img.naturalWidth !== 0) {
+        // Firefox reports img.naturalWidth=0 for SVG
+        // Also currently borked in most browsers: https://github.com/whatwg/html/issues/3510
+        // if (_isImageComplete() && img.naturalWidth !== 0) {
+        if (_isImageComplete()) {
             _doCallback();
             return;
         }
 
-        $img
-            .add($proxyImg)
+        $proxyImg
             .off('load.cfw.imageLoaded' + instance)
             .one('load.cfw.imageLoaded' + instance, _doCallback);
         proxyImg.src = img.src;
@@ -272,9 +280,12 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_getID = function(prefix) {
         var $node = $(this);
         var nodeID = $node.attr('id');
-        if (nodeID === undefined) {
-            do nodeID = prefix + '-' + ~~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
-            while (document.getElementById(nodeID));
+        var MAX_ID = 1000000;
+        if (typeof nodeID === 'undefined') {
+            do {
+                /* eslint-disable-next-line no-bitwise */
+                nodeID = prefix + '-' + ~~(Math.random() * MAX_ID); // "~~" acts like a faster Math.floor() here
+            } while (document.getElementById(nodeID));
             $node.attr('id', nodeID);
         }
         return nodeID;
@@ -299,7 +310,7 @@ if (typeof jQuery === 'undefined') {
         name = name.capitalize();
 
         for (var prop in object) {
-            if (object.hasOwnProperty(prop)) {
+            if (Object.prototype.hasOwnProperty.call(object, prop)) {
                 var propName = prop.capitalize();
                 if (typeof data['cfw' + name + propName] !== 'undefined') {
                     parsedData[prop] = data['cfw' + name + propName];
@@ -310,20 +321,14 @@ if (typeof jQuery === 'undefined') {
     };
 
     $.fn.CFW_getSelectorFromElement = function(name) {
-        var $node = $(this);
-        var selector = $node.attr('data-cfw-' + name + '-target');
-        if (!selector || selector === '#') {
-            selector = $node.attr('href') || '';
-        }
+        var selector = this[0].getAttribute('data-cfw-' + name + '-target');
 
-        // If selector is an ID
-        if (selector.charAt(0) === '#') {
-            selector = escapeId(selector);
+        if (!selector || selector === '#') {
+            selector = this[0].getAttribute('href') || '';
         }
 
         try {
-            var $selector = $(document).find(selector);
-            return $selector.length > 0 ? selector : null;
+            return document.querySelector(selector) ? selector : null;
         } catch (error) {
             return null;
         }
@@ -331,18 +336,13 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_getSelectorFromChain = function(name, setting) {
         var $node = $(this);
+
         if (!setting || setting === '#') {
             return $node.CFW_getSelectorFromElement();
         }
 
-        // If selector is an ID
-        if (setting.charAt(0) === '#') {
-            setting = escapeId(setting);
-        }
-
         try {
-            var $setting = $(document).find(setting);
-            return $setting.length > 0 ? setting : null;
+            return document.querySelector(setting) ? setting : null;
         } catch (error) {
             return null;
         }
@@ -366,28 +366,54 @@ if (typeof jQuery === 'undefined') {
                 return 'left';
             }
             return 'right';
-        } else {
-            var scrollDiv = document.createElement('div');
-            scrollDiv.setAttribute('style', 'overflow-y: scroll;');
-            var scrollP = document.createElement('p');
-            $(scrollDiv).append(scrollP);
-            $node.append(scrollDiv);
-            var scrollWidth = $.CFW_measureScrollbar();
-            var posLeft = scrollP.getBoundingClientRect().left;
-            $node[0].removeChild(scrollDiv);
-            return (posLeft < scrollWidth) ? 'right' : 'left';
         }
+
+        var scrollDiv = document.createElement('div');
+        scrollDiv.setAttribute('style', 'overflow-y: scroll;');
+        var scrollP = document.createElement('p');
+        $(scrollDiv).append(scrollP);
+        $node.append(scrollDiv);
+        var scrollbarWidth = $.CFW_measureScrollbar();
+        var posLeft = scrollP.getBoundingClientRect().left;
+        $node[0].removeChild(scrollDiv);
+        return posLeft < scrollbarWidth ? 'right' : 'left';
+    };
+
+    $.fn.CFW_findShadowRoot = function(element) {
+        if (!document.documentElement.attachShadow) {
+            return null;
+        }
+
+        // Can find the shadow root otherwise it'll return the document
+        if (typeof element.getRootNode === 'function') {
+            var root = element.getRootNode();
+            return root instanceof ShadowRoot ? root : null;
+        }
+
+        if (element instanceof ShadowRoot) {
+            return element;
+        }
+
+        // when we don't find a shadow root
+        if (!element.parentNode) {
+            return null;
+        }
+
+        return null;
     };
 
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
-        if (threshhold === undefined) { threshhold = 250; }
+        var THRESHHOLD_DEFAULT = 250;
+        if (typeof threshhold === 'undefined') {
+            threshhold = THRESHHOLD_DEFAULT;
+        }
         var last;
         var deferTimer;
         return function() {
             var context = scope || this;
 
-            var now = +new Date();
+            var now = Number(new Date());
             var args = arguments;
             if (last && now < last + threshhold) {
                 // hold on to it
@@ -404,20 +430,22 @@ if (typeof jQuery === 'undefined') {
     };
 
     $.CFW_measureScrollbar = function() {
-        var $body = $(document.body);
         var scrollDiv = document.createElement('div');
         scrollDiv.setAttribute('style', ' position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;');
-        $body.append(scrollDiv);
+        document.body.appendChild(scrollDiv);
         var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-        $body[0].removeChild(scrollDiv);
+        document.body.removeChild(scrollDiv);
         return scrollbarWidth;
     };
 
-})(jQuery);
+    $.CFW_reflow = function(element) {
+        return element.offsetHeight;
+    };
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): drag.js
+ * Figuration (v4.0.0): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -464,7 +492,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _dragStartOn : function() {
-            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', $.proxy(this._dragStart, this));
+            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', this._dragStart.bind(this));
             // prevent image dragging in IE...
             if (this.$element[0].attachEvent) {
                 this.$element[0].attachEvent('ondragstart', this._dontStart);
@@ -472,7 +500,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _dragStartOff : function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             $(document).off('.cfw.dragin.' + this.instance);
             this.$element.off('.cfw.dragstart');
         },
@@ -481,9 +509,12 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
 
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).length) {
+            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
                 return;
             }
+
+            // check for disabled element
+            if (this.$element.is('.disabled, :disabled')) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;
@@ -576,7 +607,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -584,25 +615,24 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.drag', (data = new CFW_Widget_Drag(this, options)));
+                $this.data('cfw.drag', data = new CFW_Widget_Drag(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Drag = Plugin;
     $.fn.CFW_Drag.Constructor = CFW_Widget_Drag;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): collapse.js
+ * Figuration (v4.0.0): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -632,7 +662,6 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            var $selfRef = this;
             var selector = this.$element.CFW_getSelectorFromChain('collapse', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);
@@ -654,7 +683,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$target.each(function() {
                 var tempID = $(this).CFW_getID('cfw-collapse');
-                targetList += (tempID + ' ');
+                targetList += tempID + ' ';
             });
             // Set ARIA on trigger
             this.$triggers.attr('aria-controls', $.trim(targetList));
@@ -663,10 +692,7 @@ if (typeof jQuery === 'undefined') {
             var dimension = this.dimension();
             if (this.$triggers.hasClass('open')) {
                 this.$triggers.attr('aria-expanded', 'true');
-                this.$target.each(function() {
-                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
-                    $(this).addClass('collapse ' + flexClass)[dimension]('');
-                });
+                this.$target.addClass('collapse in')[dimension]('');
             } else {
                 this.$triggers.attr('aria-expanded', 'false');
                 this.$target.addClass('collapse');
@@ -678,7 +704,7 @@ if (typeof jQuery === 'undefined') {
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', this.toggle.bind(this))
                 .CFW_trigger('init.cfw.collapse');
         },
 
@@ -686,7 +712,7 @@ if (typeof jQuery === 'undefined') {
             if (e && !/input|textarea/i.test(e.target.tagName)) {
                 e.preventDefault();
             }
-            if (this.$element.hasClass('open') || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) {
+            if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
                 this.show();
@@ -706,7 +732,7 @@ if (typeof jQuery === 'undefined') {
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) { return; }
+            if (this.inTransition || this.$target.hasClass('in')) { return; }
 
             // Start open transition
             if (!this.$element.CFW_trigger('beforeShow.cfw.collapse')) {
@@ -723,30 +749,28 @@ if (typeof jQuery === 'undefined') {
                 this.$target.addClass('collapsing');
             }
 
-            var scrollSize = $.camelCase(['scroll', dimension].join('-'));
+            var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+            var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target.each(function() {
                     $(this)[dimension]($(this)[0][scrollSize]);
                 });
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
                 $selfRef.$target
                     .removeClass('collapsing')[dimension]('');
-                $selfRef.$target.each(function() {
-                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
-                    $(this).addClass('collapse ' + flexClass);
-                });
+                $selfRef.$target.addClass('collapse in');
                 $selfRef.$target.CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterShow.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -758,7 +782,7 @@ if (typeof jQuery === 'undefined') {
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || (!this.$target.hasClass('in') && !this.$target.hasClass('in-flex'))) { return; }
+            if (this.inTransition || !this.$target.hasClass('in')) { return; }
 
             // Start close transition
             if (!this.$element.CFW_trigger('beforeHide.cfw.collapse')) {
@@ -773,22 +797,22 @@ if (typeof jQuery === 'undefined') {
             // Set dimension size and reflow before class changes for Chrome/Webkit or no animation occurs
             this.$target.each(function() {
                 var $this = $(this);
-                $this[dimension]($this[dimension]())[0].offsetHeight;
+                return $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$target.removeClass('collapse in in-flex');
+            this.$target.removeClass('collapse in');
             if (this.settings.animate) {
                 this.$target.addClass('collapsing');
             }
 
             // Determine/unset dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target[dimension]('');
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target
-                    .removeClass('collapsing in in-flex')
+                    .removeClass('collapsing in')
                     .addClass('collapse')
                     .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
@@ -796,7 +820,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$element.trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterHide.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -808,11 +832,6 @@ if (typeof jQuery === 'undefined') {
 
         animEnable: function() {
             this.settings.animate = true;
-        },
-
-        _isFlex: function(node) {
-            var displayVal = window.getComputedStyle(node, null).getPropertyValue('display');
-            return (displayVal.indexOf('flex') !== -1);
         },
 
         dispose : function() {
@@ -828,7 +847,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -836,22 +855,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.collapse', (data = new CFW_Widget_Collapse(this, options)));
+                $this.data('cfw.collapse', data = new CFW_Widget_Collapse(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Collapse = Plugin;
     $.fn.CFW_Collapse.Constructor = CFW_Widget_Collapse;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): dropdown.js
+ * Figuration (v4.0.0): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -863,17 +881,19 @@ if (typeof jQuery === 'undefined') {
         this.$element = $(element);
         this.$target = null;
         this.instance = null;
-
         this.timerHide = null;
+        this.hasContainer = {
+            helper: null,
+            parent: null,
+            previous: null
+        };
+        this.inNavbar = this._insideNavbar();
 
         var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
 
         // Touch enabled-browser flag - override not allowed
         this.settings.isTouch = $.CFW_isTouch;
-
-        this.$tmpContainer = null;
-        this.noContainer = this._containerOverride();
 
         this.c = CFW_Widget_Dropdown.CLASSES;
 
@@ -891,579 +911,409 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Dropdown.DEFAULTS = {
         target    : null,
+        isSubmenu : false,  // Used internally
         delay     : 350,    // Delay for hiding menu (milliseconds)
         hover     : false,  // Enable hover style navigation
         backlink  : false,  // Insert back links into submenus
         backtop   : false,  // Should back links start at top level
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
-        variants  : 'dropdown-menu-reverse dropup'
+        reference : 'toggle',
+        boundary  : 'scrollParent',
+        flip      : true,
+        display   : 'dynamic',
+        popperConfig    : null
     };
 
-    function getParent($node) {
-        var $parent;
-        var selector = $node.CFW_getSelectorFromElement('dropdown');
-        if (selector) {
-            $parent = $(selector).parent();
-        }
+    /* eslint-disable complexity */
+    var clearMenus = function(e) {
+        var KEYCODE_TAB = 9;    // Tab
 
-        return $parent || $node.parent();
-    }
-
-    function clearMenus(e) {
         // Ignore right-click
-        if (e && e.which === 3) { return; }
+        var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
+        if (e && e.which === RIGHT_MOUSE_BUTTON_WHICH) { return; }
 
-        // Ignore clicks into input areas
-        if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
-            return;
+        var $items = $('[data-cfw="dropdown"]');
+        // Do menu items in reverse to close from bottom up
+        for (var i = $items.length; i--;) {
+            var $trigger = $($items[i]);
+            var itemData = $trigger.data('cfw.dropdown');
+            if (!itemData) {
+                continue;
+            }
+
+            var $itemMenu = itemData.$target;
+            if ($itemMenu === null) {
+                continue;
+            }
+            if (!$itemMenu.hasClass('open')) {
+                continue;
+            }
+
+            if (e) {
+                // Ignore key event
+                // - tab navigation movement inside a menu
+                if (e.type === 'keyup') {
+                    if (e.which !== KEYCODE_TAB) {
+                        continue;
+                    }
+                }
+
+                // Ignore clicks for
+                // - input areas
+                // - menu triggers
+                // - 'back' buttons
+                if (e.type === 'click') {
+                    if (/label|input|textarea/i.test(e.target.tagName) ||
+                    this === e.target ||
+                    $(e.target).is('[data-cfw="dropdown"]') ||
+                    $(e.target).closest('.dropdown-back').length) {
+                        continue;
+                    }
+                }
+
+                // Ignore if hover/mouse
+                // - if still inside menu
+                if (e.type === 'mouseenter') {
+                    if (this === e.target || $itemMenu[0].contains(e.target)) {
+                        continue;
+                    }
+                }
+            }
+
+            var eventProperties = {
+                relatedTarget: $trigger[0]
+            };
+            if (e && e.type === 'click') {
+                eventProperties.clickEvent = e;
+            }
+
+            if (!$trigger.CFW_trigger('beforeHide.cfw.dropdown', eventProperties)) {
+                continue;
+            }
+
+            // Remove empty mouseover listener for iOS work-around
+            if (!itemData.settings.isSubmenu && $.CFW_isTouch) {
+                $('body').children().off('mouseover', null, $.noop);
+            }
+
+            $trigger
+                .attr('aria-expanded', 'false')
+                .removeClass('open');
+            $itemMenu
+                .removeClass('open');
+
+            $trigger
+                .CFW_Dropdown('containerReset')
+                .CFW_Dropdown('popperReset');
+
+            $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         }
-
-        // Find currently open menu root
-        $('[data-cfw="dropdown"]').each(function() {
-            var $parent = getParent($(this));
-            if (!$parent.hasClass('open')) { return; }
-            $(this).CFW_Dropdown('hideRev');
-        });
-    }
+    };
+    /* eslint-enable complexity */
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
             var $selfRef = this;
+            this.popper = null;
 
             // Get target menu
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
             var $target = $(selector);
 
-            // Target by sibling class
+            // Target by next sibling class
             if (!$target.length) {
-                $target = $(this.$element.siblings('.dropdown-menu')[0]);
+                $target = $(this.$element.next('.dropdown-menu, ul, ol')[0]);
             }
-            if (!$target.length) { return false; }
+            if (!$target.length) { return; }
             this.$target = $target;
 
-            this.$element.attr('data-cfw', 'dropdown');
-
-            // Check for presence of trigger id - set if not present
-            this.instance = this.$element.CFW_getID('cfw-dropdown');
-
-            // Check for id on top level menu - set if not present
-            /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
-            this.$target.attr({
-                'aria-hidden': 'true',
-                'aria-labelledby': this.instance
-            })
-            .addClass(this.c.isMenu);
-
-            // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
-            $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
-
-            // Set ARIA on trigger
-            this.$element.attr({
-                'aria-haspopup': 'true',
-                'aria-expanded': 'false'
-            });
-
-            if (this.settings.backlink && this.settings.backtop) {
-                var $backTop = $('<li class="' + this.c.backLink + '"><a href="#">' + this.settings.backtext + '</a></li>')
-                    .prependTo(this.$target);
-                if (this.$target.hasClass('dropdown-menu-reverse')) {
-                    $backTop.addClass('dropdown-back-reverse');
-                }
+            // Get previous sibling to menu if container is to be used
+            if (this._useContainer()) {
+                this.hasContainer = {
+                    parent   : this.$target.parent(),
+                    previous : this.$target.prev()
+                };
             }
 
-            // Check for sub menu items and add indicator, id, and direction as needed
-            this.$target.find('ul').each(function() {
-                var $subMenu = $(this);
-                var $subLink = $subMenu.closest('li').find('a').eq(0);
-                var subLinkID = $subLink.CFW_getID('cfw-dropdown');
-                // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
+            this.$element.attr('data-cfw', 'dropdown');
+            // Get `id`s
+            this.instance = this.$element.CFW_getID('cfw-dropdown');
+            this.$target.CFW_getID('cfw-dropdown');
 
-                var $dirNode = $subMenu.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
-                if ($dirNode.hasClass('dropdown-menu-reverse')) {
-                    $subMenu.closest('li').addClass('dropdown-subalign-reverse');
-                } else {
-                    $subMenu.closest('li').addClass('dropdown-subalign-forward');
-                }
+            // Set default ARIA and class
+            this.$element
+                .attr('aria-expanded', 'false');
+            this.$target
+                .attr('aria-labelledby', this.instance)
+                .addClass(this.c.isMenu);
 
-                if ($selfRef.settings.backlink) {
-                    var $backElm = $('<li class="' + $selfRef.c.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
-                        .prependTo($subMenu);
-                    if ($dirNode.hasClass('dropdown-menu-reverse')) {
-                        $backElm.addClass('dropdown-back-reverse');
+            // Toggle on the trigger
+            this.$element.on('click.cfw.dropdown', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $selfRef.toggle(e);
+            });
+
+            // Add 'Back' links
+            this._addBacklink();
+
+            // Find submenu items
+            var $subToggle = this.$target.children('li').children('ul, ol').parent();
+            $subToggle.each(function() {
+                var $this = $(this);
+                var $subElement = $this.children('a').eq(0);
+                var $subTarget = $this.children('ul, ol').eq(0);
+                var subOptions = {};
+
+                if ($subElement.length && $subTarget.length) {
+                    $this.addClass($selfRef.c.hasSubMenu);
+                    if ($subElement[0].nodeName === 'A') {
+                        $subElement.attr('role', 'button');
                     }
+                    // Pass parent settings, with some overrides
+                    // then add dropdown functionality to submenu
+                    subOptions = {
+                        isSubmenu: true,
+                        target: $subTarget.CFW_getID('cfw-dropdown')
+                    };
+                    subOptions = $.extend({}, $selfRef.settings, subOptions);
+                    $subElement.CFW_Dropdown(subOptions);
                 }
 
-                $subMenu.attr({
-                    // 'role': 'menu',
-                    'aria-hidden': 'true',
-                    'aria-labelledby': subLinkID
-                })
-                .addClass($selfRef.c.isMenu)
-                .closest('li').addClass($selfRef.c.hasSubMenu);
-
-                $subLink.attr({
-                    'aria-haspopup': 'true',
-                    'aria-expanded': 'false'
-                });
+                // Manipulate directions of submenus
+                var $dirNode = $subTarget.closest('.dropreverse, .dropend, .dropstart');
+                if ($dirNode.hasClass('dropreverse') || $dirNode.hasClass('dropstart')) {
+                    $subTarget.addClass('dropdown-subalign-reverse');
+                } else {
+                    $subTarget.addClass('dropdown-subalign-forward');
+                }
             });
 
             // Set role on dividers
-            $('.dropdown-divider', this.$target).attr('role', 'separator');
+            this.$target.find('.dropdown-divider').attr('role', 'separator');
+
+            // Add keyboard navigation
+            this._navEnableKeyboard();
 
             // Touch OFF - Hover mode
             if (!this.settings.isTouch && this.settings.hover) {
-                this.navEnableHover();
+                this._navEnableHover();
             }
-
-            // Default Mode - Click mode
-            // Touch ON - handle click/tap style navigation
-            this.navEnableClick();
-
-            // Always on - Keyboard navigation
-            this.navEnableKeyboard();
 
             this.$element.CFW_trigger('init.cfw.dropdown');
         },
 
-        navEnableClick : function() {
-            var $selfRef = this;
-            // Trigger
-            this.$element.on('click.cfw.dropdown.modeClick', function(e) {
-                $selfRef.toggleMenu(e, $selfRef.$element, $selfRef.$target);
-            });
-            // Sub menu
-            var $subelement = this.$target.find('ul').closest('li').find('a:eq(0)');
-            if ($subelement.length) {
-                $subelement.on('click.cfw.dropdown.modeClick', function(e) {
-                    var $subMenuElm = $(this).parent().find('ul').eq(0);
-                    $selfRef.toggleMenu(e, $(this), $subMenuElm);
-                });
+        _findMenuItems : function() {
+            var showing = this.$target.hasClass('open');
+            var $menu = this.$target;
+            if (!showing && this.settings.isSubmenu) {
+                $menu = this.$element.closest('.dropdown-menu');
             }
-            // Back link
-            var $backLinkElm = this.$target.find('.' + this.c.backLink);
-            if ($backLinkElm.length) {
-                $backLinkElm.on('click.cfw.dropdown.modeClick', function(e) {
-                    if (e) {
-                        e.stopPropagation();
-                        e.preventDefault();
-                    }
 
-                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] == $selfRef.$target[0])) {
-                        $selfRef.closeUp($(this).closest('li'));
-                    } else {
-                        $selfRef.closeUp($(this).closest('.' + $selfRef.c.hasSubMenu));
-                    }
+            var $items = $menu.children('li').find('a, .dropdown-item, button, input, textarea');
+            $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
+            return $items;
+        },
+
+        _addBacklink : function() {
+            var $selfRef = this;
+            if ((this.settings.backlink && this.settings.backtop && !this.settings.isSubmenu) ||
+                (this.settings.backlink && this.settings.isSubmenu)) {
+                var $backItem = $('<li class="' + this.c.backLink + '"><button type="button" class="dropdown-item">' + this.settings.backtext + '</button></li>')
+                    .prependTo(this.$target);
+
+                $backItem.children('button').on('click.cfw.dropdown.modeClick', function() {
+                    $selfRef.hide();
+                    $selfRef.$element.focus();
                 });
             }
         },
 
-        navEnableHover : function() {
+        _navEnableKeyboard : function() {
             var $selfRef = this;
-            if (!this.settings.isTouch) {
-                $.each([this.$element, this.$target, this.$target.find('.' + this.c.hasSubMenu)], function() {
-                    $(this).on('mouseenter.cfw.dropdown.modeHover', function(e) {
-                        $selfRef._actionsHoverEnter(e, this);
-                    });
-                    $(this).on('mouseleave.cfw.dropdown.modeHover', function(e) {
-                        $selfRef._actionsHoverLeave(e, this);
-                    });
-                });
-            }
-        },
-
-        navDisableHover : function() {
-            this.$element.off('.cfw.dropdown.modeHover');
-            this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown.modeHover');
-        },
-
-        navEnableKeyboard : function() {
-            var $selfRef = this;
-
-            // Auto-closing of inactive sub menus
-            this.$target.find('a').on('focus.cfw.dropdown', function() {
-                var $node = $(this);
-                $selfRef.$target.find('.' + $selfRef.c.hasSubMenu + '.open').each(function() {
-                    // Ignore parents of item being focused - needed for nesting
-                    if (!$(this).find($node).length) {
-                        var $snode = $(this).children('a');
-                        var $ssubNode = $node.parent().find('ul').eq(0);
-                        $selfRef.hideMenu(null, $snode, $ssubNode);
-                    }
-                });
-            });
-
-            // Key handling
-            $.each([this.$element, this.$target, this.$target.find('.' + this.c.hasSubMenu)], function() {
+            $.each([this.$element, this.$target], function() {
                 $(this).on('keydown.cfw.dropdown', function(e) {
-                    $selfRef._actionsKeydown(e, this);
+                    $selfRef._actionsKeydown(e);
                 });
             });
         },
 
-        toggleMenu : function(e, $trigger, $menu) {
-            if ($trigger.add().parent().is('.disabled, :disabled')) { return; }
+        /* eslint-disable complexity */
+        _actionsKeydown : function(e) {
+            var showing = this.$target.hasClass('open');
 
-            var $parent  = getParent($trigger);
-            var showing = $parent.hasClass('open');
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var KEYCODE_ESC = 27;   // Escape
+            var KEYCODE_SPACE = 32; // Space
+            var KEYCODE_TAB = 9;    // Tab
 
-            // Check to see if link should be followed (sub-menu open and link is not '#')
-            var nodeHref = $trigger.attr('href');
-            if (nodeHref && !(/^#$/.test(nodeHref)) && showing) {
-                clearMenus();
-                return;
-            }
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_ESC + '|' + KEYCODE_SPACE + '|' + KEYCODE_TAB + ')$');
+            var REGEX_ARROWS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
 
-            if (e) e.stopPropagation();
-
-            if (!showing) {
-                this.showMenu(e, $trigger, $menu);
-            } else {
-                this.hideMenu(e, $trigger, $menu);
-            }
-
-            $trigger.trigger('focus');
-        },
-
-        showMenu : function(e, $trigger, $menu) {
-            var $selfRef = this;
-
-            if (e) e.preventDefault();
-
-            var $parent  = getParent($trigger);
-            var showing = $parent.hasClass('open');
-            if (showing) { return; }
-
-            if (!$trigger.CFW_trigger('beforeShow.cfw.dropdown')) {
-                return;
-            }
-
-            if ($trigger.is(this.$element)) {
-                if (this.settings.isTouch) {
-                    // Add empty function for mouseover listeners on immediate
-                    // children of `<body>` due to missing event delegation on iOS
-                    // Allows 'click' event to bubble up in Safari
-                    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-                    $('body').children().on('mouseover', null, $.noop);
-                }
-                clearMenus();
-                if (!$parent.hasClass(this.c.hover)) {
-                    $trigger.trigger('focus');
-                }
-
-                // Handle loss of focus
-                $(document)
-                    .on('focusin.cfw.dropdown.' + this.instance, function(e) {
-                        if ($selfRef.$element[0] !== e.target && !$selfRef.$target.has(e.target).length) {
-                            $selfRef.hideRev();
-                        }
-                    });
-            }
-
-            // Find other open sub menus and close them
-            this.$target.find('.' + this.c.hasSubMenu + '.open').each(function() {
-                // Ignore parents of item to be shown - needed for nesting
-                if (!$(this).find($trigger).length) {
-                    var $snode = $(this).children('a');
-                    var $ssubNode = $trigger.parent().find('ul').eq(0);
-                    $selfRef.hideMenu(null, $snode, $ssubNode);
-                }
-            });
-
-            if ($trigger.is(this.$element)) {
-                // Move target if container is to be used
-                if (this.settings.container && !this.noContainer) {
-                    this.$tmpContainer = $(document.createElement('div'));
-                    this.$tmpContainer
-                        .appendTo(this.settings.container)
-                        .append(this.$target)
-                        .addClass('dropdown-container open');
-
-                    var variantTypes = this.settings.variants.split(' ');
-                    for (var i = variantTypes.length; i--;) {
-                        var varName = variantTypes[i];
-                        if ($parent.hasClass(varName)) {
-                            this.$tmpContainer.addClass(varName);
-                        }
-                    }
-
-                    $(window).on('resize.cfw.dropdown.' + this.instance, $.proxy(this._containerPlacement, this));
-                    this._containerPlacement();
-                }
-            }
-
-            $parent.addClass('open');
-            $trigger.attr('aria-expanded', 'true');
-            $menu.removeAttr('aria-hidden');
-            //  .children('li').not('.disabled, :disabled');
-            //  .children('a').attr('tabIndex', 0);
-            this.$target.find('li').redraw();
-
-            $trigger.CFW_trigger('afterShow.cfw.dropdown');
-        },
-
-        hideMenu : function(e, $trigger, $menu, triggerFocus) {
-            if (e) e.preventDefault();
-
-            if (triggerFocus === undefined) { triggerFocus = true; }
-
-            var $parent  = getParent($trigger);
-            var showing = $parent.hasClass('open');
-            if (!showing) { return; }
-
-            if (!$trigger.CFW_trigger('beforeHide.cfw.dropdown')) {
-                return;
-            }
-
-            if ($trigger.is(this.$element)) {
-                $(document).off('focusin.cfw.dropdown.' + this.instance);
-                if (this.settings.isTouch) {
-                    // Remove empty mouseover listener for iOS work-around
-                    $('body').children().off('mouseover', null, $.noop);
-                }
-            }
-
-            // Find open sub menus
-            var openSubMenus = $menu.find('.' + this.c.hasSubMenu + '.open');
-            if (openSubMenus.length) {
-                var openSubMenusRev = openSubMenus.toArray().reverse();
-                for (var i = 0; i < openSubMenusRev.length; i++) {
-                    var $node = $(openSubMenusRev[i]).children('a');
-                    var $subNode = $node.parent().find('ul').eq(0);
-                    this.hideMenu(null, $node, $subNode);
-                }
-            }
-
-            $parent.removeClass('open');
-            $trigger.attr('aria-expanded', 'false');
-
-            if ($trigger.is(this.$element)) {
-                if (this.settings.container && !this.noContainer) {
-                    $(window).off('resize.cfw.dropdown.' + this.instance);
-                    this.$target
-                        .appendTo($parent);
-                    this.$tmpContainer && this.$tmpContainer.remove();
-                    this.$tmpContainer = null;
-                }
-            }
-
-            $menu.attr('aria-hidden', 'true')
-                .find('a').attr('tabIndex', -1);
-
-            if ($trigger.is(this.$element)) {
-                if (triggerFocus) {
-                    $trigger.trigger('focus');
-                }
-            } else if (!$parent.hasClass(this.c.hover)) {
-                $trigger.trigger('focus');
-            }
-            $parent.removeClass(this.c.hover);
-            $trigger.CFW_trigger('afterHide.cfw.dropdown');
-        },
-
-        toggle : function() {
-            this.toggleMenu(null, this.$element, this.$target);
-        },
-
-        show : function() {
-            this.showMenu(null, this.$element, this.$target);
-        },
-
-        hide : function() {
-            this.hideMenu(null, this.$element, this.$target);
-        },
-
-        hideRev : function() {
-            this.hideMenu(null, this.$element, this.$target, false);
-        },
-
-        closeUp : function($node) {
-            var $subNode;
-            if ($node.hasClass('open')) {
-                $node = $node.find('a').eq(0);
-            } else {
-                $node = $node.closest('.open').find('[data-cfw="dropdown"], a').eq(0);
-            }
-
-            $subNode = $node.find('ul').eq(0);
-            this.hideMenu(null, $node, $subNode);
-
-            var $parent = getParent($node);
-            if (!$parent.hasClass(this.c.hover)) {
-                $node.trigger('focus');
-            }
-            $parent.removeClass(this.c.hover);
-        },
-
-        _actionsKeydown : function(e, node) {
             var isInput = /input|textarea/i.test(e.target.tagName);
             var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
             var isRealButton = /button/i.test(e.target.tagName);
             var isRoleButton = /button/i.test($(e.target).attr('role'));
 
-            // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
-            if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
+            if (!REGEX_KEYS.test(e.which)) { return; }
             // Ignore space in inputs and buttons
-            if ((isInput || isRealButton) && e.which == 32) { return; }
+            if ((isInput || isRealButton) && e.which === KEYCODE_SPACE) { return; }
             // Ignore arrows in inputs, except for checkbox/radio
-            if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
+            if (isInput && !isCheck && REGEX_ARROWS.test(e.which)) { return; }
 
-            var $node = $(node);
+            // Allow ESC and LEFT to propagate if menu is closed
+            if (!showing && (e.which === KEYCODE_ESC || e.which === KEYCODE_LEFT) && $(e.target).is(this.$element)) {
+                return;
+            }
+
             var $items = null;
+            var index = -1;
 
-            // Close menu when tab pressed, move to next item
-            if (e.which == 9) {
-                // Emulate arrow up/down if input
-                if (isInput) {
-                    e.which = (e.shiftKey) ? 38 : 40;
+            // Handle TAB if using a container
+            if (e.which === KEYCODE_TAB) {
+                if (this.hasContainer.helper !== null) {
+                    $items = this._findMenuItems();
+                    if (!$items.length) { return; }
+
+                    // Find current focused menu item
+                    index = $items.index(document.activeElement);
+                    if (index < 0 && isCheck) {
+                        index = $items.index($(e.target).closest('.dropdown-item')[0]);
+                    }
+
+                    if (showing && $(e.target).is(this.$element) && !e.shiftKey) {
+                        e.which = KEYCODE_DOWN;
+                    } else if (e.shiftKey && index === 0) {
+                        this.$element.trigger('focus');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                    } else if (!e.shiftKey && index === $items.length - 1) {
+                        this.$element.trigger('focus');
+                        return;
+                    } else {
+                        return;
+                    }
                 } else {
-                    clearMenus();
-                    this.$element.trigger('focus');
                     return;
                 }
             }
 
-            // Allow ESC to propagate if menu is closed
-            if (e.which == 27 && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
-                return;
-            }
-
-            e.stopPropagation();
             e.preventDefault();
+            e.stopPropagation();
 
             // Close current focused menu with ESC
-            if (e.which == 27) {
-                if ($node.is(this.$element) || $node.is(this.$target)) {
-                    this.hideMenu(null, this.$element, this.$target);
-                    return;
-                }
-                if ($node.hasClass(this.c.hasSubMenu)) {
-                    this.closeUp($node);
-                    return;
-                }
+            if (e.which === KEYCODE_ESC) {
+                this.hide();
+                this.$element.trigger('focus');
             }
 
-            // Arrow key navigation
-            var $eTarget = $(e.target);
-            var $parent = null;
-
-            // Find parent menu
-            if ($node.is(this.$element) || $node.is(this.$target)) {
-                $parent = this.$target;
-            } else {
-                $parent = $eTarget.closest('.dropdown-menu');
+            // Ignore disabled items
+            if (this.$element.is('.disabled, :disabled')) {
+                return;
             }
-
-            $parent.removeClass(this.c.hover);
 
             // Emulate button behaviour
-            if (isRoleButton && e.which == 32) {
-                this.toggleMenu(null, $node, $parent);
+            if (isRoleButton && e.which === KEYCODE_SPACE) {
+                this.toggle(e);
                 return;
             }
 
-            // Up/Down
-            if (e.which == 38 || e.which == 40) {
-                if ($parent.is(':hidden')) {
-                    this.showMenu(null, $node, $parent);
-                    return;
+            // Open/close menus
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_DOWN) {
+                // Open menu if top level
+                if (!showing && !this.settings.isSubmenu) {
+                    this.show();
                 }
+            }
 
-                $items = $parent.children('li').find('a, .dropdown-item, input, textarea');
-                $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
-                if (!$items.length) { return; }
-
-                // Find current focused menu item
-                var index = $items.index(e.target);
-                if (index < 0 && isCheck) {
-                    index = $items.index($(e.target).closest('.dropdown-item')[0]);
+            // Right
+            if (e.which === KEYCODE_RIGHT) {
+                if (!showing && this.settings.isSubmenu) {
+                    this.show();
                 }
+            }
 
-                if (e.which == 38 && index > 0)                 { index--;   } // up
-                if (e.which == 40 && index < $items.length - 1) { index++;   } // down
-                if (!~index)                                    { index = 0; } // force first item
+            // Left
+            if (e.which === KEYCODE_LEFT) {
+                this.hide();
+                this.$element.trigger('focus');
+            }
 
-                $items.eq(index).trigger('focus');
-            } // END - Up/Down
+            // Focus control
+            $items = this._findMenuItems();
+            if (!$items.length) { return; }
 
-            // Left/Right
-            if (e.which == 37 || e.which == 39) {
-                // Only for children of menu
-                if (!$.contains(this.$target[0], $eTarget[0])) { return; }
-                // Only if has submenu class
-                if (!$eTarget.closest('li.dropdown-submenu')) { return; }
+            // Find current focused menu item
+            index = $items.index(document.activeElement);
+            if (index < 0 && isCheck) {
+                index = $items.index($(e.target).closest('.dropdown-item')[0]);
+            }
 
-                // Open/close sub-menu as needed
-                var $subMenuElm = $eTarget.parent().find('ul').eq(0);
-                var $parMenuElm = $eTarget.closest('li.dropdown-submenu').parent('ul.dropdown-menu');
-                var subHidden = $subMenuElm.is(':hidden');
-                var parHidden = $parMenuElm.is(':hidden');
+            if (e.which === KEYCODE_UP && index > 0) { index--; } // up
+            if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
+            /* eslint-disable-next-line no-bitwise */
+            if (!~index) { index = 0; } // force first item
 
-                if (e.which == 39 && subHidden) {
-                    this.showMenu(null, $eTarget, $subMenuElm);
-                    $items = $subMenuElm.children('li').find('a, .dropdown-item, input, textarea');
-                    $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
-                    $items.eq(0).trigger('focus');
-                    return;
-                }
-
-                if (e.which == 37 && !parHidden) {
-                    this.closeUp($node);
-                    return;
-                }
-            } // END - Left/Right
+            $items.eq(index).trigger('focus');
         },
+        /* eslint-enable complexity */
 
-        _actionsHoverEnter : function(e, node) {
-            var $node = $(node);
-
-            clearTimeout(this.timerHide);
-            if ($node.is(this.$element)) {
-                getParent($node).addClass(this.c.hover);
-                this.showMenu(null, this.$element, this.$target);
-                return;
-            }
-            if ($node.hasClass(this.c.hasSubMenu)) {
-                $node = $node.find('a').eq(0);
-                var $subNode = $node.parent().find('ul').eq(0);
-                getParent($node).addClass(this.c.hover);
-                this.showMenu(null, $node, $subNode);
-                return;
-            }
-        },
-
-        _actionsHoverLeave : function(e, node) {
+        _navEnableHover : function() {
             var $selfRef = this;
-            var $node = $(node);
-
-            clearTimeout(this.timerHide);
-            if ($node.is(this.$element) || $node.is(this.$target)) {
-                this.timerHide = setTimeout(function() {
-                    $selfRef.timerHide = null;
-                    $selfRef.hideMenu(null, $selfRef.$element, $selfRef.$target);
-                }, this.settings.delay);
-                return;
-            }
-            if ($node.hasClass(this.c.hasSubMenu)) {
-                $node = $node.find('a').eq(0);
-                var $subNode = $node.find('ul').eq(0);
-
-                this.timerHide = setTimeout(function() {
-                    $selfRef.timerHide = null;
-                    $selfRef.hideMenu(null, $node, $subNode);
-                }, $selfRef.settings.delay);
-                return;
+            if (!this.settings.isTouch) {
+                $.each([this.$element, this.$target], function() {
+                    $(this).on('mouseenter.cfw.dropdown.modeHover', function(e) {
+                        $selfRef._actionsHoverEnter(e);
+                    });
+                    $(this).on('mouseleave.cfw.dropdown.modeHover', function(e) {
+                        $selfRef._actionsHoverLeave(e);
+                    });
+                });
             }
         },
 
-        _containerOverride : function() {
+        _navDisableHover : function() {
+            this.$element.off('.cfw.dropdown.modeHover');
+            this.$target.off('.cfw.dropdown.modeHover');
+        },
+
+        _actionsHoverEnter : function(e) {
+            clearTimeout(this.timerHide);
+            clearMenus(e);
+            this.show();
+        },
+
+        _actionsHoverLeave : function(e) {
+            var $selfRef = this;
+            var $node = $(e.target);
+
+            clearTimeout(this.timerHide);
+            if ($node.is(this.$element) || $node.is(this.$target) || this.$target[0].contains($node[0])) {
+                this.timerHide = setTimeout(function() {
+                    $selfRef.timerHide = null;
+                    $selfRef.hide();
+                }, this.settings.delay);
+            }
+        },
+
+        _insideNavbar : function() {
             return this.$element.closest('.navbar-collapse').length > 0;
+        },
+
+        _useContainer : function() {
+            // return !this.settings.isSubmenu && this.settings.container && !this.inNavbar;
+            return !this.settings.isSubmenu && this.settings.container;
         },
 
         _containerPlacement : function() {
             var elRect = this.$element[0].getBoundingClientRect();
             elRect =  $.extend({}, elRect, this.$element.offset());
-            this.$tmpContainer.css({
+            this.hasContainer.helper.css({
                 top: elRect.top,
                 left: elRect.left,
                 width: elRect.width,
@@ -1471,13 +1321,231 @@ if (typeof jQuery === 'undefined') {
             });
         },
 
+        _containerSet : function() {
+            if (this._useContainer()) {
+                this.hasContainer.helper = $(document.createElement('div'));
+                this.hasContainer.helper
+                    .appendTo(this.settings.container)
+                    .append(this.$target)
+                    .addClass('dropdown-container');
+
+                $(window).on('resize.cfw.dropdown.' + this.instance, this._containerPlacement.bind(this));
+
+                this._containerPlacement();
+            }
+        },
+
+        containerReset : function() {
+            if (this._useContainer()) {
+                $(window).off('resize.cfw.dropdown.' + this.instance);
+                if (this.hasContainer.previous.length) {
+                    this.$target.insertAfter($(this.hasContainer.previous));
+                } else {
+                    this.$target.appendTo($(this.hasContainer.parent));
+                }
+                if (this.hasContainer.helper !== null) {
+                    this.hasContainer.helper
+                        .off('keydown.cfw.dropdown')
+                        .off('focusout.cfw.dropdown');
+                    this.hasContainer.helper.remove();
+                }
+                this.hasContainer.helper = null;
+            }
+        },
+
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getReference : function() {
+            var reference = this.$element[0];
+
+            if (this.hasContainer.helper !== null) {
+                reference = this.hasContainer.helper;
+            }
+
+            if (this.settings.reference === 'parent') {
+                reference = this.$element.parent().get(0);
+            } else if (this._isElement(this.settings.reference)) {
+                reference = this.settings.reference;
+
+                // Check for jQuery element
+                if (typeof this.settings.reference.jquery !== 'undefined') {
+                    reference = this.settings.reference[0];
+                }
+            }
+
+            return reference;
+        },
+
+        _getPlacement : function() {
+            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+            var isRTL = Boolean(directionVal === 'rtl');
+            var attachmentMap = {
+                AUTO: 'auto',
+                TOP: isRTL ? 'top-end' : 'top-start',
+                TOPEND: isRTL ? 'top-start' : 'top-end',
+                FORWARD: isRTL ? 'left-start' : 'right-start',
+                FORWARDEND: isRTL ? 'left-end' : 'right-end',
+                BOTTOM: isRTL ? 'bottom-end' : 'bottom-start',
+                BOTTOMEND: isRTL ? 'bottom-start' : 'bottom-end',
+                REVERSE: isRTL ? 'right-start' : 'left-start',
+                REVERSEEND: isRTL ? 'right-end' : 'left-end'
+            };
+
+            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend');
+            var dirV = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
+            var appendV = $dirNode.hasClass('dropreverse') ? 'END' : '';
+            var dirH = $dirNode.hasClass('dropstart') || $dirNode.hasClass('dropreverse') ? 'REVERSE' : 'FORWARD';
+            var appendH = $dirNode.hasClass('dropup') ? 'END' : '';
+
+            var placement = attachmentMap[dirV + appendV];
+
+            if ($dirNode.hasClass('dropstart') || $dirNode.hasClass('dropend')) {
+                placement = attachmentMap[dirH + appendH];
+            }
+
+            if (this.settings.isSubmenu) {
+                placement = attachmentMap[dirH + appendH];
+            }
+            return placement;
+        },
+
+        _getPopperConfig : function() {
+            var defaultConfig = {
+                placement: this._getPlacement(),
+                modifiers: {
+                    flip: {
+                        enabled: this.settings.flip,
+                        behavior: 'flip'
+                    },
+                    preventOverflow: {
+                        boundariesElement: this.settings.boundary
+                    }
+                }
+            };
+
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
+        },
+
+        popperReset : function() {
+            if (this.popper) {
+                this.popper.destroy();
+            }
+        },
+
+        _popperLocate: function() {
+            var isStatic = Boolean(window.getComputedStyle(this.$target[0], null).getPropertyValue('position').toLowerCase() === 'static');
+
+            if (this.settings.display !== 'dynamic') { return; }
+            if (isStatic) { return; }
+
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+            }
+
+            this.popper = new Popper(this._getReference(), this.$target[0], this._getPopperConfig());
+        },
+
+        toggle : function(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            if (this.$element.is('.disabled, :disabled')) {
+                return;
+            }
+
+            var showing = this.$target.hasClass('open');
+
+            clearMenus(e);
+
+            if (showing) {
+                this.hide();
+            } else {
+                this.show();
+            }
+        },
+
+        show : function() {
+            var $selfRef = this;
+
+            if (this.$element.is('.disabled, :disabled') || this.$target.hasClass('open')) {
+                return;
+            }
+
+            var eventProperties = {
+                relatedTarget: this.$element[0]
+            };
+            if (!this.$element.CFW_trigger('beforeShow.cfw.dropdown', eventProperties)) {
+                return;
+            }
+
+            // Move root menu if container is to be used
+            this._containerSet();
+
+            this.$element
+                .attr('aria-expanded', 'true')
+                .addClass('open');
+            this.$target
+                .addClass('open')
+                .find('li').redraw();
+
+            // Handle loss of focus
+            $(document)
+                .on('focusin.cfw.dropdown.' + this.instance, function(e) {
+                    if ($selfRef.$element[0] !== e.target && !$selfRef.$target.has(e.target).length) {
+                        $selfRef.hide();
+                    }
+                });
+
+            this._popperLocate();
+
+            this.$element.CFW_trigger('afterShow.cfw.dropdown', eventProperties);
+        },
+
+        hide : function() {
+            if (this.$element.is('.disabled, :disabled') || !this.$target.hasClass('open')) {
+                return;
+            }
+
+            var eventProperties = {
+                relatedTarget: this.$element[0]
+            };
+            if (!this.$element.CFW_trigger('beforeHide.cfw.dropdown', eventProperties)) {
+                return;
+            }
+
+            $(document).off('focusin.cfw.dropdown.' + this.instance);
+
+            this.$element
+                .attr('aria-expanded', 'false')
+                .removeClass('open');
+            this.$target
+                .removeClass('open');
+
+            this.containerReset();
+            this.popperReset();
+
+            this.$element
+                .CFW_trigger('afterHide.cfw.dropdown', eventProperties);
+        },
+
         dispose : function() {
+            var $subToggle = this.$target.children('li').children('ul, ol').children('a');
+            // Do menu items in reverse to dispose from bottom up
+            for (var i = $subToggle.length; i--;) {
+                $subToggle[i].eq(0).CFW_Dropdown('dispose');
+            }
+            this._navDisableHover();
+            this.hide();
+
             $(document).off('.cfw.dropdown.' + this.instance);
             $(window).off('.cfw.dropdown.' + this.instance);
-            this.$element.CFW_Dropdown('hideRev');
             this.$target.find('.' + this.c.backLink).remove();
-            this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown');
-            this.$target.find('a').off('.cfw.dropdown');
             this.$target.off('.cfw.dropdown');
             this.$element
                 .off('.cfw.dropdown')
@@ -1487,9 +1555,13 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.instance = null;
             this.timerHide = null;
-            this.$tmpContainer = null;
-            this.noContainer = null;
+            this.hasContainer = null;
+            this.inNavbar = null;
             this.settings = null;
+            if (this.popper) {
+                this.popper.destroy();
+            }
+            this.popper = null;
         }
     };
 
@@ -1497,7 +1569,7 @@ if (typeof jQuery === 'undefined') {
         return this.offsetHeight;
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1505,13 +1577,13 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.dropdown', (data = new CFW_Widget_Dropdown(this, options)));
+                $this.data('cfw.dropdown', data = new CFW_Widget_Dropdown(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Dropdown = Plugin;
     $.fn.CFW_Dropdown.Constructor = CFW_Widget_Dropdown;
@@ -1520,12 +1592,11 @@ if (typeof jQuery === 'undefined') {
     $(window).ready(function() {
         $(document).on('click', clearMenus);
     });
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): tab.js
+ * Figuration (v4.0.0): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1563,9 +1634,7 @@ if (typeof jQuery === 'undefined') {
             }
             this.$target = $($selector);
 
-            if (!this.$target.length) {
-                return false;
-            }
+            if (!this.$target.length) { return; }
 
             this.$element.attr('data-cfw', 'tab');
 
@@ -1590,6 +1659,7 @@ if (typeof jQuery === 'undefined') {
                 'aria-selected': 'false',
                 'aria-controls': this.$target.attr('id')
             });
+            this.$element.parent('li').attr('role', 'presentation');
 
             // Bind click handler
             this.$element.on('click.cfw.tab', function(e) {
@@ -1638,34 +1708,36 @@ if (typeof jQuery === 'undefined') {
                 e.preventDefault();
             }
 
-            var inTransition = this.$navElm.data('cfw.tab.inTransition');
-            if (inTransition) { return; }
-
-            if (this.$element.hasClass('active')
-                || this.$element.hasClass('disabled')
-                || this.$element[0].hasAttribute('disabled')) {
+            if (this.$element.hasClass('active') ||
+                this.$element.hasClass('disabled') ||
+                this.$element[0].hasAttribute('disabled')) {
                 return;
             }
 
-            var $previous = this.$navElm.find('.active:last');
+            var $previous = this.$navElm.find('.active');
+            var eventHideResult;
+            var eventShowResult;
+
             if ($previous.length) {
-                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$element[0] })) {
-                    return;
-                }
+                eventHideResult = $previous.last().CFW_trigger('beforeHide.cfw.tab', {
+                    relatedTarget: this.$element[0]
+                });
             }
 
-            if (!this.$element.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            eventShowResult = this.$element.CFW_trigger('beforeShow.cfw.tab', {
+                relatedTarget: $previous.last()[0]
+            });
+
+            if (!eventHideResult || !eventShowResult) {
                 return;
             }
 
-            this.$navElm.data('cfw.tab.inTransition', true);
-
             if ($previous.length) {
-                $previous.attr({
+                $previous
+                    .attr({
                         'tabindex': -1,
                         'aria-selected': 'false'
-                    })
-                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
+                    });
             }
 
             this.$element.attr({
@@ -1673,8 +1745,7 @@ if (typeof jQuery === 'undefined') {
                 'aria-selected': 'true'
             });
 
-            this._activateTab(this.$element, this.$navElm, false, $previous);
-            this._activateTab(this.$target, this.$target.parent(), true, $previous);
+            this._activateTab();
         },
 
         animEnable : function() {
@@ -1691,9 +1762,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         _actionsKeydown : function(e, node) {
-            // 37-left, 38-up, 39-right, 40-down
-            var k = e.which;
-            if (!/(37|38|39|40)/.test(k)) { return; }
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
+
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -1703,44 +1778,53 @@ if (typeof jQuery === 'undefined') {
             var $items = $list.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
-            if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
-            if ((k == 39 || k == 40) && index < $items.length - 1) { index++; }     // down & right
-            if (!~index)                                           { index = 0; }   // force first item
+            if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left
+            if ((e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN) && index < $items.length - 1) { index++; } // down & right
+            /* eslint-disable-next-line no-bitwise */
+            if (!~index) { index = 0; }   // force first item
 
             var nextTab = $items.eq(index);
             nextTab.CFW_Tab('show').trigger('focus');
         },
 
-        _activateTab : function($node, container, isPanel, $previous) {
+        _activateTab : function() {
             var $selfRef = this;
-            var $prevActive = container.find('.active');
-            var doTransition = isPanel && this.settings.animate;
+            var $items = this.$navElm.find('[role="tab"]');
+            var $previous = this.$navElm.find('[role="tab"].active');
 
-            if (doTransition) {
-                $node[0].offsetWidth; // Reflow for transition
-                $node.addClass('in');
+            $items.removeClass('active');
+            $items.each(function() {
+                var $pane = $(this).data('cfw.tab').$target;
+                $pane.removeClass('active in');
+            });
+
+            if (this.settings.animate) {
+                this.animEnable();
             } else {
-                if (isPanel) {
-                    $selfRef.settings.animate = false;
-                }
-                $node.removeClass('fade');
+                this.animDisable();
             }
 
-            function complete() {
-                $prevActive.removeClass('active');
-                $node.addClass('active');
+            this.$element.addClass('active');
+            this.$target.addClass('active');
 
-                if (isPanel) {
-                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
-                    $node.CFW_mutateTrigger();
-                    $prevActive.CFW_mutateTrigger();
-                    $selfRef.$navElm.removeData('cfw.tab.inTransition');
-                }
+            var complete = function() {
+                $previous.last().CFW_trigger('afterHide.cfw.tab', {
+                    relatedTarget: $selfRef.$element[0]
+                });
+                $selfRef.$element.CFW_trigger('afterShow.cfw.tab', {
+                    relatedTarget: $previous.last()[0]
+                });
+                $selfRef.$element.CFW_mutateTrigger();
+                $selfRef.$target.CFW_mutateTrigger();
+            };
+
+            if (this.settings.animate) {
+                this.$target.CFW_transition(null, complete);
+                $.CFW_reflow(this.$target); // Reflow for transition
+                this.$target.addClass('in');
+            } else {
+                complete();
             }
-
-            $node.CFW_transition(null, complete);
-
-            $prevActive.removeClass('in');
         },
 
         dispose : function() {
@@ -1752,11 +1836,10 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.$navElm = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1764,22 +1847,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.tab', (data = new CFW_Widget_Tab(this, options)));
+                $this.data('cfw.tab', data = new CFW_Widget_Tab(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tab = Plugin;
     $.fn.CFW_Tab.Constructor = CFW_Widget_Tab;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): affix.js
+ * Figuration (v4.0.0): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1814,8 +1896,8 @@ if (typeof jQuery === 'undefined') {
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
-                .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
+                .on('scroll.cfw.affix',  this.checkPosition.bind(this))
+                .on('click.cfw.affix',  this.checkPositionDelayed.bind(this));
 
             this.$element.CFW_trigger('init.cfw.affix');
 
@@ -1827,19 +1909,28 @@ if (typeof jQuery === 'undefined') {
             var position     = this.$element.offset();
             var targetHeight = this.$target.height();
 
-            if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false;
-
-            if (this.affixed == 'bottom') {
-                if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom';
-                return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom';
+            if (offsetTop !== null && this.affixed === 'top') {
+                return scrollTop < offsetTop ? 'top' : false;
             }
 
-            var initializing   = this.affixed == null;
-            var colliderTop    = initializing ? scrollTop : position.top;
+            if (this.affixed === 'bottom') {
+                if (offsetTop !== null) {
+                    return scrollTop + this.unpin <= position.top ? false : 'bottom';
+                }
+
+                return scrollTop + targetHeight <= scrollHeight - offsetBottom ? false : 'bottom';
+            }
+
+            var initializing = this.affixed === null;
+            var colliderTop = initializing ? scrollTop : position.top;
             var colliderHeight = initializing ? targetHeight : height;
 
-            if (offsetTop != null && scrollTop <= offsetTop) return 'top';
-            if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom';
+            if (offsetTop !== null && scrollTop <= offsetTop) {
+                return 'top';
+            }
+            if (offsetBottom !== null && colliderTop + colliderHeight >= scrollHeight - offsetBottom) {
+                return 'bottom';
+            }
 
             return false;
         },
@@ -1849,11 +1940,12 @@ if (typeof jQuery === 'undefined') {
             this.$element.removeClass(CFW_Widget_Affix.RESET).addClass('affix');
             var scrollTop = this.$target.scrollTop();
             var position  = this.$element.offset();
-            return (this.pinnedOffset = position.top - scrollTop);
+            this.pinnedOffset = position.top - scrollTop;
+            return this.pinnedOffset;
         },
 
         checkPositionDelayed : function() {
-            setTimeout($.proxy(this.checkPosition, this), 1);
+            setTimeout(this.checkPosition.bind(this), 1);
         },
 
         checkPosition : function() {
@@ -1864,16 +1956,20 @@ if (typeof jQuery === 'undefined') {
             var offsetBottom = this.settings.bottom;
             var scrollHeight =  Math.max($(document).height(), $(document.body).height());
 
-            if (typeof offsetTop == 'function')    { offsetTop    = offsetTop(this.$element); }
-            if (typeof offsetBottom == 'function') { offsetBottom = offsetBottom(this.$element); }
+            if (typeof offsetTop === 'function') {
+                offsetTop    = offsetTop(this.$element);
+            }
+            if (typeof offsetBottom === 'function') {
+                offsetBottom = offsetBottom(this.$element);
+            }
 
             var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
-            if (this.affixed != affix) {
-                if (this.unpin != null) {
+            if (this.affixed !== affix) {
+                if (this.unpin !== null) {
                     this.$element.css({
-                        'top': '',
-                        'position': ''
+                        top: '',
+                        position: ''
                     });
                 }
 
@@ -1885,7 +1981,7 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 this.affixed = affix;
-                this.unpin = (affix == 'bottom') ? this.getPinnedOffset() : null;
+                this.unpin = affix === 'bottom' ? this.getPinnedOffset() : null;
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
@@ -1893,7 +1989,7 @@ if (typeof jQuery === 'undefined') {
                     .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
-            if (affix == 'bottom') {
+            if (affix === 'bottom') {
                 this.$element.offset({
                     top: scrollHeight - height - offsetBottom
                 });
@@ -1916,7 +2012,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1924,22 +2020,22 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.affix', (data = new CFW_Widget_Affix(this, options)));
+                $this.data('cfw.affix', data = new CFW_Widget_Affix(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Affix = Plugin;
     $.fn.CFW_Affix.Constructor = CFW_Widget_Affix;
+}(jQuery));
 
-})(jQuery);
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): tooltip.js
+ * Figuration (v4.0.0): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1961,7 +2057,7 @@ if (typeof jQuery === 'undefined') {
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
-        viewport        : 'body',           // Viewport to constrain tooltip within
+        viewport        : 'scrollParent',   // Viewport to constrain tooltip within
         padding         : 0,                // Padding from viewport edge
         html            : false,            // Use HTML or text insertion mode
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
@@ -1970,11 +2066,18 @@ if (typeof jQuery === 'undefined') {
         show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
-        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
+        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>',
+        gpuAcceleration : true,
+        popperConfig    : null
+
     };
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Tooltip widget requires Popper.js (https://popper.js.org)');
+            }
+
             this.type = type;
             this.$element = $(element);
             this.$target = null;
@@ -1996,12 +2099,15 @@ if (typeof jQuery === 'undefined') {
                 keyShift: false,
                 keyTab : false
             };
+            this.popper = null;
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
-
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.$element.attr('data-cfw', this.type);
 
@@ -2040,7 +2146,7 @@ if (typeof jQuery === 'undefined') {
         getSettings : function(options) {
             var parsedData = this.$element.CFW_parseData(this.type, this.getDefaults());
             var settings = $.extend({}, this.getDefaults(), parsedData, options);
-            if (settings.delay && typeof settings.delay == 'number') {
+            if (settings.delay && typeof settings.delay === 'number') {
                 settings.delay = {
                     show: settings.delay,
                     hide: settings.delay
@@ -2056,17 +2162,16 @@ if (typeof jQuery === 'undefined') {
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof($e.attr('data-cfw-' + this.type +  '-original-title')) != 'string') {
-                $e.attr('data-cfw-' + this.type +  '-original-title', $e.attr('title') || '').attr('title', '');
+            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
             }
         },
 
         getTitle : function() {
-            var title;
             var $e = this.$element;
             var s = this.settings;
 
-            title = (typeof s.title == 'function' ? s.title.call($e[0]) :  s.title) || $e.attr('data-cfw-' + this.type +  '-original-title');
+            var title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -2077,7 +2182,6 @@ if (typeof jQuery === 'undefined') {
 
             if (this.dynamicTip) {
                 var title = this.getTitle();
-
                 if (this.settings.html) {
                     $inner.html(title);
                 } else {
@@ -2085,7 +2189,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            $tip.removeClass('fade in top bottom reverse forward');
+            $tip.removeClass('fade in');
         },
 
         linkTip : function() {
@@ -2093,9 +2197,14 @@ if (typeof jQuery === 'undefined') {
             this.instance = this.$element.CFW_getID('cfw-' + this.type);
             this.targetID = this.$target.CFW_getID('cfw-' + this.type);
 
+            var attrRole = 'tooltip';
+            if (this.type !== 'tooltip' && this.isDialog) {
+                attrRole = 'dialog';
+            }
+
             // Set ARIA attributes on target
             this.$target.attr({
-                'role': (this.type == 'tooltip' ? 'tooltip' : (this.isDialog ? 'dialog' : 'tooltip')),
+                'role': attrRole,
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
@@ -2106,36 +2215,36 @@ if (typeof jQuery === 'undefined') {
 
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
-                if (eventType == 'click' || eventType == 'manual') {
+                if (eventType === 'click' || eventType === 'manual') {
                     this.isDialog = true;
                 }
-                if (eventType == 'click') {
+                if (eventType === 'click') {
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
-                        .on('click.cfw.' + this.type, $.proxy(this.toggle, this));
+                        .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
-                    if (this.$target != null && !this.closeAdded) {
+                    if (this.$target !== null && !this.closeAdded) {
                         // Check for pre-existing close buttons
-                        if (!this.$target.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
-                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type +  '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
+                        if (!this.$target.find('[data-cfw-dismiss="' + this.type + '"]').length) {
+                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type + '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
                             $close.prependTo(this.$target);
                             this.closeAdded = true;
                         }
                     }
-                } else if (eventType != 'manual') {
+                } else if (eventType !== 'manual') {
                     // Hover/focus events
-                    var eventIn  = (eventType == 'hover') ? 'mouseenter' : 'focusin';
-                    var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
+                    var eventIn  = eventType === 'hover' ? 'mouseenter' : 'focusin';
+                    var eventOut = eventType === 'hover' ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$element.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$element.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$target.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$target.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
             }
@@ -2144,8 +2253,8 @@ if (typeof jQuery === 'undefined') {
                 // Key handling for closing
                 this.$target.off('keydown.cfw.' + this.type + '.close')
                     .on('keydown.cfw.' + this.type + '.close', function(e) {
-                        var code = e.charCode || e.which;
-                        if (code && code == 27) {// if ESC is pressed
+                        var KEYCODE_ESC = 27;
+                        if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
@@ -2194,10 +2303,10 @@ if (typeof jQuery === 'undefined') {
 
         enter : function(e) {
             if (e) {
-                this.inState[e.type == 'focusin' ? 'focus' : 'hover'] = true;
+                this.inState[e.type === 'focusin' ? 'focus' : 'hover'] = true;
             }
 
-            if ((this.$target && this.$target.hasClass('in')) || this.hoverState == 'in') {
+            if ((this.$target && this.$target.hasClass('in')) || this.hoverState === 'in') {
                 this.hoverState = 'in';
                 return;
             }
@@ -2206,17 +2315,20 @@ if (typeof jQuery === 'undefined') {
 
             this.hoverState = 'in';
 
-            if (!this.settings.delay.show) { return this.show(); }
+            if (!this.settings.delay.show) {
+                this.show();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'in') { $selfRef.show(); }
+                if ($selfRef.hoverState === 'in') { $selfRef.show(); }
             }, this.settings.delay.show);
         },
 
         leave : function(e) {
             if (e) {
-                this.inState[e.type == 'focusout' ? 'focus' : 'hover'] = false;
+                this.inState[e.type === 'focusout' ? 'focus' : 'hover'] = false;
             }
 
             if (this._isInState()) { return; }
@@ -2224,11 +2336,14 @@ if (typeof jQuery === 'undefined') {
             clearTimeout(this.delayTimer);
 
             this.hoverState = 'out';
-            if (!this.settings.delay.hide) { return this.hide(); }
+            if (!this.settings.delay.hide) {
+                this.hide();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'out') { $selfRef.hide(); }
+                if ($selfRef.hoverState === 'out') { $selfRef.hide(); }
             }, this.settings.delay.hide);
         },
 
@@ -2252,11 +2367,11 @@ if (typeof jQuery === 'undefined') {
             // Create/link the tooltip container
             if (!this.$target) {
                 var target = this.createTip();
-                if (target.length <= 0) { return false; }
+                if (target.length <= 0) { return; }
                 this.dynamicTip = true;
                 this.$target = target;
             }
-            if (this.$target.length != 1) {
+            if (this.$target.length !== 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
             this.$target.data('cfw.' + this.type, this);
@@ -2276,7 +2391,8 @@ if (typeof jQuery === 'undefined') {
                         $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
+                        var KEYCODE_TAB = 9;
+                        if (e.which === KEYCODE_TAB) {
                             $selfRef._tabReset();
                         }
                     });
@@ -2284,15 +2400,9 @@ if (typeof jQuery === 'undefined') {
                 // Inject focus helper item at start to fake loss of focus going out the top
                 if (!this.$focusFirst) {
                     this.$focusFirst = $(document.createElement('span'))
-                    .addClass(this.type + '-focusfirst')
-                    .attr('tabindex', 0);
-
-                    var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
-                    if ($dialog.length) {
-                        this.$focusFirst.prependTo($dialog);
-                    } else {
-                        this.$focusFirst.prependTo(this.$target);
-                    }
+                        .addClass(this.type + '-focusfirst')
+                        .attr('tabindex', 0)
+                        .prependTo(this.$target);
                 }
                 if (this.$focusFirst) {
                     this.$focusFirst
@@ -2317,9 +2427,9 @@ if (typeof jQuery === 'undefined') {
                 // Also helps if tip has last tabbable item in document - otherwise focus drops off page
                 if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
-                    .addClass(this.type + '-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
+                        .addClass(this.type + '-focuslast')
+                        .attr('tabindex', 0)
+                        .appendTo(this.$target);
                 }
                 if (this.$focusLast) {
                     this.$focusLast
@@ -2381,10 +2491,7 @@ if (typeof jQuery === 'undefined') {
                 $('body').children().on('mouseover', null, $.noop);
             }
 
-            // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, $.proxy(this.locateTip, this));
-
-            this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
+            this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
 
         hide : function(force) {
@@ -2393,7 +2500,7 @@ if (typeof jQuery === 'undefined') {
             // Handle delayed show and target not created
             if (!this.$target) { return; }
 
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (force) {
                 this._hideComplete();
                 return;
@@ -2419,14 +2526,14 @@ if (typeof jQuery === 'undefined') {
                 $('body').children().off('mouseover', null, $.noop);
             }
 
-            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$target.CFW_transition(null, this._hideComplete.bind(this));
 
             this.hoverState = null;
         },
 
         unlink : function(force) {
             var $selfRef = this;
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             clearTimeout(this.delayTimer);
 
             this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
@@ -2454,7 +2561,6 @@ if (typeof jQuery === 'undefined') {
 
             this.$element = null;
             this.$target = null;
-            this.$viewport = null;
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
@@ -2473,6 +2579,10 @@ if (typeof jQuery === 'undefined') {
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
+            if (this.popper) {
+                this.popper.destroy();
+            }
+            this.popper = null;
 
             this._unlinkCompleteExt();
 
@@ -2480,8 +2590,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _unlinkCompleteExt : function() {
-            // unlink complete extend
-            return;
+            // intentionally empty - unlink complete extend
         },
 
         dispose : function() {
@@ -2503,83 +2612,62 @@ if (typeof jQuery === 'undefined') {
             var $tip = this.$target;
             $tip.detach();
 
-            if (typeof placement == 'object') {
+            var shadowRoot = $().CFW_findShadowRoot(this.$element[0]);
+            if (shadowRoot !== null && !this.settings.container) {
+                this.settings.container = 'body';
+            }
+
+            if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                $tip.offset(placement);
-                $tip.addClass('in');
+            }
+            if (this.settings.container) {
+                // Container placement
+                $tip.appendTo(this.settings.container);
             } else {
-                // Standard Placement
-                if (this.settings.container) {
-                    $tip.appendTo(this.settings.container);
-                } else {
-                    $tip.insertAfter(this.$element);
-                }
+                // Default placement
+                $tip.insertAfter(this.$element);
             }
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
+        locateUpdate : function() {
+            if (this.popper !== null) {
+                this.popper.scheduleUpdate();
+            }
+        },
+
         locateTip : function() {
-            var $tip = this.$target;
-
-            $tip.removeClass('top reverse bottom forward')
-                .css({ top: 0, left: 0, display: 'block' });
-
-            var placement = typeof this.settings.placement == 'function' ?
-                this.settings.placement.call(this, this.$target[0], this.$element[0]) :
-                this.settings.placement;
-            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
+            var placement = typeof this.settings.placement === 'function'
+                ? this.settings.placement.call(this, this.$target[0], this.$element[0])
+                : this.settings.placement;
 
             this._insertTip(placement);
 
-            if (typeof placement == 'object') {
+            if (typeof placement === 'object') {
                 // Custom placement
+                this.$target.offset(placement);
+                this.$target.addClass('in');
                 return;
             }
 
             // Standard Placement
             var autoToken = /\s?auto?\s?/i;
-            var autoPlace = autoToken.test(placement);
-            if (autoPlace) {
-                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+            var autoFlip = autoToken.test(this.settings.placement);
+            placement = this.settings.placement.replace(autoToken, '');
+            // Allow for 'auto' placement
+            if (!placement.trim().length) {
+                placement = 'auto';
             }
+            var attachment = this._getAttachment(placement);
+            this._addAttachmentClass(attachment);
 
-            $tip.addClass(placement);
+            this.$target.addClass('in');
 
-            var pos          = this._getPosition();
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (autoPlace) {
-                var orgPlacement = placement;
-
-                var viewportDim = this.getViewportBounds();
-
-                if (directionVal === 'rtl') {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
-                                placement;
-
-                } else {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
-                                placement;
-                }
-
-                $tip.removeClass(orgPlacement)
-                    .addClass(placement);
-            }
-
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
-
-            this._applyPlacement(calculatedOffset, placement);
+            this.popper = new Popper(this.$element[0], this.$target[0], this._getPopperConfig(attachment, autoFlip));
         },
 
         _showComplete : function() {
@@ -2597,7 +2685,7 @@ if (typeof jQuery === 'undefined') {
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
-                    $selfRef.locateTip();
+                    $selfRef.locateUpdate();
                 });
             this.$element
                 .attr('data-cfw-mutate', '')
@@ -2620,15 +2708,22 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
             }
 
+            this._showExt();
+
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
-            if (prevHoverState == 'out') { this.leave(); }
+            if (prevHoverState === 'out') { this.leave(); }
+        },
+
+        _showExt : function() {
+            // intentionally empty - show complete extend
         },
 
         _hideComplete : function() {
+            this._cleanTipClass();
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
                 .off('mutate.cfw.mutate')
@@ -2639,7 +2734,6 @@ if (typeof jQuery === 'undefined') {
                 .off('.cfw.' + this.type)
                 .off('mutate.cfw.mutate')
                 .removeClass('in')
-                .css('display', 'none')
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
@@ -2652,7 +2746,11 @@ if (typeof jQuery === 'undefined') {
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -2665,11 +2763,21 @@ if (typeof jQuery === 'undefined') {
             this.follow = false;
 
             // Only remove dynamically created tips
-            if (this.hoverState != 'in' && this.dynamicTip) {
+            if (this.hoverState !== 'in' && this.dynamicTip) {
                 this._removeDynamicTip();
             }
 
+            if (this.popper) {
+                this.popper.destroy();
+            }
+
+            this._hideExt();
+
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+        },
+
+        _hideExt : function() {
+            // intentionally empty - hide complete extend
         },
 
         _removeDynamicTip : function() {
@@ -2688,187 +2796,114 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
         },
 
-        _getPosition : function() {
-            var $element = this.$element;
-            var el = $element[0];
-            var isBody = el.tagName == 'BODY';
-
-            var elRect = el.getBoundingClientRect();
-            elRect = $.extend({}, elRect, {
-                top: elRect.top + window.pageYOffset,
-                left: elRect.left + window.pageXOffset
-            });
-
-            var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset();
-            // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
-            if ($element[0].className instanceof SVGAnimatedString) {
-                elOffset = {};
-            }
-
-            var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() };
-            var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
-            return $.extend({}, elRect, scroll, outerDims, elOffset);
-        },
-
-        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
-            if (directionVal === 'rtl') {
-                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            } else {
-                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            }
-
-        },
-
-        _applyPlacement : function(offset, placement) {
-            var $tip   = this.$target;
-            var width  = $tip[0].getBoundingClientRect().width;
-            var height = $tip[0].getBoundingClientRect().height;
-
-            // manually read margins because getBoundingClientRect includes difference
-            // includes protection against NaN
-            var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
-            var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
-
-            offset.top  = offset.top  + marginTop;
-            offset.left = offset.left + marginLeft;
-
-            // $.fn.offset doesn't round pixel values
-            // so we use setOffset directly with our own function B-0
-            $.offset.setOffset($tip[0], $.extend({
-                using: function(props) {
-                    $tip.css({
-                        top: Math.round(props.top),
-                        left: Math.round(props.left)
-                    });
-                }
-            }, offset), 0);
-
-            $tip.addClass('in');
-
-            // check to see if placing tip in new offset caused the tip to resize itself
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (placement == 'top' && actualHeight != height) {
-                offset.top = offset.top + height - actualHeight;
-            }
-
-            var delta = this._getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
-
-            if (delta.left) {
-                offset.left += delta.left;
-            } else {
-                offset.top += delta.top;
-            }
-
-            var isVertical          = /top|bottom/.test(placement);
-            var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
-            var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
-
-            $tip.offset(offset);
-            this._replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical);
-        },
-
-        getViewportBounds : function() {
-            var $viewport = this.$viewport;
-            var elRect = $viewport[0].getBoundingClientRect();
-
-
-            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
-                // fixed and absolute elements should be tested against the window
-                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
-            }
-
-            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
-
-            // Double check elements inside fixed and aboslute elements against the viewport
-            if ($viewport.is('body')) {
-                var $node = this.$element;
-                while ($node.length && !($node.is('body') || $node.is('html'))) {
-                    if ((/fixed|absolute/).test($node.css('position'))) {
-                        var screenBounds = this.getScreenSpaceBounds($viewport);
-                        viewportBoundary = $.extend({}, viewportBoundary, {
-                            width : Math.max(viewportBoundary.width, screenBounds.width),
-                            height: Math.max(viewportBoundary.height, screenBounds.height)
-                        });
-                        break;
+        _cleanTipClass : function() {
+            var regex = new RegExp('(^|\\s)cfw-' + this.type + '\\S+', 'g');
+            if (this.$target) {
+                var items = this.$target[0].className.match(regex);
+                if (items !== null) {
+                    for (var i = items.length; i--;) {
+                        this.$target[0].classList.remove(items[i].trim());
                     }
-                    $node = $node.offsetParent();
                 }
             }
-
-            return $.extend({}, elRect, viewportBoundary);
         },
 
-        getScreenSpaceBounds : function($viewport) {
-            return {
-                top: $viewport.scrollTop(),
-                left: $viewport.scrollLeft(),
-                width: $(window).width(),
-                height: $(window).height()
+        _handlePopperPlacementChange : function(popperData) {
+            this._cleanTipClass();
+            this._addAttachmentClass(this._getAttachment(popperData.placement));
+        },
+
+        _addAttachmentClass : function(attachment) {
+            if (this.$target) {
+                this.$target.addClass('cfw-' + this.type + '-' + attachment);
+            }
+        },
+
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getViewport : function() {
+            var viewport = this.settings.viewport;
+
+            if (typeof viewport === 'function') {
+                viewport = this.settings.viewport.call(this, this.$element);
+            }
+
+            var $viewportElm = $(viewport);
+
+            if (this._isElement($viewportElm)) {
+                viewport = $viewportElm[0];
+            }
+
+            return viewport;
+        },
+
+        _getAttachment : function(placement) {
+            if (this.$element) {
+                var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+                var isRTL = Boolean(directionVal === 'rtl');
+                var attachmentMap = {
+                    AUTO: 'auto',
+                    TOP: 'top',
+                    FORWARD: isRTL ? 'left' : 'right',
+                    RIGHT: 'right',
+                    BOTTOM: 'bottom',
+                    REVERSE: isRTL ? 'right' : 'left',
+                    LEFT: 'left'
+                };
+                return attachmentMap[placement.toUpperCase()];
+            }
+            return CFW_Widget_Tooltip.DEFAULTS.placement;
+        },
+
+        _getPopperConfig : function(attachment, autoFlip) {
+            var $selfRef = this;
+            var defaultConfig = {
+                placement: attachment,
+                modifiers: {
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this._getViewport()
+                    },
+                    computeStyle : {
+                        gpuAcceleration: this.settings.gpuAcceleration
+                    }
+                },
+                onCreate: function(data) {
+                    if (data.originalPlacement !== data.placement) {
+                        $selfRef._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
+                }
             };
-        },
 
-        _getViewportAdjustedDelta : function(placement, pos, actualWidth, actualHeight) {
-            var delta = { top: 0, left: 0 };
-            if (!this.$viewport) return delta;
-
-            var viewportPadding = this.settings.padding;
-            var viewportDimensions = this.getViewportBounds();
-
-            if (/forward|reverse/.test(placement)) {
-                var topEdgeOffset    = pos.top - viewportPadding;
-                var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
-
-                if (topEdgeOffset < viewportDimensions.top) { // top overflow
-                    delta.top = viewportDimensions.top - topEdgeOffset;
-                } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-                    delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
-                }
-            } else {
-
-                var leftEdgeOffset  = pos.left - viewportPadding;
-                var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
-                if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-                    delta.left = viewportDimensions.left - leftEdgeOffset;
-                } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-                    delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
-                }
-            }
-
-            return delta;
-        },
-
-        _replaceArrow : function(delta, dimension, isVertical) {
-            this._arrow()
-                .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
-                .css(isVertical ? 'top' : 'left', '');
-        },
-
-        _arrow : function() {
-            if (!this.$arrow) {
-                this.$arrow = this.$target.find('.tooltip-arrow');
-            }
-            return this.$arrow;
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
         },
 
         _isInState : function() {
             for (var key in this.inState) {
-                if (this.inState[key]) return true;
+                if (this.inState[key]) { return true; }
             }
             return false;
         },
 
         // Set flags for `tab` key interactions
         _tabSet : function(e) {
+            var KEYCODE_TAB = 9;
             this._tabReset();
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 this.flags.keyTab = true;
                 if (e.shiftKey) { this.flags.keyShift = true; }
             }
@@ -2902,7 +2937,7 @@ if (typeof jQuery === 'undefined') {
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -2917,7 +2952,7 @@ if (typeof jQuery === 'undefined') {
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -2926,13 +2961,23 @@ if (typeof jQuery === 'undefined') {
             return selectables.eq(nextIndex);
         },
 
+        /*
+         * jQuery UI Focusable 1.12.1
+         * http://jqueryui.com
+         *
+         * Copyright jQuery Foundation and other contributors
+         * Released under the MIT license.
+         * http://jquery.org/license
+         */
         _focusable : function(element, isTabIndexNotNaN) {
             var map;
             var mapName;
             var $img;
+            var focusableIfVisible;
+            var fieldset;
             var nodeName = element.nodeName.toLowerCase();
 
-            if ('area' === nodeName) {
+            if (nodeName === 'area') {
                 map = element.parentNode;
                 mapName = map.name;
                 if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
@@ -2942,17 +2987,31 @@ if (typeof jQuery === 'undefined') {
                 return $img.length > 0 && $img.is(':visible');
             }
 
-            return (/^(input|select|textarea|button|object)$/.test(nodeName) ?
-                !element.disabled :
-                'a' === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                $(element).is(':visible');
+            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
+                focusableIfVisible = !element.disabled;
+
+                if (focusableIfVisible) {
+                    // Form controls within a disabled fieldset are disabled.
+                    // However, controls within the fieldset's legend do not get disabled.
+                    // Since controls generally aren't placed inside legends, we skip
+                    // this portion of the check.
+                    fieldset = $(element).closest('fieldset')[0];
+                    if (fieldset) {
+                        focusableIfVisible = !fieldset.disabled;
+                    }
+                }
+            } else if (nodeName === 'a') {
+                focusableIfVisible = element.href || isTabIndexNotNaN;
+            } else {
+                focusableIfVisible = isTabIndexNotNaN;
+            }
+
+            return focusableIfVisible && $(element).is(':visible');
         },
 
         _tabItems : function($node) {
             var $selfRef = this;
-            if ($node === undefined) { $node = $(document); }
+            if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
@@ -2962,7 +3021,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -2970,25 +3029,24 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.tooltip', (data = new CFW_Widget_Tooltip(this, options)));
+                $this.data('cfw.tooltip', data = new CFW_Widget_Tooltip(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): popover.js
+ * Figuration (v4.0.0): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2996,11 +3054,10 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires CFW_Tooltip');
+    if (typeof $.fn.CFW_Tooltip === 'undefined') { throw new Error('CFW_Popover requires CFW_Tooltip'); }
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
-        this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
 
@@ -3042,7 +3099,7 @@ if (typeof jQuery === 'undefined') {
 
             if (this.settings.html) {
                 $title.html(title);
-                if (typeof content == 'string') {
+                if (typeof content === 'string') {
                     $content.html(content);
                 } else {
                     $content.empty().append(content); // Use append for objects to keep js events
@@ -3061,7 +3118,7 @@ if (typeof jQuery === 'undefined') {
 
         if (this.settings.drag && !this.dragAdded) {
             if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
-                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type +  '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
+                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type + '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
                 $drag.insertAfter(this.$target.find('.close').eq(0));
                 this.dragAdded = true;
             }
@@ -3070,29 +3127,15 @@ if (typeof jQuery === 'undefined') {
         if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length) {
             this.$target.addClass('draggable');
             // Force settings
-            this.settings.trigger = 'click';
+            if (this.settings.trigger !== 'manual') {
+                this.settings.trigger = 'click';
+            }
             this.settings.container = 'body';
             // Enable drag handlers
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom reverse forward');
-
         if (!$title.html()) { $title.hide(); }
-
-        if (this.isDialog && !this.docAdded) {
-            if (!this.$target.find('[role="document"]').length) {
-                // Inject a role="document" container
-                var $children = this.$target.children().not(this.$arrow);
-                var docDiv = document.createElement('div');
-                docDiv.setAttribute('role', 'document');
-                $children.wrapAll(docDiv);
-                // Make sure arrow is at end of popover for roles to work properly with screen readers
-                this._arrow();
-                this.$arrow.appendTo(this.$target);
-            }
-            this.docAdded = true;
-        }
     };
 
     CFW_Widget_Popover.prototype.getContent = function() {
@@ -3100,19 +3143,23 @@ if (typeof jQuery === 'undefined') {
         var $e = this.$element;
         var s = this.settings;
 
-        content = (typeof s.content == 'function' ? s.content.call($e[0]) :  s.content);
+        content = typeof s.content === 'function' ? s.content.call($e[0]) : s.content;
 
         return content;
     };
 
     CFW_Widget_Popover.prototype.enableDrag = function() {
         var $selfRef = this;
-        var limit = {};
-
-        var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
+        var dragOpt = {
+            handle: '[data-cfw-drag="' + this.type + '"]'
+        };
 
         // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
+            if ($selfRef.popper !== null) {
+                $selfRef.popper.disableEventListeners();
+            }
+
             $selfRef.$target
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -3122,28 +3169,45 @@ if (typeof jQuery === 'undefined') {
                 .off('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance)
                 .on('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance, function() {
                     var offset = $selfRef.$target.offset();
+                    if ($selfRef._isFixed()) {
+                        var compStyle = window.getComputedStyle($selfRef.$target[0]);
+                        offset.top = parseInt(compStyle.top, 10);
+                        offset.left = parseInt(compStyle.left, 10);
+                    }
                     $selfRef.locateDragTip(offset.top, offset.left);
                 });
         });
 
+        // Use top/left instead of transforms to position popover
+        this.settings.gpuAcceleration = false;
+
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 
-        this.$target.on('dragStart.cfw.drag', function() {
-            limit = $selfRef.viewportDragLimit();
+        this.$target
+            .on('dragStart.cfw.drag', function() {
+                $selfRef._updateZ();
+                $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
+            })
+            .on('drag.cfw.drag', function(e) {
+                $selfRef.locateDragTip(e.offsetY, e.offsetX);
+            })
+            .on('dragEnd.cfw.drag', function() {
+                $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
+            })
+            .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
+                var KEYCODE_UP = 38;    // Arrow up
+                var KEYCODE_RIGHT = 39; // Arrow right
+                var KEYCODE_DOWN = 40;  // Arrow down
+                var KEYCODE_LEFT = 37;  // Arrow left
+                var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
 
-            $selfRef._updateZ();
-            $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
-        })
-        .on('drag.cfw.drag', function(e) {
-            $selfRef.locateDragTip(e.offsetY, e.offsetX);
-        })
-        .on('dragEnd.cfw.drag', function() {
-            $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
-        })
-        .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
-            if (/(37|38|39|40)/.test(e.which)) {
-                if (e) { e.stopPropagation(); }
+                if (!REGEX_KEYS.test(e.which)) { return; }
+
+                if (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
 
                 if (!$selfRef.keyTimer) {
                     $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
@@ -3151,20 +3215,26 @@ if (typeof jQuery === 'undefined') {
 
                 clearTimeout($selfRef.keyTimer);
 
-                limit = $selfRef.viewportDragLimit();
-
                 // Mitigate most of 'slippage' by rounding offsets
                 var nodeOffset = $selfRef.$target.offset();
                 var offsetY = Math.round(nodeOffset.top);
                 var offsetX = Math.round(nodeOffset.left);
 
+                // If popover is 'fixed' position, use the current coords
+                if ($selfRef._isFixed()) {
+                    var compStyle = window.getComputedStyle($selfRef.$target[0]);
+                    offsetY = parseInt(compStyle.top, 10);
+                    offsetX = parseInt(compStyle.left, 10);
+                }
+
                 // Revise offset
                 var step = $selfRef.settings.dragstep;
                 switch (e.which) {
-                    /* Left  */ case 37: { offsetX = offsetX - step; break; }
-                    /* Up    */ case 38: { offsetY = offsetY - step; break; }
-                    /* Right */ case 39: { offsetX = offsetX + step; break; }
-                    /* Down  */ case 40: { offsetY = offsetY + step; break; }
+                    case KEYCODE_LEFT: { offsetX -= step; break; }
+                    case KEYCODE_UP: { offsetY -= step; break; }
+                    case KEYCODE_RIGHT: { offsetX += step; break; }
+                    case KEYCODE_DOWN: { offsetY += step; break; }
+                    default:
                 }
 
                 // Move it
@@ -3174,34 +3244,94 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
-
-                // Stop browser from scrolling
-                return false;
-            }
-        });
+            });
 
         this.$target.CFW_Drag(dragOpt);
     };
 
+    CFW_Widget_Popover.prototype.getParentNode = function(element) {
+        if (element.nodeName === 'HTML') {
+            return element;
+        }
+        return element.parentNode || element.host;
+    };
+
+    CFW_Widget_Popover.prototype.getScrollParent = function(element) {
+        if (!element) { return document.body; }
+
+        switch (element.nodeName) {
+            case 'HTML':
+            case 'BODY':
+                return element.ownerDocument.body;
+            case '#document':
+                return element.body;
+            default:
+                // Nothing for default
+        }
+
+        var compStyle = window.getComputedStyle(element);
+        if (/^(auto|scroll|overlay)$/.test(compStyle.overflow + compStyle.overflowX + compStyle.overflowY)) {
+            return element;
+        }
+
+        return this.getScrollParent(this.getParentNode(element));
+    };
+
+
+    CFW_Widget_Popover.prototype.getOwnerBody = function(element) {
+        var ownerDocument = element.ownerDocument;
+        return ownerDocument ? ownerDocument.body : document.body;
+    };
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
-        var $tip = this.$target;
-        var $viewport = this.$viewport;
+        var limit = {};
+        var $viewport = this._getDragViewport();
 
-        var limit = $viewport.offset();
-        limit.bottom = limit.top + $viewport.outerHeight() - $tip.outerHeight();
-        limit.right = limit.left + $viewport.outerWidth() - $tip.outerWidth();
+        var scrollbarWidth = this.viewportScrollbarWidth($viewport);
+        limit = $viewport.offset();
+
+        // If popover is 'fixed' position
+        if (this._isFixed()) {
+            var rect = $viewport[0].getBoundingClientRect();
+            limit.top = rect.top;
+            limit.bottom = rect.bottom;
+
+            // Use window and update limits if drag viewport is body
+            if ($viewport.is('body')) {
+                $viewport = $(window);
+                limit.top = rect.top + window.pageYOffset;
+                limit.left = rect.left + window.pageXOffset;
+            }
+        }
+
+        limit.bottom = limit.top + $viewport.outerHeight();
+        limit.right = limit.left + $viewport.outerWidth() - scrollbarWidth;
 
         // Allow dragging around entire window if body is smaller than window
         if ($viewport.is('body')) {
             if (document.body.clientHeight < window.innerHeight) {
-                limit.bottom = limit.top + window.innerHeight - $tip.outerHeight();
+                limit.bottom = window.innerHeight;
             }
             if (document.body.clientWidth < window.innerWidth) {
-                limit.right = limit.left + window.innerWidth - $tip.outerWidth();
+                limit.right = window.innerWidth - scrollbarWidth;
             }
         }
         return limit;
+    };
+
+    CFW_Widget_Popover.prototype.viewportScrollbarWidth = function($viewport) {
+        // Check to see if a scrollbar is possible
+        var compStyle = window.getComputedStyle($viewport[0]);
+        var hasScrollY = /^(visible|auto|scroll)$/.test(compStyle.overflow) || /^(visible|auto|scroll)$/.test(compStyle.overflowY);
+        var scrollHeight = $viewport[0].scrollHeight;
+
+        // Return width of scrollbar if there seems to be one
+        if ($viewport.is('body') && hasScrollY && scrollHeight > window.innerHeight) {
+            return $.CFW_measureScrollbar();
+        } else if (hasScrollY && scrollHeight > $viewport[0].clientHeight) {
+            return $.CFW_measureScrollbar();
+        }
+        return 0;
     };
 
     CFW_Widget_Popover.prototype.locateDragTip = function(offsetY, offsetX) {
@@ -3210,8 +3340,8 @@ if (typeof jQuery === 'undefined') {
         var viewportPadding = this.settings.padding;
 
         $tip.css({
-            top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
-            left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
+            top: Math.min(limit.bottom - viewportPadding - $tip.outerHeight(), Math.max(limit.top + viewportPadding, offsetY)),
+            left: Math.min(limit.right - viewportPadding - $tip.outerWidth(), Math.max(limit.left + viewportPadding, offsetX))
         });
     };
 
@@ -3225,11 +3355,22 @@ if (typeof jQuery === 'undefined') {
         $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
 
+    CFW_Widget_Popover.prototype._showExt = function() {
+        if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length && this._isFixed()) {
+            this._handleFixedDragScroll();
+        }
+    };
+
+    CFW_Widget_Popover.prototype._hideExt = function() {
+        $(window)
+            .off('resize.cfw.' + this.type + '.' + this.instance)
+            .off('scroll.cfw.' + this.type + '.' + this.instance);
+    };
+
     CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
         this.$target.detach();
         this.$target = null;
         this.dragAdded = false;
-        this.docAdded = false;
     };
 
     CFW_Widget_Popover.prototype._updateZ = function() {
@@ -3258,12 +3399,53 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Popover.prototype._unlinkCompleteExt = function() {
         this.dragAdded = null;
-        this.docAdded = null;
         this.keyTimer = null;
         this.keyDelay = null;
     };
 
-    function Plugin(option) {
+    CFW_Widget_Popover.prototype._getDragViewport = function() {
+        var viewport = this._getViewport();
+        var $viewport = null;
+
+        if (viewport === 'scrollParent') {
+            viewport = this.getScrollParent(this.$target[0]);
+        }
+        if (viewport === 'window' || viewport === window) {
+            viewport = this.getOwnerBody(this.$target[0]);
+        }
+
+        $viewport = $(viewport);
+        if (!$viewport.length) {
+            $viewport = $(document.body);
+        }
+
+        return $viewport;
+    };
+
+    CFW_Widget_Popover.prototype._isFixed = function() {
+        var compStyle = window.getComputedStyle(this.$target[0]);
+        return /^(fixed)$/.test(compStyle.position);
+    };
+
+    CFW_Widget_Popover.prototype._doFixedDragScroll = function() {
+        var offset = {};
+        var compStyle = window.getComputedStyle(this.$target[0]);
+        offset.top = parseInt(compStyle.top, 10);
+        offset.left = parseInt(compStyle.left, 10);
+        this.locateDragTip(offset.top, offset.left);
+    };
+
+    CFW_Widget_Popover.prototype._handleFixedDragScroll = function() {
+        var $viewport = this._getDragViewport();
+
+        $(window).off('scroll.cfw.' + this.type + '.' + this.instance);
+
+        if (!$viewport.is('body')) {
+            $(window).on('scroll.cfw.' + this.type + '.' + this.instance, this._doFixedDragScroll.bind(this));
+        }
+    };
+
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -3271,25 +3453,24 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.popover', (data = new CFW_Widget_Popover(this, options)));
+                $this.data('cfw.popover', data = new CFW_Widget_Popover(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): modal.js
+ * Figuration (v4.0.0): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3357,10 +3538,9 @@ if (typeof jQuery === 'undefined') {
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
-            this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', this.toggle.bind(this));
 
             this.$target.data('cfw.modal', this);
 
@@ -3400,7 +3580,8 @@ if (typeof jQuery === 'undefined') {
             this.escape();
             this.resize();
 
-            this.$target.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
+            this.$target
+                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
                     if (e) { e.preventDefault(); }
                     $selfRef.hide();
                 })
@@ -3408,7 +3589,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
                 $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
-                    if ($(e.target).is($selfRef.$target)) $selfRef.ignoreBackdropClick = true;
+                    if ($(e.target).is($selfRef.$target)) { $selfRef.ignoreBackdropClick = true; }
                 });
             });
 
@@ -3432,6 +3613,7 @@ if (typeof jQuery === 'undefined') {
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
+                .removeAttr('aria-modal')
                 .off('.dismiss.cfw.modal');
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
@@ -3442,11 +3624,12 @@ if (typeof jQuery === 'undefined') {
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
-            this.$dialog.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$dialog.CFW_transition(null, this._hideComplete.bind(this));
         },
 
         _showComplete : function() {
             var $selfRef = this;
+            var $modalBody = this.$dialog.find('.modal-body');
 
             if (this.settings.animate) {
                 this.$target.addClass('fade');
@@ -3456,13 +3639,22 @@ if (typeof jQuery === 'undefined') {
                 this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$target.show().scrollTop(0);
+            this.$target.show();
+
+            if ($modalBody.length) {
+                $modalBody.scrollTop(0); // scrollable body variant
+            }
+            this.$dialog.scrollTop(0); // fullscreen variant
+            this.$target.scrollTop(0);
 
             this.adjustDialog();
 
-            this.$target[0].offsetWidth; // Force Reflow
+            $.CFW_reflow(this.$target[0]); // Force Reflow
 
-            this.$target.addClass('in').removeAttr('aria-hidden');
+            this.$target
+                .addClass('in')
+                .removeAttr('aria-hidden')
+                .attr('aria-modal', true);
 
             // Mutation handler
             this.$target
@@ -3476,12 +3668,12 @@ if (typeof jQuery === 'undefined') {
             this.enforceFocus();
             this.enforceFocusLast();
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
-            }
+            };
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -3507,7 +3699,7 @@ if (typeof jQuery === 'undefined') {
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
             });
-            this.$element && this.$element.trigger('focus');
+            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -3527,9 +3719,9 @@ if (typeof jQuery === 'undefined') {
             // is last tabbable item in document - otherwise focus drops off page
             if (!this.$focusLast) {
                 this.$focusLast = $(document.createElement('span'))
-                .addClass('modal-focuslast')
-                .attr('tabindex', 0)
-                .appendTo(this.$target);
+                    .addClass('modal-focuslast')
+                    .attr('tabindex', 0)
+                    .appendTo(this.$target);
             }
             if (this.$focusLast) {
                 this.$focusLast
@@ -3542,21 +3734,29 @@ if (typeof jQuery === 'undefined') {
 
         escape : function() {
             var $selfRef = this;
-            if (this.isShown && this.settings.keyboard) {
+            var KEYCODE_ESC = 27;
+
+            if (!this.isShown) {
+                this.$target.off('keydown.dismiss.cfw.modal');
+            }
+
+            if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    if (e.which == 27) {
-                        e.preventDefault();
-                        $selfRef.hide();
+                    if (e.which === KEYCODE_ESC) {
+                        if ($selfRef.settings.keyboard) {
+                            e.preventDefault();
+                            $selfRef.hide();
+                        } else {
+                            $selfRef.hideBlocked();
+                        }
                     }
                 });
-            } else if (!this.isShown) {
-                this.$target.off('keydown.dismiss.cfw.modal');
             }
         },
 
         resize : function() {
             if (this.isShown) {
-                $(window).on('resize.cfw.modal', $.proxy(this.handleUpdate, this));
+                $(window).on('resize.cfw.modal', this.handleUpdate.bind(this));
             } else {
                 $(window).off('resize.cfw.modal');
             }
@@ -3564,7 +3764,7 @@ if (typeof jQuery === 'undefined') {
 
         // these following methods are used to handle overflowing modals
         handleUpdate : function() {
-            if (this.settings.backdrop) this.adjustBackdrop();
+            if (this.settings.backdrop) { this.adjustBackdrop(); }
             this.adjustDialog();
         },
 
@@ -3592,7 +3792,7 @@ if (typeof jQuery === 'undefined') {
 
         checkScrollbar : function() {
             var rect = document.body.getBoundingClientRect();
-            this.bodyIsOverflowing = rect.left + rect.right < window.innerWidth;
+            this.bodyIsOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
             this.scrollbarWidth = $.CFW_measureScrollbar();
             this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },
@@ -3602,30 +3802,40 @@ if (typeof jQuery === 'undefined') {
             var sideName = this.scrollbarSide.capitalize();
 
             if (this.bodyIsOverflowing) {
+                // Notes about below padding/margin calculations:
+                // node.style.paddingRight returns: actual value or '' if not set
+                // $(node).css('padding-right') returns: calculated value or 0 if not set
+
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.padding-dim', this.style['padding' + sideName] || '');
-                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
+                    var actualPadding = this.style['padding' + sideName];
+                    var calculatedPadding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.padding-dim', actualPadding)
+                        .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update sticky element margin
                 $(this.stickyContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.margin-dim', this.style['margin' + sideName] || '');
-                    var margin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('margin-' + $selfRef.scrollbarSide, -(margin + $selfRef.scrollbarWidth));
+                    var actualMargin = this.style['margin' + sideName];
+                    var calculatedMargin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.margin-dim', actualMargin)
+                        .css('margin-' + $selfRef.scrollbarSide, calculatedMargin - $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update body padding
-                this.$body.data('cfw.padding-dim', document.body.style['padding' + sideName] || '');
-                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
-                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
+                var actualPadding = document.body.style['padding' + sideName];
+                var calculatedPadding = parseFloat(this.$body.css('padding-' + $selfRef.scrollbarSide));
+                this.$body
+                    .data('cfw.padding-dim', actualPadding)
+                    .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
             }
 
             this.$target
-                .on('touchmove.cfw.modal', $.proxy(this._scrollBlock, this))
+                .on('touchmove.cfw.modal', this._scrollBlock.bind(this))
                 .CFW_trigger('scrollbarSet.cfw.modal');
         },
 
@@ -3651,7 +3861,7 @@ if (typeof jQuery === 'undefined') {
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
-            if (typeof padding !== undefined) {
+            if (typeof padding !== 'undefined') {
                 this.$body.css('padding-' + this.scrollbarSide, padding);
                 this.$body.removeData('cfw.padding-dim');
             }
@@ -3662,6 +3872,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         _scrollBlock : function(e) {
+            // Allow scrolling for scrollable modal body
+            var $content = this.$target.find('.modal-dialog-scrollable');
+            if ($content.length && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
+                e.stopPropagation();
+                return;
+            }
+
             var top = this.$target[0].scrollTop;
             var totalScroll = this.$target[0].scrollHeight;
             var currentScroll = top + this.$target[0].offsetHeight;
@@ -3678,7 +3895,7 @@ if (typeof jQuery === 'undefined') {
         backdrop : function(callback) {
             var $selfRef = this;
 
-            var animate = (this.settings.animate) ? 'fade' : '';
+            var animate = this.settings.animate ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
                 this.$backdrop = $(document.createElement('div'))
@@ -3691,12 +3908,14 @@ if (typeof jQuery === 'undefined') {
                         return;
                     }
                     if (e.target !== e.currentTarget) { return; }
-                    $selfRef.settings.backdrop == 'static'
-                        ? $selfRef.$target.trigger('focus')
-                        : $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef.hideBlocked();
+                    } else {
+                        $selfRef.hide();
+                    }
                 });
 
-                this.$backdrop[0].offsetWidth; // Force Reflow
+                $.CFW_reflow(this.$backdrop[0]); // Force Reflow
 
                 this.$backdrop.addClass('in');
 
@@ -3706,7 +3925,7 @@ if (typeof jQuery === 'undefined') {
 
                 var callbackRemove = function() {
                     $selfRef.removeBackdrop();
-                    callback && callback();
+                    if (callback) { callback(); }
                 };
 
                 this.$backdrop.CFW_transition(null, callbackRemove);
@@ -3716,8 +3935,25 @@ if (typeof jQuery === 'undefined') {
         },
 
         removeBackdrop : function() {
-            this.$backdrop && this.$backdrop.remove();
-            this.$backdrop = null;
+            if (this.$backdrop) {
+                this.$backdrop.remove();
+                this.$backdrop = null;
+            }
+        },
+
+        hideBlocked : function() {
+            var $selfRef = this;
+            if (!this.$target.CFW_trigger('beforeHide.cfw.modal')) {
+                return;
+            }
+
+            var complete = function() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target.removeClass('modal-blocked');
+            };
+
+            this.$target.addClass('modal-blocked');
+            this.$dialog.CFW_transition(null, complete);
         },
 
         unlink : function() {
@@ -3771,7 +4007,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -3779,25 +4015,24 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.modal', (data = new CFW_Widget_Modal(this, options)));
+                $this.data('cfw.modal', data = new CFW_Widget_Modal(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): accordion.js
+ * Figuration (v4.0.0): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3805,7 +4040,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_Accordion requires CFW_Collapse');
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_Accordion requires CFW_Collapse'); }
 
     var CFW_Widget_Accordion = function(element) {
         this.$element = $(element);
@@ -3853,28 +4088,27 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.accordion');
             if (!data) {
-                $this.data('cfw.accordion', (data = new CFW_Widget_Accordion(this)));
+                $this.data('cfw.accordion', data = new CFW_Widget_Accordion(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Accordion = Plugin;
     $.fn.CFW_Accordion.Constructor = CFW_Widget_Accordion;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): tab-responsive.js
+ * Figuration (v4.0.0): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3882,8 +4116,8 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires CFW_Tab');
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires CFW_Collapse');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Tab'); }
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Collapse'); }
 
     var CFW_Widget_TabResponsive = function(element) {
         this.$element = $(element);
@@ -3928,7 +4162,8 @@ if (typeof jQuery === 'undefined') {
                 var $activePane = data.$target;
                 var $paneContainer = $activePane.closest('.tab-content');
                 $paneContainer.find('[data-cfw="collapse"]').each(function() {
-                    $(this).one('afterHide.cfw.collapse', function(e) {
+                    $(this)
+                        .one('afterHide.cfw.collapse', function(e) {
                             e.stopPropagation();
                             e.preventDefault();
                         })
@@ -3936,7 +4171,8 @@ if (typeof jQuery === 'undefined') {
                 });
 
                 var $collapseItem = $activePane.find('[data-cfw="collapse"]');
-                $collapseItem.one('afterShow.cfw.collapse', function(e) {
+                $collapseItem
+                    .one('afterShow.cfw.collapse', function(e) {
                         e.stopPropagation();
                         e.preventDefault();
                     })
@@ -3968,8 +4204,9 @@ if (typeof jQuery === 'undefined') {
                     selector = $this.attr('href');
                 }
                 selector = selector.replace(/^#/, '');
-                if (selector == $paneID) {
-                    $this.one('beforeShow.cfw.tab', function(e) {
+                if (selector === $paneID) {
+                    $this
+                        .one('beforeShow.cfw.tab', function(e) {
                             e.stopPropagation();
                         })
                         .CFW_Tab('show');
@@ -3987,29 +4224,28 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.tabResponsive');
 
             if (!data) {
-                $this.data('cfw.tabResponsive', (data = new CFW_Widget_TabResponsive(this)));
+                $this.data('cfw.tabResponsive', data = new CFW_Widget_TabResponsive(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_TabResponsive = Plugin;
     $.fn.CFW_TabResponsive.Constructor = CFW_Widget_TabResponsive;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): slideshow.js
+ * Figuration (v4.0.0): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4017,7 +4253,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Tab) throw new Error('CFW_Slideshow requires CFW_Tab');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_Slideshow requires CFW_Tab'); }
 
     var CFW_Widget_Slideshow = function(element, options) {
         this.$element = $(element);
@@ -4099,7 +4335,7 @@ if (typeof jQuery === 'undefined') {
                 this.$element.CFW_trigger('next.cfw.slideshow');
                 $tabs.eq(currIndex + 1).CFW_Tab('show');
             }
-            if (this.settings.loop && currIndex == ($tabs.length - 1)) {
+            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
                 $tabs.eq(0).CFW_Tab('show');
             }
@@ -4130,9 +4366,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         _actionsKeydown : function(e) {
-            // 37-left, 38-up, 39-right, 40-down
-            var k = e.which;
-            if (!/(37|38|39|40)/.test(k)) { return; }
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var REGEX_KEYS = new RegExp(KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT);
+
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -4140,20 +4380,21 @@ if (typeof jQuery === 'undefined') {
             var $tabs = this._getTabs();
             var index = this._currIndex($tabs);
 
-            if ((k == 38 || k == 37)) { // up & left
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) {
                 if (index > 0) {
                     index--;
                 } else if (index === 0) {
                     index = $tabs.length - 1;
                 }
             }
-            if ((k == 39 || k == 40)) { // down & right
+            if (e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT) {
                 if (index < $tabs.length - 1) {
                     index++;
-                } else if (index == $tabs.length - 1) {
+                } else if (index === $tabs.length - 1) {
                     index = 0;
                 }
             }
+            /* eslint-disable-next-line no-bitwise */
             if (!~index) { index = 0; }  // force first item
 
             var nextTab = $tabs.eq(index);
@@ -4178,7 +4419,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4186,22 +4427,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.Slideshow', (data = new CFW_Widget_Slideshow(this, options)));
+                $this.data('cfw.Slideshow', data = new CFW_Widget_Slideshow(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Slideshow = Plugin;
     $.fn.CFW_Slideshow.Constructor = CFW_Widget_Slideshow;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): scrollspy.js
+ * Figuration (v4.0.0): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4233,7 +4473,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle(this.process.bind(this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
@@ -4251,7 +4491,7 @@ if (typeof jQuery === 'undefined') {
             var offsetMethod = 'offset';
             var offsetBase = 0;
 
-            if (!$.isWindow(this.$scrollElement[0])) {
+            if (this.$scrollElement[0] !== null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
                 offsetMethod = 'position';
                 offsetBase   = this.$scrollElement.scrollTop();
             }
@@ -4267,11 +4507,11 @@ if (typeof jQuery === 'undefined') {
                     var href  = $el.attr('data-cfw-scrollspy-target') || $el.attr('href');
                     var $href = /^#./.test(href) && $(href);
 
-                    return ($href
-                        && $href.length
-                        && $href.is(':visible')
-                        // && $el.is(':visible')
-                        && [[$href[offsetMethod]().top + offsetBase, href]]) || null;
+                    return ($href &&
+                        $href.length &&
+                        $href.is(':visible') &&
+                        // && $el.is(':visible') &&
+                        [[$href[offsetMethod]().top + offsetBase, href]]) || null;
                 })
                 .sort(function(a, b) { return a[0] - b[0]; })
                 .each(function() {
@@ -4289,24 +4529,34 @@ if (typeof jQuery === 'undefined') {
             var activeTarget = this.activeTarget;
             var i;
 
-            if (this.scrollHeight != scrollHeight) {
+            if (this.scrollHeight !== scrollHeight) {
                 this.refresh();
             }
 
             if (scrollTop >= maxScroll) {
-                return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
+                var target = targets[targets.length - 1];
+
+                if (activeTarget !== target) {
+                    this.activate(target);
+                }
+                return;
             }
 
             if (activeTarget && scrollTop < offsets[0] && offsets[0] > 0) {
                 this.activeTarget = null;
-                return this.clear();
+                this.clear();
+                return;
             }
 
             for (i = offsets.length; i--;) {
-                activeTarget != targets[i]
-                    && scrollTop >= offsets[i]
-                    && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
-                    && this.activate(targets[i]);
+                var isActiveTarget = activeTarget !== targets[i] &&
+                    scrollTop >= offsets[i] &&
+                    (typeof offsets[i + 1] === 'undefined' ||
+                    scrollTop < offsets[i + 1]);
+
+                if (isActiveTarget) {
+                    this.activate(targets[i]);
+                }
             }
         },
 
@@ -4356,7 +4606,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4364,22 +4614,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.scrollspy', (data = new CFW_Widget_Scrollspy(this, options)));
+                $this.data('cfw.scrollspy', data = new CFW_Widget_Scrollspy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Scrollspy = Plugin;
     $.fn.CFW_Scrollspy.Constructor = CFW_Widget_Scrollspy;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): alert.js
+ * Figuration (v4.0.0): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4415,18 +4664,29 @@ if (typeof jQuery === 'undefined') {
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    e.preventDefault();
-                    $selfRef.close();
+                    $selfRef.handleClose(e);
                 });
 
             this.$parent
                 .CFW_trigger('init.cfw.alert');
         },
 
+        handleClose : function(e) {
+            e.preventDefault();
+
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if ($(e.currentTarget).not('.disabled, :disabled').length) {
+                this.close();
+            }
+        },
+
         close : function(e) {
             var $selfRef = this;
 
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
             if (this.inTransition) { return; }
 
@@ -4440,14 +4700,14 @@ if (typeof jQuery === 'undefined') {
 
             this.inTransition = 1;
 
-            function removeElement() {
+            var removeElement = function() {
                 // Detach from parent, fire event then clean up data
                 $selfRef.$parent
                     .detach()
                     .CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
                 $selfRef.inTransition = 0;
-            }
+            };
 
             this.$parent
                 .removeClass('in')
@@ -4476,7 +4736,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4484,13 +4744,13 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.alert', (data = new CFW_Widget_Alert(this, options)));
+                $this.data('cfw.alert', data = new CFW_Widget_Alert(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
@@ -4498,158 +4758,15 @@ if (typeof jQuery === 'undefined') {
     // API
     // ===
     if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function() {
-            $(this).CFW_Alert('close');
+        $(document).on('click.cfw.alert', dismiss, function(e) {
+            $(this).CFW_Alert('handleClose', e);
         });
     }
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): button.js
- * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-(function($) {
-    'use strict';
-
-    var CFW_Widget_Button = function(element) {
-        this.$element = $(element);
-        this.$parent = this.$element.closest('[data-cfw="buttons"]');
-
-        this._init();
-    };
-
-    CFW_Widget_Button.prototype = {
-        _init : function() {
-            var $selfRef = this;
-
-            var $input = this.$element.find('input').first();
-            if ($input.length) {
-                if ($input.prop('checked')) {
-                    this.$element.addClass('active');
-                } else {
-                    this.$element.removeClass('active');
-                }
-            }
-
-            this.$element.each(function() {
-                var $this = $(this);
-                $input = $this.find('input');
-                if (!$input.length) {
-                    $this.attr('aria-pressed', $this.hasClass('active'));
-                }
-            });
-
-            // Event handlers
-            this.$element
-                .on('click.cfw.button', function(e) {
-                    var $btn = $(this);
-
-                    $selfRef.toggle();
-
-                    if (!$(e.target).is('input')) {
-                        // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
-                        e.preventDefault();
-                        // The target component still receive the focus
-                        if ($btn.is('input,button')) {
-                            $btn.trigger('focus');
-                        } else {
-                            $btn.find('input:visible,button:visible').first().trigger('focus');
-                        }
-                    }
-                });
-            if ($input.length) {
-                this.$element.on('focusin.cfw.button focusout.cfw.button', function(e) {
-                    $(this).toggleClass('focus', /^focus(in)?$/.test(e.type));
-                });
-            }
-        },
-
-        toggle : function() {
-            if (this.$element.is('.disabled, :disabled')) {
-                return;
-            }
-
-            var changed = true;
-            var useAria = true;
-
-            if (this.$parent.length) {
-                var $input = this.$element.find('input');
-                if ($input.is('.disabled, :disabled')) {
-                    return;
-                }
-                if ($input.length) {
-                    useAria = false;
-
-                    if ($input.prop('type') == 'radio') {
-                        if ($input.prop('checked') && this.$element.hasClass('active')) {
-                            changed = false;
-                        } else {
-                            this.$parent.find('.active')
-                                .removeClass('active');
-                        }
-                    }
-
-                    if (changed) {
-                        $input.prop('checked', !this.$element.hasClass('active'))
-                            .trigger('change');
-                    }
-                }
-            }
-
-            if (useAria) {
-                this.$element
-                    .attr('aria-pressed', !this.$element.hasClass('active'));
-            }
-
-            if (changed) {
-                this.$element.toggleClass('active');
-            }
-        },
-
-        dispose : function() {
-            this.$element
-                .off('.cfw.button')
-                .removeData('cfw.button');
-
-            this.$element = null;
-            this.$parent = null;
-        }
-    };
-
-    function Plugin(option) {
-        var args = [].splice.call(arguments, 1);
-        return this.each(function() {
-            var $this = $(this);
-            var data = $this.data('cfw.button');
-            var options = typeof option === 'object' && option;
-
-            // Check to see if group
-            if ($this.is('[data-cfw="buttons"]')) {
-                // Pass through to buttons
-                $this.find('.btn').CFW_Button(option);
-            } else {
-                // Operate on independent buttons
-                if (!data) {
-                    $this.data('cfw.button', (data = new CFW_Widget_Button(this, options)));
-                }
-                if (typeof option === 'string') {
-                    data[option].apply(data, args);
-                }
-            }
-        });
-    }
-
-    $.fn.CFW_Button = Plugin;
-    $.fn.CFW_Button.Constructor = CFW_Widget_Button;
-
-})(jQuery);
-
-/**
- * --------------------------------------------------------------------------
- * Figuration (v3.0.5): lazy.js
+ * Figuration (v4.0.0): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4674,8 +4791,7 @@ if (typeof jQuery === 'undefined') {
         throttle  : 250,        // Throttle speed to limit event firing
         trigger   : 'scroll resize mutate',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
-        effect    : 'show',     // jQuery effect to use for showing source (http://api.jquery.com/category/effects/)
-        speed     : 0,          // Speed of effect (milliseconds)
+        animate   : false,      // Should the image fade in
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
         invisible : false,      // Load sources that are not :visible
@@ -4689,8 +4805,13 @@ if (typeof jQuery === 'undefined') {
 
             this.$element.attr('data-cfw', 'lazy');
 
+            this.settings.delay = parseInt(this.settings.delay, 10);
+            if (isNaN(this.settings.delay) || this.settings.delay < 0) {
+                this.settings.delay = CFW_Widget_Lazy.DEFAULTS.delay;
+            }
+
             // Add placholder if src is not defined
-            if (this.$element.attr('src') === '' || this.$element.attr('src') === undefined || this.$element.attr('src') === false) {
+            if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
                 }
@@ -4702,15 +4823,15 @@ if (typeof jQuery === 'undefined') {
             var eventTypes = this.settings.trigger.split(' ');
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
-                if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                if (eventType === 'scroll' || eventType === 'resize') {
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
-                } else if (eventType == 'mutate') {
+                } else if (eventType === 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
-                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
+                        .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
                 } else {
-                    this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
+                    this.$element.on(eventType + '.cfw.lazy', this.show.bind(this));
                 }
             }
 
@@ -4722,14 +4843,14 @@ if (typeof jQuery === 'undefined') {
         isVisible : function() {
             // Normalize on using the newer jQuery 3 visibility method
             var elem = this.$element[0];
-            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
         },
 
         inViewport : function() {
             if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
-            return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
+            return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();
         },
 
         belowFold : function() {
@@ -4759,7 +4880,7 @@ if (typeof jQuery === 'undefined') {
             } else {
                 fold = $(this.settings.container).offset().top;
             }
-            return fold >= this.$element.offset().top + this.settings.threshold  + this.$element.height();
+            return fold >= this.$element.offset().top + this.settings.threshold + this.$element.height();
         },
 
         beforeLeft: function() {
@@ -4775,16 +4896,23 @@ if (typeof jQuery === 'undefined') {
         loadSrc : function() {
             var $selfRef = this;
 
-            // Hide, set src, show w/effect
-            this.$element.hide();
             this.$element.attr('src', this.settings.src);
-            this.$element[this.settings.effect](this.settings.speed);
 
             $.CFW_imageLoaded(this.$element, this.instance, function() {
-                setTimeout(function() {
+                var complete = function() {
+                    $selfRef.$element.removeClass('lazy in');
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
-                }, $selfRef.settings.speed);
+                };
+
+                // Use slight delay when setting `.in` so animation occurs
+                var DELAY_ANIMATION = 15;
+                if ($selfRef.settings.animate) { $selfRef.$element.addClass('lazy'); }
+                setTimeout(function() {
+                    $selfRef.$element
+                        .addClass('in')
+                        .CFW_transition(null, complete);
+                }, DELAY_ANIMATION);
             });
         },
 
@@ -4825,11 +4953,10 @@ if (typeof jQuery === 'undefined') {
             this.instance = null;
             this.inTransition = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4837,550 +4964,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.lazy', (data = new CFW_Widget_Lazy(this, options)));
+                $this.data('cfw.lazy', data = new CFW_Widget_Lazy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Lazy = Plugin;
     $.fn.CFW_Lazy.Constructor = CFW_Widget_Lazy;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): slider.js
- * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-(function($) {
-    'use strict';
-
-    if (!$.fn.CFW_Drag) throw new Error('CFW_Slider requires CFW_Drag');
-
-    var CFW_Widget_Slider = function(element, options) {
-        this.$element = $(element);
-
-        this.$slider = null;
-        this.$track = null;
-        this.$selection = null;
-        this.$thumbMin = null;
-        this.$thumbMax = null;
-
-        this.$inputMin = null;
-        this.$inputMax = null;
-
-        this.ordinal = false;
-        this.range = false;
-
-        this.val0 = 0;
-        this.val1 = 0;
-
-        var parsedData = this.$element.CFW_parseData('slider', CFW_Widget_Slider.DEFAULTS);
-        this.settings = $.extend({}, CFW_Widget_Slider.DEFAULTS, parsedData, options);
-
-        this.inDrag = null;
-        this.startPos = null;
-        this.offsetPos = (this.settings.vertical) ? 'top' : 'left';
-        this.stepsTotal = null;
-
-        this._init();
-    };
-
-    CFW_Widget_Slider.DEFAULTS = {
-        min : null,         // min value
-        max : null,         // max value
-        step : 1,           // small step increment
-        chunk : null,       // large step increment (will be auto determined if not defined)
-        enabled : true,     // true - enabled / false - disabled
-        vertical : false,   // alternate orientation
-        reversed : false    // show thumbs in opposite order
-    };
-
-    CFW_Widget_Slider.prototype = {
-        _init : function() {
-            var inputs = this._initInputs();
-            if (inputs === false) { return; }
-
-            this._initChunk();
-
-            this.createSlider();
-            this.updateValues();
-            this.updateThumbs();
-            this.updateLabels();
-            if (this.settings.enabled) {
-                this.enable(true);
-            } else {
-                this.disable();
-            }
-
-            this.$element.attr('data-cfw', 'slider');
-
-            this.$slider.CFW_trigger('init.cfw.slider');
-        },
-
-        _initInputs : function() {
-            var $inputs = this.$element.find('input');
-            if ($inputs.length <= 0) {
-                $inputs = this.$element.find('select');
-            }
-            if ($inputs.length <= 0) {
-                return false;
-            }
-
-            this.$inputMin = $inputs.eq(0);
-
-            if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
-            if ($inputs.length > 1) {
-                this.$inputMax = $inputs.eq($inputs.length - 1);
-                this.range = true;
-            }
-        },
-
-        _initChunk : function() {
-            this.stepsTotal = Math.floor((this.settings.max - this.settings.min) / this.settings.step);
-            if (!this.settings.chunk) {
-                this.settings.chunk = this.stepsTotal > 4 ?  Math.round(this.stepsTotal / 4) : this.settings.step * 2;
-            }
-        },
-
-        createSlider : function() {
-            /* Slider element */
-            var slider = document.createElement('div');
-            this.$slider = $(slider).addClass('slider');
-            if (this.settings.vertical) {
-                $(slider)
-                    .attr('aria-orientation', 'vertical')
-                    .addClass('slider-vertical');
-            } else {
-                $(slider).addClass('slider-horizontal');
-            }
-            // var sliderID = this.$slider.CFW_getID('cfw-slider');
-
-            /* Track elements */
-            var track = document.createElement('div');
-            this.$track = $(track).addClass('slider-track');
-            var selection = document.createElement('div');
-            this.$selection = $(selection).addClass('slider-selection');
-
-            /* Thumb/handle elements */
-            var $labelMin = this._getLabel(this.$inputMin);
-            var labelMinTxt = $labelMin.text();
-
-            var thumbMin = document.createElement('div');
-            this.$thumbMin = $(thumbMin).addClass('slider-thumb slider-thumb-min')
-                .attr({
-                    'role': 'slider',
-                    'tabindex': -1,
-                    'aria-label': labelMinTxt
-                });
-
-            if (this.range) {
-                var $labelMax = this._getLabel(this.$inputMax);
-                var labelMaxTxt = $labelMax.text();
-
-                var thumbMax = document.createElement('div');
-                this.$thumbMax = $(thumbMax).addClass('slider-thumb slider-thumb-max')
-                    .attr({
-                        'role': 'slider',
-                        'tabindex': -1,
-                        'aria-label': labelMaxTxt
-                    });
-
-                this.$thumbMin.attr('aria-controls', this.$thumbMax.CFW_getID('cfw-slider'));
-                this.$thumbMax.attr('aria-controls', this.$thumbMin.CFW_getID('cfw-slider'));
-            }
-
-            // Attach elements together and insert
-            this.$track.append(this.$selection);
-            this.$track.append(this.$thumbMin);
-            if (this.range) { this.$track.append(this.$thumbMax); }
-
-            this.$slider.append(this.$track);
-
-            this.$element.append(this.$slider);
-        },
-
-        updateValues : function() {
-            this.val0 = (this.ordinal) ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
-            if (!this.range) {
-                this.$thumbMin.attr({
-                    'aria-valuemin': this.settings.min,
-                    'aria-valuemax': this.settings.max,
-                    'aria-valuenow': this.val0
-                });
-            } else {
-                this.val1 = (this.ordinal) ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
-                this.$thumbMin.attr({
-                    'aria-valuemin': this.settings.min,
-                    'aria-valuemax': this.val1,
-                    'aria-valuenow': this.val0
-                });
-                this.$thumbMax.attr({
-                    'aria-valuemin': this.val0,
-                    'aria-valuemax': this.settings.max,
-                    'aria-valuenow': this.val1
-                });
-            }
-        },
-
-        updateThumbs : function() {
-            var valStart;
-            var valEnd;
-            var pctStart;
-            var pctEnd;
-            var pctSize;
-            var selStart;
-
-            // Reset visuals
-            this.$selection.css({
-                'top': '',
-                'left': '',
-                'width': '',
-                'height': ''
-            });
-            this.$thumbMin.css({
-                'top': '',
-                'left': ''
-            });
-            if (this.range) {
-                this.$thumbMax.css({
-                    'top': '',
-                    'left': ''
-                });
-            }
-
-            if (!this.range) {
-                valStart = this.settings.min;
-                valEnd = this.val0;
-            } else {
-                valStart = this.val0;
-                valEnd = this.val1;
-            }
-
-            pctStart = ((valStart - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
-            selStart = pctStart;
-            pctEnd  = ((valEnd - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
-
-            if (pctStart < 0) { pctStart = 0; }
-            if (pctEnd > 100) { pctEnd = 100; }
-
-            pctSize = pctEnd - pctStart;
-            if (this.settings.reversed) {
-                pctStart = 100 - pctStart;
-                pctEnd = 100 - pctEnd;
-                selStart = pctEnd;
-            }
-            var pos = (this.settings.vertical) ? 'top' : 'left';
-            var dim = (this.settings.vertical) ? 'height' : 'width';
-
-            this.$selection.css(pos, selStart + '%').css(dim, pctSize + '%');
-            if (!this.range) {
-                this.$thumbMin.css(pos, pctEnd + '%');
-            } else {
-                this.$thumbMin.css(pos, pctStart + '%');
-                this.$thumbMax.css(pos, pctEnd + '%');
-            }
-        },
-
-        updateLabels : function() {
-            this.$thumbMin.attr('aria-valuetext', this.$inputMin.val());
-            if (this.range) {
-                this.$thumbMax.attr('aria-valuetext', this.$inputMax.val());
-            }
-        },
-
-        enable : function(init) {
-            if (init === undefined) { init = false; }
-            if (!init && this.settings.enabled) { return; }
-            this.settings.enabled = true;
-            this.$slider.removeClass('disabled');
-            this.bindSlider();
-            this.$slider.CFW_trigger('enabled.cfw.slider');
-        },
-
-        disable : function() {
-            if (!this.settings.enabled) { return; }
-            this.settings.enabled = false;
-            this.$slider.addClass('disabled');
-            this.unbindSlider();
-            this.$slider.CFW_trigger('disabled.cfw.slider');
-        },
-
-        bindSlider : function() {
-            var $selfRef = this;
-            var $thumbs = this.$thumbMin;
-            var $inputs = this.$inputMin;
-            if (this.range) {
-                $thumbs = $thumbs.add(this.$thumbMax);
-                $inputs = $inputs.add(this.$inputMax);
-            }
-
-            $thumbs.attr('tabindex', 0).on('keydown.cfw.slider', function(e) {
-                    $selfRef._actionsKeydown(e, this);
-                })
-                .on('focusin.cfw.slider', function() {
-                    $(this).css('z-index', parseInt($(this).css('z-index'), 10) + 1);
-                })
-                .on('focusout.cfw.slider', function() {
-                    $(this).css('z-index', '');
-                });
-
-            this.$track
-                .on('dragStart.cfw.drag', function(e) {
-                    $selfRef._dragStart(e);
-                })
-                .on('drag.cfw.drag', function(e) {
-                    $selfRef._drag(e);
-                })
-                .on('dragEnd.cfw.drag', function() {
-                    $selfRef._dragEnd();
-                })
-                .CFW_Drag();
-
-            $inputs.on('change.cfw.slider', function() {
-                var $node = $(this);
-                var newVal = ($selfRef.ordinal) ? $node[0].selectedIndex : parseFloat($node.val());
-                $selfRef.changeValue(newVal, $node, true);
-            });
-        },
-
-        unbindSlider : function() {
-            var $thumbs = this.$thumbMin;
-            var $inputs = this.$inputMin;
-            if (this.range) {
-                $thumbs = $thumbs.add(this.$thumbMax);
-                $inputs = $inputs.add(this.$inputMax);
-            }
-            $thumbs.attr('tabindex', '').off('.cfw.slider');
-            this.$track.CFW_Drag('dispose');
-            $inputs.off('.cfw.slider');
-        },
-
-        decrement : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
-            this.changeValue(currVal - (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
-        },
-
-        increment : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
-            this.changeValue(currVal + (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
-        },
-
-        changeValue : function(newVal, $input, inputUpdate) {
-            if (inputUpdate === undefined) { inputUpdate = false; }
-
-            var oldVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
-
-            var limitLow;
-            var limitHigh;
-            if (!this.range) {
-                limitLow = this.settings.min;
-                limitHigh = this.settings.max;
-            } else {
-                if ($input.is(this.$inputMax)) {
-                    limitLow = this.val0;
-                    limitHigh = this.settings.max;
-                } else {
-                    limitLow = this.settings.min;
-                    limitHigh = this.val1;
-                }
-            }
-
-            var updVal;
-            if (newVal !== undefined) {
-                updVal = Math.min(Math.max(newVal, limitLow), limitHigh);
-                // make the value snap to the chosen increment
-                updVal = Math.round(updVal / this.settings.step) * this.settings.step;
-            }
-            if (updVal === undefined) { return; }
-
-            if (this.ordinal) {
-                $input[0].selectedIndex = updVal;
-            } else {
-                $input.prop('value', updVal);
-            }
-            this.updateValues();
-            this.updateThumbs();
-            this.updateLabels();
-
-            if (!inputUpdate) {
-                this.$slider.CFW_trigger('slid.cfw.slider');
-            }
-            if (inputUpdate || (updVal != oldVal)) {
-                this.$slider.CFW_trigger('changed.cfw.slider');
-            }
-        },
-
-        _getInput : function(node) {
-            var $node = $(node);
-            if ($node.is(this.$thumbMax)) {
-                return this.$inputMax;
-            } else {
-                return this.$inputMin;
-            }
-        },
-
-        _getLabel : function($input) {
-            var $label = $('label[for="' + $input.attr('id') + '"]');
-            if ($label.length <= 0) {
-                $label = $input.closest('label');
-            }
-            return $label;
-        },
-
-        _actionsKeydown : function(e, node) {
-            var $selfRef = this;
-
-            // 37-left, 38-up, 39-right, 40-down, 33-pgup, 34-pgdn, 35-end, 36-home
-            if (!/(37|38|39|40|33|34|35|36)/.test(e.which)) { return; }
-
-            e.stopPropagation();
-            e.preventDefault();
-
-            var $input = this._getInput(node);
-
-            switch (e.which) {
-                case 37: // left
-                case 40: // down
-                    $selfRef.decrement(false, $input);
-                    break;
-                case 38: // up
-                case 39: // right
-                    $selfRef.increment(false, $input);
-                    break;
-                case 33: // pgup
-                    $selfRef.increment(true, $input);
-                    break;
-                case 34: // pgdn
-                    $selfRef.decrement(true, $input);
-                    break;
-                case 35: // end
-                    $selfRef.changeValue(this.settings.max, $input);
-                    break;
-                case 36: // home
-                    $selfRef.changeValue(this.settings.min, $input);
-                    break;
-            }
-        },
-
-        _dragStart : function(e) {
-            var $node = $(e.currentTarget);
-            if ($node.is(this.$track)) {
-                $node = this._closestThumb(e);
-            }
-            $node.trigger('focus');
-
-            this.inDrag = $node[0];
-
-            var pos = this.settings.vertical ? e.startY : e.startX;
-            var trackOff = this.$track.offset();
-            var newPos = pos - trackOff[this.offsetPos];
-            this.startPos = newPos;
-
-            var newVal = this._positionToValue(newPos);
-            var $input = this._getInput($node[0]);
-            this.changeValue(newVal, $input);
-
-            this.$slider.CFW_trigger('dragStart.cfw.slider');
-        },
-
-        _drag : function(e) {
-            if (this.inDrag == null) { return; }
-            var delta = this.settings.vertical ? e.deltaY : e.deltaX;
-            var newPos = this.startPos + delta;
-            var $input = this._getInput(this.inDrag);
-            var newVal = this._positionToValue(newPos);
-            this.changeValue(newVal, $input);
-        },
-
-        _dragEnd : function() {
-            this.inDrag = null;
-            this.startPos = null;
-            this.$slider.CFW_trigger('dragEnd.cfw.slider');
-        },
-
-        _positionToValue : function(pos) {
-            var trackDim;
-            if (this.settings.vertical) {
-                trackDim = this.$track.outerHeight();
-            } else {
-                trackDim = this.$track.outerWidth();
-            }
-
-            var ratio = trackDim / this.stepsTotal;
-
-            pos = (this.settings.reversed) ? trackDim - pos : pos;
-            return (Math.round(pos / ratio) * this.settings.step) + this.settings.min;
-        },
-
-        _closestThumb : function(e) {
-            var $node;
-            if (this.range) {
-                var pos = this.settings.vertical ? e.pageY : e.pageX;
-                var trackOff = this.$track.offset();
-                var diff1 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMin.position()[this.offsetPos]);
-                var diff2 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMax.position()[this.offsetPos]);
-                $node = (diff1 < diff2) ? this.$thumbMin : this.$thumbMax;
-            } else {
-                $node = this.$thumbMin;
-            }
-            return $node;
-        },
-
-        dispose : function() {
-            this.unbindSlider();
-            this.$element.removeData('cfw.slider');
-            this.$slider.remove();
-
-            this.$element = null;
-            this.$slider = null;
-            this.$track = null;
-            this.$selection = null;
-            this.$thumbMin = null;
-            this.$thumbMax = null;
-            this.$inputMin = null;
-            this.$inputMax = null;
-            this.ordinal = null;
-            this.range = null;
-            this.val0 = null;
-            this.val1 = null;
-            this.settings = null;
-            this.inDrag = null;
-            this.startPos = null;
-            this.offsetPos = null;
-            this.stepsTotal = null;
-        }
-    };
-
-    function Plugin(option) {
-        var args = [].splice.call(arguments, 1);
-        return this.each(function() {
-            var $this = $(this);
-            var data = $this.data('cfw.slider');
-            var options = typeof option === 'object' && option;
-
-            if (!data) {
-                $this.data('cfw.slider', (data = new CFW_Widget_Slider(this, options)));
-            }
-            if (typeof option === 'string') {
-                data[option].apply(data, args);
-            }
-        });
-    }
-
-    $.fn.CFW_Slider = Plugin;
-    $.fn.CFW_Slider.Constructor = CFW_Widget_Slider;
-
-})(jQuery);
-
-/**
- * --------------------------------------------------------------------------
- * Figuration (v3.0.5): equalize.js
+ * Figuration (v4.0.0): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5414,7 +5012,7 @@ if (typeof jQuery === 'undefined') {
 
             // Get group ID
             var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+            if (typeof groupID === 'undefined' || (groupID.length <= 0)) { return; }
 
             // Find target by id/css selector
             this.$target = $(groupID, this.$element);
@@ -5432,14 +5030,14 @@ if (typeof jQuery === 'undefined') {
                         $selfRef._equalize();
                     }
                 });
-            } else {
-                this.$target.CFW_mutationListen();
-                this.$element
-                    .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', $.proxy(this._equalize, this));
             }
 
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this._equalize, this), this.settings.throttle));
+            this.$target.CFW_mutationListen();
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .on('mutate.cfw.mutate', this._equalize.bind(this));
+
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle(this._equalize.bind(this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
@@ -5447,11 +5045,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _hasNested : function() {
-            return (this.$element.find('[data-cfw="equalize"]').length > 0);
+            return this.$element.find('[data-cfw="equalize"]').length > 0;
         },
 
         _isNested : function() {
-            return (this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0);
+            return this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0;
         },
 
         _isStacked : function($targetElm) {
@@ -5523,9 +5121,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _applyHeight : function($nodes, callback) {
-            var heights = $nodes.map(function() {
+            var heights = $nodes
+                .map(function() {
                     return $(this).outerHeight(false);
-                }).get();
+                })
+                .get();
 
             if (this.settings.minimum) {
                 var min = Math.min.apply(null, heights);
@@ -5554,7 +5154,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
-            this.$window.off('.cfw.equalize.' +  this.instance);
+            this.$window.off('.cfw.equalize.' + this.instance);
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -5572,7 +5172,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -5580,22 +5180,22 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.equalize', (data = new CFW_Widget_Equalize(this, options)));
+                $this.data('cfw.equalize', data = new CFW_Widget_Equalize(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Equalize = Plugin;
     $.fn.CFW_Equalize.Constructor = CFW_Widget_Equalize;
+}(jQuery));
 
-})(jQuery);
-
+/* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): player.js
+ * Figuration (v4.0.0): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5604,18 +5204,17 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/audio.js
-    function audioTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var audioTest = function() {
         var elem = document.createElement('audio');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
                 bool.mp3  = elem.canPlayType('audio/mpeg;').replace(/^no$/, '');
-                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') .replace(/^no$/, '');
+                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') || elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, '');
 
                 // Mimetypes accepted:
                 // http://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
@@ -5623,18 +5222,18 @@ if (typeof jQuery === 'undefined') {
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
                 bool.m4a  = (elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')).replace(/^no$/, '');
             }
-        } catch (e) { }
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/video.js
-    function videoTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var videoTest = function() {
         var elem = document.createElement('video');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool = new Boolean(bool);
@@ -5646,10 +5245,11 @@ if (typeof jQuery === 'undefined') {
                 bool.vp9 = elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, '');
                 bool.hls = elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, '');
             }
-        } catch (e){}
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     var html5 = {
         audio: null,
@@ -5712,14 +5312,14 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Player.DEFAULTS = {
-        mediaDescribe: false,       // Show description source media
-        textDescribe: -1,           // Text-based description off
-        textDescribeAnnounce: false,// If text-based description should announced by screen readers
-        textDescribeVisible: true,  // If text-based description should be visible
-        transcript: -1,             // Default transcript off
-        transcriptScroll : true,    // Scroll transcript
-        transcriptDescribe: true,   // Show descriptions in transcript
-        transcriptOption : true     // Show transcript options
+        mediaDescribe: false,        // Show description source media
+        textDescribe: -1,            // Text-based description off
+        textDescribeAnnounce: false, // If text-based description should announced by screen readers
+        textDescribeVisible: true,   // If text-based description should be visible
+        transcript: -1,              // Default transcript off
+        transcriptScroll : true,     // Scroll transcript
+        transcriptDescribe: true,    // Show descriptions in transcript
+        transcriptOption : true      // Show transcript options
     };
 
     CFW_Widget_Player.prototype = {
@@ -5727,17 +5327,17 @@ if (typeof jQuery === 'undefined') {
             this.$media = this.$element.find('audio, video');
             this.media = this.$media[0];
 
-            if (this.media == null) {
-                return false;
+            if (typeof this.media === 'undefined') {
+                return;
             }
 
-            if (this.media.nodeName == 'VIDEO') {
+            if (this.media.nodeName.toLowerCase() === 'video') {
                 this.type = 'video';
             }
 
-            if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
+            if ((this.type === 'audio' && !html5.audio) || (this.type === 'video' && !html5.video)) {
                 this.$media.CFW_trigger('noSupport.cfw.player');
-                return false;
+                return;
             }
 
             // Save source items for later use
@@ -5792,12 +5392,14 @@ if (typeof jQuery === 'undefined') {
             }
 
             var isLoaded = setInterval(function() {
+                var NETWORK_NO_SOURCE = 3;
+                var TIMEOUT_MAX_COUNT = 75;
                 if ($selfRef.media.readyState > 0) {
                     clearInterval(isLoaded);
                     $selfRef.loadComplete();
                     return;
                 }
-                if ($selfRef.media.networkState === 3 || timeout === 75) {
+                if ($selfRef.media.networkState === NETWORK_NO_SOURCE || timeout === TIMEOUT_MAX_COUNT) {
                     clearInterval(isLoaded);
                     $selfRef.error();
                     return;
@@ -5829,13 +5431,14 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.muteStatus();
                 $selfRef.volumeStatus();
             });
-            if (this.type == 'video') {
+            if (this.type === 'video') {
                 // http://stackoverflow.com/questions/9621499/fullscreen-api-which-events-are-fired
                 $(document).on('webkitfullscreenchange mozfullscreenchange MSFullscreenChange fullscreenchange', function() {
                     $selfRef.fullscreenStatus();
                 });
                 this.$player.on('mouseenter mouseleave', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mouseenter': {
                             $selfRef.over = true;
@@ -5846,9 +5449,11 @@ if (typeof jQuery === 'undefined') {
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$element.on('mousemove mousedown mouseup keydown keyup touchmove touchstart touchend', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mousedown':
                         case 'touchstart': {
@@ -5864,6 +5469,7 @@ if (typeof jQuery === 'undefined') {
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$media.on('click', function() {
                     $selfRef.toggle();
@@ -6003,7 +5609,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         playedStatus : function(force) {
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (!this.played) {
                 if (force || this.media.played.length > 0) {
                     this.played = true;
@@ -6016,7 +5622,7 @@ if (typeof jQuery === 'undefined') {
             this.status.duration    = this.media.duration;
             this.status.currentTime = this.media.currentTime;
             this.status.remaining   = this.status.duration - this.status.currentTime;
-            if (this.status.remaining < 0) this.status.remaining = 0;
+            if (this.status.remaining < 0) { this.status.remaining = 0; }
 
             var $durElm = this.$player.find('[data-cfw-player="time-duration"]');
             var $curElm = this.$player.find('[data-cfw-player="time-current"]');
@@ -6061,51 +5667,57 @@ if (typeof jQuery === 'undefined') {
         seekStatus : function() {
             var $seekElm = this.$player.find('[data-cfw-player="seek"]');
 
-            if ($seekElm.find('input').length) {
-                this.seekSlider();
+            if ($seekElm.find('input[type="range"]').length) {
+                this.seekRange();
             } else if ($seekElm.hasClass('progress')) {
                 this.seekProgress();
             }
         },
 
-        seekSlider : function() {
+        seekRange : function() {
             var $selfRef = this;
 
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
+            var $seekElm = this.$player.find('[data-cfw-player="seek"]');
+            var $inputElm = $seekElm.find('input[type="range"]').eq(0);
 
-            if (this.$sliderSeek == null) {
-                this.$sliderSeek = this.$player.find('[data-cfw-player="seek"]');
-                this.$sliderSeek.CFW_Slider({
+            if (this.$sliderSeek === null) {
+                this.$sliderSeek = $inputElm;
+
+                $inputElm.prop({
                     min: 0,
                     max: this.media.duration,
                     step: 1 // 1-second step
                 });
-                this.$sliderSeek.on('slid.cfw.slider', function() {
-                    var newTime = $(this).data('cfw.slider').val0;
-                    $selfRef.seekTo(newTime);
-                });
-                // Pause while scrubbing
-                var $sliderControls = this.$sliderSeek.add(this.$sliderSeek.find('.slider-thumb'));
-                $sliderControls.on('keydown.cfw.slider dragStart.cfw.slider', function(e) {
-                    if (e.type == 'keydown' && (!/(37|38|39|40|33|34|35|36)/.test(e.which))) { return; }
-                    if (e.type == 'keydown') { e.stopPropagation; }
-                    $sliderControls.off('keyup.cfw.slider dragEnd.cfw.slider');
-                    if ($selfRef.scrubPlay == null) {
-                        $selfRef.scrubPlay = !$selfRef.media.paused;
-                    }
+
+                // Update on both `onchange` and `oninput` events. Seems to
+                // help with jumping back to previous timestamp.
+                $inputElm.on('change input', function() {
+                    var newTime = parseFloat($inputElm.val());
+                    // Pause/resume when changing
+                    var isPaused = $selfRef.media.paused;
                     $selfRef.media.pause();
-                    $(e.currentTarget).one('keyup.cfw.slider dragEnd.cfw.slider', function(e) {
-                        if (e.type == 'keyup') { e.stopPropagation; }
-                        if ($selfRef.scrubPlay === true) {
-                            $selfRef.media.play();
-                        }
-                        $selfRef.scrubPlay = null;
+                    $selfRef.seekTo(newTime);
+                    if (!isPaused) {
+                        $selfRef.media.play();
+                    }
+                });
+
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
                     });
                 });
             }
 
-            var $inputElm = this.$sliderSeek.find('input').eq(0);
-            this.$sliderSeek.CFW_Slider('changeValue', this.media.currentTime, $inputElm, true);
+            $inputElm.val(this.media.currentTime);
+
+            // Output a more meaningful description text
+            var timeText = this.timeSplit(this.media.currentTime) + ' / ' + this.timeSplit(this.media.duration);
+            $inputElm.attr('aria-valuetext', timeText);
         },
 
         seekProgress : function() {
@@ -6117,7 +5729,8 @@ if (typeof jQuery === 'undefined') {
             var cp = (this.media.currentTime / this.media.duration) * 100;
             if (cp > 100) { cp = 100; }
 
-            $curElm.attr({
+            $curElm
+                .attr({
                     'aria-valuemin' : 0,
                     'aria-valuemax' : 100,
                     'aria-valuenow' : cp
@@ -6135,8 +5748,9 @@ if (typeof jQuery === 'undefined') {
 
         seekIncrement : function(delta) {
             var time = this.media.currentTime + delta;
-            var newTime = (time < 0) ? 0 : ((time > this.media.duration) ? this.media.duration : time);
-            this.seekTo(newTime);
+            if (time < 0) { time = 0; }
+            if (time > this.media.duration) { time = this.media.duration; }
+            this.seekTo(time);
         },
 
         seekTo : function(timestamp) {
@@ -6182,25 +5796,34 @@ if (typeof jQuery === 'undefined') {
         },
 
         volumeStatus : function() {
-            var $selfRef = this;
             var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
-            if ($volElm.find('input').length <= 0) { return; }
+            if ($volElm.find('input[type="range"]').length) {
+                this.volumeRange();
+            }
+        },
+
+        volumeRange : function() {
+            var $selfRef = this;
+            var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
             if (!this.support.mute) {
                 this._controlDisable($volElm);
                 return;
             }
+            var $inputElm = $volElm.find('input[type="range"]').eq(0);
 
-            if (this.$volSeek == null) {
-                this.$volSeek = $volElm;
-                this.$volSeek.CFW_Slider({
+            if (this.$volSeek === null) {
+                this.$volSeek = $inputElm;
+                $inputElm.prop({
                     min: 0,
                     max: 1,
                     step: 0.05  // 5% increment
                 });
-                this.$volSeek.on('slid.cfw.slider', function() {
-                    var newVol = parseFloat($(this).data('cfw.slider').val0);
+
+                // Update on both `onchange` and `oninput` events.
+                $inputElm.on('change input', function() {
+                    var newVol = parseFloat($inputElm.val());
 
                     if (newVol === 0) {
                         $selfRef.media.muted = true;
@@ -6209,28 +5832,37 @@ if (typeof jQuery === 'undefined') {
                         $selfRef.media.volume = newVol;
                     }
                 });
+
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
+                    });
+                });
             }
 
-            var $inputElm = this.$volSeek.find('input').eq(0);
+            // Update range value and output text to percentage
             if (!this.media.muted) {
-                this.$volSeek.CFW_Slider('changeValue', this.media.volume, $inputElm, true);
+                $inputElm.val(this.media.volume);
+                var level = parseInt(this.media.volume * 100, 10);
+                $inputElm.attr('aria-valuetext', level + '%');
             } else {
-                this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
+                $inputElm.val(0);
+                $inputElm.attr('aria-valuetext', '0%');
             }
-
-            // Alter volume slider label to percentage
-            var level = parseInt($selfRef.media.volume * 100, 10);
-            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
             var vol = (this.media.volume * 100) + delta;
-            var newVol = (vol < 0) ? 0 : ((vol > 100) ? 100 : parseInt(vol, 10));
-            this.media.volume = newVol / 100;
+            if (vol < 0) { vol = 0; }
+            if (vol > 100) { vol = 100; }
+            this.media.volume = parseInt(vol, 10) / 100;
         },
 
         loop : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 // set on/off
                 this.media.loop = setting;
             } else {
@@ -6241,7 +5873,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         speed : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 this.media.playbackRate = setting;
             }
         },
@@ -6262,25 +5894,35 @@ if (typeof jQuery === 'undefined') {
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
-            return ($fsNode.is(this.$element));
+            return $fsNode.is(this.$element);
         },
 
         fullscreen : function() {
-            if (this.type == 'audio') { return; }
+            if (this.type === 'audio') { return; }
             if (this.isFullScreen()) {
                 // Exit fullscreen
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-                else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-                else if (document.msExitFullscreen) document.msExitFullscreen();
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             } else {
                 // Go fullscreen
                 // (Note: can be called on document, but here the specific element is used as it will also ensure that the element's children, e.g. the custom controls, go fullscreen also)
                 var videoContainer = this.$element[0];
-                if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-                else if (videoContainer.mozRequestFullScreen) videoContainer.mozRequestFullScreen();
-                else if (videoContainer.webkitRequestFullScreen) videoContainer.webkitRequestFullScreen();
-                else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
+                if (videoContainer.requestFullscreen) {
+                    videoContainer.requestFullscreen();
+                } else if (videoContainer.mozRequestFullScreen) {
+                    videoContainer.mozRequestFullScreen();
+                } else if (videoContainer.webkitRequestFullScreen) {
+                    videoContainer.webkitRequestFullScreen();
+                } else if (videoContainer.msRequestFullscreen) {
+                    videoContainer.msRequestFullscreen();
+                }
             }
         },
 
@@ -6298,11 +5940,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _srcHasAlternate : function(name) {
-            return (this.$sources[0].hasAttribute('data-src-' + name));
+            return this.$sources[0].hasAttribute('data-src-' + name);
         },
 
         _srcIsAlternate : function(name) {
-            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+            return this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src');
         },
 
         _srcLoadAlternate : function(name) {
@@ -6318,7 +5960,7 @@ if (typeof jQuery === 'undefined') {
             this.$media
                 .one('loadeddata', function() {
                     $selfRef.seekTo(currTime);
-                    if (!isPaused) {  $selfRef.media.play(); }
+                    if (!isPaused) { $selfRef.media.play(); }
                 });
             this.media.load();
         },
@@ -6344,16 +5986,16 @@ if (typeof jQuery === 'undefined') {
 
             var tracks = this.media.textTracks;
             if (tracks.length <= 0) {
-                return null;
+                return;
             }
 
             var validTracks = [];
             var descTracks = [];
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].kind == 'captions' || tracks[i].kind == 'subtitles') {
+                if (tracks[i].kind === 'captions' || tracks[i].kind === 'subtitles') {
                     validTracks.push(i);
                 }
-                if (tracks[i].kind == 'descriptions') {
+                if (tracks[i].kind === 'descriptions') {
                     descTracks.push(i);
                 }
             }
@@ -6380,7 +6022,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Use toggle style
                 this.$player.on('click', '[data-cfw-player="caption"]', function(e) {
                     e.preventDefault();
@@ -6392,10 +6034,9 @@ if (typeof jQuery === 'undefined') {
                     $selfRef._focusControl(this);
                 });
 
-                if (this.media.textTracks[0].mode == 'showing') {
+                if (this.media.textTracks[0].mode === 'showing') {
                     this.trackSet(0);
                 }
-
             } else {
                 // Build menu
                 var wrapper = '<span class="player-caption-wrapper"></span>';
@@ -6413,7 +6054,7 @@ if (typeof jQuery === 'undefined') {
                 var tracks = this.media.textTracks;
 
                 for (var j = 0; j < tracks.length; j++) {
-                    if (tracks[j].mode == 'showing') {
+                    if (tracks[j].mode === 'showing') {
                         this.trackSet(j);
                     }
                 }
@@ -6431,7 +6072,9 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ target: '#' + menuID });
+                $captionElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             this.trackStatus();
@@ -6453,12 +6096,12 @@ if (typeof jQuery === 'undefined') {
             this.trackCurrent = trackID;
 
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].mode == 'showing') {
+                if (tracks[i].mode === 'showing') {
                     tracks[i].mode = 'hidden';
                 }
                 if (i === trackID) {
                     // tracks[i].mode = 'showing';
-                    tracks[i].mode = (this.$captionWrapper !== null) ? 'hidden' : 'showing';
+                    tracks[i].mode = this.$captionWrapper !== null ? 'hidden' : 'showing';
                 }
             }
 
@@ -6481,9 +6124,9 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Toggle style
-                if (this.trackCurrent == -1) {
+                if (this.trackCurrent === -1) {
                     $captionElm.removeClass('active');
                     this._pressedState($captionElm, false);
                 } else {
@@ -6500,7 +6143,7 @@ if (typeof jQuery === 'undefined') {
                     .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
-                    if (i == this.trackCurrent) {
+                    if (i === this.trackCurrent) {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
                         $captionPar.find('[data-cfw-player-track="' + i + '"]')
@@ -6523,7 +6166,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Use toggle style
                 $tsElm.removeClass('active');
                 this._pressedState($tsElm, false);
@@ -6560,12 +6203,14 @@ if (typeof jQuery === 'undefined') {
                     $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
                     // Add scroll toggle
-                    var scrollCheck = (this.settings.transcriptScroll) ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
+                    var scrollCheck = this.settings.transcriptScroll ? 'checked' : '';
+                    var scrollID = 'transcriptScroll-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + ' id="' + scrollID + '"> <label class="form-check-label" for="' + scrollID + '">Auto-scroll</label></div></li>');
                     $menu.append($menuItem);
                     // Add description toggle
-                    var descCheck = (this.settings.transcriptDescribe) ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
+                    var descCheck = this.settings.transcriptDescribe ? 'checked' : '';
+                    var descID = 'transcriptDescribe-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + ' id="' + descID + '"> <label class="form-check-label" for="' + descID + '">Show Description</label></div></li>');
                     $menu.append($menuItem);
                 }
 
@@ -6590,7 +6235,9 @@ if (typeof jQuery === 'undefined') {
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ target: '#' + menuID });
+                $tsElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             // Show transcript if set
@@ -6605,23 +6252,23 @@ if (typeof jQuery === 'undefined') {
             if (this.trackValid.length <= 0) {
                 return;
             }
-            if (this.trackValid.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackValid.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
             // No update if same track is selected
-            if (trackID == this.scriptCurrent) {
+            if (trackID === this.scriptCurrent) {
                 return;
             }
 
-            if (trackID == -1 && this.$scriptElm !== null) {
+            if (trackID === -1 && this.$scriptElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
-                    return;
-                }
+            }
+
+            if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
+                return;
             }
 
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
@@ -6633,7 +6280,7 @@ if (typeof jQuery === 'undefined') {
             this.$element.removeClass('player-scriptshow');
 
             if ($tsElm.length) {
-                if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+                if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                     // Update toggle
                     $tsElm.removeClass('active');
                     this._pressedState($tsElm, false);
@@ -6655,7 +6302,7 @@ if (typeof jQuery === 'undefined') {
 
             this.scriptCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.scriptCues = null;
                 this.descCues = null;
                 this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
@@ -6667,9 +6314,7 @@ if (typeof jQuery === 'undefined') {
         scriptLoad : function(forced) {
             var $selfRef = this;
 
-            if (forced === undefined) {
-                forced = false;
-            }
+            if (typeof forced === 'undefined') { forced = false; }
 
             this.$media.off('loadeddata.cfw.player.script');
 
@@ -6682,7 +6327,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Preload all tracks to stop future `load` event triggers on transcript change
-            var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
+            var hold = this.trackCurrent === -1 ? null : tracks[this.trackCurrent].mode;
 
             for (var i = 0; i < tracksLength; i++) {
                 tracks[i].mode = 'hidden';
@@ -6699,7 +6344,7 @@ if (typeof jQuery === 'undefined') {
             if (this.scriptCurrent !== -1) {
                 var descLang = tracks[this.scriptCurrent].language;
                 for (var j = 0; j < tracksLength; j++) {
-                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                    if (descLang === tracks[j].language && tracks[j].kind === 'descriptions') {
                         if ($selfRef.settings.transcriptDescribe) {
                             $selfRef.descCurrent = j;
                         }
@@ -6717,7 +6362,7 @@ if (typeof jQuery === 'undefined') {
             // Test again for text-based description
             var textDescAvailable = false;
             for (var k = 0; k < tracksLength; k++) {
-                if ('descriptions' == tracks[k].kind) {
+                if (tracks[k].kind === 'descriptions') {
                     textDescAvailable = true;
                 }
             }
@@ -6728,11 +6373,11 @@ if (typeof jQuery === 'undefined') {
                 this._controlEnable($textDescControl);
             }
 
-            function scriptLoad2(forced) {
+            var scriptLoad2 = function(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
-                var cues = ($selfRef.scriptCurrent == -1) ? null : tracks[$selfRef.scriptCurrent].cues;
-                var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
-                var textDescCues = ($selfRef.textDescribeCurrent == -1) ? null : tracks[$selfRef.textDescribeCurrent].cues;
+                var cues = $selfRef.scriptCurrent === -1 ? null : tracks[$selfRef.scriptCurrent].cues;
+                var descCues = $selfRef.descCurrent === -1 ? null : tracks[$selfRef.descCurrent].cues;
+                var textDescCues = $selfRef.textDescribeCurrent === -1 ? null : tracks[$selfRef.textDescribeCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -6747,7 +6392,7 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.descCues = descCues;
                 $selfRef.textDescribeCues = textDescCues;
                 $selfRef.scriptProcess();
-            }
+            };
 
             // Short delay to next part
             setTimeout(function() {
@@ -6758,7 +6403,7 @@ if (typeof jQuery === 'undefined') {
         scriptProcess : function() {
             var $selfRef = this;
 
-            if (this.scriptCues == null && this.descCues == null) {
+            if (this.scriptCues === null && this.descCues === null) {
                 return;
             }
 
@@ -6794,20 +6439,18 @@ if (typeof jQuery === 'undefined') {
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
             this.$element.addClass('player-scriptshow');
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Update toggle state
                 $tsElm.addClass('active');
                 this._pressedState($tsElm, true);
-            } else {
+            } else if ($tsElm.length) {
                 // Update transcript menu
-                if ($tsElm.length) {
-                    var $tsPar = $tsElm.parent();
-                    $tsElm.addClass('active');
-                    $tsPar.addClass('active');
-                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
-                        .addClass('active')
-                        .attr('aria-pressed', 'true');
-                }
+                var $tsPar = $tsElm.parent();
+                $tsElm.addClass('active');
+                $tsPar.addClass('active');
+                $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
+                    .addClass('active')
+                    .attr('aria-pressed', 'true');
             }
 
             // Remove any existing transcript container
@@ -6842,14 +6485,12 @@ if (typeof jQuery === 'undefined') {
                         addCaption(this.$scriptElm, captions[capIdx]);
                         capIdx += 1;
                     }
-                } else {
-                    if (descIdx < descriptions.length) {
-                        addDescription(this.$scriptElm, descriptions[descIdx]);
-                        descIdx += 1;
-                    } else if (capIdx < captions.length) {
-                        addCaption(this.$scriptElm, captions[capIdx]);
-                        capIdx += 1;
-                    }
+                } else if (descIdx < descriptions.length) {
+                    addDescription(this.$scriptElm, descriptions[descIdx]);
+                    descIdx += 1;
+                } else if (capIdx < captions.length) {
+                    addCaption(this.$scriptElm, captions[capIdx]);
+                    capIdx += 1;
                 }
             }
 
@@ -6942,12 +6583,14 @@ if (typeof jQuery === 'undefined') {
                 $menuItem = $('<li class="dropdown-divider"></li>');
                 $menu.append($menuItem);
                 // Add announce toggle
-                var announceCheck = (this.settings.textDescribeAnnounce) ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
+                var announceCheck = this.settings.textDescribeAnnounce ? 'checked' : '';
+                var announceID = 'textDescribeAnnounce-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + ' id="' + announceID + '"> <label class="form-check-label" for="' + announceID + '">Announce with Screen Reader</label></div></li>');
                 $menu.append($menuItem);
                 // Add visibility toggle
-                var visibleCheck = (this.settings.textDescribeVisible) ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
+                var visibleCheck = this.settings.textDescribeVisible ? 'checked' : '';
+                var visibleID = 'textDescribeVisible-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + ' id="' + visibleID + '"> <label class="form-check-label" for="' + visibleID + '">Visible Description</label></div></li>');
                 $menu.append($menuItem);
             }
 
@@ -6973,7 +6616,9 @@ if (typeof jQuery === 'undefined') {
                 });
             }
 
-            $tdElm.CFW_Dropdown({ target: '#' + menuID });
+            $tdElm.CFW_Dropdown({
+                target: '#' + menuID
+            });
 
             this.textDescriptionSet(this.settings.textDescribe);
         },
@@ -6984,18 +6629,16 @@ if (typeof jQuery === 'undefined') {
             if (this.trackDescription.length <= 0) {
                 return;
             }
-            if (this.trackDescription.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackDescription.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
-            if (trackID == -1 && this.$textDescribeElm !== null) {
+            if (trackID === -1 && this.$textDescribeElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTextDescriptionHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
-                    return;
-                }
+            } else if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
+                return;
             }
 
             if (this.$textDescribeElm !== null) {
@@ -7034,7 +6677,7 @@ if (typeof jQuery === 'undefined') {
 
             this.textDescribeCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.textDescribeCues = null;
                 this.$media.CFW_trigger('afterTextDescriptionHide.cfw.player');
             } else {
@@ -7102,8 +6745,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         activityStatus : function(bool) {
-            /* jshint -W053 */
-            bool = !!bool;
             if (bool !== this.userActive) {
                 this.userActive = bool;
                 if (bool) {
@@ -7122,7 +6763,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         captionDisplayUpdate : function(activeCues) {
-            if (this.$captionWrapper == null) { return; }
+            if (this.$captionWrapper === null) { return; }
 
             if (this.trackCurrent === -1 || activeCues === null || activeCues.length <= 0) {
                 // Clear and hide caption area - nothing to show
@@ -7148,7 +6789,7 @@ if (typeof jQuery === 'undefined') {
             if (!/(32|33|34|35|36|37|38|39|40|70|77)/.test(e.which)) { return; }
 
             // Ignore space use on button/role="button" items
-            if (e.which == 32 || 'button' === e.target.tagName || 'button' === $(e.target).role('attr')) { return; }
+            if (e.which === 32 || e.target.tagName === 'button' || $(e.target).attr('role') === 'button') { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -7205,30 +6846,20 @@ if (typeof jQuery === 'undefined') {
                     this.mute();
                     break;
                 }
+                default:
             }
         },
 
         _pressedState : function($node, state) {
-            var update = false;
-
             if ($node.length <= 0) { return; }
 
             // True button
             var nodeName = $node.get(0).nodeName.toLowerCase();
-            if ('button' === nodeName) {
-                update = true;
-            }
-
             // role="button"
             var nodeRole = $node.attr('role');
-            if ('button' === nodeRole) {
-                update = true;
-            }
-
-            if (update) {
+            if (nodeName === 'button' || nodeRole === 'button') {
                 $node.attr('aria-pressed', state);
             }
-            return;
         },
 
         _focusControl : function(control) {
@@ -7280,7 +6911,7 @@ if (typeof jQuery === 'undefined') {
 
         _cuechangeEnable : function(trackID, namespace, callback) {
             var $selfRef = this;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 $(this.media.textTracks[trackID])
                     .on('cuechange.cfw.player.' + namespace, function() {
                         callback.call($selfRef, this.activeCues);
@@ -7296,7 +6927,7 @@ if (typeof jQuery === 'undefined') {
 
             // Artificially trigger a cuechange - in case already in middle of a cue
             var cueEvent;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 cueEvent = $.Event('cuechange');
                 $(this.media.textTracks[trackID]).trigger(cueEvent);
             } else {
@@ -7318,10 +6949,10 @@ if (typeof jQuery === 'undefined') {
                 this.$scriptElm.remove();
             }
             if (this.$sliderSeek) {
-                this.$sliderSeek.CFW_Slider('dispose');
+                this.$sliderSeek.off();
             }
             if (this.$volSeek) {
-                this.$volSeek.CFW_Slider('dispose');
+                this.$volSeek.off();
             }
             if ($.hasData(this.$player.find('[data-cfw-player="caption"]'))) {
                 this.$player.find('[data-cfw-player="caption"]').CFW_Dropdown('dispose');
@@ -7369,7 +7000,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -7377,22 +7008,21 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.player', (data = new CFW_Widget_Player(this, options)));
+                $this.data('cfw.player', data = new CFW_Widget_Player(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Player = Plugin;
     $.fn.CFW_Player.Constructor = CFW_Widget_Player;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): common.js
+ * Figuration (v4.0.0): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7402,8 +7032,6 @@ if (typeof jQuery === 'undefined') {
 
     var cfwList = {
         '[data-cfw-dismisss="alert"]': 'CFW_Alert',
-        '[data-cfw="button"]': 'CFW_Button',
-        '[data-cfw="buttons"]': 'CFW_Button',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',
@@ -7416,33 +7044,36 @@ if (typeof jQuery === 'undefined') {
         '[data-cfw="slideshow"]': 'CFW_Slideshow',
         '[data-cfw="scrollspy"]': 'CFW_Scrollspy',
         '[data-cfw="lazy"]': 'CFW_Lazy',
-        '[data-cfw="slider"]': 'CFW_Slider',
         '[data-cfw="equalize"]': 'CFW_Equalize',
         '[data-cfw="player"]': 'CFW_Player'
     };
 
     $.fn.CFW_Init = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]();
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]();
+                });
+            }
         }
         return this;
     };
 
     $.fn.CFW_Dispose = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]('dispose');
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]('dispose');
+                });
+            }
         }
         return this;
     };
@@ -7452,4 +7083,4 @@ if (typeof jQuery === 'undefined') {
             $(document.body).CFW_Init();
         }
     });
-})(jQuery);
+}(jQuery));

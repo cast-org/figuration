@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): alert.js
+ * Figuration (v4.0.0): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -36,18 +36,29 @@
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    e.preventDefault();
-                    $selfRef.close();
+                    $selfRef.handleClose(e);
                 });
 
             this.$parent
                 .CFW_trigger('init.cfw.alert');
         },
 
+        handleClose : function(e) {
+            e.preventDefault();
+
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if ($(e.currentTarget).not('.disabled, :disabled').length) {
+                this.close();
+            }
+        },
+
         close : function(e) {
             var $selfRef = this;
 
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
             if (this.inTransition) { return; }
 
@@ -61,14 +72,14 @@
 
             this.inTransition = 1;
 
-            function removeElement() {
+            var removeElement = function() {
                 // Detach from parent, fire event then clean up data
                 $selfRef.$parent
                     .detach()
                     .CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
                 $selfRef.inTransition = 0;
-            }
+            };
 
             this.$parent
                 .removeClass('in')
@@ -97,7 +108,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -105,13 +116,13 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.alert', (data = new CFW_Widget_Alert(this, options)));
+                $this.data('cfw.alert', data = new CFW_Widget_Alert(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
@@ -119,8 +130,8 @@
     // API
     // ===
     if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function() {
-            $(this).CFW_Alert('close');
+        $(document).on('click.cfw.alert', dismiss, function(e) {
+            $(this).CFW_Alert('handleClose', e);
         });
     }
-})(jQuery);
+}(jQuery));

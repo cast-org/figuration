@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.5): lazy.js
+ * Figuration (v4.0.0): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -25,8 +25,7 @@
         throttle  : 250,        // Throttle speed to limit event firing
         trigger   : 'scroll resize mutate',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
-        effect    : 'show',     // jQuery effect to use for showing source (http://api.jquery.com/category/effects/)
-        speed     : 0,          // Speed of effect (milliseconds)
+        animate   : false,      // Should the image fade in
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
         invisible : false,      // Load sources that are not :visible
@@ -40,8 +39,13 @@
 
             this.$element.attr('data-cfw', 'lazy');
 
+            this.settings.delay = parseInt(this.settings.delay, 10);
+            if (isNaN(this.settings.delay) || this.settings.delay < 0) {
+                this.settings.delay = CFW_Widget_Lazy.DEFAULTS.delay;
+            }
+
             // Add placholder if src is not defined
-            if (this.$element.attr('src') === '' || this.$element.attr('src') === undefined || this.$element.attr('src') === false) {
+            if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
                 }
@@ -53,15 +57,15 @@
             var eventTypes = this.settings.trigger.split(' ');
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
-                if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                if (eventType === 'scroll' || eventType === 'resize') {
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
-                } else if (eventType == 'mutate') {
+                } else if (eventType === 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
-                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
+                        .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
                 } else {
-                    this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
+                    this.$element.on(eventType + '.cfw.lazy', this.show.bind(this));
                 }
             }
 
@@ -73,14 +77,14 @@
         isVisible : function() {
             // Normalize on using the newer jQuery 3 visibility method
             var elem = this.$element[0];
-            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
         },
 
         inViewport : function() {
             if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
-            return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
+            return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();
         },
 
         belowFold : function() {
@@ -110,7 +114,7 @@
             } else {
                 fold = $(this.settings.container).offset().top;
             }
-            return fold >= this.$element.offset().top + this.settings.threshold  + this.$element.height();
+            return fold >= this.$element.offset().top + this.settings.threshold + this.$element.height();
         },
 
         beforeLeft: function() {
@@ -126,16 +130,23 @@
         loadSrc : function() {
             var $selfRef = this;
 
-            // Hide, set src, show w/effect
-            this.$element.hide();
             this.$element.attr('src', this.settings.src);
-            this.$element[this.settings.effect](this.settings.speed);
 
             $.CFW_imageLoaded(this.$element, this.instance, function() {
-                setTimeout(function() {
+                var complete = function() {
+                    $selfRef.$element.removeClass('lazy in');
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
-                }, $selfRef.settings.speed);
+                };
+
+                // Use slight delay when setting `.in` so animation occurs
+                var DELAY_ANIMATION = 15;
+                if ($selfRef.settings.animate) { $selfRef.$element.addClass('lazy'); }
+                setTimeout(function() {
+                    $selfRef.$element
+                        .addClass('in')
+                        .CFW_transition(null, complete);
+                }, DELAY_ANIMATION);
             });
         },
 
@@ -176,11 +187,10 @@
             this.instance = null;
             this.inTransition = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -188,15 +198,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.lazy', (data = new CFW_Widget_Lazy(this, options)));
+                $this.data('cfw.lazy', data = new CFW_Widget_Lazy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Lazy = Plugin;
     $.fn.CFW_Lazy.Constructor = CFW_Widget_Lazy;
-
-})(jQuery);
+}(jQuery));

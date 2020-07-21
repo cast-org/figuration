@@ -1,0 +1,53 @@
+@if $enable-utility-embed {
+
+    @if $enable-utility-embed-fluid {
+        .embed-fluid {
+            position: relative;
+            width: 100%;
+
+            &::before {
+                display: block;
+                padding-top: $embed-fluid-default-ratio;
+                content: "";
+            }
+
+            > .embed-fluid-item,
+            > iframe,
+            > embed,
+            > object,
+            > video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        @each $key, $ratio in $embed-fluid-aspect-ratios {
+            .embed-fluid-#{$key} {
+                &::before {
+                    padding-top: percentage(map-get($ratio, y) / map-get($ratio, x));
+                }
+            }
+        }
+    }
+
+    // Fullscreen video
+    @if $enable-utility-embed-fullscreen {
+        :fullscreen .embed-fluid {
+            position: initial;
+        }
+        // stylelint-disable selector-no-vendor-prefix
+        :-ms-fullscreen .embed-fluid {
+            > .embed-fluid-item,
+            > iframe,
+            > embed,
+            > object,
+            > video {
+                position: -ms-device-fixed;
+            }
+        }
+        // stylelint-enable selector-no-vendor-prefix
+    }
+}

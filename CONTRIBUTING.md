@@ -17,8 +17,7 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`figuration`](https://stackoverflow.com/questions/tagged/figuration) tag).
+* Please **do not** use the issue tracker for personal support requests.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -78,7 +77,7 @@ fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
 
-## Pull requests
+## Pull Requests
 
 Good pull requests---patches, improvements, new features---are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
@@ -95,12 +94,12 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `figuration.css`, or `figuration.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/figuration/scss/`](https://github.com/cast-org/figuration/tree/master/scss)
-and/or [`/figuration/js/`](https://github.com/cast-org/figuration/tree/master/js) instead.
+source files in [`/figuration/scss/`](scss)
+and/or [`/figuration/js/`](js) instead.
 
 Similarly, when contributing to Figuration's documentation, you should edit the
 documentation source files in
-[the `/figuration/docs/` directory of the `master` branch](https://github.com/cast-org/figuration/tree/master/docs).
+[the `/figuration/docs/` directory of the `v4-dev` branch](docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Figuration Core Team.
 
@@ -122,8 +121,8 @@ included in the project:
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout master
-   git pull upstream master
+   git checkout v4-dev
+   git pull upstream v4-dev
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -142,7 +141,7 @@ included in the project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream master
+   git pull [--rebase] upstream v4-dev
    ```
 
 6. Push your topic branch up to your fork:
@@ -152,7 +151,7 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `master` branch.
+    with a clear title and description against the `v4-dev` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
@@ -161,7 +160,7 @@ includes code changes) and under the terms of the
 (if it includes documentation changes).
 
 
-## Code guidelines
+## Code Guidelines
 
 ### HTML
 
@@ -182,7 +181,7 @@ includes code changes) and under the terms of the
 - "Attractive"
 - Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
 
-### Checking coding style
+### Checking Coding Style
 
 Run `grunt test` before committing to ensure your changes follow our coding standards.
 
