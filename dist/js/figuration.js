@@ -3846,18 +3846,21 @@ if (typeof jQuery === 'undefined') {
             $(this.fixedContent).each(function() {
                 var $this = $(this);
                 var padding = $this.data('cfw.padding-dim');
-                $this.css('padding-' + $selfRef.scrollbarSide, padding);
-                $this.removeData('cfw.padding-dim');
+                if (typeof padding !== 'undefined') {
+                    $this.css('padding-' + $selfRef.scrollbarSide, padding);
+                    $this.removeData('cfw.padding-dim');
+                }
             });
 
             // Restore sticky element margin
             $(this.stickyContent).each(function() {
                 var $this = $(this);
                 var margin = $this.data('cfw.margin-dim');
-                $this.css('margin-' + $selfRef.scrollbarSide, margin);
-                $this.removeData('cfw.margin-dim');
+                if (typeof margin !== 'undefined') {
+                    $this.css('margin-' + $selfRef.scrollbarSide, margin);
+                    $this.removeData('cfw.margin-dim');
+                }
             });
-
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
