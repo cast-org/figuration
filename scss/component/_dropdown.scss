@@ -22,6 +22,7 @@
         padding: $dropdown-padding-y 0;
         margin: $dropdown-spacer 0; // override default ul
         @include font-size($dropdown-font-size);
+        line-height: $dropdown-line-height;
         color: $dropdown-color;
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
@@ -47,7 +48,7 @@
         > .dropdown-item {
             &::after {
                 position: absolute;
-                top: calc((#{$line-height-base} * #{$dropdown-font-size}) / 2);
+                top: calc((#{$dropdown-line-height} * #{$dropdown-font-size}) / 2);
                 right: $dropdown-caret-spacer-x;
                 @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
             }
@@ -217,7 +218,7 @@
 
             > button::before {
                 position: absolute;
-                top: calc((#{$line-height-base} * #{$dropdown-font-size}) / 2);
+                top: calc((#{$dropdown-line-height} * #{$dropdown-font-size}) / 2);
                 left: $dropdown-back-spacer-x;
                 @include caret(start, $dropdown-back-width, $dropdown-back-color);
             }
