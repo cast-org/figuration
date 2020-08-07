@@ -1510,6 +1510,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$modal-header-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for modal header.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-header-background-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Background color for modal header.
+        </td>
+      </tr>
+      <tr>
         <td><code>$modal-header-border-color</code></td>
         <td>string</td>
         <td><code>rgba($uibase-900, .2)</code></td>
@@ -1579,6 +1595,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>1rem</code></td>
         <td>
           Horizontal padding for modal footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-footer-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for modal footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-footer-background-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Background color for modal footer.
         </td>
       </tr>
       <tr>

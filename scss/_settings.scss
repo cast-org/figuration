@@ -1279,6 +1279,8 @@ $modal-backdrop-opacity:        .5 !default;
 
 $modal-header-padding-y:        .75rem !default;
 $modal-header-padding-x:        1rem !default;
+$modal-header-bg:               null !default;
+$modal-header-color:            null !default;
 $modal-header-border-color:     rgba($uibase-900, .2) !default;
 $modal-header-border-width:     $modal-content-border-width !default;
 
@@ -1292,6 +1294,8 @@ $modal-body-padding-x:          1rem !default;
 
 $modal-footer-padding-y:        .75rem !default;
 $modal-footer-padding-x:        1rem !default;
+$modal-footer-bg:               null !default;
+$modal-footer-color:            null !default;
 $modal-footer-border-color:     $modal-header-border-color !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
 

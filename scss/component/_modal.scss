@@ -207,6 +207,8 @@
             align-items: flex-start; // Keep items aligned to the top
             justify-content: space-between; // Seperate title and close items to each side
             padding: $modal-header-padding-y $modal-header-padding-x;
+            color: $modal-header-color;
+            background-color: $modal-header-bg;
             border-bottom: $modal-header-border-width solid $modal-header-border-color;
             @include border-top-radius($modal-inner-border-radius);
 
@@ -261,6 +263,8 @@
             align-items: center;
             justify-content: flex-end; // right align buttons
             padding: $modal-footer-padding-y $modal-footer-padding-x;
+            color: $modal-footer-color;
+            background-color: $modal-footer-bg;
             border-top: $modal-footer-border-width solid $modal-footer-border-color;
             @include border-bottom-radius($modal-inner-border-radius);
 
