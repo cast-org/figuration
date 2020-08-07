@@ -7,6 +7,14 @@ group: widgets
 toc: true
 ---
 
+{% capture callout %}
+Accessibility Warning
+{.h5}
+
+When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, it is  recommended to use additional JavaScript that listens for the `afterClose.cfw.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, be sure to add `tabindex="-1"` to the element.
+{% endcapture %}
+{% renderCallout, callout, "warning" %}
+
 ## Examples
 
 For more examples of alert container layout and content, check out the [Alerts component page]({{ site.path }}/{{ version.docs }}/components/alerts/).

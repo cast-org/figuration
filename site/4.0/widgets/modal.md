@@ -1254,6 +1254,10 @@ A quick example:<br />
 
 ## Accessibility
 
+### Modal Title
+
+It is recommended that a `.modal-title` item is used, even if visually hidden, within the modal since it will be automatically be found and linked with an `aria-labelledby` on the `.modal` container.  This provides a potential description of the modal to screen-reader users when the modal is shown and focus is automatically moved to the `.modal` container.
+
 ### Key Commands
 
 The following key commands are handled when focus is inside the modal:
