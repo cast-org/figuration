@@ -44,7 +44,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -66,7 +66,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
 
 <nav class="navbar navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Never Expand</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -94,7 +94,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -123,7 +123,7 @@ With the `.navbar-brand` in the collapsing area.
 
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -165,7 +165,7 @@ Here's an example of some sub-components included in a default, light navbar:
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -246,7 +246,7 @@ Add `.active` directly to a `.nav-link`, to indicate a certain state, such as th
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <div class="navbar-brand">Navbar</div>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -275,7 +275,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
  <div class="navbar-brand">Navbar</div>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar2">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar2">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -300,7 +300,7 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar3">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar3">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -409,7 +409,7 @@ You can also use utility classes to align navbar text to other navbar elements l
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar6">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar6">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -443,7 +443,7 @@ Add `.disabled` to a `.nav-link` to indicate a disabled state.
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar7">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar7">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -464,7 +464,7 @@ Add `.disabled` to a `.nav-link` to indicate a disabled state.
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar8">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar8">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -492,7 +492,7 @@ Place a visual separator between segments of the navbar.
 {% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar9">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar9">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -509,7 +509,7 @@ Place a visual separator between segments of the navbar.
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar10">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar10">
     <span aria-hidden="true">&#8801;</span>
   </button>
 
@@ -562,7 +562,7 @@ Here are some examples to show what we mean.
 <div class="cf-example">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
-    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar11">
+    <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar11">
       <span aria-hidden="true">&#8801;</span>
     </button>
     <div class="navbar-collapse collapse flex-between" id="navbar11">
@@ -585,7 +585,7 @@ Here are some examples to show what we mean.
   </nav>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-between mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
-    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar12">
+    <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar12">
       <span aria-hidden="true">&#8801;</span>
     </button>
     <div class="navbar-collapse collapse flex-between" id="navbar12">
@@ -608,7 +608,7 @@ Here are some examples to show what we mean.
   </nav>
   <nav class="navbar navbar-expand-lg navbar-light flex-between mb-1" style="background-color: #e3f2fd;">
     <a href="#" class="navbar-brand">Navbar</a>
-    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar13">
+    <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar13">
       <span aria-hidden="true">&#8801;</span>
     </button>
     <div class="navbar-collapse collapse flex-between" id="navbar13">
