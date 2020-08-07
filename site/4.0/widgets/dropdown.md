@@ -1103,6 +1103,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-line-height</code></td>
+                <td>string</td>
+                <td><code>$line-height-base</code></td>
+                <td>
+                    Line height for dropdown menus.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-bg</code></td>
                 <td>string</td>
                 <td><code>$component-bg</code></td>
