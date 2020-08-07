@@ -2490,7 +2490,6 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 
 .row {
   display: flex;
-  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-right: -1rem;
   margin-left: -1rem;
@@ -4671,6 +4670,7 @@ a.drag.disabled {
   padding: 0.3125rem 0;
   margin: 0.125rem 0;
   font-size: 1rem;
+  line-height: 1.5;
   color: #262d34;
   text-align: left;
   list-style: none;
