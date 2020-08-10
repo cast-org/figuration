@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Figuration (v4.0.0)
+ * Figuration (v4.0.1)
  * http://figuration.org
  * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -2490,7 +2490,6 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 
 .row {
   display: flex;
-  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-left: -1rem;
   margin-right: -1rem;
@@ -4671,6 +4670,7 @@ a.drag.disabled {
   padding: 0.3125rem 0;
   margin: 0.125rem 0;
   font-size: 1rem;
+  line-height: 1.5;
   color: #262d34;
   text-align: right;
   list-style: none;

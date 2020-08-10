@@ -1,5 +1,5 @@
 /*!
- * Figuration (v4.0.0)
+ * Figuration (v4.0.1)
  * http://figuration.org
  * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): util.js
+ * Figuration (v4.0.1): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -445,7 +445,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): drag.js
+ * Figuration (v4.0.1): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -632,7 +632,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): collapse.js
+ * Figuration (v4.0.1): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -869,7 +869,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): dropdown.js
+ * Figuration (v4.0.1): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1596,7 +1596,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): tab.js
+ * Figuration (v4.0.1): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1861,7 +1861,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): affix.js
+ * Figuration (v4.0.1): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2035,7 +2035,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): tooltip.js
+ * Figuration (v4.0.1): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3046,7 +3046,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): popover.js
+ * Figuration (v4.0.1): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3470,7 +3470,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): modal.js
+ * Figuration (v4.0.1): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3846,18 +3846,21 @@ if (typeof jQuery === 'undefined') {
             $(this.fixedContent).each(function() {
                 var $this = $(this);
                 var padding = $this.data('cfw.padding-dim');
-                $this.css('padding-' + $selfRef.scrollbarSide, padding);
-                $this.removeData('cfw.padding-dim');
+                if (typeof padding !== 'undefined') {
+                    $this.css('padding-' + $selfRef.scrollbarSide, padding);
+                    $this.removeData('cfw.padding-dim');
+                }
             });
 
             // Restore sticky element margin
             $(this.stickyContent).each(function() {
                 var $this = $(this);
                 var margin = $this.data('cfw.margin-dim');
-                $this.css('margin-' + $selfRef.scrollbarSide, margin);
-                $this.removeData('cfw.margin-dim');
+                if (typeof margin !== 'undefined') {
+                    $this.css('margin-' + $selfRef.scrollbarSide, margin);
+                    $this.removeData('cfw.margin-dim');
+                }
             });
-
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
@@ -4032,7 +4035,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): accordion.js
+ * Figuration (v4.0.1): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4108,7 +4111,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): tab-responsive.js
+ * Figuration (v4.0.1): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4245,7 +4248,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): slideshow.js
+ * Figuration (v4.0.1): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4441,7 +4444,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): scrollspy.js
+ * Figuration (v4.0.1): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4628,7 +4631,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): alert.js
+ * Figuration (v4.0.1): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4766,7 +4769,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): lazy.js
+ * Figuration (v4.0.1): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4978,7 +4981,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): equalize.js
+ * Figuration (v4.0.1): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5195,7 +5198,7 @@ if (typeof jQuery === 'undefined') {
 /* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): player.js
+ * Figuration (v4.0.1): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7022,7 +7025,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0): common.js
+ * Figuration (v4.0.1): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

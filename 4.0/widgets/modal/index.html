@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0
+    v4.0.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -360,6 +360,9 @@
             
                 <ol>
                     
+                    <li><a href="#modal-title">Modal Title </a>
+            		</li>
+
                     <li><a href="#key-commands">Key Commands </a>
             		</li>
 
@@ -1203,6 +1206,8 @@
   <li>Show modal: <code>$('#myModal').CFW_Modal('show');</code></li>
 </ol>
 <h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility"></a></h2>
+<h3 id="modal-title">Modal Title <a class="direct-link" href="#modal-title"></a></h3>
+<p>It is recommended that a <code>.modal-title</code> item is used, even if visually hidden, within the modal since it will be automatically be found and linked with an <code>aria-labelledby</code> on the <code>.modal</code> container.  This provides a potential description of the modal to screen-reader users when the modal is shown and focus is automatically moved to the <code>.modal</code> container.</p>
 <h3 id="key-commands">Key Commands <a class="direct-link" href="#key-commands"></a></h3>
 <p>The following key commands are handled when focus is inside the modal:</p>
 <ul>
@@ -1424,6 +1429,22 @@
         </td>
       </tr>
       <tr>
+        <td><code>$modal-header-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for modal header.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-header-background-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Background color for modal header.
+        </td>
+      </tr>
+      <tr>
         <td><code>$modal-header-border-color</code></td>
         <td>string</td>
         <td><code>rgba($uibase-900, .2)</code></td>
@@ -1493,6 +1514,22 @@
         <td><code>1rem</code></td>
         <td>
           Horizontal padding for modal footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-footer-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for modal footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-footer-background-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Background color for modal footer.
         </td>
       </tr>
       <tr>
@@ -1632,7 +1669,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0
+      <strong>Latest version:</strong> 4.0.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
