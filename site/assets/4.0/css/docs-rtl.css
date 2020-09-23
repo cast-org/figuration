@@ -120,8 +120,7 @@
 .home-icons .fas {
   font-size: 3.5rem;
   vertical-align: middle;
-  -webkit-filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
-          filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
 }
 
 .home-icons .fa-mobile-alt {
@@ -140,8 +139,7 @@
 }
 
 .home-feature .list-item img {
-  -webkit-filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
-          filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
 }
 
 @media (min-width: 48em) {
@@ -159,8 +157,7 @@
 }
 
 .home-splash .logo-home {
-  -webkit-filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.175));
-          filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.175));
+  filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.175));
 }
 
 .home-splash h1,
