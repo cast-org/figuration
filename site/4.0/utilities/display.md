@@ -299,7 +299,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$utility-display</code></td>
         <td>string</td>
-        <td><code>none, block, flex, inline, inline-block, inline-flex, table, table-row, table-cell</code></td>
+        <td><code>block, flex, inline, inline-block, inline-flex, table, table-row, table-cell, none</code></td>
         <td>
           List of display values that will be used to generate responsive display utilities.
         </td>
