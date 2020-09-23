@@ -84,6 +84,15 @@
         }
     }
 
+    // Border width
+    @if $enable-utility-border-width {
+        @each $size, $dim in $border-widths {
+            .border-#{$size} {
+                border-width: $dim !important;
+            }
+        }
+    }
+
     // Contextual borders
     @if $enable-utility-border-colors {
         @if (type-of($utility-border-colors) == "map" and length($utility-border-colors) != 0) {
