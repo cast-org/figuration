@@ -124,7 +124,7 @@ Create a 'pill' shape with `.radius-pill`.
 
 ## Borders
 
-Add or remove borders on all or just one side with border utilities
+Adjust various border properties with an array of border utilities.
 
 ### Adding Borders
 
@@ -213,6 +213,19 @@ For example to have a border on the sides of an element up to and including the 
 {% endcapture %}
 {% renderExample example %}
 
+### Width
+
+Adjust the width of an element's borders.
+
+{% capture example %}
+<span class="border border-1 p-0_5">1px</span>
+<span class="border border-2 p-0_5">2px</span>
+<span class="border border-3 p-0_5">3px</span>
+<span class="border border-4 p-0_5">4px</span>
+<span class="border border-5 p-0_5">5px</span>
+{% endcapture %}
+{% renderExample example %}
+
 ## SASS Reference
 
 ### Variables
@@ -253,6 +266,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>true</code></td>
         <td>
           Enable the generation of the subtractive border utility classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-utility-border-width</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the border width utility classes.
         </td>
       </tr>
       <tr>
@@ -331,11 +352,25 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$radii</code></td>
         <td>map</td>
         <td>
-<pre><code>("small": .1875rem,
-"large": .3125rem)</code></pre>
+<code><pre>("small": .1875rem,
+"large": .3125rem)</pre></code>
         </td>
         <td>
           Border radius size variants.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$border-widths</code></td>
+        <td>map</td>
+        <td>
+<code><pre>("1": 1px,
+"2": 2px,
+"3": 3px,
+"4": 4px,
+"5": 5px)</pre></code>
+        </td>
+        <td>
+          Border width size variants.
         </td>
       </tr>
       <tr>

@@ -216,6 +216,18 @@ $radii: (
     "large":   .3125rem
 ) !default;
 
+// Border width
+// =====
+// Set values for border width utility classes.
+// Note: `0px` width is already available through border removal utilites.
+$border-widths: (
+    "1": 1px,
+    "2": 2px,
+    "3": 3px,
+    "4": 4px,
+    "5": 5px
+) !default;
+
 // Grid breakpoints
 // =====
 // Define the minimum dimensions at which your layout will change,
