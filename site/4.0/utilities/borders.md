@@ -400,7 +400,7 @@ Apply a border radius to an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
+        <td>string</td>
         <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
@@ -432,8 +432,8 @@ Apply a border radius the corners on the top side of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -464,8 +464,8 @@ Apply a border radius the corners on the end side of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -496,8 +496,8 @@ Apply a border radius the corners on the bottom side of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -528,8 +528,8 @@ Apply a border radius the corners on the start side of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -560,8 +560,8 @@ Apply a border radius on the top start corner of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -592,8 +592,8 @@ Apply a border radius on the top end corner of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -624,8 +624,8 @@ Apply a border radius on the bottom start corner of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>
@@ -656,8 +656,8 @@ Apply a border radius on the bottom end corner of an element.
     <tbody>
       <tr>
         <td><code>$radius</code></td>
-        <td>number</td>
-        <td>none</td>
+        <td>string</td>
+        <td><code>$border-radius</code></td>
         <td>
           Border radius dimension.
         </td>

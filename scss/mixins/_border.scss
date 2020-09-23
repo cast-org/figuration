@@ -11,28 +11,28 @@
 }
 
 // Sides
-@mixin border-top-radius($radius) {
+@mixin border-top-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;
     }
 }
 
-@mixin border-end-radius($radius) {
+@mixin border-end-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-top-right-radius: $radius;
         border-bottom-right-radius: $radius;
     }
 }
 
-@mixin border-bottom-radius($radius) {
+@mixin border-bottom-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-bottom-right-radius: $radius;
         border-bottom-left-radius: $radius;
     }
 }
 
-@mixin border-start-radius($radius) {
+@mixin border-start-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-top-left-radius: $radius;
         border-bottom-left-radius: $radius;
@@ -40,25 +40,25 @@
 }
 
 // Corners
-@mixin border-top-end-radius($radius) {
+@mixin border-top-end-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-top-right-radius: $radius;
     }
 }
 
-@mixin border-top-start-radius($radius) {
+@mixin border-top-start-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-top-left-radius: $radius;
     }
 }
 
-@mixin border-bottom-end-radius($radius) {
+@mixin border-bottom-end-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-bottom-right-radius: $radius;
     }
 }
 
-@mixin border-bottom-start-radius($radius) {
+@mixin border-bottom-start-radius($radius: $border-radius) {
     @if $enable-rounded {
         border-bottom-left-radius: $radius;
     }
