@@ -12,7 +12,7 @@
 
 // Responsive containers
 // Containers that are 100% wide until a breakpoint
-@if $enable-grid-classes and $enable-grid-responsive-containers {
+@if $enable-grid-classes {
     @each $breakpoint in $responsive-container-breakpoints {
         $rc-max-width: map-get($container-max-widths, $breakpoint);
 
@@ -31,24 +31,26 @@
                     @extend %responsive-container-#{$breakpoint};
                 }
 
-                // Extend each breakpoint which should be smaller or
-                // equal to the current breakpoint
-                $extend-breakpoint: true;
+                @if $enable-grid-responsive-containers {
+                    // Extend each breakpoint which should be smaller or
+                    // equal to the current breakpoint
+                    $extend-breakpoint: true;
 
-                @each $name, $width in $grid-breakpoints {
-                    //@if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
-                    @if ($extend-breakpoint) {
-                        $bprule: breakpoint-designator($name);
-                        @if ($bprule != "") {
-                            .container#{$bprule} {
-                                @extend %responsive-container-#{$breakpoint};
+                    @each $name, $width in $grid-breakpoints {
+                        //@if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
+                        @if ($extend-breakpoint) {
+                            $bprule: breakpoint-designator($name);
+                            @if ($bprule != "") {
+                                .container#{$bprule} {
+                                    @extend %responsive-container-#{$breakpoint};
+                                }
                             }
                         }
-                    }
 
-                    // Once the current breakpoint is reached, stop extending
-                    @if ($breakpoint == $name) {
-                        $extend-breakpoint: false;
+                        // Once the current breakpoint is reached, stop extending
+                        @if ($breakpoint == $name) {
+                            $extend-breakpoint: false;
+                        }
                     }
                 }
             }
