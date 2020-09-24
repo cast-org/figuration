@@ -17,6 +17,7 @@
 
 // Encode SVG data URLs into CSS friendly versions, otherwise
 // pass through the original string.
+// Requires the use of quotes around data URIs.
 // From https://codepen.io/kevinweber/pen/dXWoRw
 @function encode-svg($string) {
     @if str-index($string, "data:image/svg+xml") {

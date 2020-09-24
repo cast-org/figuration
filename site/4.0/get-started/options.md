@@ -336,7 +336,7 @@ $component-sizes: (
 
 ## Encoding SVG
 
-An `encode-svg` function is available in our SASS to encode the `<`, `>` and `#` characters for SVG images provided through data URLs. These characters need to be encoded to properly render the background images in some browsers, such as IE.
+An `encode-svg` function is available in our SASS to encode the `<`, `>` and `#` characters for SVG images provided through data URIs. These characters need to be encoded to properly render the background images in some browsers, such as IE.  Data URIs passed through `encode-svg()` must be surrounded by quotes, as seen below.
 
 {% capture highlight %}
 $form-checkradio-radio-icon: encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
