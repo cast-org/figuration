@@ -24,7 +24,8 @@ To use our Gruntfile and run our documentation locally, you'll need a copy of Fi
 
 1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
 2. Install the Grunt command line tools, `grunt-cli`, with `npm install -g grunt-cli`.
-3. Navigate to the root `/figuration` directory and run `npm install` to install our local dependencies listed in [package.json](https://github.com/cast-org/figuration/blob/master/package.json).
+3. Either download a copy of [Figuration's source files]({{ site.download.source }}) or fork the [Figuration repository]({{ site.repo }}).
+4. Navigate to the root `/figuration` directory and run `npm install` to install the local dependencies listed in [package.json]({{ site.repo }}/blob/master/package.json).
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
