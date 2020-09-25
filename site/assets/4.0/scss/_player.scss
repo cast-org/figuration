@@ -240,7 +240,7 @@
     pointer-events: none;
     content: "\f144";
     background-color: #000;
-    // stylelint-disable-next-line property-blacklist
+    // stylelint-disable-next-line property-disallowed-list
     border-radius: 50%;
     opacity: .75;
     transform: translate3d(-50%, -50%, 0);

@@ -1,4 +1,4 @@
-// stylelint-disable property-blacklist
+// stylelint-disable property-disallowed-list
 
 // Make sure only one responsive typography method is enabled.
 @if $enable-rfs-fluid and $enable-rfs-scale {

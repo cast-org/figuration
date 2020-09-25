@@ -38,7 +38,7 @@ section {
 // 1. Ability to the value of the root font sizes, affecting the value of `rem`.
 //    null by default, thus nothing is generated.
 :root {
-    // stylelint-disable-next-line property-blacklist
+    // stylelint-disable-next-line property-disallowed-list
     font-size: $font-size-root; // 1
 }
 
@@ -336,7 +336,7 @@ label {
 // Remove the default `border-radius` that macOS Chrome adds.
 // Details at https://github.com/twbs/bootstrap/issues/24093
 button {
-    // stylelint-disable-next-line property-blacklist
+    // stylelint-disable-next-line property-disallowed-list
     border-radius: 0;
 }
 

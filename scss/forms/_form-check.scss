@@ -87,7 +87,7 @@
 
             .form-check-input[type="radio"] ~ .form-check-label {
                 &::before {
-                    // stylelint-disable-next-line property-blacklist
+                    // stylelint-disable-next-line property-disallowed-list
                     border-radius: $form-checkradio-radio-border-radius;
                 }
             }
