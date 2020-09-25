@@ -86,10 +86,10 @@
         .input-group-text {
             display: flex;
             align-items: center;
-            padding: $input-padding-y $input-padding-x;
+            padding: $input-group-text-padding-y $input-group-text-padding-x;
             margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
             @include font-size($input-font-size); // Match inputs
-            font-weight: $font-weight-normal;
+            font-weight: $input-group-text-font-weight;
             line-height: $input-line-height;
             color: $input-group-text-color;
             text-align: center;
