@@ -1079,9 +1079,17 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-padding-x</code></td>
+                <td>string</td>
+                <td><code>0</code></td>
+                <td>
+                    Horizontal padding for dropdown menus.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-padding-y</code></td>
                 <td>string</td>
-                <td><code>.3135rem</code></td>
+                <td><code>.3125rem</code></td>
                 <td>
                     Vertical padding for dropdown menus.
                 </td>
