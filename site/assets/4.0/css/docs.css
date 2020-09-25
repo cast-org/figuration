@@ -930,6 +930,10 @@ pre[class*="language-"] {
   margin-top: .5rem;
 }
 
+.cf-example > .btn {
+  margin: .25rem .125rem;
+}
+
 .cf-example > .btn-group + .btn-group,
 .cf-example > .btn-group + br + .btn-group {
   margin-top: .5rem;

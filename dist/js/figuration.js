@@ -2268,7 +2268,8 @@ if (typeof jQuery === 'undefined') {
 
                 // Bind 'close' buttons
                 this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function() {
+                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
+                        if (e) { e.preventDefault(); }
                         $selfRef.follow = true;
                         $selfRef.hide();
                     });
@@ -2515,20 +2516,9 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.inTransition = true;
-            this.$target
-                .off('mutate.cfw.mutate')
-                .removeAttr('data-cfw-mutate')
-                .CFW_mutationIgnore()
-                .removeClass('in');
-
-            if ($.CFW_isTouch) {
-                // Remove empty mouseover listener for iOS work-around
-                $('body').children().off('mouseover', null, $.noop);
-            }
+            this.$target.removeClass('in');
 
             this.$target.CFW_transition(null, this._hideComplete.bind(this));
-
-            this.hoverState = null;
         },
 
         unlink : function(force) {
@@ -2743,6 +2733,10 @@ if (typeof jQuery === 'undefined') {
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
+            if ($.CFW_isTouch) {
+                // Remove empty mouseover listener for iOS work-around
+                $('body').children().off('mouseover', null, $.noop);
+            }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
@@ -2751,6 +2745,7 @@ if (typeof jQuery === 'undefined') {
                 hover: false,
                 focus: false
             };
+            this.hoverState = null;
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -4476,6 +4471,10 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
+            if (this.$element[0] !== this.$body[0]) {
+                this.$element.attr('tabindex', 0);
+            }
+
             this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle(this.process.bind(this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
