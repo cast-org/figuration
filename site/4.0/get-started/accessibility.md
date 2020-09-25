@@ -99,7 +99,7 @@ Figuration includes support for the [`prefers-reduced-motion` media feature](htt
 ## Additional Resources
 
 - [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)
-- [The A11Y Project](https://a11yproject.com/)
+- [The A11Y Project](https://www.a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
 - [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)
