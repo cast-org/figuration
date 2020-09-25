@@ -944,6 +944,9 @@ $form-validation-states: (
 
 // Input group
 // =====
+$input-group-text-padding-x:    $input-padding-x !default;
+$input-group-text-padding-y:    $input-padding-y !default;
+$input-group-text-font-weight:  $input-font-weight !default;
 $input-group-text-color:        $input-color !default;
 $input-group-text-bg:           $uibase-50 !default;
 $input-group-text-border-color: $input-border-color !default;

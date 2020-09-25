@@ -417,6 +417,30 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$input-group-text-padding-x</code></td>
+        <td>string</td>
+        <td><code>$input-padding-x</code></td>
+        <td>
+          Input group textual addon horizontal padding.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$input-group-text-poadding-y</code></td>
+        <td>string</td>
+        <td><code>$input-padding-y</code></td>
+        <td>
+          Input group textual addon vertical padding.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$input-group-text-font-weight</code></td>
+        <td>string</td>
+        <td><code>$input-font-weight</code></td>
+        <td>
+          Input group textual addon font-weight.
+        </td>
+      </tr>
+      <tr>
         <td><code>$input-group-text-color</code></td>
         <td>string</td>
         <td><code>$input-color</code></td>
