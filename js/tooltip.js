@@ -234,7 +234,8 @@
 
                 // Bind 'close' buttons
                 this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function() {
+                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
+                        if (e) { e.preventDefault(); }
                         $selfRef.follow = true;
                         $selfRef.hide();
                     });
@@ -481,20 +482,9 @@
             }
 
             this.inTransition = true;
-            this.$target
-                .off('mutate.cfw.mutate')
-                .removeAttr('data-cfw-mutate')
-                .CFW_mutationIgnore()
-                .removeClass('in');
-
-            if ($.CFW_isTouch) {
-                // Remove empty mouseover listener for iOS work-around
-                $('body').children().off('mouseover', null, $.noop);
-            }
+            this.$target.removeClass('in');
 
             this.$target.CFW_transition(null, this._hideComplete.bind(this));
-
-            this.hoverState = null;
         },
 
         unlink : function(force) {
@@ -709,6 +699,10 @@
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
+            if ($.CFW_isTouch) {
+                // Remove empty mouseover listener for iOS work-around
+                $('body').children().off('mouseover', null, $.noop);
+            }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
@@ -717,6 +711,7 @@
                 hover: false,
                 focus: false
             };
+            this.hoverState = null;
 
             this.inTransition = false;
             if (this.isDialog) {
