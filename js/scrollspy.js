@@ -32,6 +32,10 @@
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
+            if (this.$element[0] !== this.$body[0]) {
+                this.$element.attr('tabindex', 0);
+            }
+
             this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle(this.process.bind(this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';

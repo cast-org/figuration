@@ -488,4 +488,23 @@ $(function() {
             .then(function() { return testElementIsActiveAfterScroll('#a-1', '#div-1'); })
             .then(function() { done(); });
     });
+
+    QUnit.test('should add tabindex="0" to scrolling container that is not <body>', function(assert) {
+        assert.expect(1);
+        var navbarHtml = '<nav>' +
+            '<a href="#div-1" id="a-1">div 1</a>' +
+            '<a href="#div-2" id="a-2">div 2</a>' +
+            '</nav>';
+        var contentHtml = '<div class="content" style="overflow: auto; height: 50px">' +
+            '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
+            '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
+            '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy();
+
+        assert.equal($content.attr('tabindex'), 0, 'container has tabindex="0"');
+    });
 });
