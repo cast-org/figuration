@@ -7,6 +7,18 @@ group: widgets
 toc: true
 ---
 
+## How It Works
+
+- Scrollspy requires the use of a `ul`, `ol`, or `nav` as the target element containing the subset of navigation links.
+- Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
+  - In those, hopefully rare, cases where you do not need a working link, use a `data-cfw-scrollspy-target` attribute on the indicator item. For example, using the attribute `data-cfw-scrollspy-target="#home"` would a correspond to the DOM target `<div id="home"></div>`.
+- Scrollspy requires the use of `position: relative;` on the element you're spying on, typically the `<body>`.
+- If you are making a scrollable container on elements (other than the `<body>`), be sure to have a `height` set and `overflow-y: scroll;` applied.
+- Non-`:visible` target elements will be ignored. Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
+- For keyboard accessibility, scrollable containers (other than the `<body>`) will have a `tabindex="0"` attribute automatically added.
+
+When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
+
 ## Examples
 
 ### Navbar
@@ -222,30 +234,6 @@ The Scrollspy widget can also work with a `.list`. Scroll the area next to the l
 
 ## Usage
 
-Scrollspy requires the use of a `ul`, `ol`, or `nav` as the target element containing the subset of navigation links.
-
-### Requires Relative Positioning
-
-No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
-
-{% capture callout %}
-Resolvable ID targets required
-{.h5}
-
-Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
-
-In those, hopefully rare, cases where you do not need a working link, use a `data-cfw-scrollspy-target` attribute on the indicator item. For example, using the attribute `data-cfw-scrollspy-target="#home"` would a correspond to the DOM target `<div id="home"></div>`.
-{% endcapture %}
-{% renderCallout, callout, "danger" %}
-
-{% capture callout %}
-Non-`:visible` target elements ignored
-{.h5}
-
-Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
-{% endcapture %}
-{% renderCallout, callout, "info" %}
-
 ### Via Data Attributes
 
 To easily add scrollspy behavior to a navigation section, add `data-cfw="scrollspy"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-cfw-scrollspy-target` attribute with the ID, or other selector, for the target element containing the subset of navigation links.
@@ -258,7 +246,7 @@ body {
 {% renderHighlight highlight, "css" %}
 
 {% capture highlight %}
-<body data-cfw="scroll" data-cfw-scrollspy-target="#navbar-example">
+<body data-cfw="scrollspy" data-cfw-scrollspy-target="#navbar-example">
   ...
   <nav id="navbar-example">
     <ul class="navbar-nav">
