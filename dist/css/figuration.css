@@ -1062,12 +1062,11 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-switch .form-check-input {
-  top: 0;
+  top: 0.25em;
   left: 0;
   width: 1.75em;
   height: 1em;
   margin-left: 0;
-  transform: translateY(0.75em) translateY(-0.5em);
 }
 
 .form-switch .form-check-label::before, .form-switch .form-check-label::after {
@@ -1086,25 +1085,23 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-switch .form-check-label::before {
-  top: 0;
+  top: 0.25em;
   left: 0;
   width: 1.75em;
   height: 1em;
   background-color: #fff;
   border: 1px solid #9eaab4;
   border-radius: 1em;
-  transform: translateY(0.75em) translateY(-0.5em);
 }
 
 .form-switch .form-check-label::after {
-  top: 0;
+  top: 0.4375em;
   left: calc(0.25em - 1px);
   width: 0.625em;
   height: 0.625em;
   background-color: #9eaab4;
   border: 1px solid #9eaab4;
   border-radius: 50%;
-  transform: translateY(0.75em) translateY(-0.3125em);
 }
 
 .form-switch .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label::before, .form-switch .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label::after {
@@ -4513,16 +4510,12 @@ a.drag.disabled {
   list-style: none;
 }
 
-.breadcrumb-item {
-  display: flex;
-}
-
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  display: inline-block;
+  float: left;
   padding-right: 0.5rem;
   color: #9eaab4;
   content: "/";
