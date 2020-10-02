@@ -15,23 +15,28 @@
     }
 
     // Form
-    & > .form-control + .form-control {
+    > .form-control + .form-control {
         margin-top: .5rem;
     }
 
+    // Buttons
+    > .btn {
+        margin: .25rem .125rem;
+    }
+
     // Button groups
-    & > .btn-group + .btn-group,
-    & > .btn-group + br + .btn-group {
+    > .btn-group + .btn-group,
+    > .btn-group + br + .btn-group {
         margin-top: .5rem;
     }
 
     // Navbar
-    & > .navbar + .navbar {
+    > .navbar + .navbar {
         margin-top: 1rem;
     }
 
-    & .fixed-top,
-    & .sticky-top {
+    .fixed-top,
+    .sticky-top {
         position: static;
         margin: -1rem -1rem 1rem;
 
@@ -39,7 +44,7 @@
             margin: -1.5rem -1.5rem 1rem;
         }
     }
-    & .fixed-bottom {
+    .fixed-bottom {
         position: static;
         margin: 1rem -1rem -1rem;
 
@@ -49,7 +54,7 @@
     }
 
     // Progress
-    & > .progress {
+    > .progress {
         + .progress,
         + .btn {
             margin-top: 1rem;
@@ -57,34 +62,34 @@
     }
 
     // Utilities
-    & > .close {
+    > .close {
         float: none;
     }
-    & > .valign-top,
-    & > .valign-middle,
-    & > .valign-bottom {
+    > .valign-top,
+    > .valign-middle,
+    > .valign-bottom {
         padding: .25em;
         margin-bottom: .5em;
         background-color: #f0f0f0;
     }
 
     // Dropdown
-    & > .dropdown-menu {
+    > .dropdown-menu {
         position: static;
         display: block;
         margin-bottom: .25rem;
         clear: left;
     }
 
-    & > .dropdown + .dropdown,
-    & > .btn-group + .btn-group,
-    & > .dropdown + .btn-group,
-    & > .btn-group + .dropdown {
+    > .dropdown + .dropdown,
+    > .btn-group + .btn-group,
+    > .dropdown + .btn-group,
+    > .btn-group + .dropdown {
         margin-top: .5rem;
     }
 
     // Modal
-    & > .modal {
+    > .modal {
         position: static;
         display: block;
     }

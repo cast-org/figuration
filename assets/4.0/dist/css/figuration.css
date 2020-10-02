@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Figuration (v4.0.1)
+ * Figuration (v4.0.2)
  * http://figuration.org
  * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -1028,8 +1028,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-checkradio .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label::before {
-  -webkit-filter: brightness(92.5%);
-          filter: brightness(92.5%);
+  filter: brightness(92.5%);
 }
 
 .form-checkradio .form-check-input:focus ~ .form-check-label::before {
@@ -1063,12 +1062,11 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-switch .form-check-input {
-  top: 0;
+  top: 0.25em;
   left: 0;
   width: 1.75em;
   height: 1em;
   margin-left: 0;
-  transform: translateY(0.75em) translateY(-0.5em);
 }
 
 .form-switch .form-check-label::before, .form-switch .form-check-label::after {
@@ -1087,30 +1085,27 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-switch .form-check-label::before {
-  top: 0;
+  top: 0.25em;
   left: 0;
   width: 1.75em;
   height: 1em;
   background-color: #fff;
   border: 1px solid #9eaab4;
   border-radius: 1em;
-  transform: translateY(0.75em) translateY(-0.5em);
 }
 
 .form-switch .form-check-label::after {
-  top: 0;
+  top: 0.4375em;
   left: calc(0.25em - 1px);
   width: 0.625em;
   height: 0.625em;
   background-color: #9eaab4;
   border: 1px solid #9eaab4;
   border-radius: 50%;
-  transform: translateY(0.75em) translateY(-0.3125em);
 }
 
 .form-switch .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label::before, .form-switch .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label::after {
-  -webkit-filter: brightness(92.5%);
-          filter: brightness(92.5%);
+  filter: brightness(92.5%);
 }
 
 .form-switch .form-check-input:focus ~ .form-check-label::before {
@@ -4515,16 +4510,12 @@ a.drag.disabled {
   list-style: none;
 }
 
-.breadcrumb-item {
-  display: flex;
-}
-
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  display: inline-block;
+  float: left;
   padding-right: 0.5rem;
   color: #9eaab4;
   content: "/";
@@ -7780,6 +7771,26 @@ a.drag.disabled {
   }
 }
 
+.border-1 {
+  border-width: 1px !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+.border-3 {
+  border-width: 3px !important;
+}
+
+.border-4 {
+  border-width: 4px !important;
+}
+
+.border-5 {
+  border-width: 5px !important;
+}
+
 .border-primary {
   border-color: #0055e9 !important;
 }
@@ -8142,10 +8153,6 @@ a.drag.disabled {
   content: "";
 }
 
-.d-none {
-  display: none !important;
-}
-
 .d-block {
   display: block !important;
 }
@@ -8178,6 +8185,10 @@ a.drag.disabled {
   display: table-cell !important;
 }
 
+.d-none {
+  display: none !important;
+}
+
 @media (max-width: 35.98em) {
   .d-xs-down-none {
     display: none !important;
@@ -8185,9 +8196,6 @@ a.drag.disabled {
 }
 
 @media (min-width: 36em) {
-  .d-sm-none {
-    display: none !important;
-  }
   .d-sm-block {
     display: block !important;
   }
@@ -8212,6 +8220,9 @@ a.drag.disabled {
   .d-sm-table-cell {
     display: table-cell !important;
   }
+  .d-sm-none {
+    display: none !important;
+  }
 }
 
 @media (max-width: 47.98em) {
@@ -8221,9 +8232,6 @@ a.drag.disabled {
 }
 
 @media (min-width: 48em) {
-  .d-md-none {
-    display: none !important;
-  }
   .d-md-block {
     display: block !important;
   }
@@ -8248,6 +8256,9 @@ a.drag.disabled {
   .d-md-table-cell {
     display: table-cell !important;
   }
+  .d-md-none {
+    display: none !important;
+  }
 }
 
 @media (max-width: 61.98em) {
@@ -8257,9 +8268,6 @@ a.drag.disabled {
 }
 
 @media (min-width: 62em) {
-  .d-lg-none {
-    display: none !important;
-  }
   .d-lg-block {
     display: block !important;
   }
@@ -8284,6 +8292,9 @@ a.drag.disabled {
   .d-lg-table-cell {
     display: table-cell !important;
   }
+  .d-lg-none {
+    display: none !important;
+  }
 }
 
 @media (max-width: 74.98em) {
@@ -8293,9 +8304,6 @@ a.drag.disabled {
 }
 
 @media (min-width: 75em) {
-  .d-xl-none {
-    display: none !important;
-  }
   .d-xl-block {
     display: block !important;
   }
@@ -8320,12 +8328,12 @@ a.drag.disabled {
   .d-xl-table-cell {
     display: table-cell !important;
   }
+  .d-xl-none {
+    display: none !important;
+  }
 }
 
 @media print {
-  .print-none {
-    display: none !important;
-  }
   .print-block {
     display: block !important;
   }
@@ -8349,6 +8357,9 @@ a.drag.disabled {
   }
   .print-table-cell {
     display: table-cell !important;
+  }
+  .print-none {
+    display: none !important;
   }
 }
 

@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.1
+    v4.0.2
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.1</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.2</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -152,7 +152,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3 col-xl-2 cf-sidebar print-none">
+    <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
 </form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
@@ -263,7 +263,7 @@
   </ul>
 </nav>
 
-    </div>
+    </aside>
 
     <main class="col-md-9 col-xl-10 cf-main">
       <div class="cf-toc-align">
@@ -464,8 +464,8 @@ There are additional options in our `_settings_options.scss` that can be used to
 <p>If you wish to have more concise control over components, you can always force the sizing values to fit your needs.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Used for button, button groups, pagination, form-control, and input-group</span><br><span class="token variable-line"><span class="token variable">$component-sizes</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"xsmall"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .1875rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     .375rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     .75rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"small"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .25rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     .5rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     .875rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .1875rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"large"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .625rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     1.25rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     1.25rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><span class="token selector">,</span><br>  <span class="token string">"xlarge"</span><span class="token selector">: (</span><br>    <span class="token string">"padding-y"</span><span class="token selector">:     .75rem</span><span class="token selector">,</span><br>    <span class="token string">"padding-x"</span><span class="token selector">:     1.5rem</span><span class="token selector">,</span><br>    <span class="token string">"font-size"</span><span class="token selector">:     1.5rem</span><span class="token selector">,</span><br>    <span class="token string">"line-height"</span><span class="token selector">:   1.5</span><span class="token selector">,</span><br>    <span class="token string">"border-radius"</span><span class="token selector">: .3125rem</span><br>  <span class="token selector">)</span><br><span class="token selector">);</span></code></pre>
 <h2 id="encoding-svg">Encoding SVG <a class="direct-link" href="#encoding-svg"></a></h2>
-<p>An <code>encode-svg</code> function is available in our SASS to encode the <code>&lt;</code>, <code>&gt;</code> and <code>#</code> characters for SVG images provided through data URLs. These characters need to be encoded to properly render the background images in some browsers, such as IE.</p>
-<pre class="language-css"><code class="language-css">$<span class="token property">form-checkradio-radio-icon</span><span class="token punctuation">:</span> <span class="token function">encode-svg</span><span class="token punctuation">(</span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'>&lt;circle fill='#{$form-checkradio-checked-color}' r='3'/>&lt;/svg>"<span class="token punctuation">)</span></span><span class="token punctuation">)</span> !default<span class="token punctuation">;</span></code></pre>
+<p>An <code>encode-svg</code> function is available in our SASS to encode the <code>&lt;</code>, <code>&gt;</code> and <code>#</code> characters for SVG images provided through data URIs. These characters need to be encoded to properly render the background images in some browsers, such as IE.  Data URIs passed through <code>encode-svg()</code> must be surrounded by quotes, as seen below.</p>
+<pre class="language-css"><code class="language-css">$<span class="token property">form-checkradio-radio-icon</span><span class="token punctuation">:</span> <span class="token function">encode-svg</span><span class="token punctuation">(</span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'>&lt;circle fill='#{$form-checkradio-checked-color}' r='3'/>&lt;/svg>"</span><span class="token punctuation">)</span></span><span class="token punctuation">)</span> !default<span class="token punctuation">;</span></code></pre>
 <h2 id="css-variables">CSS Variables <a class="direct-link" href="#css-variables"></a></h2>
 <p>Figuration includes some <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties (variables)</a> in its compiled CSS. These provide easy access to commonly used values like the theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.</p>
 <h3 id="available-variables">Available Variables <a class="direct-link" href="#available-variables"></a></h3>
@@ -550,7 +550,7 @@ There are additional options in our `_settings_options.scss` that can be used to
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.1
+      <strong>Latest version:</strong> 4.0.2
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

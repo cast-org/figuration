@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.1
+    v4.0.2
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.1</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.2</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -152,7 +152,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3 col-xl-2 cf-sidebar print-none">
+    <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
       <form class="cf-search" role="search">
   <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
 </form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
@@ -263,7 +263,7 @@
   </ul>
 </nav>
 
-    </div>
+    </aside>
 
     <main class="col-md-9 col-xl-10 cf-main">
       <div class="cf-toc-align">
@@ -327,7 +327,7 @@
 <h3 class="sr-only-sm-down">Title for Screen Readers</h3>
 <a class="sr-only-focusable" href="#content">Skip to main content</a>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sr-only-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Title for Screen Readers<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sr-only-focusable<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Title for Screen Readers<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-focusable<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.skip-navigation {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only-focusable;</span><br><span class="token selector">}</span></code></pre>
 <h2 id="image-replacement">Image Replacement <a class="direct-link" href="#image-replacement"></a></h2>
 <p>Visually hide the text and show an image replacement by using a <code>background-image</code>.</p>
@@ -336,7 +336,7 @@
   <span class="sr-only">CAST Figuration</span>
 </h1>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>'/assets/brand/figuration-solid.svg'<span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="hiding-content">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
 <p>Force an element to be hidden (including for screen readers) with the use of <code>.d{-breakpoint}-none</code> and <code>.d{-breakpoint}-down-none</code> classes.</p>
 <p>A section on the <a href="/4.0/utilities/display/#responsively-hiding-content">display utilities page</a> gives more detail about how these classes and breakpoints are related.</p>
@@ -429,7 +429,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.1
+      <strong>Latest version:</strong> 4.0.2
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
