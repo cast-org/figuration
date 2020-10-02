@@ -707,6 +707,14 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 {% endcapture %}
 {% renderExample example %}
 
+Add the `disabled` attribute to the `<input>` and the custom markup will be updated to appear disabled.
+
+{% capture example %}
+<label for="customRange4">Disabled example range</label>
+<input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange4" disabled>
+{% endcapture %}
+{% renderExample example %}
+
 ## Color Picker
 
 `<input type="color">` element need only a custom class, `.form-color` to trigger the custom styles.
