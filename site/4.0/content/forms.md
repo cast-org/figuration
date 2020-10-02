@@ -193,6 +193,12 @@ Add the `disabled` attribute on an input to prevent user interactions and make i
 
 {% capture example %}
 <input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+
+<select class="form-control" aria-label="Disable select example" disabled>
+  <option>Disabled select example</option>
+</select>
+
+<textarea class="form-control" id="disabled-input" type="text" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>
 {% endcapture %}
 {% renderExample example %}
 
@@ -510,7 +516,7 @@ However, the stylized inputs will need to keep their label in order for the visu
 Label can be supplied outside of the `.form-check` container also.
 
 {% capture example %}
-<div class="row">
+<div class="row gx-0_5">
   <label class="col-md-auto" for="extlabel0">External label</label>
   <div class="col">
     <div class="form-check form">
@@ -519,7 +525,7 @@ Label can be supplied outside of the `.form-check` container also.
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row gx-0_5">
   <label class="col-md-auto" for="extlabel1">External label</label>
   <div class="col">
     <div class="form-check form-checkradio">
@@ -528,7 +534,7 @@ Label can be supplied outside of the `.form-check` container also.
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row gx-0_5">
   <label class="col-md-auto" for="extlabel2">External label</label>
   <div class="col">
     <div class="form-check form-switch">
@@ -606,6 +612,19 @@ The file input requires additional JavaScript if you would like to have a functi
 <div class="form-file">
   <input type="file" class="form-file-input" id="formFile">
   <label class="form-file-label" for="formFile">
+    <span class="form-file-text">Choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+Add the `disabled` attribute to the `<input>` and the custom markup will be updated to appear disabled.
+
+{% capture example %}
+<div class="form-file">
+  <input type="file" class="form-file-input" id="formFileDisabled" disabled>
+  <label class="form-file-label" for="formFileDisabled">
     <span class="form-file-text">Choose file...</span>
     <span class="form-file-button">Browse</span>
   </label>

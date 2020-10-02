@@ -33,3 +33,15 @@
 
     @return $string;
 }
+
+// Strip the `calc` surrounding a string if one is found, leaves the '()'s
+// in place to preserve operator precedence.
+@function strip-calc($string) {
+    @if type-of($string) == "string" {
+        @if str-index($string, "calc(") == 1 {
+            $string: str-slice($string, 5, -1);
+        }
+    }
+
+    @return $string;
+}
