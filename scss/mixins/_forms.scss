@@ -4,7 +4,10 @@
     @if $padding-y == null and $line-height == null {
         @return null;
     }
-    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $lh: if($line-height != null, $line-height, $input-line-height);
+    $lh: strip-calc($lh);
+
+    $height-font:    1em * #{$lh};
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
 
     $height-inner: #{$height-font} unquote("+") #{$height-padding};
@@ -16,7 +19,10 @@
     @if $padding-y == null and $line-height == null {
         @return null;
     }
-    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $lh: if($line-height != null, $line-height, $input-line-height);
+    $lh: strip-calc($lh);
+
+    $height-font:    1em * #{$lh};
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
     $height-border:  $input-border-width * 2;
 
