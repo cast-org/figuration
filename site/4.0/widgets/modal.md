@@ -1215,11 +1215,17 @@ Event callbacks happen on the target `<div class="modal">` element.
       </tr>
       <tr>
         <td><code>afterUnlink.cfw.modal</code></td>
-        <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+        <td>
+          <p>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.modal</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
       <tr>
         <td><code>dispose.cfw.modal</code></td>
-        <td>This event is fired immediately before the modal item is removed from the DOM.</td>
+        <td>
+          <p>This event is fired immediately before the modal item is removed from the DOM.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.modal</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
     </tbody>
   </table>

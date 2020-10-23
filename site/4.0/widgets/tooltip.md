@@ -413,11 +413,17 @@ Event callbacks happen on the toggle/trigger element.
       </tr>
       <tr>
         <td><code>afterUnlink.cfw.tooltip</code></td>
-        <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+        <td>
+          <p>This event is fired on the trigger element when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.tooltip</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
       <tr>
         <td><code>dispose.cfw.tooltip</code></td>
-        <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
+        <td>
+          <p>This event is fired immediately before the tooltip item is removed from the DOM.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.tooltip</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -6,6 +6,7 @@ $(function() {
             $(window).scrollTop(0);
         },
         afterEach: function() {
+            $('.popover').remove();
             $('#qunit-fixture').empty();
         }
     });
@@ -155,9 +156,10 @@ $(function() {
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
     });
 
-    QUnit.test('should dispose popover', function(assert) {
+    QUnit.test('unlink method should detach events and data', function(assert) {
         assert.expect(7);
-        var $popover = $('<div></div>')
+        var done = assert.async();
+        var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
             .appendTo('#qunit-fixture')
             .CFW_Popover({
                 trigger: 'hover'
@@ -168,13 +170,134 @@ $(function() {
         assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event');
         assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
 
+        $popover.one('afterShow.cfw.popover', function() {
+            $(document).one('afterUnlink.cfw.popover', $popover, function() {
+                assert.ok(!$popover.hasClass('in'), 'popover is hidden');
+                assert.ok(!$popover.data('cfw.popover'), 'popover does not have data');
+                assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
+                assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+                done();
+            });
+            $popover.CFW_Popover('unlink');
+        });
         $popover.CFW_Popover('show');
-        $popover.CFW_Popover('dispose');
+    });
 
-        assert.ok(!$popover.hasClass('in'), 'popover is hidden');
-        assert.ok(!$popover.data('popover'), 'popover does not have data');
-        assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
-        assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+    QUnit.test('unlink option should detach events and data after hide', function(assert) {
+        assert.expect(7);
+        var done = assert.async();
+        var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                trigger: 'hover',
+                unlink: true
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($popover.data('cfw.popover'), 'popover has data');
+        assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event');
+        assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
+
+        $popover.one('afterShow.cfw.popover', function() {
+            $(document).one('afterUnlink.cfw.popover', $popover, function() {
+                assert.ok(!$popover.hasClass('in'), 'popover is hidden');
+                assert.ok(!$popover.data('cfw.popover'), 'popover does not have data');
+                assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
+                assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+                done();
+            });
+            $popover.CFW_Popover('hide');
+        });
+        $popover.CFW_Popover('show');
+    });
+
+    QUnit.test('dispose method should unlink and remove dynamic popover', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                trigger: 'hover'
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($popover.data('cfw.popover'), 'popover has data');
+        assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event');
+        assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
+
+        $popover.one('afterShow.cfw.popover', function() {
+            $(document).one('afterUnlink.cfw.popover', $popover, function() {
+                assert.ok(!$popover.hasClass('in'), 'popover is hidden');
+                assert.ok(!$popover.data('cfw.popover'), 'popover does not have data');
+                assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
+                assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+                assert.strictEqual($('#qunit-fixture .popover').length, 0);
+                done();
+            });
+            $popover.CFW_Popover('unlink');
+        });
+        $popover.CFW_Popover('show');
+    });
+
+    QUnit.test('dispose method should unlink and remove static popover', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        /* var $tip = */ $('<div class="popover" id="tip"></div>')
+            .appendTo('#qunit-fixture');
+        var $popover = $('<a href="#" data-cfw=popover" data-cfw-popover-target="#tip">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                trigger: 'hover'
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($popover.data('cfw.popover'), 'popover has data');
+        assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event');
+        assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
+
+        $popover.one('afterShow.cfw.popover', function() {
+            $(document).one('dispose.cfw.popover', $popover, function() {
+                assert.ok(!$popover.hasClass('in'), 'popover is hidden');
+                assert.ok(!$popover.data('cfw.popover'), 'popover does not have data');
+                assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
+                assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+                assert.strictEqual($('#qunit-fixture .popover').length, 0);
+                done();
+            });
+            $popover.CFW_Popover('dispose');
+        });
+        $popover.CFW_Popover('show');
+    });
+
+    QUnit.test('dispose option should unlink and remove static popover after hide', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        /* var $tip = */ $('<div class="popover" id="tip"></div>')
+            .appendTo('#qunit-fixture');
+        var $popover = $('<a href="#" data-cfw=popover" data-cfw-popover-target="#tip">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                trigger: 'hover',
+                dispose: true
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($popover.data('cfw.popover'), 'popover has data');
+        assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event');
+        assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
+
+        $popover.one('afterShow.cfw.popover', function() {
+            $(document).one('dispose.cfw.popover', $popover, function() {
+                assert.ok(!$popover.hasClass('in'), 'popover is hidden');
+                assert.ok(!$popover.data('cfw.popover'), 'popover does not have data');
+                assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo');
+                assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events');
+                assert.strictEqual($('#qunit-fixture .popover').length, 0);
+                done();
+            });
+            $popover.CFW_Popover('hide');
+        });
+        $popover.CFW_Popover('show');
     });
 
     QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function(assert) {
@@ -205,7 +328,6 @@ $(function() {
                         $div
                             .one('afterShow.cfw.popover', function() {
                                 $('.content-with-handler .btn').trigger('click');
-                                $div.CFW_Popover('dispose');
                                 assert.ok(handlerCalled, 'content\'s event handler still present');
                                 done();
                             })
@@ -265,7 +387,7 @@ $(function() {
             '<div class="modal-dialog">' +
             '<div class="modal-content">' +
             '<div class="modal-body">' +
-            '<a href="#" id="popover" title="Some tooltip text!">Tooltip</a>' +
+            '<a href="#" id="popover" title="Some popover text!">Popover</a>' +
             '</div>' +
             '</div>' +
             '</div>' +

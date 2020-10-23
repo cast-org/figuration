@@ -870,4 +870,128 @@ $(function() {
             .CFW_Modal()
             .CFW_Modal('show');
     });
+
+    QUnit.test('unlink method should detach events and data', function(assert) {
+        assert.expect(7);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>')
+            .appendTo('#qunit-fixture')
+            .on('custom.foo', $.noop);
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div></div>').appendTo(document.body);
+
+        $trigger.CFW_Modal();
+
+        assert.ok($trigger.data('cfw.modal'), 'trigger has data');
+        assert.ok($._data($trigger[0], 'events').click, 'trigger has click event');
+        assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger has extra custom.foo event');
+
+        $target.one('afterShow.cfw.modal', function() {
+            $(document).one('afterUnlink.cfw.modal', $target, function() {
+                assert.ok(!$target.hasClass('in'), 'target is hidden');
+                assert.ok(!$trigger.data('cfw.modal'), 'trigger does not have data');
+                assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger still has custom.foo');
+                assert.ok(!$._data($trigger[0], 'events').click, 'trigger does not have any events');
+                done();
+            });
+            $trigger.CFW_Modal('unlink');
+        });
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('unlink option should detach events and data after hide', function(assert) {
+        assert.expect(7);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>')
+            .appendTo('#qunit-fixture')
+            .on('custom.foo', $.noop);
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div></div>').appendTo(document.body);
+
+        $trigger.CFW_Modal({
+            unlink: true
+        });
+
+        assert.ok($trigger.data('cfw.modal'), 'trigger has data');
+        assert.ok($._data($trigger[0], 'events').click, 'trigger has click event');
+        assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger has extra custom.foo event');
+
+        $target.one('afterShow.cfw.modal', function() {
+            $(document).one('afterUnlink.cfw.modal', $target, function() {
+                assert.ok(!$target.hasClass('in'), 'target is hidden');
+                assert.ok(!$trigger.data('cfw.modal'), 'trigger does not have data');
+                assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger still has custom.foo');
+                assert.ok(!$._data($trigger[0], 'events').click, 'trigger does not have any events');
+                done();
+            });
+            $trigger.CFW_Modal('hide');
+        });
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('dispose method should unlink and remove modal', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>')
+            .appendTo('#qunit-fixture')
+            .on('custom.foo', $.noop);
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div></div>').appendTo(document.body);
+
+        $trigger.CFW_Modal();
+
+        assert.ok($trigger.data('cfw.modal'), 'trigger has data');
+        assert.ok($._data($trigger[0], 'events').click, 'trigger has click event');
+        assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger has extra custom.foo event');
+
+        $target.one('afterShow.cfw.modal', function() {
+            $(document).one('dispose.cfw.modal', $target, function() {
+                assert.ok(!$target.hasClass('in'), 'target is hidden');
+                assert.ok(!$trigger.data('cfw.modal'), 'trigger does not have data');
+                assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger still has custom.foo');
+                assert.ok(!$._data($trigger[0], 'events').click, 'trigger does not have any events');
+                // Slight delay since item removed after the event fires
+                setTimeout(function() {
+                    assert.strictEqual($('.modal').length, 0);
+                }, 0);
+                done();
+            });
+            $trigger.CFW_Modal('dispose');
+        });
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('dispose option should unlink and remove modal after hide', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>')
+            .appendTo('#qunit-fixture')
+            .on('custom.foo', $.noop);
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div></div>').appendTo(document.body);
+
+        $trigger.CFW_Modal({
+            dispose: true
+        });
+
+        assert.ok($trigger.data('cfw.modal'), 'trigger has data');
+        assert.ok($._data($trigger[0], 'events').click, 'trigger has click event');
+        assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger has extra custom.foo event');
+
+        $target.one('afterShow.cfw.modal', function() {
+            $(document).one('dispose.cfw.modal', $target, function() {
+                assert.ok(!$target.hasClass('in'), 'target is hidden');
+                assert.ok(!$trigger.data('cfw.modal'), 'trigger does not have data');
+                assert.strictEqual($._data($trigger[0], 'events').custom[0].namespace, 'foo', 'trigger still has custom.foo');
+                assert.ok(!$._data($trigger[0], 'events').click, 'trigger does not have any events');
+                // Slight delay since item removed after the event fires
+                setTimeout(function() {
+                    assert.strictEqual($('.modal').length, 0);
+                }, 0);
+                done();
+            });
+            $trigger.CFW_Modal('hide');
+        });
+        $trigger.CFW_Modal('show');
+    });
 });

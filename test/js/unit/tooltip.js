@@ -246,24 +246,148 @@ $(function() {
             .CFW_Tooltip('show');
     });
 
-    QUnit.test('should dispose tooltip', function(assert) {
+    QUnit.test('unlink method should detach events and data', function(assert) {
         assert.expect(7);
-        var $tooltip = $('<div></div>')
+        var done = assert.async();
+        var $tooltip = $('<a href="#" data-cfw=tooltip" title="tooltip title" data-cfw-tooltip-content="tooltip content">Tooltip</a>')
             .appendTo('#qunit-fixture')
-            .CFW_Tooltip()
-            .on('click.foo', function() {}); // eslint-disable-line no-empty-function
+            .CFW_Tooltip({
+                trigger: 'hover'
+            })
+            .on('click.foo', $.noop);
 
         assert.ok($tooltip.data('cfw.tooltip'), 'tooltip has data');
-        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover events');
+        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover event');
         assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
 
+        $tooltip.one('afterShow.cfw.tooltip', function() {
+            $(document).one('afterUnlink.cfw.tooltip', $tooltip, function() {
+                assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
+                assert.ok(!$tooltip.data('cfw.tooltip'), 'tooltip does not have data');
+                assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
+                assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have any events');
+                done();
+            });
+            $tooltip.CFW_Tooltip('unlink');
+        });
         $tooltip.CFW_Tooltip('show');
-        $tooltip.CFW_Tooltip('dispose');
+    });
 
-        assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
-        assert.ok(!$._data($tooltip[0], 'cfw.tooltip'), 'tooltip does not have data');
-        assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
-        assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have hover events');
+    QUnit.test('unlink option should detach events and data after hide', function(assert) {
+        assert.expect(7);
+        var done = assert.async();
+        var $tooltip = $('<a href="#" data-cfw=tooltip" title="tooltip title" data-cfw-tooltip-content="tooltip content">Tooltip</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'hover',
+                unlink: true
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($tooltip.data('cfw.tooltip'), 'tooltip has data');
+        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover event');
+        assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
+
+        $tooltip.one('afterShow.cfw.tooltip', function() {
+            $(document).one('afterUnlink.cfw.tooltip', $tooltip, function() {
+                assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
+                assert.ok(!$tooltip.data('cfw.tooltip'), 'tooltip does not have data');
+                assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
+                assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have any events');
+                done();
+            });
+            $tooltip.CFW_Tooltip('hide');
+        });
+        $tooltip.CFW_Tooltip('show');
+    });
+
+    QUnit.test('dispose method should unlink and remove dynamic tooltip', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        var $tooltip = $('<a href="#" data-cfw=tooltip" title="tooltip title" data-cfw-tooltip-content="tooltip content">Tooltip</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'hover'
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($tooltip.data('cfw.tooltip'), 'tooltip has data');
+        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover event');
+        assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
+
+        $tooltip.one('afterShow.cfw.tooltip', function() {
+            $(document).one('afterUnlink.cfw.tooltip', $tooltip, function() {
+                assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
+                assert.ok(!$tooltip.data('cfw.tooltip'), 'tooltip does not have data');
+                assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
+                assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have any events');
+                assert.strictEqual($('#qunit-fixture .tooltip').length, 0);
+                done();
+            });
+            $tooltip.CFW_Tooltip('unlink');
+        });
+        $tooltip.CFW_Tooltip('show');
+    });
+
+    QUnit.test('dispose method should unlink and remove static tooltip', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        /* var $tip = */ $('<div class="tooltip" id="tip"></div>')
+            .appendTo('#qunit-fixture');
+        var $tooltip = $('<a href="#" data-cfw=tooltip" data-cfw-tooltip-target="#tip">Tooltip</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'hover'
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($tooltip.data('cfw.tooltip'), 'tooltip has data');
+        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover event');
+        assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
+
+        $tooltip.one('afterShow.cfw.tooltip', function() {
+            $(document).one('dispose.cfw.tooltip', $tooltip, function() {
+                assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
+                assert.ok(!$tooltip.data('cfw.tooltip'), 'tooltip does not have data');
+                assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
+                assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have any events');
+                assert.strictEqual($('#qunit-fixture .tooltip').length, 0);
+                done();
+            });
+            $tooltip.CFW_Tooltip('dispose');
+        });
+        $tooltip.CFW_Tooltip('show');
+    });
+
+    QUnit.test('dispose option should unlink and remove static tooltip after hide', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        /* var $tip = */ $('<div class="tooltip" id="tip"></div>')
+            .appendTo('#qunit-fixture');
+        var $tooltip = $('<a href="#" data-cfw=tooltip" data-cfw-tooltip-target="#tip">Tooltip</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'hover',
+                dispose: true
+            })
+            .on('click.foo', $.noop);
+
+        assert.ok($tooltip.data('cfw.tooltip'), 'tooltip has data');
+        assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover event');
+        assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
+
+        $tooltip.one('afterShow.cfw.tooltip', function() {
+            $(document).one('dispose.cfw.tooltip', $tooltip, function() {
+                assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
+                assert.ok(!$tooltip.data('cfw.tooltip'), 'tooltip does not have data');
+                assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo');
+                assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have any events');
+                assert.strictEqual($('#qunit-fixture .tooltip').length, 0);
+                done();
+            });
+            $tooltip.CFW_Tooltip('hide');
+        });
+        $tooltip.CFW_Tooltip('show');
     });
 
     QUnit.test('should show tooltip when toggle is called', function(assert) {

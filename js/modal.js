@@ -48,6 +48,9 @@
 
             this.$element.attr('data-cfw', 'modal');
 
+            this.disposeOnHide = this.settings.dispose;
+            this.unlinkOnHide = this.settings.unlink;
+
             // Check for presence of ids - set if not present
             // var triggerID = this.$element.CFW_getID('cfw-modal');
             var targetID = this.$target.CFW_getID('cfw-modal');
@@ -169,7 +172,7 @@
                 this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$target.show();
+            this.$target.css('display', 'block');
 
             if ($modalBody.length) {
                 $modalBody.scrollTop(0); // scrollable body variant
@@ -220,7 +223,10 @@
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
-                .hide();
+                .css('display', 'none');
+
+            this.$element.trigger('focus');
+
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
@@ -228,8 +234,13 @@
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
+
+                if ($selfRef.disposeOnHide) {
+                    $selfRef.dispose();
+                } else if ($selfRef.unlinkOnHide) {
+                    $selfRef.unlink();
+                }
             });
-            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {

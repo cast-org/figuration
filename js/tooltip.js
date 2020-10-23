@@ -74,6 +74,8 @@
                 hover: false,
                 focus: false
             };
+            this.disposeOnHide = this.settings.dispose;
+            this.unlinkOnHide = this.settings.unlink;
 
             this.$element.attr('data-cfw', this.type);
 
@@ -550,14 +552,17 @@
         },
 
         dispose : function() {
+            var type = this.type;
+            var $element = this.$element;
             var $target = this.$target;
 
-            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function(e) {
-                var $this = $(e.target);
+            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function() {
                 if ($target) {
                     $target.remove();
                 }
-                $this.CFW_trigger('dispose.cfw.' + this.type);
+                $element.CFW_trigger('dispose.cfw.' + type, {
+                    relatedTarget: $target
+                });
             });
             this.unlink();
         },
@@ -735,6 +740,12 @@
             this._hideExt();
 
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+
+            if (this.disposeOnHide) {
+                this.dispose();
+            } else if (this.unlinkOnHide) {
+                this.unlink();
+            }
         },
 
         _hideExt : function() {
