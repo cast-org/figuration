@@ -2108,6 +2108,8 @@ if (typeof jQuery === 'undefined') {
                 hover: false,
                 focus: false
             };
+            this.disposeOnHide = this.settings.dispose;
+            this.unlinkOnHide = this.settings.unlink;
 
             this.$element.attr('data-cfw', this.type);
 
@@ -2584,14 +2586,17 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
+            var type = this.type;
+            var $element = this.$element;
             var $target = this.$target;
 
-            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function(e) {
-                var $this = $(e.target);
+            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function() {
                 if ($target) {
                     $target.remove();
                 }
-                $this.CFW_trigger('dispose.cfw.' + this.type);
+                $element.CFW_trigger('dispose.cfw.' + type, {
+                    relatedTarget: $target
+                });
             });
             this.unlink();
         },
@@ -2769,6 +2774,12 @@ if (typeof jQuery === 'undefined') {
             this._hideExt();
 
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+
+            if (this.disposeOnHide) {
+                this.dispose();
+            } else if (this.unlinkOnHide) {
+                this.unlink();
+            }
         },
 
         _hideExt : function() {
@@ -3513,6 +3524,9 @@ if (typeof jQuery === 'undefined') {
 
             this.$element.attr('data-cfw', 'modal');
 
+            this.disposeOnHide = this.settings.dispose;
+            this.unlinkOnHide = this.settings.unlink;
+
             // Check for presence of ids - set if not present
             // var triggerID = this.$element.CFW_getID('cfw-modal');
             var targetID = this.$target.CFW_getID('cfw-modal');
@@ -3634,7 +3648,7 @@ if (typeof jQuery === 'undefined') {
                 this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$target.show();
+            this.$target.css('display', 'block');
 
             if ($modalBody.length) {
                 $modalBody.scrollTop(0); // scrollable body variant
@@ -3685,7 +3699,10 @@ if (typeof jQuery === 'undefined') {
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
-                .hide();
+                .css('display', 'none');
+
+            this.$element.trigger('focus');
+
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
@@ -3693,8 +3710,13 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
+
+                if ($selfRef.disposeOnHide) {
+                    $selfRef.dispose();
+                } else if ($selfRef.unlinkOnHide) {
+                    $selfRef.unlink();
+                }
             });
-            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
