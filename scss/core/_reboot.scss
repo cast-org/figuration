@@ -40,6 +40,12 @@ section {
 :root {
     // stylelint-disable-next-line property-disallowed-list
     font-size: $font-size-root; // 1
+
+    @if $enable-smooth-scroll {
+        @media (prefers-reduced-motion: no-preference) {
+            scroll-behavior: smooth;
+        }
+    }
 }
 
 // Body
