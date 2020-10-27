@@ -206,7 +206,8 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 {% capture example %}
 <form>
-  <fieldset disabled aria-label="Disabled fieldset example">
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
     <div class="form-group">
       <label for="disabled-text">Disabled input</label>
       <input type="text" id="disabled-text" class="form-control" placeholder="Disabled input">
@@ -859,34 +860,31 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       <input type="password" class="form-control" id="hform-pass" placeholder="Password">
     </div>
   </div>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="form-label col-sm-2 pt-0">Radios</legend>
+  <fieldset class="form-group row">
+    <legend class="form-label col-sm-2 pt-0">Radios</legend>
       <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="hform-radio" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            First radio
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="hform-radio" id="hform-radio-2" value="option2">
-          <label class="form-check-label" for="hform-radio-2">
-            Second radio
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="hform-radio" id="hform-radio-3" value="option3" disabled>
-          <label class="form-check-label" for="hform-radio-3">
-            Third disabled radio
-          </label>
-        </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hform-radio" id="gridRadios1" value="option1" checked>
+        <label class="form-check-label" for="gridRadios1">
+          First radio
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="hform-radio" id="hform-radio-2" value="option2">
+        <label class="form-check-label" for="hform-radio-2">
+          Second radio
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="hform-radio" id="hform-radio-3" value="option3" disabled>
+        <label class="form-check-label" for="hform-radio-3">
+          Third disabled radio
+        </label>
       </div>
     </div>
   </fieldset>
   <div class="form-group row">
-    <div class="col-sm-2">Checkbox</div>
-    <div class="col-sm-10">
+    <div class="col-sm-10 offset-sm-2">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="hform-check">
         <label class="form-check-label" for="hform-check">
@@ -2485,19 +2483,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$form-file-button-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-600</code></td>
+        <td>
+          Button text color for file input.
+        </td>
+      </tr>
+      <tr>
         <td><code>$form-file-button-bg</code></td>
         <td>string</td>
         <td><code>$uibase-50</code></td>
         <td>
           Button background color for file input.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$form-file-button-color</code></td>
-        <td>string</td>
-        <td><code>color-if-contrast($uibase-600, $form-file-button-bg)</code></td>
-        <td>
-          Button text color for file input.
         </td>
       </tr>
       <tr>
@@ -2514,22 +2512,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$btn-font-weight</code></td>
         <td>
           Button font-weight for file input.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$form-file-button-hover-bg</code></td>
-        <td>string</td>
-        <td><code>$uibase-100</code></td>
-        <td>
-          Button background color for file input when in hover state.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$form-file-button-hover-color</code></td>
-        <td>string</td>
-        <td><code>color-if-contrast($uibase-600, $form-file-button-hover-bg)</code></td>
-        <td>
-          Button text color for file input when in hover state.
         </td>
       </tr>
       <tr>
