@@ -2485,19 +2485,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$form-file-button-color</code></td>
-        <td>string</td>
-        <td><code>$uibase-600</code></td>
-        <td>
-          Button text color for file input.
-        </td>
-      </tr>
-      <tr>
         <td><code>$form-file-button-bg</code></td>
         <td>string</td>
         <td><code>$uibase-50</code></td>
         <td>
           Button background color for file input.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-file-button-color</code></td>
+        <td>string</td>
+        <td><code>color-if-contrast($uibase-600, $form-file-button-bg)</code></td>
+        <td>
+          Button text color for file input.
         </td>
       </tr>
       <tr>
@@ -2514,6 +2514,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$btn-font-weight</code></td>
         <td>
           Button font-weight for file input.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-file-button-hover-bg</code></td>
+        <td>string</td>
+        <td><code>$uibase-100</code></td>
+        <td>
+          Button background color for file input when in hover state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-file-button-hover-color</code></td>
+        <td>string</td>
+        <td><code>color-if-contrast($uibase-600, $form-file-button-hover-bg)</code></td>
+        <td>
+          Button text color for file input when in hover state.
         </td>
       </tr>
       <tr>

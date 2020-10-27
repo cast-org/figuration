@@ -882,10 +882,12 @@ $form-select-indicator-image:       encode-svg(url("data:image/svg+xml,<svg xmln
 $form-select-indicator-position:    right $form-select-indicator-offset center !default;
 
 // Form file
-$form-file-button-color:            $uibase-600 !default;
 $form-file-button-bg:               $uibase-50 !default;
+$form-file-button-color:            color-if-contrast($uibase-600, $form-file-button-bg) !default;
 $form-file-button-font-family:      $btn-font-family !default;
 $form-file-button-font-weight:      $btn-font-weight !default;
+$form-file-button-hover-bg:         $uibase-100 !default;
+$form-file-button-hover-color:      color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
 $form-file-button-disabled-color:   $component-disabled-color !default;
 $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;
