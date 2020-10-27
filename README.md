@@ -31,7 +31,7 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 [![devDependencies Status](https://david-dm.org/cast-org/figuration/dev-status.svg)](https://david-dm.org/cast-org/figuration/?type=dev)
 
 **Development Build Status**
-[![Build Status](https://img.shields.io/travis/cast-org/figuration/master)](https://travis-ci.org/cast-org/figuration)
+[![Build Status](https://img.shields.io/travis/cast-org/figuration/master)](https://travis-ci.com/cast-org/figuration)
 [![Sauce Labs Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
 
