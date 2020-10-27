@@ -47,6 +47,15 @@
             }
         }
 
+        &:hover:not([disabled]):not(:disabled):not([readonly]) {
+            ~ .form-file-label {
+                .form-file-button {
+                    color: $form-file-button-hover-color;
+                    background-color: $form-file-button-hover-bg;
+                }
+            }
+        }
+
         &[disabled],
         &:disabled {
             & ~ .form-file-label {
