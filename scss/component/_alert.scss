@@ -15,6 +15,7 @@
                 position: absolute;
                 top: 0;
                 right: 0;
+                z-index: $link-stretch-z-index + 1;
                 padding: $alert-close-padding-y $alert-close-padding-x;
             }
         }

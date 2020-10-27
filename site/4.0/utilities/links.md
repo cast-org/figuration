@@ -147,7 +147,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$enable-utility-link-stretch</code></td>
+        <td><code>$link-stretch-pseudo-element</code></td>
         <td>string</td>
         <td><code>after</code></td>
         <td>
@@ -155,11 +155,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$enable-utility-link-stretch</code></td>
+        <td><code>$link-stretch-z-index</code></td>
         <td>integer</td>
         <td><code>1</code></td>
         <td>
-          Z-index to use for stretched links.
+          <code>z-index</code> value to use for stretched links.
         </td>
       </tr>
     </tbody>
