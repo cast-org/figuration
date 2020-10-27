@@ -28,7 +28,7 @@
 
             kbd {
                 padding: 0;
-                @include font-size(100%);
+                @include font-size(1em);
                 font-weight: $kbd-nested-font-weight;
                 @include box-shadow(none);
             }
