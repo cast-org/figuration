@@ -365,7 +365,7 @@ Take control over how captions are displayed by adding a container with a `data-
 
 ### Automatic Pause
 
-When the player widget is used inside of one of our other widgets, such as [collapse]({{ site.path }}/{{ version.docs }}/widgets/collapse/), [tabs]({{ site.path }}/{{ version.docs }}/widgets/tabs/), [popovers]({{ site.path }}/{{ version.docs }}/widgets/popver/), and [modals]({{ site.path }}/{{ version.docs }}/widgets/modal/), the player will automatically pause when the container becomes hidden, or collapsed.
+When the player widget is used inside of one of our other widgets, such as [collapse]({{ site.path }}/{{ version.docs }}/widgets/collapse/), [tabs]({{ site.path }}/{{ version.docs }}/widgets/tab/), [popovers]({{ site.path }}/{{ version.docs }}/widgets/popover/), and [modals]({{ site.path }}/{{ version.docs }}/widgets/modal/), the player will automatically pause when the container becomes hidden, or collapsed.
 
 <div class="cf-example">
   <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalPlayer">
@@ -430,7 +430,6 @@ When the player widget is used inside of one of our other widgets, such as [coll
           <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
       </div>
-
       <audio controls>
         <source src="{{ site.path }}/assets/{{ version.docs }}/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
         <p>HTML5 audio not supported</p>
