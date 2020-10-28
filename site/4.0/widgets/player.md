@@ -363,6 +363,82 @@ Take control over how captions are displayed by adding a container with a `data-
 {% endcapture %}
 {% renderExample example %}
 
+### Automatic Pause
+
+When the player widget is used inside of one of our other widgets, such as [collapse]({{ site.path }}/{{ version.docs }}/widgets/collapse/), [tabs]({{ site.path }}/{{ version.docs }}/widgets/tab/), [popovers]({{ site.path }}/{{ version.docs }}/widgets/popover/), and [modals]({{ site.path }}/{{ version.docs }}/widgets/modal/), the player will automatically pause when the container becomes hidden, or collapsed.
+
+<div class="cf-example">
+  <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalPlayer">
+    Player in Modal
+  </button>
+
+  <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverPlayer">
+    Player in Popover
+  </button>
+</div>
+
+<div class="modal" id="modalPlayer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Player auto pause test</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h3 class="h6">Ambient Acoustic by StrangerEight</h3>
+        <div data-cfw="player" role="region" aria-label="audio player">
+          <div class="player" data-cfw-player="player">
+            <span class="player-control" data-cfw-player="control">
+              <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+              <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+              <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            </span>
+            <span class="player-time" data-cfw-player="time">
+              <span class="player-time-current" data-cfw-player="time-current"></span>
+              <span class="player-seek form-inline" data-cfw-player="seek">
+                <input type="range" class="form-range" aria-label="Seek">
+              </span>
+              <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+          </div>
+          <audio controls>
+            <source src="{{ site.path }}/assets/{{ version.docs }}/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
+            <p>HTML5 audio not supported</p>
+          </audio>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popover" id="popoverPlayer">
+  <h3 class="popover-header">Player auto pause test</h3>
+  <div class="popover-body">
+    <h3 class="h6">Ambient Acoustic by StrangerEight</h3>
+    <div data-cfw="player" role="region" aria-label="audio player">
+      <div class="player" data-cfw-player="player">
+        <span class="player-control" data-cfw-player="control">
+          <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+          <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+          <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+        </span>
+        <span class="player-time" data-cfw-player="time">
+          <span class="player-time-current" data-cfw-player="time-current"></span>
+          <span class="player-seek form-inline" data-cfw-player="seek">
+            <input type="range" class="form-range" aria-label="Seek">
+          </span>
+          <span class="player-time-duration" data-cfw-player="time-duration"></span>
+        </span>
+      </div>
+      <audio controls>
+        <source src="{{ site.path }}/assets/{{ version.docs }}/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
+        <p>HTML5 audio not supported</p>
+      </audio>
+    </div>
+  </div>
+  <div class="popover-arrow"></div>
+</div>
+
 ## Usage
 
 To add custom controls to any `<audio>`/`<video>` element and insert the regions and controls for the custom player.
