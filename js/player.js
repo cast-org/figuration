@@ -79,7 +79,6 @@
         this.userActive = true;
         this.activityTimer = null;
         this.mouseActivity = null;
-        this.scrubPlay = null;
         this.played = false;
 
         this.status = {
@@ -364,6 +363,16 @@
             if (this.media.autoplay) {
                 this.media.play();
             }
+
+            // Mutation handlers
+             this.$element
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    if ($(this).is(':hidden')) {
+                        $selfRef.media.pause();
+                    }
+                });
         },
 
         error : function() {
@@ -1787,7 +1796,6 @@
             this.userActive = null;
             this.activityTimer = null;
             this.mouseActivity = null;
-            this.scrubPlay = null;
             this.played = null;
             this.status = null;
             this.support = null;

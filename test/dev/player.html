@@ -14,6 +14,9 @@
 <script type="text/javascript" src="../../js/util.js"></script>
 <script type="text/javascript" src="../../js/drag.js"></script>
 <script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
 <script type="text/javascript" src="../../js/player.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>
 
@@ -913,6 +916,84 @@ body {
     //this.controls = true;
 //});
 </script>
+
+<hr>
+
+<h2 class="h4">Auto-pause test</h2>
+
+<div class="mb-2">
+    <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalPlayer0">
+        Player in Modal
+    </button>
+
+    <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverPlayer0">
+        Player in Popover
+    </button>
+</div>
+
+<div class="modal" id="modalPlayer0">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Player auto pause test</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="h6">Ambient Acoustic by StrangerEight</h3>
+                <div data-cfw="player" role="region" aria-label="audio player">
+                    <div class="player" data-cfw-player="player">
+                        <span class="player-control" data-cfw-player="control">
+                            <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                            <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                            <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                        </span>
+                        <span class="player-time" data-cfw-player="time">
+                            <span class="player-time-current" data-cfw-player="time-current"></span>
+                            <span class="player-seek form-inline" data-cfw-player="seek">
+                            	<input type="range" class="form-range" aria-label="Seek">
+                            </span>
+                            <span class="player-time-duration" data-cfw-player="time-duration"></span>
+                        </span>
+                    </div>
+
+                    <audio controls>
+                        <source src="../../site/assets/4.0/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg">
+                        <p>HTML5 audio not supported</p>
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popover" id="popoverPlayer0">
+    <h3 class="popover-header">Player auto pause test</h3>
+    <div class="popover-body">
+        <h3 class="h6">Ambient Acoustic by StrangerEight</h3>
+        <div data-cfw="player" role="region" aria-label="audio player">
+            <div class="player" data-cfw-player="player">
+                <span class="player-control" data-cfw-player="control">
+                    <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+                </span>
+                <span class="player-time" data-cfw-player="time">
+                    <span class="player-time-current" data-cfw-player="time-current"></span>
+                    <span class="player-seek form-inline" data-cfw-player="seek">
+                    	<input type="range" class="form-range" aria-label="Seek">
+                    </span>
+                    <span class="player-time-duration" data-cfw-player="time-duration"></span>
+                </span>
+            </div>
+
+            <audio controls>
+                <source src="../../site/assets/4.0/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg">
+                <p>HTML5 audio not supported</p>
+            </audio>
+        </div>
+    </div>
+    <div class="popover-arrow"></div>
+</div>
 
 </main>
 </body>
