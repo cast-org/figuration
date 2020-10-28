@@ -33,6 +33,12 @@ Place one textual addon or button on either side of an input. You may also place
   <span class="input-group-text">.00</span>
 </div>
 
+<div class="input-group mb-1">
+  <input type="text" class="form-control" aria-label="Username" placeholder="username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" aria-label="Domain name" placeholder="example.com">
+</div>
+
 <div class="input-group">
   <span class="input-group-text">With textarea</span>
   <textarea class="form-control" aria-label="With textarea"></textarea>
