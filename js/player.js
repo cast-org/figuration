@@ -365,7 +365,7 @@
             }
 
             // Mutation handlers
-             this.$element
+            this.$element
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
