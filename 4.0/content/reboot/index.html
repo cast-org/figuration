@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.2
+    v4.0.3
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.2</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -364,8 +364,9 @@
 <li>For safety, the <code>&lt;body&gt;</code> has a declared <code>background-color</code>, defaulting to <code>#fff</code>.</li>
 </ul>
 <h2 id="native-font-stack">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
-<p>The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Figuration and replaced with a &quot;native font stack&quot; for optimum text rendering on every device and OS. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>  <span class="token comment">// Safari for macOS and iOS (San Francisco)</span><br>  <span class="token selector">-apple-system</span><span class="token selector">,</span><br>  <span class="token comment">// Chrome for macOS (San Francisco)</span><br>  <span class="token selector">BlinkMacSystemFont</span><span class="token selector">,</span><br>  <span class="token comment">// Windows</span><br>  <span class="token string">"Segoe UI"</span><span class="token selector">,</span><br>  <span class="token comment">// Android</span><br>  <span class="token string">"Roboto"</span><span class="token selector">,</span><br>  <span class="token comment">// Linux</span><br>  <span class="token string">"Noto Sans"</span><span class="token selector">,</span><br>  <span class="token comment">// Basic web fallback</span><br>  <span class="token string">"Helvetica Neue"</span><span class="token selector">, Arial, sans-serif</span><span class="token selector">,</span><br>  <span class="token comment">// Emoji fonts</span><br>  <span class="token string">"Apple Color Emoji"</span><span class="token selector">, </span><span class="token string">"Segoe UI Emoji"</span><span class="token selector">, </span><span class="token string">"Segoe UI Symbol"</span><span class="token selector">, </span><span class="token string">"Noto Color Emoji"</span> <span class="token selector">!default;</span></code></pre>
+<p>Figuration uses a &quot;native font stack&quot;, sometimes called a &quot;system font stack&quot;, for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token selector">,</span><br>    <span class="token selector">-apple-system</span><span class="token selector">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token selector">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token selector">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token selector">,</span><br>    <span class="token selector">Arial</span><span class="token selector">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token selector">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token selector">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token selector">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token selector">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
+<p>Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS <code>color</code> styles.</p>
 <p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Figuration.</p>
 <h2 id="headings-and-paragraphs">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
 <p>All heading elements—e.g., <code>&lt;h1&gt;</code>—and <code>&lt;p&gt;</code> are reset to have their <code>margin-top</code> removed. Headings have <code>margin-bottom: .5rem</code> added and paragraphs <code>margin-bottom: 1rem</code> for easy spacing.</p>
@@ -1020,7 +1021,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.2
+      <strong>Latest version:</strong> 4.0.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

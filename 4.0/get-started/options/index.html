@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.2
+    v4.0.3
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.2</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -415,6 +415,11 @@
         <td>Enables the generation of <a href="/4.0/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code> media query</a>, which suppresses certain animations/transitions based on the users' browser/operating system preferences.</td>
       </tr>
       <tr>
+        <td><code>$enable-smooth-scroll</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables <code>scroll-behavior: smooth</code> globally, except for users asking for reduced motion through <a href="/4.0/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code>` media query</a>.</td>
+      </tr>
+      <tr>
         <td><code>$enable-grid-classes</code></td>
         <td><code>true</code> (default) or <code>false</code></td>
         <td>Enables the generation of CSS classes for the grid system (e.g. <code>.container</code>, <code>.row</code>, <code>.col-md-1</code>, etc.).</td>
@@ -550,7 +555,7 @@ There are additional options in our `_settings_options.scss` that can be used to
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.2
+      <strong>Latest version:</strong> 4.0.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.2
+    v4.0.3
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.2</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -713,11 +713,17 @@ function myTipAlign(tip, trigger) {
       </tr>
       <tr>
         <td><code>afterUnlink.cfw.tooltip</code></td>
-        <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+        <td>
+          <p>This event is fired on the trigger element when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.tooltip</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
       <tr>
         <td><code>dispose.cfw.tooltip</code></td>
-        <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
+        <td>
+          <p>This event is fired immediately before the tooltip item is removed from the DOM.</p>
+          <p>This event may need to be listened for using event delegation, since all <code>cfw.tooltip</code> namespaced events will be detached from the trigger element as part of the unlink process.</p>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -977,7 +983,7 @@ function myTipAlign(tip, trigger) {
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.2
+      <strong>Latest version:</strong> 4.0.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
