@@ -1,7 +1,7 @@
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.2): tooltip.js
+ * Figuration (v4.0.3): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
