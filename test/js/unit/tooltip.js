@@ -1062,4 +1062,22 @@ $(function() {
         $el.CFW_Tooltip('hide');
         assert.ok(!showingTooltip(), 'tooltip is hidden');
     });
+
+    QUnit.test('should allow custom display value when shown', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                display: 'flex'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip').css('display'), 'flex');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
 });

@@ -181,6 +181,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>The selector of the target tooltip.</td>
       </tr>
       <tr>
+        <td><code>display</code></td>
+        <td>string</td>
+        <td><code>block</code></td>
+        <td>Value of CSS <code>display</code> rule when tooltip is visible.</td>
+      </tr>
+      <tr>
         <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
