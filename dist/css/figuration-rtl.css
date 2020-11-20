@@ -6740,7 +6740,7 @@ a.drag.disabled {
 .tooltip {
   position: absolute;
   z-index: 1040;
-  display: block;
+  display: none;
   margin: 0.125rem;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
@@ -6892,7 +6892,7 @@ a.drag.disabled {
 }
 
 .popover.in {
-  display: block;
+  opacity: 1;
 }
 
 .popover-arrow {

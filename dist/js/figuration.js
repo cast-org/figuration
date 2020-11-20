@@ -2051,6 +2051,7 @@ if (typeof jQuery === 'undefined') {
         target          : false,            // Target selector
         placement       : 'top',            // Where to locate tooltip (top/bottom/reverse(left))/forward(right)/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
+        display         : 'block',          // Value for display CSS rule
         animate         : true,             // Should the tooltip fade in and out
         delay : {
             show        : 0,                // Delay for showing tooltip (milliseconda)
@@ -2382,6 +2383,7 @@ if (typeof jQuery === 'undefined') {
             this.bindTip(false);
             this.setContent();
 
+            this.$target.css('display', this.settings.display);
             if (this.settings.animate) { this.$target.addClass('fade'); }
 
             this.locateTip();
@@ -2726,6 +2728,7 @@ if (typeof jQuery === 'undefined') {
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
             this.$target
+                .css('display', 'none')
                 .off('.cfw.' + this.type)
                 .off('mutate.cfw.mutate')
                 .removeClass('in')
