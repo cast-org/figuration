@@ -6,11 +6,11 @@ group: utilities
 toc: true
 ---
 
-## How It Works
+## Margin and Padding
 
 Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are generated from a Sass map with values ranging from `0.25rem` to `2rem`.
 
-## Notation
+### Notation
 
 The classes are named using the format: `{property}{sides}{-breakpoint}-{size}`.
 
@@ -52,7 +52,7 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
-## Examples
+### Examples
 
 Here are some representative examples of these classes:
 
@@ -137,6 +137,27 @@ In some cases, you may also have to adjust the padding on the parent container o
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
 
+## Gap
+
+When using `display: grid`, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities based on the `$spacers` Sass map, and are available in responsive variants.
+
+{% capture callout %}
+Browser Compatibility
+{.h5}
+
+The `gap` CSS property is not fully supported in older browsers, and not supported at all in Internet Explorer 11 and below. For support details, see [Can I Use](https://caniuse.com/?search=gap).
+{% endcapture %}
+{% renderCallout, callout, "danger" %}
+
+{% capture example %}
+<div class="d-grid gap-1">
+  <div class="p-0_25 bg-light border">Grid item 1</div>
+  <div class="p-0_25 bg-light border">Grid item 2</div>
+  <div class="p-0_25 bg-light border">Grid item 3</div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
 ## SASS Reference
 
 ### Variables
@@ -195,6 +216,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-utility-spacing-gap</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the gap utility classes.
+        </td>
+      </tr>
+      <tr>
         <td><code>$spacer</code></td>
         <td>string</td>
         <td><code>1rem</code></td>
@@ -214,6 +243,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
         <td>
           Map of sizing append names and rules to be generated.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$spacers-gap</code></td>
+        <td>string</td>
+        <td><code>$spacers</code></td>
+        <td>
+          Map of gap sizing rules to be generated.
         </td>
       </tr>
       <tr>
