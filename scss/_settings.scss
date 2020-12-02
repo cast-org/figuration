@@ -189,6 +189,7 @@ $spacers: (
     "2":    ($spacer * 2)
 ) !default;
 
+$spacers-gap:                       $spacers !default;
 $spacers-padding:                   $spacers !default;
 $spacers-margin:                    $spacers !default;
 $spacers-margin-negative:           $spacers !default;

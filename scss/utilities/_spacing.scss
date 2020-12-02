@@ -84,6 +84,14 @@
                     margin-left: auto !important;
                 }
             }
+
+            @if $enable-utility-spacing-gap {
+                @each $size, $length in $spacers-gap {
+                    .gap#{$bprule}-#{$size} {
+                        gap: $length !important;
+                    }
+                }
+            }
         }
     }
 }
