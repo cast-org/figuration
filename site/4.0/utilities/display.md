@@ -15,15 +15,16 @@ Responsively control an element's `display` property.  Also included are some cl
 While there is a large number of [`display` properties](https://developer.mozilla.org/en-US/docs/Web/CSS/display) available, we only support a handful of the more commonly used ones.  Sorry, but we can't support all of them, so if you need one that is not in the list below, you will need to use custom CSS.
 
 Available utilities:
-- `.d-none` sets `display: none;`
 - `.d-block` sets `display: block;`
 - `.d-flex` sets `display: flex;`
 - `.d-inline` sets `display: inline;`
 - `.d-inline-block` sets `display: inline-block;`
 - `.d-inline-flex` sets `display: inline-flex;`
+- `.d-grid` sets `display: grid;`
 - `.d-table` sets `display: table;`
 - `.d-table-row` sets `display: table-row;`
 - `.d-table-cell` sets `display: table-cell;`
+- `.d-none` sets `display: none;`
 
 These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
 
@@ -236,15 +237,16 @@ These utilities only affect the `display` property. Includes support for the sam
 
 You will need to take into account any other CSS properties, such as `visibility`, that might cause issues for the print layout.
 
-- `.print-none`
 - `.print-block`
 - `.print-flex`
 - `.print-inline`
 - `.print-inline-block`
 - `.print-inline-flex`
+- `.print-grid`
 - `.print-table`
 - `.print-table-row`
 - `.print-table-cell`
+- `.print-none`
 
 ## SASS Reference
 
@@ -299,7 +301,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$utility-display</code></td>
         <td>string</td>
-        <td><code>block, flex, inline, inline-block, inline-flex, table, table-row, table-cell, none</code></td>
+        <td><code>block, flex, inline, inline-block, inline-flex, grid, table, table-row, table-cell, none</code></td>
         <td>
           List of display values that will be used to generate responsive display utilities.
         </td>
