@@ -139,7 +139,7 @@ In some cases, you may also have to adjust the padding on the parent container o
 
 ## Gap
 
-When using `display: grid`, you can make use of gap utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities based on the `$spacers` Sass map, and are available in responsive variants.
+When using `display: grid`, you can make use of `gap` utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a `display: grid` container). Gap utilities based on the `$spacers` Sass map, and are available in responsive variants.
 
 {% capture callout %}
 Browser Compatibility
