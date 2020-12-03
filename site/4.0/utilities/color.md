@@ -17,6 +17,11 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 {%- assign calloutColor = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-color-assistive-technologies.md" -%}
 {% include calloutColor %}
 
+{% capture callout %}
+Some of the utility color styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+{% endcapture %}
+{% renderCallout, callout, "info" %}
+
 ## Text
 
 Change your text color with contextual color utility classes.
