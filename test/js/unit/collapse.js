@@ -425,7 +425,7 @@ $(function() {
         $trigger.CFW_Collapse();
         $trigger
             .one('afterShow.cfw.collapse', function() {
-                assert.strictEqual(($target).attr('tabindex'), '1000', 'target tabindex not updated');
+                assert.strictEqual($target.attr('tabindex'), '1000', 'target tabindex not updated');
                 done();
             });
         $trigger.CFW_Collapse('show');
