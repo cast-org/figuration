@@ -97,7 +97,7 @@
 
         show : function(follow) {
             var $selfRef = this;
-            if (follow === null) { follow = this.settings.follow; }
+            if (typeof follow === 'undefined') { follow = this.settings.follow; }
 
             // Bail if transition in progress
             if (this.inTransition || this.$target.hasClass('in')) { return; }
@@ -135,7 +135,10 @@
                 $selfRef.$target.CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
-                    $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
+                    if (typeof $selfRef.$target.first().attr('tabindex') === 'undefined') {
+                        $selfRef.$target.first().attr('tabindex', '-1');
+                    }
+                    $selfRef.$target.eq(0).trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterShow.cfw.collapse');
             };
@@ -147,7 +150,7 @@
         hide : function(follow) {
             var $selfRef = this;
 
-            if (follow === null) { follow = this.settings.follow; }
+            if (typeof follow === 'undefined') { follow = this.settings.follow; }
 
             // Bail if transition in progress
             if (this.inTransition || !this.$target.hasClass('in')) { return; }

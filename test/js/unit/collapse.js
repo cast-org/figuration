@@ -366,4 +366,68 @@ $(function() {
             .CFW_Collapse()
             .trigger('click');
     });
+
+    QUnit.test('should update focus when toggled with follow option enabled', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<button type="button" data-cfw="collapse" data-cfw-collapse-target="#test" data-cfw-collapse-follow="true"></button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($(document.activeElement).is($target), 'target element is focused');
+                $trigger.CFW_Collapse('hide');
+            })
+            .one('afterHide.cfw.collapse', function() {
+                assert.ok($(document.activeElement).is($trigger), 'trigger element is once again focused');
+                done();
+            });
+        $trigger.CFW_Collapse('show');
+    });
+
+    QUnit.test('should update focus when shown and follow argument enabled', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $trigger = $('<button type="button" data-cfw="collapse" data-cfw-collapse-target="#test"></button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($(document.activeElement).is($target), 'target element is focused');
+                done();
+            });
+        $trigger.CFW_Collapse('show', true);
+    });
+
+    QUnit.test('should update focus when hidden and follow argument enabled', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<button type="button" data-cfw="collapse" data-cfw-collapse-target="#test"></button>').appendTo('#qunit-fixture');
+        $('<div id="test" class="collapse"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok(!$(document.activeElement).is($trigger), 'trigger element is not focused');
+                $trigger.CFW_Collapse('hide', true);
+            })
+            .one('afterHide.cfw.collapse', function() {
+                assert.ok($(document.activeElement).is($trigger), 'trigger element is focused');
+                done();
+            });
+        $trigger.CFW_Collapse('show');
+    });
+
+    QUnit.test('should not update tabindex when shown with follow option enabled', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $trigger = $('<button type="button" data-cfw="collapse" data-cfw-collapse-target="#test" data-cfw-collapse-follow="true"></button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse" tabindex="1000"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.strictEqual($target.attr('tabindex'), '1000', 'target tabindex not updated');
+                done();
+            });
+        $trigger.CFW_Collapse('show');
+    });
 });
