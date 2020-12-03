@@ -187,8 +187,8 @@ Each event callback, except for `init.cfw.drag`, returns the following additiona
 </div>
 
 {% capture highlight %}
-$('#myDrag').on('drag.cfw.drag', function(e) {
-    someFunction(e.offsetY, e.offsetX);
+$('#myDrag').on('drag.cfw.drag', function(event) {
+    someFunction(event.offsetY, event.offsetX);
 });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}

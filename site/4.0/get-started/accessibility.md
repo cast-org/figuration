@@ -82,8 +82,8 @@ Some solutions include:
 - Add an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 - Use custom JavaScript to disable their functionality. For example:
 {% capture highlight %}
-$('.disabled').on('click', function(e) {
-  e.preventDefault();
+$('.disabled').on('click', function(event) {
+  event.preventDefault();
 });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}

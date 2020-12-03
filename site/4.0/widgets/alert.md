@@ -47,8 +47,8 @@ The dismiss will work with dynamically inserted alerts.
   <div id="alert-demo"></div>
 
   <script>
-    $('#alert-create').on('click', function(e) {
-      if (e) e.preventDefault();
+    $('#alert-create').on('click', function(event) {
+      if (event) event.preventDefault();
       $('#alert-demo').after('<div class="alert alert-info" role="alert"><button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button><strong>Sample alert!</strong> Click my close button --&gt;</div>');
     });
   </script>

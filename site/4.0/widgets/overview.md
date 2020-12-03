@@ -143,8 +143,8 @@ Figuration provides custom events for most widgets' unique actions. Generally, t
 All before events provide `preventDefault` functionality. This provides the ability to stop the execution of an action before it starts.
 
 {% capture highlight %}
-$('#myModal').on('beforeShow.cfw.modal', function(e) {
-    if (!data) return e.preventDefault(); // stops modal from being shown
+$('#myModal').on('beforeShow.cfw.modal', function(event) {
+    if (!data) return event.preventDefault(); // stops modal from being shown
 });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
@@ -156,7 +156,7 @@ All programmatic API methods are **asynchronous** and return to the caller once 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
 {% capture highlight %}
-$('#myCollapse').on('afterShow.cfw.collapse', function(e) {
+$('#myCollapse').on('afterShow.cfw.collapse', function(event) {
   // Action to execute once the collapsible area is expanded
 })
 {% endcapture %}
@@ -165,7 +165,7 @@ $('#myCollapse').on('afterShow.cfw.collapse', function(e) {
 In addition a method call on a **transitioning component will be ignored**.
 
 {% capture highlight %}
-$('#myCollapse').on('afterShow.cfw.collapse', function(e) {
+$('#myCollapse').on('afterShow.cfw.collapse', function(event) {
   $('#myCollapse').CFW_Collapse('hide'); // Will hide the collapsible area as soon as the transition for opening the area is finished
 })
 

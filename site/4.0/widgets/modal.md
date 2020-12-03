@@ -1296,11 +1296,11 @@ $.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {
 var $selfRef = this;
   $(document)
     .off('focusin.cfw.modal') // guard against infinite focus loop
-    .on('focusin.cfw.modal', function(e) {
-      if (document !== e.target && $selfRef.$targetElm[0] !== e.target && !$selfRef.$targetElm.has(e.target).length)
+    .on('focusin.cfw.modal', function(event) {
+      if (document !== event.target && $selfRef.$targetElm[0] !== event.target && !$selfRef.$targetElm.has(event.target).length)
         // Add conditions here
         // In this case items with a 'focusuable-item' class
-        && !$(e.target.parentNode).hasClass('focusuable-item') {
+        && !$(event.target.parentNode).hasClass('focusuable-item') {
           $selfRef.$targetElm.trigger('focus');
       }
     });

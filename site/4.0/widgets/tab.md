@@ -307,9 +307,9 @@ When showing a new tab, the events fire in the following order:
 </div>
 
 {% capture highlight %}
-$('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(e) {
-  e.target // newly activated tab
-  e.relatedTarget // previous active tab
+$('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(event) {
+  event.target // newly activated tab
+  event.relatedTarget // previous active tab
 });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
