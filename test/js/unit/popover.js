@@ -469,4 +469,34 @@ $(function() {
 
         assert.strictEqual($popover.data('cfw.popover').settings.trigger, 'manual', 'trigger is manual');
     });
+
+    QUnit.test('should add provided custom class on show of dynamic popover', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $popover = $('<a href="#" title="popover title" data-cfw-popover-content="popover content" data-cfw-popover-custom-class="custom-class">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover()
+            .on('afterShow.cfw.popover', function() {
+                assert.ok($popover.data('cfw.popover').$target.hasClass('custom-class'));
+                done();
+            });
+
+        $popover.CFW_Popover('show');
+    });
+
+    QUnit.test('should add provided custom class on show of static popover', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $tip = $('<div class="popover" id="tip"></div>')
+            .appendTo('#qunit-fixture');
+        var $popover = $('<a href="#tip" title="popover title" data-cfw-popover-content="popover content" data-cfw-popover-custom-class="custom-class">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover()
+            .on('afterShow.cfw.popover', function() {
+                assert.ok($tip.hasClass('custom-class'));
+                done();
+            });
+
+        $popover.CFW_Popover('show');
+    });
 });
