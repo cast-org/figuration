@@ -221,7 +221,15 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
 
 Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
 
-<div class="cf-example">
+<div class="cf-example cf-example-bottom">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <button type="button" class="btn btn-success">Button</button>
+    <button type="button" class="btn btn-success">Button</button>
+    <button type="button" class="btn btn-success">Button</button>
+  </div>
+</div>
+
+<div class="cf-example cf-example-bottom">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn">Button</button>
     <button type="button" class="btn">Button</button>
@@ -266,6 +274,23 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+    <div class="btn-check">
+      <input id="radiov-0" type="radio" name="radio2" class="btn-check-input" checked>
+      <label for="radiov-0" class="btn btn-outline-info">Radio 1</label>
+    </div>
+    <div class="btn-check">
+      <input id="radiov-1" type="radio" name="radio2" class="btn-check-input">
+      <label for="radiov-1" class="btn btn-outline-info">Radio 2</label>
+    </div>
+    <div class="btn-check">
+      <input id="radiov-2" type="radio" name="radio2" class="btn-check-input" disabled>
+      <label for="radiov-2" class="btn btn-outline-info">Radio 3</label>
     </div>
   </div>
 </div>
