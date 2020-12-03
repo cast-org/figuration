@@ -13,6 +13,11 @@ Figuration includes a few predefined button styles, each serving its own semanti
 {%- assign calloutColor = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-color-assistive-technologies.md" -%}
 {% include calloutColor %}
 
+{% capture callout %}
+Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+{% endcapture %}
+{% renderCallout, callout, "info" %}
+
 {% capture example %}
 <button type="button" class="btn">Default</button>
 <button type="button" class="btn btn-primary">Primary</button>

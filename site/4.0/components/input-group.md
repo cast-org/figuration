@@ -282,8 +282,8 @@ Input groups include support for styled selects and file inputs. Browser default
 
 {% capture example %}
 <div class="input-group mb-1">
-  <span class="input-group-text" id="form-select-1-addon">Options</span>
-  <select class="form-control" id="form-select-1" aria-describedby="form-select-1-addon">
+  <label class="input-group-text" for="form-select-1">Options</label>
+  <select class="form-control" id="form-select-1">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -292,13 +292,13 @@ Input groups include support for styled selects and file inputs. Browser default
 </div>
 
 <div class="input-group mb-1">
-  <select class="form-control" id="form-select-2" aria-describedby="form-select-2-addon">
+  <select class="form-control" id="form-select-2">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <span class="input-group-text" id="form-select-2-addon">Options</span>
+  <label class="input-group-text" for="form-select-2">Options</label>
 </div>
 
 <div class="input-group mb-1">
@@ -327,7 +327,7 @@ Input groups include support for styled selects and file inputs. Browser default
 
 {% capture example %}
 <div class="input-group mb-1">
-  <span class="input-group-text">Upload</span>
+  <label class="input-group-text" for="form-file-1">Upload</label>
   <div class="form-file">
     <input type="file" class="form-file-input" id="form-file-1">
     <label class="form-file-label" for="form-file-1">
@@ -345,13 +345,13 @@ Input groups include support for styled selects and file inputs. Browser default
       <span class="form-file-button">Browse</span>
     </label>
   </div>
-  <span class="input-group-text">Upload</span>
+  <label class="input-group-text" for="form-file-2">Upload</label>
 </div>
 
 <div class="input-group mb-1">
   <button class="btn btn-primary" type="button">Button</button>
   <div class="form-file">
-    <input type="file" class="form-file-input" id="form-file-3">
+    <input type="file" class="form-file-input" id="form-file-3" aria-label="Upload">
     <label class="form-file-label" for="form-file-3">
       <span class="form-file-text">Choose file...</span>
       <span class="form-file-button">Browse</span>
@@ -361,7 +361,7 @@ Input groups include support for styled selects and file inputs. Browser default
 
 <div class="input-group">
   <div class="form-file">
-    <input type="file" class="form-file-input" id="form-file-4">
+    <input type="file" class="form-file-input" id="form-file-4" aria-label="Upload">
     <label class="form-file-label" for="form-file-4">
       <span class="form-file-text">Choose file...</span>
       <span class="form-file-button">Browse</span>

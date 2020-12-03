@@ -23,7 +23,7 @@ Here's what you need to know before getting started with the navbar:
 
 ## Responsive Behaviors
 
-Navbars are built with responsive design in mind.  Using a `.navbar-expand{-sm|-md|-lg|-xl}` on the `.navbar` along with a `.navbar-collapse` container.
+Navbars are built with responsive design in mind.  Using a `.navbar-expand{-sm|-md|-lg|-xl}` on the `.navbar` along with a `.navbar-toggle` control, and a `.navbar-collapse` container, you can determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
 The following list gives a quick run-down of how the breakpoints are utilized.
 
@@ -192,7 +192,7 @@ Here's an example of some sub-components included in a default, light navbar:
 
 ### Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
+The `.navbar-brand` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
 <div class="cf-example">
   <nav class="navbar navbar-light bg-light mb-1">
@@ -239,7 +239,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 ### Nav
 
-Navbar navigation builds on some of the `.nav` options with their own modifier class and require the use of toggler classes for proper responsive styling.
+Navbar navigation builds on some of the `.nav` options with their own modifier class and require the use of toggle classes for proper responsive styling.
 
 Add `.active` directly to a `.nav-link`, to indicate a certain state, such as the current page.
 
@@ -293,7 +293,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
 ### Dropdowns
 
-You may also utilize the [Dropdown widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/) in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You can also use the [Dropdown widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/) in your navbar. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 If a dropdown is displayed in a non-expanded navbar, they will display 'inline' with the rest of the navbar menu.
 
@@ -538,9 +538,11 @@ Place a visual separator between segments of the navbar.
 
 Our [Collapse widget]({{ site.path }}/{{ version.docs }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
 
+Consider using the available `follow` option to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content, particularly if the container that was opened comes *before* the toggle in the document's structure. In theory, this will allow assistive technology users to jump directly from the toggle to the container it controls, but support for this is inconsitent.
+
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" data-cfw-collapse-follow=true aria-label="Toggle navigation">
     <span aria-hidden="true">&#8801;</span>
   </button>
 </nav>
@@ -682,6 +684,16 @@ There may also be instances where you may need to reset the padding on the `.nav
 {% endcapture %}
 {% renderExample example %}
 
+Use any of the responsive containers to change how wide the content in your navbar is presented.
+
+{% capture example %}
+<nav class="navbar navbar-light bg-light">
+  <div class="container-md">
+    <a href="#" class="navbar-brand">Navbar</a>
+  </div>
+</nav>
+{% endcapture %}
+{% renderExample example %}
 
 ## Placement
 
