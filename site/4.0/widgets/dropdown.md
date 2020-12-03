@@ -15,7 +15,7 @@ Widget Dependencies
 
 Dropdown requires the following:
 
-- The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.  Static positioning does not require the use of Popper.js.
+- The third-party library [Popper](https://popper.js.org/) to provide dynamic positioning and viewport detection.  Static positioning does not require the use of Popper.js.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
 
@@ -842,7 +842,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</p>
+          <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</p>
         </td>
       </tr>
       <tr>
@@ -850,14 +850,14 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string</td>
         <td><code>'dynamic'</code></td>
         <td>
-          <p>By default, we use Popper.js for dynamic positioning. Disable this with <code>'static'</code>.</p>
+          <p>By default, we use Popper for dynamic positioning. Disable this with <code>'static'</code>.</p>
         </td>
       </tr>
       <tr>
         <td><code>popperConfig</code></td>
         <td>null | object</td>
         <td><code>null</code></td>
-        <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
+        <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper configuration</a> that will override the default Popper configuration.</td>
       </tr>
     </tbody>
   </table>

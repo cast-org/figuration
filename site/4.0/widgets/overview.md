@@ -28,7 +28,7 @@ Don't use multiple widgets on the same element. For example, a button should not
 Widget Dependencies
 {.h5}
 
-Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on [jQuery](https://jquery.com/), while the Tooltip, Popover, and Dropdown widgets also require [Popper.js](https://popper.js.org/) This means jQuery and Popper.js must be included **before** the widget files. Figuration is currently only tested/supported on the latest version of jQuery.
+Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on [jQuery](https://jquery.com/), while the Tooltip, Popover, and Dropdown widgets also require [Popper](https://popper.js.org/) This means jQuery and Popper must be included **before** the widget files. Figuration is currently only tested/supported on the latest version of jQuery.
 {% endcapture %}
 {% renderCallout, callout, "info" %}
 

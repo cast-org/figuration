@@ -121,7 +121,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
 
 ### Dropdown
-- Dropdown has been reworked to use a recursive model, and now uses [Popper.js](https://popper.js.org/) for advanced positioning.  This also had an affect of changing all the available options.
+- Dropdown has been reworked to use a recursive model, and now uses [Popper](https://popper.js.org/) for advanced positioning.  This also had an affect of changing all the available options.
   - There are positioning fallbacks in place if dynamic placement is disabled.
 - Menu direction classes have been expanded to use the following alternates: `.dropup`, `.dropreverse`, `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
   - The directions classes are now applied directly to the `.dropdown-menu` element, or the submenu `ol`/`ul` list elements, rather than it's parent container.
@@ -137,13 +137,13 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
 
 ### Popover
-- Popover now requires [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
+- Popover now requires [Popper](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 ### Slider
 - Dropped the slider widget as a bundled plugin.  This has been replaced with the `.form-range` styled `<input type="range">` element.
 
 ### Tooltip
-- Tooltip now requires [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
+- Tooltip now requires [Popper](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 ## Documentation
 - We have stopped using Jekyll, and changed to using [Eleventy](https://11ty.dev) to generate the documentation.

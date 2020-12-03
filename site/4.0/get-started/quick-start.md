@@ -25,7 +25,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JavaScript
 
-[Figuration's widgets]({{ site.path }}/{{ version.docs }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
+[Figuration's widgets]({{ site.path }}/{{ version.docs }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
