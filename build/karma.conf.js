@@ -34,7 +34,7 @@ const detectBrowsers = {
         }
 
         if (availableBrowser.includes('Chromium')) {
-            return debug ? ['Chromium'] : ['ChromiumHeadless']
+            return debug ? ['Chromium'] : ['ChromiumHeadless'];
         }
 
         if (availableBrowser.includes('Firefox')) {
