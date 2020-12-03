@@ -148,7 +148,7 @@
             %btn-group-vertical-btn-not-first-align {
                 margin-top: -$btn-border-width;
             }
-            > .btn:not(:first-child),
+            > .btn ~ .btn,
             > .btn-group:not(:first-child) {
                 @extend %btn-group-vertical-btn-not-first-align;
             }
@@ -176,7 +176,7 @@
                 %btn-group-vertical-btn-not-first-radius {
                     @include border-top-radius(0);
                 }
-                > .btn:not(:first-child),
+                > .btn ~ .btn,
                 > .btn-group:not(:first-child) > .btn {
                     @extend %btn-group-vertical-btn-not-first-radius;
                 }
