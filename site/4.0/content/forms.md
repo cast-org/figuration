@@ -724,7 +724,7 @@ Add the `disabled` attribute to the `<input>` and the custom markup will be upda
 Browser Compatibility
 {.h5}
 
-While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
+While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/input-color).
 {% endcapture %}
 {% renderCallout, callout, "danger" %}
 
@@ -1064,7 +1064,7 @@ Custom form controls and selects are also supported.
 
 ## Validation
 
-Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
+Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% capture callout %}
 We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we'd recommend either using the server-side option or the default browser validation method.
