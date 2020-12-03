@@ -50,7 +50,7 @@ Position an element at the bottom of the viewport, from edge to edge.
 ### Sticky Top
 
 Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.
-This sticky utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found at [Can I Use - CSS position:sticky](https://caniuse.com/#feat=css-sticky).
+This sticky utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found at [Can I Use - CSS position:sticky](https://caniuse.com/css-sticky).
 
 **IE11 and IE10 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that can render it properly.
 

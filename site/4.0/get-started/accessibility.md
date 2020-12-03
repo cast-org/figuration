@@ -94,7 +94,7 @@ Using color to add meaning only provides a visual indication, which will not be 
 
 ## Reduced Motion
 
-Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at [Can I Use](https://caniuse.com/#search=prefers-reduced-motion).
+Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at [Can I Use](https://caniuse.com/?search=prefers-reduced-motion).
 
 On browsers that support `prefers-reduced-motion`, and where the user has *not* explicitly signaled that they would prefer reduced motion (i.e. where `prefers-reduced-motion: no-preference`), Figuration enables smooth scrolling using the `scroll-behavior` property.
 

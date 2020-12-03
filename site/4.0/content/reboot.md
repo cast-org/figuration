@@ -324,7 +324,7 @@ These changes, and more, are demonstrated below.
 Date, Time, and Color Input Support
 {.h5}
 
-Be aware that not all browsers support the [date and time](https://caniuse.com/#feat=input-datetime) or [color](https://caniuse.com/#feat=input-color) input types.
+Be aware that not all browsers support the [date and time](https://caniuse.com/input-datetime) or [color](https://caniuse.com/input-color) input types.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
