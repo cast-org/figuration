@@ -1080,4 +1080,47 @@ $(function() {
             })
             .CFW_Tooltip('show');
     });
+
+    QUnit.test('should show tooltip with provided custom class from data attribute', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip" data-cfw-tooltip-custom-class="custom-class"></a>')
+            .CFW_Tooltip()
+            .on('afterShow.cfw.tooltip', function() {
+                assert.ok($trigger.data('cfw.tooltip').$target.hasClass('custom-class'));
+                done();
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should show tooltip with provided custom class from option string', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .CFW_Tooltip({
+                customClass: 'custom-class'
+            })
+            .on('afterShow.cfw.tooltip', function() {
+                assert.ok($trigger.data('cfw.tooltip').$target.hasClass('custom-class'));
+                done();
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should show tooltip with provided custom class from option function', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .CFW_Tooltip({
+                customClass: function() { return 'custom-class'; }
+            })
+            .on('afterShow.cfw.tooltip', function() {
+                assert.ok($trigger.data('cfw.tooltip').$target.hasClass('custom-class'));
+                done();
+            });
+        $trigger.CFW_Tooltip('show');
+    });
 });

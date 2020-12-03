@@ -20,7 +20,7 @@
         display         : 'block',          // Value for display CSS rule
         animate         : true,             // Should the tooltip fade in and out
         delay : {
-            show        : 0,                // Delay for showing tooltip (milliseconda)
+            show        : 0,                // Delay for showing tooltip (milliseconds)
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
@@ -30,6 +30,7 @@
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
         closesrtext     : 'Close',          // Screen reader text for close links
         title           : '',               // Title text/html to be inserted
+        customClass     : '',               // Class name(s) to be added on show
         show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
@@ -351,6 +352,11 @@
 
             this.$target.css('display', this.settings.display);
             if (this.settings.animate) { this.$target.addClass('fade'); }
+
+            var customClass = typeof this.settings.customClass === 'function' ? this.settings.customClass() : this.settings.customClass;
+            if (customClass) {
+                this.$target.addClass(customClass);
+            }
 
             this.locateTip();
 

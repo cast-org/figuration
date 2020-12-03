@@ -296,6 +296,15 @@ function myTipAlign(tip, trigger) {
         <td>Default title value if <code>title</code> attribute isn't present.</td>
       </tr>
       <tr>
+        <td><code>customClass</code></td>
+        <td>string | function</td>
+        <td><code>''</code></td>
+        <td>
+          <p>Add classes to the tooltip when it is shown. Note that these classes will be added in addition to any classes specified in the template. To add multiple classes, separate them with spaces: <code>'class-1 class-2'</code>.</p>
+          <p>You can also pass a function that should return a single string containing additional class names.</p>
+        </td>
+      </tr>
+      <tr>
         <td><code>unlink</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
