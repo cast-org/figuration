@@ -15,7 +15,7 @@ Widget Dependencies
 
 Tooltip requires the following:
 
-- The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
+- The third-party library [Popper](https://popper.js.org/) to provide dynamic positioning and viewport detection.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
 
@@ -253,7 +253,7 @@ function myTipAlign(tip, trigger) {
         <td>
           <p>Keep the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
           <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the tooltip instance.</p>
-          <p>This option maps to the <code>.boundariesElement</code> option in Popper.js, so it will accept values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
+          <p>This option maps to the <code>.boundariesElement</code> option in Popper, so it will accept values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
         </td>
       </tr>
       <tr>
@@ -317,7 +317,7 @@ function myTipAlign(tip, trigger) {
         <td><code>popperConfig</code></td>
         <td>null | object</td>
         <td><code>null</code></td>
-        <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
+        <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper configuration</a> that will override the default Popper configuration.</td>
       </tr>
     </tbody>
   </table>

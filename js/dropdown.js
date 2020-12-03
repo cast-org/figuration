@@ -574,7 +574,7 @@
             if (isStatic) { return; }
 
             if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper (https://popper.js.org)');
             }
 
             this.popper = new Popper(this._getReference(), this.$target[0], this._getPopperConfig());
