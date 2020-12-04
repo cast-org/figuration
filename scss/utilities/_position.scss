@@ -66,25 +66,25 @@
             @include media-breakpoint-up($bp) {
                 @each $size, $length in $position-top-offsets {
                     .top#{$bprule}-#{$size} {
-                        top: #{$length};
+                        top: #{$length} !important;
                     }
                 }
 
                 @each $size, $length in $position-end-offsets {
                     .end#{$bprule}-#{$size} {
-                        right: #{$length};
+                        right: #{$length} !important;
                     }
                 }
 
                 @each $size, $length in $position-bottom-offsets {
                     .bottom#{$bprule}-#{$size} {
-                        bottom: #{$length};
+                        bottom: #{$length} !important;
                     }
                 }
 
                 @each $size, $length in $position-start-offsets {
                     .start#{$bprule}-#{$size} {
-                        left: #{$length};
+                        left: #{$length} !important;
                     }
                 }
             }
@@ -97,13 +97,13 @@
 
             @include media-breakpoint-up($bp) {
                 .translate-middle#{$bprule} {
-                    transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%) !important;
                 }
                 .translate-middle#{$bprule}-x {
-                    transform: translateX(-50%);
+                    transform: translateX(-50%) !important;
                 }
                 .translate-middle#{$bprule}-y {
-                    transform: translateY(-50%);
+                    transform: translateY(-50%) !important;
                 }
             }
         }
