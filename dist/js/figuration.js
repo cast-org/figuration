@@ -729,7 +729,7 @@ if (typeof jQuery === 'undefined') {
 
         show : function(follow) {
             var $selfRef = this;
-            if (follow === null) { follow = this.settings.follow; }
+            if (typeof follow === 'undefined') { follow = this.settings.follow; }
 
             // Bail if transition in progress
             if (this.inTransition || this.$target.hasClass('in')) { return; }
@@ -767,7 +767,10 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$target.CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
-                    $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
+                    if (typeof $selfRef.$target.first().attr('tabindex') === 'undefined') {
+                        $selfRef.$target.first().attr('tabindex', '-1');
+                    }
+                    $selfRef.$target.eq(0).trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterShow.cfw.collapse');
             };
@@ -779,7 +782,7 @@ if (typeof jQuery === 'undefined') {
         hide : function(follow) {
             var $selfRef = this;
 
-            if (follow === null) { follow = this.settings.follow; }
+            if (typeof follow === 'undefined') { follow = this.settings.follow; }
 
             // Bail if transition in progress
             if (this.inTransition || !this.$target.hasClass('in')) { return; }
@@ -1443,7 +1446,7 @@ if (typeof jQuery === 'undefined') {
             if (isStatic) { return; }
 
             if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper (https://popper.js.org)');
             }
 
             this.popper = new Popper(this._getReference(), this.$target[0], this._getPopperConfig());
@@ -2054,7 +2057,7 @@ if (typeof jQuery === 'undefined') {
         display         : 'block',          // Value for display CSS rule
         animate         : true,             // Should the tooltip fade in and out
         delay : {
-            show        : 0,                // Delay for showing tooltip (milliseconda)
+            show        : 0,                // Delay for showing tooltip (milliseconds)
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
@@ -2064,6 +2067,7 @@ if (typeof jQuery === 'undefined') {
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
         closesrtext     : 'Close',          // Screen reader text for close links
         title           : '',               // Title text/html to be inserted
+        customClass     : '',               // Class name(s) to be added on show
         show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
@@ -2076,7 +2080,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
             if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s Tooltip widget requires Popper.js (https://popper.js.org)');
+                throw new TypeError('Figurations\'s Tooltip widget requires Popper (https://popper.js.org)');
             }
 
             this.type = type;
@@ -2165,8 +2169,16 @@ if (typeof jQuery === 'undefined') {
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
-                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
+            var title = typeof $e.attr('title') !== 'undefined' ? $e.attr('title') : null;
+
+            if (title || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', title || '');
+
+                if (title && typeof $e.attr('aria-label') === 'undefined' && !$e[0].textContent) {
+                    $e.attr('aria-label', title || '');
+                }
+
+                $e.attr('title', '');
             }
         },
 
@@ -2385,6 +2397,11 @@ if (typeof jQuery === 'undefined') {
 
             this.$target.css('display', this.settings.display);
             if (this.settings.animate) { this.$target.addClass('fade'); }
+
+            var customClass = typeof this.settings.customClass === 'function' ? this.settings.customClass() : this.settings.customClass;
+            if (customClass) {
+                this.$target.addClass(customClass);
+            }
 
             this.locateTip();
 
