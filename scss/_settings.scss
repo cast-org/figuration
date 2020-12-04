@@ -196,6 +196,21 @@ $spacers-margin-negative:           $spacers !default;
 $spacers-margin-negative-prepend:   n !default;
 
 
+// Position offsets
+// =====
+// Offset pairs for placement position utilities.
+$position-offsets: (
+    "0":    0,
+    "50":   50%,
+    "100":  100%
+) !default;
+
+$position-top-offsets:              $position-offsets !default;
+$position-end-offsets:              $position-offsets !default;
+$position-bottom-offsets:           $position-offsets !default;
+$position-start-offsets:            $position-offsets !default;
+
+
 // Sizing
 // =====
 // Set values for width and height utility classes for sizing.
@@ -271,6 +286,8 @@ $utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
 $utility-float-breakpoints:         map-keys($grid-breakpoints) !default;
 $utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
 $utility-sticky-top-breakpoints:    map-keys($grid-breakpoints) !default;
+$utility-placement-breakpoints:     "xs" !default;
+$utility-translate-breakpoints:     "xs" !default;
 $utility-screen-reader-breakpoints: map-keys($grid-breakpoints) !default;
 $utility-spacing-breakpoints:       map-keys($grid-breakpoints) !default;
 $utility-text-align-breakpoints:    map-keys($grid-breakpoints) !default;
