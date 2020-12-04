@@ -270,7 +270,7 @@ When showing a new tab, the events fire in the following order:
 
 - `beforeHide.cfw.tab` (on the current active tab)
 - `beforeShow.cfw.tab` (on the to-be-shown tab)
-- `afterHidden.cfw.tab` (on the previous active tab, the same one as for the `beforeHide.cfw.tab` event)
+- `afterHide.cfw.tab` (on the previous active tab, the same one as for the `beforeHide.cfw.tab` event)
 - `afterShow.cfw.tab` (on the newly-active just-shown tab, the same one as for the `beforeShow.cfw.tab` event)
 
 <div class="table-scroll">
