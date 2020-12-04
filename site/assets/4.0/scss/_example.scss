@@ -419,3 +419,17 @@
         display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
+
+// Placement utilities
+.cf-example-placement {
+    .position-relative {
+        height: 200px;
+        background-color: $light;
+    }
+    .position-absolute {
+        width: 2em;
+        height: 2em;
+        background-color: $dark;
+        @include border-radius($border-radius);
+    }
+}

@@ -58,4 +58,54 @@
             }
         }
     }
+
+    @if $enable-utility-position-placement {
+        @each $bp in $utility-placement-breakpoints {
+            $bprule: breakpoint-designator($bp);
+
+            @include media-breakpoint-up($bp) {
+                @each $size, $length in $position-top-offsets {
+                    .top#{$bprule}-#{$size} {
+                        top: #{$length};
+                    }
+                }
+
+                @each $size, $length in $position-end-offsets {
+                    .end#{$bprule}-#{$size} {
+                        right: #{$length};
+                    }
+                }
+
+                @each $size, $length in $position-bottom-offsets {
+                    .bottom#{$bprule}-#{$size} {
+                        bottom: #{$length};
+                    }
+                }
+
+                @each $size, $length in $position-start-offsets {
+                    .start#{$bprule}-#{$size} {
+                        left: #{$length};
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-utility-position-translate {
+        @each $bp in $utility-translate-breakpoints {
+            $bprule: breakpoint-designator($bp);
+
+            @include media-breakpoint-up($bp) {
+                .translate-middle#{$bprule} {
+                    transform: translate(-50%, -50%);
+                }
+                .translate-middle#{$bprule}-x {
+                    transform: translateX(-50%);
+                }
+                .translate-middle#{$bprule}-y {
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
 }
