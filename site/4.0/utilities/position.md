@@ -150,6 +150,20 @@ Here are some real life examples of these classes:
 {% endcapture %}
 {% renderExample example, "d-flex flex-around" %}
 
+You can use these classes with existing components to create new ones. Remember that you can extend its functionality by adding entries to the `$position-offsets` variable.
+
+{% capture example %}
+<div class="position-relative m-1_5">
+  <div class="progress" style="height: 1px;">
+    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary radius-circle">1</button>
+  <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary radius-circle">2</button>
+  <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary radius-circle">3</button>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## SASS Reference
 
 ### Variables
