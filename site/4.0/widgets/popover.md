@@ -109,7 +109,7 @@ $('#html-popover').CFW_Popover({
 
 ### Pre-generated Popover
 
-Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `target` option.
+Have complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `target` option.
 
 {% capture example %}
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="forward">Show Popover</button>
