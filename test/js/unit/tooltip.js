@@ -1123,4 +1123,31 @@ $(function() {
             });
         $trigger.CFW_Tooltip('show');
     });
+
+    QUnit.test('should add an aria-label attribute referencing original title', function(assert) {
+        assert.expect(1);
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .CFW_Tooltip();
+
+        assert.strictEqual($trigger.attr('aria-label'), 'Another tooltip');
+    });
+
+    QUnit.test('should update aria-label attribute if the element has existing aria-label', function(assert) {
+        assert.expect(1);
+
+        var $trigger = $('<a href="#" title="Another tooltip" aria-label="Different label"></a>')
+            .CFW_Tooltip();
+
+        assert.strictEqual($trigger.attr('aria-label'), 'Different label');
+    });
+
+    QUnit.test('should not add an aria-label attribute if the element has text content', function(assert) {
+        assert.expect(1);
+
+        var $trigger = $('<a href="#" title="Another tooltip">Text content</a>')
+            .CFW_Tooltip();
+
+        assert.strictEqual(typeof $trigger.attr('aria-label'), 'undefined');
+    });
 });
