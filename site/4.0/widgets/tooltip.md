@@ -98,6 +98,27 @@ $('#html-tooltip').CFW_Tooltip({
 {% endcapture %}
 {% renderExample example %}
 
+### Pre-generated Tooltip
+
+You can also generate the markup for your tooltip, and then link to it with the `target` option.
+
+{% capture example %}
+<button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-target="#tooltipPreGen" data-cfw-tooltip-placement="forward auto">Show Tooltip</button>
+
+<div class="tooltip" id="tooltipPreGen">
+  <button type="button" class="close" data-cfw-dismiss="tooltip" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="tooltip-body">
+    <p>Sed posuere consectetur est at lobortis.</p>
+    <figure class="figure">
+      <img src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" class="figure-img img-fluid" alt="Sample image">
+      <figcaption class="figure-caption text-light">Sample image caption.</figcaption>
+    </figure>
+  </div>
+  <div class="tooltip-arrow"></div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ### Viewport Constrainment
 
 Keep tooltips in their place with the `viewport` option.
