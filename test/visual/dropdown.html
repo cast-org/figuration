@@ -6,7 +6,7 @@
 
 <title>Figuration - Dropdown</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+<link id="cssCore" type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
 
 <script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
@@ -28,8 +28,39 @@
 <script src="../../js/equalize.js"></script>
 <script src="../../js/common.js"></script>
 
+<script>
+var fileRename = function(id, filename) {
+    var $node = $('#' + id);
+    var path = $node.attr('href');
+    var isMin = path.indexOf('.min.css') >= 0;
+    var re = /^(.*\/)?[^/]+\.(css)$/i;
+    var repStr = '$1' + filename;
+    path = path.replace(re, repStr);
+    path += isMin ? '.min.css' : '.css';
+    $node.attr('href', path);
+};
+
+var setLTR = function(doReset) {
+    $('html').removeAttr('dir');
+    fileRename('cssCore', 'figuration');
+    return false;
+};
+
+var setRTL = function() {
+    $('html').attr('dir', 'rtl');
+    fileRename('cssCore', 'figuration-rtl');
+    return false;
+};
+</script>
+
 </head>
 <body class="m-1" style="height: 100rem;">
+
+<div id="dirTest" style="position: fixed; bottom: .25rem; left: 50%; z-index: 2000; transform: translateX(-50%); background: #ddd; color: #000; padding: 0 .5rem; border: 2px solid #666; text-align: center; font-size: .875rem;">
+    Dir:
+    <a href="#" style="color: #009 !important;" onclick="return setLTR();">LTR</a> |
+    <a href="#" style="color: #009 !important;" onclick="return setRTL();">RTL</a>
+</div>
 
 <div class="dropdown mb-1">
     <button id="dropdown0" class="btn btn-info" type="button" data-cfw="dropdown">
@@ -152,7 +183,7 @@
 <div class="d-flex flex-center">
     <div class="dropdown me-0_25">
         <button type="button" class="btn" data-cfw="dropdown">
-            Dropdown Dir Parent <span class="caret" aria-hidden="true"></span>
+            Dropdown Dir <span class="caret" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Dropdown header</li>
@@ -200,9 +231,9 @@
         </ul>
     </div>
 
-    <div class="dropdown">
-        <button type="button" class="btn" data-cfw="dropdown">
-            Dropdown Dir <span class="caret" aria-hidden="true"></span>
+    <div class="dropdown dropdown-reverse">
+        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-display="static">
+            Dropdown Dir Static<span class="caret" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Dropdown header</li>
