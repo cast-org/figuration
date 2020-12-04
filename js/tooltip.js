@@ -132,8 +132,16 @@
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
-                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
+            var title = typeof $e.attr('title') !== 'undefined' ? $e.attr('title') : null;
+
+            if (title || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', title || '');
+
+                if (title && typeof $e.attr('aria-label') === 'undefined' && !$e[0].textContent) {
+                    $e.attr('aria-label', title || '');
+                }
+
+                $e.attr('title', '');
             }
         },
 
