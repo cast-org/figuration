@@ -71,6 +71,7 @@ module.exports = {
           { "title": "Flexbox" },
           { "title": "Floating" },
           { "title": "Icons" },
+          { "title": "Interactions" },
           { "title": "Links" },
           { "title": "Overflow" },
           { "title": "Position" },
