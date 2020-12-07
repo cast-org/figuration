@@ -34,10 +34,10 @@ Scroll the area below the navbar and watch the active class change. The dropdown
       <li class="nav-item dropdown">
         <a href="#" class="nav-link" data-cfw="dropdown">Dropdown <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#one" tabindex="-1">one</a></li>
-          <li><a href="#two" tabindex="-1">two</a></li>
+          <li><a href="#one">one</a></li>
+          <li><a href="#two">two</a></li>
           <li class="dropdown-divider"></li>
-          <li><a href="#three" tabindex="-1">three</a></li>
+          <li><a href="#three">three</a></li>
         </ul>
       </li>
     </ul>
@@ -66,10 +66,10 @@ Scroll the area below the navbar and watch the active class change. The dropdown
     <li class="nav-item dropdown">
       <a href="#" class="nav-link" data-cfw="dropdown">Dropdown <span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <li><a href="#one" tabindex="-1">one</a></li>
-        <li><a href="#two" tabindex="-1">two</a></li>
+        <li><a href="#one">one</a></li>
+        <li><a href="#two">two</a></li>
         <li class="dropdown-divider"></li>
-        <li><a href="#three" tabindex="-1">three</a></li>
+        <li><a href="#three">three</a></li>
       </ul>
     </li>
   </ul>
@@ -96,7 +96,7 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
 <div class="cf-example">
   <div class="row">
     <div class="col-4">
-      <nav id="subnav-example" class="navbar navbar-light bg-light">
+      <nav id="subnav-example" class="navbar navbar-light bg-light flex-column flex-items-start">
         <a class="navbar-brand" href="#">Navbar</a>
         <nav class="nav nav-pills flex-column">
           <a class="nav-link" href="#item-1">Item 1</a>
@@ -137,7 +137,7 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
 {% capture highlight %}
 <div class="row">
   <div class="col-4">
-    <nav id="subnav-example" class="navbar navbar-light bg-light">
+    <nav id="subnav-example" class="navbar navbar-light bg-light flex-column flex-items-start">
       <a class="navbar-brand" href="#">Navbar</a>
       <nav class="nav nav-pills flex-column">
         <a class="nav-link" href="#item-1">Item 1</a>
@@ -172,6 +172,107 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
       <p>...</p>
     </div>
   </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Nested Options
+
+By default parent items will be marked `active` when a descendant is `active`. However, you can choose to not mark the parents as `active` by setting the option `nested` to `false`.
+
+<div class="cf-example">
+  <div class="row">
+    <div class="col-4">
+      <nav id="nest-example" class="navbar navbar-light bg-light flex-column flex-items-start">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#nest-1">Item 1</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-1 my-0_25" href="#nest-1-1">Item 1-1</a>
+            <a class="nav-link ms-1 my-0_25" href="#nest-1-2">Item 1-2</a>
+          </nav>
+          <a class="nav-link" href="#nest-2">Item 2</a>
+          <a class="nav-link" href="#nest-3">Item 3</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-1 my-0_25" href="#nest-3-1">Item 3-1</a>
+            <a class="nav-link ms-1 my-0_25" href="#nest-3-2">Item 3-2</a>
+          </nav>
+         </nav>
+      </nav>
+    </div>
+    <div class="col-8">
+      <div data-cfw="scrollspy" data-cfw-scrollspy-target="#nest-example" data-cfw-scrollspy-offset="0" data-cfw-scrollspy-nested=false class="cf-example-scrollspy2">
+        <h4 id="nest-1">Item 1</h4>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <h5 id="nest-1-1">Item 1-1</h5>
+        <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+        <h5 id="nest-1-2">Item 1-2</h5>
+        <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+        <h4 id="nest-2">Item 2</h4>
+        <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+        <h4 id="nest-3">Item 3</h4>
+        <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+        <h5 id="nest-3-1">Item 3-1</h5>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <h5 id="nest-3-2">Item 3-2</h5>
+        <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% capture highlight %}
+<div data-cfw="scrollspy" data-cfw-scrollspy-target="#someID" data-cfw-scrollspy-nested=false>
+    ...
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+Setting the `nested` option to `'dropdown'` will also not mark the parents as `active`, but will mark the dropdown toggle item `active` if its children become active.
+
+<div class="cf-example">
+  <div class="row">
+    <div class="col-4">
+      <nav id="nestdrop-example" class="navbar navbar-light bg-light flex-column flex-items-start">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#nestdrop-main">Main Title</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-1 my-0_25" href="#nestdrop-alpha">Alpha</a>
+            <a class="nav-link ms-1 my-0_25" href="#nestdrop-beta">Beta</a>
+          </nav>
+          <div class="dropdown">
+            <a href="#" class="nav-link" data-cfw="dropdown">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#nestdrop-one">one</a></li>
+              <li><a href="#nestdrop-two">two</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="#nestdrop-three">three</a></li>
+            </ul>
+          </div>
+         </nav>
+      </nav>
+    </div>
+    <div class="col-8">
+      <div data-cfw="scrollspy" data-cfw-scrollspy-target="#nestdrop-example" data-cfw-scrollspy-offset="0" data-cfw-scrollspy-nested="dropdown" class="cf-example-scrollspy">
+        <h4 id="nestdrop-main">Main Title</h4>
+        <h5 id="nestdrop-alpha">Alpha</h5>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <h5 id="nestdrop-beta">Beta</h5>
+        <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+        <h5 id="nestdrop-one">one</h5>
+        <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+        <h5 id="nestdrop-two">two</h5>
+        <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+        <h5 id="nestdrop-three">three</h5>
+        <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+        <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% capture highlight %}
+<div data-cfw="scrollspy" data-cfw-scrollspy-target="#someID" data-cfw-scrollspy-nested='dropdown'>
+    ...
 </div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
@@ -293,6 +394,17 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>integer</td>
         <td><code>10</code></td>
         <td>Pixels to offset from top when calculating position of scroll.</td>
+      </tr>
+      <tr>
+        <td><code>nested</code></td>
+        <td>boolean | string</td>
+        <td><code>true</code></td>
+        <td>
+          Available options are <code>true</code> (default), <code>false</code>, or <code>'dropdown'</code>.
+          <ul class="mb-0">
+            <li><code>false</code>: Disables the active marker being added to parent navigation items.</li>
+            <li><code>'dropdown'</code> Disables the active marker being added to parent navigation items, unless the parent is a dropdown toggle.</li>
+        </td>
       </tr>
       <tr>
         <td><code>throttle</code></td>

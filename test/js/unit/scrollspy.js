@@ -353,6 +353,96 @@ $(function() {
         testActiveElements();
     });
 
+    QUnit.test('should not mark parent item as active when `nested: false` (list markup)', function(assert) {
+        assert.expect(6);
+        var times = 0;
+        var done = assert.async();
+        var navbarHtml = '<ul id="navigation">' +
+            '<li>' +
+            '<a id="a-1" class="nav-link" href="#div-1">div 1</a>' +
+            '<ol class="nav">' +
+            '<li>' +
+            '<a id="a-2" class="nav-link" href="#div-2">div 2</a>' +
+            '</li>' +
+            '</ol>' +
+            '</li>' +
+            '</ul>';
+
+        var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
+            '<div id="div-1" style="padding: 0; margin: 0">' +
+            '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
+            '</div>' +
+            '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({
+                offset: 0,
+                target: '#navigation',
+                nested: false
+            });
+
+        function testActiveElements() {
+            if (++times > 3) { return done(); }
+
+            $content.one('scroll', function() {
+                assert.notOk($('#a-1').hasClass('active'), 'nav item for outer element does not have "active" class');
+                assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class');
+                testActiveElements();
+            });
+
+            $content.scrollTop($content.scrollTop() + 10);
+        }
+
+        testActiveElements();
+    });
+
+    QUnit.test('should not mark parent item as active when `nested: false` (nav markup)', function(assert) {
+        assert.expect(6);
+        var times = 0;
+        var done = assert.async();
+        var navbarHtml = '<nav id="navigation">' +
+            '<nav>' +
+            '<a id="a-1" class="nav-link" href="#div-1">div 1</a>' +
+            '<nav>' +
+            '<a id="a-2" class="nav-link" href="#div-2">div 2</a>' +
+            '</nav>' +
+            '</nav>' +
+            '</nav>';
+
+        var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
+            '<div id="div-1" style="padding: 0; margin: 0">' +
+            '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
+            '</div>' +
+            '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({
+                offset: 0,
+                target: '#navigation',
+                nested: false
+            });
+
+        function testActiveElements() {
+            if (++times > 3) { return done(); }
+
+            $content.one('scroll', function() {
+                assert.notOk($('#a-1').hasClass('active'), 'nav item for outer element does not have "active" class');
+                assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class');
+                testActiveElements();
+            });
+
+            $content.scrollTop($content.scrollTop() + 10);
+        }
+
+        testActiveElements();
+    });
+
     QUnit.test('should clear selection if above the first section', function(assert) {
         assert.expect(3);
         var done = assert.async();
