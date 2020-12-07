@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Figuration (v4.0.3)
+ * Figuration (v4.1.0)
  * http://figuration.org
  * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -848,7 +848,6 @@ pre code {
 
 select.form-control {
   padding-right: 1.875em;
-  vertical-align: middle;
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='rgba%2866, 79, 91, 0.85%29' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
