@@ -1,0 +1,20 @@
+// Footer
+.cf-footer {
+    @include font-size(map-get($font-sizes, "small"));
+    color: $black;
+    background-color: palette($uibase, 100);
+    border-top: 1px solid $uibase-400;
+
+    a {
+        color: palette($primary, 600);
+
+        @include hover-focus() {
+            color: palette($primary, 800);
+        }
+    }
+}
+
+.cf-footer-cast-logo {
+    width: 9.645rem;
+    height: 3rem;
+}

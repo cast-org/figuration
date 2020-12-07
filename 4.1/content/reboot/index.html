@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.">
+<meta name="author" content="CAST, Inc.">
+
+<meta name="docsearch:language" content="en-us">
+<meta name="docsearch:version" content="4.1">
+
+<title>Reboot &#124; CAST Figuration (v4.1)</title>
+
+<link rel="canonical" href="http://figuration.org/4.1/content/reboot/">
+
+<!-- Favicons -->
+<link sizes="180x180" rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png"/>
+<link sizes="32x32" rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png"/>
+<link sizes="16x16" rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png"/>
+<link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+<link color="#5bbad5" rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg"/>
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico"/>
+<meta name="msapplication-TileColor" content="#117cba"/>
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@figuration_org">
+<meta name="twitter:creator" content="@figuration_org">
+<meta name="twitter:title" content="Reboot">
+<meta name="twitter:description" content="Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.">
+<meta name="twitter:image" content="http://figuration.org/assets/brand/figuration-social.png">
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9130143-15', 'figuration.org');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- Font CSS -->
+<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
+
+
+<!-- Algolia DocSearch CSS -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<!-- Figuration CSS -->
+<link href="/assets/4.1/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
+<link href="/assets/4.1/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/assets/4.1/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+<!-- Popper -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script>window.Popper || document.write('<script src="/assets/4.1/js/vendor/popper.min.js"><\/script>')</script>
+
+<!-- Figuration JS -->
+<script src="/assets/4.1/dist/js/figuration.min.js"></script><!-- Docs Js -->
+<script src="/assets/4.1/js/docs.min.js"></script>
+
+</head>
+<body>
+<a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
+
+<header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
+  <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
+  <title>Figuration</title>
+  <path fill="currentColor" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.5.4 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM197 52c17.1 21.4 29.4 37.7 29.3 38.7-.6 4.9-20.3 90.7-21 91.4-1.1 1.1-83.6 41.1-84.8 41.2-1.8 0-85-40.2-85.8-41.5-.4-.7-5.5-21.7-11.2-46.6L13 90l28.7-36.3C57.4 33.8 71 16.9 71.8 16.2c1.2-.9 12.4-1.2 48.6-1.1h47.1L197 52z"/>
+  <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
+</svg>
+
+    <span class="sr-only-xs-down">CAST Figuration</span>
+  </a>
+  <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+    <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+  </button>
+  <nav class="navbar-collapse collapse order-last order-lg-unordered text-nowrap" id="cf-topnav" aria-label="Main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/4.1/get-started/quick-start/" class="nav-link">Get Started</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.1/layout/overview/" class="nav-link">Layout</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.1/content/reboot/" class="nav-link active" aria-current="true">Content</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.1/components/alerts/" class="nav-link">Components</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.1/utilities/borders/" class="nav-link">Utilities</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.1/widgets/overview/" class="nav-link">Widgets</a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
+    <li class="nav-item me-1"><div class="dropdown">
+  <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    v4.1.0
+    <span class="caret" aria-hidden="true"></span>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Latest</li>
+    
+    <li><a href="/4.1/" class="active" aria-current="true">v4.1.0</a></li>
+    
+    <li class="dropdown-divider"></li>
+    
+    <li class="dropdown-header">Older</li><li><a href="/4.0/">v4.0.3</a></li>
+    <li><a href="/3.0/">v3.0.5</a></li>
+    </ul>
+</div>
+    </li><li class="nav-item">
+      <a href="https://twitter.com/figuration_org" class="nav-link px-0_5" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/cast-org/figuration" class="nav-link px-0_5" aria-label="Github">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Github</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item"><div class="dropdown">
+  <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+  </a>
+  <ul class="dropdown-menu dropreverse position-absolute">
+    <li class="dropdown-header">Direction</li>
+    <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+    <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+  </ul>
+</div>
+    </li>
+  </ul>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
+      <form class="cf-search" role="search">
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.1"/>
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+  <span aria-hidden="true">Pages <span class="caret" ></span></span>
+</button>
+<nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
+  <ul class="list-unstyled">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
+          <li class="nav-item"><a href="/4.1/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+        </span></button><div id="sidenav2">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/4.1/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
+          <li class="nav-item"><a href="/4.1/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
+          <li class="nav-item"><a href="/4.1/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav3" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Content</span>
+        </span></button><div id="sidenav3">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/content/reboot/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Reboot</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
+          <li class="nav-item"><a href="/4.1/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/lists/" class="nav-link"><span class="nav-link-inner">Lists</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
+          <li class="nav-item"><a href="/4.1/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/interactions/" class="nav-link"><span class="nav-link-inner">Interactions</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/links/" class="nav-link"><span class="nav-link-inner">Links</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/overflow/" class="nav-link"><span class="nav-link-inner">Overflow</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/shadows/" class="nav-link"><span class="nav-link-inner">Shadows</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
+          <li class="nav-item"><a href="/4.1/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.1/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/tab/" class="nav-link"><span class="nav-link-inner">Tab</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
+          <li class="nav-item"><a href="/4.1/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
+          </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+    </aside>
+
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Reboot</h1>
+
+          <p class="fs-large font-weight-sbold">Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.</p>
+        </div>
+        
+        <div class="cf-content-toc">
+          <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+          <nav class="cf-toc">
+                <ol>
+                    
+                    <li><a href="#approach">Approach </a>
+            		</li>
+
+                    <li><a href="#page-defaults">Page Defaults </a>
+            		</li>
+
+                    <li><a href="#native-font-stack">Native Font Stack </a>
+            		</li>
+
+                    <li><a href="#headings-and-paragraphs">Headings and Paragraphs </a>
+            		</li>
+
+                    <li><a href="#lists">Lists </a>
+            		</li>
+
+                    <li><a href="#preformatted-text">Preformatted Text </a>
+            		</li>
+
+                    <li><a href="#tables">Tables </a>
+            		</li>
+
+                    <li><a href="#forms">Forms </a>
+            		</li>
+
+                    <li><a href="#pointers-on-buttons">Pointers On Buttons </a>
+            		</li>
+
+                    <li><a href="#misc-elements">Misc Elements </a>
+            
+                <ol>
+                    
+                    <li><a href="#address">Address </a>
+            		</li>
+
+                    <li><a href="#blockquote">Blockquote </a>
+            		</li>
+
+                    <li><a href="#inline-elements">Inline Elements </a>
+            		</li>
+
+                    <li><a href="#inline-frame">Inline Frame </a>
+            		</li>
+
+                    <li><a href="#summary">Summary </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#html5-hidden-attribute">HTML5 [hidden] Attribute </a>
+            		</li>
+
+                    <li><a href="#sass-reference">SASS Reference </a>
+            
+                <ol>
+                    
+                    <li><a href="#variables">Variables </a>
+            		</li>
+
+                    <li><a href="#mixins">Mixins </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <div class="cf-content">
+          <h2 id="approach">Approach <a class="direct-link" href="#approach"></a></h2>
+<p>Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.</p>
+<p>Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code>&lt;table&gt;</code> styles for a simpler baseline and later provide <code>.table</code>, <code>.table-bordered</code>, and more.</p>
+<p>Here are our guidelines and reasons for choosing what to override in Reboot:</p>
+<ul>
+<li>Update some browser default values to use <code>rem</code>s instead of <code>em</code>s for scalable component spacing.</li>
+<li>Avoid <code>margin-top</code>. Vertical margins can collapse, yielding unexpected results. More importantly though, a single direction of <code>margin</code> is a simpler mental model.</li>
+<li>For easier scaling across device sizes, block elements should use <code>rem</code>s for <code>margin</code>s.</li>
+<li>Keep declarations of <code>font</code>-related properties to a minimum, using <code>inherit</code> whenever possible.</li>
+</ul>
+<h2 id="page-defaults">Page Defaults <a class="direct-link" href="#page-defaults"></a></h2>
+<p>The <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements are updated to provide better page-wide defaults. More specifically:</p>
+<ul>
+<li>The <code>box-sizing</code> is globally set on every element—including <code>*::before</code> and <code>*::after</code>, to <code>border-box</code>. This ensures that the declared width of element is never exceeded due to padding or border.</li>
+<li>No base <code>font-size</code> is declared on the <code>&lt;html&gt;</code>, but a <code>16px</code> browser default is assumed. <code>font-size: 1rem</code> on the <code>&lt;body&gt;</code> for easy responsive type-scaling via media queries while respecting user preferences allowing for a more accessible approach. This browser default can be overridden by modifying the <code>$font-size-root</code> variable.</li>
+<li>The <code>&lt;body&gt;</code> also sets a global <code>font-family</code>, <code>line-height</code>, and <code>text-align</code>. This is inherited later by some form elements to prevent font inconsistencies.</li>
+<li>For safety, the <code>&lt;body&gt;</code> has a declared <code>background-color</code>, defaulting to <code>#fff</code>.</li>
+</ul>
+<h2 id="native-font-stack">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
+<p>Figuration uses a &quot;native font stack&quot;, sometimes called a &quot;system font stack&quot;, for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token selector">,</span><br>    <span class="token selector">-apple-system</span><span class="token selector">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token selector">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token selector">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token selector">,</span><br>    <span class="token selector">Arial</span><span class="token selector">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token selector">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token selector">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token selector">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token selector">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
+<p>Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS <code>color</code> styles.</p>
+<p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Figuration.</p>
+<h2 id="headings-and-paragraphs">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
+<p>All heading elements—e.g., <code>&lt;h1&gt;</code>—and <code>&lt;p&gt;</code> are reset to have their <code>margin-top</code> removed. Headings have <code>margin-bottom: .5rem</code> added and paragraphs <code>margin-bottom: 1rem</code> for easy spacing.</p>
+<div class="cf-example cf-example-bottom">
+<h1>h1 heading</h1>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<h2>h2 heading</h2>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<h3>h3 heading</h3>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<h4>h4 heading</h4>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<h5>h5 heading</h5>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+<h6>h6 heading</h6>
+<p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+</div>
+<h2 id="lists">Lists <a class="direct-link" href="#lists"></a></h2>
+<p>All lists—<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, and <code>&lt;dl&gt;</code>—have their <code>margin-top</code> removed and a <code>margin-bottom: 1rem</code>. Nested lists have no <code>margin-bottom</code>.</p>
+<div class="cf-example cf-example-bottom">
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit
+    <ul>
+      <li>Phasellus iaculis neque</li>
+      <li>Purus sodales ultricies</li>
+      <li>Vestibulum laoreet porttitor sem</li>
+      <li>Ac tristique libero volutpat at</li>
+    </ul>
+  </li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
+</ul>
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>bFacilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit</li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
+</ol>
+</div>
+<p>For simpler styling, clear hierarchy, and better spacing, description lists have updated <code>margin</code>s. <code>&lt;dd&gt;</code>s reset <code>margin-left</code> to <code>0</code> and add <code>margin-bottom: .5rem</code>. <code>&lt;dt&gt;</code>s are <strong>bolded</strong>.</p>
+<div class="cf-example cf-example-bottom">
+<dl>
+  <dt>Description lists</dt>
+  <dd>A description list is perfect for defining terms.</dd>
+  <dt>Euismod</dt>
+  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
+  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+  <dt>Malesuada porta</dt>
+  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+</dl>
+</div>
+<h2 id="preformatted-text">Preformatted Text <a class="direct-link" href="#preformatted-text"></a></h2>
+<p>The <code>&lt;pre&gt;</code> element is reset to remove its <code>margin-top</code> and use <code>rem</code> units for its <code>margin-bottom</code>.</p>
+<div class="cf-example cf-example-bottom">
+<pre>
+.example-element {
+  margin-bottom: 1rem;
+}
+</pre>
+</div>
+<h2 id="tables">Tables <a class="direct-link" href="#tables"></a></h2>
+<p>Tables are slightly adjusted to style <code>&lt;caption&gt;</code>s, collapse borders, and ensure consistent <code>text-align</code> throughout. Additional changes for borders, padding, and more come with <a href="/4.1/content/tables/">the <code>.table</code> class</a>.</p>
+<div class="cf-example cf-example-bottom">
+  <table>
+    <caption>
+      This is an example table, and this is its caption to describe the contents.
+    </caption>
+    <thead>
+      <tr>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="forms">Forms <a class="direct-link" href="#forms"></a></h2>
+<p>Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:</p>
+<ul>
+<li><code>&lt;fieldset&gt;</code>s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.</li>
+<li><code>&lt;legend&gt;</code>s, like fieldsets, have also been restyled to be displayed as a heading of sorts.</li>
+<li><code>&lt;label&gt;</code>s are set to <code>display: inline-block</code> to allow <code>margin</code> to be applied.</li>
+<li><code>&lt;input&gt;</code>s, <code>&lt;select&gt;</code>s, <code>&lt;textarea&gt;</code>s, and <code>&lt;button&gt;</code>s are mostly addressed by Normalize, but Reboot removes their <code>margin</code> and sets <code>line-height: inherit</code>, too.</li>
+<li><code>&lt;textarea&gt;</code>s are modified to only be resizable vertically as horizontal resizing often &quot;breaks&quot; page layout.</li>
+</ul>
+<p>These changes, and more, are demonstrated below.</p>
+<form class="cf-example">
+  <fieldset>
+    <legend>Example legend</legend>
+    <p>
+      <label for="input">Example input</label>
+      <input type="text" id="input" placeholder="Example input">
+    </p>
+    <p>
+      <label for="email">Example email</label>
+      <input type="email" id="email" placeholder="lorem@ipsum.com">
+    </p>
+    <p>
+      <label for="tel">Example telephone</label>
+      <input type="tel" id="tel">
+    </p>
+    <p>
+      <label for="url">Example url</label>
+      <input type="url" id="url">
+    </p>
+    <p>
+      <label for="number">Example number</label>
+      <input type="number" id="number">
+    </p>
+    <p>
+      <label for="search">Example search</label>
+      <input type="search" id="search">
+    </p>
+    <p>
+      <label for="range">Example range</label>
+      <input type="range" id="range" min="0" max="10">
+    </p>
+    <p>
+      <label for="file">Example file input</label>
+      <input type="file" id="file">
+    </p>
+    <p>
+      <label for="select">Example select</label>
+      <select id="select">
+        <option value="">Choose...</option>
+        <optgroup label="Option group 1">
+          <option value="">Option 1</option>
+          <option value="">Option 2</option>
+          <option value="">Option 3</option>
+        </optgroup>
+        <optgroup label="Option group 2">
+          <option value="">Option 4</option>
+          <option value="">Option 5</option>
+          <option value="">Option 6</option>
+        </optgroup>
+      </select>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" value="">
+        Check this checkbox
+      </label>
+    </p>
+    <p>
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        Option one is this and that
+      </label>
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        Option two is something else that's also super long to demonstrate the wrapping of these fancy form controls.
+      </label>
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+        Option three is disabled
+      </label>
+    </p>
+    <p>
+      <label for="textarea">Example textarea</label>
+      <textarea id="textarea" rows="3"></textarea>
+    </p>
+    <p>
+      <label for="date">Example date</label>
+      <input type="date" id="date">
+    </p>
+    <p>
+      <label for="time">Example time</label>
+      <input type="time" id="time">
+    </p>
+    <p>
+      <label for="password">Example password</label>
+      <input type="password" id="password">
+    </p>
+    <p>
+      <label for="datetime-local">Example datetime-local</label>
+      <input type="datetime-local" id="datetime-local">
+    </p>
+    <p>
+      <label for="week">Example week</label>
+      <input type="week" id="week">
+    </p>
+    <p>
+      <label for="month">Example month</label>
+      <input type="month" id="month">
+    </p>
+    <p>
+      <label for="color">Example color</label>
+      <input type="color" id="color">
+    </p>
+    <p>
+      <label for="output">Example output</label>
+      <output name="result" id="output">100</output>
+    </p>
+    <p>
+      <button type="submit">Button submit</button>
+      <input type="submit" value="Input submit button">
+      <input type="reset" value="Input reset button">
+      <input type="button" value="Input button">
+    </p>
+    <p>
+      <button type="submit" disabled>Button submit</button>
+      <input type="submit" value="Input submit button" disabled>
+      <input type="reset" value="Input reset button" disabled>
+      <input type="button" value="Input button" disabled>
+    </p>
+  </fieldset>
+</form>
+<div class="cf-callout cf-callout-warning">
+<p class="h5">Date, Time, and Color Input Support</p>
+<p>Be aware that not all browsers support the <a href="https://caniuse.com/input-datetime">date and time</a> or <a href="https://caniuse.com/input-color">color</a> input types.</p>
+</div>
+<h2 id="pointers-on-buttons">Pointers On Buttons <a class="direct-link" href="#pointers-on-buttons"></a></h2>
+<p>Reboot includes an enhancement for <code>role=&quot;button&quot;</code> to change the default cursor to <code>pointer</code>. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for <code>&lt;button&gt;</code> elements, which get their own <code>cursor</code> change.</p>
+<div class="cf-example">
+<span role="button" tabindex="0">Non-button element button</span>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Non-button element button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="misc-elements">Misc Elements <a class="direct-link" href="#misc-elements"></a></h2>
+<h3 id="address">Address <a class="direct-link" href="#address"></a></h3>
+<p>The <code>&lt;address&gt;</code> element is updated to reset the browser default <code>font-style</code> from <code>italic</code> to <code>normal</code>. <code>line-height</code> is also now inherited, and <code>margin-bottom: 1rem</code> has been added. <code>&lt;address&gt;</code>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <code>&lt;br&gt;</code>.</p>
+<div class="cf-example cf-example-bottom">
+  <address>
+    <strong>Company Name, Inc.</strong><br>
+    123 Main St, Suite 45<br>
+    Somecity, MA 12345<br>
+    <abbr title="Phone">P:</abbr> (123) 456-7890
+  </address>
+  <address>
+    <strong>Full Name</strong><br>
+    <a href="mailto:first.last@example.com">first.last@example.com</a>
+  </address>
+</div>
+<h3 id="blockquote">Blockquote <a class="direct-link" href="#blockquote"></a></h3>
+<p>The default <code>margin</code> on blockquotes is <code>1em 40px</code>, so we reset that to <code>0 0 1rem</code> for something more consistent with other elements.</p>
+<div class="cf-example cf-example-bottom">
+  <blockquote class="blockquote">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  </blockquote>
+</div>
+<h3 id="inline-elements">Inline Elements <a class="direct-link" href="#inline-elements"></a></h3>
+<p>The <code>&lt;abbr&gt;</code> element receives basic styling to make it stand out amongst paragraph text.</p>
+<div class="cf-example cf-example-bottom">
+  Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
+</div>
+<h3 id="inline-frame">Inline Frame <a class="direct-link" href="#inline-frame"></a></h3>
+<p><code>&lt;iframe&gt;</code>s have are set to <code>border: 0;</code> so there is no need for a <code>frameborder=&quot;0&quot;</code> attribute.</p>
+<h3 id="summary">Summary <a class="direct-link" href="#summary"></a></h3>
+<p>The default <code>cursor</code> on summary is <code>text</code>, so we reset that to <code>pointer</code> to convey that the element can be interacted with by clicking on it.</p>
+<div class="cf-example cf-example-bottom">
+  <details>
+    <summary>Some details</summary>
+    <p>More info about the details.</p>
+  </details>
+  <details open>
+    <summary>Even more details</summary>
+    <p>Here are even more details about the details.</p>
+  </details>
+</div>
+<h2 id="html5-hidden-attribute">HTML5 <code>[hidden]</code> Attribute <a class="direct-link" href="#html5-hidden-attribute"></a></h2>
+<p>HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code>[hidden]</code></a>, which is styled as <code>display: none</code> by default. Borrowing an idea from <a href="https://purecss.io/">PureCSS</a>, we improve upon this default by making <code>[hidden] { display: none !important; }</code> to help prevent its <code>display</code> from getting accidentally overridden. While <code>[hidden]</code> isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span></code></pre>
+<div class="cf-callout cf-callout-warning">
+<p class="h5">jQuery Incompatibility</p>
+<p><code>[hidden]</code> is not compatible with jQuery's <code>$(...).hide()</code> and <code>$(...).show()</code> methods. Therefore, we don't currently especially endorse <code>[hidden]</code> over other techniques for managing the <code>display</code> of elements.</p>
+</div>
+<p>To merely toggle the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document, use <a href="/4.1/utilities/visibility/">the <code>.invisible</code> class</a> instead.</p>
+<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for the reboot CSS styles.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$font-family-base</code></td>
+        <td>string</td>
+        <td><code>$font-family-sans-serif</code></td>
+        <td>
+          Base font family stack, used for the body and many component resets.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-root</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Root font size. Impacts <code>rem</code> value.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-base</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Base font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-base</code></td>
+        <td>string</td>
+        <td><code>$font-weight-normal</code></td>
+        <td>
+          Base font weight.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$line-height-base</code></td>
+        <td>float</td>
+        <td><code>1.5</code></td>
+        <td>
+          Base line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-bg</code></td>
+        <td>string</td>
+        <td><code>$white</code></td>
+        <td>
+          Base background color for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-900</code></td>
+        <td>
+          Base text color for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-text-align</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Base text alignment for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-color</code></td>
+        <td>string</td>
+        <td><code>$primary</code></td>
+        <td>
+          Text color for links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-decoration</code></td>
+        <td>string</td>
+        <td><code>underline</code></td>
+        <td>
+          Text decoration for links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-hover-color</code></td>
+        <td>string</td>
+        <td><code>palette($primary, 700)</code></td>
+        <td>
+          Color for hovered or focused links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-hover-decoration</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text decoration for hovered or focused links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h1</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 2.5)</code></td>
+        <td>
+          <code>&lt;h1&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h2</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 2)</code></td>
+        <td>
+          <code>&lt;h2&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h3</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.75)</code></td>
+        <td>
+          <code>&lt;h3&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h4</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.5)</code></td>
+        <td>
+          <code>&lt;h4&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h5</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.25)</code></td>
+        <td>
+          <code>&lt;h5&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h6</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1)</code></td>
+        <td>
+          <code>&lt;h6&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>($spacer / 2)</code></td>
+        <td>
+          Bottom margin for <code>&lt;hN&gt;</code> headings and heading classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-family</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings font family.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-style</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings font style.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-weight</code></td>
+        <td>string/integer</td>
+        <td><code>600</code></td>
+        <td>
+          Headings font weight.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-line-height</code></td>
+        <td>float</td>
+        <td><code>1.25</code></td>
+        <td>
+          Headings line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings text color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$paragraph-spacer-y</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Bottom padding for paragraphs.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$dt-font-weight</code></td>
+        <td>string</td>
+        <td><code>$font-weight-bold</code></td>
+        <td>
+          Font weight for definition terms.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-color</code></td>
+        <td>string</td>
+        <td><code>inherit</code></td>
+        <td>
+          Horizontal rule color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-height</code></td>
+        <td>string</td>
+        <td><code>$border-width</code></td>
+        <td>
+          Horizontal rule height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-opacity</code></td>
+        <td>string</td>
+        <td><code>.25</code></td>
+        <td>
+          Horizontal rule opacity.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-cell-padding</code></td>
+        <td>string</td>
+        <td><code>.75rem</code></td>
+        <td>
+          Padding for table cells.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-th-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+        Font weight for <code>th</code> cells.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-margin-y</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Horizontal rule vertical spacing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$small-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Small font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$sub-sup-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Font size for subscript and superscript text.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$mark-padding</code></td>
+        <td>string</td>
+        <td><code>.125em .25em</code></td>
+        <td>
+          Mark element padding.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$mark-bg</code></td>
+        <td>string</td>
+        <td><code>#ff0</code></td>
+        <td>
+          Mark element background color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$label-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>.5rem</code></td>
+        <td>
+          Bottom margin for form labels.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>.5rem</code></td>
+        <td>
+          Bottom margin for form legends.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-font-size</code></td>
+        <td>string</td>
+        <td><code>1.5rem</code></td>
+        <td>
+          Font size for form legends.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for form legends.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<p>No mixins available.</p>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toplink">
+    <a href="#content">Top of Page <span class="caret"></span></a>
+  </div>
+</div>
+<footer class="cf-footer fs-small py-1">
+  <div class="container">
+    <ul class="list list-horizontal font-weight-bold">
+      <li class="pe-0_5"><a href="/about/overview/">About <span class="sr-only">Figuration</span></a></li>
+      <li class="px-0_5"><a href="https://github.com/cast-org/figuration">GitHub</a></li>
+      <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
+    </ul>
+    <p>
+      <strong>Latest version:</strong> 4.1.0
+      <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
+      &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
+      <br>
+      Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+    <p>
+      Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
+      docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/site/LICENSE">CC BY 4.0</a>.
+    </p>
+
+    <div class="border-t pt-1">
+      <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
+      <div class="row">
+        <div class="media col">
+          <div class="d-flex me-0_5">
+            <img src="/assets/aem/aem-logo.png" width="40" height="40" alt="AEM logo" />
+          </div>
+          <div class="media-body">
+            <span class="font-weight-bold"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+            <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119 37" focusable="false" role="img"  class="cf-footer-cast-logo">
+  <title>CAST</title>
+  <path fill="currentColor" d="M17.83 36.48c-.013 0-.025-.003-.032-.003 0 0-.006 0 .01-2.31l.023-3.223s.016-2.31-2.294-2.326L5.36 28.547s-2.31-.016-3.283-1.463C1.103 25.636-.026 22.148 0 18.396.07 8.49 8.143.518 15.73.554c0 0 2.309.012 2.293 2.321L18 6.277s-.016 2.31 2.294 2.326l10.373.073s2.31.016 3.247 1.445c.937 1.43 2.021 4.851 1.995 8.526-.068 9.918-8.164 17.902-18.08 17.833m.057-8.037c5.43.038 9.865-4.335 9.902-9.767.038-5.432-4.334-9.867-9.765-9.905-5.431-.038-9.865 4.335-9.903 9.767-.037 5.432 4.335 9.867 9.766 9.905"/>
+  <path fill="currentColor" d="M60.73 24.958c-2.246 2.8-5.195 4.2-8.85 4.2-1.53 0-2.93-.258-4.2-.774-1.272-.516-2.36-1.231-3.263-2.145-.904-.914-1.609-2.006-2.115-3.277-.507-1.272-.76-2.671-.76-4.201 0-1.51.248-2.906.745-4.186a9.853 9.853 0 0 1 2.115-3.337 9.621 9.621 0 0 1 3.278-2.205c1.27-.526 2.67-.79 4.2-.79 1.729 0 3.327.288 4.798.864 1.469.577 2.71 1.579 3.723 3.01l-3.485 3.515a6.688 6.688 0 0 0-1.996-1.817c-.776-.457-1.66-.685-2.653-.685-.833 0-1.578.139-2.234.416a4.622 4.622 0 0 0-1.654 1.163 5.197 5.197 0 0 0-1.027 1.743 6.362 6.362 0 0 0-.358 2.16c0 .794.124 1.53.373 2.204.248.676.6 1.262 1.058 1.758a4.786 4.786 0 0 0 1.653 1.162c.645.278 1.365.417 2.16.417 1.152 0 2.09-.203 2.815-.61.725-.408 1.435-1.048 2.13-1.922l3.546 3.337zM73.301 20.697l-2.204-7.3-2.294 7.3h4.498zM68.267 8.78h6.047l7.032 19.872h-5.69l-1.281-4.111H67.73l-1.311 4.111h-5.453l7.3-19.872zM85.025 22.366c.556.556 1.281 1.062 2.175 1.52.894.456 1.877.684 2.95.684.257 0 .526-.024.804-.074.278-.05.526-.134.745-.253.218-.12.397-.278.536-.477.14-.199.209-.457.209-.774 0-.517-.263-.944-.79-1.282-.526-.337-1.296-.675-2.309-1.013l-1.102-.358a12.649 12.649 0 0 1-1.862-.774 7.71 7.71 0 0 1-1.683-1.147 5.387 5.387 0 0 1-1.207-1.58c-.308-.605-.462-1.315-.462-2.13 0-.913.168-1.762.507-2.547a5.894 5.894 0 0 1 1.475-2.055c.644-.586 1.444-1.044 2.398-1.371.953-.328 2.056-.492 3.307-.492.973 0 1.857.09 2.652.268.793.18 1.49.398 2.085.656a8.246 8.246 0 0 1 1.52.834c.416.298.734.566.953.804l-2.681 3.397a10.956 10.956 0 0 0-2.176-1.266 5.77 5.77 0 0 0-2.324-.492c-.258 0-.516.03-.774.09-.258.059-.492.148-.7.268-.209.119-.378.273-.506.461-.13.19-.194.423-.194.7 0 .298.074.557.223.775.149.219.352.407.611.566.258.16.57.304.938.433s.76.263 1.178.401l.953.299c.675.218 1.36.471 2.056.76.695.288 1.32.675 1.877 1.162a5.774 5.774 0 0 1 1.37 1.817c.358.725.536 1.614.536 2.666 0 .914-.214 1.758-.64 2.533a6.372 6.372 0 0 1-1.729 1.996c-.725.556-1.578.988-2.562 1.296-.983.308-2.03.462-3.143.462-1.986 0-3.65-.264-4.99-.79-1.34-.526-2.479-1.236-3.412-2.13l3.188-3.843zM105.669 13.398H99.56V8.779h17.49v4.619H111v15.254h-5.332z"/>
+</svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    if (!window.docsearch) {
+        return;
+    }
+
+    var inputElement = document.getElementById('docsearch');
+    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+
+    window.docsearch({
+        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        indexName: 'figuration',
+        inputSelector: '#docsearch',
+        algoliaOptions: {
+            facetFilters: ['version:' + siteDocsVersion]
+        },
+        transformData: function(hits) {
+            return hits.map(function(hit) {
+                // Prevent jumping to first header
+                if (hit.anchor === 'content') {
+                    hit.url = hit.url.replace(/#content$/, '');
+                    hit.anchor = null;
+                }
+                return hit;
+            });
+        },
+        // Set debug to true if you want to inspect the dropdown
+        debug: false
+    });
+}());
+</script>
+
+</body>
+</html>

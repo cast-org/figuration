@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration Navbar Examples</title>
+
+<!-- Figuration CSS -->
+<link rel="stylesheet" href="/assets/4.1/dist/css/figuration.min.css">
+
+<!-- jQuery and Figuration JS -->
+<script src="/assets/4.1/js/vendor/jquery.slim.min.js"></script>
+<script src="/assets/4.1/js/vendor/popper.min.js"></script>
+<script src="/assets/4.1/dist/js/figuration.min.js"></script>
+
+<style>
+.navbar {
+    margin-bottom: 1rem;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron my-1">
+        <h1>Figuration Navbar Examples</h1>
+        <p class="lead">
+            This example page shows off variations of the navbar and their responsive behaviours.
+            Some navbars extend the width of the viewport, others are confined within a container.
+        </p>
+        <p>
+            For positioning of navbars, checkout the
+            <a href="/4.1/examples/navbar-static-top/">static-top</a>
+            and
+            <a href="/4.1/examples/navbar-fixed-top/">fixed-top</a>
+            examples.
+        </p>
+        <p>
+            <a href="/4.1/components/navbar/" class="btn btn-lg btn-primary">View navbar docs &raquo;</a>
+        </p>
+    </div>
+</div>
+
+<main>
+    <h2>Basic Navbars</h2>
+
+    <nav class="navbar navbar-light bg-light">
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+        <a href="#" class="navbar-brand ms-0_5">Basic</a>
+
+        <div class="navbar-collapse collapse" id="navbarB0">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline my-1 my-md-0">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Basic</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarB1">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline my-1 my-md-0">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2>Responsive Navbars</h2>
+
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a href="#" class="navbar-brand">Expand Always</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarR0">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline ms-auto">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Expand at `sm`</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarR1">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline ms-auto">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Expand at `md`</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR2">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarR2">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline ms-auto">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Expand at `lg`</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR3">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarR3">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline ms-auto">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-xl navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Expand at `xl`</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR4">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarR4">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline ms-auto">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2>Justified Navbar</h2>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
+        <a href="#" class="navbar-brand">Justified</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarJ0">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarJ0">
+            <ul class="navbar-nav mx-lg-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2>Container Navbar</h2>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
+        <div class="container">
+            <a href="#" class="navbar-brand">Container</a>
+            <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarC0">
+                <span aria-hidden="true">&#8801;</span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarC0">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="form-inline ms-auto">
+                    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h2>Centered Navbars</h2>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarCO0">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="navbar-collapse collapse flex-md-center" id="navbarCO0">
+            <a href="#" class="navbar-brand">Centered</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarCO1">
+                <span aria-hidden="true">&#8801;</span>
+            </button>
+
+            <div class="navbar-collapse collapse flex-md-center" id="navbarCO1">
+                <a href="#" class="navbar-brand">Centered + Container</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Navbars in Containers</h2>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
+            <a href="#" class="navbar-brand">Expand at `lg`</a>
+            <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarIC0">
+                <span aria-hidden="true">&#8801;</span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarIC0">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="form-inline ms-auto">
+                    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarIC1">
+                <span aria-hidden="true">&#8801;</span>
+            </button>
+
+            <div class="navbar-collapse collapse flex-md-center" id="navbarIC1">
+                <a href="#" class="navbar-brand">Centered</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <h2>Responsive Containers</h2>
+
+    <nav class="navbar navbar-expand-xl navbar-light bg-light flex-between">
+        <div class="container-xl px-0 px-xl-1">
+            <a href="#" class="navbar-brand">Expand at `xl`</a>
+            <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarRC0">
+                <span aria-hidden="true">&#8801;</span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="navbarRC0">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="form-inline ms-auto">
+                    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-xl mt-n1 mb-2">
+      Matching <code>.container-xl</code>...
+    </div>
+
+</main>
+
+</body>
+</html>

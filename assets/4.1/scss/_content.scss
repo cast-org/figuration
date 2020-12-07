@@ -1,0 +1,152 @@
+// stylelint-disable selector-max-type
+
+.font-weight-sbold {
+    font-weight: 600;
+}
+
+// Content
+.cf-content-lead {
+    padding-top: 1rem;
+}
+
+.cf-content {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    > h2 {
+        margin-top: 2rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    > h3 {
+        margin-top: 1.5rem;
+    }
+}
+
+
+:not(.cf-example) table {
+    @include font-size(.875rem);
+
+    th,
+    td{
+        &:first-child {
+            white-space: nowrap;
+        }
+    }
+}
+
+h2,
+h3,
+h4 {
+    > code {
+        font-weight: 500;
+    }
+}
+
+.cf-title {
+    @include font-size(3rem);
+}
+
+// markdown-it-anchor icon
+.direct-link {
+    color: rgba($link-color, .7);
+    text-decoration: none;
+    opacity: 0;
+    @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
+
+    :focus {
+        color: $link-color;
+        text-decoration: none;
+    }
+
+    &::after {
+        content: "#";
+    }
+}
+:hover > .direct-link,
+.direct-link:focus {
+    opacity: 1;
+}
+
+// ClipboardJS
+.cf-clipboard {
+    position: relative;
+
+    + .highlight {
+        margin-top: 0;
+    }
+
+    .tooltip {
+        white-space: nowrap;
+    }
+}
+.btn-clipboard {
+    position: absolute;
+    top: 0;
+    right: 0 #{"/*rtl:ignore*/"};
+}
+
+// Palettes
+.palette {
+    margin-bottom: 1rem;
+}
+.palette-base,
+.palette-item {
+    padding: .5rem 1rem;
+    @include font-size(.875rem);
+}
+.palette-base {
+    margin-bottom: .25rem;
+}
+
+// Keyboard commands
+.cf-docs-keys dt {
+    float: left;
+    width: 4.5rem;
+    min-height: 1.75rem;
+    margin-right: .5rem;
+    overflow: hidden;
+    clear: left;
+    text-align: center;
+    //white-space: nowrap;
+}
+.cf-docs-keys dd {
+    min-height: 1.75rem;
+    margin-left: 5rem;
+
+    @include clearfix();
+}
+
+// Tables - merged .table and .table-bordered styles
+.cf-content > table:not(.table) {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border: $table-border-width solid $table-border-color;
+
+    th,
+    td {
+        padding: $table-cell-padding;
+        vertical-align: top;
+        border: $table-border-width solid $table-border-color;
+    }
+
+    thead {
+        th,
+        td {
+            vertical-align: bottom;
+            border-bottom-width: (2 * $table-border-width);
+        }
+    }
+
+    tbody + tbody {
+        border-top: (2 * $table-border-width) solid $table-border-color;
+    }
+
+    .table {
+        background-color: $body-bg;
+    }
+}
