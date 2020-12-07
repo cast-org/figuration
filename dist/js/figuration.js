@@ -4508,6 +4508,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Scrollspy.DEFAULTS = {
         target: null,
         offset: 10,
+        nested: true,
         throttle: 100
     };
 
@@ -4615,12 +4616,14 @@ if (typeof jQuery === 'undefined') {
             var $active = $(selector)
                 .addClass('active');
 
-            if ($active.closest('.dropdown-menu').length) {
+            var doNestedDropdown = this.settings.nested === true || typeof this.settings.nested === 'string';
+
+            if ($active.closest('.dropdown-menu').length && doNestedDropdown) {
                 $active = $active
                     .closest('.dropdown')
                     .find('[data-cfw="dropdown"]')
                     .addClass('active');
-            } else {
+            } else if (this.settings.nested === true) {
                 // Set parents as active
                 $active.parents('ul, ol, nav').prev('li, a').addClass('active');
             }

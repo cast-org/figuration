@@ -1361,6 +1361,18 @@ pre[class*="language-"] {
   }
 }
 
+.cf-example-placement .position-relative {
+  height: 200px;
+  background-color: #eff1f3;
+}
+
+.cf-example-placement .position-absolute {
+  width: 2em;
+  height: 2em;
+  background-color: #343e48;
+  border-radius: 0.25rem;
+}
+
 .cf-callout {
   padding: 1rem;
   margin: 1rem 0;
