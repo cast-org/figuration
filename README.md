@@ -39,12 +39,12 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.0.3.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.1.0.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.0.3`
-- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.0.3`
+- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.1.0`
+- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.1.0`
 
-Read the [Get Started page](http://figuration.org/4.0/get-started/quick-start/) for information on the framework, templates, and examples.
+Read the [Get Started page](http://figuration.org/4.1/get-started/quick-start/) for information on the framework, templates, and examples.
 
 
 ### What's Included

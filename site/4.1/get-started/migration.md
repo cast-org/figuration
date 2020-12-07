@@ -6,35 +6,61 @@ group: get-started
 toc: true
 ---
 
-## Notice
+## v4.1
+
+### Utilities
+- Added `.d-grid` to display utilities.
+- New `gap` utilities (`.gap`) for CSS Grid layouts.
+- New placement positionin utilities to adjust `top`, `end`, `bottom`, and `start` side offsets.
+- New `.translate-middle-x` and `.translate-middle-y` utilities to horizontally or vertically center absolute/fixed positioned elements.
+- New user interaction utilities for `pointer-events` and `user-select`.
+
+### Widgets
+- The `follow` option has been fixed for Collapse.
+- Fixed an alignment issue with Dropdown when using an RTL layout.
+- Scrollspy gets a new option for some control of the parents active markers.
+  - New `nested` option to not create active markers on parent items, or only limit it to Dropdown parents.
+- Tooltips/Popover had some fixes and a couple of new options added.
+  - The `fade` animation is now normalized between Tooltips and Popovers.
+  - New `display` option to adjust the display CSS rule when the target is shown.
+  - New `customClass` option to add class(es) when the target is shown.
+  - Tooltip triggers can gain an `aria-label` attribute in some cases to improve accessibility.
+
+### Docs
+- Added more notes regarding accessibility.
+- Added/updated examples for various content, components, and widgets.
+
+## v4.0
+
+### Notice
 
 Figuration v4 is a considerable rework, and there are a large number of breaking changes across the entire framework.  We will try to explain the changes below.
 
 Some changes will most likely have been missed, so please refer to the documentation pages to see the revised/new implementations.
 
-## Browser Support
+### Browser Support
 - **Support for Internet Explorer 10 has been dropped!** IE 10 is getting old, and the market share is less than 0.1% in terms of global usage according to many trackers.  Plus our use of MutationObservers in the Widgets either needs a polyfill, or things just don't work right.
 
-## Accessibility
+### Accessibility
 - `.sr-only-focusable` does not require `.sr-only` anymore, and elements should not use a combination of the two classes.
 
-## Color
+### Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
 - Added functions to check, and/or determine the best color, these can be found in `/scss/functions/_color-util.scss`.
 - Extended the contextual colors with light and dark contextual variants.  **These variants are not available as palettes** by default.
 
-## Typography
+### Typography
 - Added two methods of Responsive Typography support.
   - Ratio scaling - variable sizing based on viewport dimension
   - Stepped scaling - one defined size per breakpoint
 - Inline lists, `.list-inline`, has been dropped and replaced with the `.list-horizontal` modifier in the new [List component]({{ site.path }}/{{ version.docs }}/components/lists/).
 
-## Table
+### Table
 - `.table` now creates a visually simple table, borders are controlled through a selection of modifier classes.
 - `.table-hover` and `.table-striped` now use a solid gradient color overlayed using `background-image` to create their visual state.
 - `.table-scroll-*` has dropped the `down` portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of `display: block`.
 
-## Form
+### Form
 **Forms have recieved a major overhaul.**  Almost everything has been changed, from using `em` sizing by default, along with a simplification in terms of class names and their reusability across multiple input types and visual styles.  A few of the changes are listed below, but there are many that have probably been missed, so it might be better to just review the [forms documentation section]({{ site.path }}/{{ version.docs }}/content/forms/) for a better understanding.
 
 - Rewrote both custom and default checkboxes and radios into a consolidated `.form-check`. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`, and the same layout styles (stacked default, inline with utilitiy classes). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better support for form validation.
@@ -55,72 +81,68 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Dropped `.form-control-color`, `.form-control-range`, and `.form-control-file` . Use the updated `.form-color`, `.form-range` or `.form-file`  classes instead to get a consistent visual input.
 
-{% comment %}
-## Sizing
-{% endcomment %}
-
-## Grid
+### Grid
 - Dropped the `.push` and `.pull` modifiers in favor of `.offset-*` and flex utilities.
 - Dropped the `position: relative` from grid columns.
 - Horizontal padding is added to the columns only when they are direct children of a row, instead of being added to the columns themselves.
 - The column classes can now also be used as stand alone classes to control width, without the additional horizontal padding when used outside a `.row`.
 - Responsive gutter classes have been added, to allow control of the gutter size in horizontal and/or vertical directions.
 
-## Components
+### Components
 
-### Breadbcrumb
+#### Breadbcrumb
 - Removed `padding`, `background-color` and `border-radius` from parent `.breadcrumb` element.
 
-### Button
+#### Button
 - Added support for CSS checkbox and radio buttons, using `.btn-check` and `.btn-check-input` classes.
 - Content in buttons will now wrap by default.  You can use the `.text-nowrap` utility class to preserve old behaviour.
 
-### Card
+#### Card
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
 - Cards have been converted to flexbox layout.
 - Images need to use some variant of `.card-img{-top/bottom}`, or sometimes it can be a wrapper, to keep aspect ratio and scaling in check due to flexbox, especially with IE.
 - List and table sub-components now use a `.card-list` or `.card-table` respectively.
 - Responsive horizontal card layouts have been added with `.card-horizontal{breakpoint}`, `.card-horizontal{breakpoint}-reverse`, and child `.card-col` elements.
 
-### Grid Lines
+#### Grid Lines
 - Grid lines were dropped in favor the updated [Border utility classes]({{ site.path }}/{{ version.docs }}/utilities/borders/#borders).
 
-### Input Group
+#### Input Group
 - Input group addons have been removed, simplifying much of the related CSS. Place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
 - Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
-### List Group
+#### List Group
 - The List Group is no longer a stand-alone component, and is now modifier within the new [List component]({{ site.path }}/{{ version.docs }}/components/lists/).
 
-### List
+#### List
 - A new component that allows for greater styling options for lists, or pseudo-lists using `<div>`s.
 
-### Pagination
+#### Pagination
 - Pagination has been modified with a couple of style modifier classes for greater flexibility.  The use of the `.pagination-group` modifier class on the `.pagination` element is needed to keep the same look as the older pagination component.
 
-### Switch
+#### Switch
 - Dropped Switch component and consolidated with the `.form-check` radio and checkbox controls, through the use of the `.form-switch` modifier class. Check out the [new switch custom control]({{ site.path }}/{{ version.docs }}/content/forms/#switch).
 
 
-## Utilities
+### Utilities
 
-### Flexbox
+#### Flexbox
 - Renamed `.flex-order` to `.order` to both shorten and also match standard rule name.
 
-### Icons
+#### Icons
 - The caret utilities have been upgraded to a 4-way style. Since `.dropup` is no longer on the parent container, you may have to change from `.caret` to `.caretup`.
 
-### Image Replacement
+#### Image Replacement
 - Dropped the `.text-hide` util and `.text-hide()` mixin—in favor of using `.sr-only` as the replacement.
 
 
-## Widgets
+### Widgets
 
-### Button
+#### Button
 - Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
 
-### Dropdown
+#### Dropdown
 - Dropdown has been reworked to use a recursive model, and now uses [Popper](https://popper.js.org/) for advanced positioning.  This also had an affect of changing all the available options.
   - There are positioning fallbacks in place if dynamic placement is disabled.
 - Menu direction classes have been expanded to use the following alternates: `.dropup`, `.dropreverse`, `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
@@ -130,24 +152,24 @@ Some changes will most likely have been missed, so please refer to the documenta
   - `.dropstart` replaces `.dropdown-menu-forward` on all menus.
 - The class used to show menus, `.open`, is now used on the `.dropdown-menu` iteself, instead of the parent container.
 
-### Lazy
+#### Lazy
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
 
-### Player
+#### Player
 - Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
 
-### Popover
+#### Popover
 - Popover now requires [Popper](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
-### Slider
+#### Slider
 - Dropped the slider widget as a bundled plugin.  This has been replaced with the `.form-range` styled `<input type="range">` element.
 
-### Tooltip
+#### Tooltip
 - Tooltip now requires [Popper](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
-## Documentation
+### Documentation
 - We have stopped using Jekyll, and changed to using [Eleventy](https://11ty.dev) to generate the documentation.
 
-## Build Tools
+### Build Tools
 - Figuration now requires Node.js v10 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.
 - The `grunt` directory has been removed, and replaced with a `build` directory.

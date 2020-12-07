@@ -1,8 +1,8 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "version": "4.0.3",
-  "versionShort": "4.0",
+  "version": "4.1.0",
+  "versionShort": "4.1",
   "keywords": [
     "css",
     "sass",
