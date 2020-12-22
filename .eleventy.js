@@ -128,6 +128,7 @@ module.exports = function(eleventyConfig) {
 
                 browserSync.addMiddleware('*', (req, res) => {
                     // Provides the 404 content without redirect.
+                    res.writeHead(404);
                     res.write(content_404);
                     res.end();
                 });
