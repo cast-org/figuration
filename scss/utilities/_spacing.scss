@@ -13,6 +13,8 @@
                         .#{$abbrev}#{$bprule}-#{$size} {
                             #{$prop}: $length !important;
                         }
+                    }
+                    @each $size, $length in $spacers-map {
                         .#{$abbrev}t#{$bprule}-#{$size},
                         .#{$abbrev}y#{$bprule}-#{$size} {
                             #{$prop}-top: $length !important;
@@ -42,6 +44,10 @@
                         .m#{$bprule}-#{$spacers-margin-negative-prepend}#{$size} {
                             margin: ($length * -1) !important;
                         }
+                    }
+                }
+                @each $size, $length in $spacers-margin-negative {
+                    @if not($length == 0) {
                         .mt#{$bprule}-#{$spacers-margin-negative-prepend}#{$size},
                         .my#{$bprule}-#{$spacers-margin-negative-prepend}#{$size} {
                             margin-top: ($length * -1) !important;
