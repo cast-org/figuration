@@ -684,7 +684,7 @@ $list-border-width:             $border-width !default;
 $list-border-color:             $component-border-color !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-bulleted-content:         "\25cf\00a0" !default; // Geometric shape - black circle and a space
+$list-bulleted-content:         "\00a0\2022" !default; // Space, General Punctuation - bullet
 $list-ordered-delimeter:        "\00a0" !default; // Space
 $list-horizontal-padding:       .5em !default;
 $list-spaced-item-padding-y:    .75rem !default;
