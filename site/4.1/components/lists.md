@@ -867,15 +867,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$list-bulleted-content</code></td>
         <td>string</td>
-        <td><code>"\25cf\00a0"</code></td>
+        <td><code>"\00a0\2022"</code></td>
         <td>
-          Visual content to use for bullets.  Default content is a black circle and a space.
+          Visual content to use for bullets.  Default content is a space then a bullet.
         </td>
       </tr>
       <tr>
         <td><code>$list-ordered-delimeter</code></td>
         <td>string</td>
-        <td><code>"\25cf\00a0"</code></td>
+        <td><code>"\00a0"</code></td>
         <td>
           Visual content to use as a delimeter after the order value.  Default content is a space.
         </td>
