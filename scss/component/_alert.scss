@@ -46,16 +46,16 @@
         // Contextual modifiers
         @if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
             @each $theme, $colors in $alert-themes {
-                $bg:          map-get($colors, "bg");
-                $color:       map-get($colors, "color");
-                $border:      map-get($colors, "border-color");
-                $hover-color: map-get($colors, "hover-color");
+                $alert-bg:          map-get($colors, "bg");
+                $alert-color:       map-get($colors, "color");
+                $alert-border:      map-get($colors, "border-color");
+                $alert-hover-color: map-get($colors, "hover-color");
 
-                $color:       color-if-contrast($color, $bg);
-                $hover-color: color-if-contrast($hover-color, $bg);
+                $alert-color:       color-if-contrast($alert-color, $alert-bg);
+                $alert-hover-color: color-if-contrast($alert-hover-color, $alert-bg);
 
                 .alert-#{$theme} {
-                    @include alert-variant($color, $bg, $border, $hover-color);
+                    @include alert-variant($alert-color, $alert-bg, $alert-border, $alert-hover-color);
                 }
             }
         }

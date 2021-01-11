@@ -387,17 +387,17 @@
         // Organizationally, this must come after the `:hover` states.
         @if (type-of($list-themes) == "map" and length($list-themes) != 0) {
             @each $theme, $colors in $list-themes {
-                $bg:           map-get($colors, "bg");
-                $color:        map-get($colors, "color");
-                $border:       map-get($colors, "border-color");
-                $hover-bg:     map-get($colors, "hover-bg");
-                $hover-color:  map-get($colors, "hover-color");
-                $hover-border: map-get($colors, "hover-border-color");
+                $list-bg:           map-get($colors, "bg");
+                $list-color:        map-get($colors, "color");
+                $list-border:       map-get($colors, "border-color");
+                $list-hover-bg:     map-get($colors, "hover-bg");
+                $list-hover-color:  map-get($colors, "hover-color");
+                $list-hover-border: map-get($colors, "hover-border-color");
 
-                $color:       color-if-contrast($color, $bg);
-                $hover-color: color-if-contrast($hover-color, $hover-bg);
+                $list-color:       color-if-contrast($list-color, $list-bg);
+                $list-hover-color: color-if-contrast($list-hover-color, $list-hover-bg);
 
-                @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+                @include list-item-variant(#{$theme}, $list-bg, $list-color, $list-border, $list-hover-bg, $list-hover-color, $list-hover-border);
             }
         }
     }

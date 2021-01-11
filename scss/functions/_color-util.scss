@@ -41,33 +41,33 @@
 
     @each $theme, $base in $colors {
         // Color adjustments
-        $bg:            palette($base, $level-bg);
-        $color:         palette($base, $level-color);
-        $color:         color-if-contrast($color, $bg);
-        $border:        palette($base, $level-border);
+        $cutil-bg:            palette($base, $level-bg);
+        $cutil-color:         palette($base, $level-color);
+        $cutil-color:         color-if-contrast($cutil-color, $cutil-bg);
+        $cutil-border:        palette($base, $level-border);
 
-        $hover-bg:      palette($base, $level-hover-bg);
-        $hover-color:   palette($base, $level-hover-color);
-        $hover-color:   color-if-contrast($hover-color, $hover-bg);
-        $hover-border:  palette($base, $level-hover-border);
+        $cutil-hover-bg:      palette($base, $level-hover-bg);
+        $cutil-hover-color:   palette($base, $level-hover-color);
+        $cutil-hover-color:   color-if-contrast($cutil-hover-color, $cutil-hover-bg);
+        $cutil-hover-border:  palette($base, $level-hover-border);
 
-        $active-bg:     palette($base, $level-active-bg);
-        $active-color:  palette($hover-color, $level-active-color);
-        $active-color:  color-if-contrast($active-color, $active-bg);
-        $active-border: palette($base, $level-active-border);
+        $cutil-active-bg:     palette($base, $level-active-bg);
+        $cutil-active-color:  palette($cutil-hover-color, $level-active-color);
+        $cutil-active-color:  color-if-contrast($cutil-active-color, $cutil-active-bg);
+        $cutil-active-border: palette($base, $level-active-border);
 
         // Build new map
         $new-map: (
             "base": $base,
-            "bg": $bg,
-            "color": $color,
-            "border-color": $border,
-            "hover-bg": $hover-bg,
-            "hover-color": $hover-color,
-            "hover-border-color": $hover-border,
-            "active-bg": $active-bg,
-            "active-color": $active-color,
-            "active-border-color": $active-border
+            "bg": $cutil-bg,
+            "color": $cutil-color,
+            "border-color": $cutil-border,
+            "hover-bg": $cutil-hover-bg,
+            "hover-color": $cutil-hover-color,
+            "hover-border-color": $cutil-hover-border,
+            "active-bg": $cutil-active-bg,
+            "active-color": $cutil-active-color,
+            "active-border-color": $cutil-active-border
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));
