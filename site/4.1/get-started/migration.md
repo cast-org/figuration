@@ -14,6 +14,7 @@ toc: true
 - New placement positionin utilities to adjust `top`, `end`, `bottom`, and `start` side offsets.
 - New `.translate-middle-x` and `.translate-middle-y` utilities to horizontally or vertically center absolute/fixed positioned elements.
 - New user interaction utilities for `pointer-events` and `user-select`.
+- Updated `.sr-only-focusable` to also work on containers, using `:focus-within`.
 
 ### Widgets
 - The `follow` option has been fixed for Collapse.
