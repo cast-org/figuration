@@ -8,7 +8,7 @@
 /*!
  * Figuration (v4.1.0)
  * http://figuration.org
- * Copyright 2013-2020 CAST, Inc.
+ * Copyright 2013-2021 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 
