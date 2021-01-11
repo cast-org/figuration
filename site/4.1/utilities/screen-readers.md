@@ -16,10 +16,13 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 
 **Heads up!** There is no `.sr-only-*` classes created for the smallest breakpoint and no `.sr-only-*-down` classes created for the largest breakpoint, `.sr-only-xs`, `.sr-only-xs-focusable`, `.sr-only-xl-down`, `.sr-only-xl-focusable-down`, since they are functionally equivalent to using `.sr-only` or `.sr-only-focusable`.
 
+`.sr-only-focusable` can also be applied to a container, thanks to `:focus-within`, the container will be displayed when any child element of the container receives focus.
+
 {% capture example %}
 <h3 class="sr-only-sm-down">Title for Screen Readers</h3>
 
 <a class="sr-only-focusable" href="#content">Skip to main content</a>
+<div class="sr-only-focusable">A container with a <a href="#">focusable element</a>.</div>
 {% endcapture %}
 {% renderExample example %}
 

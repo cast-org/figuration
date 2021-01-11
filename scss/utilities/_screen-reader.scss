@@ -11,7 +11,7 @@
     }
 
     @if $enable-utility-sronly-focusable {
-        .sr-only-focusable:not(:focus) {
+        .sr-only-focusable:not(:focus):not(:focus-within) {
             @extend %sr-only-base;
         }
     }
@@ -31,7 +31,7 @@
                     }
 
                     @if $enable-utility-sronly-focusable {
-                        .sr-only-#{$bp}-focusable:not(:focus) {
+                        .sr-only-#{$bp}-focusable:not(:focus):not(:focus-within) {
                             @extend %sr-only-#{$bp};
                         }
                     }
