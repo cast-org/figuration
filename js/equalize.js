@@ -95,6 +95,8 @@
         },
 
         _equalizeGroup : function($targetElm) {
+            // Stop mutation listener to stop possible infinite loop
+            this.$target.CFW_mutationIgnore();
             $targetElm.height('');
 
             if (!this.settings.row && !this.settings.stack) {
@@ -149,13 +151,11 @@
                 })
                 .get();
 
-            if (this.settings.minimum) {
-                var min = Math.min.apply(null, heights);
-                $nodes.css('height', min);
-            } else {
-                var max = Math.max.apply(null, heights);
-                $nodes.css('height', max);
-            }
+            var newHeight = this.settings.minimum ? Math.min.apply(null, heights) : Math.max.apply(null, heights);
+            $nodes.css('height', newHeight);
+
+            // Restart mutation listeners that were stopped at start of `_equalize()`
+            this.$target.CFW_mutationListen();
 
             if (!callback) { return; }
             callback();

@@ -199,7 +199,7 @@
                 }
             );
 
-            // Don't pass node so that this can force a mutation obeservation
+            // Don't pass node so that this can force a mutation observation
             $(this).data('cfw-mutationobserver', elmObserver)
                 .on('mutated.cfw.mutate', CFW_mutationObserved);
             /*
