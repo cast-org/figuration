@@ -1,10 +1,10 @@
 /*!
  * Figuration (v4.1.0)
  * http://figuration.org
- * Copyright 2013-2020 CAST, Inc.
+ * Copyright 2013-2021 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2020  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2021  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -220,7 +220,7 @@ if (typeof jQuery === 'undefined') {
                 }
             );
 
-            // Don't pass node so that this can force a mutation obeservation
+            // Don't pass node so that this can force a mutation observation
             $(this).data('cfw-mutationobserver', elmObserver)
                 .on('mutated.cfw.mutate', CFW_mutationObserved);
             /*
@@ -5120,6 +5120,8 @@ if (typeof jQuery === 'undefined') {
         },
 
         _equalizeGroup : function($targetElm) {
+            // Stop mutation listener to stop possible infinite loop
+            this.$target.CFW_mutationIgnore();
             $targetElm.height('');
 
             if (!this.settings.row && !this.settings.stack) {
@@ -5174,13 +5176,11 @@ if (typeof jQuery === 'undefined') {
                 })
                 .get();
 
-            if (this.settings.minimum) {
-                var min = Math.min.apply(null, heights);
-                $nodes.css('height', min);
-            } else {
-                var max = Math.max.apply(null, heights);
-                $nodes.css('height', max);
-            }
+            var newHeight = this.settings.minimum ? Math.min.apply(null, heights) : Math.max.apply(null, heights);
+            $nodes.css('height', newHeight);
+
+            // Restart mutation listeners that were stopped at start of `_equalize()`
+            this.$target.CFW_mutationListen();
 
             if (!callback) { return; }
             callback();
