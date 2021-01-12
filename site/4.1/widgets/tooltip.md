@@ -148,10 +148,10 @@ Keep tooltips in their place with the `viewport` option.
 
 ### Disabled Elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
 {% capture example %}
-<span class="d-inline-block" data-cfw="tooltip" title="Tooltip for disabled item">
+<span class="d-inline-block" tabindex="0" data-cfw="tooltip" title="Tooltip for disabled item">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {% endcapture %}
