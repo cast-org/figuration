@@ -8,6 +8,9 @@ toc: true
 
 ## v4.1
 
+### Forms
+- Extended form validation states customization capabilities. Added three new optional parameters to the `form-validation-state` mixin: `tooltip-color`, `tooltip-bg`, `focus-box-shadow`. These parameters can be set in the `$form-validation-states` map.
+
 ### Utilities
 - Added `.d-grid` to display utilities.
 - New `gap` utilities (`.gap`) for CSS Grid layouts.
@@ -31,7 +34,8 @@ toc: true
 - Added more notes regarding accessibility.
 - Added/updated examples for various content, components, and widgets.
 
-## v4.0
+
+## v4.0 {.border-t .pt-1}
 
 ### Notice
 
