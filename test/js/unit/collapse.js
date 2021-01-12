@@ -367,6 +367,34 @@ $(function() {
             .trigger('click');
     });
 
+    QUnit.test('should prevent url change if click on nested anchor element', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test">' +
+            '<span id="nested"></span>' +
+            '</a>')
+            .appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse"></div>').appendTo('#qunit-fixture');
+        var $nestedTrigger = $('#nested');
+
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($target.hasClass('in'));
+                $nestedTrigger.trigger('click');
+            })
+            .one('click', function(e) {
+                assert.strictEqual(e.target, $nestedTrigger[0]);
+                setTimeout(function() {
+                    assert.ok(e.isDefaultPrevented());
+                    done();
+                }, 10);
+            });
+
+        $trigger.CFW_Collapse();
+        $trigger.CFW_Collapse('show');
+    });
+
     QUnit.test('should update focus when toggled with follow option enabled', function(assert) {
         assert.expect(2);
         var done = assert.async();
