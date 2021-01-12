@@ -708,19 +708,17 @@ $(function() {
             '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
 
-        var virtualElement = {
-            getBoundingClientRect() {
-                return {
-                    width: 0,
-                    height: 0,
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0
-                }
-            }
-        }
-
+        var virtualElement = {};
+        virtualElement.getBoundingClientRect = function() {
+            return {
+                width: 0,
+                height: 0,
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            };
+        };
         assert.throws(function() {
             $('<button>').CFW_Dropdown({
                 reference: {}
