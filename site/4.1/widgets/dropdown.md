@@ -826,7 +826,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string | element</td>
         <td><code>'toggle'</code></td>
         <td>
-          <p>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</p>
+          <p>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, an HTMLElement reference, or an object providing <code>getBoundingClientRect</code>. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</p>
         </td>
       </tr>
       <tr>

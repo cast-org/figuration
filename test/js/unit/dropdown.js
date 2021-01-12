@@ -696,4 +696,61 @@ $(function() {
 
         $dropdown.trigger('click');
     });
+
+    QUnit.test('should toggle a dropdown with a valid virtual element reference', function(assert) {
+        assert.expect(5);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="sr-only" data-cfw="dropdown">Dropdown</button>' +
+            '<ul id="dropdown-menu" class="dropdown-menu">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+
+        var virtualElement = {
+            getBoundingClientRect() {
+                return {
+                    width: 0,
+                    height: 0,
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                }
+            }
+        }
+
+        assert.throws(function() {
+            $('<button>').CFW_Dropdown({
+                reference: {}
+            });
+        },
+        'throws error on empty object'
+        );
+
+        assert.throws(function() {
+            $('<button>').CFW_Dropdown({
+                reference: {
+                    getBoundingClientRect: 'not-a-function'
+                }
+            });
+        },
+        'throws error on object without valid getBoundingClientRect method'
+        );
+
+        $dropdown.on('afterShow.cfw.dropdown', function() {
+            assert.strictEqual($dropdown.attr('aria-expanded'), 'true', 'toggle has aria-expanded="true" on click');
+            assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to menu on click');
+            done();
+        });
+
+        $dropdown.CFW_Dropdown({
+            reference: virtualElement
+        });
+
+        assert.strictEqual($dropdown.attr('aria-expanded'), 'false', 'toggle has aria-expanded="false" before click');
+
+        $dropdown.trigger('click');
+    });
 });
