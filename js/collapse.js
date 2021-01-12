@@ -77,9 +77,11 @@
         },
 
         toggle : function(e) {
-            if (e && !/input|textarea/i.test(e.target.tagName)) {
+            // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+            if (e.target.tagName === 'A' || (e.delegateTarget && e.delegateTarget.tagName === 'A')) {
                 e.preventDefault();
             }
+
             if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
