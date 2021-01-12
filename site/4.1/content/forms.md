@@ -1486,14 +1486,14 @@ Optional visual icon representations of the validation state can be added to _te
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_settings.scss` file, this Sass map is looped over to generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color and icon. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_settings.scss` file, this Sass map is used to generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip colors, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
 
 Please note that we do not recommend customizing these values without also modifying the `form-validation-state` mixin.
 
+This is the Sass map from `_settings.scss`. Override this and recompile your Sass to generate different states:
+
 {% capture highlight %}
-// Sass map from `_settings.scss`
-// Override this and recompile your Sass to generate different states
-$form-validation-states:
+$form-validation-states: (
   "valid": (
     "color": $form-feedback-valid-color,
     "icon": $form-feedback-icon-valid-image
@@ -1503,12 +1503,38 @@ $form-validation-states:
     "icon": $form-feedback-icon-invalid-image
   )
 );
+{% endcapture %}
+{% renderHighlight highlight, "sass" %}
 
-// Loop from `_forms.scss`
-// Any modifications to the above Sass map will be reflected in your compiled
-// CSS via this loop.
+Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
+The optional parameters are `tooltip-color` and `tooltip-bg` for setting the foreground and background colors of the tooltip,  and `focus-box-shadow` for adjusting the box-shadow on the input field when in a focus state.
+
+{% capture highlight %}
+$form-validation-states: (
+  "valid": (
+    "color": $form-feedback-valid-color,
+    "icon": $form-feedback-icon-valid-image,
+    "tooltip-color": color-auto-contrast(#0f0),
+    "tooltip-bg": rgba(#0f0, .9),
+    "focus-box-shadow": $input-focus-box-shadow-size rgba(#0f0, $input-focus-box-shadow-alpha)
+
+  ),
+  "invalid": (
+    "color": $form-feedback-invalid-color,
+    "icon": $form-feedback-icon-invalid-image,
+    "tooltip-color": color-auto-contrast(#f00),
+    "tooltip-bg": rgba(#f00, .9),
+    "focus-box-shadow": $input-focus-box-shadow-size rgba(#f00, $input-focus-box-shadow-alpha)
+  )
+);
+{% endcapture %}
+{% renderHighlight highlight, "sass" %}
+
+This is the loop from `forms/_form-validation.scss`. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop:
+
+{% capture highlight %}
 @each $state, $data in $form-validation-states {
-  @include form-validation-state($state, map-get($data, color), map-get($data, icon));
+  @include form-validation-state($state, data...);
 }
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}

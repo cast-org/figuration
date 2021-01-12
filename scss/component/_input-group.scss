@@ -149,7 +149,7 @@
             @include border-end-radius(0);
         }
 
-        > :not(:first-child):not(.dropdown-menu),
+        > :not(:first-child):not(.dropdown-menu):not([class*="-tooltip"]),
         > .btn-check:not(:first-child) > .btn {
             margin-left: -$input-border-width;
             @include border-start-radius(0);

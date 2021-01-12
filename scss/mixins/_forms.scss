@@ -62,7 +62,14 @@
     }
 }
 
-@mixin form-validation-state($state, $color, $icon) {
+@mixin form-validation-state(
+    $state,
+    $color,
+    $icon,
+    $tooltip-color: color-auto-contrast($color),
+    $tooltip-bg: rgba($color, $tooltip-opacity),
+    $focus-box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha)
+) {
     @if $enable-form-validation-feedback {
         .#{$state}-feedback {
             display: none;
@@ -83,8 +90,8 @@
             padding: $tooltip-padding-y $tooltip-padding-x;
             margin-top: .125rem;
             @include font-size($tooltip-font-size);
-            color: color-auto-contrast($color);
-            background-color: rgba($color, $tooltip-opacity);
+            color: $tooltip-color;
+            background-color: $tooltip-bg;
             @include border-radius($tooltip-border-radius);
         }
     }
@@ -115,9 +122,9 @@
                 &:focus {
                     border-color: $color;
                     @if $enable-shadows {
-                        @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                        @include box-shadow($input-box-shadow, $focus-box-shadow);
                     } @else {
-                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        box-shadow: $focus-box-shadow;
                     }
                 }
             }
@@ -197,9 +204,9 @@
                     ~ .form-check-label {
                         &::before {
                             @if $enable-shadows {
-                                @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                                @include box-shadow($input-box-shadow, $focus-box-shadow);
                             } @else {
-                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                                box-shadow: $focus-box-shadow;
                             }
                         }
                     }
@@ -239,9 +246,9 @@
                     ~ .form-check-label {
                         &::before {
                             @if $enable-shadows {
-                                @include box-shadow($form-switch-track-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                                @include box-shadow($form-switch-track-box-shadow, $focus-box-shadow);
                             } @else {
-                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                                box-shadow: $focus-box-shadow;
                             }
                         }
                         &::after {
@@ -265,9 +272,9 @@
                     ~ .form-file-label {
                         border-color: $color;
                         @if $enable-shadows {
-                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                            @include box-shadow($input-box-shadow, $focus-box-shadow);
                         } @else {
-                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            box-shadow: $focus-box-shadow;
                         }
                     }
                 }
@@ -276,9 +283,9 @@
                     ~ .form-file-label {
                         border-color: $color;
                         @if $enable-shadows {
-                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                            @include box-shadow($input-box-shadow, $focus-box-shadow);
                         } @else {
-                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            box-shadow: $focus-box-shadow;
                         }
                     }
                 }
