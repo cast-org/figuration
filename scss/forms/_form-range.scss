@@ -16,7 +16,7 @@
         appearance: none;
 
         &:focus {
-            outline: none;
+            outline: 0;
             &::-webkit-slider-thumb {
                 box-shadow: $form-range-thumb-focus-box-shadow;
             }
