@@ -196,7 +196,7 @@ You can find and customize these variables for key global options in our `_setti
       <tr>
         <td><code>$enable-shadows</code></td>
         <td><code>true</code> or <code>false</code> (default)</td>
-        <td>Enables predefined <code>box-shadow</code> styles on various components.</td>
+        <td>Enables predefined decorative <code>box-shadow</code> styles on various components. Does not affect <code>box-shadow</code>s used for focus states.</td>
       </tr>
       <tr>
         <td><code>$enable-transitions</code></td>

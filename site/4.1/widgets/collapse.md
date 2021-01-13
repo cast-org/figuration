@@ -226,4 +226,4 @@ $('#myCollapse').on('afterHide.cfw.collapse', function() {
 
 ## Accessibility
 
-If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
+The semantic recommendation is to use a button with a `data-cfw-collapse-target` attribute. If the control element's HTML element is not a button, such as a link, the attribute `role="button"` should be added to the element.

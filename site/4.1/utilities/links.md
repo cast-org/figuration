@@ -12,6 +12,12 @@ Make any HTML element or component clickable by “stretching” a nested link v
 
 Add `.link-stretch` to a link to make its [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) clickable via a `::after` pseudo element. In most cases, this means that an element with `position: relative;` that contains a link with the `.link-stretch` class is clickable.
 
+**Note:** Regarding [how CSS `position` works](https://www.w3.org/TR/CSS21/visuren.html#propdef-position), `.link-stretch` cannot be mixed with most table elements.
+
+<blockquote class="px-1 py-0_25 mx-2 fs-small bg-secondary-50 border-s">
+The effect of 'position:relative' on table-row-group, table-header-group, table-footer-group, table-row, table-column-group, table-column, table-cell, and table-caption elements is undefined.
+</blockquote>
+
 ### Examples
 
 #### Using with Cards
