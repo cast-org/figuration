@@ -65,7 +65,7 @@ body {
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
-  outline: none !important;
+  outline: 0 !important;
 }
 
 hr {
@@ -273,9 +273,8 @@ button {
   border-radius: 0;
 }
 
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+button:focus:not(:focus-visible) {
+  outline: 0;
 }
 
 input,
@@ -1278,7 +1277,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-range:focus {
-  outline: none;
+  outline: 0;
 }
 
 .form-range:focus::-webkit-slider-thumb {
@@ -4501,7 +4500,7 @@ a.drag.disabled {
   border-bottom-left-radius: 0;
 }
 
-.input-group > :not(:first-child):not(.dropdown-menu),
+.input-group > :not(:first-child):not(.dropdown-menu):not([class*="-tooltip"]),
 .input-group > .btn-check:not(:first-child) > .btn {
   margin-right: -1px;
   border-top-right-radius: 0;

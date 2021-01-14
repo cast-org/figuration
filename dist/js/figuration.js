@@ -709,9 +709,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         toggle : function(e) {
-            if (e && !/input|textarea/i.test(e.target.tagName)) {
+            // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+            if (e.target.tagName === 'A' || (e.delegateTarget && e.delegateTarget.tagName === 'A')) {
                 e.preventDefault();
             }
+
             if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
@@ -891,6 +893,7 @@ if (typeof jQuery === 'undefined') {
             previous: null
         };
         this.inNavbar = this._insideNavbar();
+        this.popper = null;
 
         var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
@@ -1018,7 +1021,14 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
             var $selfRef = this;
-            this.popper = null;
+
+            if (typeof this.settings.reference === 'object' &&
+                !this._isElement(this.settings.reference) &&
+                typeof this.settings.reference.getBoundingClientRect !== 'function'
+            ) {
+                // Popper virtual elements require a getBoundingClientRect method
+                throw new Error('CFW_Dropdown: Option "reference" provided type "object" without a required "getBoundingClientRect" method.');
+            }
 
             // Get target menu
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
@@ -1376,6 +1386,8 @@ if (typeof jQuery === 'undefined') {
                 if (typeof this.settings.reference.jquery !== 'undefined') {
                     reference = this.settings.reference[0];
                 }
+            } else if (typeof this.settings.reference === 'object') {
+                reference = this.settings.reference;
             }
 
             return reference;
