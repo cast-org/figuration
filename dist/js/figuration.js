@@ -2507,9 +2507,12 @@ if (typeof jQuery === 'undefined') {
                             $selfRef._tabSet(e);
                             if ($selfRef.flags.keyTab) {
                                 if (!$selfRef.flags.keyShift) {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                    var selectables = $selfRef._tabItems($selfRef.$target);
+                                    if (selectables.length) {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                        $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                    }
                                 }
                             }
                             $selfRef._tabReset();
@@ -2955,7 +2958,7 @@ if (typeof jQuery === 'undefined') {
             };
         },
 
-        // Move focus to next tabbabale item before given element
+        // Move focus to next tabbable item before given element
         _tabPrev : function(current, $scope) {
             var $selfRef = this;
             var selectables = $selfRef._tabItems($scope);
@@ -2969,34 +2972,32 @@ if (typeof jQuery === 'undefined') {
             selectables.eq(prevIndex).trigger('focus');
         },
 
-        // Move focus to next tabbabale item after given element
+        // Move focus to next tabbable item after given element
         _tabNext : function(current, $scope) {
             var $selfRef = this;
 
             var selectables = $selfRef._tabItems($scope);
-            var nextIndex = 0;
+            var nextIndex = -1;
             if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
                 }
             }
-            selectables.eq(nextIndex).trigger('focus');
-        },
 
-        // Find the next tabbabale item after given element
-        _tabFindNext : function(current, $scope) {
-            var $selfRef = this;
-
-            var selectables = $selfRef._tabItems($scope);
-            var nextIndex = 0;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex + 1 < selectables.length) {
-                    nextIndex = currentIndex + 1;
-                }
+            // Remove items from inside target
+            if (typeof $scope === 'undefined') {
+                selectables = selectables.filter(function() {
+                    return !$.contains($selfRef.$target[0], this);
+                });
             }
-            return selectables.eq(nextIndex);
+
+            if (typeof selectables[nextIndex] === 'undefined') {
+                // Send focus back to body
+                document.activeElement.blur();
+            } else {
+                selectables.eq(nextIndex).trigger('focus');
+            }
         },
 
         /*
@@ -3053,6 +3054,8 @@ if (typeof jQuery === 'undefined') {
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
+                if ($selfRef.$focusFirst !== null && this === $selfRef.$focusFirst[0]) { return false; }
+                if ($selfRef.$focusLast !== null && this === $selfRef.$focusLast[0]) { return false; }
                 return (isTabIndexNaN || tabIndex >= 0) && $selfRef._focusable(this, !isTabIndexNaN);
             });
             return items;
