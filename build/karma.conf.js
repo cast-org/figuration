@@ -1,11 +1,9 @@
 /* eslint-env node */
-/* eslint no-process-env: 0 */
+/* eslint node/no-process-env: 0 */
 
-const {
-    env
-} = process;
-const debug = env.DEBUG === 'true';
-const sauce = env.BROWSER === 'true';
+const ENV = process.env;
+const DEBUG = Boolean(ENV.DEBUG);
+const SAUCE = Boolean(ENV.SAUCE);
 
 const {
     browsers,
@@ -29,16 +27,16 @@ const reporters = [
 const detectBrowsers = {
     usePhantomJS: false,
     postDetection(availableBrowser) {
-        if (env.CI === true || availableBrowser.includes('Chrome')) {
-            return debug ? ['Chrome'] : ['ChromeHeadless'];
+        if (ENV.CI === true || availableBrowser.includes('Chrome')) {
+            return DEBUG ? ['Chrome'] : ['ChromeHeadless'];
         }
 
         if (availableBrowser.includes('Chromium')) {
-            return debug ? ['Chromium'] : ['ChromiumHeadless'];
+            return DEBUG ? ['Chromium'] : ['ChromiumHeadless'];
         }
 
         if (availableBrowser.includes('Firefox')) {
-            return debug ? ['Firefox'] : ['FirefoxHeadless'];
+            return DEBUG ? ['Firefox'] : ['FirefoxHeadless'];
         }
 
         throw new Error('Please install Chrome, Chromium or Firefox');
@@ -106,13 +104,13 @@ const conf = {
 };
 
 // Some test to go here later
-if (sauce) {
+if (SAUCE) {
     conf.sauceLabs = {
-        build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER + '-' + env.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`,
-        tunnelIdentifier: env.TRAVIS_JOB_NUMBER,
-        username: env.SAUCE_USERNAME,
-        accessKey: env.SAUCE_ACCESS_KEY,
-        startConnect: env.TRAVIS !== 'true'
+        build: ENV.TRAVIS_BUILD_NUMBER ? ENV.TRAVIS_BUILD_NUMBER + '-' + ENV.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`,
+        tunnelIdentifier: ENV.TRAVIS_JOB_NUMBER,
+        username: ENV.SAUCE_USERNAME,
+        accessKey: ENV.SAUCE_ACCESS_KEY,
+        startConnect: ENV.TRAVIS !== 'true'
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;
@@ -131,7 +129,7 @@ if (sauce) {
     conf.customLaunchers = customLaunchers;
     conf.detectBrowsers = detectBrowsers;
 
-    if (debug) {
+    if (DEBUG) {
         conf.autoWatch = true;
         conf.singleRun = false;
     }
