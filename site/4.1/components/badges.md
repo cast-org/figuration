@@ -149,7 +149,7 @@ Group badges together using `.badge-group`.
 {% capture example %}
 <div class="badge-group me-1">
   <span class="badge bg-dark">version</span>
-  <span class="badge bg-success">v4.1.0</span>
+  <span class="badge bg-success">v4.1.1</span>
 </div>
 
 <div class="badge-group me-1">

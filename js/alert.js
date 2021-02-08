@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): alert.js
+ * Figuration (v4.1.1): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

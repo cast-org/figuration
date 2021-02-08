@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): util.js
+ * Figuration (v4.1.1): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

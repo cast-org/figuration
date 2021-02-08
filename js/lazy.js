@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): lazy.js
+ * Figuration (v4.1.1): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
