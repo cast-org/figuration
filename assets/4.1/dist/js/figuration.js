@@ -1,10 +1,10 @@
 /*!
- * Figuration (v4.1.0)
+ * Figuration (v4.1.1)
  * http://figuration.org
- * Copyright 2013-2020 CAST, Inc.
+ * Copyright 2013-2021 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2020  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2021  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): util.js
+ * Figuration (v4.1.1): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -220,7 +220,7 @@ if (typeof jQuery === 'undefined') {
                 }
             );
 
-            // Don't pass node so that this can force a mutation obeservation
+            // Don't pass node so that this can force a mutation observation
             $(this).data('cfw-mutationobserver', elmObserver)
                 .on('mutated.cfw.mutate', CFW_mutationObserved);
             /*
@@ -445,7 +445,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): drag.js
+ * Figuration (v4.1.1): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -632,7 +632,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): collapse.js
+ * Figuration (v4.1.1): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -709,9 +709,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         toggle : function(e) {
-            if (e && !/input|textarea/i.test(e.target.tagName)) {
+            // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+            if (e.target.tagName === 'A' || (e.delegateTarget && e.delegateTarget.tagName === 'A')) {
                 e.preventDefault();
             }
+
             if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
@@ -872,7 +874,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): dropdown.js
+ * Figuration (v4.1.1): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -891,6 +893,7 @@ if (typeof jQuery === 'undefined') {
             previous: null
         };
         this.inNavbar = this._insideNavbar();
+        this.popper = null;
 
         var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
@@ -1018,7 +1021,14 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
             var $selfRef = this;
-            this.popper = null;
+
+            if (typeof this.settings.reference === 'object' &&
+                !this._isElement(this.settings.reference) &&
+                typeof this.settings.reference.getBoundingClientRect !== 'function'
+            ) {
+                // Popper virtual elements require a getBoundingClientRect method
+                throw new Error('CFW_Dropdown: Option "reference" provided type "object" without a required "getBoundingClientRect" method.');
+            }
 
             // Get target menu
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
@@ -1376,6 +1386,8 @@ if (typeof jQuery === 'undefined') {
                 if (typeof this.settings.reference.jquery !== 'undefined') {
                     reference = this.settings.reference[0];
                 }
+            } else if (typeof this.settings.reference === 'object') {
+                reference = this.settings.reference;
             }
 
             return reference;
@@ -1599,7 +1611,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): tab.js
+ * Figuration (v4.1.1): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1864,7 +1876,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): affix.js
+ * Figuration (v4.1.1): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2038,7 +2050,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): tooltip.js
+ * Figuration (v4.1.1): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2495,9 +2507,12 @@ if (typeof jQuery === 'undefined') {
                             $selfRef._tabSet(e);
                             if ($selfRef.flags.keyTab) {
                                 if (!$selfRef.flags.keyShift) {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                    var selectables = $selfRef._tabItems($selfRef.$target);
+                                    if (selectables.length) {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                        $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                    }
                                 }
                             }
                             $selfRef._tabReset();
@@ -2943,7 +2958,7 @@ if (typeof jQuery === 'undefined') {
             };
         },
 
-        // Move focus to next tabbabale item before given element
+        // Move focus to next tabbable item before given element
         _tabPrev : function(current, $scope) {
             var $selfRef = this;
             var selectables = $selfRef._tabItems($scope);
@@ -2957,34 +2972,32 @@ if (typeof jQuery === 'undefined') {
             selectables.eq(prevIndex).trigger('focus');
         },
 
-        // Move focus to next tabbabale item after given element
+        // Move focus to next tabbable item after given element
         _tabNext : function(current, $scope) {
             var $selfRef = this;
 
             var selectables = $selfRef._tabItems($scope);
-            var nextIndex = 0;
+            var nextIndex = -1;
             if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
                 }
             }
-            selectables.eq(nextIndex).trigger('focus');
-        },
 
-        // Find the next tabbabale item after given element
-        _tabFindNext : function(current, $scope) {
-            var $selfRef = this;
-
-            var selectables = $selfRef._tabItems($scope);
-            var nextIndex = 0;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex + 1 < selectables.length) {
-                    nextIndex = currentIndex + 1;
-                }
+            // Remove items from inside target
+            if (typeof $scope === 'undefined') {
+                selectables = selectables.filter(function() {
+                    return !$.contains($selfRef.$target[0], this);
+                });
             }
-            return selectables.eq(nextIndex);
+
+            if (typeof selectables[nextIndex] === 'undefined') {
+                // Send focus back to body
+                document.activeElement.blur();
+            } else {
+                selectables.eq(nextIndex).trigger('focus');
+            }
         },
 
         /*
@@ -3041,6 +3054,8 @@ if (typeof jQuery === 'undefined') {
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
+                if ($selfRef.$focusFirst !== null && this === $selfRef.$focusFirst[0]) { return false; }
+                if ($selfRef.$focusLast !== null && this === $selfRef.$focusLast[0]) { return false; }
                 return (isTabIndexNaN || tabIndex >= 0) && $selfRef._focusable(this, !isTabIndexNaN);
             });
             return items;
@@ -3072,7 +3087,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): popover.js
+ * Figuration (v4.1.1): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3496,7 +3511,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): modal.js
+ * Figuration (v4.1.1): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4072,7 +4087,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): accordion.js
+ * Figuration (v4.1.1): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4148,7 +4163,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): tab-responsive.js
+ * Figuration (v4.1.1): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4285,7 +4300,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): slideshow.js
+ * Figuration (v4.1.1): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4481,7 +4496,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): scrollspy.js
+ * Figuration (v4.1.1): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4675,7 +4690,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): alert.js
+ * Figuration (v4.1.1): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4813,7 +4828,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): lazy.js
+ * Figuration (v4.1.1): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5025,7 +5040,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): equalize.js
+ * Figuration (v4.1.1): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5120,6 +5135,8 @@ if (typeof jQuery === 'undefined') {
         },
 
         _equalizeGroup : function($targetElm) {
+            // Stop mutation listener to stop possible infinite loop
+            this.$target.CFW_mutationIgnore();
             $targetElm.height('');
 
             if (!this.settings.row && !this.settings.stack) {
@@ -5174,13 +5191,11 @@ if (typeof jQuery === 'undefined') {
                 })
                 .get();
 
-            if (this.settings.minimum) {
-                var min = Math.min.apply(null, heights);
-                $nodes.css('height', min);
-            } else {
-                var max = Math.max.apply(null, heights);
-                $nodes.css('height', max);
-            }
+            var newHeight = this.settings.minimum ? Math.min.apply(null, heights) : Math.max.apply(null, heights);
+            $nodes.css('height', newHeight);
+
+            // Restart mutation listeners that were stopped at start of `_equalize()`
+            this.$target.CFW_mutationListen();
 
             if (!callback) { return; }
             callback();
@@ -5242,7 +5257,7 @@ if (typeof jQuery === 'undefined') {
 /* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): player.js
+ * Figuration (v4.1.1): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7077,7 +7092,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.1.0): common.js
+ * Figuration (v4.1.1): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

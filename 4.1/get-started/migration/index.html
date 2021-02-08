@@ -102,13 +102,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.1.0
+    v4.1.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.1/" class="active" aria-current="true">v4.1.0</a></li>
+    <li><a href="/4.1/" class="active" aria-current="true">v4.1.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -284,6 +284,9 @@
             
                 <ol>
                     
+                    <li><a href="#forms">Forms </a>
+            		</li>
+
                     <li><a href="#utilities">Utilities </a>
             		</li>
 
@@ -411,6 +414,10 @@
         
         <div class="cf-content">
           <h2 id="v41">v4.1 <a class="direct-link" href="#v41"></a></h2>
+<h3 id="forms">Forms <a class="direct-link" href="#forms"></a></h3>
+<ul>
+<li>Extended form validation states customization capabilities. Added three new optional parameters to the <code>form-validation-state</code> mixin: <code>tooltip-color</code>, <code>tooltip-bg</code>, <code>focus-box-shadow</code>. These parameters can be set in the <code>$form-validation-states</code> map.</li>
+</ul>
 <h3 id="utilities">Utilities <a class="direct-link" href="#utilities"></a></h3>
 <ul>
 <li>Added <code>.d-grid</code> to display utilities.</li>
@@ -418,6 +425,7 @@
 <li>New placement positionin utilities to adjust <code>top</code>, <code>end</code>, <code>bottom</code>, and <code>start</code> side offsets.</li>
 <li>New <code>.translate-middle-x</code> and <code>.translate-middle-y</code> utilities to horizontally or vertically center absolute/fixed positioned elements.</li>
 <li>New user interaction utilities for <code>pointer-events</code> and <code>user-select</code>.</li>
+<li>Updated <code>.sr-only-focusable</code> to also work on containers, using <code>:focus-within</code>.</li>
 </ul>
 <h3 id="widgets">Widgets <a class="direct-link" href="#widgets"></a></h3>
 <ul>
@@ -442,7 +450,7 @@
 <li>Added more notes regarding accessibility.</li>
 <li>Added/updated examples for various content, components, and widgets.</li>
 </ul>
-<h2 id="v40">v4.0 <a class="direct-link" href="#v40"></a></h2>
+<h2 class="border-t pt-1" id="v40">v4.0 <a class="direct-link" href="#v40"></a></h2>
 <h3 id="notice">Notice <a class="direct-link" href="#notice"></a></h3>
 <p>Figuration v4 is a considerable rework, and there are a large number of breaking changes across the entire framework.  We will try to explain the changes below.</p>
 <p>Some changes will most likely have been missed, so please refer to the documentation pages to see the revised/new implementations.</p>
@@ -641,14 +649,14 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.1.0
+      <strong>Latest version:</strong> 4.1.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
     <p>
-      &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
+      &copy; 2013-2021 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
-      Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      Portions: &copy; 2011-2021 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
     </p>
     <p>
       Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
