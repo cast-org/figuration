@@ -751,4 +751,51 @@ $(function() {
 
         $dropdown.trigger('click');
     });
+
+    QUnit.test('should open menu when pressing arrowdown or arrowup on trigger', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button id="dropdown-trigger" type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul id="dropdown-menu" class="dropdown-menu">' +
+            '<li><a href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        var $trigger = $('#dropdown-trigger');
+
+        var arrowDown = $.Event('keydown', {
+            which: 38
+        });
+        var arrowUp   = $.Event('keydown', {
+            which: 40
+        });
+
+        assert.notOk($('#dropdown-menu').hasClass('open'), '"open" class not on trigger');
+        assert.notOk($('#dropdown-trigger').hasClass('open'), '"open" class not on menu');
+
+        $trigger
+            .one('afterShow.cfw.dropdown', function() {
+                assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to trigger on arrowDown');
+                assert.ok($('#dropdown-trigger').hasClass('open'), '"open" class added to menu on arrowDown');
+                $trigger.CFW_Dropdown('hide');
+            })
+            .one('afterHide.cfw.dropdown', function() {
+                assert.notOk($('#dropdown-menu').hasClass('open'), '"open" class removed from trigger on hide');
+                assert.notOk($('#dropdown-trigger').hasClass('open'), '"open" class removed from menu on hide');
+
+                $trigger
+                    .one('afterShow.cfw.dropdown', function() {
+                        assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to trigger on arrowUp');
+                        assert.ok($('#dropdown-trigger').hasClass('open'), '"open" class added to menu on arrowUp');
+                        done();
+                    })
+                    .trigger('focus')
+                    .trigger(arrowUp);
+            })
+            .trigger('focus')
+            .trigger(arrowDown);
+    });
 });
