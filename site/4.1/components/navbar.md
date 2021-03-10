@@ -194,6 +194,10 @@ Here's an example of some sub-components included in a default, light navbar:
 
 The `.navbar-brand` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
+#### Text
+
+Add your text within an element with the `.navbar-brand` class.
+
 <div class="cf-example">
   <nav class="navbar navbar-light bg-light mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
@@ -214,7 +218,9 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best, a
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-Adding images to the `.navbar-brand` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
+#### Image
+
+You can replace the text within the `.navbar-brand` with an `<img>`.
 
 {% capture example %}
 <!-- Just an image -->
@@ -226,11 +232,15 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 {% endcapture %}
 {% renderExample example %}
 
+#### Image and Text
+
+You can also make use of some additional utilities to add an image and text at the same time. Note the addition of `.d-inline-block` and `.valign-text-top` on the `<img>`.
+
 {% capture example %}
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.path }}/assets/{{ version.docs }}/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="{{ site.path }}/assets/brand/figuration-solid.svg" width="30" height="30" class="d-inline-block valign-text-top" alt="">
     Navbar
   </a>
 </nav>
