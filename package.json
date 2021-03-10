@@ -27,7 +27,7 @@
     "docs-serve-11ty": "eleventy --serve --port=9001",
     "docs-prod": "npm run docs-serve-clean && cross-env ELEVENTY_ENV=production eleventy",
     "docs-prod-serve": "npm run docs-serve-clean && cross-env ELEVENTY_ENV=production eleventy --serve",
-    "linkinator": "linkinator _siteout --recurse --silent --skip \"^(?!http://localhost)\"",
+    "linkinator": "linkinator _siteout --recurse --skip \"^(?!http://localhost)\" --verbosity error",
     "js-test-karma": "karma start build/karma.conf.js",
     "js-test-debug": "cross-env DEBUG=true npm run js-test-karma",
     "js-test-cloud": "cross-env SAUCE=true npm run js-test-karma"
