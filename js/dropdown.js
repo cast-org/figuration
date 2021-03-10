@@ -520,8 +520,7 @@
         },
 
         _getPlacement : function() {
-            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
-            var isRTL = Boolean(directionVal === 'rtl');
+            var isRTL = $.CFW_isRTL(this.$element[0]);
             var attachmentMap = {
                 AUTO: 'auto',
                 TOP: isRTL ? 'top-end' : 'top-start',

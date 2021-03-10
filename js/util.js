@@ -327,6 +327,12 @@
         }
     };
 
+    $.CFW_isRTL = function(element) {
+        if (typeof element === 'undefined') { element = document.documentElement; }
+        var directionVal = window.getComputedStyle(element, null).getPropertyValue('direction').toLowerCase();
+        return Boolean(directionVal === 'rtl');
+    };
+
     $.fn.CFW_getScrollbarSide = function() {
         // Unable to detect side when 0-width scrollbars (such as mobile)
         // are found.  So we use 'right` side as default (more common case).
@@ -340,8 +346,7 @@
                 msedge: /edge\/\d+/i.test(navigator.userAgent),
                 msie: /(msie|trident)/i.test(navigator.userAgent)
             };
-            var directionVal = window.getComputedStyle($node[0], null).getPropertyValue('direction').toLowerCase();
-            if ((directionVal === 'rtl') && (browser.msedge || browser.msie)) {
+            if ($.CFW_isRTL($node[0]) && (browser.msedge || browser.msie)) {
                 return 'left';
             }
             return 'right';
