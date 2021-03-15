@@ -17,6 +17,13 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
+As a best practice, we recommend using `<button>` elements for the tabs, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.
+
+However, if you choose to use the historical method using anchors, be sure to abide by the recommendations for disabled links.
+
+{%- assign calloutAnchors = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-disabling-anchors.md" -%}
+{% include calloutAnchors %}
+
 ## Examples
 
 ### Tabs
@@ -25,10 +32,10 @@ The tab widget works with [tab]({{ site.path }}/{{ version.docs }}/components/na
 
 <div class="cf-example">
   <ul class="nav nav-tabs">
-    <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-    <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
-    <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-    <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab1">Tab 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link active" data-cfw="tab" data-cfw-tab-target="#tab2">Tab 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab3">Tab 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab4" disabled>Tab 4</button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="tab1">
@@ -48,10 +55,10 @@ The tab widget works with [tab]({{ site.path }}/{{ version.docs }}/components/na
 
 {% capture highlight %}
 <ul class="nav nav-tabs">
-  <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-  <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
-  <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-  <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab1">Tab 1</button></li>
+  <li class="nav-item"><button type="button" class="nav-link active" data-cfw="tab" data-cfw-tab-target="#tab2">Tab 2</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab3">Tab 3</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab4" disabled>Tab 4</button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="tab1">...</div>
@@ -68,10 +75,10 @@ The tab widget also works with [pill]({{ site.path }}/{{ version.docs }}/compone
 
 <div class="cf-example">
   <ul class="nav nav-pills">
-    <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-    <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
-    <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-    <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill1">Pill 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link active" data-cfw="tab" data-cfw-tab-target="#pill2">Pill 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill3">Pill 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill4" disabled>Pill 4</button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="pill1">
@@ -90,11 +97,11 @@ The tab widget also works with [pill]({{ site.path }}/{{ version.docs }}/compone
 </div>
 
 {% capture highlight %}
-<ul class="nav nav-tabs">
-  <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Pill 1</a></li>
-  <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Pill 2</a></li>
-  <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Pill 3</a></li>
-  <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Pill 4</a></li>
+<ul class="nav nav-pills">
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill1">Pill 1</button></li>
+  <li class="nav-item"><button type="button" class="nav-link active" data-cfw="tab" data-cfw-tab-target="#pill2">Pill 2</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill3">Pill 3</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pill4" disabled>Pill 4</button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="pill1">...</div>
@@ -105,19 +112,66 @@ The tab widget also works with [pill]({{ site.path }}/{{ version.docs }}/compone
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+And with vertical pills.
+
+<div class="cf-example">
+  <div class="d-flex align-items-start">
+    <ul class="nav nav-pills flex-column me-1">
+      <li class="nav-item"><button type="button" class="nav-link text-nowrap" data-cfw="tab" data-cfw-tab-target="#pillV1">Vertical Pill 1</button></li>
+      <li class="nav-item"><button type="button" class="nav-link text-nowrap active" data-cfw="tab" data-cfw-tab-target="#pillV2">Vertical Pill 2</button></li>
+      <li class="nav-item"><button type="button" class="nav-link text-nowrap" data-cfw="tab" data-cfw-tab-target="#pillV3">Vertical Pill 3</button></li>
+      <li class="nav-item"><button type="button" class="nav-link text-nowrap" data-cfw="tab" data-cfw-tab-target="#pillV4" disabled>Vertical Pill 4</button></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" id="pillV1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+      </div>
+      <div class="tab-pane" id="pillV2">
+        <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+      </div>
+      <div class="tab-pane" id="pillV3">
+        <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+      </div>
+      <div class="tab-pane" id="pillV4">
+        <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="d-flex align-items-start">
+  <ul class="nav nav-pills me-1">
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pillV1">Vertical Pill 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link active" data-cfw="tab" data-cfw-tab-target="#pillV2">Vertical Pill 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pillV3">Vertical Pill 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#pillV4" disabled>Vertical Pill 4</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="pillV1">...</div>
+    <div class="tab-pane" id="pillV2">...</div>
+    <div class="tab-pane" id="pillV3">...</div>
+    <div class="tab-pane" id="pillV4">...</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ### List
 
-The tab widget even work with the [`.list` component]({{ site.path }}/{{ version.docs }}/components/lists/).
+The tab widget even works with the [`.list` component]({{ site.path }}/{{ version.docs }}/components/lists/).
 
 <div class="cf-example">
   <div class="row">
     <div class="col-md-4">
-      <nav class="list list-spaced list-ruled">
-        <a href="#list1" data-cfw="tab" class="list-item list-item-action">List Item 1</a>
-        <a href="#list2" data-cfw="tab" class="list-item list-item-action active">List Item 2</a>
-        <a href="#list3" data-cfw="tab" class="list-item list-item-action">List Item 3</a>
-        <a href="#list4" data-cfw="tab" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">List Item 4</a>
-        </nav>
+      <nav>
+        <div class="list list-spaced list-ruled">
+          <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list1">List Item 1</button>
+          <button type="button" class="list-item list-item-action active" data-cfw="tab" data-cfw-tab-target="#list2">List Item 2</button>
+          <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list3">List Item 3</button>
+          <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list4" disabled>List Item 4</button>
+        </div>
+      </nav>
     </div>
     <div class="col-md-8">
       <div class="tab-content">
@@ -141,11 +195,13 @@ The tab widget even work with the [`.list` component]({{ site.path }}/{{ version
 {% capture highlight %}
 <div class="row">
   <div class="col-md-4">
-    <nav class="list list-spaced list-ruled">
-      <a href="#list1" class="list-item list-item-action">List Item 1</a>
-      <a href="#list2" class="list-item list-item-action active">List Item 2</a>
-      <a href="#list3" class="list-item list-item-action">List Item 3</a>
-      <a href="#list4" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">List Item 4</a>
+    <nav>
+      <div class="list list-spaced list-ruled">
+        <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list1">List Item 1</button>
+        <button type="button" class="list-item list-item-action active" data-cfw="tab" data-cfw-tab-target="#list2">List Item 2</button>
+        <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list3">List Item 3</button>
+        <button type="button" class="list-item list-item-action" data-cfw="tab" data-cfw-tab-target="#list4" disabled>List Item 4</button>
+      </div>
     </nav>
   </div>
   <div class="col-md-8">
@@ -156,6 +212,49 @@ The tab widget even work with the [`.list` component]({{ site.path }}/{{ version
       <div class="tab-pane" id="list4">...</div>
     </div>
   </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Anchors
+
+For reference, this is a 'historical' example, using anchors, as shown in earlier iterations of Figuration. As previously mentioned, we recommend using `<button>` elements for the tabs, as seen in the examples above. Regardless, this alternative may be helpful for some situations.
+
+<div class="cf-example">
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a href="#tabOld1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+    <li class="nav-item"><a href="#tabOld2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+    <li class="nav-item"><a href="#tabOld3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+    <li class="nav-item"><a href="#tabOld4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="tabOld1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+    </div>
+    <div class="tab-pane" id="tabOld2">
+      <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+    </div>
+    <div class="tab-pane" id="tabOld3">
+      <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+    </div>
+    <div class="tab-pane" id="tabOld4">
+      <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<ul class="nav nav-tabs">
+  <li class="nav-item"><a href="#tabOld1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+  <li class="nav-item"><a href="#tabOld2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+  <li class="nav-item"><a href="#tabOld3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+  <li class="nav-item"><a href="#tabOld4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane" id="tabOld1">...</div>
+  <div class="tab-pane" id="tabOld2">...</div>
+  <div class="tab-pane" id="tabOld3">...</div>
+  <div class="tab-pane" id="tabOld4">...</div>
 </div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
@@ -349,3 +448,7 @@ Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility I
 All of these requirements are automatically added by the Tab widget, and will update automatically as the user interacts with the tabbed interface.
 
 The `aria-current` attribute is not necessary on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
+
+### Using a Nav Element
+
+If you are using `<nav>`, the `role="tablist"` will not be automatically added to it, as this would override the `<nav>`'s native role as a navigation landmark. Instead, switch to an alternative element (such as `<div>`) and wrap the `<nav>` around that.  Refer to the [tab widget using a list example](#list) for a better look.
