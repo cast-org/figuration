@@ -57,6 +57,16 @@
   </div>
 </nav>
 
+<!-- `.sticky top` should not shift since it is not full width -->
+<div class="container sticky-top">
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Sticky top</a> - no shift
+	</nav>
+</div>
+
+<!-- This `.sticky-top` will still shift - due to position and transform -->
+<div class="sticky-top bg-warning text-center" style="left: 50%; width: 8rem; transform: translateX(-50%);">Test <code>.sticky-top</code></div>
+
 <button class="btn btn-primary mt-1" type="button" data-cfw="modal" data-cfw-modal-target="#modal0">Launch small modal</button>
 <div class="modal" id="modal0">
     <div class="modal-dialog">
