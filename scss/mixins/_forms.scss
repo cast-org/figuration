@@ -139,6 +139,12 @@
                 }
             }
         }
+
+        .input-group .form-control {
+            @include form-validation-state-selector($state) {
+                z-index: 3;
+            }
+        }
     }
 
     @if $enable-form-control and $enable-form-validation-icon {
