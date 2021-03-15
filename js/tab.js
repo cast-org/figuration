@@ -29,8 +29,10 @@
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$element.closest('ul, ol, nav');
-            this.$navElm.attr('role', 'tablist');
+            this.$navElm = this.$element.closest('ul, ol, nav, .nav, .list');
+            if (this.$navElm.length && this.$navElm[0].nodeName.toLowerCase() !== 'nav') {
+                this.$navElm.attr('role', 'tablist');
+            }
 
             var $selector = $(this.settings.target);
             if (!$selector.length) {
@@ -179,7 +181,7 @@
 
             var $node = $(node);
             var $list = $node.closest('[role="tablist"]');
-            var $items = $list.find('[role="tab"]:visible').not('.disabled');
+            var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left

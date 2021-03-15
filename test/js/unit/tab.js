@@ -38,18 +38,95 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
     });
 
-    QUnit.test('should activate element by pill id', function(assert) {
+    QUnit.test('should activate element by tab id using buttons', function(assert) {
         assert.expect(2);
-        var pillsHTML = '<ul class="pills">' +
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><button type="button" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+
+        $(tabsHTML).find('li:last button').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
+
+        $(tabsHTML).find('li:first button').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
+    });
+
+    QUnit.test('should activate element by tab id in ordered list', function(assert) {
+        assert.expect(2);
+        var pillsHTML = '<ol class="pills">' +
             '<li><a href="#home">Home</a></li>' +
             '<li><a href="#profile">Profile</a></li>' +
-            '</ul>';
+            '</ol>';
         $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
 
         $(pillsHTML).find('li:last a').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
 
         $(pillsHTML).find('li:first a').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
+    });
+
+    QUnit.test('should activate element by tab id in nav', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<nav>' +
+            '<button type="button" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw-tab-target="#profile">Profile</button>' +
+            '</nav>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        $(tabsHTML).find('button:last').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
+
+        $(tabsHTML).find('button:first').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
+    });
+
+    QUnit.test('should not appy role="tablist" to parent nav', function(assert) {
+        assert.expect(3);
+        var tabsHTML = '<nav>' +
+            '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw="tab" data-cfw-tab-target="#profile">Profile</button>' +
+            '</nav>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('nav').length, 1, 'parent <nav> exists');
+        assert.strictEqual($('#qunit-fixture').find('nav[role="tablist"]').length, 0, 'parent <nav> does not have role="tablist"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('nav[role="tablist"]').length, 0, 'parent <nav> does not have role="tablist" after invoking');
+    });
+
+    QUnit.test('should activate element by tab id in .nav', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<div class="nav">' +
+            '<button type="button" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw-tab-target="#profile">Profile</button>' +
+            '</div>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        $(tabsHTML).find('button:last').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
+
+        $(tabsHTML).find('button:first').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
+    });
+
+    QUnit.test('should activate element by tab id in .list', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<div class="list">' +
+            '<button type="button" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw-tab-target="#profile">Profile</button>' +
+            '</div>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+
+        $(tabsHTML).find('button:last').CFW_Tab('show');
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
+
+        $(tabsHTML).find('button:first').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
     });
 
@@ -182,6 +259,62 @@ $(function() {
         $last.CFW_Tab('show');
     });
 
+    QUnit.test('should appy role="tablist" to parent <ul>', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('ul[role="tablist"]').length, 0, 'parent <ul> does not have role="tablist"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('ul[role="tablist"]').length, 1, 'parent <ul> has role="tablist" after invoking');
+    });
+
+    QUnit.test('should appy role="tablist" to parent <ol>', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ol>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ol>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('ol[role="tablist"]').length, 0, 'parent <ol> does not have role="tablist"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('ol[role="tablist"]').length, 1, 'parent <ol> has role="tablist" after invoking');
+    });
+
+    QUnit.test('should appy role="tablist" to parent .nav', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<div class="nav">' +
+            '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button>' +
+            '</div>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('.nav[role="tablist"]').length, 0, 'parent .nav does not have role="tablist"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('.nav[role="tablist"]').length, 1, 'parent .nav has role="tablist" after invoking');
+    });
+
+    QUnit.test('should appy role="tablist" to parent .list', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<div class="list">' +
+            '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
+            '<button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button>' +
+            '</div>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('.list[role="tablist"]').length, 0, 'parent .list does not have role="tablist"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('.list[role="tablist"]').length, 1, 'parent .list has role="tablist" after invoking');
+    });
+
     QUnit.test('parent list items should get role="presentation"', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ul class="tabs">' +
@@ -252,8 +385,8 @@ $(function() {
         assert.expect(0);
 
         var tabsHTML = '<ul class="tabs">' +
-            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
-            '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#profile" disabled>Profile</button></li>' +
             '</ul>';
         $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');

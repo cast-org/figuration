@@ -17,6 +17,8 @@
         font-weight: $nav-link-font-weight;
         color: $nav-link-color;
         text-decoration: $nav-link-decoration;
+        background: none;
+        border: 0;
         @include transition($nav-link-transition);
 
         @include hover-focus() {
@@ -26,7 +28,8 @@
 
         // Disabled state lightens text and removes hover/focus effects
         // By default it also influences `.nav-tab` and `.nav-pills`
-        &.disabled {
+        &.disabled,
+        &:disabled {
             color: $nav-link-disabled-color;
             text-decoration: none;
             pointer-events: none;
@@ -45,7 +48,6 @@
             .nav-link {
                 // Make the list-items overlay the bottom border
                 margin-bottom: -$nav-tabs-border-width;
-                background: none;
                 border: $nav-tabs-border-width solid transparent;
                 @include border-radius($border-radius $border-radius 0 0);
 
@@ -54,7 +56,8 @@
                     border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
                 }
 
-                &.disabled {
+                &.disabled,
+                &:disabled {
                     color: $nav-link-disabled-color;
                     background-color: transparent;
                     border-color: transparent;
@@ -86,8 +89,6 @@
             flex-flow: row wrap;
 
             .nav-link {
-                background: none;
-                border: 0;
                 @include border-radius($nav-pills-border-radius);
 
                 @include hover-focus() {
@@ -95,7 +96,8 @@
                     background-color: $nav-pills-hover-bg;
                 }
 
-                &.disabled {
+                &.disabled,
+                &:disabled {
                     color: $nav-link-disabled-color;
                     background-color: transparent;
                     border-color: transparent;
