@@ -340,39 +340,20 @@
 
         setScrollbar : function() {
             var $selfRef = this;
-            var sideName = this.scrollbarSide.capitalize();
 
             if (this.bodyIsOverflowing) {
-                // Notes about below padding/margin calculations:
-                // node.style.paddingRight returns: actual value or '' if not set
-                // $(node).css('padding-right') returns: calculated value or 0 if not set
-
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
-                    var $this = $(this);
-                    var actualPadding = this.style['padding' + sideName];
-                    var calculatedPadding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide));
-                    $this
-                        .data('cfw.padding-dim', actualPadding)
-                        .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
+                    $selfRef.setScrollbarAdjustment(this, 'padding', function(calculatedDim) { return calculatedDim + $selfRef.scrollbarWidth; });
                 });
 
                 // Update sticky element margin
                 $(this.stickyContent).each(function() {
-                    var $this = $(this);
-                    var actualMargin = this.style['margin' + sideName];
-                    var calculatedMargin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide));
-                    $this
-                        .data('cfw.margin-dim', actualMargin)
-                        .css('margin-' + $selfRef.scrollbarSide, calculatedMargin - $selfRef.scrollbarWidth + 'px');
+                    $selfRef.setScrollbarAdjustment(this, 'margin', function(calculatedDim) { return calculatedDim - $selfRef.scrollbarWidth; });
                 });
 
                 // Update body padding
-                var actualPadding = document.body.style['padding' + sideName];
-                var calculatedPadding = parseFloat(this.$body.css('padding-' + $selfRef.scrollbarSide));
-                this.$body
-                    .data('cfw.padding-dim', actualPadding)
-                    .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
+                this.setScrollbarAdjustment(document.body, 'padding', function(calculatedDim) { return calculatedDim + $selfRef.scrollbarWidth; });
             }
 
             this.$target
@@ -385,34 +366,40 @@
 
             // Restore fixed element padding
             $(this.fixedContent).each(function() {
-                var $this = $(this);
-                var padding = $this.data('cfw.padding-dim');
-                if (typeof padding !== 'undefined') {
-                    $this.css('padding-' + $selfRef.scrollbarSide, padding);
-                    $this.removeData('cfw.padding-dim');
-                }
+                $selfRef.resetScrollbarAdjustment(this, 'padding');
             });
 
             // Restore sticky element margin
             $(this.stickyContent).each(function() {
-                var $this = $(this);
-                var margin = $this.data('cfw.margin-dim');
-                if (typeof margin !== 'undefined') {
-                    $this.css('margin-' + $selfRef.scrollbarSide, margin);
-                    $this.removeData('cfw.margin-dim');
-                }
+                $selfRef.resetScrollbarAdjustment(this, 'margin');
             });
 
             // Restore body padding
-            var padding = this.$body.data('cfw.padding-dim');
-            if (typeof padding !== 'undefined') {
-                this.$body.css('padding-' + this.scrollbarSide, padding);
-                this.$body.removeData('cfw.padding-dim');
-            }
+            this.resetScrollbarAdjustment(document.body, 'padding');
 
             this.$target
                 .off('touchmove.cfw.modal')
                 .CFW_trigger('scrollbarReset.cfw.modal');
+        },
+
+        setScrollbarAdjustment : function(node, rule, callback) {
+            if (node !== document.body && window.innerWidth > node.clientWidth + this.scrollbarWidth) {
+                return;
+            }
+
+            var propName = rule + this.scrollbarSide.capitalize();
+            var actualDim = node.style[propName];
+            var calculatedDim = parseFloat(window.getComputedStyle(node)[propName]);
+            $(node).data('cfw.' + rule + '-dim', actualDim);
+            node.style[propName] = callback(calculatedDim) + 'px';
+        },
+
+        resetScrollbarAdjustment : function(node, rule) {
+            var savedDim = $(node).data('cfw.' + rule + '-dim');
+            if (typeof savedDim !== 'undefined') {
+                node.style[rule + this.scrollbarSide.capitalize()] = savedDim;
+                $(node).removeData('cfw.' + rule + '-dim');
+            }
         },
 
         _scrollBlock : function(e) {

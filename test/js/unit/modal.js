@@ -5,6 +5,8 @@ $(function() {
         before: function() {
             // Simulate scrollbars in PhantomJS
             $('html').css('padding-right', '16px');
+            // Add full-width fixed/sticky test element
+            $('<style id="styleFixed">.fixed-top, .sticky-top { position: fixed; top: 0; right: 0; left: 0; z-index: 1020; }</style>').appendTo('head');
         },
         afterEach: function() {
             $('.modal, .modal-backdrop').remove();
@@ -15,6 +17,7 @@ $(function() {
         },
         after: function() {
             $('html').removeAttr('style');
+            $('#styleFixed').remove();
         }
     });
 
@@ -670,8 +673,7 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
-
-    QUnit.test('should not adjust the inline body padding when it does not overflow', function(assert) {
+    QUnit.test('should not adjust the inline body padding when it does not overflow on a scaled display', function(assert) {
         assert.expect(1);
         var done = assert.async();
         var $body = $(document.body);
@@ -701,6 +703,30 @@ $(function() {
                     })
                     .removeAttr('style');
                 $('html').css('padding-right', '16px');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should not adjust the inline margin and padding of sticky and fixed elements when element do not have full width', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $element = $('<div class="sticky-top" style="margin-right: 0px; padding-right: 0px; width: calc(100vw - 50%)"></div>').appendTo('#qunit-fixture');
+        var originalPadding = parseInt(window.getComputedStyle($element[0]).paddingRight, 10);
+        var originalMargin = parseInt(window.getComputedStyle($element[0]).marginRight, 10);
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"></div>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var currentPadding = parseInt(window.getComputedStyle($element[0]).paddingRight, 10);
+                var currentMargin = parseInt(window.getComputedStyle($element[0]).marginRight, 10);
+                assert.strictEqual(currentPadding, originalPadding, 'sticky element padding should not be adjusted when shown');
+                assert.strictEqual(currentMargin, originalMargin, 'sticky element margin should not be adjusted when shown');
+                $element.remove();
                 done();
             });
 
