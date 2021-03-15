@@ -68,12 +68,12 @@
 
                 &:hover,
                 &:focus {
-                    z-index: 3;
+                    z-index: 4;
                 }
             }
             @if $enable-btn-check {
                 .btn-check-input:focus ~ .btn {
-                    z-index: 3;
+                    z-index: 4;
                 }
             }
         }
