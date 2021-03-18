@@ -86,7 +86,7 @@ There is also a `.bg-transparent` for removing the background color of an elemen
 
 Borders also be colored with their own set of contextual classes. Borders do not change color on hover and focus state.
 
-There is also a `.border-transparent` that removes the border color of an element, but keeps the border width in place.
+There is also a `.border-transparent` that removes the border color of an element, but keeps the border width in place. Inherit the border color of an ancestor element with `.border-inherit`.
 
 {% capture example %}
 <span class="border border-primary"></span>
@@ -96,7 +96,10 @@ There is also a `.border-transparent` that removes the border color of an elemen
 <span class="border border-danger"></span>
 <span class="border border-light"></span>
 <span class="border border-dark"></span>
+<span class="border border-white"></span>
+<span class="border border-black"></span>
 <span class="border border-transparent"></span>
+<span class="border border-inherit"></span>
 {% endcapture %}
 {% renderExample example, "cf-example-border" %}
 
@@ -175,7 +178,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable the generation of the transparent border color utility class.
+          Enable the generation of the white, black, transparent, and inherit border color utility classes.
         </td>
       </tr>
       <tr>
@@ -199,7 +202,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable the generation of the body, black, white, and muted background color utility classes.
+          Enable the generation of the body, black, white, and muted text color utility classes.
         </td>
       </tr>
       <tr>
