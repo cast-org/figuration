@@ -56,20 +56,46 @@
 
     @if $enable-card-list {
         .card-list {
+            margin-bottom: 0;
+
+            .card > .card-header + & {
+                .list-item:first-child {
+                    border-top: 0;
+                }
+            }
             &:first-child {
                 @include border-top-radius($card-inner-border-radius);
 
                 > .list-item:first-child {
+                    border-top: 0;
                     @include border-top-radius($card-inner-border-radius);
                 }
             }
+            &:not(:first-child) {
+                > .list-item:first-child {
+                    @include border-top-radius(0);
+                }
+            }
 
+            .card > & {
+                &.list-ruled,
+                &.list-group {
+                    & + .card-footer {
+                        border-top: 0;
+                    }
+                }
+            }
             &:last-child {
-                margin-bottom: 0;
                 @include border-bottom-radius($card-inner-border-radius);
 
                 > .list-item:last-child {
+                    border-bottom: 0;
                     @include border-bottom-radius($card-inner-border-radius);
+                }
+            }
+            &:not(:last-child) {
+                > .list-item:last-child {
+                    @include border-top-radius(0);
                 }
             }
         }

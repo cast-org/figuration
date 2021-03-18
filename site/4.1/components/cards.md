@@ -180,12 +180,12 @@ Note that content should not be larger than the height of the image.  If content
 ### Lists
 
 Create lists of content in a card with [`.list` component]({{ site.path }}/{{ version.docs }}/components/lists/) and it's modifiers.
-Adding `.card-list` to a `.list` will automatically add a border radius and will also remove the bottom margin from the **last child** in a section.
+Adding `.card-list` to a `.list` will adjust the border radius, border widths and also remove the bottom margin from the list.
 
 Cards do not currently have support for proper border radius handling for horizontal lists, or for lists within horizontal cards.
 
 {% capture example %}
-<div class="card">
+<div class="card" style="max-width: 18rem;">
   <ul class="list list-spaced list-divided card-list">
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
@@ -196,7 +196,7 @@ Cards do not currently have support for proper border radius handling for horizo
 {% renderExample example %}
 
 {% capture example %}
-<div class="card">
+<div class="card" style="max-width: 18rem;">
   <h3 class="card-header">Sample Header</h3>
   <ul class="list list-spaced list-divided card-list mb-0">
     <li class="list-item">List item</li>
