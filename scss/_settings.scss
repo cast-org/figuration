@@ -809,10 +809,12 @@ $input-static-color:            $body-color !default;
 $form-label-font-weight:        $font-weight-normal !default;
 
 $form-text-margin-top:          .25rem !default;
+$form-text-color:               $text-muted !default;
 $form-text-font-size:           $small-font-size !default;
 $form-text-font-style:          null !default;
 $form-text-font-weight:         null !default;
-$form-text-color:               $text-muted !default;
+$form-text-line-height:         null !default;
+
 
 $form-group-margin-bottom:      1rem !default;
 $form-row-gutter-width:         .625rem !default;

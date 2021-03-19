@@ -1957,6 +1957,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$form-text-color</code></td>
+        <td>string</td>
+        <td><code>$text-muted</code></td>
+        <td>
+          Color for support text.
+        </td>
+      </tr>
+      <tr>
         <td><code>$form-text-font-size</code></td>
         <td>string</td>
         <td><code>.$small-font-size</code></td>
@@ -1981,11 +1989,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$form-text-color</code></td>
+        <td><code>$form-text-line-height</code></td>
         <td>string</td>
-        <td><code>$text-muted</code></td>
+        <td><code>null</code></td>
         <td>
-          Color for support text.
+          Line height for support text.
         </td>
       </tr>
       <tr>
