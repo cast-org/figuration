@@ -594,6 +594,36 @@ To prevent an element from growing or shrinking, use the `.flex-none` utility.
 {% endcapture %}
 {% renderExample example, "cf-example-flex" %}
 
+## Media Object
+
+Replicate the [media object component]({{ site.path }}/{{ version.docs }}/components/media-object/) without need for a custom component? Recreate it with a few flex utilities that could allow for even more flexibility and customization.
+
+{% capture example %}
+<div class="d-flex">
+  <div class="flex-shrink-0">
+    <img data-src="holder.js/100x100" alt="Generic placeholder image">
+  </div>
+  <div class="flex-grow-1 ms-1">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+One easy adjustment would be to vertically center the content next to the image by adding `.flex-items-center`.
+
+{% capture example %}
+<div class="d-flex flex-items-center">
+  <div class="flex-shrink-0">
+    <img data-src="holder.js/100x100" alt="Generic placeholder image">
+  </div>
+  <div class="flex-grow-1 ms-1">
+    This is some content from a media component. You can replace this with any content and adjust it as needed.
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## SASS Reference
 
 ### Variables
