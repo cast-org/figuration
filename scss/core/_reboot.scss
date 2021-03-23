@@ -380,11 +380,15 @@ select {
     cursor: pointer;
 }
 
-// Remove the inheritance of word-wrap in Safari.
-//
-// Details at https://github.com/twbs/bootstrap/issues/24990
 select {
+    // Remove the inheritance of word-wrap in Safari.
+    // Details at https://github.com/twbs/bootstrap/issues/24990
     word-wrap: normal;
+
+    // Reset Chrome's opacity change
+    &:disabled {
+        opacity: 1;
+    }
 }
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
