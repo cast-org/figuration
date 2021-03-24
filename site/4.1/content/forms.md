@@ -1062,6 +1062,43 @@ Custom form controls and selects are also supported.
 {% endcapture %}
 {% renderExample example %}
 
+#### Using Grid
+
+Use `.col-*-auto` classes to create responsive horizontal layouts. By adding gutter modifier classes, you can define gutters in horizontal and vertical directions. In the following example the `.flex-items-center` on the `.row`, and the `.mb-0` on the `.form-check` are used to align the `.form-check` to the middle.
+
+{% capture example %}
+<form class="row g-1 flex-items-center">
+  <div class="col-lg-auto">
+    <label class="sr-only" for="inlineFormGridInput">Username</label>
+    <div class="input-group">
+      <div class="input-group-text">@</div>
+      <input type="text" class="form-control" id="inlineFormGridInput" placeholder="Username">
+    </div>
+  </div>
+  <div class="col-lg-auto">
+    <label class="sr-only" for="inlineFormGridSelect">Preference</label>
+    <select class="form-control" id="inlineFormGridSelect">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div class="col-lg-auto">
+    <div class="form-check mb-0">
+      <input class="form-check-input" type="checkbox" id="inlineFormGridCheck">
+      <label class="form-check-label" for="inlineFormGridCheck">
+        Remember me
+      </label>
+    </div>
+  </div>
+  <div class="col-lg-auto">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endcapture %}
+{% renderExample example %}
+
 ## Validation
 
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
