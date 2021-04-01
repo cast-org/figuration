@@ -306,6 +306,10 @@ select {
   word-wrap: normal;
 }
 
+select:disabled {
+  opacity: 1;
+}
+
 button,
 [type="button"],
 [type="reset"],
