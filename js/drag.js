@@ -69,7 +69,7 @@
             }
 
             // check for disabled element
-            if (this.$element.is('.disabled, :disabled')) { return; }
+            if ($.CFW_isDisabled(this.$element)) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;

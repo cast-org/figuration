@@ -85,14 +85,14 @@ The slideshow works well with [tab navigation]({{ site.path }}/{{ version.docs }
 The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs }}/components/navs/#pills).
 
 <div class="cf-example">
-  <nav class="nav nav-pills" data-cfw="slideshow">
+  <div class="nav nav-pills" data-cfw="slideshow">
     <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
     <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
     <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
     <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
     <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
     <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
-  </nav>
+  </div>
   <div class="tab-content">
     <div class="tab-pane" id="pill-slide0">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
@@ -110,14 +110,14 @@ The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs 
 </div>
 
 {% capture highlight %}
-<nav class="nav nav-pills" data-cfw="slideshow">
-   <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+<div class="nav nav-pills" data-cfw="slideshow">
+  <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
   <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
   <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
   <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
   <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
   <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
-</nav>
+</div>
 <div class="tab-content">
   <div class="tab-pane" id="pill-slide0">
     ...
@@ -166,7 +166,7 @@ You can even use the [pagination componenent]({{ site.path }}/{{ version.docs }}
 
 {% capture highlight %}
 <ul class="pagination pagination-group" data-cfw="slideshow">
-   <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+  <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
   <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
   <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
   <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>

@@ -50,7 +50,7 @@
                 return;
             }
 
-            if ($(e.currentTarget).not('.disabled, :disabled').length) {
+            if (!$.CFW_isDisabled(e.currentTarget)) {
                 this.close();
             }
         },

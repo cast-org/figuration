@@ -43,13 +43,13 @@
             // Bind nav
             this.$navPrev.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.prev();
                 }
             });
             this.$navNext.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.next();
                 }
             });
@@ -97,22 +97,22 @@
         },
 
         update : function() {
-            this.$navPrev.removeClass('disabled');
-            this.$navNext.removeClass('disabled');
+            $.CFW_controlEnable(this.$navPrev);
+            $.CFW_controlEnable(this.$navNext);
 
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
             if (currIndex <= 0 && !this.settings.loop) {
-                this.$navPrev.addClass('disabled');
+                $.CFW_controlDisable(this.$navPrev);
             }
             if (currIndex >= $tabs.length - 1 && !this.settings.loop) {
-                this.$navNext.addClass('disabled');
+                $.CFW_controlDisable(this.$navNext);
             }
             this.$element.CFW_trigger('update.cfw.slideshow');
         },
 
         _getTabs : function() {
-            return this.$element.find('[role="tab"]:visible').not('.disabled');
+            return this.$element.find('[role="tab"]:visible').not('.disabled, :disabled');
         },
 
         _currIndex : function($tabs) {

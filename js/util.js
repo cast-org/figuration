@@ -425,4 +425,29 @@
     $.CFW_reflow = function(element) {
         return element.offsetHeight;
     };
+
+    $.CFW_controlEnable = function(element) {
+        $(element)
+            .removeClass('disabled')
+            .removeAttr('disabled')
+            .closest('label')
+            .removeClass('disabled');
+    };
+
+    $.CFW_controlDisable = function(element) {
+        var $control = $(element);
+
+        if ($control.length && /button|fieldset|input|optgroup|option|select|textarea/i.test($control[0].tagName)) {
+            $control.prop('disabled', true);
+            $control
+                .closest('label')
+                .addClass('disabled');
+        } else {
+            $control.addClass('disabled');
+        }
+    };
+
+    $.CFW_isDisabled = function(element) {
+        return $(element).is('.disabled, :disabled');
+    };
 }(jQuery));

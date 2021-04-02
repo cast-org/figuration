@@ -111,4 +111,32 @@ $(function() {
             assert.equal(null, $().CFW_findShadowRoot($div[0]));
         }
     });
+
+    QUnit.test('CFW_isDisabled should return true if the element has disabled attribute', function(assert) {
+        assert.expect(3);
+        $('<button id="test0" disabled="disabled"></button>' +
+            '<button id="test1" type="button" disabled="true"></button>' +
+            '<button id="test2" type="button" disabled></button>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#test1')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#test2')), true);
+    });
+
+    QUnit.test('CFW_isDisabled should return true if the element has disabled="false"', function(assert) {
+        assert.expect(1);
+        $('<button id="test0" type="button" disabled="false"></button>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
+    });
+
+    QUnit.test('CFW_isDisabled should return true if the element has class "disabled', function(assert) {
+        assert.expect(1);
+        $('<a id="test0" href="#" class="disabled">test</a>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
+    });
 });
