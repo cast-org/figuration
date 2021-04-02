@@ -52,6 +52,7 @@
                 @include border-radius($border-radius $border-radius 0 0);
 
                 @include hover-focus() {
+                    color: $nav-tabs-hover-color;
                     background-color: $nav-tabs-hover-bg;
                     border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
                 }
@@ -92,7 +93,7 @@
                 @include border-radius($nav-pills-border-radius);
 
                 @include hover-focus() {
-                    color: inherit;
+                    color: $nav-pills-hover-color;
                     background-color: $nav-pills-hover-bg;
                 }
 

@@ -1089,9 +1089,9 @@ $nav-link-padding-x:            1rem !default;
 $nav-link-padding-y:            .3125rem !default;
 $nav-link-font-size:            null !default;
 $nav-link-font-weight:          null !default;
-$nav-link-color:                null !default;
+$nav-link-color:                $link-color !default;
 $nav-link-decoration:           if($link-decoration == none, null, none) !default;
-$nav-link-hover-color:          null !default;
+$nav-link-hover-color:          $link-hover-color !default;
 $nav-link-hover-decoration:     if($link-hover-decoration == underline, none, null) !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $component-disabled-color !default;
@@ -1100,14 +1100,16 @@ $nav-tabs-border-color:         $component-border-color !default;
 $nav-tabs-border-width:         $border-width !default;
 $nav-tabs-hover-border-color:   $component-hover-bg !default;
 $nav-tabs-hover-bg:             $component-hover-bg !default;
-$nav-tabs-active-color:         $component-action-color !default;
+$nav-tabs-hover-color:          null !default;
 $nav-tabs-active-bg:            $body-bg !default;
+$nav-tabs-active-color:         $component-action-color !default;
 $nav-tabs-active-border-color:  $component-border-color !default;
 
 $nav-pills-border-radius:       $border-radius !default;
 $nav-pills-hover-bg:            $component-hover-bg !default;
-$nav-pills-active-color:        $component-active-color !default;
+$nav-pills-hover-color:         null !default;
 $nav-pills-active-bg:           $component-active-bg !default;
+$nav-pills-active-color:        $component-active-color !default;
 
 
 // Navbar

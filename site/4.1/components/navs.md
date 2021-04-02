@@ -445,7 +445,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$nav-link-color</code></td>
         <td>string</td>
-        <td><code>null</code></td>
+        <td><code>$link-color</code></td>
         <td>
           Text color for base nav links.
         </td>
@@ -461,7 +461,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$nav-link-hover-color</code></td>
         <td>string</td>
-        <td><code>null</code></td>
+        <td><code>$link-hover-color</code></td>
         <td>
           Text color for base nav links in hover or focus state.
         </td>
@@ -531,11 +531,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$nav-tabs-active-color</code></td>
+        <td><code>$nav-tabs-hover-color</code></td>
         <td>string</td>
-        <td><code>$component-action-color</code></td>
+        <td><code>null</code></td>
         <td>
-          Text color for tab navs in active state.
+          Text color for tab navs in hover or focus state.
         </td>
       </tr>
       <tr>
@@ -544,6 +544,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$body-bg</code></td>
         <td>
           Background color for tab navs in active state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-tabs-active-color</code></td>
+        <td>string</td>
+        <td><code>$component-action-color</code></td>
+        <td>
+          Text color for tab navs in active state.
         </td>
       </tr>
       <tr>
@@ -571,11 +579,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$nav-pills-active-color</code></td>
+        <td><code>$nav-pills-hover-color</code></td>
         <td>string</td>
-        <td><code>$component-active-color</code></td>
+        <td><code>null</code></td>
         <td>
-          Text color for pill navs in active state.
+          Text color for pill navs in hover or focus state.
         </td>
       </tr>
       <tr>
@@ -585,6 +593,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>
           Background color for pill navs in active state.
         </td>
+        <tr>
+        <td><code>$nav-pills-active-color</code></td>
+        <td>string</td>
+        <td><code>$component-active-color</code></td>
+        <td>
+          Text color for pill navs in active state.
+        </td>
+      </tr>
       </tr>
     </tbody>
   </table>
