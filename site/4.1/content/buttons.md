@@ -660,7 +660,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$btn-default-hover-bg</code></td>
         <td>string</td>
-        <td><code>$uibase-100</code></td>
+        <td><code>$uibase-50</code></td>
         <td>
           Default button background color for hover state.
         </td>
