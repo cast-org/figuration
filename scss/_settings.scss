@@ -488,7 +488,7 @@ $responsive-font-size-scale-factor: (
 $component-bg:                  $white !default;
 $component-border-color:        $border-color !default;
 
-$component-hover-bg:            $uibase-100 !default;
+$component-hover-bg:            $uibase-50 !default;
 
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
@@ -753,7 +753,7 @@ $btn-default-bg:                    $white !default;
 $btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;
 $btn-default-border-color:          $uibase-300 !default;
 $btn-default-focus-box-shadow-color: $component-active-bg !default;
-$btn-default-hover-bg:              $uibase-100 !default;
+$btn-default-hover-bg:              $uibase-50 !default;
 $btn-default-hover-color:           color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
 $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
