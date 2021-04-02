@@ -1799,7 +1799,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-cell-padding</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>.5rem</code></td>
         <td>
           Table cell padding.
@@ -1807,7 +1807,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-condensed-cell-padding</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>.25rem</code></td>
         <td>
           Cell padding for condensed table variant.
@@ -1815,7 +1815,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-caption-color</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>$uibase-500</code></td>
         <td>
           Table caption text color.
@@ -1847,7 +1847,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-bg</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>null</code></td>
         <td>
           Table background color.
@@ -1855,7 +1855,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-bg-active</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>$component-hover-bg</code></td>
         <td>
           Active table row background color.
@@ -1863,7 +1863,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-bg-active-hover</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>$uibase-200</code></td>
         <td>
           Active table row background color for hover state.
@@ -1871,7 +1871,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-border-width</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>$border-width</code></td>
         <td>
           Table cell border width.
@@ -1879,7 +1879,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-border-color</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>$component-border-color</code></td>
         <td>
           Table cell border color.
@@ -1887,7 +1887,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-head-border-width</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>2 * $table-border-width</code></td>
         <td>
           Border width between table header and body.
@@ -1903,7 +1903,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-body-border-width</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>2 * $table-border-width</code></td>
         <td>
           Border width between sibling table bodies.
@@ -1919,7 +1919,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-foot-border-width</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>2 * $table-border-width</code></td>
         <td>
           Border width between table body and footer.
@@ -1935,7 +1935,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-striped-selector</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>odd</code></td>
         <td>
           Selector for table striping.
@@ -1943,7 +1943,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-striped-box-shadow</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>inset 0 0 0 999rem rgba($uibase-900, .075)</code></td>
         <td>
           Shadow overlay for striped tables.
@@ -1951,7 +1951,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-striped-alt-box-shadow</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>inset 0 0 0 999rem rgba($white, .125)</code></td>
         <td>
           Alternate shadow overlay for striped tables.
@@ -1959,7 +1959,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-hover-box-shadow</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>inset 0 0 0 999rem rgba($uibase-900, .125)</code></td>
         <td>
           Shadow overlay for hoverable tables.
@@ -1967,7 +1967,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$table-hover-alt-box-shadow</code></td>
-        <td>boolean</td>
+        <td>string</td>
         <td><code>inset 0 0 0 999rem rgba($white, .2)</code></td>
         <td>
           Alternate shadow overlay for hoverable tables.
