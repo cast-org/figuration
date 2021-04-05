@@ -139,4 +139,123 @@ $(function() {
 
         assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
     });
+
+    QUnit.test('CFW_controlEnable should remove disabled class from link', function(assert) {
+        assert.expect(2);
+        $('<a id="test0" href="#" class="disabled">test</a>')
+            .appendTo($('#qunit-fixture'));
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), true);
+        $.CFW_controlEnable(document.querySelector('#test0'));
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), false);
+    });
+
+    QUnit.test('CFW_controlEnable should remove tabindex attribute from link', function(assert) {
+        assert.expect(2);
+        $('<a id="test0" href="#" class="disabled" tabindex="-1">test</a>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual(document.querySelector('#test0').getAttribute('tabindex'), '-1');
+        $.CFW_controlEnable(document.querySelector('#test0'));
+        assert.strictEqual(document.querySelector('#test0').hasAttribute('tabindex'), false);
+    });
+
+    QUnit.test('CFW_controlEnable should remove disabled attribute from controls', function(assert) {
+        assert.expect(7);
+        $('<button id="test0" type="button" disabled>test</button>' +
+           '<fieldset id="test1" disabled></fieldset>' +
+           '<input id="test2" disabled></input>' +
+           '<optgroup id="test3" disabled></optgroup>' +
+           '<option id="test4" disabled></option>' +
+           '<select id="test5" disabled></select>' +
+           '<textarea id="test6" disabled></textarea>')
+            .appendTo($('#qunit-fixture'));
+
+        $.CFW_controlEnable(document.querySelector('#test0'));
+        $.CFW_controlEnable(document.querySelector('#test1'));
+        $.CFW_controlEnable(document.querySelector('#test2'));
+        $.CFW_controlEnable(document.querySelector('#test3'));
+        $.CFW_controlEnable(document.querySelector('#test4'));
+        $.CFW_controlEnable(document.querySelector('#test5'));
+        $.CFW_controlEnable(document.querySelector('#test6'));
+
+        assert.strictEqual(document.querySelector('#test0').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test1').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test2').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test3').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test4').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test5').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test6').hasAttribute('disabled'), false);
+    });
+
+    QUnit.test('CFW_controlEnable should remove disabled class from label wrapping a control', function(assert) {
+        assert.expect(2);
+        $('<label id="test0" class="disabled">' +
+            '<button id="test1" type="button" disabled>test</button>' +
+            '</label>')
+            .appendTo($('#qunit-fixture'));
+
+        $.CFW_controlEnable(document.querySelector('#test1'));
+
+        assert.strictEqual(document.querySelector('#test1').hasAttribute('disabled'), false);
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), false);
+    });
+
+    QUnit.test('CFW_controlDisable should add disabled class to link', function(assert) {
+        assert.expect(2);
+        $('<a id="test0" href="#">test</a>')
+            .appendTo($('#qunit-fixture'));
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), false);
+        $.CFW_controlDisable(document.querySelector('#test0'));
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), true);
+    });
+
+    QUnit.test('CFW_controlDisable should add tabindex=-1 to link', function(assert) {
+        assert.expect(2);
+        $('<a id="test0" href="#">test</a>')
+            .appendTo($('#qunit-fixture'));
+        assert.strictEqual(document.querySelector('#test0').hasAttribute('tabindex'), false);
+        $.CFW_controlDisable(document.querySelector('#test0'));
+        assert.strictEqual(document.querySelector('#test0').getAttribute('tabindex'), '-1');
+    });
+
+    QUnit.test('CFW_controlDisable should add disabled attribute to controls', function(assert) {
+        assert.expect(7);
+        $('<button id="test0" type="button">test</button>' +
+           '<fieldset id="test1"></fieldset>' +
+           '<input id="test2"></input>' +
+           '<optgroup id="test3"></optgroup>' +
+           '<option id="test4"></option>' +
+           '<select id="test5"></select>' +
+           '<textarea id="test6"></textarea>')
+            .appendTo($('#qunit-fixture'));
+
+        $.CFW_controlDisable(document.querySelector('#test0'));
+        $.CFW_controlDisable(document.querySelector('#test1'));
+        $.CFW_controlDisable(document.querySelector('#test2'));
+        $.CFW_controlDisable(document.querySelector('#test3'));
+        $.CFW_controlDisable(document.querySelector('#test4'));
+        $.CFW_controlDisable(document.querySelector('#test5'));
+        $.CFW_controlDisable(document.querySelector('#test6'));
+
+        assert.strictEqual(document.querySelector('#test0').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test1').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test2').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test3').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test4').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test5').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test6').hasAttribute('disabled'), true);
+    });
+
+    QUnit.test('CFW_controlDisable should add disabled class to label wrapping a control', function(assert) {
+        assert.expect(2);
+        $('<label id="test0">' +
+            '<button id="test1" type="button">test</button>' +
+            '</label>')
+            .appendTo($('#qunit-fixture'));
+
+        $.CFW_controlDisable(document.querySelector('#test1'));
+
+        assert.strictEqual(document.querySelector('#test1').hasAttribute('disabled'), true);
+        assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), true);
+    });
 });

@@ -429,6 +429,7 @@
     $.CFW_controlEnable = function(element) {
         $(element)
             .removeClass('disabled')
+            .removeAttr('tabindex')
             .removeAttr('disabled')
             .closest('label')
             .removeClass('disabled');
@@ -443,7 +444,7 @@
                 .closest('label')
                 .addClass('disabled');
         } else {
-            $control.addClass('disabled');
+            $control.addClass('disabled').attr('tabindex', -1);
         }
     };
 
