@@ -26,6 +26,8 @@ However, if you choose to use the historical method using anchors, be sure to ab
 
 ## Examples
 
+The tab widget can be used with the following semantic structures: `ul`, `ol`, and `nav`. In order to support more use-cases, the following classes will also allowed for tabs when used on the wrapping container: `.nav`, `.list`, and `.btn-group`. For even more flexibility, the custom class `.is-tablist` is also available.
+
 ### Tabs
 
 The tab widget works with [tab]({{ site.path }}/{{ version.docs }}/components/navs/#tabs) style navigation.
@@ -216,6 +218,83 @@ The tab widget even works with the [`.list` component]({{ site.path }}/{{ versio
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Button Group
+
+Control tab panels using a [button group]({{ site.path }}/{{ version.docs }}/components/button-group/).
+
+<div class="cf-example">
+  <div class="btn-group mb-0_5">
+    <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup1">Button 1</button>
+    <button type="button" class="btn active" data-cfw="tab" data-cfw-tab-target="#btngroup2">Button 2</button>
+    <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup3" disabled>Button 3</button>
+    <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup4">Button 4</button>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane" id="btngroup1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+    </div>
+    <div class="tab-pane" id="btngroup2">
+      <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+    </div>
+    <div class="tab-pane" id="btngroup3">
+      <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+    </div>
+    <div class="tab-pane" id="btngroup4">
+      <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="btn-group mb-0_5">
+  <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup1">Button 1</button>
+  <button type="button" class="btn active" data-cfw="tab" data-cfw-tab-target="#btngroup2">Button 2</button>
+  <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup3" disabled>Button 3</button>
+  <button type="button" class="btn" data-cfw="tab" data-cfw-tab-target="#btngroup4">Button 4</button>
+</div>
+<div class="tab-content">
+  <div class="tab-pane" id="btngroup1">...</div>
+  <div class="tab-pane" id="btngroup2">...</div>
+  <div class="tab-pane" id="btngroup3">...</div>
+  <div class="tab-pane" id="btngroup4">...</div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Customized
+
+Here is a tab example using a customized layout, an `.is-tablist` wrapping container, and some Font Awesome icons.
+
+<div class="cf-example">
+  <div class="position-relative">
+    <div class="is-tablist position-absolute top-0 start-50 translate-middle-x">
+      <button type="button" class="btn btn-link fs-2xlarge p-0" data-cfw="tab" data-cfw-tab-target="#custom1">
+        <span class="fas fa-fw fa-dice-one" aria-hidden="true"></span>
+        <span class="sr-only">Tab 1</span>
+      </button>
+      <button type="button" class="btn btn-link fs-2xlarge p-0" data-cfw="tab" data-cfw-tab-target="#custom2">
+        <span class="fas fa-fw fa-dice-two" aria-hidden="true"></span>
+        <span class="sr-only">Tab 2</span>
+      </button>
+      <button type="button" class="btn btn-link fs-2xlarge p-0" data-cfw="tab" data-cfw-tab-target="#custom3">
+        <span class="fas fa-fw fa-dice-three" aria-hidden="true"></span>
+        <span class="sr-only">Tab 3</span>
+      </button>
+    </div>
+    <div class="tab-content pt-2 px-2">
+      <div class="tab-pane" id="custom1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+      </div>
+      <div class="tab-pane" id="custom2">
+        <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+      </div>
+      <div class="tab-pane" id="custom3">
+        <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 ### Anchors
 
 For reference, this is a 'historical' example, using anchors, as shown in earlier iterations of Figuration. As previously mentioned, we recommend using `<button>` elements for the tabs, as seen in the examples above. Regardless, this alternative may be helpful for some situations.
@@ -274,8 +353,8 @@ To set a default active tab, add the class `.active` to the trigger item.
 <ul class="nav nav-tabs">
   <li class="nav-item"><a href="#home" class="nav-link active" data-cfw="tab">Home</a></li>
   <li class="nav-item"><a href="#profile" class="nav-link" data-cfw="tab">Profile</a></li>
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw="tab" data-cfw-tab-target="#messages">Messages</a></li>
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw="tab" data-cfw-tab-target="#settings">Settings</a></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#messages">Messages</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#settings">Settings</button></li>
 </ul>
 
 <!-- Tab panes -->
@@ -293,10 +372,10 @@ To set a default active tab, add the class `.active` to the trigger item.
 You can activate individual tabs in several ways:
 
 {% capture highlight %}
-$('#myTab a[href="#profile"]').CFW_Tab('show'); // Select tab by name
-$('#myTab a:first').CFW_Tab('show');            // Select first tab
-$('#myTab a:last').CFW_Tab('show');             // Select last tab
-$('#myTab a:nth-child(3)').CFW_Tab('show')      // Select third tab
+$('#myTab a[href="#profile"]').CFW_Tab('show');  // Select tab by href
+$('#myTab button:first').CFW_Tab('show');        // Select first tab
+$('#myTab button:last').CFW_Tab('show');         // Select last tab
+$('#myTab button:nth-child(3)').CFW_Tab('show'); // Select third tab
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
