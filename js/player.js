@@ -585,7 +585,7 @@
             var $muteElm = this.$player.find('[data-cfw-player="mute"]');
 
             if (!this.support.mute) {
-                this._controlDisable($muteElm);
+                $.CFW_controlDisable($muteElm);
             } else if (this.media.muted) {
                 $muteElm.addClass('active');
             } else {
@@ -623,7 +623,7 @@
             var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
             if (!this.support.mute) {
-                this._controlDisable($volElm);
+                $.CFW_controlDisable($volElm);
                 return;
             }
             var $inputElm = $volElm.find('input[type="range"]').eq(0);
@@ -833,7 +833,7 @@
             }
 
             if (this.trackValid.length <= 0) {
-                this._controlDisable($captionElm);
+                $.CFW_controlDisable($captionElm);
                 return;
             }
 
@@ -977,7 +977,7 @@
             }
 
             if (this.trackValid.length <= 0) {
-                this._controlDisable($tsElm);
+                $.CFW_controlDisable($tsElm);
                 return;
             }
 
@@ -1042,7 +1042,7 @@
                         $(this).prop('checked', $selfRef.settings.transcriptScroll);
                     });
                     this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
-                        if (!$selfRef._controlIsDisabled($(e.target))) {
+                        if (!$.CFW_isDisabled($(e.target))) {
                             $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
                             $(this).prop('checked', $selfRef.settings.transcriptDescribe);
                             $selfRef.scriptLoad();
@@ -1169,9 +1169,9 @@
             }
             var $descControl = this.$player.find('[data-cfw-player-script-describe]');
             if (!descAvailable) {
-                this._controlDisable($descControl);
+                $.CFW_controlDisable($descControl);
             } else {
-                this._controlEnable($descControl);
+                $.CFW_controlEnable($descControl);
             }
 
             // Test again for text-based description
@@ -1183,9 +1183,9 @@
             }
             var $textDescControl = this.$player.find('[data-cfw-player="textdescription"]');
             if (!textDescAvailable) {
-                this._controlDisable($textDescControl);
+                $.CFW_controlDisable($textDescControl);
             } else {
-                this._controlEnable($textDescControl);
+                $.CFW_controlEnable($textDescControl);
             }
 
             var scriptLoad2 = function(forced) {
@@ -1371,7 +1371,7 @@
             }
 
             if (this.trackDescription.length <= 0) {
-                this._controlDisable($tdElm);
+                $.CFW_controlDisable($tdElm);
                 return;
             }
 
@@ -1423,7 +1423,7 @@
                     $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
                 });
                 this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
-                    if (!$selfRef._controlIsDisabled($(e.target))) {
+                    if (!$.CFW_isDisabled($(e.target))) {
                         $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
                         $(this).prop('checked', $selfRef.settings.textDescribeVisible);
                         $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
@@ -1699,29 +1699,6 @@
                     $selfRef.$focus.trigger('focus');
                 }
             }, 10);
-        },
-
-        _controlEnable : function($control) {
-            $control
-                .removeClass('disabled')
-                .removeAttr('disabled')
-                .closest('label')
-                .removeClass('disabled');
-        },
-
-        _controlDisable : function($control) {
-            if ($control.is('button, input')) {
-                $control.prop('disabled', true);
-                $control
-                    .closest('label')
-                    .addClass('disabled');
-            } else {
-                $control.addClass('disabled');
-            }
-        },
-
-        _controlIsDisabled : function($control) {
-            return $control.is('.disabled, :disabled');
         },
 
         _cuechangeEnable : function(trackID, namespace, callback) {

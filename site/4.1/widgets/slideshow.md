@@ -23,6 +23,8 @@ Sideshow requires the following:
 
 A simple widget that extends on the [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
+In accordance with the best practice recommendation with tabs, we recommend using `<button>` elements for the tabs within a slideshow, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.
+
 ## Examples
 
 ### Using Tabs
@@ -31,12 +33,12 @@ The slideshow works well with [tab navigation]({{ site.path }}/{{ version.docs }
 
 <div class="cf-example">
   <ul class="nav nav-tabs" data-cfw="slideshow">
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="nav-item"><a href="#tab-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-    <li class="nav-item"><a href="#tab-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
-    <li class="nav-item"><a href="#tab-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-    <li class="nav-item"><a href="#tab-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide0">Slide 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide1">Slide 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide2">Slide 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide3">Slide 4</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="tab-slide0">
@@ -56,12 +58,12 @@ The slideshow works well with [tab navigation]({{ site.path }}/{{ version.docs }
 
 {% capture highlight %}
 <ul class="nav nav-tabs" data-cfw="slideshow">
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-  <li class="nav-item"><a href="#tab-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-  <li class="nav-item"><a href="#tab-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
-  <li class="nav-item"><a href="#tab-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-  <li class="nav-item"><a href="#tab-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide0">Slide 1</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide1">Slide 2</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide2">Slide 3</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#tab-slide3">Slide 4</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="tab-slide0">
@@ -85,14 +87,14 @@ The slideshow works well with [tab navigation]({{ site.path }}/{{ version.docs }
 The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs }}/components/navs/#pills).
 
 <div class="cf-example">
-  <nav class="nav nav-pills" data-cfw="slideshow">
-    <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
-    <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
-    <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
-    <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
-    <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
-    <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
-  </nav>
+  <div class="nav nav-pills" data-cfw="slideshow">
+    <button type="button" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button>
+    <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide0">Slide 1</button>
+    <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide1">Slide 2</button>
+    <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide2">Slide 3</button>
+    <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide3">Slide 4</button>
+    <button type="button" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button>
+  </div>
   <div class="tab-content">
     <div class="tab-pane" id="pill-slide0">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
@@ -110,14 +112,14 @@ The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs 
 </div>
 
 {% capture highlight %}
-<nav class="nav nav-pills" data-cfw="slideshow">
-   <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
-  <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
-  <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
-  <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
-  <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
-  <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
-</nav>
+<div class="nav nav-pills" data-cfw="slideshow">
+  <button type="button" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button>
+  <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide0">Slide 1</button>
+  <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide1">Slide 2</button>
+  <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide2">Slide 3</button>
+  <button type="button" class="nav-item nav-link" data-cfw="tab" data-cfw-tab-target="#pill-slide3">Slide 4</button>
+  <button type="button" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button>
+</div>
 <div class="tab-content">
   <div class="tab-pane" id="pill-slide0">
     ...
@@ -141,12 +143,12 @@ You can even use the [pagination componenent]({{ site.path }}/{{ version.docs }}
 
 <div class="cf-example">
   <ul class="pagination pagination-group" data-cfw="slideshow">
-    <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
-    <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
-    <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
-    <li class="page-item"><a href="#page-slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
-    <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide0">Slide 1</button></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide1">Slide 2</button></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide2">Slide 3</button></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide3">Slide 4</button></li>
+    <li class="page-item"><button type="button" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="page-slide0">
@@ -166,12 +168,12 @@ You can even use the [pagination componenent]({{ site.path }}/{{ version.docs }}
 
 {% capture highlight %}
 <ul class="pagination pagination-group" data-cfw="slideshow">
-   <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-  <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
-  <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
-  <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
-  <li class="page-item"><a href="#page-slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
-  <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide0">Slide 1</button></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide1">Slide 2</button></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide2">Slide 3</button></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw="tab" data-cfw-tab-target="#page-slide3">Slide 4</button></li>
+  <li class="page-item"><button type="button" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="page-slide0">
@@ -196,12 +198,12 @@ If there is a tab that is disabled, the previous and next navigation items will 
 
 <div class="cf-example">
   <ul class="nav nav-tabs" data-cfw="slideshow">
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="nav-item"><a href="#ex-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-    <li class="nav-item"><a href="#ex-slide1" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Slide 2</a></li>
-    <li class="nav-item"><a href="#ex-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-    <li class="nav-item"><a href="#ex-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide0">Slide 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide1">Slide 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide2" disabled>Slide 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide3">Slide 4</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="ex-slide0">
@@ -221,12 +223,12 @@ If there is a tab that is disabled, the previous and next navigation items will 
 
 {% capture highlight %}
 <ul class="nav nav-tabs" data-cfw="slideshow">
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-  <li class="nav-item"><a href="#ex-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-  <li class="nav-item"><a href="#ex-slide1" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Slide 2</a></li>
-  <li class="nav-item"><a href="#ex-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-  <li class="nav-item"><a href="#ex-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide0">Slide 1</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide1">Slide 2</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide2" disabled>Slide 3</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#ex-slide3">Slide 4</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="ex-slide0">
@@ -251,12 +253,12 @@ By default the previous or next navigation controls become disabled when the fir
 
 <div class="cf-example">
   <ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="nav-item"><a href="#loop-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-    <li class="nav-item"><a href="#loop-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
-    <li class="nav-item"><a href="#loop-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-    <li class="nav-item"><a href="#loop-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide0">Slide 1</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide1">Slide 2</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide2">Slide 3</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide3">Slide 4</button></li>
+    <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane" id="loop-slide0">
@@ -276,12 +278,12 @@ By default the previous or next navigation controls become disabled when the fir
 
 {% capture highlight %}
 <ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">
-    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-  <li class="nav-item"><a href="#loop-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
-  <li class="nav-item"><a href="#loop-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
-  <li class="nav-item"><a href="#loop-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
-  <li class="nav-item"><a href="#loop-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
-  <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide0">Slide 1</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide1">Slide 2</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide2">Slide 3</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw="tab" data-cfw-tab-target="#loop-slide3">Slide 4</button></li>
+  <li class="nav-item"><button type="button" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></button></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane" id="loop-slide0">
@@ -295,6 +297,93 @@ By default the previous or next navigation controls become disabled when the fir
   </div>
   <div class="tab-pane" id="loop-slide3">
     ...
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Customized
+
+Here is a slideshow using a customized layout, an `.is-tablist` wrapping container, and some Font Awesome icons.
+
+<div class="cf-example">
+  <div class="position-relative">
+    <div class="is-tablist" data-cfw="slideshow" data-cfw-slideshow-loop="true">
+      <div class="position-absolute top-0 start-0">
+        <button type="button" class="btn btn-link btn-icon" data-cfw-slideshow-nav="prev">
+          <span class="fas fa-fw fa-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous Slide</span>
+        </button>
+      </div>
+      <div class="position-absolute top-0 start-50 translate-middle-x pt-0_25">
+        <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom1">
+          <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+          <span class="sr-only">Slide 1</span>
+        </button>
+        <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom2">
+          <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+          <span class="sr-only">Slide 2</span>
+        </button>
+        <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom3">
+          <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+          <span class="sr-only">Slide 3</span>
+        </button>
+      </div>
+      <div class="position-absolute top-0 end-0">
+        <button type="button" class="btn btn-link btn-icon" data-cfw-slideshow-nav="next">
+          <span class="fas fa-fw fa-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next Slide</span>
+        </button>
+      </div>
+    </div>
+    <div class="tab-content pt-2 px-2">
+      <div class="tab-pane" id="custom1">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+      </div>
+      <div class="tab-pane" id="custom2">
+        <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+      </div>
+      <div class="tab-pane" id="custom3">
+        <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="position-relative">
+  <div class="is-tablist" data-cfw="slideshow" data-cfw-slideshow-loop="true">
+    <div class="position-absolute top-0 start-0">
+      <button type="button" class="btn btn-link btn-icon" data-cfw-slideshow-nav="prev">
+        <span class="fas fa-fw fa-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous Slide</span>
+      </button>
+    </div>
+    <div class="position-absolute top-0 start-50 translate-middle-x pt-0_25">
+      <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom1">
+        <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+        <span class="sr-only">Slide 1</span>
+      </button>
+      <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom2">
+        <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+        <span class="sr-only">Slide 2</span>
+      </button>
+      <button type="button" class="btn btn-link btn-icon btn-small" data-cfw="tab" data-cfw-tab-target="#custom3">
+        <span class="fas fa-fw fa-circle" aria-hidden="true"></span>
+        <span class="sr-only">Slide 3</span>
+      </button>
+    </div>
+    <div class="position-absolute top-0 end-0">
+      <button type="button" class="btn btn-link btn-icon" data-cfw-slideshow-nav="next">
+        <span class="fas fa-fw fa-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next Slide</span>
+      </button>
+    </div>
+  </div>
+  <div class="tab-content pt-2 px-2">
+    <div class="tab-pane" id="custom1">...</div>
+    <div class="tab-pane" id="custom2">...</div>
+    <div class="tab-pane" id="custom3">...</div>
   </div>
 </div>
 {% endcapture %}

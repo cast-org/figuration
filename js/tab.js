@@ -29,7 +29,7 @@
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$element.closest('ul, ol, nav, .nav, .list');
+            this.$navElm = this.$element.closest('ul, ol, nav, .nav, .list, .btn-group, .is-tablist');
             if (this.$navElm.length && this.$navElm[0].nodeName.toLowerCase() !== 'nav') {
                 this.$navElm.attr('role', 'tablist');
             }
@@ -114,9 +114,7 @@
                 e.preventDefault();
             }
 
-            if (this.$element.hasClass('active') ||
-                this.$element.hasClass('disabled') ||
-                this.$element[0].hasAttribute('disabled')) {
+            if ($.CFW_isDisabled(this.$element) || this.$element.hasClass('active')) {
                 return;
             }
 

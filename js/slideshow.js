@@ -43,27 +43,25 @@
             // Bind nav
             this.$navPrev.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.prev();
                 }
             });
             this.$navNext.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.next();
                 }
             });
 
-            // If loop, replace keydown handler
-            if (this.settings.loop) {
-                $tabs
-                    .off('keydown.cfw.tab')
-                    .add(this.$navPrev)
-                    .add(this.$navNext)
-                    .on('keydown.cfw.slideshow', function(e) {
-                        $selfRef._actionsKeydown(e);
-                    });
-            }
+            // Replace keydown handler to handle loop
+            $tabs
+                .off('keydown.cfw.tab')
+                .add(this.$navPrev)
+                .add(this.$navNext)
+                .on('keydown.cfw.slideshow', function(e) {
+                    $selfRef._actionsKeydown(e);
+                });
 
             this.update();
 
@@ -73,46 +71,52 @@
         prev : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
+            var newIndex = -1;
             if (currIndex > 0) {
-                this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(currIndex - 1).CFW_Tab('show');
+                newIndex = currIndex - 1;
             }
             if (this.settings.loop && currIndex === 0) {
+                newIndex = $tabs.length - 1;
+            }
+            if (newIndex > -1) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq($tabs.length - 1).CFW_Tab('show');
+                $tabs.eq(newIndex).CFW_Tab('show');
             }
         },
 
         next : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
+            var newIndex = -1;
             if (currIndex < $tabs.length - 1) {
-                this.$element.CFW_trigger('next.cfw.slideshow');
-                $tabs.eq(currIndex + 1).CFW_Tab('show');
+                newIndex = currIndex + 1;
             }
             if (this.settings.loop && currIndex === ($tabs.length - 1)) {
-                this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(0).CFW_Tab('show');
+                newIndex = 0;
+            }
+            if (newIndex > -1) {
+                this.$element.CFW_trigger('next.cfw.slideshow');
+                $tabs.eq(newIndex).CFW_Tab('show');
             }
         },
 
         update : function() {
-            this.$navPrev.removeClass('disabled');
-            this.$navNext.removeClass('disabled');
+            $.CFW_controlEnable(this.$navPrev);
+            $.CFW_controlEnable(this.$navNext);
 
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
             if (currIndex <= 0 && !this.settings.loop) {
-                this.$navPrev.addClass('disabled');
+                $.CFW_controlDisable(this.$navPrev);
             }
             if (currIndex >= $tabs.length - 1 && !this.settings.loop) {
-                this.$navNext.addClass('disabled');
+                $.CFW_controlDisable(this.$navNext);
             }
             this.$element.CFW_trigger('update.cfw.slideshow');
         },
 
         _getTabs : function() {
-            return this.$element.find('[role="tab"]:visible').not('.disabled');
+            return this.$element.find('[role="tab"]:visible').not('.disabled, :disabled');
         },
 
         _currIndex : function($tabs) {
@@ -129,31 +133,19 @@
 
             if (!REGEX_KEYS.test(e.which)) { return; }
 
-            e.stopPropagation();
             e.preventDefault();
 
-            var $tabs = this._getTabs();
-            var index = this._currIndex($tabs);
-
             if (e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) {
-                if (index > 0) {
-                    index--;
-                } else if (index === 0) {
-                    index = $tabs.length - 1;
-                }
+                this.prev();
             }
             if (e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT) {
-                if (index < $tabs.length - 1) {
-                    index++;
-                } else if (index === $tabs.length - 1) {
-                    index = 0;
-                }
+                this.next();
             }
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; }  // force first item
-
-            var nextTab = $tabs.eq(index);
-            nextTab.CFW_Tab('show').trigger('focus');
+            if (e.currentTarget !== this.$navPrev[0] && e.currentTarget !== this.$navNext[0]) {
+                var $tabs = this._getTabs();
+                var currIndex = this._currIndex($tabs);
+                $tabs.eq(currIndex).trigger('focus');
+            }
         },
 
         dispose : function() {

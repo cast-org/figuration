@@ -352,7 +352,7 @@
             }
 
             // Ignore disabled items
-            if (this.$element.is('.disabled, :disabled')) {
+            if ($.CFW_isDisabled(this.$element)) {
                 return;
             }
 
@@ -595,7 +595,7 @@
                 e.stopPropagation();
             }
 
-            if (this.$element.is('.disabled, :disabled')) {
+            if ($.CFW_isDisabled(this.$element)) {
                 return;
             }
 
@@ -613,7 +613,7 @@
         show : function() {
             var $selfRef = this;
 
-            if (this.$element.is('.disabled, :disabled') || this.$target.hasClass('open')) {
+            if ($.CFW_isDisabled(this.$element) || this.$target.hasClass('open')) {
                 return;
             }
 
@@ -648,7 +648,7 @@
         },
 
         hide : function() {
-            if (this.$element.is('.disabled, :disabled') || !this.$target.hasClass('open')) {
+            if ($.CFW_isDisabled(this.$element) || !this.$target.hasClass('open')) {
                 return;
             }
 
