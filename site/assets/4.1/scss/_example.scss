@@ -159,6 +159,22 @@
     }
 }
 
+.example-content-alpha,
+.example-content-beta {
+    @include make-col-ready();
+    @include make-col(3);
+    @include media-breakpoint-up(lg) {
+        @include make-col();
+    }
+}
+.example-content-gamma {
+    @include make-col-ready();
+    @include make-col(6);
+    @include media-breakpoint-up(lg) {
+        @include make-col();
+    }
+}
+
 // Caret mixins
 .btn {
     .example-caret {

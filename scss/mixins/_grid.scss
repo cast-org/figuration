@@ -19,8 +19,12 @@
     padding-left: ($gutter / 2);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
-    width: percentage($size / $columns);
+@mixin make-col($size: false, $columns: $grid-columns) {
+    @if ($size) {
+        width: percentage($size / $columns);
+    } @else {
+        flex: 1 1 0;
+    }
 }
 
 @mixin make-col-auto() {
