@@ -632,7 +632,7 @@ pre code {
 
 .table-active,
 .table-active > * {
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
 }
 
 [class*="table-hover"] .table-active:hover,
@@ -1835,7 +1835,7 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 
 .btn:hover {
   color: #50606f;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
   border-color: #7e8d9b;
 }
 
@@ -2114,7 +2114,7 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 
 .btn-outline:hover {
   color: #50606f;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
   border-color: #7e8d9b;
 }
 
@@ -4156,7 +4156,7 @@ a.drag.disabled {
   z-index: 2;
   color: #424f5b;
   text-decoration: none;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
 }
 
 .list-item {
@@ -4587,7 +4587,7 @@ a.drag.disabled {
 .page-link:hover, .page-link:focus {
   z-index: 2;
   color: #50606f;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
   border-color: #9eaab4;
 }
 
@@ -4758,7 +4758,7 @@ a.drag.disabled {
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #343e48;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
 }
 
 .dropdown-menu a.disabled, .dropdown-menu a:disabled,
@@ -4888,6 +4888,7 @@ a.drag.disabled {
 .nav-link {
   display: block;
   padding: 0.3125rem 1rem;
+  color: #0055e9;
   text-decoration: none;
   background: none;
   border: 0;
@@ -4898,6 +4899,10 @@ a.drag.disabled {
   .nav-link {
     transition: none;
   }
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: #003ca3;
 }
 
 .nav-link.disabled, .nav-link:disabled {
@@ -4920,8 +4925,8 @@ a.drag.disabled {
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  background-color: #dfe3e6;
-  border-color: #dfe3e6 #dfe3e6 #bfc6cd;
+  background-color: #eff1f3;
+  border-color: #eff1f3 #eff1f3 #bfc6cd;
 }
 
 .nav-tabs .nav-link.disabled, .nav-tabs .nav-link:disabled {
@@ -4951,8 +4956,7 @@ a.drag.disabled {
 }
 
 .nav-pills .nav-link:hover, .nav-pills .nav-link:focus {
-  color: inherit;
-  background-color: #dfe3e6;
+  background-color: #eff1f3;
 }
 
 .nav-pills .nav-link.disabled, .nav-pills .nav-link:disabled {

@@ -1091,6 +1091,38 @@ pre[class*="language-"] {
   }
 }
 
+.example-content-alpha,
+.example-content-beta {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  width: 25%;
+}
+
+@media (min-width: 62em) {
+  .example-content-alpha,
+  .example-content-beta {
+    flex: 1 1;
+  }
+}
+
+.example-content-gamma {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  width: 50%;
+}
+
+@media (min-width: 62em) {
+  .example-content-gamma {
+    flex: 1 1;
+  }
+}
+
 .btn .example-caret {
   display: inline-block;
   width: 0;

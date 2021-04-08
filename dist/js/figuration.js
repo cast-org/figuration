@@ -446,6 +446,32 @@ if (typeof jQuery === 'undefined') {
     $.CFW_reflow = function(element) {
         return element.offsetHeight;
     };
+
+    $.CFW_controlEnable = function(element) {
+        $(element)
+            .removeClass('disabled')
+            .removeAttr('tabindex')
+            .removeAttr('disabled')
+            .closest('label')
+            .removeClass('disabled');
+    };
+
+    $.CFW_controlDisable = function(element) {
+        var $control = $(element);
+
+        if ($control.length && /button|fieldset|input|optgroup|option|select|textarea/i.test($control[0].tagName)) {
+            $control.prop('disabled', true);
+            $control
+                .closest('label')
+                .addClass('disabled');
+        } else {
+            $control.addClass('disabled').attr('tabindex', -1);
+        }
+    };
+
+    $.CFW_isDisabled = function(element) {
+        return $(element).is('.disabled, :disabled');
+    };
 }(jQuery));
 
 /**
@@ -519,7 +545,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // check for disabled element
-            if (this.$element.is('.disabled, :disabled')) { return; }
+            if ($.CFW_isDisabled(this.$element)) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;
@@ -1231,7 +1257,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Ignore disabled items
-            if (this.$element.is('.disabled, :disabled')) {
+            if ($.CFW_isDisabled(this.$element)) {
                 return;
             }
 
@@ -1474,7 +1500,7 @@ if (typeof jQuery === 'undefined') {
                 e.stopPropagation();
             }
 
-            if (this.$element.is('.disabled, :disabled')) {
+            if ($.CFW_isDisabled(this.$element)) {
                 return;
             }
 
@@ -1492,7 +1518,7 @@ if (typeof jQuery === 'undefined') {
         show : function() {
             var $selfRef = this;
 
-            if (this.$element.is('.disabled, :disabled') || this.$target.hasClass('open')) {
+            if ($.CFW_isDisabled(this.$element) || this.$target.hasClass('open')) {
                 return;
             }
 
@@ -1527,7 +1553,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         hide : function() {
-            if (this.$element.is('.disabled, :disabled') || !this.$target.hasClass('open')) {
+            if ($.CFW_isDisabled(this.$element) || !this.$target.hasClass('open')) {
                 return;
             }
 
@@ -1644,7 +1670,7 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$element.closest('ul, ol, nav, .nav, .list');
+            this.$navElm = this.$element.closest('ul, ol, nav, .nav, .list, .btn-group, .is-tablist');
             if (this.$navElm.length && this.$navElm[0].nodeName.toLowerCase() !== 'nav') {
                 this.$navElm.attr('role', 'tablist');
             }
@@ -1729,9 +1755,7 @@ if (typeof jQuery === 'undefined') {
                 e.preventDefault();
             }
 
-            if (this.$element.hasClass('active') ||
-                this.$element.hasClass('disabled') ||
-                this.$element[0].hasAttribute('disabled')) {
+            if ($.CFW_isDisabled(this.$element) || this.$element.hasClass('active')) {
                 return;
             }
 
@@ -4335,27 +4359,25 @@ if (typeof jQuery === 'undefined') {
             // Bind nav
             this.$navPrev.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.prev();
                 }
             });
             this.$navNext.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                if ($(e.target).not('.disabled, :disabled')) {
+                if (!$.CFW_isDisabled(e.target)) {
                     $selfRef.next();
                 }
             });
 
-            // If loop, replace keydown handler
-            if (this.settings.loop) {
-                $tabs
-                    .off('keydown.cfw.tab')
-                    .add(this.$navPrev)
-                    .add(this.$navNext)
-                    .on('keydown.cfw.slideshow', function(e) {
-                        $selfRef._actionsKeydown(e);
-                    });
-            }
+            // Replace keydown handler to handle loop
+            $tabs
+                .off('keydown.cfw.tab')
+                .add(this.$navPrev)
+                .add(this.$navNext)
+                .on('keydown.cfw.slideshow', function(e) {
+                    $selfRef._actionsKeydown(e);
+                });
 
             this.update();
 
@@ -4365,46 +4387,52 @@ if (typeof jQuery === 'undefined') {
         prev : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
+            var newIndex = -1;
             if (currIndex > 0) {
-                this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(currIndex - 1).CFW_Tab('show');
+                newIndex = currIndex - 1;
             }
             if (this.settings.loop && currIndex === 0) {
+                newIndex = $tabs.length - 1;
+            }
+            if (newIndex > -1) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq($tabs.length - 1).CFW_Tab('show');
+                $tabs.eq(newIndex).CFW_Tab('show');
             }
         },
 
         next : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
+            var newIndex = -1;
             if (currIndex < $tabs.length - 1) {
-                this.$element.CFW_trigger('next.cfw.slideshow');
-                $tabs.eq(currIndex + 1).CFW_Tab('show');
+                newIndex = currIndex + 1;
             }
             if (this.settings.loop && currIndex === ($tabs.length - 1)) {
-                this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(0).CFW_Tab('show');
+                newIndex = 0;
+            }
+            if (newIndex > -1) {
+                this.$element.CFW_trigger('next.cfw.slideshow');
+                $tabs.eq(newIndex).CFW_Tab('show');
             }
         },
 
         update : function() {
-            this.$navPrev.removeClass('disabled');
-            this.$navNext.removeClass('disabled');
+            $.CFW_controlEnable(this.$navPrev);
+            $.CFW_controlEnable(this.$navNext);
 
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
             if (currIndex <= 0 && !this.settings.loop) {
-                this.$navPrev.addClass('disabled');
+                $.CFW_controlDisable(this.$navPrev);
             }
             if (currIndex >= $tabs.length - 1 && !this.settings.loop) {
-                this.$navNext.addClass('disabled');
+                $.CFW_controlDisable(this.$navNext);
             }
             this.$element.CFW_trigger('update.cfw.slideshow');
         },
 
         _getTabs : function() {
-            return this.$element.find('[role="tab"]:visible').not('.disabled');
+            return this.$element.find('[role="tab"]:visible').not('.disabled, :disabled');
         },
 
         _currIndex : function($tabs) {
@@ -4421,31 +4449,19 @@ if (typeof jQuery === 'undefined') {
 
             if (!REGEX_KEYS.test(e.which)) { return; }
 
-            e.stopPropagation();
             e.preventDefault();
 
-            var $tabs = this._getTabs();
-            var index = this._currIndex($tabs);
-
             if (e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) {
-                if (index > 0) {
-                    index--;
-                } else if (index === 0) {
-                    index = $tabs.length - 1;
-                }
+                this.prev();
             }
             if (e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT) {
-                if (index < $tabs.length - 1) {
-                    index++;
-                } else if (index === $tabs.length - 1) {
-                    index = 0;
-                }
+                this.next();
             }
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; }  // force first item
-
-            var nextTab = $tabs.eq(index);
-            nextTab.CFW_Tab('show').trigger('focus');
+            if (e.currentTarget !== this.$navPrev[0] && e.currentTarget !== this.$navNext[0]) {
+                var $tabs = this._getTabs();
+                var currIndex = this._currIndex($tabs);
+                $tabs.eq(currIndex).trigger('focus');
+            }
         },
 
         dispose : function() {
@@ -4732,7 +4748,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if ($(e.currentTarget).not('.disabled, :disabled').length) {
+            if (!$.CFW_isDisabled(e.currentTarget)) {
                 this.close();
             }
         },
@@ -5833,7 +5849,7 @@ if (typeof jQuery === 'undefined') {
             var $muteElm = this.$player.find('[data-cfw-player="mute"]');
 
             if (!this.support.mute) {
-                this._controlDisable($muteElm);
+                $.CFW_controlDisable($muteElm);
             } else if (this.media.muted) {
                 $muteElm.addClass('active');
             } else {
@@ -5871,7 +5887,7 @@ if (typeof jQuery === 'undefined') {
             var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
             if (!this.support.mute) {
-                this._controlDisable($volElm);
+                $.CFW_controlDisable($volElm);
                 return;
             }
             var $inputElm = $volElm.find('input[type="range"]').eq(0);
@@ -6081,7 +6097,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (this.trackValid.length <= 0) {
-                this._controlDisable($captionElm);
+                $.CFW_controlDisable($captionElm);
                 return;
             }
 
@@ -6225,7 +6241,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (this.trackValid.length <= 0) {
-                this._controlDisable($tsElm);
+                $.CFW_controlDisable($tsElm);
                 return;
             }
 
@@ -6290,7 +6306,7 @@ if (typeof jQuery === 'undefined') {
                         $(this).prop('checked', $selfRef.settings.transcriptScroll);
                     });
                     this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
-                        if (!$selfRef._controlIsDisabled($(e.target))) {
+                        if (!$.CFW_isDisabled($(e.target))) {
                             $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
                             $(this).prop('checked', $selfRef.settings.transcriptDescribe);
                             $selfRef.scriptLoad();
@@ -6417,9 +6433,9 @@ if (typeof jQuery === 'undefined') {
             }
             var $descControl = this.$player.find('[data-cfw-player-script-describe]');
             if (!descAvailable) {
-                this._controlDisable($descControl);
+                $.CFW_controlDisable($descControl);
             } else {
-                this._controlEnable($descControl);
+                $.CFW_controlEnable($descControl);
             }
 
             // Test again for text-based description
@@ -6431,9 +6447,9 @@ if (typeof jQuery === 'undefined') {
             }
             var $textDescControl = this.$player.find('[data-cfw-player="textdescription"]');
             if (!textDescAvailable) {
-                this._controlDisable($textDescControl);
+                $.CFW_controlDisable($textDescControl);
             } else {
-                this._controlEnable($textDescControl);
+                $.CFW_controlEnable($textDescControl);
             }
 
             var scriptLoad2 = function(forced) {
@@ -6619,7 +6635,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (this.trackDescription.length <= 0) {
-                this._controlDisable($tdElm);
+                $.CFW_controlDisable($tdElm);
                 return;
             }
 
@@ -6671,7 +6687,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
                 });
                 this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
-                    if (!$selfRef._controlIsDisabled($(e.target))) {
+                    if (!$.CFW_isDisabled($(e.target))) {
                         $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
                         $(this).prop('checked', $selfRef.settings.textDescribeVisible);
                         $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
@@ -6947,29 +6963,6 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$focus.trigger('focus');
                 }
             }, 10);
-        },
-
-        _controlEnable : function($control) {
-            $control
-                .removeClass('disabled')
-                .removeAttr('disabled')
-                .closest('label')
-                .removeClass('disabled');
-        },
-
-        _controlDisable : function($control) {
-            if ($control.is('button, input')) {
-                $control.prop('disabled', true);
-                $control
-                    .closest('label')
-                    .addClass('disabled');
-            } else {
-                $control.addClass('disabled');
-            }
-        },
-
-        _controlIsDisabled : function($control) {
-            return $control.is('.disabled, :disabled');
         },
 
         _cuechangeEnable : function(trackID, namespace, callback) {
