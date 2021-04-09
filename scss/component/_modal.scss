@@ -1,7 +1,7 @@
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and shit
+// .modal-content   - actual modal w/ bg, border, border-radius, etc
 
 @if $enable-modal {
     .modal-open {
@@ -136,6 +136,48 @@
         }
     }
 
+    @if $enable-modal-side-top {
+        .modal-dialog-side-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            // stylelint-disable-next-line declaration-no-important
+            max-width: 100% !important;
+            height: $modal-side-vertical-height;
+            max-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal.fade & {
+                transform: translate(0, $modal-transform-side-offset);
+            }
+        }
+    }
+
+
+    @if $enable-modal-side-bottom {
+        .modal-dialog-side-bottom {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            // stylelint-disable-next-line declaration-no-important
+            max-width: 100% !important;
+            height: $modal-side-vertical-height;
+            max-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal {
+                overflow: none;
+            }
+            .modal.fade & {
+                transform: translate(0, -$modal-transform-side-offset);
+            }
+        }
+    }
+
     .modal.in .modal-dialog {
         transform: $modal-transform-in;
     }
@@ -164,23 +206,39 @@
         outline: 0;
     }
 
-    %modal-side-content {
+    %modal-side-h-content {
         // IE fix to get modal full height
         @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
             min-height: 100vh;
         }
         @include border-radius(0);
     }
+    %modal-side-v-content {
+        @include border-radius(0);
+    }
+
     @if $enable-modal-side-start {
         .modal-dialog-side-start .modal-content {
             border-width: 0 $modal-content-border-width 0 0;
-            @extend %modal-side-content;
+            @extend %modal-side-h-content;
         }
     }
     @if $enable-modal-side-end {
         .modal-dialog-side-end .modal-content {
             border-width: 0 0 0 $modal-content-border-width;
-            @extend %modal-side-content;
+            @extend %modal-side-h-content;
+        }
+    }
+    @if $enable-modal-side-top {
+        .modal-dialog-side-top .modal-content {
+            border-width: 0 0 $modal-content-border-width 0;
+            @extend %modal-side-v-content;
+        }
+    }
+    @if $enable-modal-side-bottom {
+        .modal-dialog-side-bottom .modal-content {
+            border-width: $modal-content-border-width 0 0 0;
+            @extend %modal-side-v-content;
         }
     }
 
@@ -252,6 +310,16 @@
     }
     @if $enable-modal-side-end {
         .modal-dialog-side-end .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+    @if $enable-modal-side-top {
+        .modal-dialog-side-top .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+    @if $enable-modal-side-bottom {
+        .modal-dialog-side-bottom .modal-body {
             @extend %modal-side-body;
         }
     }
@@ -335,6 +403,16 @@
         }
         @if $enable-modal-side-end {
             .modal-dialog-side-end.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
+        }
+        @if $enable-modal-side-top {
+            .modal-dialog-side-top.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
+        }
+        @if $enable-modal-side-bottom {
+            .modal-dialog-side-bottom.modal-dialog-scrollable {
                 @extend %modal-side-scrollable;
             }
         }

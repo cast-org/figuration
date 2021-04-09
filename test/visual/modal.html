@@ -145,12 +145,19 @@
     <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalCenterScroll">
         Scrollable centered modal
     </button>
-
+</p>
+<p>
     <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalSideStart">
         Side modal - start
     </button>
     <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">
         Side modal - end
+    </button>
+    <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalSideTop">
+        Side modal - top
+    </button>
+    <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalSideBottom">
+        Side modal - bottom
     </button>
 </p>
 <p>
@@ -331,6 +338,46 @@
             <div class="modal-footer">
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalSideTop">
+    <div class="modal-dialog modal-dialog-side-top modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header py-0_25">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h4>Overflowing text to show scroll behavior</h4>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal overflow-hidden" id="modalSideBottom">
+    <div class="modal-dialog modal-dialog-side-bottom modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header py-0_25">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h4>Overflowing text to show scroll behavior</h4>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
         </div>
     </div>

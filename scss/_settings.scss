@@ -1347,6 +1347,8 @@ $modal-lg:                      rem(896px) !default; // 896px=>56rem
 $modal-breakpoint:              sm !default; // When to start scaling up modal width
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`
 
+$modal-side-vertical-height:    33vh !default;
+
 // When fading in the modal, animate it to slide down
 $modal-transform-fade:          translate(0, -3rem) !default;
 $modal-transform-in:            none !default;
