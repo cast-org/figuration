@@ -1088,6 +1088,86 @@ You can also combine fullscreen variants with the centered and scrollable varian
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Chained Modals
+
+While not necessarily recommended, it is possible to chain singular modals together into a workflow with the following options:
+- using a `data-cfw-modal-chain="#destinationModal"`attribute on a control within the initiating modal.
+- the provided `chain` JavaScript method: `$('#startingModal').CFW_Modal('chain', '#destinationModal');`.
+
+***Notes:***
+- Multiple modals should not be open at the same time&mdash;this method only allows for chaining modals together.
+- Closing a chained modal does not automatically return to the originating modal.
+
+<div class="modal" id="modalChained1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">First chained modal</div>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Close this modal and open the secondary modal with the following button.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalChained2" data-cfw-modal-chain="#modalChained2">Open second chained modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalChained2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Second chained modal</div>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Close this modal and open the first modal with the following button.
+      </div>
+      <div class="modal-footer">
+        <button role="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+  <button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalChained1">Open first modal</button>
+</div>
+
+{% capture highlight %}
+<button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalChained1">Chained modal example</button>
+
+<!-- Initial modal -->
+<div class="modal" id="modalChained1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      ...
+      <div class="modal-footer">
+        <!-- Open the secondary modal -->
+        <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalChained2" data-cfw-modal-chain="#modalChained2">Open second chained modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Secondary modal -->
+<div class="modal" id="modalChained2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      ...
+      <div class="modal-footer">
+        <!-- Close secondary modal and return to initial modal -->
+        <button role="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+
 ## Usage
 
 The modal widget toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
@@ -1233,6 +1313,14 @@ Method calls can be made on either the trigger or the target `<div class="modal"
       <tr>
         <td><code>dispose</code></td>
         <td>Calls the <code>unlink</code> method, and then removes the modal from the DOM.</td>
+      </tr>
+      <tr>
+        <td><code>chain</code></td>
+        <td>
+            <p>A helper method for moving from one modal to another.</p>
+            <p>Called in the form: <code>$('#startingModal').CFW_Modal('chain', '#destinationModal');</code></p>
+            <p>Where <code>#startingModal</code> is the id for the currently open <code>.modal</code> container that should be closed, and <code>#destinationModal</code> is the id for the next <code>.modal</code> container to be shown.</p>
+        </td>
       </tr>
     </tbody>
   </table>

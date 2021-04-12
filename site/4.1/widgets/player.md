@@ -758,7 +758,7 @@ Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](
         <td><code>speed</code></td>
         <td>
           <p>Change the playback rate to the media.</p>
-          <p>Called in the form: <code>`$('#myPlayer').CFW_Player('speed', rate);</code></p>
+          <p>Called in the form: <code>$('#myPlayer').CFW_Player('speed', rate);</code></p>
           <code>rate</code> is a float value.
           <ul>
             <li><code>1.0</code> is normal speed</li>
