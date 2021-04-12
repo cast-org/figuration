@@ -6458,6 +6458,40 @@ a.drag.disabled {
   transform: translate(-5rem, 0);
 }
 
+.modal-dialog-side-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100% !important;
+  height: 33vh;
+  max-height: 100%;
+  margin: 0 !important;
+}
+
+.modal.fade .modal-dialog-side-top {
+  transform: translate(0, -5rem);
+}
+
+.modal-dialog-side-bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 100% !important;
+  height: 33vh;
+  max-height: 100%;
+  margin: 0 !important;
+}
+
+.modal-dialog-side-bottom .modal {
+  overflow: none;
+}
+
+.modal.fade .modal-dialog-side-bottom {
+  transform: translate(0, 5rem);
+}
+
 .modal.in .modal-dialog {
   transform: none;
 }
@@ -6496,12 +6530,24 @@ a.drag.disabled {
   }
 }
 
+.modal-dialog-side-top .modal-content, .modal-dialog-side-bottom .modal-content {
+  border-radius: 0;
+}
+
 .modal-dialog-side-start .modal-content {
   border-width: 0 0 0 1px;
 }
 
 .modal-dialog-side-end .modal-content {
   border-width: 0 1px 0 0;
+}
+
+.modal-dialog-side-top .modal-content {
+  border-width: 0 0 1px 0;
+}
+
+.modal-dialog-side-bottom .modal-content {
+  border-width: 1px 0 0 0;
 }
 
 .modal-backdrop {
@@ -6549,7 +6595,7 @@ a.drag.disabled {
   padding: 0.75rem 1rem;
 }
 
-.modal-dialog-side-start .modal-body, .modal-dialog-side-end .modal-body {
+.modal-dialog-side-start .modal-body, .modal-dialog-side-end .modal-body, .modal-dialog-side-top .modal-body, .modal-dialog-side-bottom .modal-body {
   flex-shrink: 0;
 }
 
@@ -6602,15 +6648,15 @@ a.drag.disabled {
   }
 }
 
-.modal-dialog-side-start.modal-dialog-scrollable, .modal-dialog-side-end.modal-dialog-scrollable {
+.modal-dialog-side-start.modal-dialog-scrollable, .modal-dialog-side-end.modal-dialog-scrollable, .modal-dialog-side-top.modal-dialog-scrollable, .modal-dialog-side-bottom.modal-dialog-scrollable {
   max-height: 100%;
 }
 
-.modal-dialog-side-start.modal-dialog-scrollable .modal-content, .modal-dialog-side-end.modal-dialog-scrollable .modal-content {
+.modal-dialog-side-start.modal-dialog-scrollable .modal-content, .modal-dialog-side-end.modal-dialog-scrollable .modal-content, .modal-dialog-side-top.modal-dialog-scrollable .modal-content, .modal-dialog-side-bottom.modal-dialog-scrollable .modal-content {
   max-height: 100vh;
 }
 
-.modal-dialog-side-start.modal-dialog-scrollable .modal-body, .modal-dialog-side-end.modal-dialog-scrollable .modal-body {
+.modal-dialog-side-start.modal-dialog-scrollable .modal-body, .modal-dialog-side-end.modal-dialog-scrollable .modal-body, .modal-dialog-side-top.modal-dialog-scrollable .modal-body, .modal-dialog-side-bottom.modal-dialog-scrollable .modal-body {
   flex-shrink: 1;
 }
 

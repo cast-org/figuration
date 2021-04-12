@@ -3660,6 +3660,24 @@ if (typeof jQuery === 'undefined') {
                 })
                 .data('cfw.modal', this);
 
+            // Chained modals
+            this.$target
+                .on('click.chain.cfw.modal', '[data-cfw-modal-chain]', function(e) {
+                    if (e) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }
+                    $selfRef.chain(e.currentTarget.getAttribute('data-cfw-modal-chain'));
+                })
+                .find('[data-cfw-modal-chain]')
+                .each(function() {
+                    var $dest = $(this.getAttribute('data-cfw-modal-chain'));
+                    if (!$dest.length) { return; }
+                    $dest.one('beforeShow.cfw.modal', function(e) {
+                        e.preventDefault();
+                    });
+                });
+
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
                 $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
                     if ($(e.target).is($selfRef.$target)) { $selfRef.ignoreBackdropClick = true; }
@@ -3687,7 +3705,17 @@ if (typeof jQuery === 'undefined') {
                 .removeClass('in')
                 .attr('aria-hidden', true)
                 .removeAttr('aria-modal')
-                .off('.dismiss.cfw.modal');
+                .off('.dismiss.cfw.modal')
+                .off('.chain.cfw.modal');
+
+            // Unset chained override
+            this.$target
+                .find('[data-cfw-modal-chain]')
+                .each(function() {
+                    var $dest = $(this.getAttribute('data-cfw-modal-chain'));
+                    if (!$dest.length) { return; }
+                    $dest.off('beforeShow.cfw.modal');
+                });
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
 
@@ -3781,6 +3809,20 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.unlink();
                 }
             });
+        },
+
+        chain : function(selector) {
+            var $dest = $(selector);
+            if (!$dest.length) { return; }
+
+            if (this.isShown) {
+                this.$target.one('afterHide.cfw.modal', function() {
+                    $dest.CFW_Modal('show');
+                });
+                this.hide();
+            } else {
+                $dest.CFW_Modal('show');
+            }
         },
 
         enforceFocus : function() {
