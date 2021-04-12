@@ -1020,4 +1020,32 @@ $(function() {
         });
         $trigger.CFW_Modal('show');
     });
+
+    QUnit.test('`chain` method should hide originating modal and open target modal', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"></div>').appendTo(document.body);
+        var $trigger2 = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal2">Modal</button>').appendTo($target);
+        var $target2 = $('<div class="modal" id="modal2"></div>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.ok(true, 'show event fired');
+                $('#modal').CFW_Modal('chain', '#modal2');
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.ok($target.is(':hidden'), 'first modal hidden');
+            });
+        $target2
+            .on('afterShow.cfw.modal', function() {
+                assert.ok($target2.is(':visible'), 'second modal visible');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger2.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
 });
