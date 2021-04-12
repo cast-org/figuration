@@ -620,6 +620,45 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Static Backdrop
+
+When `backdrop` option is set to `static`, the modal will not close when clicking outside it. Click the button below to try it.
+
+<div class="modal" id="modalStaticBackdrop">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Static backdrop modal</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p>I will not close if you click outside me.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+  <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+</div>
+
+{% capture highlight %}
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+
+<div class="modal" id="modalStaticBackdrop">
+  <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ### Side Aligned
 
 Position a modal to the side of the page with a `.modal-dialog-side-start` or `.modal-dialog-side-end` modifier class placed on a the `.modal-dialog`. Side aligned modals can be used with `.modal-dialog-scrollable`, and can also use the sizing classes.
@@ -682,7 +721,7 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
 </div>
 
 {% capture highlight %}
-<!-- Large modal -->
+<!-- Start side modal -->
 <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideStart">Start side modal</button>
 
 <div class="modal" id="modalSideStart">
@@ -693,7 +732,7 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
   </div>
 </div>
 
-<!-- Small modal -->
+<!-- End side modal -->
 <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">End side modal</button>
 
 <div class="modal" id="modalSideEnd">
@@ -706,37 +745,72 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-### Static Backdrop
+Position a modal to the top or bottom of the page with a `.modal-dialog-side-top` or `.modal-dialog-side-bottom` modifier class placed on a the `.modal-dialog`.
 
-When `backdrop` option is set to `static`, the modal will not close when clicking outside it. Click the button below to try it.
+Top and bottom modals require the use of `.modal-dialog-scrollable` to keep their content within the defined area.  The bottom-aligned modal will trigger a flash of scrollbar within the `.modal` container when sliding into view; this can be mitigated by adding the `.overflow-hidden` class to the `.modal` container.
 
-<div class="modal" id="modalStaticBackdrop">
-  <div class="modal-dialog">
+<div class="modal" id="modalSideTop">
+  <div class="modal-dialog modal-dialog-side-top modal-dialog-scrollable">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Static backdrop modal</h4>
+      <div class="modal-header py-0_25">
+        <h4 class="modal-title">Modal title</h4>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <p>I will not close if you click outside me.</p>
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal overflow-hidden" id="modalSideBottom">
+  <div class="modal-dialog modal-dialog-side-bottom modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header py-0_25">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="cf-example">
-  <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+  <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideTop">Top side modal</button>
+  <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideBottom">Bottom side modal</button>
 </div>
 
 {% capture highlight %}
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+<!-- Top side modal -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideTop">Top side modal</button>
 
-<div class="modal" id="modalStaticBackdrop">
-  <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
+<div class="modal" id="modalSideTop">
+  <div class="modal-dialog modal-dialog-side-top modal-dialog-scrollable">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
+<!-- Bottom side modal -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideBottom">End side modal</button>
+
+<div class="modal overflow-hidden" id="modalSideBottom">
+  <div class="modal-dialog modal-dialog-side-start modal-dialog-scrollable">
     <div class="modal-content">
       ...
     </div>
@@ -744,6 +818,7 @@ When `backdrop` option is set to `static`, the modal will not close when clickin
 </div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
+
 
 ### Fullscreen Modal
 
@@ -1368,6 +1443,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-modal-side-top</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the top side aligned modal variant.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-modal-side-bottom</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the bottom side aligned modal variant.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-modal-fullscreen</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -1677,6 +1768,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>lg</code></td>
         <td>
           The minimum breakpoint to allow <code>.modal-lg</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-side-vertical-height</code></td>
+        <td>string</td>
+        <td><code>33vh</code></td>
+        <td>
+          Height for top and bottom aligned modals.
         </td>
       </tr>
       <tr>
