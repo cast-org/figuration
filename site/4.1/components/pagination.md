@@ -187,10 +187,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
       <span class="page-link disabled" aria-disabled="true">Previous</span>
     </li>
     <li class="page-item">
-      <span class="page-link active">
-        1
-        <span class="sr-only">(current page)</span>
-      </span>
+      <span class="page-link active" aria-current="page">1</span>
     </li>
     <li class="page-item"><a href="#" class="page-link">2</a></li>
     <li class="page-item"><a href="#" class="page-link">3</a></li>
