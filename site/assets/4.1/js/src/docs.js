@@ -172,7 +172,7 @@
         var setLTR = function(doReset) {
             $('#dir-ltr').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
             $('#dir-ltr').addClass('active').attr('aria-current', 'true');
-            $('html').removeAttr('dir');
+            $('html').attr('dir', 'ltr');
             if (doReset) {
                 fileRename('cssCore', 'figuration');
                 fileRename('cssDocs', 'docs');
