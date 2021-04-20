@@ -24,9 +24,6 @@
         var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
 
-        // Touch enabled-browser flag - override not allowed
-        this.settings.isTouch = $.CFW_isTouch;
-
         this.c = CFW_Widget_Dropdown.CLASSES;
 
         this._init();
@@ -98,7 +95,7 @@
                 if (e.type === 'click') {
                     if (/label|input|textarea/i.test(e.target.tagName) ||
                     this === e.target ||
-                    $(e.target).is('[data-cfw="dropdown"]') ||
+                    ($(e.target).is('[data-cfw="dropdown"]') && $itemMenu[0].contains(e.target)) ||
                     $(e.target).closest('.dropdown-back').length) {
                         continue;
                     }
@@ -126,7 +123,7 @@
 
             // Remove empty mouseover listener for iOS work-around
             if (!itemData.settings.isSubmenu && $.CFW_isTouch) {
-                $('body').children().off('mouseover', null, $.noop);
+                $('body').children().off('mouseover.cfw.dropdown');
             }
 
             $trigger
@@ -236,7 +233,7 @@
             this._navEnableKeyboard();
 
             // Touch OFF - Hover mode
-            if (!this.settings.isTouch && this.settings.hover) {
+            if (!$.CFW_isTouch && this.settings.hover) {
                 this._navEnableHover();
             }
 
@@ -404,7 +401,7 @@
 
         _navEnableHover : function() {
             var $selfRef = this;
-            if (!this.settings.isTouch) {
+            if (!$.CFW_isTouch) {
                 $.each([this.$element, this.$target], function() {
                     $(this).on('mouseenter.cfw.dropdown.modeHover', function(e) {
                         $selfRef._actionsHoverEnter(e);
@@ -600,12 +597,10 @@
             }
 
             var showing = this.$target.hasClass('open');
-
-            clearMenus(e);
-
             if (showing) {
                 this.hide();
             } else {
+                clearMenus(e);
                 this.show();
             }
         },
@@ -641,6 +636,14 @@
                         $selfRef.hide();
                     }
                 });
+
+            // Add empty function for mouseover listeners on immediate
+            // children of `<body>` due to missing event delegation on iOS
+            // Allows 'click' event to bubble up in Safari
+            // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+            if (!this.settings.isSubmenu && $.CFW_isTouch) {
+                $('body').children().on('mouseover.cfw.dropdown', $.noop);
+            }
 
             this._popperLocate();
 
@@ -682,6 +685,11 @@
             }
             this._navDisableHover();
             this.hide();
+
+            // Remove empty mouseover listener for iOS work-around
+            if (!this.settings.isSubmenu && $.CFW_isTouch) {
+                $('body').children().off('mouseover.cfw.dropdown');
+            }
 
             $(document).off('.cfw.dropdown.' + this.instance);
             $(window).off('.cfw.dropdown.' + this.instance);

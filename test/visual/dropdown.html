@@ -41,7 +41,7 @@ var fileRename = function(id, filename) {
 };
 
 var setLTR = function(doReset) {
-    $('html').removeAttr('dir');
+    $('html').attr('dir', 'ltr');
     fileRename('cssCore', 'figuration');
     return false;
 };
@@ -99,7 +99,14 @@ var setRTL = function() {
         <li>
             <a href="#1-3">Something else here</a>
             <ul>
-                <li><a href="#1-3-0">Action</a></li>
+                <li>
+                    <a href="#1-3-0">Action</a>
+                    <ul>
+                        <li><a href="#1-3-0">Action</a></li>
+                        <li><a href="#1-3-1">Another action</a></li>
+                        <li><a href="#1-3-2">Something else here</a></li>
+                    </ul>
+                </li>
                 <li><a href="#1-3-1">Another action</a></li>
                 <li><a href="#1-3-2">Something else here</a></li>
             </ul>
