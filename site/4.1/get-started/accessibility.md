@@ -12,11 +12,11 @@ Figuration follows common web standards and—with minimal extra effort—can be
 
 As stated on our [about page]({{ site.path }}/about/overview/), our goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications. Figuration includes generalized components and functionality designed to work for keyboard, mouse, and touch users, while providing basic accessibility requirements.
 
-It is possible to create projects that meet the [<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0](https://www.w3.org/TR/WCAG21/) (A/AA/AAA), [Section 508](https://www.section508.gov/), or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.
+It is possible to create projects that meet the [<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0](https://www.w3.org/TR/WCAG/) (A/AA/AAA), [Section 508](https://www.section508.gov/), or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.
 
 ## Color Contrast
 
-Some combinations of colors that currently make up Figuration's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—may lead to *insufficient* color contrast (below the recommended [WCAG 2.1 text color contrast ratio of 4.5:1](https://www.w3.org/TR/WCAG21/#contrast-minimum) and the [WCAG 2.1 non-text color contrast ratio of 3:1](https://www.w3.org/TR/WCAG21/#non-text-contrast)). Authors are encouraged to test their specific uses of color and, where necessary, manually modify/extend these default colors to ensure adequate color contrast ratios.
+Some combinations of colors that currently make up Figuration's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—may lead to *insufficient* color contrast (below the recommended [WCAG 2.1 text color contrast ratio of 4.5:1](https://www.w3.org/TR/WCAG/#contrast-minimum) and the [WCAG 2.1 non-text color contrast ratio of 3:1](https://www.w3.org/TR/WCAG/#non-text-contrast)). Authors are encouraged to test their specific uses of color and, where necessary, manually modify/extend these default colors to ensure adequate color contrast ratios.
 
 ## Skip Navigation
 
@@ -94,16 +94,16 @@ Using color to add meaning only provides a visual indication, which will not be 
 
 ## Reduced Motion
 
-Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at [Can I Use](https://caniuse.com/?search=prefers-reduced-motion).
+Figuration includes support for the [`prefers-reduced-motion` media feature](https://www.w3.org/TR/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at [Can I Use](https://caniuse.com/?search=prefers-reduced-motion).
 
 On browsers that support `prefers-reduced-motion`, and where the user has *not* explicitly signaled that they would prefer reduced motion (i.e. where `prefers-reduced-motion: no-preference`), Figuration enables smooth scrolling using the `scroll-behavior` property.
 
 ## Additional Resources
 
-- [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)
+- [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG/)
 - [The A11Y Project](https://www.a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
-- [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)
+- [Colour Contrast Analyser (CCA)](https://www.tpgi.com/color-contrast-checker/)
 - [WAVE Web Accessibility Tool](http://wave.webaim.org/)
 - ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)

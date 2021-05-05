@@ -264,7 +264,7 @@ Sample usage within SASS:
 
 ## Contrast
 
-Figuration includes a handful of color contrast functions based on the [WCAG 2.1 minimum contrast specification](https://www.w3.org/TR/WCAG21/#contrast-minimum) formulas for determining [contrast ratio](https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio) and [relative luminance](https://www.w3.org/TR/WCAG21#dfn-relative-luminance).
+Figuration includes a handful of color contrast functions based on the [WCAG 2.1 minimum contrast specification](https://www.w3.org/TR/WCAG/#contrast-minimum) formulas for determining [contrast ratio](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) and [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance).
 
 ### color-contrast()
 
@@ -728,7 +728,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>4.5</code></td>
         <td>
           Minimum contrast ratio to use in Figuration's color contrast SASS functions.
-          <code>4.5</code> is the <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 level AA specification for contrast</a>.
+          <code>4.5</code> is the <a href="https://www.w3.org/TR/WCAG/#contrast-minimum">WCAG 2.1 level AA specification for contrast</a>.
         </td>
       </tr>
       <tr>
