@@ -80,6 +80,11 @@
             }
 
             if (e) {
+                // Ignore clicks on trigger or child of trigger
+                if (itemData.$element[0] === e.target || itemData.$element[0].contains(e.target)) {
+                    continue;
+                }
+
                 // Ignore key event
                 // - tab navigation movement inside a menu
                 if (e.type === 'keyup') {
@@ -93,7 +98,7 @@
                 // - menu triggers
                 // - 'back' buttons
                 if (e.type === 'click') {
-                    if (/label|input|textarea/i.test(e.target.tagName) ||
+                    if (/label|input|textarea|select/i.test(e.target.tagName) ||
                     this === e.target ||
                     ($(e.target).is('[data-cfw="dropdown"]') && $itemMenu[0].contains(e.target)) ||
                     $(e.target).closest('.dropdown-back').length) {
@@ -187,7 +192,6 @@
             // Toggle on the trigger
             this.$element.on('click.cfw.dropdown', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
                 $selfRef.toggle(e);
             });
 
@@ -247,8 +251,8 @@
                 $menu = this.$element.closest('.dropdown-menu');
             }
 
-            var $items = $menu.children('li').find('a, .dropdown-item, button, input, textarea');
-            $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
+            var $items = $menu.children('li').find('a, .dropdown-item, button, input, textarea, select');
+            $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea):not(:has(select)):visible');
             return $items;
         },
 
@@ -290,7 +294,7 @@
             var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_ESC + '|' + KEYCODE_SPACE + '|' + KEYCODE_TAB + ')$');
             var REGEX_ARROWS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
 
-            var isInput = /input|textarea/i.test(e.target.tagName);
+            var isInput = /input|textarea|select/i.test(e.target.tagName);
             var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
             var isRealButton = /button/i.test(e.target.tagName);
             var isRoleButton = /button/i.test($(e.target).attr('role'));
@@ -326,7 +330,6 @@
                     } else if (e.shiftKey && index === 0) {
                         this.$element.trigger('focus');
                         e.preventDefault();
-                        e.stopPropagation();
                         return;
                     } else if (!e.shiftKey && index === $items.length - 1) {
                         this.$element.trigger('focus');
@@ -589,7 +592,6 @@
         toggle : function(e) {
             if (e) {
                 e.preventDefault();
-                e.stopPropagation();
             }
 
             if ($.CFW_isDisabled(this.$element)) {

@@ -394,7 +394,7 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 #### Textual Inputs
 
-Add `<input type="text">` or `textarea` items to your dropdown menu.  Other types of [textual inputs]({{ site.path }}/{{ version.docs }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
+Add `<input>`, `<textarea>`, or `<select>` items to your dropdown menu.  Other types of [textual inputs]({{ site.path }}/{{ version.docs }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
 
 {% capture example %}
 <div class="dropdown">
@@ -414,6 +414,16 @@ Add `<input type="text">` or `textarea` items to your dropdown menu.  Other type
       <div class="dropdown-text">
         <label for="textarea1" class="sr-only">Example textarea</label>
         <textarea id="textarea1" class="form-control" placeholder="textarea"></textarea>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown-text">
+        <label for="select1" class="sr-only">Example select</label>
+        <select id="select1" class="form-control">
+            <option>One</option>
+            <option>Two</option>
+            <option>Three</option>
+        </select>
       </div>
     </li>
     <li><a href="#">Action</a></li>
