@@ -25,9 +25,8 @@
     }
 
     // Button groups
-    > .btn-group + .btn-group,
-    > .btn-group + br + .btn-group {
-        margin-top: .5rem;
+    > .btn-group {
+        margin: .25rem .125rem;
     }
 
     // Navbar
@@ -81,11 +80,8 @@
         clear: left;
     }
 
-    > .dropdown + .dropdown,
-    > .btn-group + .btn-group,
-    > .dropdown + .btn-group,
-    > .btn-group + .dropdown {
-        margin-top: .5rem;
+    > .dropdown {
+        margin-top: .25rem .125rem;
     }
 
     // Modal

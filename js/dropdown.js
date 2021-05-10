@@ -51,16 +51,30 @@
         boundary  : 'scrollParent',
         flip      : true,
         display   : 'dynamic',
-        popperConfig    : null
+        popperConfig    : null,
+        autoClose : true
     };
 
     /* eslint-disable complexity */
     var clearMenus = function(e) {
-        var KEYCODE_TAB = 9;    // Tab
+        if (e) {
+            // Ignore right-click
+            var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
+            if (e.which === RIGHT_MOUSE_BUTTON_WHICH) {
+                return;
+            }
 
-        // Ignore right-click
-        var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
-        if (e && e.which === RIGHT_MOUSE_BUTTON_WHICH) { return; }
+            // Ignore tab key event
+            var KEYCODE_TAB = 9;    // Tab
+            if (e.type === 'keyup' && e.which !== KEYCODE_TAB) {
+                return;
+            }
+
+            // Ignore input areas
+            if (/label|input|textarea|select/i.test(e.target.tagName)) {
+                return;
+            }
+        }
 
         var $items = $('[data-cfw="dropdown"]');
         // Do menu items in reverse to close from bottom up
@@ -85,21 +99,21 @@
                     continue;
                 }
 
-                // Ignore key event
-                // - tab navigation movement inside a menu
-                if (e.type === 'keyup') {
-                    if (e.which !== KEYCODE_TAB) {
-                        continue;
-                    }
+                // Auto close determination
+                if (itemData.settings.autoClose === false) {
+                    continue;
+                }
+                var isMenuTarget = itemData.$target[0] === e.target || itemData.$target[0].contains(e.target);
+                if ((itemData.settings.autoClose === 'inside' && !isMenuTarget) ||
+                    (itemData.settings.autoClose === 'outside' && isMenuTarget)) {
+                    continue;
                 }
 
                 // Ignore clicks for
-                // - input areas
                 // - menu triggers
                 // - 'back' buttons
                 if (e.type === 'click') {
-                    if (/label|input|textarea|select/i.test(e.target.tagName) ||
-                    this === e.target ||
+                    if (this === e.target ||
                     ($(e.target).is('[data-cfw="dropdown"]') && $itemMenu[0].contains(e.target)) ||
                     $(e.target).closest('.dropdown-back').length) {
                         continue;
@@ -126,22 +140,7 @@
                 continue;
             }
 
-            // Remove empty mouseover listener for iOS work-around
-            if (!itemData.settings.isSubmenu && $.CFW_isTouch) {
-                $('body').children().off('mouseover.cfw.dropdown');
-            }
-
-            $trigger
-                .attr('aria-expanded', 'false')
-                .removeClass('open');
-            $itemMenu
-                .removeClass('open');
-
-            $trigger
-                .CFW_Dropdown('containerReset')
-                .CFW_Dropdown('popperReset');
-
-            $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
+            $trigger.CFW_Dropdown('_hideComplete', eventProperties);
         }
     };
     /* eslint-enable complexity */
@@ -635,6 +634,14 @@
             $(document)
                 .on('focusin.cfw.dropdown.' + this.instance, function(e) {
                     if ($selfRef.$element[0] !== e.target && !$selfRef.$target.has(e.target).length) {
+                        var isMenuTarget = $selfRef.$target[0] === e.target || $selfRef.$target[0].contains(e.target);
+                        if ($selfRef.settings.autoClose === false) {
+                            return;
+                        }
+                        if (($selfRef.settings.autoClose === 'inside' && !isMenuTarget) ||
+                            ($selfRef.settings.autoClose === 'outside' && isMenuTarget)) {
+                            return;
+                        }
                         $selfRef.hide();
                     }
                 });
@@ -653,22 +660,40 @@
         },
 
         hide : function() {
+            var eventProperties = {
+                relatedTarget: this.$element[0]
+            };
+
             if ($.CFW_isDisabled(this.$element) || !this.$target.hasClass('open')) {
                 return;
             }
 
-            var eventProperties = {
-                relatedTarget: this.$element[0]
-            };
             if (!this.$element.CFW_trigger('beforeHide.cfw.dropdown', eventProperties)) {
                 return;
             }
 
+            // Close any open nested menus - in reverse to close from bottom up
+            var $items = this.$target.find('[data-cfw="dropdown"].open');
+            for (var i = $items.length; i--;) {
+                var $trigger = $($items[i]);
+                var itemData = $trigger.data('cfw.dropdown');
+                if (!itemData) {
+                    continue;
+                }
+                $trigger.CFW_Dropdown('_hideComplete');
+            }
+
+            this._hideComplete(eventProperties);
+        },
+
+        _hideComplete : function(eventProperties) {
             $(document).off('focusin.cfw.dropdown.' + this.instance);
 
-            this.$element
-                .attr('aria-expanded', 'false')
-                .removeClass('open');
+            // Remove empty mouseover listener for iOS work-around
+            if (!this.settings.isSubmenu && $.CFW_isTouch) {
+                $('body').children().off('mouseover.cfw.dropdown');
+            }
+
             this.$target
                 .removeClass('open');
 
@@ -676,6 +701,8 @@
             this.popperReset();
 
             this.$element
+                .attr('aria-expanded', 'false')
+                .removeClass('open')
                 .CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         },
 
@@ -687,11 +714,6 @@
             }
             this._navDisableHover();
             this.hide();
-
-            // Remove empty mouseover listener for iOS work-around
-            if (!this.settings.isSubmenu && $.CFW_isTouch) {
-                $('body').children().off('mouseover.cfw.dropdown');
-            }
 
             $(document).off('.cfw.dropdown.' + this.instance);
             $(window).off('.cfw.dropdown.' + this.instance);
