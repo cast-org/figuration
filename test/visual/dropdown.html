@@ -82,6 +82,8 @@ var setRTL = function() {
         <li class="dropdown-divider"></li>
         <li><a href="#0-4">Separated link</a></li>
     </ul>
+
+    <input type="text" class="form-control w-auto" value="test"></input>
 </div>
 
 <div id="container">
@@ -503,6 +505,78 @@ var setRTL = function() {
             End Up <span class="caretup" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu dropup dropend">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="text-center p-1 m-2 border">
+    Auto close:<br>
+
+    <div class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="true">
+            Default close<span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="false">
+            Manual close <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="outside">
+            Outside close <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="inside">
+            Inside close <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li>

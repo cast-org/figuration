@@ -739,6 +739,95 @@ Use the `reference` option to help control the location of a dropdown menu.
 {% endcapture %}
 {% renderExample example %}
 
+### Auto Close
+
+By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the `autoClose` option to change this behavior of the dropdown.
+
+When auto close is being used, pressing the <kbd>ESC</kbd> key will still close the menu (or submenu), and all methods should work as expected.
+
+<div class="cf-example">
+  <div class="btn-group">
+    <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="true">
+      Default close <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="false">
+      Manual close <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="outside">
+      Outside close <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="inside">
+      Inside close <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+    </ul>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="true">
+    Default close <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="false">
+    Manual close <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="outside">
+    Outside close <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown" data-cfw-dropdown-auto-close="inside">
+    Inside close <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+</div>
+
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown widget toggles hidden content (dropdown menus) by toggling the `.open` class on the parent list item.
@@ -774,7 +863,7 @@ $('#myDropdown').CFW_Dropdown();
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-dropdown`, as in `data-cfw-dropdown-backlink="true"`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-dropdown`, as in `data-cfw-dropdown-backlink="true"`. Make sure to change the case type of the option name from camelCase to kebab-case when passing the options via data attributes. For example, instead of using `data-cfw-dropdown-autoClose="false"`, use `data-cfw-dropdown-auto-close="false"`.
 
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -868,6 +957,20 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>null | object</td>
         <td><code>null</code></td>
         <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper configuration</a> that will override the default Popper configuration.</td>
+      </tr>
+      <tr>
+        <td><code>autoClose</code></td>
+        <td>boolean | string</td>
+        <td><code>true</code></td>
+        <td>
+          <p>Configure the auto close behavior of the dropdown:</p>
+          <ul>
+            <li><code>true</code> - (default) the dropdown will close by clicking outside or inside the dropdown menu.</li>
+            <li><code>false</code> - the dropdown will close by clicking the toggle button, but not when clicking inside or outside the menu.</li>
+            <li><code>'inside'</code> - the dropdown will close when clicking inside the dropdown menu.</li>
+            <li><code>'outside'</code> - the dropdown will close when clicking outside the dropdown menu.</li>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>

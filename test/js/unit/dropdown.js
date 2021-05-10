@@ -864,4 +864,136 @@ $(function() {
             done();
         });
     });
+
+    QUnit.test('should not close when clicking inside or outside when `data-cfw-dropdown-auto-close="false"`, will close when clicking trigger', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="false">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $element = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $target = $('#qunit-fixture').find('.dropdown-menu');
+
+        var checkOpen = function(check) {
+            setTimeout(function() {
+                if (!check) {
+                    assert.notOk($element.hasClass('open'));
+                } else {
+                    assert.ok($element.hasClass('open'));
+                }
+
+                if (check === 'inside') {
+                    $(document.body).trigger('click');
+                    checkOpen('outside');
+                } else if (check === 'outside') {
+                    $element.trigger('click');
+                    checkOpen(false);
+                } else {
+                    done();
+                }
+            }, 100);
+        };
+
+        $element.on('afterShow.cfw.dropdown', function() {
+            $target.trigger('click');
+            checkOpen('inside');
+        });
+
+        $element.CFW_Dropdown();
+        $element.trigger('click');
+    });
+
+    QUnit.test('should only close when clicking inside when `data-cfw-dropdown-auto-close="inside"`, will close when clicking trigger', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="inside">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $element = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $target = $('#qunit-fixture').find('.dropdown-menu');
+
+        var checkOpen = function(check) {
+            setTimeout(function() {
+                if (!check || check === 'inside') {
+                    assert.notOk($element.hasClass('open'));
+                } else {
+                    assert.ok($element.hasClass('open'));
+                }
+
+                if (check === 'inside') {
+                    $element.trigger('click');
+                    checkOpen('reopen');
+                } else if (check === 'reopen') {
+                    $(document.body).trigger('click');
+                    checkOpen('outside');
+                } else if (check === 'outside') {
+                    $element.trigger('click');
+                    checkOpen(false);
+                } else {
+                    done();
+                }
+            }, 100);
+        };
+
+        $element.one('afterShow.cfw.dropdown', function() {
+            $target.trigger('click');
+            checkOpen('inside');
+        });
+
+        $element.CFW_Dropdown();
+        $element.trigger('click');
+    });
+
+    QUnit.test('should only close when clicking outside when `data-cfw-dropdown-auto-close="outside"`, will close when clicking trigger', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-auto-close="outside">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $element = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $target = $('#qunit-fixture').find('.dropdown-menu');
+
+        var checkOpen = function(check) {
+            setTimeout(function() {
+                if (!check || check === 'outside') {
+                    assert.notOk($element.hasClass('open'));
+                } else {
+                    assert.ok($element.hasClass('open'));
+                }
+
+                if (check === 'outside') {
+                    $element.trigger('click');
+                    checkOpen('reopen');
+                } else if (check === 'reopen') {
+                    $target.trigger('click');
+                    checkOpen('inside');
+                } else if (check === 'inside') {
+                    $element.trigger('click');
+                    checkOpen(false);
+                } else {
+                    done();
+                }
+            }, 100);
+        };
+
+        $element.one('afterShow.cfw.dropdown', function() {
+            $(document.body).trigger('click');
+            checkOpen('outside');
+        });
+
+        $element.CFW_Dropdown();
+        $element.trigger('click');
+    });
 });
