@@ -934,9 +934,8 @@ pre[class*="language-"] {
   margin: .25rem .125rem;
 }
 
-.cf-example > .btn-group + .btn-group,
-.cf-example > .btn-group + br + .btn-group {
-  margin-top: .5rem;
+.cf-example > .btn-group {
+  margin: .25rem .125rem;
 }
 
 .cf-example > .navbar + .navbar {
@@ -991,11 +990,8 @@ pre[class*="language-"] {
   clear: right;
 }
 
-.cf-example > .dropdown + .dropdown,
-.cf-example > .btn-group + .btn-group,
-.cf-example > .dropdown + .btn-group,
-.cf-example > .btn-group + .dropdown {
-  margin-top: .5rem;
+.cf-example > .dropdown {
+  margin-top: .25rem .125rem;
 }
 
 .cf-example > .modal {
