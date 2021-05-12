@@ -82,8 +82,6 @@ var setRTL = function() {
         <li class="dropdown-divider"></li>
         <li><a href="#0-4">Separated link</a></li>
     </ul>
-
-    <input type="text" class="form-control w-auto" value="test"></input>
 </div>
 
 <div id="container">
@@ -288,6 +286,101 @@ var setRTL = function() {
             <li class="dropdown-divider"></li>
             <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Separated link</a></li>
         </ul>
+    </div>
+</div>
+
+<div class="my-1">
+<div class="row">
+    <div class="col-2">
+        <input type="text" class="form-control" value="test"></input>
+    </div>
+    <div class="col">
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+            Text inputs<span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Action</a></li>
+            <li>
+              <div class="dropdown-text">
+                <label for="input1" class="sr-only">Example input</label>
+                <input type="text" id="input1" class="form-control" placeholder="text input"/>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown-text">
+                <label for="textarea1" class="sr-only">Example textarea</label>
+                <textarea id="textarea1" class="form-control" placeholder="textarea"></textarea>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown-text">
+                <label for="select1" class="sr-only">Example select</label>
+                <select id="select1" class="form-control">
+                    <option>One</option>
+                    <option>Two</option>
+                    <option>Three</option>
+                </select>
+              </div>
+            </li>
+            <li><a href="#">Action</a></li>
+          </ul>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+            Checkbox inputs <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="checkbox" id="checkbox1" class="form-check-input">
+                <label for="checkbox1" class="form-check-label">Checkbox 1</label>
+              </div>
+            </li>
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="checkbox" id="checkbox2" class="form-check-input">
+                <label for="checkbox2" class="form-check-label">Checkbox 2</label>
+              </div>
+            </li>
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="checkbox" id="checkbox3" class="form-check-input">
+                <label for="checkbox3" class="form-check-label">Checkbox 3</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+            Radio inputs <span class="caret" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="radio" id="radio1" name="dropradio" class="form-check-input">
+                <label for="radio1" class="form-check-label">Radio 1</label>
+              </div>
+            </li>
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="radio" id="radio2" name="dropradio" class="form-check-input">
+                <label for="radio2" class="form-check-label">Radio 2</label>
+              </div>
+            </li>
+            <li class="dropdown-text">
+              <div class="form-check">
+                <input type="radio" id="radio3" name="dropradio" class="form-check-input">
+                <label for="radio3" class="form-check-label">Radio 3</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+
     </div>
 </div>
 
