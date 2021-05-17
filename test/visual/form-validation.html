@@ -395,6 +395,46 @@
         <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
 </form>
+
+<h2>Overlapping validation</h2>
+
+<p class="mb-0_5">Make sure focus shadow shows for both inputs</p>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field B">
+</div>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field B">
+</div>
+
+<p class="mt-1 mb-0_5">Give invalid increased visual over valid (middle border)</p>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field B">
+</div>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field B">
+</div>
+
+<p class="mt-1 mb-0_5">Default states</p>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control" placeholder="Field B">
+</div>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field A">
+  <input type="text" class="form-control" placeholder="Field B">
+</div>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control" placeholder="Field A">
+  <input type="text" class="form-control is-invalid has-validation-icon" placeholder="Field B">
+</div>
+<div class="input-group w-25 mb-0_5">
+  <input type="text" class="form-control" placeholder="Field A">
+  <input type="text" class="form-control is-valid has-validation-icon" placeholder="Field B">
+</div>
 </div>
 </body>
 </html>
