@@ -142,7 +142,14 @@
 
         .input-group .form-control {
             @include form-validation-state-selector($state) {
-                z-index: 3;
+                @if $state == "valid" {
+                    z-index: 1;
+                } @else if $state == "invalid" {
+                    z-index: 2;
+                }
+                &:focus {
+                    z-index: 3;
+                }
             }
         }
     }
