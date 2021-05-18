@@ -70,6 +70,20 @@
         }
     }
 
+    // Inner list marker
+    @if $enable-list-marker-inner {
+        .list-marker-inner {
+            margin-left: 0;
+
+            > .list-item {
+                &::before {
+                    position: static;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
     // Lists with borders
     %list-bordered {
         border-color: $list-border-color;

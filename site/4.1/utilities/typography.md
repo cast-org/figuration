@@ -36,7 +36,7 @@ Instead of using `left/right` designators, the text alignment utilities use `sta
 Allow text to wrap with a `.text-wrap` class.
 
 {% capture example %}
-<div class="badge badge-secondary text-wrap" style="width: 6rem;">
+<div class="badge bg-secondary text-wrap" style="width: 6rem;">
   This text should wrap.
 </div>
 {% endcapture %}

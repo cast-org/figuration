@@ -301,7 +301,8 @@ Need only horizontal padding, then use `.list-spaced-x`.
 {% renderExample example %}
 
 ### Horizontal Lists
-Place the items in the list in a horizontal layout with `.list-horizontal`.
+
+Place the items in the list in a horizontal layout with `.list-horizontal`.  Horizontal lists will also adjust the list marker to be inside the bounds of a list item.
 
 {% capture example %}
 <ul class="list list-horizontal">
@@ -335,6 +336,25 @@ Place the items in the list in a horizontal layout with `.list-horizontal`.
 </ul>
 
 <ul class="list list-horizontal list-group">
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+### Inner Markers
+
+`.list-marker-inner` is availabe to adjust the list marker to be within the visual bounds of the list item. This can be helpful when used with the bordered list variants.
+
+{% capture example %}
+<ul class="list list-ruled list-bulleted list-marker-inner">
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+</ul>
+
+<ul class="list list-divided list-ordered list-marker-inner">
   <li class="list-item">List item</li>
   <li class="list-item">List item</li>
   <li class="list-item">List item</li>
@@ -447,15 +467,15 @@ Add badges to any list item to show unread counts, activity, and more with the h
 <ul class="list list-spaced list-group" style="max-width: 25rem;">
   <li class="list-item d-flex flex-between flex-items-center">
     Cras justo odio
-    <span class="badge badge-info">7</span>
+    <span class="badge bg-info">7</span>
   </li>
   <li class="list-item d-flex flex-between flex-items-center">
     Dapibus ac facilisis in
-    <span class="badge badge-info">12</span>
+    <span class="badge bg-info">12</span>
   </li>
   <li class="list-item d-flex flex-between flex-items-center">
     Morbi leo risus
-    <span class="badge badge-info">3</span>
+    <span class="badge bg-info">3</span>
   </li>
 </ul>
 {% endcapture %}
@@ -491,6 +511,35 @@ Add nearly any HTML within, even for linked lists like the one below, using [fle
     <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+You can even bring in your ordered list numbers into your list group.  The use of `.list-marker-inner` will keep the number inside the visual borders of the list item.
+
+{% capture example %}
+<div class="list list-spaced list-group list-ordered list-marker-inner" style="max-width: 25rem;">
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -553,40 +602,7 @@ You can also use them without `<label>`s, but you should include an `aria-label`
 {% endcapture %}
 {% renderExample example %}
 
-## Color Variants
-
-Use [color utility classes]({{ site.path }}/{{ version.docs }}/utilities/color/) to style lists with color.
-
-{%- assign calloutColor = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-color-assistive-technologies.md" -%}
-{% include calloutColor %}
-
-### Rule Color
-
-Divided and Ruled list items are defined with `border-{side}-color: inherit;`, allowing for easy recoloring of the borders by setting the `border-color` on the `.list` itself.  Setting a `border-color` on a `.list-item` will only update the border color for that specific list item.
-
-{% capture example %}
-<ul class="list list-spaced list-ruled border-primary">
-  <li class="list-item">List item</li>
-  <li class="list-item">List item</li>
-  <li class="list-item">List item</li>
-</ul>
-{% endcapture %}
-{% renderExample example %}
-
-### Inverse List
-
-Set a background color on a list. In some cases you may want to use additional [color utility classes]({{ site.path }}/{{ version.docs }}/utilities/color/) to adjust text or border color.
-
-{% capture example %}
-<ul class="list list-spaced list-divided bg-dark text-light border-secondary">
-  <li class="list-item">List item</li>
-  <li class="list-item">List item</li>
-  <li class="list-item">List item</li>
-</ul>
-{% endcapture %}
-{% renderExample example %}
-
-### Contextual Classes
+## Contextual Classes
 
 Use contextual classes to style list items with a stateful background and color.
 
@@ -638,6 +654,39 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
 {% endcapture %}
 {% renderExample example %}
 
+## Color Variants
+
+Use [color utility classes]({{ site.path }}/{{ version.docs }}/utilities/color/) to style lists with color.
+
+{%- assign calloutColor = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-color-assistive-technologies.md" -%}
+{% include calloutColor %}
+
+### Inverse List
+
+Set a background color on a list. In some cases you may want to use additional [color utility classes]({{ site.path }}/{{ version.docs }}/utilities/color/) to adjust text or border color.
+
+{% capture example %}
+<ul class="list list-spaced list-divided bg-dark text-light border-secondary">
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+### Rule Color
+
+Divided and Ruled list items are defined with `border-{side}-color: inherit;`, allowing for easy recoloring of the borders by setting the `border-color` on the `.list` itself.  Setting a `border-color` on a `.list-item` will only update the border color for that specific list item.
+
+{% capture example %}
+<ul class="list list-spaced list-ruled border-primary">
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+  <li class="list-item">List item</li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
 ## SASS Reference
 
 ### Variables
@@ -678,6 +727,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>true</code></td>
         <td>
           Enable the generation of styled ordered lists.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-list-marker-inner</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of inner marker override.
         </td>
       </tr>
       <tr>
@@ -867,7 +924,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$list-bulleted-content</code></td>
         <td>string</td>
-        <td><code>"\00a0\2022"</code></td>
+        <td><code>"\2022\00a0"</code></td>
         <td>
           Visual content to use for bullets.  Default content is a space then a bullet.
         </td>
@@ -875,7 +932,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$list-ordered-delimeter</code></td>
         <td>string</td>
-        <td><code>"\00a0"</code></td>
+        <td><code>".\00a0"</code></td>
         <td>
           Visual content to use as a delimeter after the order value.  Default content is a space.
         </td>
