@@ -55,6 +55,19 @@ $(function() {
         assert.ok($('.popover').data('cfw.popover'), 'popover trigger stored in instance data');
     });
 
+    QUnit.test('should create popover with no header if title option not defined', function(assert) {
+        assert.expect(3);
+        var $popover = $('<a href="#" data-cfw-popover-content="popover content">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover();
+
+        $popover.CFW_Popover('show');
+
+        assert.notEqual($('.popover').length, 0, 'popover was inserted');
+        assert.strictEqual($('.popover-header').length, 0, 'header was removed');
+        assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
+    });
+
     QUnit.test('should get title and content from options', function(assert) {
         assert.expect(4);
         var $popover = $('<a href="#">Popover</a>')
@@ -71,8 +84,8 @@ $(function() {
         $popover.CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -92,14 +105,14 @@ $(function() {
 
         $popover.CFW_Popover('show');
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.equal($('.popover .popover-body').html(), $div, 'content correctly inserted');
+        assert.equal($('.popover-body').html(), $div, 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
 
         $popover.CFW_Popover('show');
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.equal($('.popover .popover-body').html(), $div, 'content correctly inserted');
+        assert.equal($('.popover-body').html(), $div, 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -113,8 +126,8 @@ $(function() {
             .CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -131,8 +144,8 @@ $(function() {
             .CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -343,7 +356,7 @@ $(function() {
 
         var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
             .appendTo('#qunit-fixture')
-            .on('afterHide.cfw.popover afterShow.cfw.popover', function() {
+            .on('afterHide.cfwafterShow.cfw.popover', function() {
                 assert.ok(false, 'should not fire any popover events');
             })
             .CFW_Popover('hide');
@@ -423,8 +436,8 @@ $(function() {
         $('<a href="#"></a>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.popover', function() {
-                assert.strictEqual($('.popover .popover-header').text(), '4', 'title number has been converted to string');
-                assert.strictEqual($('.popover .popover-body').text(), '6', 'content number has been converted to string');
+                assert.strictEqual($('.popover-header').text(), '4', 'title number has been converted to string');
+                assert.strictEqual($('.popover-body').text(), '6', 'content number has been converted to string');
                 done();
             })
             .CFW_Popover({
