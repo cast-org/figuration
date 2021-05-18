@@ -76,6 +76,15 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
   });
 </script>
 
+### Dismissable Example
+
+Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
+
+{% capture example %}
+<button type="button" class="btn btn-info" data-cfw="popover" title="Dismissable Popover example" data-cfw-popover-content="Click on an element other than the trigger or popover to close." data-cfw-popover-trigger="focus">Dismissable popover</button>
+{% endcapture %}
+{% renderExample example %}
+
 ### Draggable Example
 
 Allow users to move popovers around the screen by enabling the `drag` option.  Drag support mouse, keyboard (with arrow keys), and touch movement.
