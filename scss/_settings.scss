@@ -684,8 +684,8 @@ $list-border-width:             $border-width !default;
 $list-border-color:             $component-border-color !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-bulleted-content:         "\00a0\2022" !default; // Space, General Punctuation - bullet
-$list-ordered-delimeter:        "\00a0" !default; // Space
+$list-bulleted-content:         "\2022\00a0" !default; // Space, General Punctuation - bullet
+$list-ordered-delimeter:        ".\00a0" !default; // Period, Space
 $list-horizontal-padding:       .5em !default;
 $list-spaced-item-padding-y:    .75rem !default;
 $list-spaced-item-padding-x:    1rem !default;

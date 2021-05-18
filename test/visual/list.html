@@ -212,6 +212,40 @@
     <div class="list-item">Ordered item</div>
 </div>
 
+<h2>Ordered - inner</h2>
+<ol class="list list-ordered-inner">
+    <li class="list-item">Ordered item</li>
+    <li class="list-item">Ordered item
+        <ol>
+            <li>Standard ol item</li>
+            <li>Standard ol item</li>
+        </ol>
+    </li>
+    <li class="list-item">Ordered item</li>
+</ol>
+
+<ol class="list list-ordered-inner">
+    <li class="list-item">Ordered item</li>
+    <li class="list-item">Ordered item
+        <ol class="list list-ordered-inner">
+            <li class="list-item">Ordered item</li>
+            <li class="list-item">Ordered item</li>
+        </ol>
+    </li>
+    <li class="list-item">Ordered item</li>
+</ol>
+
+<div class="list list-ordered-inner">
+    <div class="list-item">Ordered item</div>
+    <div class="list-item">Ordered item
+        <div class="list list-ordered-inner">
+            <div class="list-item">Ordered item</div>
+            <div class="list-item">Ordered item</div>
+        </div>
+    </div>
+    <div class="list-item">Ordered item</div>
+</div>
+
 <h2>Nested</h2>
 
 <ul class="list list-bulleted">
@@ -279,7 +313,6 @@
     </li>
     <li class="list-item">List item</li>
 </ul>
-
 
 <h2>Divided</h2>
 <ul class="list list-divided">
@@ -465,6 +498,30 @@
     <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
+</div>
+
+<div class="list list-spaced list-group list-ordered list-marker-inner" style="max-width: 25rem;">
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
+  <div class="list-item d-flex flex-items-start flex-between">
+    <div class="ms-0_25 me-auto">
+      <div class="font-weight-bold">List item heading</div>
+      Donec id elit non mi porta.
+    </div>
+    <span class="badge bg-info radius-pill">12</span>
+  </div>
 </div>
 
 <h2>Color Variants</h2>
