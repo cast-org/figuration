@@ -3210,6 +3210,10 @@ if (typeof jQuery === 'undefined') {
                 $title.text(title);
                 $content.text(content);
             }
+
+            if (!title && $title) {
+                $title.remove();
+            }
         }
 
         // Use '.popover-header' for labelledby
@@ -3236,8 +3240,6 @@ if (typeof jQuery === 'undefined') {
             // Enable drag handlers
             this.enableDrag();
         }
-
-        if (!$title.html()) { $title.hide(); }
     };
 
     CFW_Widget_Popover.prototype.getContent = function() {

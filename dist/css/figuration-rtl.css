@@ -1582,6 +1582,10 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .was-validated .input-group .form-control:valid, .input-group .form-control.is-valid {
+  z-index: 1;
+}
+
+.was-validated .input-group .form-control:valid:focus, .input-group .form-control.is-valid:focus {
   z-index: 3;
 }
 
@@ -1707,6 +1711,10 @@ textarea.form-control.has-validation-icon.is-valid {
 }
 
 .was-validated .input-group .form-control:invalid, .input-group .form-control.is-invalid {
+  z-index: 2;
+}
+
+.was-validated .input-group .form-control:invalid:focus, .input-group .form-control.is-invalid:focus {
   z-index: 3;
 }
 
@@ -3978,7 +3986,7 @@ a.drag.disabled {
 .list-bulleted > .list-item::before {
   position: absolute;
   margin-right: -1.25rem;
-  content: " •";
+  content: "• ";
 }
 
 .list-ordered {
@@ -3989,8 +3997,17 @@ a.drag.disabled {
 .list-ordered > .list-item::before {
   position: absolute;
   margin-right: -1.25rem;
-  content: counter(ordered) " ";
+  content: counter(ordered) ". ";
   counter-increment: ordered;
+}
+
+.list-marker-inner {
+  margin-right: 0;
+}
+
+.list-marker-inner > .list-item::before {
+  position: static;
+  margin-right: 0;
 }
 
 .list-divided, .list-ruled, .list-group {
