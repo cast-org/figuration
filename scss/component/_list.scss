@@ -71,13 +71,15 @@
     }
 
     // Inner list marker
-    .list-marker-inner {
-        margin-left: 0;
+    @if $enable-list-marker-inner {
+        .list-marker-inner {
+            margin-left: 0;
 
-        > .list-item {
-            &::before {
-                position: static;
-                margin-left: 0;
+            > .list-item {
+                &::before {
+                    position: static;
+                    margin-left: 0;
+                }
             }
         }
     }
