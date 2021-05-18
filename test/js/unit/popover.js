@@ -59,7 +59,9 @@ $(function() {
         assert.expect(3);
         var $popover = $('<a href="#" data-cfw-popover-content="popover content">Popover</a>')
             .appendTo('#qunit-fixture')
-            .CFW_Popover('show');
+            .CFW_Popover();
+
+        $popover.CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
         assert.strictEqual($('.popover-header').length, 0, 'header was removed');
