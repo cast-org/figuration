@@ -799,6 +799,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$popover-header-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for popover header.
+        </td>
+      </tr>
+      <tr>
         <td><code>$popover-header-color</code></td>
         <td>string</td>
         <td><code>$headings-color</code></td>
