@@ -632,7 +632,7 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
   <a href="#" class="list-item list-item-action list-item-info">Info list item</a>
   <a href="#" class="list-item list-item-action list-item-warning">Warning list item</a>
   <a href="#" class="list-item list-item-action list-item-danger">Danger list item</a>
-  <a href="#" class="list-item list-item-action list-item-list">Light list item</a>
+  <a href="#" class="list-item list-item-action list-item-light">Light list item</a>
   <a href="#" class="list-item list-item-action list-item-dark">Dark list item</a>
 </div>
 {% endcapture %}
@@ -1007,7 +1007,7 @@ List with no left padding or list item markers.
 Create a contextual color variant for a list item.
 
 {% capture highlight %}
-@include list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+@include list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border, $active-bg, $active-color, $active-border);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
@@ -1067,7 +1067,7 @@ Create a contextual color variant for a list item.
         <td>string</td>
         <td>none</td>
         <td>
-          Text color for a list item in active, hover, and focus states..
+          Text color for a list item in active, hover, and focus states.
         </td>
       </tr>
       <tr>
@@ -1075,7 +1075,31 @@ Create a contextual color variant for a list item.
         <td>string</td>
         <td>none</td>
         <td>
-          Border color for a list item in active, hover, and focus states..
+          Border color for a list item in active, hover, and focus states.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$active-bg</code></td>
+        <td>string</td>
+        <td><code>$hover-bg</code></td>
+        <td>
+          Background color for a list item in active state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$active-color</code></td>
+        <td>string</td>
+        <td><code>$hover-color</code></td>
+        <td>
+          Text color for a list item in active states.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$active-border</code></td>
+        <td>string</td>
+        <td><code>$hover-border</code></td>
+        <td>
+          Border color for a list item in active state.
         </td>
       </tr>
     </tbody>
