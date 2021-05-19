@@ -7,6 +7,7 @@
         flex-direction: column;
         min-width: 0;
         margin-bottom: $list-margin-bottom;
+        border-color: $list-border-color;
         @include list-unstyled();
 
         .list {
@@ -86,12 +87,8 @@
 
     // Lists with borders
     %list-bordered {
-        border-color: $list-border-color;
-
         > .list-item {
-            border-top-color: inherit;
             border-top-width: $list-border-width;
-            border-bottom-color: inherit;
             border-bottom-width: $list-border-width;
         }
 
@@ -141,17 +138,17 @@
     // first and last children.
     @if $enable-list-group {
         .list-group {
+            @include border-radius($list-group-border-radius);
+
             > .list-item {
-                border-right-color: inherit;
                 border-right-width: $list-border-width;
-                border-left-color: inherit;
                 border-left-width: $list-border-width;
 
                 &:first-child {
-                    @include border-top-radius($list-group-border-radius);
+                    @include border-top-radius(inherit);
                 }
                 &:last-child {
-                    @include border-bottom-radius($list-group-border-radius);
+                    @include border-bottom-radius(inherit);
                 }
             }
         }
@@ -192,7 +189,7 @@
 
             > .list-item {
                 &:not(:last-child) {
-                    margin-right: $list-horizontal-padding;
+                    padding-right: $list-horizontal-padding;
                 }
             }
 
@@ -232,21 +229,20 @@
                 > .list-item {
                     padding-right: $list-horizontal-padding;
                     padding-left: $list-horizontal-padding;
-                    margin: 0 0 0 -#{$list-border-width};
+                    margin-top: 0;
+                    margin-left: -$list-border-width;
                     border-top-width: 0;
-                    border-right-color: inherit;
                     border-right-width: $list-border-width;
                     border-bottom-width: 0;
-                    border-left-color: inherit;
                     border-left-width: $list-border-width;
                 }
 
                 > .list-item + .list-item {
                     margin-top: 0;
-                    border-left-width: 0;
 
                     &.active {
                         margin-left: -$list-border-width;
+                        border-top-width: 0;
                         border-left-width: $list-border-width;
                     }
                 }
@@ -283,18 +279,19 @@
                     > .list-item {
                         padding-right: $list-horizontal-padding;
                         padding-left: $list-horizontal-padding;
-                        margin: 0 0 0 -#{$list-border-width};
+                        margin-top: 0;
+                        margin-left: -$list-border-width;
                         border-top-width: $list-border-width;
 
                         &:first-child {
                             margin-left: 0;
                             @include border-top-end-radius(0);
-                            @include border-start-radius($list-group-border-radius);
+                            @include border-start-radius(inherit);
                         }
 
                         &:last-child {
                             @include border-bottom-start-radius(0);
-                            @include border-end-radius($list-group-border-radius);
+                            @include border-end-radius(inherit);
                         }
                     }
 
@@ -366,7 +363,7 @@
         // Override `<button>` background and border.
         background-color: $list-item-bg;
         border: 0 solid;
-        //border-color: inherit;
+        border-color: inherit;
 
         //&::before {
         //    content: none;
@@ -401,17 +398,21 @@
         // Organizationally, this must come after the `:hover` states.
         @if (type-of($list-themes) == "map" and length($list-themes) != 0) {
             @each $theme, $colors in $list-themes {
-                $list-bg:           map-get($colors, "bg");
-                $list-color:        map-get($colors, "color");
-                $list-border:       map-get($colors, "border-color");
-                $list-hover-bg:     map-get($colors, "hover-bg");
-                $list-hover-color:  map-get($colors, "hover-color");
-                $list-hover-border: map-get($colors, "hover-border-color");
+                $list-bg:            map-get($colors, "bg");
+                $list-color:         map-get($colors, "color");
+                $list-border:        null;
+                $list-hover-bg:      map-get($colors, "hover-bg");
+                $list-hover-color:   map-get($colors, "hover-color");
+                $list-hover-border:  null;
+                $list-active-bg:     map-get($colors, "hover-bg");
+                $list-active-color:  map-get($colors, "hover-color");
+                $list-active-border: map-get($colors, "hover-border-color");
 
-                $list-color:       color-if-contrast($list-color, $list-bg);
-                $list-hover-color: color-if-contrast($list-hover-color, $list-hover-bg);
+                $list-color:        color-if-contrast($list-color, $list-bg);
+                $list-hover-color:  color-if-contrast($list-hover-color, $list-hover-bg);
+                $list-active-color: color-if-contrast($list-active-color, $list-active-bg);
 
-                @include list-item-variant(#{$theme}, $list-bg, $list-color, $list-border, $list-hover-bg, $list-hover-color, $list-hover-border);
+                @include list-item-variant(#{$theme}, $list-bg, $list-color, $list-border, $list-hover-bg, $list-hover-color, $list-hover-border, $list-active-bg, $list-active-color, $list-active-border);
             }
         }
     }
