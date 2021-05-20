@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * Figuration (v4.1.1)
+ * Figuration (v4.2.0)
  * http://figuration.org
  * Copyright 2013-2021 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -3961,6 +3961,7 @@ a.drag.disabled {
   flex-direction: column;
   min-width: 0;
   margin-bottom: 1rem;
+  border-color: #bfc6cd;
   padding-right: 0;
   list-style: none;
 }
@@ -4010,14 +4011,8 @@ a.drag.disabled {
   margin-right: 0;
 }
 
-.list-divided, .list-ruled, .list-group {
-  border-color: #bfc6cd;
-}
-
 .list-divided > .list-item, .list-ruled > .list-item, .list-group > .list-item {
-  border-top-color: inherit;
   border-top-width: 1px;
-  border-bottom-color: inherit;
   border-bottom-width: 1px;
 }
 
@@ -4038,21 +4033,23 @@ a.drag.disabled {
   border-bottom: 0;
 }
 
+.list-group {
+  border-radius: 0.25rem;
+}
+
 .list-group > .list-item {
-  border-left-color: inherit;
   border-left-width: 1px;
-  border-right-color: inherit;
   border-right-width: 1px;
 }
 
 .list-group > .list-item:first-child {
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
 }
 
 .list-group > .list-item:last-child {
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
 }
 
 .list-spaced > .list-item {
@@ -4075,7 +4072,7 @@ a.drag.disabled {
 }
 
 .list-horizontal > .list-item:not(:last-child) {
-  margin-left: 0.5em;
+  padding-left: 0.5em;
 }
 
 .list-horizontal.list-bulleted, .list-horizontal.list-ordered {
@@ -4094,22 +4091,21 @@ a.drag.disabled {
 .list-horizontal.list-divided > .list-item, .list-horizontal.list-ruled > .list-item {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin: 0 -1px 0 0;
+  margin-top: 0;
+  margin-right: -1px;
   border-top-width: 0;
-  border-left-color: inherit;
   border-left-width: 1px;
   border-bottom-width: 0;
-  border-right-color: inherit;
   border-right-width: 1px;
 }
 
 .list-horizontal.list-divided > .list-item + .list-item, .list-horizontal.list-ruled > .list-item + .list-item {
   margin-top: 0;
-  border-right-width: 0;
 }
 
 .list-horizontal.list-divided > .list-item + .list-item.active, .list-horizontal.list-ruled > .list-item + .list-item.active {
   margin-right: -1px;
+  border-top-width: 0;
   border-right-width: 1px;
 }
 
@@ -4126,21 +4122,22 @@ a.drag.disabled {
 .list-horizontal.list-group > .list-item {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  margin: 0 -1px 0 0;
+  margin-top: 0;
+  margin-right: -1px;
   border-top-width: 1px;
 }
 
 .list-horizontal.list-group > .list-item:first-child {
   margin-right: 0;
   border-top-left-radius: 0;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
 }
 
 .list-horizontal.list-group > .list-item:last-child {
   border-bottom-right-radius: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
 }
 
 .list-horizontal.list-group > .list-item + .list-item.active {
@@ -4181,6 +4178,7 @@ a.drag.disabled {
   margin-bottom: 0;
   background-color: transparent;
   border: 0 solid;
+  border-color: inherit;
 }
 
 .list-item.disabled, .list-item:disabled {
@@ -4201,13 +4199,11 @@ a.drag.disabled {
 .list-item-action.list-item-primary:hover, .list-item-action.list-item-primary:focus {
   color: #00225d;
   background-color: #99bbf6;
-  border-color: #6699f2;
 }
 
 .list-item-primary {
   color: #002f80;
   background-color: #ccddfb;
-  border-color: #99bbf6;
 }
 
 .list-item-primary.active {
@@ -4219,13 +4215,11 @@ a.drag.disabled {
 .list-item-action.list-item-secondary:hover, .list-item-action.list-item-secondary:focus {
   color: #262d34;
   background-color: #bfc6cd;
-  border-color: #9eaab4;
 }
 
 .list-item-secondary {
   color: #343e48;
   background-color: #dfe3e6;
-  border-color: #bfc6cd;
 }
 
 .list-item-secondary.active {
@@ -4237,13 +4231,11 @@ a.drag.disabled {
 .list-item-action.list-item-info:hover, .list-item-action.list-item-info:focus {
   color: #093342;
   background-color: #a2ccdb;
-  border-color: #73b3c8;
 }
 
 .list-item-info {
   color: #0c465a;
   background-color: #d0e6ed;
-  border-color: #a2ccdb;
 }
 
 .list-item-info.active {
@@ -4255,13 +4247,11 @@ a.drag.disabled {
 .list-item-action.list-item-success:hover, .list-item-action.list-item-success:focus {
   color: #063709;
   background-color: #9fd0a2;
-  border-color: #6eb973;
 }
 
 .list-item-success {
   color: #084c0c;
   background-color: #cfe8d0;
-  border-color: #9fd0a2;
 }
 
 .list-item-success.active {
@@ -4273,13 +4263,11 @@ a.drag.disabled {
 .list-item-action.list-item-warning:hover, .list-item-action.list-item-warning:focus {
   color: #634e0e;
   background-color: #fce7a7;
-  border-color: #fbda7b;
 }
 
 .list-item-warning {
   color: #886b13;
   background-color: #fef3d3;
-  border-color: #fce7a7;
 }
 
 .list-item-warning.active {
@@ -4291,13 +4279,11 @@ a.drag.disabled {
 .list-item-action.list-item-danger:hover, .list-item-action.list-item-danger:focus {
   color: #550e08;
   background-color: #eea7a1;
-  border-color: #e57b72;
 }
 
 .list-item-danger {
   color: #75130b;
   background-color: #f6d3d0;
-  border-color: #eea7a1;
 }
 
 .list-item-danger.active {
@@ -4309,13 +4295,11 @@ a.drag.disabled {
 .list-item-action.list-item-light:hover, .list-item-action.list-item-light:focus {
   color: #606061;
   background-color: #f9f9fa;
-  border-color: #f5f7f8;
 }
 
 .list-item-light {
   color: #262d34;
   background-color: #fcfcfd;
-  border-color: #f9f9fa;
 }
 
 .list-item-light.active {
@@ -4327,13 +4311,11 @@ a.drag.disabled {
 .list-item-action.list-item-dark:hover, .list-item-action.list-item-dark:focus {
   color: #15191d;
   background-color: #aeb2b6;
-  border-color: #858b91;
 }
 
 .list-item-dark {
   color: #1d2228;
   background-color: #d6d8da;
-  border-color: #aeb2b6;
 }
 
 .list-item-dark.active {
