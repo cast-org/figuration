@@ -1,0 +1,447 @@
+.cf-example {
+    padding: 1rem;
+    background-color: $body-bg;
+    border: 1px solid palette($uibase, 100);
+    @include border-radius($border-radius $border-radius 0 0);
+
+    // stylelint-disable-next-line selector-no-qualifying-type
+    + .cf-clipboard + pre[class*="language-"] {
+        border-top: 0;
+        @include border-top-radius(0);
+    }
+
+    @include media-breakpoint-up(sm) {
+        padding: 1.5rem;
+    }
+
+    // Form
+    > .form-control + .form-control {
+        margin-top: .5rem;
+    }
+
+    // Buttons
+    > .btn {
+        margin: .25rem .125rem;
+    }
+
+    // Button groups
+    > .btn-group {
+        margin: .25rem .125rem;
+    }
+
+    // Navbar
+    > .navbar + .navbar {
+        margin-top: 1rem;
+    }
+
+    .fixed-top,
+    .sticky-top {
+        position: static;
+        margin: -1rem -1rem 1rem;
+
+        @include media-breakpoint-up(sm) {
+            margin: -1.5rem -1.5rem 1rem;
+        }
+    }
+    .fixed-bottom {
+        position: static;
+        margin: 1rem -1rem -1rem;
+
+        @include media-breakpoint-up(sm) {
+            margin: 1rem -1.5rem -1.5rem;
+        }
+    }
+
+    // Progress
+    > .progress {
+        + .progress,
+        + .btn {
+            margin-top: 1rem;
+        }
+    }
+
+    // Utilities
+    > .close {
+        float: none;
+    }
+    > .valign-top,
+    > .valign-middle,
+    > .valign-bottom {
+        padding: .25em;
+        margin-bottom: .5em;
+        background-color: #f0f0f0;
+    }
+
+    // Dropdown
+    > .dropdown-menu {
+        position: static;
+        display: block;
+        margin-bottom: .25rem;
+        clear: left;
+    }
+
+    > .dropdown {
+        margin-top: .25rem .125rem;
+    }
+
+    // Modal
+    > .modal {
+        position: static;
+        display: block;
+    }
+}
+
+.cf-example-bottom {
+    margin-bottom: 1rem;
+    @include border-bottom-radius(.25rem);
+}
+
+.cf-example-row {
+    .row + .row {
+        margin-top: 1rem;
+    }
+
+    .row {
+        > [class^="col-"],
+        .col {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: rgba(34, 68, 102, .15);
+            border: $border-width solid rgba(34, 68, 102, .2);
+        }
+    }
+}
+.cf-example-row-grid {
+    .row {
+        background-color: rgba(34, 68, 102, .05);
+    }
+}
+.cf-example-row-flex {
+    .row {
+        border: $border-width solid rgba(34, 68, 102, .5);
+    }
+}
+.cf-example-row-flex-v {
+    .row {
+        height: 7rem;
+        border: $border-width solid rgba(34, 68, 102, .5);
+    }
+}
+
+// Grid mixins
+.example-container {
+    width: 800px;
+    @include make-container();
+}
+.example-row {
+    @include make-row();
+}
+.example-content-main {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(8);
+    }
+}
+.example-content-secondary {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(4);
+    }
+}
+
+.example-content-alpha,
+.example-content-beta {
+    @include make-col-ready();
+    @include make-col(3);
+    @include media-breakpoint-up(lg) {
+        @include make-col();
+    }
+}
+.example-content-gamma {
+    @include make-col-ready();
+    @include make-col(6);
+    @include media-breakpoint-up(lg) {
+        @include make-col();
+    }
+}
+
+// Caret mixins
+.btn {
+    .example-caret {
+        @include caret(start, .5rem, #000);
+    }
+
+    @include hover-focus() {
+        .example-caret {
+            @include caret-end(.5rem, #000);
+        }
+    }
+}
+
+// Card deck
+.card-deck-col {
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-right: -1rem;
+    margin-bottom: 0;
+    margin-left: -1rem;
+}
+.card-deck-col > .card {
+    flex-basis: auto;
+    width: calc(100% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+@media (min-width: 35em) {
+    .card-deck-col > .card {
+        width: calc(50% - 2rem);
+    }
+}
+@media (min-width: 62em) {
+    .card-deck-col > .card {
+        width: calc(25% - 2rem);
+    }
+}
+
+// Accordion Cards
+.accordion {
+    > .card {
+        overflow: hidden;
+
+        &:not(:first-of-type) {
+            .card-header:first-child {
+                @include border-radius(0);
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: 0;
+                @include border-radius(0);
+            }
+        }
+
+        &:first-of-type:not(:last-of-type) {
+            border-bottom: 0;
+            @include border-bottom-radius(0);
+        }
+
+        &:last-of-type:not(:first-of-type) {
+            @include border-top-radius(0);
+        }
+
+        .card-header {
+            margin-bottom: -$card-border-width;
+        }
+    }
+}
+
+// Dropdown
+.cf-example-dropdown {
+    height: 19em;
+
+    > .dropdown {
+        > .dropdown-menu {
+            display: block;
+            margin-bottom: .25rem;
+            clear: left;
+        }
+    }
+}
+
+// Viewport Examples
+.container-viewport {
+    position: relative;
+    height: 150px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+.container-viewport .viewport-text {
+    position: absolute;
+    top: 65px;
+    left: 50px;
+    font-weight: $font-weight-bold;
+}
+.container-viewport .tooltip,
+.container-viewport .popover {
+    min-width: 250px;
+    max-width: 500px;
+}
+.container-viewport .tooltip .tooltip-body {
+    min-width: 250px;
+    max-width: 500px;
+    min-height: 100px;
+    text-align: left;
+}
+.container-viewport .btn-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.container-viewport .btn-drag {
+    position: absolute;
+    bottom: 0;
+    left: 120px;
+}
+.container-viewport-scroll {
+    overflow: auto;
+}
+.container-viewport-scroll .viewport-text {
+    height: 300px;
+}
+
+// Scrollspy
+.cf-example-scrollspy {
+    position: relative;
+    height: 12rem;
+    margin-top: .5rem;
+    overflow: auto;
+}
+.cf-example-scrollspy2 {
+    position: relative;
+    height: 20rem;
+    margin-top: .5rem;
+    overflow: auto;
+}
+
+// Border utilities
+.cf-example-border {
+    [class^="border"] {
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        margin: .25rem;
+        background-color: $uibase-50;
+    }
+}
+
+// Flex utilities
+.cf-example-flex {
+    overflow: auto;
+
+    div {
+        background-color: rgba(34, 68, 102, .05);
+        border: $border-width solid rgba(34, 68, 102, .2);
+    }
+}
+
+// Breadcrumb
+.breadcrumb-chevron .breadcrumb-item + .breadcrumb-item::before {
+    content: quote(">");
+}
+.breadcrumb-icon .breadcrumb-item + .breadcrumb-item::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSAyLjUgMi41LTIuNSAyLjUgMS41IDEuNSA0LTQtNC00eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiIC8+Cjwvc3ZnPg==");
+}
+.breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
+    content: none;
+}
+
+// Stretched links
+.has-link-stretch {
+    a:not(.link-stretch) {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+
+// Utility classes table
+.cfw-table th small,
+.responsive-utilities th small {
+    display: block;
+    font-weight: $font-weight-normal;
+    color: #999;
+}
+.responsive-utilities tbody th {
+    font-weight: $font-weight-normal;
+}
+.responsive-utilities td {
+    text-align: center;
+}
+.responsive-utilities .is-visible {
+    color: palette($success, 800);
+    background-color: palette($success, 100);
+}
+.responsive-utilities .is-hidden {
+    color: $uibase-500;
+    background-color: #f8f8f8;
+}
+
+// Responsive tests
+.responsive-utilities-test {
+    margin-top: .25rem;
+}
+.responsive-utilities-test .col-6 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.responsive-utilities-test span {
+    display: block;
+    padding: 1rem .5rem;
+    @include font-size(1rem);
+    font-weight: $font-weight-bold;
+    line-height: 1.1;
+    text-align: center;
+    @include border-radius(.25rem);
+}
+.visible-on,
+.hidden-on {
+    .col-6 {
+        > .not-visible {
+            color: $uibase-500;
+            border: 1px solid $uibase-300;
+        }
+
+        .visible {
+            color: palette($success, 800);
+            background-color: palette($success, 100);
+            border: 1px solid palette($success, 200);
+        }
+    }
+}
+
+@include media-breakpoint-only(xs) {
+    .d-xs-only {
+        display: none !important; // stylelint-disable-line declaration-no-important
+    }
+}
+@include media-breakpoint-only(sm) {
+    .d-sm-only {
+        display: none !important; // stylelint-disable-line declaration-no-important
+    }
+}
+@include media-breakpoint-only(md) {
+    .d-md-only {
+        display: none !important; // stylelint-disable-line declaration-no-important
+    }
+}
+@include media-breakpoint-only(lg) {
+    .d-lg-only {
+        display: none !important; // stylelint-disable-line declaration-no-important
+    }
+}
+@include media-breakpoint-only(xl) {
+    .d-xl-only {
+        display: none !important; // stylelint-disable-line declaration-no-important
+    }
+}
+
+// Placement utilities
+.cf-example-placement {
+    .position-relative {
+        height: 200px;
+        background-color: $light;
+    }
+    .position-absolute {
+        width: 2em;
+        height: 2em;
+        background-color: $dark;
+        @include border-radius($border-radius);
+    }
+}

@@ -1,0 +1,20 @@
+//stylelint-disable declaration-no-important
+
+.skiplink {
+    position: absolute !important;
+    top: .25rem;
+    left: 50%;
+    z-index: 1200;
+    padding: .25rem .5rem;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    background-color: #116fa9;
+    border: 2px solid $white;
+    outline: 0;
+    transform: translateX(-50%);
+
+    &:hover {
+        color: $white;
+    }
+}

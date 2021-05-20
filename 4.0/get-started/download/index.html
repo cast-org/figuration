@@ -40,7 +40,7 @@
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
-<link href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
@@ -48,7 +48,7 @@
 <!-- Figuration CSS -->
 <link href="/assets/4.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
 <link href="/assets/4.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha384-Qg00WFl9r0Xr6rUqNLv1ffTSSKEFFCDCKVyHZ+sVt8KuvG99nWw5RNvbhuKgif9z" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/4.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
 <!-- Popper.js -->
@@ -106,11 +106,12 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.1/">v4.1.1</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
     
     <li class="dropdown-divider"></li>
     
-    <li class="dropdown-header">Older</li>
+    <li class="dropdown-header">Older</li><li><a href="/4.1/">v4.1.1</a></li>
+    
     
     <li><a href="/4.0/" class="active" aria-current="true">v4.0.3</a></li>
     <li><a href="/3.0/">v3.0.5</a></li>
@@ -279,29 +280,29 @@
           <nav class="cf-toc">
                 <ol>
                     
-                    <li><a href="#quick-download">Quick Download </a>
+                    <li><a href="#quick-download">Quick Download</a>
             		</li>
 
-                    <li><a href="#package-managers">Package Managers </a>
+                    <li><a href="#package-managers">Package Managers</a>
             
                 <ol>
                     
-                    <li><a href="#npm">npm </a>
+                    <li><a href="#npm">npm</a>
             		</li>
 
-                    <li><a href="#yarn">Yarn </a>
+                    <li><a href="#yarn">Yarn</a>
             		</li>
                 </ol>
             		</li>
 
-                    <li><a href="#whats-included">What's Included </a>
+                    <li><a href="#whats-included">What's Included</a>
             
                 <ol>
                     
-                    <li><a href="#compiled-version">Compiled Version </a>
+                    <li><a href="#compiled-version">Compiled Version</a>
             		</li>
 
-                    <li><a href="#source-version">Source Version </a>
+                    <li><a href="#source-version">Source Version</a>
             		</li>
                 </ol>
             		</li>
@@ -320,7 +321,7 @@
             Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
         </div>
         <div class="card-footer text-sm-center">
-            <a href="https://github.com/cast-org/figuration/releases/download/v4.1.1/figuration-4.1.1-dist.zip" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled 4.0.3');">Download Figuration</a>
+            <a href="https://github.com/cast-org/figuration/releases/download/v4.2.0/figuration-4.2.0-dist.zip" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled 4.0.3');">Download Figuration</a>
         </div>
       </div>
     </div>
@@ -331,7 +332,7 @@
             Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc">postcss-calc</a>, and <a href="/4.0/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
         </div>
         <div class="card-footer text-sm-center">
-            <a href="https://github.com/cast-org/figuration/archive/v4.1.1.zip" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source 4.0.3');">Download source</a>
+            <a href="https://github.com/cast-org/figuration/archive/v4.2.0.zip" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source 4.0.3');">Download source</a>
         </div>
       </div>
     </div>
@@ -341,9 +342,9 @@
 <p>Pull in Figuration's <strong>source files</strong> into nearly any project with some of the most popular package managers. No matter the package manager, Figuration will <strong>require a Sass compiler along with <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, and <a href="https://github.com/postcss/postcss-calc">postcss-calc</a></strong> for a setup that matches our official compiled versions.</p>
 <h3 id="npm">npm <a class="direct-link" href="#npm"></a></h3>
 <p>Install Figuration in your Node.js powered apps with <a href="https://www.npmjs.com/package/figuration">the npm package</a>:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> figuration@4.1</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> figuration@4.2</code></pre>
 <h3 id="yarn">Yarn <a class="direct-link" href="#yarn"></a></h3>
-<pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> figuration@4.1</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> figuration@4.2</code></pre>
 <p>Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:</p>
 <pre class="language-text"><code class="language-text">figuration/<br>+-- dist/<br>|   +-- css/<br>|   +-- js/<br>+-- grunt/<br>+-- js/<br>+-- scss/</code></pre>
 <p>Basically just the dist, along with the source <code>js</code> and <code>scss</code> files, and just enough to build the dist. If you need the docs and all the tests for local dev, then download the source version, or clone the <a href="https://github.com/cast-org/figuration">Figuration repository from GitHub</a>.</p>
@@ -375,7 +376,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.1.1
+      <strong>Latest version:</strong> 4.2.0
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

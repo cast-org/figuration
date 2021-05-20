@@ -1,0 +1,40 @@
+// stylelint-disable selector-no-qualifying-type
+
+.cf-header {
+    background-color: #246;
+}
+
+@include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+        .cf-header {
+            position: sticky;
+            top: 0;
+            //z-index: $zindex-sticky;
+            z-index: 1045;
+        }
+
+        .cf-content {
+            > [id] {
+                scroll-margin-top: 4.5rem;
+            }
+        }
+    }
+}
+
+.cf-header-logo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.cf-header-menu {
+    display: inline-block;
+    margin-top: -.25rem;
+    @include font-size(1.5rem);
+    font-weight: $font-weight-bold;
+    line-height: .75;
+}
+
+.cf-nav-img {
+    width: 1.125rem;
+    height: 1.125rem;
+}
