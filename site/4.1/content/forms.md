@@ -105,7 +105,7 @@ The sizing classes also work on other inputs such as `<select>`s and `<textarea>
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {% capture example %}
-<input class="form-control" type="text" placeholder="Readonly input" aria-label="Readonly input example" readonly>
+<input class="form-control" type="text" value="Readonly input" aria-label="Readonly input example" readonly>
 {% endcapture %}
 {% renderExample example %}
 
