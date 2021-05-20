@@ -1,6 +1,6 @@
 {% if site.environment == "production" -%}
 <form class="cf-search" role="search">
-  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ site.version.docs }}"/>
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ version.docs | valueIfEmpty: site.version.docs }}"/>
 </form>
 {%- endif %}
 
