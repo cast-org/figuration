@@ -50,9 +50,12 @@ module.exports = function(eleventyConfig) {
     };
     const markdownItAnchorOptions = {
         slugify: slugifyHeading,
-        permalink: true,
-        permalinkClass: 'direct-link',
-        permalinkSymbol: ''
+        permalink: markdownItAnchor.permalink.ariaHidden({
+            class: 'direct-link',
+            symbol: '',
+            style: 'aria-describedby',
+             placement: 'after'
+        })
     };
     const md = new markdownIt();
     eleventyConfig.setLibrary('md', markdownIt(markdownItOptions)
