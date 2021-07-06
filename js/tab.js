@@ -182,13 +182,9 @@
             var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
-            if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left
-            if ((e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN) && index < $items.length - 1) { index++; } // down & right
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; }   // force first item
-
-            var nextTab = $items.eq(index);
-            nextTab.CFW_Tab('show').trigger('focus');
+            var doIncrement = e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN;
+            var $nextTab = $($.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, false));
+            $nextTab.CFW_Tab('show').trigger('focus');
         },
 
         _activateTab : function() {

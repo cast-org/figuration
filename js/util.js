@@ -451,4 +451,32 @@
     $.CFW_isDisabled = function(element) {
         return $(element).is('.disabled, :disabled');
     };
+
+    $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {
+        var index = list.indexOf(activeElement);
+        var listLength = list.length;
+
+        if (typeof allowStartEnd === 'undefined') {
+            allowStartEnd = false;
+        }
+
+        // If currently actve element does not exist in the list
+        if (index === -1) {
+            if (allowStartEnd) {
+                // Return an element depending on the direction and if looping is allowed
+                return list[!doIncrement && allowLoop ? listLength - 1 : 0];
+            }
+
+            // Initialize it as the first element
+            return list[0];
+        }
+
+        index += doIncrement ? 1 : -1;
+
+        if (allowLoop) {
+            index = (index + listLength) % listLength;
+        }
+
+        return list[Math.max(0, Math.min(index, listLength - 1))];
+    };
 }(jQuery));

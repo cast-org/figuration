@@ -52,7 +52,9 @@
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null,
-        autoClose : true
+        autoClose : true,
+        loop:     : true,
+        startEnd: : false
     };
 
     /* eslint-disable complexity */
@@ -392,12 +394,8 @@
                 index = $items.index($(e.target).closest('.dropdown-item')[0]);
             }
 
-            if (e.which === KEYCODE_UP && index > 0) { index--; } // up
-            if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; } // force first item
-
-            $items.eq(index).trigger('focus');
+            var $nextItem = $($.CFW_getNextActiveElement($items.toArray(), $items[index], e.which === KEYCODE_DOWN, this.settings.loop, this.settings.allowStartEnd));
+            $nextItem.trigger('focus');
         },
         /* eslint-enable complexity */
 
