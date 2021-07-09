@@ -258,4 +258,58 @@ $(function() {
         assert.strictEqual(document.querySelector('#test1').hasAttribute('disabled'), true);
         assert.strictEqual(document.querySelector('#test0').classList.contains('disabled'), true);
     });
+
+    QUnit.test('CFW_getNextActiveElement should return first element if activeElement not given or does not exist, if allowStartEnd is disabled', function(assert) {
+        assert.expect(4);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, '', true, false, false), 'a');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'z', true, true, false), 'a');
+        assert.strictEqual($.CFW_getNextActiveElement(list, '', false, true, false), 'a');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'z', false, false, false), 'a');
+    });
+
+    QUnit.test('CFW_getNextActiveElement should return last element if activeElement not given or does not exist, if allowStartEnd is enabled and decrementing', function(assert) {
+        assert.expect(4);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, '', false, true, true), 'd');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'z', false, false, true), 'd');
+        assert.strictEqual($.CFW_getNextActiveElement(list, '', false, false, true), 'd');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'z', false, true, true), 'd');
+    });
+
+    QUnit.test('CFW_getNextActiveElement should return next element, or last element if active last, if allowLoop is disabled', function(assert) {
+        assert.expect(3);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'a', true, false), 'b');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'b', true, false), 'c');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'd', true, false), 'd');
+    });
+
+    QUnit.test('CFW_getNextActiveElement should return next element, or first element if active last, if allowLoop is enabled', function(assert) {
+        assert.expect(2);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'c', true, true), 'd');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'd', true, true), 'a');
+    });
+
+    QUnit.test('CFW_getNextActiveElement should return previous element, or first element if active first, if allowLoop is disabled and decrementing', function(assert) {
+        assert.expect(3);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'd', false, false), 'c');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'c', false, false), 'b');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'a', false, false), 'a');
+    });
+
+    QUnit.test('CFW_getNextActiveElement should return previous element, or last element if active first, if allowLoop is enabled and decrementing', function(assert) {
+        assert.expect(2);
+        var list = ['a', 'b', 'c', 'd'];
+
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'b', false, true), 'a');
+        assert.strictEqual($.CFW_getNextActiveElement(list, 'a', false, true), 'd');
+    });
 });

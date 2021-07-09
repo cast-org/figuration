@@ -115,6 +115,32 @@ $(function() {
         assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
     });
 
+    QUnit.test('should activate next tab item for down/right keypress on control', function(assert) {
+        assert.expect(2);
+
+        var $slideshow = $('<div class="nav">' +
+            '<button id="slidePrev" type="button" data-cfw-slideshow-nav="prev">Previous</button>' +
+            '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
+            '<button id="tab1" type="button" data-cfw="tab" data-cfw-tab-target="#panel1">1</button>' +
+            '<button id="tab2" type="button" data-cfw="tab" data-cfw-tab-target="#panel2">2</button>' +
+            '<button id="slideNext" type="button" data-cfw-slideshow-nav="next">Next</button>' +
+            '</div>')
+            .appendTo('#qunit-fixture');
+        $('<ul><li id="panel0"></li><li id="panel1"></li><li id="panel2"></li></ul>').appendTo('#qunit-fixture');
+
+        /* var $tabs = */ $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        $slideshow.CFW_Slideshow();
+
+        $('#slidePrev').trigger($.Event('keydown', {
+            which: 40 // Down
+        }));
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'tab1');
+        $('#slideNext').trigger($.Event('keydown', {
+            which: 39 // Right
+        }));
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'tab2');
+    });
+
     QUnit.test('should not move focus to next tab item for down/right keypress on next control', function(assert) {
         assert.expect(3);
 
@@ -234,6 +260,33 @@ $(function() {
             which: 37 // Left
         }));
         assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+    });
+
+    QUnit.test('should activate previous tab item for up/left keypress on control', function(assert) {
+        assert.expect(2);
+
+        var $slideshow = $('<div class="nav">' +
+            '<button id="slidePrev" type="button" data-cfw-slideshow-nav="prev">Previous</button>' +
+            '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
+            '<button id="tab1" type="button" data-cfw="tab" data-cfw-tab-target="#panel1">1</button>' +
+            '<button id="tab2" type="button" data-cfw="tab" data-cfw-tab-target="#panel2">2</button>' +
+            '<button id="slideNext" type="button" data-cfw-slideshow-nav="next">Next</button>' +
+            '</div>')
+            .appendTo('#qunit-fixture');
+        $('<ul><li id="panel0"></li><li id="panel1"></li><li id="panel2"></li></ul>').appendTo('#qunit-fixture');
+
+        /* var $tabs = */ $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        $slideshow.CFW_Slideshow();
+
+        $('#tab2').CFW_Tab('show');
+        $('#slidePrev').trigger($.Event('keydown', {
+            which: 38 // Up
+        }));
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'tab1');
+        $('#slideNext').trigger($.Event('keydown', {
+            which: 37 // Left
+        }));
+        assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'tab0');
     });
 
     QUnit.test('should not move focus to previous tab item for keypress on previous control', function(assert) {

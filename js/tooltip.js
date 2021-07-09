@@ -909,30 +909,15 @@
 
         // Move focus to next tabbable item before given element
         _tabPrev : function(current, $scope) {
-            var $selfRef = this;
-            var selectables = $selfRef._tabItems($scope);
-            var prevIndex = selectables.length - 1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex > 0) {
-                    prevIndex = currentIndex - 1;
-                }
-            }
-            selectables.eq(prevIndex).trigger('focus');
+            var selectables = this._tabItems($scope);
+
+            $.CFW_getNextActiveElement(selectables.toArray(), current, false, true).focus();
         },
 
         // Move focus to next tabbable item after given element
         _tabNext : function(current, $scope) {
             var $selfRef = this;
-
-            var selectables = $selfRef._tabItems($scope);
-            var nextIndex = -1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex + 1 < selectables.length) {
-                    nextIndex = currentIndex + 1;
-                }
-            }
+            var selectables = this._tabItems($scope);
 
             // Remove items from inside target
             if (typeof $scope === 'undefined') {
@@ -941,12 +926,7 @@
                 });
             }
 
-            if (typeof selectables[nextIndex] === 'undefined') {
-                // Send focus back to body
-                document.activeElement.blur();
-            } else {
-                selectables.eq(nextIndex).trigger('focus');
-            }
+            $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
         },
 
         /*

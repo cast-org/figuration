@@ -1112,7 +1112,7 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
     <kbd title="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd>
   </dt>
   <dd>
-    Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
+    Closes the currently focused submenu, and returns focus back to the triggering element.
     If current focus is in a text input or textarea, the text caret will move accordingly.
   </dd>
 </dl>
