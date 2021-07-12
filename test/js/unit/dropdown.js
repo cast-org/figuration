@@ -378,10 +378,11 @@ $(function() {
     });
 
     QUnit.test('should skip disabled element when using keyboard navigation', function(assert) {
-        assert.expect(2);
+        assert.expect(3);
         var dropdownHTML = '<div class="dropdown">' +
             '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
+            '<li><button class="dropdown-item" disabled>Disabled button</button></li>' +
             '<li><a href="#" class="disabled">Disabled link</a></li>' +
             '<li><a href="#" id="focusable">Menu link</a></li>' +
             '</ul>' +
@@ -394,6 +395,7 @@ $(function() {
             which: 40 // Down
         }));
 
+        assert.ok(!$(document.activeElement).is(':disabled'), ':disabled is not focused');
         assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused');
         assert.ok($(document.activeElement).is('#focusable'), '#focusable is focused');
     });
@@ -1021,7 +1023,7 @@ $(function() {
         $element.trigger('click');
     });
 
-     QUnit.test('left arrow keypress should close submenu, but not main menu', function(assert) {
+    QUnit.test('left arrow keypress should close submenu, but not main menu', function(assert) {
         assert.expect(5);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
@@ -1043,7 +1045,7 @@ $(function() {
         var $sublink = $('#sublink');
 
         $dropdown
-            .on('afterShow.cfw.dropdown', function(e) {
+            .on('afterShow.cfw.dropdown', function() {
                 assert.ok($dropdown.hasClass('open'), 'main menu opened');
                 $subtoggle
                     .on('afterShow.cfw.dropdown', function(e) {
@@ -1054,7 +1056,7 @@ $(function() {
                             which: 37 // Left
                         }));
                     })
-                    .on('afterHide.cfw.dropdown', function(e) {
+                    .on('afterHide.cfw.dropdown', function() {
                         assert.notOk($subtoggle.hasClass('open'), 'submenu closed');
                         assert.ok($dropdown.hasClass('open'), 'main menu still open');
                         $menulink.trigger('focus');
@@ -1070,4 +1072,55 @@ $(function() {
         $dropdown.trigger('click');
     });
 
+    QUnit.test('should select first menu item with down arrow keypress on trigger', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul id="dropdown-menu" class="dropdown-menu">' +
+            '<li><a id="item0" href="#">Menu link</a></li>' +
+            '<li><a id="item1" href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var arrowDown = $.Event('keydown', {
+            which: 40 // Down
+        });
+
+        $dropdown.on('afterShow.cfw.dropdown', function() {
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, document.querySelector('#item0'));
+                done();
+            });
+        });
+
+        $dropdown.trigger(arrowDown);
+    });
+
+    QUnit.test('should select last menu item with up arrow keypress on trigger', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul id="dropdown-menu" class="dropdown-menu">' +
+            '<li><a id="item0" href="#">Menu link</a></li>' +
+            '<li><a id="item1" href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var arrowUp = $.Event('keydown', {
+            which: 38 // Up
+        });
+
+        $dropdown.on('afterShow.cfw.dropdown', function() {
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, document.querySelector('#item1'));
+                done();
+            });
+        });
+
+        $dropdown.trigger(arrowUp);
+    });
 });

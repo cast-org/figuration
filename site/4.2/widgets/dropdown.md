@@ -972,6 +972,21 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
           </ul>
         </td>
       </tr>
+      <tr>
+        <td><code>loop</code></td>
+        <td>boolean</td>
+        <td><code>true</code</td>
+        <td>Allow looping from the last menu item to the first menu item, and vice versa, when using arrow key navigation.</td>
+      </tr>
+      <tr>
+        <td><code>startEnd</code></td>
+        <td>boolean</td>
+        <td><code>true</code</td>
+        <td>
+            <p>When pressing the up arrow when focused on the main trigger, the last menu item in the list will recieve focus.</p>
+            Note: Does not apply to submenus.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
