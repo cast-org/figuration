@@ -472,6 +472,28 @@ if (typeof jQuery === 'undefined') {
     $.CFW_isDisabled = function(element) {
         return $(element).is('.disabled, :disabled');
     };
+
+    $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {
+        var index = list.indexOf(activeElement);
+        var listLength = list.length;
+
+        if (typeof allowLoop === 'undefined') { allowLoop = false; }
+        if (typeof allowStartEnd === 'undefined') { allowStartEnd = false; }
+
+        // If currently actve element does not exist in the list
+        // return an element depending on the direction and if starting at the end is allowed
+        if (index === -1) {
+            return list[!doIncrement && allowStartEnd ? listLength - 1 : 0];
+        }
+
+        index += doIncrement ? 1 : -1;
+
+        if (allowLoop) {
+            index = (index + listLength) % listLength;
+        }
+
+        return list[Math.max(0, Math.min(index, listLength - 1))];
+    };
 }(jQuery));
 
 /**
@@ -957,7 +979,9 @@ if (typeof jQuery === 'undefined') {
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null,
-        autoClose : true
+        autoClose : true,
+        loop      : true,  // Loop around ends
+        startEnd  : true   // Up arrow from control starts at last menu item
     };
 
     /* eslint-disable complexity */
@@ -1282,9 +1306,10 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Left
-            if (e.which === KEYCODE_LEFT) {
+            if (e.which === KEYCODE_LEFT && this.settings.isSubmenu) {
                 this.hide();
                 this.$element.trigger('focus');
+                return;
             }
 
             // Focus control
@@ -1297,12 +1322,10 @@ if (typeof jQuery === 'undefined') {
                 index = $items.index($(e.target).closest('.dropdown-item')[0]);
             }
 
-            if (e.which === KEYCODE_UP && index > 0) { index--; } // up
-            if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; } // force first item
-
-            $items.eq(index).trigger('focus');
+            var nextItem = $items[index];
+            var doIncrement = e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT;
+            nextItem = $.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, this.settings.loop, this.settings.startEnd && !this.settings.subMenu);
+            $(nextItem).trigger('focus');
         },
         /* eslint-enable complexity */
 
@@ -1855,13 +1878,9 @@ if (typeof jQuery === 'undefined') {
             var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
-            if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left
-            if ((e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN) && index < $items.length - 1) { index++; } // down & right
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; }   // force first item
-
-            var nextTab = $items.eq(index);
-            nextTab.CFW_Tab('show').trigger('focus');
+            var doIncrement = e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN;
+            var $nextTab = $($.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, false));
+            $nextTab.CFW_Tab('show').trigger('focus');
         },
 
         _activateTab : function() {
@@ -3020,30 +3039,15 @@ if (typeof jQuery === 'undefined') {
 
         // Move focus to next tabbable item before given element
         _tabPrev : function(current, $scope) {
-            var $selfRef = this;
-            var selectables = $selfRef._tabItems($scope);
-            var prevIndex = selectables.length - 1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex > 0) {
-                    prevIndex = currentIndex - 1;
-                }
-            }
-            selectables.eq(prevIndex).trigger('focus');
+            var selectables = this._tabItems($scope);
+
+            $.CFW_getNextActiveElement(selectables.toArray(), current, false, true).focus();
         },
 
         // Move focus to next tabbable item after given element
         _tabNext : function(current, $scope) {
             var $selfRef = this;
-
-            var selectables = $selfRef._tabItems($scope);
-            var nextIndex = -1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex + 1 < selectables.length) {
-                    nextIndex = currentIndex + 1;
-                }
-            }
+            var selectables = this._tabItems($scope);
 
             // Remove items from inside target
             if (typeof $scope === 'undefined') {
@@ -3052,12 +3056,7 @@ if (typeof jQuery === 'undefined') {
                 });
             }
 
-            if (typeof selectables[nextIndex] === 'undefined') {
-                // Send focus back to body
-                document.activeElement.blur();
-            } else {
-                selectables.eq(nextIndex).trigger('focus');
-            }
+            $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
         },
 
         /*
@@ -4462,32 +4461,22 @@ if (typeof jQuery === 'undefined') {
         prev : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex > 0) {
-                newIndex = currIndex - 1;
-            }
-            if (this.settings.loop && currIndex === 0) {
-                newIndex = $tabs.length - 1;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], false, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 
         next : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex < $tabs.length - 1) {
-                newIndex = currIndex + 1;
-            }
-            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
-                newIndex = 0;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], true, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('next.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 
