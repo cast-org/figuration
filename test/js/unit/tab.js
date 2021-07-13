@@ -541,6 +541,7 @@ $(function() {
 
     QUnit.test('should move focus to next available tab item for arrow keypress on tab, skipping disabled tab', function(assert) {
         assert.expect(4);
+        var done = assert.async();
 
         $('<div class="nav">' +
             '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
@@ -556,18 +557,27 @@ $(function() {
         $('#tab2').trigger($.Event('keydown', {
             which: 38 // Up
         }));
-        assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
-        $('#tab0').trigger($.Event('keydown', {
-            which: 40 // Down
-        }));
-        assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
-        $('#tab2').trigger($.Event('keydown', {
-            which: 37 // Left
-        }));
-        assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
-        $('#tab0').trigger($.Event('keydown', {
-            which: 39 // Right
-        }));
-        assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+        setTimeout(function() {
+            assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+            $('#tab0').trigger($.Event('keydown', {
+                which: 40 // Down
+            }));
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+                $('#tab2').trigger($.Event('keydown', {
+                    which: 37 // Left
+                }));
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+                    $('#tab0').trigger($.Event('keydown', {
+                        which: 39 // Right
+                    }));
+                    setTimeout(function() {
+                        assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+                        done();
+                    });
+                });
+            });
+        });
     });
 });

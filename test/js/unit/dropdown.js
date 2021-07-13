@@ -1095,7 +1095,7 @@ $(function() {
             });
         });
 
-        $dropdown.trigger(arrowDown);
+        $dropdown.trigger('focus').trigger(arrowDown);
     });
 
     QUnit.test('should select last menu item with up arrow keypress on trigger', function(assert) {
@@ -1121,6 +1121,6 @@ $(function() {
             });
         });
 
-        $dropdown.trigger(arrowUp);
+        $dropdown.trigger('focus').trigger(arrowUp);
     });
 });
