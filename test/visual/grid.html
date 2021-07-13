@@ -417,6 +417,52 @@
     </div>
 </div>
 
+<hr class="my-2" />
+
+<div class="container">
+  <h2>Individual grid classes should override <code>.row-cols-*</code></h2>
+
+  <div class="border border-danger mt-1">
+    <div class="text-center">
+      <strong>(Grid) <code>&lt;div class="row"&gt;</code> with class <code>row-cols-1</code> AND <code>row-cols-lg-2</code> breakpoint default specified.</strong>
+    </div>
+
+    <div class="row row-cols-1 row-cols-lg-2 g-1 m-1">
+      <div class="border"><code>not col, just border</code></div>
+      <div class="border"><code>not col, just border</code></div>
+      <div class="col border"><code>col</code></div>
+      <div class="col border"><code>col</code></div>
+      <div class="col-3 border border-danger"><code>col-3</code> should only be 25%</div>
+      <div class="col-3 border border-danger"><code>col-3</code> should only be 25%</div>
+      <div class="col-3 border border-danger"><code>col-3</code> should only be 25%</div>
+      <div class="col-3 border border-danger"><code>col-3</code> should only be 25%</div>
+      <div class="col-12 border border-danger">
+        <code>col-12</code>
+        Should be full row as column size explicit on column. Adding additional (breakpoint-override) col-lg-12 fixes.
+      </div>
+    </div>
+  </div>
+
+  <div class="border mt-1 border-success">
+    <div class="text-center">
+      <strong>(Grid) <code>&lt;div class="row"</code> with class <code>row-cols-2</code> and no breakpoint override.</strong>
+    </div>
+    <div class="row row-cols-2 g-1 m-1">
+      <div class="col border"><code>col</code></div>
+      <div class="col border"><code>col</code></div>
+      <div class="col border"><code>col</code></div>
+      <div class="col border"><code>col</code></div>
+      <div class="col-3 border border-success"><code>col-3</code></div>
+      <div class="col-3 border border-success"><code>col-3</code></div>
+      <div class="col-3 border border-success"><code>col-3</code></div>
+      <div class="col-3 border border-success"><code>col-3</code></div>
+      <div class="col-12 border border-success">
+        <code>col-12</code> Works as expected because no break-point row override prsent.
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 </body>
