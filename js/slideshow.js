@@ -71,32 +71,22 @@
         prev : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex > 0) {
-                newIndex = currIndex - 1;
-            }
-            if (this.settings.loop && currIndex === 0) {
-                newIndex = $tabs.length - 1;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], false, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 
         next : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex < $tabs.length - 1) {
-                newIndex = currIndex + 1;
-            }
-            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
-                newIndex = 0;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], true, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('next.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 

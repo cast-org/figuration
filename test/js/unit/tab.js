@@ -491,4 +491,93 @@ $(function() {
         assert.strictEqual($panes.last().hasClass('in'), false);
         $last.CFW_Tab('show');
     });
+
+    QUnit.test('should move focus to previous tab item for up/left keypress on tab', function(assert) {
+        assert.expect(2);
+
+        $('<div class="nav">' +
+            '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
+            '<button id="tab1" type="button" data-cfw="tab" data-cfw-tab-target="#panel1">1</button>' +
+            '<button id="tab2" type="button" data-cfw="tab" data-cfw-tab-target="#panel2">2</button>' +
+            '</div>')
+            .appendTo('#qunit-fixture');
+        $('<ul><li id="panel0"></li><li id="panel1"></li><li id="panel2"></li></ul>').appendTo('#qunit-fixture');
+
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+
+        $('#tab2').CFW_Tab('show');
+        $('#tab2').trigger($.Event('keydown', {
+            which: 38 // Up
+        }));
+        assert.strictEqual(document.activeElement, document.querySelector('#tab1'));
+        $('#tab1').trigger($.Event('keydown', {
+            which: 37 // Left
+        }));
+        assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+    });
+
+    QUnit.test('should move focus to next tab item for down/right keypress on tab', function(assert) {
+        assert.expect(2);
+
+        $('<div class="nav">' +
+            '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
+            '<button id="tab1" type="button" data-cfw="tab" data-cfw-tab-target="#panel1">1</button>' +
+            '<button id="tab2" type="button" data-cfw="tab" data-cfw-tab-target="#panel2">2</button>' +
+            '</div>')
+            .appendTo('#qunit-fixture');
+        $('<ul><li id="panel0"></li><li id="panel1"></li><li id="panel2"></li></ul>').appendTo('#qunit-fixture');
+
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+
+        $('#tab0').trigger($.Event('keydown', {
+            which: 40 // Down
+        }));
+        assert.strictEqual(document.activeElement, document.querySelector('#tab1'));
+        $('#tab1').trigger($.Event('keydown', {
+            which: 39 // Right
+        }));
+        assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+    });
+
+    QUnit.test('should move focus to next available tab item for arrow keypress on tab, skipping disabled tab', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        $('<div class="nav">' +
+            '<button id="tab0" type="button" data-cfw="tab" data-cfw-tab-target="#panel0">0</button>' +
+            '<button id="tab1" type="button" data-cfw="tab" data-cfw-tab-target="#panel1" disabled>1</button>' +
+            '<button id="tab2" type="button" data-cfw="tab" data-cfw-tab-target="#panel2">2</button>' +
+            '</div>')
+            .appendTo('#qunit-fixture');
+        $('<ul><li id="panel0"></li><li id="panel1"></li><li id="panel2"></li></ul>').appendTo('#qunit-fixture');
+
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+
+        $('#tab2').CFW_Tab('show');
+        $('#tab2').trigger($.Event('keydown', {
+            which: 38 // Up
+        }));
+        setTimeout(function() {
+            assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+            $('#tab0').trigger($.Event('keydown', {
+                which: 40 // Down
+            }));
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+                $('#tab2').trigger($.Event('keydown', {
+                    which: 37 // Left
+                }));
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#tab0'));
+                    $('#tab0').trigger($.Event('keydown', {
+                        which: 39 // Right
+                    }));
+                    setTimeout(function() {
+                        assert.strictEqual(document.activeElement, document.querySelector('#tab2'));
+                        done();
+                    });
+                });
+            });
+        });
+    });
 });

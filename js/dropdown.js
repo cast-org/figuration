@@ -52,7 +52,9 @@
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null,
-        autoClose : true
+        autoClose : true,
+        loop      : true,  // Loop around ends
+        startEnd  : true   // Up arrow from control starts at last menu item
     };
 
     /* eslint-disable complexity */
@@ -377,9 +379,10 @@
             }
 
             // Left
-            if (e.which === KEYCODE_LEFT) {
+            if (e.which === KEYCODE_LEFT && this.settings.isSubmenu) {
                 this.hide();
                 this.$element.trigger('focus');
+                return;
             }
 
             // Focus control
@@ -392,12 +395,10 @@
                 index = $items.index($(e.target).closest('.dropdown-item')[0]);
             }
 
-            if (e.which === KEYCODE_UP && index > 0) { index--; } // up
-            if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; } // force first item
-
-            $items.eq(index).trigger('focus');
+            var nextItem = $items[index];
+            var doIncrement = e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT;
+            nextItem = $.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, this.settings.loop, this.settings.startEnd && !this.settings.subMenu);
+            $(nextItem).trigger('focus');
         },
         /* eslint-enable complexity */
 

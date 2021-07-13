@@ -972,6 +972,21 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
           </ul>
         </td>
       </tr>
+      <tr>
+        <td><code>loop</code></td>
+        <td>boolean</td>
+        <td><code>true</code</td>
+        <td>Allow looping from the last menu item to the first menu item, and vice versa, when using arrow key navigation.</td>
+      </tr>
+      <tr>
+        <td><code>startEnd</code></td>
+        <td>boolean</td>
+        <td><code>true</code</td>
+        <td>
+            <p>When pressing the up arrow when focused on the main trigger, the last menu item in the list will recieve focus.</p>
+            Note: Does not apply to submenus.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -1112,7 +1127,7 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
     <kbd title="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd>
   </dt>
   <dd>
-    Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
+    Closes the currently focused submenu, and returns focus back to the triggering element.
     If current focus is in a text input or textarea, the text caret will move accordingly.
   </dd>
 </dl>
