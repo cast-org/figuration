@@ -10,6 +10,8 @@ toc: true
 
 Badges scale to match the size of the immediate parent element by using relative font sizing and `em` units.
 
+### Headings
+
 {% capture example %}
 <h1>Example heading <span class="badge">New</span></h1>
 <h2>Example heading <span class="badge">New</span></h2>
@@ -19,6 +21,8 @@ Badges scale to match the size of the immediate parent element by using relative
 <h6>Example heading <span class="badge">New</span></h6>
 {% endcapture %}
 {% renderExample example %}
+
+### Buttons
 
 Badges can be used as part of links or buttons to provide a counter.
 
@@ -37,6 +41,33 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 <button type="button" class="btn btn-primary">
   Profile <span class="badge bg-danger">9</span>
   <span class="sr-only">unread messages</span>
+</button>
+{% endcapture %}
+{% renderExample example %}
+
+### Positioned
+
+Use utilities to modify a `.badge` and position it in the corner of a link or button.
+
+{% capture example %}
+<button type="button" class="btn btn-primary position-relative">
+  Inbox
+  <span class="position-absolute top-0 start-100 translate-middle badge radius-pill bg-danger">
+    99+
+    <span class="sr-only">unread messages</span>
+  </span>
+</button>
+{% endcapture %}
+{% renderExample example %}
+
+You can also replace the `.badge` class with a few more utilities without a count for a more generic indicator.
+
+{% capture example %}
+<button type="button" class="btn btn-primary position-relative">
+  Profile
+  <span class="position-absolute top-0 start-100 translate-middle p-0_5 bg-warning border border-white radius-circle">
+    <span class="sr-only">New alerts</span>
+  </span>
 </button>
 {% endcapture %}
 {% renderExample example %}
