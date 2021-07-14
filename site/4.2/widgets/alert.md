@@ -99,6 +99,18 @@ If the dismiss button is disabled, then the close action will be blocked.
 
 Just add `data-cfw-dismiss="alert"` to a close button **inside the alert container** to automatically give an alert close functionality.
 
+{% capture highlight %}
+<button type="button" class="close" data-cfw-dismiss="alert">Close</button>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+It is also possible to use a close button **outside an alert container** by using the `target` option. An example can be found in the [JavaScript Intergration section within the Badges component page]({{ site.path }}/{{ version.docs }}/components/badges/#javascript-integration).
+
+{% capture highlight %}
+<button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-target="#myAlert">Close</button>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ### Via JavaScript
 
 Enable dismissal of an alert via JavaScript:
