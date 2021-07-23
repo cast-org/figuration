@@ -1456,7 +1456,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$card-border-radius</code></td>
+        <td><code>$card-box-shadow</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Card box shadow.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$card-inner-border-radius</code></td>
         <td>string</td>
         <td><code>calc(#{$card-border-radius} - #{$card-border-width})</code></td>
         <td>
