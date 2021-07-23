@@ -64,3 +64,17 @@
 
     @return $sortedMap;
 }
+
+// Merge multiple maps together into a single map
+//
+// @param {Arglist} $maps - list of maps
+// @return {Map} - Merged map
+@function map-merge-multiple($maps...) {
+    $mergedMap: ();
+
+    @each $map in $maps {
+        $mergedMap: map-merge($mergedMap, $map);
+    }
+
+    @return $mergedMap;
+}
