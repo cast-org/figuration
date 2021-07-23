@@ -708,6 +708,7 @@
         // https://github.com/iandevlin/iandevlin.github.io/blob/master/mdn/video-player-with-captions/js/video-player.js
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
+            // eslint-disable-next-line compat/compat
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
             return $fsNode.is(this.$element);
         },
