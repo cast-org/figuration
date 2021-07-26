@@ -628,8 +628,7 @@
                 .attr('aria-expanded', 'true')
                 .addClass('open');
             this.$target
-                .addClass('open')
-                .find('li').redraw();
+                .addClass('open');
 
             // Handle loss of focus
             $(document)
@@ -736,10 +735,6 @@
             }
             this.popper = null;
         }
-    };
-
-    $.fn.redraw = function() {
-        return this.offsetHeight;
     };
 
     var Plugin = function(option) {
