@@ -372,7 +372,7 @@ To set a default active tab, add the class `.active` to the trigger item.
 You can activate individual tabs in several ways:
 
 {% capture highlight %}
-$('#myTab a[href="#profile"]').CFW_Tab('show');  // Select tab by href
+$('#myTab button[data-cfw-tab-target="#profile"]').CFW_Tab('show');  // Select tab by data attribute
 $('#myTab button:first').CFW_Tab('show');        // Select first tab
 $('#myTab button:last').CFW_Tab('show');         // Select last tab
 $('#myTab button:nth-child(3)').CFW_Tab('show'); // Select third tab
@@ -405,7 +405,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </div>
 
 {% capture highlight %}
-$('#myTab a').CFW_Tab({
+$('#myTab button').CFW_Tab({
   animate: false
 });
 {% endcapture %}
@@ -437,7 +437,7 @@ Methods calls should be made on the toggle/trigger element.
 </div>
 
 {% capture highlight %}
-$('#myTab a').CFW_Tab('show');
+$('#myTabControl').CFW_Tab('show');
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
@@ -485,7 +485,7 @@ When showing a new tab, the events fire in the following order:
 </div>
 
 {% capture highlight %}
-$('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(event) {
+$('button[data-cfw="tab"]').on('afterShow.cfw.tab', function(event) {
   event.target // newly activated tab
   event.relatedTarget // previous active tab
 });
