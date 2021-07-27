@@ -473,4 +473,23 @@
 
         return list[Math.max(0, Math.min(index, listLength - 1))];
     };
+
+    $.CFW_handleDissmissControl = function(name, method) {
+        if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
+
+        if (typeof method === 'undefined') { method = 'hide'; }
+        var widget = 'CFW_' + name.capitalize();
+        var eventName = 'click.dismiss.cfw.' + name;
+
+        $(document).on(eventName, '[data-cfw-dismiss="' + name + '"]', function(event) {
+            if (/a|area/i.test(this.tagName)) {
+                event.preventDefault();
+            }
+            if ($.CFW_isDisabled(this)) { return; }
+
+            var selector = $(this).CFW_getSelectorFromElement(name);
+            var $elm = selector ? $(selector) : $(this.closest('.' + name));
+            $elm[widget](method, event);
+        });
+    };
 }(jQuery));

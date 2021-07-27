@@ -162,17 +162,39 @@ $(function() {
         $trigger.CFW_Modal('toggle');
     });
 
-    QUnit.test('should hide modal when click [data-cfw-dismiss="modal"]', function(assert) {
+    QUnit.test('should hide modal when click [data-cfw-dismiss="modal"] inside modal element', function(assert) {
         assert.expect(2);
         var done = assert.async();
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
-        var $target = $('<div class="modal" id="modal"><button class="close" data-cfw-dismiss="modal"></button></div>').appendTo(document.body);
+        var $target = $('<div class="modal" id="modal"><button id="XYZ" class="close" data-cfw-dismiss="modal"></button></div>').appendTo(document.body);
 
         $target
             .on('afterShow.cfw.modal', function() {
                 assert.ok($target.is(':visible'), 'modal visible');
-                $(this).find('.close').trigger('click');
+                document.querySelector('.close').click();
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.ok(!$target.is(':visible'), 'modal hidden');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should hide modal when click [data-cfw-dismiss="modal"] outside modal element', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"></div>').appendTo(document.body);
+        var $dismiss = $('<button class="close" data-cfw-dismiss="modal" data-cfw-modal-target="#modal"></button>').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.ok($target.is(':visible'), 'modal visible');
+                $dismiss.trigger('click');
             })
             .on('afterHide.cfw.modal', function() {
                 assert.ok(!$target.is(':visible'), 'modal hidden');

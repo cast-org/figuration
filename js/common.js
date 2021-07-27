@@ -9,7 +9,7 @@
     'use strict';
 
     var cfwList = {
-        '[data-cfw-dismisss="alert"]': 'CFW_Alert',
+        //'[data-cfw-dismisss="alert"]': 'CFW_Alert',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',
