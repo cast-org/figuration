@@ -200,7 +200,6 @@ $(function() {
                 assert.ok(!$target.is(':visible'), 'modal hidden');
                 done();
             });
-
         $trigger.CFW_Modal();
         $trigger.CFW_Modal('show');
     });

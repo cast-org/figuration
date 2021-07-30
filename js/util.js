@@ -474,7 +474,7 @@
         return list[Math.max(0, Math.min(index, listLength - 1))];
     };
 
-    $.CFW_handleDissmissControl = function(name, method) {
+    $.CFW_enableDissmissControl = function(name, method) {
         if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
 
         if (typeof method === 'undefined') { method = 'hide'; }
@@ -488,8 +488,11 @@
             if ($.CFW_isDisabled(this)) { return; }
 
             var selector = $(this).CFW_getSelectorFromElement(name);
-            var $elm = selector ? $(selector) : $(this.closest('.' + name));
-            $elm[widget](method, event);
+            var $elm = selector ? $(selector) : $(this).closest('.' + name);
+
+            if ($elm.length) {
+                $elm[widget](method, event);
+            }
         });
     };
 }(jQuery));

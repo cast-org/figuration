@@ -1,12 +1,54 @@
 $(function() {
     'use strict';
 
+    // Global timer for tests using setTimeout
+    var timer = null;
+
+    // =====
+    // Test Widget
+    var CFW_Widget_TestDismiss = function(element) {
+        this.$element = $(element);
+        this.eventProperties = {
+            relatedTarget: element
+        };
+    };
+
+    CFW_Widget_TestDismiss.prototype = {
+        hide : function() {
+            this.$element.CFW_trigger('hide.cfw.testDismiss', this.eventProperties);
+        },
+        custom : function() {
+            this.$element.CFW_trigger('custom.cfw.testDismiss', this.eventProperties);
+        }
+    };
+
+    var Plugin = function(option) {
+        var args = [].splice.call(arguments, 1);
+        return this.each(function() {
+            var $this = $(this);
+            var data = $this.data('cfw._testDismiss');
+            var options = typeof option === 'object' && option;
+
+            if (!data) {
+                $this.data('cfw._testDismiss', data = new CFW_Widget_TestDismiss(this, options));
+            }
+            if (typeof option === 'string') {
+                data[option].apply(data, args);
+            }
+        });
+    };
+
+    $.fn.CFW_TestDismiss = Plugin;
+    $.fn.CFW_TestDismiss.Constructor = CFW_Widget_TestDismiss;
+    // =====
+
     QUnit.module('util', {
         beforeEach: function() {
             $(window).scrollTop(0);
         },
         afterEach: function() {
             $('#qunit-fixture').empty();
+            $(document).off('.cfw.testDismiss');
         }
     });
 
@@ -311,5 +353,118 @@ $(function() {
 
         assert.strictEqual($.CFW_getNextActiveElement(list, 'b', false, true), 'a');
         assert.strictEqual($.CFW_getNextActiveElement(list, 'a', false, true), 'd');
+    });
+
+    QUnit.test('CFW_enableDissmissControl should call WidgetName(\'hide\') method when a click occurred on data-cfw-dismiss="WidgetName"', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        $('<div id="item" class="testDismiss">' +
+            '<button type="button" data-cfw-dismiss="testDismiss" data-bs-target="#item"></button>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var $dismiss = $('[data-cfw-dismiss="testDismiss"]');
+
+        $(document)
+            .on('hide.cfw.testDismiss', function() {
+                assert.ok(true, 'hide method called');
+                done();
+            });
+
+        $.CFW_enableDissmissControl('testDismiss');
+        $dismiss.trigger('click');
+    });
+
+    QUnit.test('CFW_enableDissmissControl should call WidgetName(\'custom\') method when a click occurred on data-cfw-dismiss="WidgetName" and custom method set', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        $('<div id="item" class="testDismiss">' +
+            '<button type="button" data-cfw-dismiss="testDismiss" data-bs-target="#item"></button>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var $dismiss = $('[data-cfw-dismiss="testDismiss"]');
+
+        $(document)
+            .on('custom.cfw.testDismiss', function() {
+                assert.ok(true, 'custom method called');
+                done();
+            });
+
+        $.CFW_enableDissmissControl('testDismiss', 'custom');
+        $dismiss.trigger('click');
+    });
+
+    QUnit.test('CFW_enableDissmissControl should execute on closest `.pluginName` if target is not defined', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        $('<div id="item" class="testDismiss">' +
+            '<button type="button" data-cfw-dismiss="testDismiss"></button>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var $dismiss = $('[data-cfw-dismiss="testDismiss"]');
+
+        $(document)
+            .on('hide.cfw.testDismiss', function(e) {
+                clearTimeout(timer);
+                assert.strictEqual(e.target, document.querySelector('.testDismiss'), 'dismiss called on `.pluginName`');
+                done();
+            });
+
+        $.CFW_enableDissmissControl('testDismiss');
+        $dismiss.trigger('click');
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            assert.ok(false, 'dismiss was not called');
+            done();
+        }, 75);
+    });
+
+    QUnit.test('CFW_enableDissmissControl should not execute if button control is disabled', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        $('<div id="item" class="testDismiss">' +
+            '<button type="button" data-cfw-dismiss="testDismiss" data-bs-target="#item" disabled></button>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var $dismiss = $('[data-cfw-dismiss="testDismiss"]');
+
+        $(document)
+            .on('hide.cfw.testDismiss', function() {
+                clearTimeout(timer);
+                assert.ok(false, 'dismiss was called');
+                done();
+            });
+
+        $.CFW_enableDissmissControl('testDismiss');
+        $dismiss.trigger('click');
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            assert.ok(true, 'dismiss was not called');
+            done();
+        }, 75);
+    });
+
+    QUnit.test('CFW_enableDissmissControl should not execute if link has `.disabled` class', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        $('<div id="item" class="testDismiss">' +
+            '<a role="button" data-cfw-dismiss="testDismiss" data-bs-target="#item" class="disabled"></a>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var $dismiss = $('[data-cfw-dismiss="testDismiss"]');
+
+        $(document)
+            .on('hide.cfw.testDismiss', function() {
+                clearTimeout(timer);
+                assert.ok(false, 'dismiss was called');
+                done();
+            });
+
+        $.CFW_enableDissmissControl('testDismiss');
+        $dismiss.trigger('click');
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            assert.ok(true, 'dismiss was not called');
+            done();
+        }, 75);
     });
 });
