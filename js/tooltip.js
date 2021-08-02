@@ -234,21 +234,8 @@
                         if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
-                            // Click the close button if it exists otherwise force tooltip closed
-                            if ($('.close', $selfRef.$target).length > 0) {
-                                $('.close', $selfRef.$target).eq(0).trigger('click');
-                            } else {
-                                $selfRef.hide(true);
-                            }
+                            $selfRef.dismiss();
                         }
-                    });
-
-                // Bind 'close' buttons
-                this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
-                        if (e) { e.preventDefault(); }
-                        $selfRef.follow = true;
-                        $selfRef.hide();
                     });
             }
         },
@@ -479,6 +466,11 @@
             }
 
             this.$target.CFW_transition(null, this._showComplete.bind(this));
+        },
+
+        dismiss : function() {
+            this.follow = true;
+            this.hide();
         },
 
         hide : function(force) {
@@ -1012,4 +1004,6 @@
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
+
+    $.CFW_enableDissmissControl('tooltip', 'dismiss');
 }(jQuery));

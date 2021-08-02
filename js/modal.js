@@ -113,12 +113,7 @@
             this.escape();
             this.resize();
 
-            this.$target
-                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
-                    if (e) { e.preventDefault(); }
-                    $selfRef.hide();
-                })
-                .data('cfw.modal', this);
+            this.$target.data('cfw.modal', this);
 
             // Chained modals
             this.$target
@@ -269,6 +264,16 @@
                     $selfRef.unlink();
                 }
             });
+        },
+
+        handleHide : function(e) {
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if (!$.CFW_isDisabled(e.currentTarget)) {
+                this.close();
+            }
         },
 
         chain : function(selector) {
@@ -480,7 +485,9 @@
                         $selfRef.ignoreBackdropClick = false;
                         return;
                     }
+
                     if (e.target !== e.currentTarget) { return; }
+
                     if ($selfRef.settings.backdrop === 'static') {
                         $selfRef.hideBlocked();
                     } else {
@@ -601,4 +608,6 @@
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
+
+    $.CFW_enableDissmissControl('modal', 'hide');
 }(jQuery));

@@ -97,19 +97,11 @@ If the dismiss button is disabled, then the close action will be blocked.
 
 ### Via Data Attributes
 
-Just add `data-cfw-dismiss="alert"` to a close button **inside the alert container** to automatically give an alert close functionality.
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
+{% include jsDismiss with name: 'popover' %}
 
-{% capture highlight %}
-<button type="button" class="close" data-cfw-dismiss="alert">Close</button>
-{% endcapture %}
-{% renderHighlight highlight, "html" %}
+An example can be found in the [JavaScript Intergration section within the Badges component page]({{ site.path }}/{{ version.docs }}/components/badges/#javascript-integration).
 
-It is also possible to use a close button **outside an alert container** by using the `target` option. An example can be found in the [JavaScript Intergration section within the Badges component page]({{ site.path }}/{{ version.docs }}/components/badges/#javascript-integration).
-
-{% capture highlight %}
-<button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-target="#myAlert">Close</button>
-{% endcapture %}
-{% renderHighlight highlight, "html" %}
 
 ### Via JavaScript
 

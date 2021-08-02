@@ -159,7 +159,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('#test').length, 0, 'element removed from dom');
     });
 
-    QUnit.test('should not remove element close link has disabled class', function(assert) {
+    QUnit.test('should not remove element when close link has disabled class', function(assert) {
         assert.expect(3);
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'no element in dom');
         var alertHTML = '<div class="alert alert-danger">' +
@@ -175,7 +175,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 1, 'element not removed from dom');
     });
 
-    QUnit.test('should not remove element close button has disabled attribute', function(assert) {
+    QUnit.test('should not remove element when close button has disabled attribute', function(assert) {
         assert.expect(3);
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'no element in dom');
         var alertHTML = '<div class="alert alert-danger">' +
@@ -190,4 +190,22 @@ $(function() {
             .trigger('click');
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 1, 'element not removed from dom');
     });
+
+/*
+    QUnit.test('should remove element when external close button is clicked', function(assert) {
+        assert.expect(3);
+        assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'no element in dom');
+        var alertHTML = '<div id="test">' +
+            '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
+            '</div>' +
+            '<a class="close" href="#test" data-cfw-dismiss="alert" data-cfw-alert-target="#test">&times;</a>';
+        var $alert = $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
+        var $close = $alert.find('.close');
+        assert.notEqual($('#qunit-fixture').find('#test').length, 0, 'element added to dom');
+        $close
+            .CFW_Alert()
+            .trigger('click');
+        assert.strictEqual($('#qunit-fixture').find('#test').length, 0, 'element removed from dom');
+    });
+*/
 });

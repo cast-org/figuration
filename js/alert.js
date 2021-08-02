@@ -8,8 +8,6 @@
 (function($) {
     'use strict';
 
-    var dismiss = '[data-cfw-dismiss="alert"]';
-
     var CFW_Widget_Alert = function(element, options) {
         this.$element = $(element);
         this.$parent = null;
@@ -36,7 +34,7 @@
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    $selfRef.handleClose(e);
+                    $selfRef.close(e);
                 });
 
             this.$parent
@@ -44,21 +42,21 @@
         },
 
         handleClose : function(e) {
-            e.preventDefault();
-
             if (e.currentTarget === this.$parent[0]) {
                 return;
             }
 
-            if (!$.CFW_isDisabled(e.currentTarget)) {
-                this.close();
-            }
+            // Update settings from the trigger data
+            var parsedData = this.$element.CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+            this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData);
+
+            this.close(e);
         },
 
         close : function(e) {
             var $selfRef = this;
 
-            if (e) { e.preventDefault(); }
+            if (e && $.CFW_isDisabled(e.currentTarget)) { return; }
 
             if (this.inTransition) { return; }
 
@@ -127,11 +125,5 @@
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
 
-    // API
-    // ===
-    if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function(e) {
-            $(this).CFW_Alert('handleClose', e);
-        });
-    }
+    $.CFW_enableDissmissControl('alert, handleClose');
 }(jQuery));

@@ -1174,12 +1174,24 @@ The modal widget toggles your hidden content on demand, via data attributes or J
 
 ### Via Data Attributes
 
+#### Toggle
+
 Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a controller element, like a button, along with a `data-cfw-modal-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 {% capture highlight %}
-<button type="button" data-cfw="modal" data-cfw-modal-target="#foo">Launch modal</button>
+<button type="button" data-cfw="modal" data-cfw-modal-target="#myModal">Launch modal</button>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
+
+#### Dismiss
+
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
+{% include jsDismiss with name: 'modal' %}
+
+{% capture callout %}
+While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+{% endcapture %}
+{% renderCallout callout, "warning" %}
 
 ### Via JavaScript
 
