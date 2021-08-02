@@ -334,7 +334,7 @@ $(window).ready(function() {
             </div>
 
             <div class="alert alert-success" id="alert1">
-                <button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-animate="false" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>Boom!</strong> Remove this alert without the animation.
             </div>
             <!--
@@ -377,8 +377,8 @@ $(window).ready(function() {
                 $('#alertBtn4').CFW_Alert();
             </script>
 
-            <p>External button</p>
-            <div class="row">
+            <p>External button JS</p>
+            <div class="row gx-0_5">
                 <div class="col">
                     <div class="alert alert-primary" role="alert" id="alert5">
                         <strong>Hey!</strong> Remove this alert with the default fade animation.
@@ -388,9 +388,42 @@ $(window).ready(function() {
                     <button id="alertBtn5" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
             </div>
+            <div class="row gx-0_5">
+                <div class="col">
+                    <div class="alert alert-info" role="alert" id="alert6">
+                        <strong>Boom!</strong> Remove this alert without the animation.
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button id="alertBtn6" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
             <script>
                 $('#alertBtn5').CFW_Alert({ target: '#alert5' });
+                $('#alertBtn6').CFW_Alert({ target: '#alert6', animate: false });
             </script>
+
+            <p>External button Data Attributes</p>
+            <div class="row gx-0_5">
+                <div class="col">
+                    <div class="alert alert-warning" role="alert" id="alert7">
+                        <strong>Hey!</strong> Remove this alert with the default fade animation.
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button data-cfw-dismiss="alert" data-cfw-alert-target="#alert7" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+            <div class="row gx-0_5">
+                <div class="col">
+                    <div class="alert alert-success" role="alert" id="alert8">
+                        <strong>Boom!</strong> Remove this alert without the animation.
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button data-cfw-dismiss="alert" data-cfw-alert-target="#alert8" data-cfw-alert-animate="false" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
 
             <hr>
 

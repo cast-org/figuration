@@ -35,18 +35,56 @@
     margin-top: .5rem;
     overflow: auto;
 }
+
+:target::before {
+  position: relative;
+  z-index: -1;
+  display: block;
+  padding-top: 3rem;
+  margin-top: -3rem;
+  visibility: hidden;
+  content: "";
+}
+
+.container-first {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    max-width: 800px;
+}
+
 </style>
 
 </head>
-<body class="pb-2">
 
-<div class="container py-1" style="max-width: 800px;">
+<body class="px-2" data-cfw="scrollspy" data-cfw-scrollspy-target="#navbarResponsive" data-cfw-scrollspy-offset="100">
+
+<div class="container container-first">
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#page-top">
+          Scrollspy
+        </a>
+        <button class="navbar-toggle btn btn-sm" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarResponsive" aria-label="Toggle navigation">
+          Menu
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto me-1">
+            <li class="nav-item"><a class="nav-link " href="#navbar">Navbar</a></li>
+            <li class="nav-item"><a class="nav-link " href="#list">List</a></li>
+            <li class="nav-item"><a class="nav-link " href="#nestedList">nested: list</a></li>
+            <li class="nav-item"><a class="nav-link " href="#nestedDropdown">nested: dropdown</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
 
 <h1>Scrollspy</h1>
 
 <h2>Examples</h2>
 
-<h3>Navbar</h3>
+<h3 id="navbar">Navbar</h3>
 
 <div class="border p-1 mb-1">
     <nav id="navbar-example" class="navbar navbar-light bg-light">
@@ -80,7 +118,7 @@
     </div>
 </div>
 
-<h3>List</h3>
+<h3 id="list">List</h3>
 
 <div class="border p-1 mb-1">
     <div class="row">
@@ -111,7 +149,7 @@
     </div>
 </div>
 
-<h3><code>nested: false</code></h3>
+<h3 id="nestedList"><code>nested: false</code></h3>
 
 <div class="border p-1 mb-1">
   <div class="row">
@@ -154,7 +192,7 @@
   </div>
 </div>
 
-<h3><code>nested: 'dropdown'</code></h3>
+<h3 id="nestedDropdown"><code>nested: 'dropdown'</code></h3>
 
 <div class="border p-1 mb-1">
   <div class="row">
