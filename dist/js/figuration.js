@@ -494,6 +494,28 @@ if (typeof jQuery === 'undefined') {
 
         return list[Math.max(0, Math.min(index, listLength - 1))];
     };
+
+    $.CFW_enableDissmissControl = function(name, method) {
+        if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
+
+        if (typeof method === 'undefined') { method = 'hide'; }
+        var widget = 'CFW_' + name.capitalize();
+        var eventName = 'click.dismiss.cfw.' + name;
+
+        $(document).on(eventName, '[data-cfw-dismiss="' + name + '"]', function(event) {
+            if (/a|area/i.test(this.tagName)) {
+                event.preventDefault();
+            }
+            if ($.CFW_isDisabled(this)) { return; }
+
+            var selector = $(this).CFW_getSelectorFromElement(name);
+            var $elm = selector ? $(selector) : $(this).closest('.' + name);
+
+            if ($elm.length) {
+                $elm[widget](method, event);
+            }
+        });
+    };
 }(jQuery));
 
 /**
@@ -1555,8 +1577,7 @@ if (typeof jQuery === 'undefined') {
                 .attr('aria-expanded', 'true')
                 .addClass('open');
             this.$target
-                .addClass('open')
-                .find('li').redraw();
+                .addClass('open');
 
             // Handle loss of focus
             $(document)
@@ -1663,10 +1684,6 @@ if (typeof jQuery === 'undefined') {
             }
             this.popper = null;
         }
-    };
-
-    $.fn.redraw = function() {
-        return this.offsetHeight;
     };
 
     var Plugin = function(option) {
@@ -2364,21 +2381,8 @@ if (typeof jQuery === 'undefined') {
                         if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
-                            // Click the close button if it exists otherwise force tooltip closed
-                            if ($('.close', $selfRef.$target).length > 0) {
-                                $('.close', $selfRef.$target).eq(0).trigger('click');
-                            } else {
-                                $selfRef.hide(true);
-                            }
+                            $selfRef.dismiss();
                         }
-                    });
-
-                // Bind 'close' buttons
-                this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
-                        if (e) { e.preventDefault(); }
-                        $selfRef.follow = true;
-                        $selfRef.hide();
                     });
             }
         },
@@ -2609,6 +2613,11 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.$target.CFW_transition(null, this._showComplete.bind(this));
+        },
+
+        dismiss : function() {
+            this.follow = true;
+            this.hide();
         },
 
         hide : function(force) {
@@ -3142,6 +3151,8 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
+
+    $.CFW_enableDissmissControl('tooltip', 'dismiss');
 }(jQuery));
 
 /**
@@ -3568,6 +3579,8 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
+
+    $.CFW_enableDissmissControl('popover', 'dismiss');
 }(jQuery));
 
 /**
@@ -3685,12 +3698,7 @@ if (typeof jQuery === 'undefined') {
             this.escape();
             this.resize();
 
-            this.$target
-                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
-                    if (e) { e.preventDefault(); }
-                    $selfRef.hide();
-                })
-                .data('cfw.modal', this);
+            this.$target.data('cfw.modal', this);
 
             // Chained modals
             this.$target
@@ -3841,6 +3849,16 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.unlink();
                 }
             });
+        },
+
+        handleHide : function(e) {
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if (!$.CFW_isDisabled(e.currentTarget)) {
+                this.close();
+            }
         },
 
         chain : function(selector) {
@@ -4052,7 +4070,9 @@ if (typeof jQuery === 'undefined') {
                         $selfRef.ignoreBackdropClick = false;
                         return;
                     }
+
                     if (e.target !== e.currentTarget) { return; }
+
                     if ($selfRef.settings.backdrop === 'static') {
                         $selfRef.hideBlocked();
                     } else {
@@ -4173,6 +4193,8 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
+
+    $.CFW_enableDissmissControl('modal', 'hide');
 }(jQuery));
 
 /**
@@ -4770,8 +4792,6 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    var dismiss = '[data-cfw-dismiss="alert"]';
-
     var CFW_Widget_Alert = function(element, options) {
         this.$element = $(element);
         this.$parent = null;
@@ -4798,7 +4818,7 @@ if (typeof jQuery === 'undefined') {
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    $selfRef.handleClose(e);
+                    $selfRef.close(e);
                 });
 
             this.$parent
@@ -4806,21 +4826,21 @@ if (typeof jQuery === 'undefined') {
         },
 
         handleClose : function(e) {
-            e.preventDefault();
-
             if (e.currentTarget === this.$parent[0]) {
                 return;
             }
 
-            if (!$.CFW_isDisabled(e.currentTarget)) {
-                this.close();
-            }
+            // Update settings from the trigger data
+            var parsedData = this.$element.CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+            this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData);
+
+            this.close(e);
         },
 
         close : function(e) {
             var $selfRef = this;
 
-            if (e) { e.preventDefault(); }
+            if (e && $.CFW_isDisabled(e.currentTarget)) { return; }
 
             if (this.inTransition) { return; }
 
@@ -4889,13 +4909,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
 
-    // API
-    // ===
-    if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function(e) {
-            $(this).CFW_Alert('handleClose', e);
-        });
-    }
+    $.CFW_enableDissmissControl('alert, handleClose');
 }(jQuery));
 
 /**
@@ -6036,6 +6050,7 @@ if (typeof jQuery === 'undefined') {
         // https://github.com/iandevlin/iandevlin.github.io/blob/master/mdn/video-player-with-captions/js/video-player.js
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
+            // eslint-disable-next-line compat/compat
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
             return $fsNode.is(this.$element);
         },
@@ -7150,7 +7165,6 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     var cfwList = {
-        '[data-cfw-dismisss="alert"]': 'CFW_Alert',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',
