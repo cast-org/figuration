@@ -247,9 +247,16 @@ The popover widget, by default, generates content and markup on demand, and by d
 
 ### Via Data Attributes
 
+#### Toggle
+
 The required markup for a popover is only a `data-cfw="popover"` attribute and `title` or a `data-cfw-popover-content=""` on the HTML element you wish to have a popover. The generated markup of a popover is rather simple, though it does require a position (by default, set to top by the widget).
 
 If the popover item is already created, you can link to it using <code>data-cfw-popover-target="#somePopover"</code>, or <code>href="#somePopover"</code>. The proper `role` and `aria-` attributes will be automatically created to link the trigger and target elements.
+
+#### Dismiss
+
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
+{% include jsDismiss with name: 'popover' %}
 
 ### Via JavaScript
 
