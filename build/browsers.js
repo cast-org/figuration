@@ -51,19 +51,21 @@ const browsers = {
     },
     iPhone: {
         base: 'SauceLabs',
-        deviceName: 'iPhone X Simulator',
-        deviceOrientation: 'portrait',
-        platformVersion: '11.0',
-        platformName: 'iOS',
-        browserName: 'Safari'
+        deviceName:'iPhone 11 Simulator',
+        platformName:'iOS',
+        platformVersion:'13.0',
+        browserName:'Safari',
+        appiumVersion:'1.19.2',
+        deviceOrientation:'portrait'
     },
     android: {
         base: 'SauceLabs',
-        deviceName: 'Android Emulator',
-        deviceOrientation: 'portrait',
-        platformVersion: '8.0',
-        platformName: 'Android',
-        browserName: 'Chrome'
+        deviceName: 'Android GoogleAPI Emulator',
+        platform: 'Android',
+        version: '9.0',
+        browserName: 'Chrome',
+        appiumVersion: '1.19.2',
+        deviceOrientation: 'portrait'
     }
 };
 
