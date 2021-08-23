@@ -5,10 +5,15 @@ const ENV = process.env;
 const DEBUG = Boolean(ENV.DEBUG);
 const SAUCE = Boolean(ENV.SAUCE);
 
+const ip = require('ip');
 const {
     browsers,
     browsersKeys
 } = require('./browsers');
+
+const date = new Date();
+const dateString = date.toISOString();
+const dateTime = date.getTime();
 
 const jqueryFile = 'node_modules/jquery/dist/jquery.slim.min.js';
 
@@ -68,12 +73,10 @@ const files = [
     'js/scrollspy.js',
     'js/alert.js',
     'js/lazy.js',
-    'js/slider.js',
-    'js/img-compare.js',
     'js/equalize.js',
     'js/player.js',
     'js/common.js',
-    'test/js/unit/!(bridge).js',
+    'test/js/unit/*.js',
     {
         pattern: 'test/js/assets/*',
         watched: false,
@@ -88,7 +91,7 @@ const proxies = {
 
 const conf = {
     basePath: '..',
-    hostname: 'lh',
+    hostname: ip.address(),
     port: 9876,
     colors: true,
     autoWatch: false,
@@ -106,8 +109,8 @@ const conf = {
 // Some test to go here later
 if (SAUCE) {
     conf.sauceLabs = {
-        build: ENV.TRAVIS_BUILD_NUMBER ? ENV.TRAVIS_BUILD_NUMBER + '-' + ENV.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`,
-        tunnelIdentifier: ENV.TRAVIS_JOB_NUMBER,
+        build: ENV.TRAVIS_BUILD_NUMBER ? ENV.TRAVIS_BUILD_NUMBER + '-' + ENV.TRAVIS_JOB_ID : `figuration-${dateString}`,
+        tunnelIdentifier: ENV.TRAVIS_JOB_NUMBER ? ENV.TRAVIS_JOB_NUMBER : `figuration-${dateTime}`,
         username: ENV.SAUCE_USERNAME,
         accessKey: ENV.SAUCE_ACCESS_KEY,
         startConnect: ENV.TRAVIS !== 'true'
@@ -116,7 +119,7 @@ if (SAUCE) {
     conf.customLaunchers = browsers;
     conf.browsers = browsersKeys;
     reporters.push('saucelabs');
-    conf.concurrency = Infinity;
+    conf.concurrency = 3;
     conf.browserDisconnectTimeout = 3 * 60 * 1000;
     conf.client.qunit.hidepassed = true;
 } else {
@@ -143,6 +146,6 @@ conf.proxies = proxies;
 
 module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    conf.logLevel = config.LOG_ERROR || config.LOG_WARN;
+    conf.logLevel = config.LOG_ERROR;
     config.set(conf);
 };
