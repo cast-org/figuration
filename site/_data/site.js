@@ -6,13 +6,22 @@ module.exports = {
   "description":    "A feature rich, responsive, mobile first, accessible, front-end framework.",
 
   "url":            "http://figuration.org",
+  "domain":         "figuration.org",
   "path":           "",
   "language":       "en-us",
 
+  // Open Graph protocol (https://ogp.me/) - Social media meta tags
+  "og": {
+    "image":        "/assets/brand/figuration-social-large.png",
+    "image_type":   "image/png",
+    "image_width":  "1000",
+    "image_height": "500"
+  },
+
   "twitter": {
     "name":         "figuration_org",
-    "logo":         "/assets/brand/figuration-social.png",
-    "home":         "https://twitter.com/figuration_org"
+    "home":         "https://twitter.com/figuration_org",
+    "image":         "/assets/brand/figuration-social.png"
   },
 
   "version": {
