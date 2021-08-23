@@ -4,4 +4,16 @@
 <meta name="twitter:creator" content="@{{ site.twitter.name }}">
 <meta name="twitter:title" content="{{ title | default: site.title | smartify }}">
 <meta name="twitter:description" content="{{ description | default: site.description | smartify }}">
-<meta name="twitter:image" content="{{ site.url | append: site.path | append: site.twitter.logo }}">
+{% if site.twitter.image != "" -%}
+<meta name="twitter:image" content="{{ site.url | append: site.path | append: site.twitter.image }}">
+{% endif -%}
+
+<!-- Open Graph -->
+<meta property="og:url" content="{{ site.url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title | default: site.title | smartify }}">
+<meta property="og:description" content="{{ description | default: site.description | smartify }}">
+<meta property="og:image" content="{{ site.url | append: site.path | append: site.og.image }}">
+<meta property="og:image:type" content="{{ site.og.image_type }}">
+<meta property="og:image:width" content="{{ site.og.image_width }}">
+<meta property="og:image:height" content="{{ site.og.image_height }}">
