@@ -143,15 +143,6 @@ module.exports = function(grunt) {
             }
         },
 
-        copy: {
-            docs: {
-                expand: true,
-                cwd: 'dist/',
-                src: ['**/*'],
-                dest: 'site/<%= pkg.config.versionShort %>/dist/'
-            }
-        },
-
         stylelint: {
             options: {
                 configFile: '.stylelintrc'
