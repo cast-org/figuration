@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "http://figuration.org",
+  "homepage": "https://figuration.org",
   "author": "CAST, Inc.",
   "license": "MIT",
   "peerDependencies": {

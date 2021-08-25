@@ -15,7 +15,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://figuration.org",
+  "homepage": "https://figuration.org",
   "author": "CAST, Inc.",
   "scripts": {
     "test": "grunt test",

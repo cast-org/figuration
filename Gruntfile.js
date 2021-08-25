@@ -76,7 +76,6 @@ module.exports = function(grunt) {
         ],
 
         jsDocs: [
-            'site/assets/<%= pkg.config.versionShort %>/js/vendor/anchor.min.js',
             'site/assets/<%= pkg.config.versionShort %>/js/vendor/clipboard.min.js',
             'site/assets/<%= pkg.config.versionShort %>/js/vendor/holder.min.js',
             'site/assets/<%= pkg.config.versionShort %>/js/src/docs.js'
