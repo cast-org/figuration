@@ -203,9 +203,9 @@ module.exports = function(grunt) {
                 },
                 expand: true,
                 cwd: 'dist/css',
-                src: ['*.css', '!*.min.css', '!*-rtl.css'],
+                src: ['*.css', '!*.min.css', '!*.rtl.css'],
                 dest: 'dist/css',
-                ext: '-rtl.css'
+                ext: '.rtl.css'
             },
             docs: {
                 options: {
@@ -218,9 +218,9 @@ module.exports = function(grunt) {
                 },
                 expand: true,
                 cwd: 'site/assets/<%= pkg.config.versionShort %>/css',
-                src: ['*.css', '!*.min.css', '!*-rtl.css'],
+                src: ['*.css', '!*.min.css', '!*.rtl.css'],
                 dest: 'site/assets/<%= pkg.config.versionShort %>/css',
-                ext: '-rtl.css'
+                ext: '.rtl.css'
             }
         },
 
