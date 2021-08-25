@@ -5,7 +5,7 @@ module.exports = {
   "author":         "CAST, Inc.",
   "description":    "A feature rich, responsive, mobile first, accessible, front-end framework.",
 
-  "url":            "http://figuration.org",
+  "url":            "https://figuration.org",
   "domain":         "figuration.org",
   "path":           "",
   "language":       "en-us",

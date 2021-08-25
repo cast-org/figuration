@@ -1,8 +1,8 @@
-# [Figuration](http://figuration.org/)
+# [Figuration](https://figuration.org/)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework.
 
-**Get started at <http://figuration.org/>!**
+**Get started at <https://figuration.org/>!**
 
 ## Table of Contents
 
@@ -44,7 +44,7 @@ Several quick start options are available:
 - Install with [npm](https://www.npmjs.com/): `npm install figuration@4.2.0`
 - Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.2.0`
 
-Read the [Get Started page](http://figuration.org/4.2/get-started/quick-start/) for information on the framework, templates, and examples.
+Read the [Get Started page](https://figuration.org/4.2/get-started/quick-start/) for information on the framework, templates, and examples.
 
 
 ### What's Included
@@ -74,7 +74,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-Figurations's documentation, included in this repo in the root directory, is built with [Eleventy](https://www.11ty.io/) and publicly hosted on GitHub Pages at <http://figuration.org>. The docs may also be run locally.
+Figurations's documentation, included in this repo in the root directory, is built with [Eleventy](https://www.11ty.io/) and publicly hosted on GitHub Pages at <https://figuration.org>. The docs may also be run locally.
 
 
 ### Running Documentation Locally
