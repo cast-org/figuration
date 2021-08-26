@@ -32,8 +32,8 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: CSS Lint
+      - name: JS Lint and Karma headless
         run: grunt test-js
 
-      - name: CSS Dist
+      - name: JS Dist
         run: grunt dist-js
