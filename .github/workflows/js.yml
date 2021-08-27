@@ -11,7 +11,7 @@ env:
 
 jobs:
   js:
-    name: Node ${{ matrix.node }}
+    name: JS - Node ${{ matrix.node }}
     runs-on: ubuntu-latest
 
     strategy:
