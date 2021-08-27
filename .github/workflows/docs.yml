@@ -11,7 +11,7 @@ env:
   NODE: 14
 
 jobs:
-  css:
+  docs:
     runs-on: ubuntu-latest
 
     steps:

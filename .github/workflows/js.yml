@@ -10,7 +10,7 @@ env:
   FORCE_COLOR: 2
 
 jobs:
-  run:
+  js:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
 

@@ -340,7 +340,7 @@ module.exports = function(grunt) {
 
     // Test - JS subtasks
     var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:build'];
-    if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
+    if (saucekey !== null && process.env.SAUCE === 'true') {
         jsTestTasks.push('run:npmJsTestCloud');
     } else {
         jsTestTasks.push('run:npmJsTestKarma');
