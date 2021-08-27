@@ -109,11 +109,11 @@ const conf = {
 // Some test to go here later
 if (SAUCE) {
     conf.sauceLabs = {
-        build: ENV.TRAVIS_BUILD_NUMBER ? ENV.TRAVIS_BUILD_NUMBER + '-' + ENV.TRAVIS_JOB_ID : `figuration-${dateString}`,
-        tunnelIdentifier: ENV.TRAVIS_JOB_NUMBER ? ENV.TRAVIS_JOB_NUMBER : `figuration-${dateTime}`,
+        build: `figuration-${dateString}`,
+        tunnelIdentifier: `figuration-${dateTime}`,
         username: ENV.SAUCE_USERNAME,
         accessKey: ENV.SAUCE_ACCESS_KEY,
-        startConnect: ENV.TRAVIS !== 'true'
+        startConnect: true
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;

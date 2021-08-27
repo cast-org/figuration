@@ -1,0 +1,39 @@
+name: JS
+
+on:
+  push:
+    branches-ignore:
+      - "dependabot/**"
+  pull_request:
+
+env:
+  FORCE_COLOR: 2
+
+jobs:
+  js:
+    name: JS - Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [12, 14, 16]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: JS Lint and Karma headless
+        run: grunt test-js
+
+      - name: JS Dist
+        run: grunt dist-js
