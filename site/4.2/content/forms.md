@@ -421,32 +421,34 @@ document.getElementById("check1").indeterminate = true;
 
 ### Switch
 
-In similar fashion to the stylized checkbox and radio input, transform either of the input types to a stylized toggle switch by the using the `.form-switch` modifier class instead.
+In similar fashion to the stylized checkbox and radio input, transform either of the input types to a stylized toggle switch by the using the `.form-switch` modifier class instead. Switches support the use of the `disabled` attribute.
+
+When using `type="checkbox"`, consider using the [ARIA `switch` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Switch_role)&mdash;by adding `role="switch"`to the input&mdash;to better convey the nature of the control in supported assistive technologies.
 
 {% capture example %}
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="switch0">
+  <input class="form-check-input" type="checkbox" role="switch" id="switch0">
   <label class="form-check-label" for="switch0">Custom switch checkbox</label>
   <small class="text-muted d-block">Some additional help text could appear right here.</small>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="switch1" disabled>
+  <input class="form-check-input" type="checkbox" role="switch" id="switch1" disabled>
   <label class="form-check-label" for="switch1">Disabled custom switch checkbox</label>
   <small class="text-muted d-block">Some additional help text could appear right here.</small>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="switch2" disabled checked>
+  <input class="form-check-input" type="checkbox" role="switch" id="switch2" disabled checked>
   <label class="form-check-label" for="switch2">Disabled checked custom switch checkbox</label>
   <small class="text-muted d-block">Some additional help text could appear right here.</small>
 </div>
 <fieldset class="mt-1" disabled>
   <legend class="form-label">Disabled fieldset</legend>
   <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="switch3">
+    <input class="form-check-input" type="checkbox" role="switch" id="switch3">
     <label class="form-check-label" for="switch3">Custom switch checkbox in a disabled fieldset</label>
   </div>
   <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="switch4" checked>
+    <input class="form-check-input" type="checkbox" role="switch" id="switch4" checked>
     <label class="form-check-label" for="switch4">Checked switch checkbox in a disabled fieldset</label>
   </div>
 </fieldset>
@@ -504,7 +506,7 @@ However, the stylized inputs will need to keep their label in order for the visu
   </label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="nolabel3" value="">
+  <input class="form-check-input" type="checkbox" role="switch" id="nolabel3" value="">
   <label class="form-check-label" for="nolabel3">
     <span class="sr-only">Visually hidden label text</span>
   </label>
@@ -539,7 +541,7 @@ Label can be supplied outside of the `.form-check` container also.
   <label class="col-md-auto" for="extlabel2">External label</label>
   <div class="col">
     <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="extlabel2" checked>
+      <input class="form-check-input" type="checkbox" role="switch" id="extlabel2" checked>
       <label class="form-check-label" for="extlabel2"></label>
     </div>
   </div>
@@ -565,7 +567,7 @@ Group checkboxes or radios on the same horizontal row by using `display` and `ma
   <label class="form-check-label" for="inline2">Inline custom radio</label>
 </div>
 <div class="form-check form-switch d-inline-block">
-  <input class="form-check-input" type="checkbox" id="inline3" checked>
+  <input class="form-check-input" type="checkbox" role="switch" id="inline3" checked>
   <label class="form-check-label" for="inline3">Inline custom switch</label>
 </div>
 {% endcapture %}
@@ -586,7 +588,7 @@ Our custom checkbox, radio, and switch inputs use `em` for sizing, so that they 
 </div>
 <div class="fs-small">
   <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="resize2" checked>
+    <input class="form-check-input" type="checkbox" role="switch" id="resize2" checked>
     <label class="form-check-label" for="resize2">Resized custom switch</label>
   </div>
 </div>
@@ -1359,8 +1361,8 @@ Validation styles are supported for the following form controls and components:
   </div>
 
   <div class="form-check form-switch mb-1">
-    <input type="checkbox" class="form-check-input" id="validate-support-7" required>
-    <label class="form-check-label" for="validate-support-7">Check this custom checkbox</label>
+    <input type="checkbox" role="switch" class="form-check-input" id="validate-support-7" required>
+    <label class="form-check-label" for="validate-support-7">Toggle this custom switch</label>
     <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
