@@ -109,7 +109,7 @@ const conf = {
 // Some test to go here later
 if (SAUCE) {
     conf.sauceLabs = {
-        build: `figuration-${dateString}`,
+        build: `figuration-${ENV.GITHUB_SHA ? ENV.GITHUB_SHA.slice(0, 7) + '-' : ''}${dateString}`,
         tunnelIdentifier: `figuration-${dateTime}`,
         username: ENV.SAUCE_USERNAME,
         accessKey: ENV.SAUCE_ACCESS_KEY,

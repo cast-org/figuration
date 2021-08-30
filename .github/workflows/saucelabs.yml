@@ -31,3 +31,4 @@ jobs:
         env:
           SAUCE_ACCESS_KEY: "${{ secrets.SAUCE_ACCESS_KEY }}"
           SAUCE_USERNAME: "${{ secrets.SAUCE_USERNAME }}"
+          GITHUB_SHA: "${{ github.sha }}"
