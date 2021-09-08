@@ -355,7 +355,7 @@ $(function() {
         assert.strictEqual($.CFW_getNextActiveElement(list, 'a', false, true), 'd');
     });
 
-    QUnit.test('CFW_enableDissmissControl should call WidgetName(\'hide\') method when a click occurred on data-cfw-dismiss="WidgetName"', function(assert) {
+    QUnit.test('CFW_enableDismissControl should call WidgetName(\'hide\') method when a click occurred on data-cfw-dismiss="WidgetName"', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<div id="item" class="testDismiss">' +
@@ -370,11 +370,11 @@ $(function() {
                 done();
             });
 
-        $.CFW_enableDissmissControl('testDismiss');
+        $.CFW_enableDismissControl('testDismiss');
         $dismiss.trigger('click');
     });
 
-    QUnit.test('CFW_enableDissmissControl should call WidgetName(\'custom\') method when a click occurred on data-cfw-dismiss="WidgetName" and custom method set', function(assert) {
+    QUnit.test('CFW_enableDismissControl should call WidgetName(\'custom\') method when a click occurred on data-cfw-dismiss="WidgetName" and custom method set', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<div id="item" class="testDismiss">' +
@@ -389,11 +389,11 @@ $(function() {
                 done();
             });
 
-        $.CFW_enableDissmissControl('testDismiss', 'custom');
+        $.CFW_enableDismissControl('testDismiss', 'custom');
         $dismiss.trigger('click');
     });
 
-    QUnit.test('CFW_enableDissmissControl should execute on closest `.pluginName` if target is not defined', function(assert) {
+    QUnit.test('CFW_enableDismissControl should execute on closest `.pluginName` if target is not defined', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<div id="item" class="testDismiss">' +
@@ -409,7 +409,7 @@ $(function() {
                 done();
             });
 
-        $.CFW_enableDissmissControl('testDismiss');
+        $.CFW_enableDismissControl('testDismiss');
         $dismiss.trigger('click');
         clearTimeout(timer);
         timer = setTimeout(function() {
@@ -418,7 +418,7 @@ $(function() {
         }, 75);
     });
 
-    QUnit.test('CFW_enableDissmissControl should not execute if button control is disabled', function(assert) {
+    QUnit.test('CFW_enableDismissControl should not execute if button control is disabled', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<div id="item" class="testDismiss">' +
@@ -434,7 +434,7 @@ $(function() {
                 done();
             });
 
-        $.CFW_enableDissmissControl('testDismiss');
+        $.CFW_enableDismissControl('testDismiss');
         $dismiss.trigger('click');
         clearTimeout(timer);
         timer = setTimeout(function() {
@@ -443,7 +443,7 @@ $(function() {
         }, 75);
     });
 
-    QUnit.test('CFW_enableDissmissControl should not execute if link has `.disabled` class', function(assert) {
+    QUnit.test('CFW_enableDismissControl should not execute if link has `.disabled` class', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<div id="item" class="testDismiss">' +
@@ -459,7 +459,7 @@ $(function() {
                 done();
             });
 
-        $.CFW_enableDissmissControl('testDismiss');
+        $.CFW_enableDismissControl('testDismiss');
         $dismiss.trigger('click');
         clearTimeout(timer);
         timer = setTimeout(function() {

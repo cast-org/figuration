@@ -423,5 +423,5 @@
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
 
-    $.CFW_enableDissmissControl('popover', 'dismiss');
+    $.CFW_enableDismissControl('popover', 'dismiss');
 }(jQuery));
