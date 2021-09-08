@@ -474,7 +474,7 @@
         return list[Math.max(0, Math.min(index, listLength - 1))];
     };
 
-    $.CFW_enableDissmissControl = function(name, method) {
+    $.CFW_enableDismissControl = function(name, method) {
         if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
 
         if (typeof method === 'undefined') { method = 'hide'; }

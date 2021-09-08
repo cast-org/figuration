@@ -125,5 +125,5 @@
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
 
-    $.CFW_enableDissmissControl('alert', 'handleClose');
+    $.CFW_enableDismissControl('alert', 'handleClose');
 }(jQuery));

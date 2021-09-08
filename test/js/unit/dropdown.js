@@ -202,72 +202,6 @@ $(function() {
             .trigger(eventSpace);
     });
 
-    QUnit.test('should not remove "open" class if tabbing from trigger', function(assert) {
-        assert.expect(4);
-        var done = assert.async();
-        var dropdownHTML = '<div class="dropdown">' +
-            '<button id="dropdown-trigger" type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
-            '<ul id="dropdown-menu" class="dropdown-menu">' +
-            '<li><a href="#">Menu link</a></li>' +
-            '</ul>' +
-            '</div>';
-        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
-        $dropdown.CFW_Dropdown();
-
-        $dropdown
-            .on('afterShow.cfw.dropdown', function() {
-                assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to trigger on click');
-                assert.ok($('#dropdown-trigger').hasClass('open'), '"open" class added to menu on click');
-                var e = $.Event('keydown', {
-                    which: 9 // Tab
-                });
-                $dropdown.trigger(e);
-            })
-            .on('keydown', function() {
-                assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to trigger on click');
-                assert.ok($('#dropdown-trigger').hasClass('open'), '"open" class added to menu on click');
-                done();
-            })
-            .trigger('click');
-    });
-
-    // Currently disabled since this key command is not captured by the
-    // dropdown widget, so it does not work in an automated manner
-    //    QUnit.test('should remove "open" class if tabbing from last menu item', function(assert) {
-    //        assert.expect(6);
-    //        var done = assert.async();
-    //        var dropdownHTML = '<div class="dropdown">' +
-    //            '<button id="dropdown-trigger" type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
-    //            '<ul id="dropdown-menu" class="dropdown-menu">' +
-    //            '<li><button id="menu-item" class="dropdown-item" type="button">Action</button></li>' +
-    //            '</ul>' +
-    //            '</div>' +
-    //            '<a id="post-link" href="#">Post link</a>';
-    //        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
-    //        $dropdown.CFW_Dropdown();
-    //
-    //        $dropdown
-    //            .on('afterShow.cfw.dropdown', function() {
-    //                assert.ok($('#dropdown-trigger').hasClass('open'), '"open" class added to trigger on click');
-    //                assert.ok($('#dropdown-menu').hasClass('open'), '"open" class added to menu on click');
-    //                var $menuItem = $('#menu-item');
-    //                $menuItem.trigger('focus');
-    //                assert.ok($(document.activeElement).is($menuItem), 'menu item is focused');
-    //                var e = $.Event('keydown', {
-    //                    which: 9  //Tab
-    //                });
-    //                $menuItem.trigger(e);
-    //            })
-    //            .on('afterHide.cfw.dropdown', function() {
-    //                var $postLink = $('#post-link');
-    //                assert.ok($(document.activeElement).is($postLink), 'post menu link is focused');
-    //                assert.ok(!$('#dropdown-trigger').hasClass('open'), '"open" class removed from trigger');
-    //                assert.ok(!$('#dropdown-menu').hasClass('open'), '"open" class removed from menu');
-    //                done();
-    //            })
-    //            .trigger('click');
-    //    });
-
     QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function(assert) {
         assert.expect(7);
         var dropdownHTML = '<div class="dropdown">' +
@@ -1021,6 +955,47 @@ $(function() {
 
         $element.CFW_Dropdown();
         $element.trigger('click');
+    });
+
+    QUnit.test('right arrow keypress should open submenu and select first item', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="menulink">Menu link</a></li>' +
+            '<li>' +
+            '<a href="#" id="subtoggle">Menu link</a>' +
+            '<ul>' +
+            '<li><a href="#" id="sublink">Sub-menu link</a></li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var $menulink = $('#menulink');
+        var $subtoggle = $('#subtoggle');
+        var $sublink = $('#sublink');
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.hasClass('open'), 'main menu opened');
+                $subtoggle
+                    .on('afterShow.cfw.dropdown', function(e) {
+                        assert.ok($subtoggle.hasClass('open'), 'submenu opened');
+                        setTimeout(function() {
+                            assert.strictEqual(document.activeElement, $sublink[0]);
+                            done();
+                        });
+                    });
+                $subtoggle.trigger('focus');
+                $subtoggle.trigger($.Event('keydown', {
+                        which: 39 // Right
+                    }));
+            });
+
+        $dropdown.trigger('click');
     });
 
     QUnit.test('left arrow keypress should close submenu, but not main menu', function(assert) {

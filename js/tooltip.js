@@ -1005,5 +1005,5 @@
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
 
-    $.CFW_enableDissmissControl('tooltip', 'dismiss');
+    $.CFW_enableDismissControl('tooltip', 'dismiss');
 }(jQuery));

@@ -609,5 +609,5 @@
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
 
-    $.CFW_enableDissmissControl('modal', 'hide');
+    $.CFW_enableDismissControl('modal', 'hide');
 }(jQuery));
