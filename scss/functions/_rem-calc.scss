@@ -16,7 +16,7 @@
 // *Any* value passed, regardless of unit, is assumed to be a pixel value.
 // @param {Number} $value - Pixel value to convert.
 // @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
-@function -any-to-rem($value) {
+@function _any-to-rem($value) {
     // Check if the value is a number
     @if type-of($value) != "number" {
         @warn inspect($value) + " was passed to rem(), which is not a number.";
