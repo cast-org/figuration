@@ -425,6 +425,19 @@ $(window).ready(function() {
                 </div>
             </div>
 
+            <span class="badge bg-info" id="alert-badge">
+                Dismissable badge
+                <button type="button" class="close" aria-label="Dismiss" data-cfw-dismiss="alert" data-cfw-alert-target="#alert-badge">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+
+
+            <div id="test" style="transition: none;">
+            <p><strong>Danger!</strong> There is definitaly some error now.</p>
+            </div>
+            <button type="button"  class="close" data-cfw-dismiss="alert" data-cfw-alert-target="#test">&times;</button>
+
             <hr>
 
             <h2 id="slideshow">Slideshow:</h2>
