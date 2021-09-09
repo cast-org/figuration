@@ -191,21 +191,18 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 1, 'element not removed from dom');
     });
 
-/*
     QUnit.test('should remove element when external close button is clicked', function(assert) {
         assert.expect(3);
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'no element in dom');
         var alertHTML = '<div id="test">' +
             '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
             '</div>' +
-            '<a class="close" href="#test" data-cfw-dismiss="alert" data-cfw-alert-target="#test">&times;</a>';
-        var $alert = $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
-        var $close = $alert.find('.close');
+            '<button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-target="#test">&times;</button>';
+        $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
+        var $close = $('.close');
         assert.notEqual($('#qunit-fixture').find('#test').length, 0, 'element added to dom');
         $close
-            .CFW_Alert()
             .trigger('click');
         assert.strictEqual($('#qunit-fixture').find('#test').length, 0, 'element removed from dom');
     });
-*/
 });
