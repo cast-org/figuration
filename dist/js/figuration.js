@@ -495,7 +495,7 @@ if (typeof jQuery === 'undefined') {
         return list[Math.max(0, Math.min(index, listLength - 1))];
     };
 
-    $.CFW_enableDissmissControl = function(name, method) {
+    $.CFW_enableDismissControl = function(name, method) {
         if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
 
         if (typeof method === 'undefined') { method = 'hide'; }
@@ -3152,7 +3152,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
 
-    $.CFW_enableDissmissControl('tooltip', 'dismiss');
+    $.CFW_enableDismissControl('tooltip', 'dismiss');
 }(jQuery));
 
 /**
@@ -3580,7 +3580,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
 
-    $.CFW_enableDissmissControl('popover', 'dismiss');
+    $.CFW_enableDismissControl('popover', 'dismiss');
 }(jQuery));
 
 /**
@@ -4194,7 +4194,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
 
-    $.CFW_enableDissmissControl('modal', 'hide');
+    $.CFW_enableDismissControl('modal', 'hide');
 }(jQuery));
 
 /**
@@ -4909,7 +4909,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
 
-    $.CFW_enableDissmissControl('alert, handleClose');
+    $.CFW_enableDismissControl('alert', 'handleClose');
 }(jQuery));
 
 /**

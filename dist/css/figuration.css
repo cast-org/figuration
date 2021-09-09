@@ -1797,6 +1797,7 @@ textarea.form-control.has-validation-icon.is-invalid {
 
 .btn {
   display: inline-block;
+  align-self: center;
   font-weight: 400;
   text-align: center;
   text-decoration: none;
