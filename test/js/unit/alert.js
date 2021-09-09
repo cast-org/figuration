@@ -198,7 +198,7 @@ $(function() {
             '<p><strong>Danger!</strong> There is definitaly some error now.</p>' +
             '</div>' +
             '<button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-target="#test">&times;</button>';
-        var $alert = $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
+        $(alertHTML).css('transition', 'none').appendTo('#qunit-fixture');
         var $close = $('.close');
         assert.notEqual($('#qunit-fixture').find('#test').length, 0, 'element added to dom');
         $close
