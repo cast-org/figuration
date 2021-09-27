@@ -40,19 +40,19 @@ These examples show the automatically attached alert dismiss triggers, enabled t
 
 The dismiss will work with dynamically inserted alerts.
 
-<div class="cf-example cf-example-bottom">
-  <p>
-    <button type="button" class="btn btn-outline-primary" id="alert-create">Insert Alert</button>
-  </p>
-  <div id="alert-demo"></div>
+{% capture example %}
+<p>
+  <button type="button" class="btn btn-primary" id="alertCreate">Insert Alert</button>
+</p>
+<div id="alertDemoContainer"></div>
 
-  <script>
-    $('#alert-create').on('click', function(event) {
-      if (event) event.preventDefault();
-      $('#alert-demo').after('<div class="alert alert-info" role="alert"><button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button><strong>Sample alert!</strong> Click my close button --&gt;</div>');
-    });
-  </script>
-</div>
+<script>
+  $('#alertCreate').on('click', function() {
+    $('#alertDemoContainer').after('<div class="alert alert-info" role="alert"><button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button><strong>Sample alert!</strong> Click my close button --&gt;</div>');
+  });
+</script>
+{% endcapture %}
+{% renderExample example %}
 
 Enable an alert's dismiss trigger through scripting.
 
