@@ -211,7 +211,7 @@ You can find and customize these variables for key global options in our `_setti
       <tr>
         <td><code>$enable-smooth-scroll</code></td>
         <td><code>true</code> (default) or <code>false</code></td>
-        <td>Enables <code>scroll-behavior: smooth</code> globally, except for users asking for reduced motion through <a href="{{ site.path }}/{{ version.docs }}/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code>` media query</a>.</td>
+        <td>Enables <code>scroll-behavior: smooth</code> globally, except for users asking for reduced motion through <a href="{{ site.path }}/{{ version.docs }}/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code> media query</a>.</td>
       </tr>
       <tr>
         <td><code>$enable-grid-classes</code></td>
