@@ -4831,9 +4831,9 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Update settings from the trigger data
-            var parsedData = this.$element.CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+            var parsedData = $(e.currentTarget).CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
             this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData);
-
+            this.findParent();
             this.close(e);
         },
 
