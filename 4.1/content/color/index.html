@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Color">
 <meta name="twitter:description" content="Theme colors, quick overview of the palette system for consitent control of colors used within Figuration, and the available color contrast SASS functions.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Color">
+<meta property="og:description" content="Theme colors, quick overview of the palette system for consitent control of colors used within Figuration, and the available color contrast SASS functions.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -348,7 +357,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="themes">Themes <a class="direct-link" href="#themes"></a></h2>
+          <h2 id="themes" tabindex="-1">Themes <a class="direct-link" href="#themes"></a></h2>
 <p>Here are the names and base color values for the color themes used throughout Figuration.  These colors are used to expand into a palette style color system, as seen below.</p>
 <div class="row text-black">
   <div class="palette col-sm-6 col-md-4">
@@ -394,7 +403,7 @@
 </div>
 <p>The pre-defined color variables are available when building your own components.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.custom-element {</span><br><span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$primary</span>;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="palette">Palette <a class="direct-link" href="#palette"></a></h2>
+<h2 id="palette" tabindex="-1">Palette <a class="direct-link" href="#palette"></a></h2>
 <p>Figuration uses a simplified color palettes, extended from our base colors, similar to the concept by <a href="https://www.google.com/design/spec/style/color.html#color-color-palette">Google's Material color palettes</a>.</p>
 <p>By 'simplified' we mean the base colors are simply mixed against white or black in stepped levels to create a color scale.</p>
 <p>Since our base colors tend to be on the dark side, there is a skew in the mixing percentages between the light and dark sides so that we don't reach pure black before hitting the top of the scale.</p>
@@ -533,9 +542,9 @@
     <div class="palette-item bg-gray-900 text-white">900</div>
   </div>
 </div>
-<h3 id="palette-1">palette() <a class="direct-link" href="#palette-1"></a></h3>
+<h3 id="palette-1" tabindex="-1">palette() <a class="direct-link" href="#palette-1"></a></h3>
 <p>Mix your own colors using the palette function.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token function">palette</span><span class="token selector">($color, $level)</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token function">palette</span><span class="token punctuation">(</span>$color<span class="token punctuation">,</span> $level<span class="token punctuation">)</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -568,11 +577,11 @@
 </div>
 <p>Sample usage within SASS:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.custom-element {</span><br><span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> palette(<span class="token variable">$primary</span>, 600);</span><br><span class="token selector">}</span></code></pre>
-<h2 id="contrast">Contrast <a class="direct-link" href="#contrast"></a></h2>
+<h2 id="contrast" tabindex="-1">Contrast <a class="direct-link" href="#contrast"></a></h2>
 <p>Figuration includes a handful of color contrast functions based on the <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 minimum contrast specification</a> formulas for determining <a href="https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio">contrast ratio</a> and <a href="https://www.w3.org/TR/WCAG21#dfn-relative-luminance">relative luminance</a>.</p>
-<h3 id="color-contrast">color-contrast() <a class="direct-link" href="#color-contrast"></a></h3>
+<h3 id="color-contrast" tabindex="-1">color-contrast() <a class="direct-link" href="#color-contrast"></a></h3>
 <p>Returns either a light (<code>#fff</code>) or dark (<code>#262d34</code>) color compared against a given one based on the minimum contrast ratio setting.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token function">color-contrast</span><span class="token selector">($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token function">color-contrast</span><span class="token punctuation">(</span>$color<span class="token punctuation">,</span> $light<span class="token punctuation">:</span> $color-contrast-base-light<span class="token punctuation">,</span> $dark<span class="token punctuation">:</span> $color-contrast-base-dark<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -611,9 +620,9 @@
     </tbody>
   </table>
 </div>
-<h3 id="color-max-contrast">color-max-contrast() <a class="direct-link" href="#color-max-contrast"></a></h3>
+<h3 id="color-max-contrast" tabindex="-1">color-max-contrast() <a class="direct-link" href="#color-max-contrast"></a></h3>
 <p>Returns either white (<code>#fff</code>) or black (<code>#000</code>) depending on which color has the maximum contrast ratio based against the given color.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token function">color-max-contrast</span><span class="token selector">($color);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token function">color-max-contrast</span><span class="token punctuation">(</span>$color<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -636,9 +645,9 @@
     </tbody>
   </table>
 </div>
-<h3 id="color-auto-contrast">color-auto-contrast() <a class="direct-link" href="#color-auto-contrast"></a></h3>
+<h3 id="color-auto-contrast" tabindex="-1">color-auto-contrast() <a class="direct-link" href="#color-auto-contrast"></a></h3>
 <p>Check to see if the defined light (<code>#fff</code>) or dark (<code>#262d34</code>) color meet minimum contrast against a given color.  If neither meet minumum contrast, then return white or black depending on the best contrast ratio.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token function">color-auto-contrast</span><span class="token selector">($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token function">color-auto-contrast</span><span class="token punctuation">(</span>$color<span class="token punctuation">,</span> $light<span class="token punctuation">:</span> $color-contrast-base-light<span class="token punctuation">,</span> $dark<span class="token punctuation">:</span> $color-contrast-base-dark<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -677,10 +686,10 @@
     </tbody>
   </table>
 </div>
-<h3 id="color-if-contrast">color-if-contrast() <a class="direct-link" href="#color-if-contrast"></a></h3>
+<h3 id="color-if-contrast" tabindex="-1">color-if-contrast() <a class="direct-link" href="#color-if-contrast"></a></h3>
 <p>Compare a foreground color against a background color.  Returns the foreground color if it passes the minimum contrast ratio, otherwise return the result from <code>color-auto-contrast()</code>.</p>
 <p>Check to see if the defined light (<code>#fff</code>) or dark (<code>#262d34</code>) color meet minimum contrast against a given color.  If neither meet minumum contrast, then return white or black depending on the best contrast ratio.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token function">color-if-contrast</span><span class="token selector">($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token function">color-if-contrast</span><span class="token punctuation">(</span>$colorfore<span class="token punctuation">,</span> $colorback<span class="token punctuation">,</span> $light<span class="token punctuation">:</span> $color-contrast-base-light<span class="token punctuation">,</span> $dark<span class="token punctuation">:</span> $color-contrast-base-dark<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -727,14 +736,14 @@
     </tbody>
   </table>
 </div>
-<h2 id="adjusting-themes">Adjusting Themes <a class="direct-link" href="#adjusting-themes"></a></h2>
-<h3 id="add-color">Add Color <a class="direct-link" href="#add-color"></a></h3>
+<h2 id="adjusting-themes" tabindex="-1">Adjusting Themes <a class="direct-link" href="#adjusting-themes"></a></h2>
+<h3 id="add-color" tabindex="-1">Add Color <a class="direct-link" href="#add-color"></a></h3>
 <p>Add a color to all themes by appending it to the <code>$base-colors</code> map.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"new-color"</span><span class="token selector">: #990099</span><br><span class="token selector">);</span></code></pre>
-<h3 id="add-mixed-theme">Add Mixed Theme <a class="direct-link" href="#add-mixed-theme"></a></h3>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$base-colors</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">  <span class="token property">"new-color"</span><span class="token punctuation">:</span> #990099</span><br><span class="token selector">);</span></code></pre>
+<h3 id="add-mixed-theme" tabindex="-1">Add Mixed Theme <a class="direct-link" href="#add-mixed-theme"></a></h3>
 <p>Figuration uses mixed themes to build out our components. This way color stays consitent across all aspects of the component.</p>
 <p>You can mix your own theme by using the <code>_mix-context-colors()</code> function.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token selector">_</span><span class="token function">mix-context-colors</span><span class="token selector">($colors, $levels);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token selector">_mix-context-colors($colors, $levels);</span></code></pre>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
     <thead>
@@ -765,17 +774,17 @@
     </tbody>
   </table>
 </div>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Adding a mixed theme with custom mix levels</span><br><span class="token variable-line"><span class="token variable">$mix-levels</span><span class="token punctuation">:</span> (</span><br>    <span class="token string">"bg"</span><span class="token selector">:                   550</span><span class="token selector">,</span><br>    <span class="token string">"color"</span><span class="token selector">:                -1</span><span class="token selector">,</span><br>    <span class="token string">"border-color"</span><span class="token selector">:         650</span><span class="token selector">,</span><br>    <span class="token string">"hover-bg"</span><span class="token selector">:             650</span><span class="token selector">,</span><br>    <span class="token string">"hover-color"</span><span class="token selector">:          -1</span><span class="token selector">,</span><br>    <span class="token string">"hover-border-color"</span><span class="token selector">:   750</span><span class="token selector">,</span><br>    <span class="token string">"active-bg"</span><span class="token selector">:            750</span><span class="token selector">,</span><br>    <span class="token string">"active-color"</span><span class="token selector">:         -1</span><span class="token selector">,</span><br>    <span class="token string">"active-border-color"</span><span class="token selector">:  750</span><br><span class="token selector">);</span><br><br><span class="token variable-line"><span class="token variable">$mixed-theme</span> = _mix-context-colors(#990099, <span class="token variable">$mix-levels</span>);</span><br><span class="token variable-line"><span class="token variable">$btn-themes</span><span class="token punctuation">:</span> map-merge(<span class="token variable">$btn-themes</span>, <span class="token variable">$mixed-theme</span>);</span></code></pre>
-<h3 id="add-custom-theme">Add Custom Theme <a class="direct-link" href="#add-custom-theme"></a></h3>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Adding a mixed theme with custom mix levels</span><br><span class="token variable-line"><span class="token variable">$mix-levels</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">    <span class="token property">"bg"</span><span class="token punctuation">:</span>                   550,</span><br><span class="token property-line">    <span class="token property">"color"</span><span class="token punctuation">:</span>                -1,</span><br><span class="token property-line">    <span class="token property">"border-color"</span><span class="token punctuation">:</span>         650,</span><br><span class="token property-line">    <span class="token property">"hover-bg"</span><span class="token punctuation">:</span>             650,</span><br><span class="token property-line">    <span class="token property">"hover-color"</span><span class="token punctuation">:</span>          -1,</span><br><span class="token property-line">    <span class="token property">"hover-border-color"</span><span class="token punctuation">:</span>   750,</span><br><span class="token property-line">    <span class="token property">"active-bg"</span><span class="token punctuation">:</span>            750,</span><br><span class="token property-line">    <span class="token property">"active-color"</span><span class="token punctuation">:</span>         -1,</span><br><span class="token property-line">    <span class="token property">"active-border-color"</span><span class="token punctuation">:</span>  750</span><br><span class="token selector">);</span><br><br><span class="token variable-line"><span class="token variable">$mixed-theme</span> = _mix-context-colors(#990099, <span class="token variable">$mix-levels</span>);</span><br><span class="token variable-line"><span class="token variable">$btn-themes</span><span class="token punctuation">:</span> map-merge(<span class="token variable">$btn-themes</span>, <span class="token variable">$mixed-theme</span>);</span></code></pre>
+<h3 id="add-custom-theme" tabindex="-1">Add Custom Theme <a class="direct-link" href="#add-custom-theme"></a></h3>
 <p>You can also add a color map without using the color mixing function, allowing for greater customization.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Adding a custom theme</span><br><span class="token variable-line"><span class="token variable">$custom-theme</span><span class="token punctuation">:</span> (</span><br>  <span class="token string">"purple"</span><span class="token selector">: (</span><br>    <span class="token string">"base"</span><span class="token selector">:                 #990099</span><span class="token selector">,</span><br>    <span class="token string">"bg"</span><span class="token selector">:                   #990099</span><span class="token selector">,</span><br>    <span class="token string">"color"</span><span class="token selector">:                #fff</span><span class="token selector">,</span><br>    <span class="token string">"border-color"</span><span class="token selector">:         #800080</span><span class="token selector">,</span><br>    <span class="token string">"hover-bg"</span><span class="token selector">:             #770077</span><span class="token selector">,</span><br>    <span class="token string">"hover-color"</span><span class="token selector">:          #fff</span><span class="token selector">,</span><br>    <span class="token string">"hover-border-color"</span><span class="token selector">:   #660066</span><span class="token selector">,</span><br>    <span class="token string">"active-bg"</span><span class="token selector">:            #ffb3ff</span><span class="token selector">,</span><br>    <span class="token string">"active-color"</span><span class="token selector">:         #990099</span><span class="token selector">,</span><br>    <span class="token string">"active-border-color"</span><span class="token selector">:  #ff29ff</span><br>  <span class="token selector">);</span><br><span class="token selector">);</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Adding a custom theme</span><br><span class="token variable-line"><span class="token variable">$custom-theme</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">  <span class="token property">"purple"</span><span class="token punctuation">:</span> (</span><br><span class="token property-line">    <span class="token property">"base"</span><span class="token punctuation">:</span>                 #990099,</span><br><span class="token property-line">    <span class="token property">"bg"</span><span class="token punctuation">:</span>                   #990099,</span><br><span class="token property-line">    <span class="token property">"color"</span><span class="token punctuation">:</span>                #fff,</span><br><span class="token property-line">    <span class="token property">"border-color"</span><span class="token punctuation">:</span>         #800080,</span><br><span class="token property-line">    <span class="token property">"hover-bg"</span><span class="token punctuation">:</span>             #770077,</span><br><span class="token property-line">    <span class="token property">"hover-color"</span><span class="token punctuation">:</span>          #fff,</span><br><span class="token property-line">    <span class="token property">"hover-border-color"</span><span class="token punctuation">:</span>   #660066,</span><br><span class="token property-line">    <span class="token property">"active-bg"</span><span class="token punctuation">:</span>            #ffb3ff,</span><br><span class="token property-line">    <span class="token property">"active-color"</span><span class="token punctuation">:</span>         #990099,</span><br><span class="token property-line">    <span class="token property">"active-border-color"</span><span class="token punctuation">:</span>  #ff29ff</span><br>  <span class="token selector">);</span><br><span class="token selector">);</span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Custom theme addition/removal go in this location</span><br><span class="token variable-line"><span class="token variable">$btn-themes</span><span class="token punctuation">:</span> map-merge(<span class="token variable">$btn-themes</span>, <span class="token variable">$custom-theme</span>);</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
-<h3 id="remove-theme">Remove Theme <a class="direct-link" href="#remove-theme"></a></h3>
+<h3 id="remove-theme" tabindex="-1">Remove Theme <a class="direct-link" href="#remove-theme"></a></h3>
 <p>Just like removing from the color maps, use <code>map-remove()</code> to remove themes from <code>$btn-themes</code>.</p>
 <p>As before, insert this setting after the <em>Required</em> sections and before the <em>Core and Components</em> section.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Custom theme addition/removal go in this location</span><br><span class="token variable-line"><span class="token variable">$btn-themes</span><span class="token punctuation">:</span> map-remove(</span><span class="token string">'warning'</span><span class="token selector">, </span><span class="token string">'light'</span><span class="token selector">, </span><span class="token string">'dark'</span><span class="token selector">);</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Required - functions</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/functions";</span><br><br><span class="token comment">// Required - settings and mixins</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/settings-options";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/mixins";</span><br><br><span class="token comment">// Custom theme addition/removal go in this location</span><br><span class="token variable-line"><span class="token variable">$btn-themes</span><span class="token punctuation">:</span> map-remove('warning', 'light', 'dark');</span><br><br><span class="token comment">// Core and Components</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/reboot";</span><br><span class="token atrule-line"><span class="token atrule">@import</span> "../node_modules/figuration/scss/typography";</span><br><span class="token selector">...</span></code></pre>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for colors.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -928,7 +937,7 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
         </div>
@@ -948,7 +957,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

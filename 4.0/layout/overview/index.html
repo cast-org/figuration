@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Layout">
 <meta name="twitter:description" content="Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Layout">
+<meta property="og:description" content="Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -311,7 +320,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="containers">Containers <a class="direct-link" href="#containers"></a></h2>
+          <h2 id="containers" tabindex="-1">Containers <a class="direct-link" href="#containers"></a></h2>
 <p>Containers are the most basic layout element in Figuration and are <strong>required when using the grid system</strong>. Containers are used to contain, pad, and (sometimes) center the content within them.</p>
 <p>While containers <em>can</em> be nested, most layouts do not require a nested container.</p>
 <p>There are three different container types available:</p>
@@ -406,16 +415,16 @@
     </tbody>
   </table>
 </div>
-<h3 id="fixed-width">Fixed Width <a class="direct-link" href="#fixed-width"></a></h3>
+<h3 id="fixed-width" tabindex="-1">Fixed Width <a class="direct-link" href="#fixed-width"></a></h3>
 <p>Use <code>.container</code> for a fixed-width container with a defined <code>max-width</code> per breakpoint.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token comment">&lt;!-- Content here --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="fluid">Fluid <a class="direct-link" href="#fluid"></a></h3>
+<h3 id="fluid" tabindex="-1">Fluid <a class="direct-link" href="#fluid"></a></h3>
 <p>Use <code>.container-fluid</code> for a full width container, spanning the entire width of the viewport.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-fluid<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="responsive">Responsive <a class="direct-link" href="#responsive"></a></h3>
+<h3 id="responsive" tabindex="-1">Responsive <a class="direct-link" href="#responsive"></a></h3>
 <p>Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply <code>max-width</code>s for each of the higher breakpoints. For example, <code>.container-sm</code> is 100% wide to start until the <code>sm</code> breakpoint is reached, where it will scale up with <code>md</code>, <code>lg</code>, and <code>xl</code>.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>100% wide until small breakpoint<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-md<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>100% wide until medium breakpoint<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-lg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>100% wide until large breakpoint<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-xl<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>100% wide until extra large breakpoint<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="responsive-breakpoints">Responsive Breakpoints <a class="direct-link" href="#responsive-breakpoints"></a></h2>
+<h2 id="responsive-breakpoints" tabindex="-1">Responsive Breakpoints <a class="direct-link" href="#responsive-breakpoints"></a></h2>
 <p>Since Figuration is developed to be mobile first, we use a handful of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">media queries</a> to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.</p>
 <p>For accessibility reasons, the Sass internally maps the pixel defined breakpoints into <code>em</code> values.  We assume a 16px default root font size, since this is the default for most browsers.</p>
 <div class="cf-callout cf-callout-info">
@@ -444,7 +453,7 @@
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Example</span><br><span class="token comment">// Medium devices (tablets, 48em/768px) up to Extra Large devices (desktops, 75em/1200px)</span><br><span class="token atrule-line"><span class="token atrule">@media</span> (min-width: 48em) and (max-width: 74.98em) { ... }</span></code></pre>
 <p>The Sass mixin for targeting the same screen size range would be:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> media-breakpoint-between(md, xl) { ... }</span></code></pre>
-<h2 id="breakpoint-nomenclature">Breakpoint Nomenclature <a class="direct-link" href="#breakpoint-nomenclature"></a></h2>
+<h2 id="breakpoint-nomenclature" tabindex="-1">Breakpoint Nomenclature <a class="direct-link" href="#breakpoint-nomenclature"></a></h2>
 <p>Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to <strong>not</strong> use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding <code>$enable-bp-smallest</code> option referenced in the <a href="/4.0/get-started/options/#global-options">Global Options</a> settings.</p>
 <p>Classes that apply to all breakpoints, from <code>xs</code> to <code>xl</code>, have no breakpoint abbreviation in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.</p>
 <p>Building from the base component or utility name, most classes are named using the format <code>.base-{direction}-{dimension}</code> for <code>xs</code> and <code>.base-{breakpoint}-{direction}-{dimension}</code> for <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.  In the case of some utilites that have abbreviated names, such as the <a href="/4.0/utilities/spacing">spacing utilities</a>, the format is <code>.abbr{direction}-{breakpoint}-{dimension}</code>.</p>
@@ -458,7 +467,7 @@
 <p class="text-xl-end">Right aligned text on viewports sized XL (extra-large) or wider.</p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on all viewport sizes. (<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>No <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>xs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span> class designation!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span>)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-sm-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized SM (small) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-md-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized MD (medium) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-lg-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized LG (large) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-xl-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Right aligned text on viewports sized XL (extra-large) or wider.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="z-index">Z-index <a class="direct-link" href="#z-index"></a></h2>
+<h2 id="z-index" tabindex="-1">Z-index <a class="direct-link" href="#z-index"></a></h2>
 <p>Several Figuration components utilize <code>z-index</code>, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.</p>
 <p>We use a defined set because of the layered components—tooltips, popovers, navbars, dropdowns, modals—so they remain consistent in terms of behavior.</p>
 <p>Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.</p>
@@ -483,7 +492,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

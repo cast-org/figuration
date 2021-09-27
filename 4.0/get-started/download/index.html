@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Download">
 <meta name="twitter:description" content="Figuration is available for download in several ways. Choose from multiple options to get what you need.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Download">
+<meta property="og:description" content="Figuration is available for download in several ways. Choose from multiple options to get what you need.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -314,7 +323,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="quick-download">Quick Download <a class="direct-link" href="#quick-download"></a></h2>
+          <h2 id="quick-download" tabindex="-1">Quick Download <a class="direct-link" href="#quick-download"></a></h2>
 <div data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="row mt-2" data-cfw="equalize" data-cfw-equalize-target=".card-footer">
     <div class="col-sm-6">
@@ -341,23 +350,23 @@
     </div>
   </div>
 </div>
-<h2 id="package-managers">Package Managers <a class="direct-link" href="#package-managers"></a></h2>
+<h2 id="package-managers" tabindex="-1">Package Managers <a class="direct-link" href="#package-managers"></a></h2>
 <p>Pull in Figuration's <strong>source files</strong> into nearly any project with some of the most popular package managers. No matter the package manager, Figuration will <strong>require a Sass compiler along with <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, and <a href="https://github.com/postcss/postcss-calc">postcss-calc</a></strong> for a setup that matches our official compiled versions.</p>
-<h3 id="npm">npm <a class="direct-link" href="#npm"></a></h3>
+<h3 id="npm" tabindex="-1">npm <a class="direct-link" href="#npm"></a></h3>
 <p>Install Figuration in your Node.js powered apps with <a href="https://www.npmjs.com/package/figuration">the npm package</a>:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> figuration@4.0.3</code></pre>
-<h3 id="yarn">Yarn <a class="direct-link" href="#yarn"></a></h3>
+<h3 id="yarn" tabindex="-1">Yarn <a class="direct-link" href="#yarn"></a></h3>
 <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">add</span> figuration@4.0.3</code></pre>
 <p>Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:</p>
 <pre class="language-text"><code class="language-text">figuration/<br>+-- dist/<br>|   +-- css/<br>|   +-- js/<br>+-- grunt/<br>+-- js/<br>+-- scss/</code></pre>
 <p>Basically just the dist, along with the source <code>js</code> and <code>scss</code> files, and just enough to build the dist. If you need the docs and all the tests for local dev, then download the source version, or clone the <a href="https://github.com/cast-org/figuration">Figuration repository from GitHub</a>.</p>
-<h2 id="whats-included">What's Included <a class="direct-link" href="#whats-included"></a></h2>
+<h2 id="whats-included" tabindex="-1">What's Included <a class="direct-link" href="#whats-included"></a></h2>
 <p>The <a href="#quick-download">quick download versions</a> listed above, contain the following directories and files, logically grouping common resources and providing both compiled and minified variations.</p>
-<h3 id="compiled-version">Compiled Version <a class="direct-link" href="#compiled-version"></a></h3>
+<h3 id="compiled-version" tabindex="-1">Compiled Version <a class="direct-link" href="#compiled-version"></a></h3>
 <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Figuration. You'll see something like this:</p>
 <pre class="language-text"><code class="language-text">figuration/<br>+-- dist/<br>    +-- css/<br>    |   +-- figuration.css<br>    |   +-- figuration.min.css<br>    |   +-- figuration-rtl.css<br>    |   +-- figuration-rtl.min.css<br>    +-- js/<br>        +-- figuration.js<br>        +-- figuration.min.js</code></pre>
 <p>This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (<code>figuration.*</code>), as well as compiled and minified CSS and JavaScript (<code>figuration.min.*</code>). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (<code>figuration.*.map</code>) are available for use with certain browsers' developer tools.</p>
-<h3 id="source-version">Source Version <a class="direct-link" href="#source-version"></a></h3>
+<h3 id="source-version" tabindex="-1">Source Version <a class="direct-link" href="#source-version"></a></h3>
 <p>The Figuration source code download includes the precompiled CSS and JavaScript, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:</p>
 <pre class="language-text"><code class="language-text">figuration/<br>+-- dist/<br>|   +-- css/<br>|   +-- js/<br>+-- grunt/<br>+-- js/<br>+-- scss/<br>+-- site/<br>+-- test/</code></pre>
 <p>The <code>scss/</code>, and <code>js/</code> folders are the source code for our CSS and JavaScript (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. The <code>site/</code> folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.</p>
@@ -379,7 +388,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

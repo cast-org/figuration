@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Interactions">
 <meta name="twitter:description" content="Utility classes that change how users interact with contents of a website.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Interactions">
+<meta property="og:description" content="Utility classes that change how users interact with contents of a website.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -303,7 +312,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="text-selection">Text Selection <a class="direct-link" href="#text-selection"></a></h2>
+          <h2 id="text-selection" tabindex="-1">Text Selection <a class="direct-link" href="#text-selection"></a></h2>
 <p>Change the way in which the content is selected when the user interacts with it.</p>
 <div class="cf-example">
 <p class="user-select-all">This paragraph will be entirely selected when clicked by the user.</p>
@@ -311,7 +320,7 @@
 <p class="user-select-none">This paragraph will not be selectable when clicked by the user.</p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-select-all<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This paragraph will be entirely selected when clicked by the user.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-select-auto<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This paragraph has default select behavior.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-select-none<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This paragraph will not be selectable when clicked by the user.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="pointer-events">Pointer Events <a class="direct-link" href="#pointer-events"></a></h2>
+<h2 id="pointer-events" tabindex="-1">Pointer Events <a class="direct-link" href="#pointer-events"></a></h2>
 <p>Use the provided <code>.pe-none</code> and <code>.pe-auto</code> classes to prevent or add element interactions.</p>
 <div class="cf-example">
 <p><a href="#" class="pe-none" tabindex="-1" aria-disabled="true">This link</a> can not be clicked.</p>
@@ -323,8 +332,8 @@
 <p>The <code>.pe-none</code> class (and the <code>pointer-events</code> CSS property it sets) only prevents interactions with a pointer (mouse, stylus, touch). Links and controls with <code>.pe-none</code> are, by default, still focusable and actionable for keyboard users. To ensure that they are completely neutralized even for keyboard users, you may need to add further attributes such as <code>tabindex=&quot;-1&quot;</code> (to prevent them from receiving keyboard focus) and <code>aria-disabled=&quot;true&quot;</code> (to convey the fact they are effectively disabled to assistive technologies), and possibly use JavaScript to completely prevent them from being actionable. For form controls, consider using the <code>disabled</code> HTML attribute instead.</p>
 <p>Additional information can found in the accessibility section about <a href="/4.1/get-started/accessibility/#disabled-anchors">disabled anchors</a>.</p>
 </div>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -374,7 +383,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

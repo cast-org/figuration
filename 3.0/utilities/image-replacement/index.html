@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Image Replacement">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image Replacement">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -321,12 +330,12 @@
 <div class="cf-example">
 <h1 class="text-hide" style="background-image: url('/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">CAST Figuration</h1>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-hide<span class="token punctuation">"</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-hide<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
 <p>Below is an example of using the <code>text-hide()</code> mixin in your Sass.</p>
 <div class="cf-example">
   <h1 class="heading">CAST Figuration</h1>
 </div>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.heading {</span><br><span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> 3rem;</span><br><span class="token property-line">  <span class="token property">height</span><span class="token punctuation">:</span> 3rem;</span><br><span class="token property-line">  <span class="token property">background-image</span><span class="token punctuation">:</span> </span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token selector">;</span><br><br><span class="token atrule-line">  <span class="token atrule">@include</span> text-hide;</span><br><span class="token selector">}</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.heading {</span><br><span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> 3rem;</span><br><span class="token property-line">  <span class="token property">height</span><span class="token punctuation">:</span> 3rem;</span><br><span class="token property-line">  <span class="token property">background-image</span><span class="token punctuation">:</span> url('<span class="token operator">/</span>assets<span class="token operator">/</span>brand<span class="token operator">/</span>figuration-solid.svg');</span><br><br><span class="token atrule-line">  <span class="token atrule">@include</span> text-hide;</span><br><span class="token selector">}</span></code></pre>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
 
     </main>
@@ -344,7 +353,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

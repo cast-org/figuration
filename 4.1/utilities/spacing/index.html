@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Spacing">
 <meta name="twitter:description" content="Shorthand responsive margin and padding utility classes to modify an element’s appearance.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spacing">
+<meta property="og:description" content="Shorthand responsive margin and padding utility classes to modify an element’s appearance.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -321,9 +330,9 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="margin-and-padding">Margin and Padding <a class="direct-link" href="#margin-and-padding"></a></h2>
+          <h2 id="margin-and-padding" tabindex="-1">Margin and Padding <a class="direct-link" href="#margin-and-padding"></a></h2>
 <p>Assign <code>margin</code> or <code>padding</code> to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are generated from a Sass map with values ranging from <code>0.25rem</code> to <code>2rem</code>.</p>
-<h3 id="notation">Notation <a class="direct-link" href="#notation"></a></h3>
+<h3 id="notation" tabindex="-1">Notation <a class="direct-link" href="#notation"></a></h3>
 <p>The classes are named using the format: <code>{property}{sides}{-breakpoint}-{size}</code>.</p>
 <p>Where <em>property</em> is one of:</p>
 <ul>
@@ -367,18 +376,18 @@
 <li><code>auto</code> - for classes that set the <code>margin</code> to auto</li>
 </ul>
 <p>(You can add more sizes by adding entries to the <code>$spacers</code> Sass map variable.)</p>
-<h3 id="examples">Examples <a class="direct-link" href="#examples"></a></h3>
+<h3 id="examples" tabindex="-1">Examples <a class="direct-link" href="#examples"></a></h3>
 <p>Here are some representative examples of these classes:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.mt-0 {</span><br><span class="token property-line">  <span class="token property">margin-top</span><span class="token punctuation">:</span> 0 <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.ms-1 {</span><br><span class="token property-line">  <span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.mt-md-1 {</span><br><span class="token property-line">  <span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token variable">$spacer</span> <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.px-1_5 {</span><br><span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 1.5) <span class="token important">!important</span>;</span><br><span class="token property-line">  <span class="token property">padding-right</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 1.5) <span class="token important">!important</span>;</span><br><span class="token selector">}</span><br><br><span class="token selector">.p-2 {</span><br><span class="token property-line">  <span class="token property">padding</span><span class="token punctuation">:</span> (<span class="token variable">$spacer</span> <span class="token operator">*</span> 2) (<span class="token variable">$spacer</span> <span class="token operator">*</span> 2) <span class="token important">!important</span>;</span><br><span class="token selector">}</span></code></pre>
-<h3 id="horizontal-centering">Horizontal Centering <a class="direct-link" href="#horizontal-centering"></a></h3>
+<h3 id="horizontal-centering" tabindex="-1">Horizontal Centering <a class="direct-link" href="#horizontal-centering"></a></h3>
 <p>Additionally, we also include an <code>.mx-auto</code> class for horizontally centering fixed-width block level content— an element with <code>display: block;</code> and a defined <code>width</code>—by setting the horizontal margins to <code>auto</code>.</p>
 <div class="cf-example">
   <div class="mx-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
     Centered element
   </div>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mx-auto<span class="token punctuation">"</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><br>  Centered element<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="negative-margins">Negative Margins <a class="direct-link" href="#negative-margins"></a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mx-auto<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><br>  Centered element<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="negative-margins" tabindex="-1">Negative Margins <a class="direct-link" href="#negative-margins"></a></h3>
 <p>In CSS, the <code>margin</code> properties can utilize negative values (<code>padding</code> cannot). Negative margin utilities are for every non-zero size listed above (e.g., <code>0_25</code>, <code>0_5</code>, <code>1</code>, <code>1_5</code>, <code>2</code>). These utilities can also be used for customizing the grid column gutters across breakpoints.</p>
 <p>The syntax is nearly the same as the default, positive margin utilities, but with the addition of <code>n</code> before the requested size. Here's an example class that's the opposite of <code>.mt-0_25</code>:</p>
 <pre class="language-sass"><code class="language-sass"><span class="token selector">.mt-n0_25 {</span><br><span class="token property-line">  <span class="token property">margin-top</span><span class="token punctuation">:</span> -0.25rem <span class="token important">!important</span>;</span><br><span class="token selector">}</span></code></pre>
@@ -404,7 +413,7 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container-fluid px-md-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row mx-md-n2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col px-md-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Custom horizontal column padding<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col px-md-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Custom horizontal column padding<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="gap">Gap <a class="direct-link" href="#gap"></a></h2>
+<h2 id="gap" tabindex="-1">Gap <a class="direct-link" href="#gap"></a></h2>
 <p>When using <code>display: grid</code>, you can make use of <code>gap</code> utilities on the parent grid container. This can save on having to add margin utilities to individual grid items (children of a <code>display: grid</code> container). Gap utilities based on the <code>$spacers</code> Sass map, and are available in responsive variants.</p>
 <div class="cf-callout cf-callout-danger">
 <p class="h5">Browser Compatibility</p>
@@ -418,8 +427,8 @@
 </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>d-grid gap-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-0_25 bg-light border<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Grid item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-0_25 bg-light border<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Grid item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-0_25 bg-light border<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Grid item 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -545,7 +554,7 @@
     </tbody>
 </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
         </div>
@@ -565,7 +574,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

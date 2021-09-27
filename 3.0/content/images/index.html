@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Images">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Images">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,7 +324,7 @@
 
       <p>Allow images to become responsively resized, or add a bit of style to them.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-images">Responsive Images </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#image-thumbnail">Image Thumbnail </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#aligning-images">Aligning Images </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#picture">Picture </a></li></ul></nav><h2 id="responsive-images">Responsive Images <a class="direct-link" href="#responsive-images"></a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#responsive-images">Responsive Images </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#image-thumbnail">Image Thumbnail </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#aligning-images">Aligning Images </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#picture">Picture </a></li></ul></nav><h2 id="responsive-images" tabindex="-1">Responsive Images <a class="direct-link" href="#responsive-images"></a></h2>
 <p>Images can be made to scale with their container width by using <code>.img-fluid</code>. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> the image, allowing the aspect ratio to be maintained.</p>
 <div class="cf-example">
   <img data-src="holder.js/100px250" class="img-fluid" alt="Generic responsive image">
@@ -325,14 +334,14 @@
 <p class="h5">SVG Images and IE 10</p>
 <p>In Internet Explorer 10, SVG images with <code>.img-fluid</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. This fix improperly sizes other image formats, so we do not apply it automatically.</p>
 </div>
-<h2 id="image-thumbnail">Image Thumbnail <a class="direct-link" href="#image-thumbnail"></a></h2>
+<h2 id="image-thumbnail" tabindex="-1">Image Thumbnail <a class="direct-link" href="#image-thumbnail"></a></h2>
 <p>Use <code>.img-thumbnail</code> to give an image a bordered appearance.</p>
 <p>You might also want to check the <a href="/3.0/utilities/borders">border utilites</a> for additional options.</p>
 <div class="cf-example">
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img-thumbnail<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
-<h2 id="aligning-images">Aligning Images <a class="direct-link" href="#aligning-images"></a></h2>
+<h2 id="aligning-images" tabindex="-1">Aligning Images <a class="direct-link" href="#aligning-images"></a></h2>
 <p>Align images with the <a href="/3.0/utilities/floating/">helper float classes</a> or <a href="/3.0/utilities/typography/#text-alignment">text alignment classes</a>. <code>block</code>-level images can be centered using <a href="/3.0/utilities/spacing/#horizontal-centering">the <code>.mx-auto</code> margin utility class</a>.</p>
 <div class="cf-example clearfix">
   <img data-src="holder.js/200x200" class="radius float-start" alt="A generic square placeholder image with rounded corners">
@@ -349,7 +358,7 @@
   </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-center<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radius<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="picture">Picture <a class="direct-link" href="#picture"></a></h2>
+<h2 id="picture" tabindex="-1">Picture <a class="direct-link" href="#picture"></a></h2>
 <p>If you are using the <code>&lt;picture&gt;</code> element to specify multiple <code>&lt;source&gt;</code> elements for a specific <code>&lt;img&gt;</code>, make sure to add the <code>.img-*</code> classes to the <code>&lt;img&gt;</code> and not to the <code>&lt;picture&gt;</code> tag.</p>
 <pre class="language-html"><code class="language-html">​<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>picture</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">srcset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image/svg+xml<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img-fluid img-thumbnail<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>picture</span><span class="token punctuation">></span></span></code></pre>
 
@@ -368,7 +377,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Reboot">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reboot">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -316,7 +325,7 @@
       <p>Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.</p>
 <p>Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code>&lt;table&gt;</code> styles for a simpler baseline and later provide <code>.table</code>, <code>.table-bordered</code>, and more.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#approach">Approach </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#page-defaults">Page Defaults </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#native-font-stack">Native Font Stack </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#headings-and-paragraphs">Headings and Paragraphs </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#lists">Lists </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#preformatted-text">Preformatted Text </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tables">Tables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#forms">Forms </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#misc-elements">Misc Elements </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#address">Address </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#blockquote">Blockquote </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#inline-elements">Inline Elements </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#html5-hidden-attribute">HTML5 [hidden] Attribute </a></li></ul></nav><h2 id="approach">Approach <a class="direct-link" href="#approach"></a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#approach">Approach </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#page-defaults">Page Defaults </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#native-font-stack">Native Font Stack </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#headings-and-paragraphs">Headings and Paragraphs </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#lists">Lists </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#preformatted-text">Preformatted Text </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tables">Tables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#forms">Forms </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#misc-elements">Misc Elements </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#address">Address </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#blockquote">Blockquote </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#inline-elements">Inline Elements </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#html5-hidden-attribute">HTML5 [hidden] Attribute </a></li></ul></nav><h2 id="approach" tabindex="-1">Approach <a class="direct-link" href="#approach"></a></h2>
 <p>Here are our guidelines and reasons for choosing what to override in Reboot:</p>
 <ul>
 <li>Update some browser default values to use <code>rem</code>s instead of <code>em</code>s for scalable component spacing.</li>
@@ -324,7 +333,7 @@
 <li>For easier scaling across device sizes, block elements should use <code>rem</code>s for <code>margin</code>s.</li>
 <li>Keep declarations of <code>font</code>-related properties to a minimum, using <code>inherit</code> whenever possible.</li>
 </ul>
-<h2 id="page-defaults">Page Defaults <a class="direct-link" href="#page-defaults"></a></h2>
+<h2 id="page-defaults" tabindex="-1">Page Defaults <a class="direct-link" href="#page-defaults"></a></h2>
 <p>The <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements are updated to provide better page-wide defaults. More specifically:</p>
 <ul>
 <li>The <code>box-sizing</code> is globally set on every element—including <code>*::before</code> and <code>*::after</code>, to <code>border-box</code>. This ensures that the declared width of element is never exceeded due to padding or border.</li>
@@ -332,11 +341,11 @@
 <li>The <code>&lt;body&gt;</code> also sets a global <code>font-family</code>, <code>line-height</code>, and <code>text-align</code>. This is inherited later by some form elements to prevent font inconsistencies.</li>
 <li>For safety, the <code>&lt;body&gt;</code> has a declared <code>background-color</code>, defaulting to <code>#fff</code>.</li>
 </ul>
-<h2 id="native-font-stack">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
+<h2 id="native-font-stack" tabindex="-1">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
 <p>The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Figuration and replaced with a &quot;native font stack&quot; for optimum text rendering on every device and OS. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>  <span class="token comment">// Safari for OS X and iOS (San Francisco)</span><br>  <span class="token selector">-apple-system</span><span class="token selector">,</span><br>  <span class="token comment">// Chrome for OS X (San Francisco)</span><br>  <span class="token selector">BlinkMacSystemFont</span><span class="token selector">,</span><br>  <span class="token comment">// Windows</span><br>  <span class="token string">"Segoe UI"</span><span class="token selector">,</span><br>  <span class="token comment">// Android</span><br>  <span class="token string">"Roboto"</span><span class="token selector">,</span><br>  <span class="token comment">// Basic web fallback</span><br>  <span class="token string">"Helvetica Neue"</span><span class="token selector">, Arial, sans-serif</span><span class="token selector">,</span><br>  <span class="token comment">// Emoji fonts</span><br>  <span class="token string">"Apple Color Emoji"</span><span class="token selector">, </span><span class="token string">"Segoe UI Emoji"</span><span class="token selector">, </span><span class="token string">"Segoe UI Symbol"</span> <span class="token selector">!default;</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>  <span class="token comment">// Safari for OS X and iOS (San Francisco)</span><br>  <span class="token selector">-apple-system</span><span class="token punctuation">,</span><br>  <span class="token comment">// Chrome for OS X (San Francisco)</span><br>  <span class="token selector">BlinkMacSystemFont</span><span class="token punctuation">,</span><br>  <span class="token comment">// Windows</span><br>  <span class="token string">"Segoe UI"</span><span class="token punctuation">,</span><br>  <span class="token comment">// Android</span><br>  <span class="token string">"Roboto"</span><span class="token punctuation">,</span><br>  <span class="token comment">// Basic web fallback</span><br>  <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">,</span><br>  <span class="token comment">// Emoji fonts</span><br>  <span class="token string">"Apple Color Emoji"</span><span class="token punctuation">,</span> <span class="token string">"Segoe UI Emoji"</span><span class="token punctuation">,</span> <span class="token string">"Segoe UI Symbol"</span> !default<span class="token punctuation">;</span></code></pre>
 <p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Figuration.</p>
-<h2 id="headings-and-paragraphs">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
+<h2 id="headings-and-paragraphs" tabindex="-1">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
 <p>All heading elements—e.g., <code>&lt;h1&gt;</code>—and <code>&lt;p&gt;</code> are reset to have their <code>margin-top</code> removed. Headings have <code>margin-bottom: .5rem</code> added and paragraphs <code>margin-bottom: 1rem</code> for easy spacing.</p>
 <div class="cf-example cf-example-bottom">
 <h1>h1 heading</h1>
@@ -352,7 +361,7 @@
 <h6>h6 heading</h6>
 <p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 </div>
-<h2 id="lists">Lists <a class="direct-link" href="#lists"></a></h2>
+<h2 id="lists" tabindex="-1">Lists <a class="direct-link" href="#lists"></a></h2>
 <p>All lists—<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, and <code>&lt;dl&gt;</code>—have their <code>margin-top</code> removed and a <code>margin-bottom: 1rem</code>. Nested lists have no <code>margin-bottom</code>.</p>
 <div class="cf-example cf-example-bottom">
 * Lorem ipsum dolor sit amet
@@ -390,7 +399,7 @@
   <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 </dl>
 </div>
-<h2 id="preformatted-text">Preformatted Text <a class="direct-link" href="#preformatted-text"></a></h2>
+<h2 id="preformatted-text" tabindex="-1">Preformatted Text <a class="direct-link" href="#preformatted-text"></a></h2>
 <p>The <code>&lt;pre&gt;</code> element is reset to remove its <code>margin-top</code> and use <code>rem</code> units for its <code>margin-bottom</code>.</p>
 <div class="cf-example cf-example-bottom">
 <pre>
@@ -399,7 +408,7 @@
 }
 </pre>
 </div>
-<h2 id="tables">Tables <a class="direct-link" href="#tables"></a></h2>
+<h2 id="tables" tabindex="-1">Tables <a class="direct-link" href="#tables"></a></h2>
 <p>Tables are slightly adjusted to style <code>&lt;caption&gt;</code>s, collapse borders, and ensure consistent <code>text-align</code> throughout. Additional changes for borders, padding, and more come with <a href="/3.0/content/tables/">the <code>.table</code> class</a>.</p>
 <div class="cf-example cf-example-bottom">
   <table>
@@ -436,7 +445,7 @@
     </tbody>
   </table>
 </div>
-<h2 id="forms">Forms <a class="direct-link" href="#forms"></a></h2>
+<h2 id="forms" tabindex="-1">Forms <a class="direct-link" href="#forms"></a></h2>
 <p>Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:</p>
 <ul>
 <li><code>&lt;fieldset&gt;</code>s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.</li>
@@ -513,8 +522,8 @@
     </p>
   </fieldset>
 </form>
-<h2 id="misc-elements">Misc Elements <a class="direct-link" href="#misc-elements"></a></h2>
-<h3 id="address">Address <a class="direct-link" href="#address"></a></h3>
+<h2 id="misc-elements" tabindex="-1">Misc Elements <a class="direct-link" href="#misc-elements"></a></h2>
+<h3 id="address" tabindex="-1">Address <a class="direct-link" href="#address"></a></h3>
 <p>The <code>&lt;address&gt;</code> element is updated to reset the browser default <code>font-style</code> from <code>italic</code> to <code>normal</code>. <code>line-height</code> is also now inherited, and <code>margin-bottom: 1rem</code> has been added. <code>&lt;address&gt;</code>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <code>&lt;br&gt;</code>.</p>
 <div class="cf-example cf-example-bottom">
   <address>
@@ -528,7 +537,7 @@
     <a href="mailto:#">first.last@example.com</a>
   </address>
 </div>
-<h3 id="blockquote">Blockquote <a class="direct-link" href="#blockquote"></a></h3>
+<h3 id="blockquote" tabindex="-1">Blockquote <a class="direct-link" href="#blockquote"></a></h3>
 <p>The default <code>margin</code> on blockquotes is <code>1em 40px</code>, so we reset that to <code>0 0 1rem</code> for something more consistent with other elements.</p>
 <div class="cf-example cf-example-bottom">
   <blockquote class="blockquote">
@@ -536,12 +545,12 @@
     <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
   </blockquote>
 </div>
-<h3 id="inline-elements">Inline Elements <a class="direct-link" href="#inline-elements"></a></h3>
+<h3 id="inline-elements" tabindex="-1">Inline Elements <a class="direct-link" href="#inline-elements"></a></h3>
 <p>The <code>&lt;abbr&gt;</code> element receives basic styling to make it stand out amongst paragraph text.</p>
 <div class="cf-example cf-example-bottom">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
 </div>
-<h2 id="html5-hidden-attribute">HTML5 <code>[hidden]</code> Attribute <a class="direct-link" href="#html5-hidden-attribute"></a></h2>
+<h2 id="html5-hidden-attribute" tabindex="-1">HTML5 <code>[hidden]</code> Attribute <a class="direct-link" href="#html5-hidden-attribute"></a></h2>
 <p>HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code>[hidden]</code></a>, which is styled as <code>display: none</code> by default. Borrowing an idea from <a href="https://purecss.io/">PureCSS</a>, we improve upon this default by making <code>[hidden] { display: none !important; }</code> to help prevent its <code>display</code> from getting accidentally overridden. While <code>[hidden]</code> isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span></code></pre>
 <div class="cf-callout cf-callout-warning">
@@ -565,7 +574,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

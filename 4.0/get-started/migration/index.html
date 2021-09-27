@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Migration from v3 to v4">
 <meta name="twitter:description" content="A brief rundown of major changes to get you started upgrading from v3 to v4.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Migration from v3 to v4">
+<meta property="og:description" content="A brief rundown of major changes to get you started upgrading from v3 to v4.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -392,24 +401,24 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="notice">Notice <a class="direct-link" href="#notice"></a></h2>
+          <h2 id="notice" tabindex="-1">Notice <a class="direct-link" href="#notice"></a></h2>
 <p>Figuration v4 is a considerable rework, and there are a large number of breaking changes across the entire framework.  We will try to explain the changes below.</p>
 <p>Some changes will most likely have been missed, so please refer to the documentation pages to see the revised/new implementations.</p>
-<h2 id="browser-support">Browser Support <a class="direct-link" href="#browser-support"></a></h2>
+<h2 id="browser-support" tabindex="-1">Browser Support <a class="direct-link" href="#browser-support"></a></h2>
 <ul>
 <li><strong>Support for Internet Explorer 10 has been dropped!</strong> IE 10 is getting old, and the market share is less than 0.1% in terms of global usage according to many trackers.  Plus our use of MutationObservers in the Widgets either needs a polyfill, or things just don't work right.</li>
 </ul>
-<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility"></a></h2>
+<h2 id="accessibility" tabindex="-1">Accessibility <a class="direct-link" href="#accessibility"></a></h2>
 <ul>
 <li><code>.sr-only-focusable</code> does not require <code>.sr-only</code> anymore, and elements should not use a combination of the two classes.</li>
 </ul>
-<h2 id="color">Color <a class="direct-link" href="#color"></a></h2>
+<h2 id="color" tabindex="-1">Color <a class="direct-link" href="#color"></a></h2>
 <ul>
 <li>Reworked the colors, internal palette system, and consolidated the re-used component colors.</li>
 <li>Added functions to check, and/or determine the best color, these can be found in <code>/scss/functions/_color-util.scss</code>.</li>
 <li>Extended the contextual colors with light and dark contextual variants.  <strong>These variants are not available as palettes</strong> by default.</li>
 </ul>
-<h2 id="typography">Typography <a class="direct-link" href="#typography"></a></h2>
+<h2 id="typography" tabindex="-1">Typography <a class="direct-link" href="#typography"></a></h2>
 <ul>
 <li>Added two methods of Responsive Typography support.
 <ul>
@@ -419,13 +428,13 @@
 </li>
 <li>Inline lists, <code>.list-inline</code>, has been dropped and replaced with the <code>.list-horizontal</code> modifier in the new <a href="/4.0/components/lists/">List component</a>.</li>
 </ul>
-<h2 id="table">Table <a class="direct-link" href="#table"></a></h2>
+<h2 id="table" tabindex="-1">Table <a class="direct-link" href="#table"></a></h2>
 <ul>
 <li><code>.table</code> now creates a visually simple table, borders are controlled through a selection of modifier classes.</li>
 <li><code>.table-hover</code> and <code>.table-striped</code> now use a solid gradient color overlayed using <code>background-image</code> to create their visual state.</li>
 <li><code>.table-scroll-*</code> has dropped the <code>down</code> portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of <code>display: block</code>.</li>
 </ul>
-<h2 id="form">Form <a class="direct-link" href="#form"></a></h2>
+<h2 id="form" tabindex="-1">Form <a class="direct-link" href="#form"></a></h2>
 <p><strong>Forms have recieved a major overhaul.</strong>  Almost everything has been changed, from using <code>em</code> sizing by default, along with a simplification in terms of class names and their reusability across multiple input types and visual styles.  A few of the changes are listed below, but there are many that have probably been missed, so it might be better to just review the <a href="/4.0/content/forms/">forms documentation section</a> for a better understanding.</p>
 <ul>
 <li>
@@ -456,7 +465,7 @@
 <p>Dropped <code>.form-control-color</code>, <code>.form-control-range</code>, and <code>.form-control-file</code> . Use the updated <code>.form-color</code>, <code>.form-range</code> or <code>.form-file</code>  classes instead to get a consistent visual input.</p>
 </li>
 </ul>
-<h2 id="grid">Grid <a class="direct-link" href="#grid"></a></h2>
+<h2 id="grid" tabindex="-1">Grid <a class="direct-link" href="#grid"></a></h2>
 <ul>
 <li>Dropped the <code>.push</code> and <code>.pull</code> modifiers in favor of <code>.offset-*</code> and flex utilities.</li>
 <li>Dropped the <code>position: relative</code> from grid columns.</li>
@@ -464,17 +473,17 @@
 <li>The column classes can now also be used as stand alone classes to control width, without the additional horizontal padding when used outside a <code>.row</code>.</li>
 <li>Responsive gutter classes have been added, to allow control of the gutter size in horizontal and/or vertical directions.</li>
 </ul>
-<h2 id="components">Components <a class="direct-link" href="#components"></a></h2>
-<h3 id="breadbcrumb">Breadbcrumb <a class="direct-link" href="#breadbcrumb"></a></h3>
+<h2 id="components" tabindex="-1">Components <a class="direct-link" href="#components"></a></h2>
+<h3 id="breadbcrumb" tabindex="-1">Breadbcrumb <a class="direct-link" href="#breadbcrumb"></a></h3>
 <ul>
 <li>Removed <code>padding</code>, <code>background-color</code> and <code>border-radius</code> from parent <code>.breadcrumb</code> element.</li>
 </ul>
-<h3 id="button">Button <a class="direct-link" href="#button"></a></h3>
+<h3 id="button" tabindex="-1">Button <a class="direct-link" href="#button"></a></h3>
 <ul>
 <li>Added support for CSS checkbox and radio buttons, using <code>.btn-check</code> and <code>.btn-check-input</code> classes.</li>
 <li>Content in buttons will now wrap by default.  You can use the <code>.text-nowrap</code> utility class to preserve old behaviour.</li>
 </ul>
-<h3 id="card">Card <a class="direct-link" href="#card"></a></h3>
+<h3 id="card" tabindex="-1">Card <a class="direct-link" href="#card"></a></h3>
 <ul>
 <li>Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.</li>
 <li>Cards have been converted to flexbox layout.</li>
@@ -482,51 +491,51 @@
 <li>List and table sub-components now use a <code>.card-list</code> or <code>.card-table</code> respectively.</li>
 <li>Responsive horizontal card layouts have been added with <code>.card-horizontal{breakpoint}</code>, <code>.card-horizontal{breakpoint}-reverse</code>, and child <code>.card-col</code> elements.</li>
 </ul>
-<h3 id="grid-lines">Grid Lines <a class="direct-link" href="#grid-lines"></a></h3>
+<h3 id="grid-lines" tabindex="-1">Grid Lines <a class="direct-link" href="#grid-lines"></a></h3>
 <ul>
 <li>Grid lines were dropped in favor the updated <a href="/4.0/utilities/borders/#borders">Border utility classes</a>.</li>
 </ul>
-<h3 id="input-group">Input Group <a class="direct-link" href="#input-group"></a></h3>
+<h3 id="input-group" tabindex="-1">Input Group <a class="direct-link" href="#input-group"></a></h3>
 <ul>
 <li>Input group addons have been removed, simplifying much of the related CSS. Place your buttons as they would exist anywhere else, but wrap text in <code>.input-group-text</code>.</li>
 <li>Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).</li>
 <li>Sizing classes must be on the parent <code>.input-group</code> and not the individual form elements.</li>
 </ul>
-<h3 id="list-group">List Group <a class="direct-link" href="#list-group"></a></h3>
+<h3 id="list-group" tabindex="-1">List Group <a class="direct-link" href="#list-group"></a></h3>
 <ul>
 <li>The List Group is no longer a stand-alone component, and is now modifier within the new <a href="/4.0/components/lists/">List component</a>.</li>
 </ul>
-<h3 id="list">List <a class="direct-link" href="#list"></a></h3>
+<h3 id="list" tabindex="-1">List <a class="direct-link" href="#list"></a></h3>
 <ul>
 <li>A new component that allows for greater styling options for lists, or pseudo-lists using <code>&lt;div&gt;</code>s.</li>
 </ul>
-<h3 id="pagination">Pagination <a class="direct-link" href="#pagination"></a></h3>
+<h3 id="pagination" tabindex="-1">Pagination <a class="direct-link" href="#pagination"></a></h3>
 <ul>
 <li>Pagination has been modified with a couple of style modifier classes for greater flexibility.  The use of the <code>.pagination-group</code> modifier class on the <code>.pagination</code> element is needed to keep the same look as the older pagination component.</li>
 </ul>
-<h3 id="switch">Switch <a class="direct-link" href="#switch"></a></h3>
+<h3 id="switch" tabindex="-1">Switch <a class="direct-link" href="#switch"></a></h3>
 <ul>
 <li>Dropped Switch component and consolidated with the <code>.form-check</code> radio and checkbox controls, through the use of the <code>.form-switch</code> modifier class. Check out the <a href="/4.0/content/forms/#switch">new switch custom control</a>.</li>
 </ul>
-<h2 id="utilities">Utilities <a class="direct-link" href="#utilities"></a></h2>
-<h3 id="flexbox">Flexbox <a class="direct-link" href="#flexbox"></a></h3>
+<h2 id="utilities" tabindex="-1">Utilities <a class="direct-link" href="#utilities"></a></h2>
+<h3 id="flexbox" tabindex="-1">Flexbox <a class="direct-link" href="#flexbox"></a></h3>
 <ul>
 <li>Renamed <code>.flex-order</code> to <code>.order</code> to both shorten and also match standard rule name.</li>
 </ul>
-<h3 id="icons">Icons <a class="direct-link" href="#icons"></a></h3>
+<h3 id="icons" tabindex="-1">Icons <a class="direct-link" href="#icons"></a></h3>
 <ul>
 <li>The caret utilities have been upgraded to a 4-way style. Since <code>.dropup</code> is no longer on the parent container, you may have to change from <code>.caret</code> to <code>.caretup</code>.</li>
 </ul>
-<h3 id="image-replacement">Image Replacement <a class="direct-link" href="#image-replacement"></a></h3>
+<h3 id="image-replacement" tabindex="-1">Image Replacement <a class="direct-link" href="#image-replacement"></a></h3>
 <ul>
 <li>Dropped the <code>.text-hide</code> util and <code>.text-hide()</code> mixin—in favor of using <code>.sr-only</code> as the replacement.</li>
 </ul>
-<h2 id="widgets">Widgets <a class="direct-link" href="#widgets"></a></h2>
-<h3 id="button-1">Button <a class="direct-link" href="#button-1"></a></h3>
+<h2 id="widgets" tabindex="-1">Widgets <a class="direct-link" href="#widgets"></a></h2>
+<h3 id="button-1" tabindex="-1">Button <a class="direct-link" href="#button-1"></a></h3>
 <ul>
 <li>Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox <code>.btn-check</code> variant.</li>
 </ul>
-<h3 id="dropdown">Dropdown <a class="direct-link" href="#dropdown"></a></h3>
+<h3 id="dropdown" tabindex="-1">Dropdown <a class="direct-link" href="#dropdown"></a></h3>
 <ul>
 <li>Dropdown has been reworked to use a recursive model, and now uses <a href="https://popper.js.org/">Popper.js</a> for advanced positioning.  This also had an affect of changing all the available options.
 <ul>
@@ -543,31 +552,31 @@
 </li>
 <li>The class used to show menus, <code>.open</code>, is now used on the <code>.dropdown-menu</code> iteself, instead of the parent container.</li>
 </ul>
-<h3 id="lazy">Lazy <a class="direct-link" href="#lazy"></a></h3>
+<h3 id="lazy" tabindex="-1">Lazy <a class="direct-link" href="#lazy"></a></h3>
 <ul>
 <li>Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.</li>
 </ul>
-<h3 id="player">Player <a class="direct-link" href="#player"></a></h3>
+<h3 id="player" tabindex="-1">Player <a class="direct-link" href="#player"></a></h3>
 <ul>
 <li>Dropped support for sliders using the Slider widget, and added support for <code>&lt;input type=&quot;range&quot;&gt;</code> elements.  A few improvements on the accesibility of the sliders were also added.</li>
 </ul>
-<h3 id="popover">Popover <a class="direct-link" href="#popover"></a></h3>
+<h3 id="popover" tabindex="-1">Popover <a class="direct-link" href="#popover"></a></h3>
 <ul>
 <li>Popover now requires <a href="https://popper.js.org/">Popper.js</a> for positioning, replacing our custom code.  This also means changes to the available options.</li>
 </ul>
-<h3 id="slider">Slider <a class="direct-link" href="#slider"></a></h3>
+<h3 id="slider" tabindex="-1">Slider <a class="direct-link" href="#slider"></a></h3>
 <ul>
 <li>Dropped the slider widget as a bundled plugin.  This has been replaced with the <code>.form-range</code> styled <code>&lt;input type=&quot;range&quot;&gt;</code> element.</li>
 </ul>
-<h3 id="tooltip">Tooltip <a class="direct-link" href="#tooltip"></a></h3>
+<h3 id="tooltip" tabindex="-1">Tooltip <a class="direct-link" href="#tooltip"></a></h3>
 <ul>
 <li>Tooltip now requires <a href="https://popper.js.org/">Popper.js</a> for positioning, replacing our custom code.  This also means changes to the available options.</li>
 </ul>
-<h2 id="documentation">Documentation <a class="direct-link" href="#documentation"></a></h2>
+<h2 id="documentation" tabindex="-1">Documentation <a class="direct-link" href="#documentation"></a></h2>
 <ul>
 <li>We have stopped using Jekyll, and changed to using <a href="https://11ty.dev">Eleventy</a> to generate the documentation.</li>
 </ul>
-<h2 id="build-tools">Build Tools <a class="direct-link" href="#build-tools"></a></h2>
+<h2 id="build-tools" tabindex="-1">Build Tools <a class="direct-link" href="#build-tools"></a></h2>
 <ul>
 <li>Figuration now requires Node.js v10 or newer if using our build tools.  This is due to the minimum Node.js requirement for <code>grunt-sass</code>.</li>
 <li>The <code>grunt</code> directory has been removed, and replaced with a <code>build</code> directory.</li>
@@ -590,7 +599,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

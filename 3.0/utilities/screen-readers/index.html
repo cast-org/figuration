@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Screen Readers">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Screen Readers">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,20 +324,20 @@
 
       <p>Hide content without sacrificing accessibility.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#screen-reader-only-content">Screen Reader Only Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#hiding-content">Hiding Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#invisible-content">Invisible Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#useful-resources">Useful Resources </a></li></ul></nav><h2 id="screen-reader-only-content">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#screen-reader-only-content">Screen Reader Only Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#hiding-content">Hiding Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#invisible-content">Invisible Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#useful-resources">Useful Resources </a></li></ul></nav><h2 id="screen-reader-only-content" tabindex="-1">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
 <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.</p>
 <p>There are also responsive variants available in the form <code>.sr-only{-breakpoint}-{up/down}</code>.  For example, to visually hide content, <strong>except for screen readers</strong>, for a <code>sm</code> or smaller screens you would use <code>.sr-only-sm-down</code>.</p>
 <p>These classes are exceptionally useful helping to follow <a href="/3.0/get-started/accessibility">accessibility best practices</a>.</p>
 <p><strong>Heads up!</strong> There is no <code>.sr-only-*</code> class created for the smallest breakpoint and no <code>.sr-only-*-down</code> class created for the largest breakpoint, <code>.sr-only-xs</code> and <code>.sr-only-xl-down</code> respectively, since they are functionally equivalent to using <code>.sr-only</code>.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only sr-only-focusable<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.skip-navigation {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only;</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only-focusable;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="hiding-content">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
+<h2 id="hiding-content" tabindex="-1">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
 <p>Force an element to be hidden (including for screen readers) with the use of <code>.d{-breakpoint}-none</code> and <code>.d{-breakpoint}-down-none</code> classes.</p>
 <p>A section on the <a href="/3.0/utilities/display/#responsively-hiding-content">display utilities page</a> gives more detail about how these classes and breakpoints are related.</p>
-<h2 id="invisible-content">Invisible Content <a class="direct-link" href="#invisible-content"></a></h2>
+<h2 id="invisible-content" tabindex="-1">Invisible Content <a class="direct-link" href="#invisible-content"></a></h2>
 <p>The <code>.invisible</code> and <code>.visible</code> classes can be used to toggle only the <code>visibility</code> of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 <p>The <a href="/3.0/utilities/visibility/">visibility utilities page</a> gives more detail.</p>
-<h2 id="useful-resources">Useful Resources <a class="direct-link" href="#useful-resources"></a></h2>
+<h2 id="useful-resources" tabindex="-1">Useful Resources <a class="direct-link" href="#useful-resources"></a></h2>
 <p>Still have questions?  There are some links to external resources avaiable in the <a href="/3.0/get-started/accessibility/#screen-reader-only-content">screen reader section on the Accessibility page</a></p>
 
     </main>
@@ -346,7 +355,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

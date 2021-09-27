@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Position">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Position">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,22 +324,22 @@
 
       <p>Place a component outside the normal document flow.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#warnings">Warnings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#common-positioning">Common Positioning </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#quick-positioning">Quick Positioning </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-top">Fixed Top </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-bottom">Fixed Bottom </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sticky-top">Sticky Top </a></li></ul></li></ul></nav><h2 id="warnings">Warnings <a class="direct-link" href="#warnings"></a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#warnings">Warnings </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#common-positioning">Common Positioning </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#quick-positioning">Quick Positioning </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-top">Fixed Top </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fixed-bottom">Fixed Bottom </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sticky-top">Sticky Top </a></li></ul></li></ul></nav><h2 id="warnings" tabindex="-1">Warnings <a class="direct-link" href="#warnings"></a></h2>
 <p>Be sure you understand the ramifications of fixed and absolute position in your project; you may need to add aditional CSS.</p>
 <p>The sticky utilities uses CSS's <code>position: sticky</code>, which isn't fully supported in all browsers.  Additional support information can be found over at <a href="https://caniuse.com/#feat=css-sticky">Can I Use</a>.</p>
 <p><strong>IE11 and IE10 will render <code>position: sticky</code> as <code>position: relative</code>.</strong> As such, we wrap the styles in a <code>@supports</code> query, limiting the stickiness to only browsers that can render it properly.</p>
-<h2 id="common-positioning">Common Positioning <a class="direct-link" href="#common-positioning"></a></h2>
+<h2 id="common-positioning" tabindex="-1">Common Positioning <a class="direct-link" href="#common-positioning"></a></h2>
 <p>Responsive variants of common positioning types can be used in the form of <code>.position{breakpoint}-(type}</code>. Please refer to how our <a href="/3.0/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-static<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-absolute<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-fixed<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-sticky<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="quick-positioning">Quick Positioning <a class="direct-link" href="#quick-positioning"></a></h2>
+<h2 id="quick-positioning" tabindex="-1">Quick Positioning <a class="direct-link" href="#quick-positioning"></a></h2>
 <p>There are also some quick positioning utilities available, but they are not responsive.</p>
-<h3 id="fixed-top">Fixed Top <a class="direct-link" href="#fixed-top"></a></h3>
+<h3 id="fixed-top" tabindex="-1">Fixed Top <a class="direct-link" href="#fixed-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixed-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="fixed-bottom">Fixed Bottom <a class="direct-link" href="#fixed-bottom"></a></h3>
+<h3 id="fixed-bottom" tabindex="-1">Fixed Bottom <a class="direct-link" href="#fixed-bottom"></a></h3>
 <p>Position an element at the bottom of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixed-bottom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="sticky-top">Sticky Top <a class="direct-link" href="#sticky-top"></a></h3>
+<h3 id="sticky-top" tabindex="-1">Sticky Top <a class="direct-link" href="#sticky-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 
@@ -349,7 +358,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

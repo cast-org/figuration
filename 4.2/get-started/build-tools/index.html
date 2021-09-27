@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Build Tools">
 <meta name="twitter:description" content="A quick overview of our build system used to test and compile our source code into documentation, CSS, and JS.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build Tools">
+<meta property="og:description" content="A quick overview of our build system used to test and compile our source code into documentation, CSS, and JS.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -71,7 +80,7 @@
   <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
 </svg>
 
-    <span class="sr-only-xs-down">CAST Figuration&trade;</span>
+    <span class="sr-only-xs-down">CAST Figuration</span>
   </a>
   <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
     <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
@@ -102,13 +111,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.2.0
+    v4.2.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.2/" class="active" aria-current="true">v4.2.0</a></li>
+    <li><a href="/4.2/" class="active" aria-current="true">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -309,17 +318,17 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="tooling-setup">Tooling Setup <a class="direct-link" href="#tooling-setup"></a></h2>
+          <h2 id="tooling-setup" tabindex="-1">Tooling Setup <a class="direct-link" href="#tooling-setup"></a></h2>
 <p>Figuration uses <a href="https://nodejs.org/">Node.js</a> and <a href="https://gruntjs.com/">Grunt</a> for its CSS and JavaScript build system and <a href="http://11ty.dev">Eleventy</a> for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.</p>
 <p>To use our Gruntfile and run our documentation locally, you'll need a copy of Figuration's source files, Node.js, and Grunt. Follow these steps and you should be ready to rock:</p>
 <ol>
 <li><a href="https://nodejs.org/en/download/">Download and install Node.js</a>, which we use to manage our dependencies.</li>
 <li>Install the Grunt command line tools, <code>grunt-cli</code>, with <code>npm install -g grunt-cli</code>.</li>
-<li>Either download a copy of <a href="https://github.com/cast-org/figuration/archive/v4.2.0.zip">Figuration's source files</a> or fork the <a href="https://github.com/cast-org/figuration">Figuration repository</a>.</li>
+<li>Either download a copy of <a href="https://github.com/cast-org/figuration/archive/v4.2.1.zip">Figuration's source files</a> or fork the <a href="https://github.com/cast-org/figuration">Figuration repository</a>.</li>
 <li>Navigate to the root <code>/figuration</code> directory and run <code>npm install</code> to install the local dependencies listed in <a href="https://github.com/cast-org/figuration/blob/master/package.json">package.json</a>.</li>
 </ol>
 <p>When completed, you'll be able to run the various Grunt commands provided from the command line.</p>
-<h2 id="using-grunt">Using Grunt <a class="direct-link" href="#using-grunt"></a></h2>
+<h2 id="using-grunt" tabindex="-1">Using Grunt <a class="direct-link" href="#using-grunt"></a></h2>
 <p>Our Gruntfile includes the following commands and tasks:</p>
 <table>
 <thead>
@@ -351,17 +360,17 @@
 </tr>
 </tbody>
 </table>
-<h2 id="sass-compiler">Sass Compiler <a class="direct-link" href="#sass-compiler"></a></h2>
+<h2 id="sass-compiler" tabindex="-1">Sass Compiler <a class="direct-link" href="#sass-compiler"></a></h2>
 <p>Figuration is compiled with <a href="https://github.com/sass/node-sass">node-sass</a> via <a href="https://github.com/sindresorhus/grunt-sass">grunt-sass</a>. There are no alternative options at this time.</p>
 <p>In order to reduce potential issues with browser rounding, our build process has increased the <a href="https://sass-lang.com/documentation/js-api#precision">Sass rounding precision</a> to 6 (by default it's 5).</p>
-<h2 id="autoprefixer">Autoprefixer <a class="direct-link" href="#autoprefixer"></a></h2>
+<h2 id="autoprefixer" tabindex="-1">Autoprefixer <a class="direct-link" href="#autoprefixer"></a></h2>
 <p>Figuration uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.</p>
 <p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. <a href="https://github.com/cast-org/figuration/blob/master/.browserslistrc">See our <code>.browserslistrc</code></a> for details.</p>
-<h2 id="postcss-flexbugs-fixes">postcss-flexbugs-fixes <a class="direct-link" href="#postcss-flexbugs-fixes"></a></h2>
+<h2 id="postcss-flexbugs-fixes" tabindex="-1">postcss-flexbugs-fixes <a class="direct-link" href="#postcss-flexbugs-fixes"></a></h2>
 <p>Also included in our Gruntfile and build process is <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a> to work around some browser issues for flexbox layout.  More information about these issues can be found over at the <a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> repository.</p>
-<h2 id="postcss-calc">postcss-calc <a class="direct-link" href="#postcss-calc"></a></h2>
+<h2 id="postcss-calc" tabindex="-1">postcss-calc <a class="direct-link" href="#postcss-calc"></a></h2>
 <p><a href="https://github.com/postcss/postcss-calc">postcss-calc</a> is used to reduce <code>calc()</code> references whenever possible.</p>
-<h2 id="local-documentation">Local Documentation <a class="direct-link" href="#local-documentation"></a></h2>
+<h2 id="local-documentation" tabindex="-1">Local Documentation <a class="direct-link" href="#local-documentation"></a></h2>
 <p>Running our documentation with Eleventy, a static site generator that provides us with: templating, Markdown-based files, and more. Here's how to get it started:</p>
 <ol>
 <li>Run through the <a href="#tooling-setup">tooling setup</a> above to install all necessary development dependencies.</li>
@@ -369,7 +378,7 @@
 <li>Open <code>http://localhost:9001</code> in your browser, and enjoy.</li>
 </ol>
 <p>Learn more about using Eleventy by reading their <a href="https://www.11ty.dev/docs/">documentation</a>.</p>
-<h2 id="troubleshooting">Troubleshooting <a class="direct-link" href="#troubleshooting"></a></h2>
+<h2 id="troubleshooting" tabindex="-1">Troubleshooting <a class="direct-link" href="#troubleshooting"></a></h2>
 <p>Should you encounter problems with installing dependencies or running Grunt commands or npm scripts, uninstall all previous dependency versions (global and local). Then, rerun <code>npm install</code>.</p>
 
         </div>
@@ -389,7 +398,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

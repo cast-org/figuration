@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Screen Readers">
 <meta name="twitter:description" content="Visually hide content without sacrificing screen reader accessibility.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Screen Readers">
+<meta property="og:description" content="Visually hide content without sacrificing screen reader accessibility.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -324,7 +333,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="screen-reader-only-content">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
+          <h2 id="screen-reader-only-content" tabindex="-1">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
 <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Use <code>.sr-only-focusable</code> to show an element only when it becomes focused (e.g. by a keyboard-only user). Can also be used as mixins.</p>
 <p>There are also responsive variants available in the forms <code>.sr-only{-breakpoint}</code>, <code>.sr-only{-breakpoint}-down</code>, <code>.sr-only{-breakpoint}-focusable</code>, and <code>.sr-only{-breakpoint}-down-focusable</code>.  For example, to visually hide content, <strong>except for screen readers</strong>, for a <code>sm</code> or smaller screens you would use <code>.sr-only-sm-down</code>, or <code>.sr-only-sm-down-focusable</code> when the element should be shown only when focused for smaller screens.</p>
 <p>These classes are exceptionally useful helping to follow <a href="/4.1/get-started/accessibility">accessibility best practices</a>.</p>
@@ -337,24 +346,24 @@
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Title for Screen Readers<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-focusable<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-focusable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>A container with a <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>focusable element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.skip-navigation {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> sr-only-focusable;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="image-replacement">Image Replacement <a class="direct-link" href="#image-replacement"></a></h2>
+<h2 id="image-replacement" tabindex="-1">Image Replacement <a class="direct-link" href="#image-replacement"></a></h2>
 <p>Visually hide the text and show an image replacement by using a <code>background-image</code>.</p>
 <div class="cf-example">
 <h1 style="background-image: url('/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">
   <span class="sr-only">CAST Figuration</span>
 </h1>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token style language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="hiding-content">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'/assets/brand/figuration-solid.svg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>CAST Figuration<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="hiding-content" tabindex="-1">Hiding Content <a class="direct-link" href="#hiding-content"></a></h2>
 <p>Force an element to be hidden (including for screen readers) with the use of <code>.d{-breakpoint}-none</code> and <code>.d{-breakpoint}-down-none</code> classes.</p>
 <p>A section on the <a href="/4.1/utilities/display/#responsively-hiding-content">display utilities page</a> gives more detail about how these classes and breakpoints are related.</p>
-<h2 id="invisible-content">Invisible Content <a class="direct-link" href="#invisible-content"></a></h2>
+<h2 id="invisible-content" tabindex="-1">Invisible Content <a class="direct-link" href="#invisible-content"></a></h2>
 <p>The <code>.invisible</code> and <code>.visible</code> classes can be used to toggle only the <code>visibility</code> of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
 <p>The <a href="/4.1/utilities/visibility/">visibility utilities page</a> gives more detail.</p>
-<h2 id="useful-resources">Useful Resources <a class="direct-link" href="#useful-resources"></a></h2>
+<h2 id="useful-resources" tabindex="-1">Useful Resources <a class="direct-link" href="#useful-resources"></a></h2>
 <p>Still have questions?  There are some links to external resources avaiable in the <a href="/4.1/get-started/accessibility/#screen-reader-only-content">screen reader section on the Accessibility page</a></p>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -411,12 +420,12 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.</p>
-<h4 id="sr-only">sr-only <a class="direct-link" href="#sr-only"></a></h4>
+<h4 id="sr-only" tabindex="-1">sr-only <a class="direct-link" href="#sr-only"></a></h4>
 <p>Only display content to screen readers.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> sr-only();</span></code></pre>
-<h4 id="sr-only-focusable">sr-only-focusable <a class="direct-link" href="#sr-only-focusable"></a></h4>
+<h4 id="sr-only-focusable" tabindex="-1">sr-only-focusable <a class="direct-link" href="#sr-only-focusable"></a></h4>
 <p>Use in conjunction with <code>.sr-only</code> to only display content when it becomes focused.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> sr-only-focusable();</span></code></pre>
 
@@ -437,7 +446,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

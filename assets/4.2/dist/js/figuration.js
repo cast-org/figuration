@@ -1,6 +1,6 @@
 /*!
- * Figuration (v4.2.0)
- * http://figuration.org
+ * Figuration (v4.2.1)
+ * https://figuration.org
  * Copyright 2013-2021 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): util.js
+ * Figuration (v4.2.1): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -472,11 +472,55 @@ if (typeof jQuery === 'undefined') {
     $.CFW_isDisabled = function(element) {
         return $(element).is('.disabled, :disabled');
     };
+
+    $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {
+        var index = list.indexOf(activeElement);
+        var listLength = list.length;
+
+        if (typeof allowLoop === 'undefined') { allowLoop = false; }
+        if (typeof allowStartEnd === 'undefined') { allowStartEnd = false; }
+
+        // If currently actve element does not exist in the list
+        // return an element depending on the direction and if starting at the end is allowed
+        if (index === -1) {
+            return list[!doIncrement && allowStartEnd ? listLength - 1 : 0];
+        }
+
+        index += doIncrement ? 1 : -1;
+
+        if (allowLoop) {
+            index = (index + listLength) % listLength;
+        }
+
+        return list[Math.max(0, Math.min(index, listLength - 1))];
+    };
+
+    $.CFW_enableDismissControl = function(name, method) {
+        if (typeof CFW_API !== 'undefined' && CFW_API === false) { return; }
+
+        if (typeof method === 'undefined') { method = 'hide'; }
+        var widget = 'CFW_' + name.capitalize();
+        var eventName = 'click.dismiss.cfw.' + name;
+
+        $(document).on(eventName, '[data-cfw-dismiss="' + name + '"]', function(event) {
+            if (/a|area/i.test(this.tagName)) {
+                event.preventDefault();
+            }
+            if ($.CFW_isDisabled(this)) { return; }
+
+            var selector = $(this).CFW_getSelectorFromElement(name);
+            var $elm = selector ? $(selector) : $(this).closest('.' + name);
+
+            if ($elm.length) {
+                $elm[widget](method, event);
+            }
+        });
+    };
 }(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): drag.js
+ * Figuration (v4.2.1): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -663,7 +707,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): collapse.js
+ * Figuration (v4.2.1): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -905,7 +949,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): dropdown.js
+ * Figuration (v4.2.1): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -957,7 +1001,9 @@ if (typeof jQuery === 'undefined') {
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null,
-        autoClose : true
+        autoClose : true,
+        loop      : true,  // Loop around ends
+        startEnd  : true   // Up arrow from control starts at last menu item
     };
 
     /* eslint-disable complexity */
@@ -1282,9 +1328,10 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Left
-            if (e.which === KEYCODE_LEFT) {
+            if (e.which === KEYCODE_LEFT && this.settings.isSubmenu) {
                 this.hide();
                 this.$element.trigger('focus');
+                return;
             }
 
             // Focus control
@@ -1297,12 +1344,10 @@ if (typeof jQuery === 'undefined') {
                 index = $items.index($(e.target).closest('.dropdown-item')[0]);
             }
 
-            if (e.which === KEYCODE_UP && index > 0) { index--; } // up
-            if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; } // force first item
-
-            $items.eq(index).trigger('focus');
+            var nextItem = $items[index];
+            var doIncrement = e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT;
+            nextItem = $.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, this.settings.loop, this.settings.startEnd && !this.settings.subMenu);
+            $(nextItem).trigger('focus');
         },
         /* eslint-enable complexity */
 
@@ -1532,8 +1577,7 @@ if (typeof jQuery === 'undefined') {
                 .attr('aria-expanded', 'true')
                 .addClass('open');
             this.$target
-                .addClass('open')
-                .find('li').redraw();
+                .addClass('open');
 
             // Handle loss of focus
             $(document)
@@ -1642,10 +1686,6 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    $.fn.redraw = function() {
-        return this.offsetHeight;
-    };
-
     var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
@@ -1673,7 +1713,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): tab.js
+ * Figuration (v4.2.1): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1855,13 +1895,9 @@ if (typeof jQuery === 'undefined') {
             var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
-            if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left
-            if ((e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN) && index < $items.length - 1) { index++; } // down & right
-            /* eslint-disable-next-line no-bitwise */
-            if (!~index) { index = 0; }   // force first item
-
-            var nextTab = $items.eq(index);
-            nextTab.CFW_Tab('show').trigger('focus');
+            var doIncrement = e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN;
+            var $nextTab = $($.CFW_getNextActiveElement($items.toArray(), $items[index], doIncrement, false));
+            $nextTab.CFW_Tab('show').trigger('focus');
         },
 
         _activateTab : function() {
@@ -1938,7 +1974,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): affix.js
+ * Figuration (v4.2.1): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2111,7 +2147,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): tooltip.js
+ * Figuration (v4.2.1): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2345,21 +2381,8 @@ if (typeof jQuery === 'undefined') {
                         if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
-                            // Click the close button if it exists otherwise force tooltip closed
-                            if ($('.close', $selfRef.$target).length > 0) {
-                                $('.close', $selfRef.$target).eq(0).trigger('click');
-                            } else {
-                                $selfRef.hide(true);
-                            }
+                            $selfRef.dismiss();
                         }
-                    });
-
-                // Bind 'close' buttons
-                this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
-                        if (e) { e.preventDefault(); }
-                        $selfRef.follow = true;
-                        $selfRef.hide();
                     });
             }
         },
@@ -2590,6 +2613,11 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.$target.CFW_transition(null, this._showComplete.bind(this));
+        },
+
+        dismiss : function() {
+            this.follow = true;
+            this.hide();
         },
 
         hide : function(force) {
@@ -3020,30 +3048,15 @@ if (typeof jQuery === 'undefined') {
 
         // Move focus to next tabbable item before given element
         _tabPrev : function(current, $scope) {
-            var $selfRef = this;
-            var selectables = $selfRef._tabItems($scope);
-            var prevIndex = selectables.length - 1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex > 0) {
-                    prevIndex = currentIndex - 1;
-                }
-            }
-            selectables.eq(prevIndex).trigger('focus');
+            var selectables = this._tabItems($scope);
+
+            $.CFW_getNextActiveElement(selectables.toArray(), current, false, true).focus();
         },
 
         // Move focus to next tabbable item after given element
         _tabNext : function(current, $scope) {
             var $selfRef = this;
-
-            var selectables = $selfRef._tabItems($scope);
-            var nextIndex = -1;
-            if ($(current).length === 1) {
-                var currentIndex = selectables.index(current);
-                if (currentIndex + 1 < selectables.length) {
-                    nextIndex = currentIndex + 1;
-                }
-            }
+            var selectables = this._tabItems($scope);
 
             // Remove items from inside target
             if (typeof $scope === 'undefined') {
@@ -3052,12 +3065,7 @@ if (typeof jQuery === 'undefined') {
                 });
             }
 
-            if (typeof selectables[nextIndex] === 'undefined') {
-                // Send focus back to body
-                document.activeElement.blur();
-            } else {
-                selectables.eq(nextIndex).trigger('focus');
-            }
+            $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
         },
 
         /*
@@ -3143,11 +3151,13 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
+
+    $.CFW_enableDismissControl('tooltip', 'dismiss');
 }(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): popover.js
+ * Figuration (v4.2.1): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3569,11 +3579,13 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
+
+    $.CFW_enableDismissControl('popover', 'dismiss');
 }(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): modal.js
+ * Figuration (v4.2.1): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3686,12 +3698,7 @@ if (typeof jQuery === 'undefined') {
             this.escape();
             this.resize();
 
-            this.$target
-                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
-                    if (e) { e.preventDefault(); }
-                    $selfRef.hide();
-                })
-                .data('cfw.modal', this);
+            this.$target.data('cfw.modal', this);
 
             // Chained modals
             this.$target
@@ -3842,6 +3849,16 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.unlink();
                 }
             });
+        },
+
+        handleHide : function(e) {
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if (!$.CFW_isDisabled(e.currentTarget)) {
+                this.close();
+            }
         },
 
         chain : function(selector) {
@@ -4053,7 +4070,9 @@ if (typeof jQuery === 'undefined') {
                         $selfRef.ignoreBackdropClick = false;
                         return;
                     }
+
                     if (e.target !== e.currentTarget) { return; }
+
                     if ($selfRef.settings.backdrop === 'static') {
                         $selfRef.hideBlocked();
                     } else {
@@ -4174,11 +4193,13 @@ if (typeof jQuery === 'undefined') {
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
+
+    $.CFW_enableDismissControl('modal', 'hide');
 }(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): accordion.js
+ * Figuration (v4.2.1): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4254,7 +4275,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): tab-responsive.js
+ * Figuration (v4.2.1): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4391,7 +4412,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): slideshow.js
+ * Figuration (v4.2.1): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4462,32 +4483,22 @@ if (typeof jQuery === 'undefined') {
         prev : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex > 0) {
-                newIndex = currIndex - 1;
-            }
-            if (this.settings.loop && currIndex === 0) {
-                newIndex = $tabs.length - 1;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], false, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 
         next : function() {
             var $tabs = this._getTabs();
             var currIndex = this._currIndex($tabs);
-            var newIndex = -1;
-            if (currIndex < $tabs.length - 1) {
-                newIndex = currIndex + 1;
-            }
-            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
-                newIndex = 0;
-            }
-            if (newIndex > -1) {
+            var $newTab = $($.CFW_getNextActiveElement($tabs.toArray(), $tabs[currIndex], true, this.settings.loop));
+
+            if ($newTab.length) {
                 this.$element.CFW_trigger('next.cfw.slideshow');
-                $tabs.eq(newIndex).CFW_Tab('show');
+                $newTab.CFW_Tab('show');
             }
         },
 
@@ -4579,7 +4590,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): scrollspy.js
+ * Figuration (v4.2.1): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4773,15 +4784,13 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): alert.js
+ * Figuration (v4.2.1): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 (function($) {
     'use strict';
-
-    var dismiss = '[data-cfw-dismiss="alert"]';
 
     var CFW_Widget_Alert = function(element, options) {
         this.$element = $(element);
@@ -4809,7 +4818,7 @@ if (typeof jQuery === 'undefined') {
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    $selfRef.handleClose(e);
+                    $selfRef.close(e);
                 });
 
             this.$parent
@@ -4817,21 +4826,21 @@ if (typeof jQuery === 'undefined') {
         },
 
         handleClose : function(e) {
-            e.preventDefault();
-
             if (e.currentTarget === this.$parent[0]) {
                 return;
             }
 
-            if (!$.CFW_isDisabled(e.currentTarget)) {
-                this.close();
-            }
+            // Update settings from the trigger data
+            var parsedData = $(e.currentTarget).CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+            this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData);
+            this.findParent();
+            this.close(e);
         },
 
         close : function(e) {
             var $selfRef = this;
 
-            if (e) { e.preventDefault(); }
+            if (e && $.CFW_isDisabled(e.currentTarget)) { return; }
 
             if (this.inTransition) { return; }
 
@@ -4900,18 +4909,12 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
 
-    // API
-    // ===
-    if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function(e) {
-            $(this).CFW_Alert('handleClose', e);
-        });
-    }
+    $.CFW_enableDismissControl('alert', 'handleClose');
 }(jQuery));
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): lazy.js
+ * Figuration (v4.2.1): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5123,7 +5126,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): equalize.js
+ * Figuration (v4.2.1): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5340,7 +5343,7 @@ if (typeof jQuery === 'undefined') {
 /* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): player.js
+ * Figuration (v4.2.1): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6047,6 +6050,7 @@ if (typeof jQuery === 'undefined') {
         // https://github.com/iandevlin/iandevlin.github.io/blob/master/mdn/video-player-with-captions/js/video-player.js
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
+            // eslint-disable-next-line compat/compat
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
             return $fsNode.is(this.$element);
         },
@@ -7152,7 +7156,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.2.0): common.js
+ * Figuration (v4.2.1): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7161,7 +7165,6 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     var cfwList = {
-        '[data-cfw-dismisss="alert"]': 'CFW_Alert',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',

@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Drag">
 <meta name="twitter:description" content="A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drag">
+<meta property="og:description" content="A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,15 +324,15 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
+          <h2 id="examples" tabindex="-1">Examples <a class="direct-link" href="#examples"></a></h2>
 <p>An example can be found with the draggable popover on the <a href="/4.1/widgets/popover/#draggable-example">Popover widget</a> page.</p>
-<h2 id="disabled">Disabled <a class="direct-link" href="#disabled"></a></h2>
+<h2 id="disabled" tabindex="-1">Disabled <a class="direct-link" href="#disabled"></a></h2>
 <p>If the element on which the drag widget is attached to is disabled either by <code>.disabled</code> or <code>:disabled</code> then the <code>dragStart</code> action will not occur.  The same is true if a handle is defined, and the handle is marked as disabled.</p>
-<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
+<h2 id="usage" tabindex="-1">Usage <a class="direct-link" href="#usage"></a></h2>
+<h3 id="via-javascript" tabindex="-1">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Call the widget manually with options:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  handle <span class="token operator">:</span> <span class="token string">'#myDragHandle'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
+<h3 id="options" tabindex="-1">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via JavaScript.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -349,7 +358,7 @@
   </table>
 </div>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  handle<span class="token operator">:</span> <span class="token string">'#myDragHandle'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<h3 id="methods" tabindex="-1">Methods <a class="direct-link" href="#methods"></a></h3>
 <p>Method calls should be made on the drag element.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -368,7 +377,7 @@
   </table>
 </div>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Drag</span><span class="token punctuation">(</span><span class="token string">'dispose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
+<h3 id="events" tabindex="-1">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the item where the drag is attached.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -399,7 +408,7 @@
   </table>
 </div>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myDrag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'drag.cfw.drag'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// do something...</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="event-properties">Event Properties <a class="direct-link" href="#event-properties"></a></h3>
+<h3 id="event-properties" tabindex="-1">Event Properties <a class="direct-link" href="#event-properties"></a></h3>
 <p>Each event callback, except for <code>init.cfw.drag</code>, returns the following additional properties.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -472,7 +481,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

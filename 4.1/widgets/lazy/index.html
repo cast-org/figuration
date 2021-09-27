@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Lazy">
 <meta name="twitter:description" content="Load images or embedded content only when they become visible within the viewport.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lazy">
+<meta property="og:description" content="Load images or embedded content only when they become visible within the viewport.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,15 +324,15 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="overview">Overview <a class="direct-link" href="#overview"></a></h2>
+          <h2 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview"></a></h2>
 <p>Lazy delays the loading of images outside of the viewport (visible part of the page) until the user scrolls them into view.  In some cases this can help reduce both server load and overall bandwidth use.</p>
-<h2 id="example">Example <a class="direct-link" href="#example"></a></h2>
+<h2 id="example" tabindex="-1">Example <a class="direct-link" href="#example"></a></h2>
 <p>A lazy loaded image with delay and a fade in animation.</p>
 <div class="cf-example">
   <img data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="/assets/4.1/img/test.gif" width="360" height="202" alt="Test pattern" />
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lazy<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-lazy-delay</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1000<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-lazy-animate</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-lazy-src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test.gif<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>360<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>202<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Test pattern<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
-<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
+<h2 id="usage" tabindex="-1">Usage <a class="direct-link" href="#usage"></a></h2>
 <div class="cf-callout cf-callout-info">
 <p class="h5">Default Placeholder</p>
 <p>In the case where the <code>src</code> attribute is missing, for set to an emtpy string, a placeholder image is inserted via a <code>data:image</code> string on the <code>src</code> attribute that equates to a 1x1px transparent GIF.</p>
@@ -334,12 +343,12 @@
 <p class="h5">Image Dimensions</p>
 <p>If you do not wish to have the document height change when an image is loaded, then it would be a good idea to specify the <code>width</code> and <code>height</code> dimensions of the image either through attributes or CSS.</p>
 </div>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
+<h3 id="via-data-attributes" tabindex="-1">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>At a minimum, add <code>data-cfw=&quot;lazy&quot;</code> along with a <code>data-cfw-lazy-src=&quot;sourceURL&quot;</code> attribute to an image to replace the blank placeholder with the image found at <code>sourceURL</code>.</p>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
+<h3 id="via-javascript" tabindex="-1">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Enable manually with:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myImg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Lazy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
+<h3 id="options" tabindex="-1">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-lazy</code>, as in <code>data-cfw-lazy-src=image.png</code>.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -416,7 +425,7 @@
   </table>
 </div>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myImg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Lazy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  src<span class="token operator">:</span> <span class="token string">'image.png'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
+<h3 id="methods" tabindex="-1">Methods <a class="direct-link" href="#methods"></a></h3>
 <p>Method calls should be made on the image element.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -439,7 +448,7 @@
   </table>
 </div>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myImg'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Lazy</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
+<h3 id="events" tabindex="-1">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the image element.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -483,7 +492,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

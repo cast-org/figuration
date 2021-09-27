@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Reboot">
 <meta name="twitter:description" content="Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reboot">
+<meta property="og:description" content="Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -351,7 +360,7 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="approach">Approach <a class="direct-link" href="#approach"></a></h2>
+          <h2 id="approach" tabindex="-1">Approach <a class="direct-link" href="#approach"></a></h2>
 <p>Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.</p>
 <p>Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some <code>&lt;table&gt;</code> styles for a simpler baseline and later provide <code>.table</code>, <code>.table-bordered</code>, and more.</p>
 <p>Here are our guidelines and reasons for choosing what to override in Reboot:</p>
@@ -361,7 +370,7 @@
 <li>For easier scaling across device sizes, block elements should use <code>rem</code>s for <code>margin</code>s.</li>
 <li>Keep declarations of <code>font</code>-related properties to a minimum, using <code>inherit</code> whenever possible.</li>
 </ul>
-<h2 id="page-defaults">Page Defaults <a class="direct-link" href="#page-defaults"></a></h2>
+<h2 id="page-defaults" tabindex="-1">Page Defaults <a class="direct-link" href="#page-defaults"></a></h2>
 <p>The <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> elements are updated to provide better page-wide defaults. More specifically:</p>
 <ul>
 <li>The <code>box-sizing</code> is globally set on every element—including <code>*::before</code> and <code>*::after</code>, to <code>border-box</code>. This ensures that the declared width of element is never exceeded due to padding or border.</li>
@@ -369,12 +378,12 @@
 <li>The <code>&lt;body&gt;</code> also sets a global <code>font-family</code>, <code>line-height</code>, and <code>text-align</code>. This is inherited later by some form elements to prevent font inconsistencies.</li>
 <li>For safety, the <code>&lt;body&gt;</code> has a declared <code>background-color</code>, defaulting to <code>#fff</code>.</li>
 </ul>
-<h2 id="native-font-stack">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
+<h2 id="native-font-stack" tabindex="-1">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
 <p>Figuration uses a &quot;native font stack&quot;, sometimes called a &quot;system font stack&quot;, for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token selector">,</span><br>    <span class="token selector">-apple-system</span><span class="token selector">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token selector">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token selector">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token selector">,</span><br>    <span class="token selector">Arial</span><span class="token selector">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token selector">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token selector">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token selector">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token selector">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token selector">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token punctuation">,</span><br>    <span class="token selector">-apple-system</span><span class="token punctuation">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token punctuation">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span><br>    <span class="token selector">Arial</span><span class="token punctuation">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token punctuation">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token punctuation">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token punctuation">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
 <p>Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS <code>color</code> styles.</p>
 <p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Figuration.</p>
-<h2 id="headings-and-paragraphs">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
+<h2 id="headings-and-paragraphs" tabindex="-1">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
 <p>All heading elements—e.g., <code>&lt;h1&gt;</code>—and <code>&lt;p&gt;</code> are reset to have their <code>margin-top</code> removed. Headings have <code>margin-bottom: .5rem</code> added and paragraphs <code>margin-bottom: 1rem</code> for easy spacing.</p>
 <div class="cf-example cf-example-bottom">
 <h1>h1 heading</h1>
@@ -390,7 +399,7 @@
 <h6>h6 heading</h6>
 <p>Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 </div>
-<h2 id="lists">Lists <a class="direct-link" href="#lists"></a></h2>
+<h2 id="lists" tabindex="-1">Lists <a class="direct-link" href="#lists"></a></h2>
 <p>All lists—<code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, and <code>&lt;dl&gt;</code>—have their <code>margin-top</code> removed and a <code>margin-bottom: 1rem</code>. Nested lists have no <code>margin-bottom</code>.</p>
 <div class="cf-example cf-example-bottom">
 <ul>
@@ -433,7 +442,7 @@
   <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 </dl>
 </div>
-<h2 id="preformatted-text">Preformatted Text <a class="direct-link" href="#preformatted-text"></a></h2>
+<h2 id="preformatted-text" tabindex="-1">Preformatted Text <a class="direct-link" href="#preformatted-text"></a></h2>
 <p>The <code>&lt;pre&gt;</code> element is reset to remove its <code>margin-top</code> and use <code>rem</code> units for its <code>margin-bottom</code>.</p>
 <div class="cf-example cf-example-bottom">
 <pre>
@@ -442,7 +451,7 @@
 }
 </pre>
 </div>
-<h2 id="tables">Tables <a class="direct-link" href="#tables"></a></h2>
+<h2 id="tables" tabindex="-1">Tables <a class="direct-link" href="#tables"></a></h2>
 <p>Tables are slightly adjusted to style <code>&lt;caption&gt;</code>s, collapse borders, and ensure consistent <code>text-align</code> throughout. Additional changes for borders, padding, and more come with <a href="/4.1/content/tables/">the <code>.table</code> class</a>.</p>
 <div class="cf-example cf-example-bottom">
   <table>
@@ -479,7 +488,7 @@
     </tbody>
   </table>
 </div>
-<h2 id="forms">Forms <a class="direct-link" href="#forms"></a></h2>
+<h2 id="forms" tabindex="-1">Forms <a class="direct-link" href="#forms"></a></h2>
 <p>Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:</p>
 <ul>
 <li><code>&lt;fieldset&gt;</code>s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.</li>
@@ -614,14 +623,14 @@
 <p class="h5">Date, Time, and Color Input Support</p>
 <p>Be aware that not all browsers support the <a href="https://caniuse.com/input-datetime">date and time</a> or <a href="https://caniuse.com/input-color">color</a> input types.</p>
 </div>
-<h2 id="pointers-on-buttons">Pointers On Buttons <a class="direct-link" href="#pointers-on-buttons"></a></h2>
+<h2 id="pointers-on-buttons" tabindex="-1">Pointers On Buttons <a class="direct-link" href="#pointers-on-buttons"></a></h2>
 <p>Reboot includes an enhancement for <code>role=&quot;button&quot;</code> to change the default cursor to <code>pointer</code>. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for <code>&lt;button&gt;</code> elements, which get their own <code>cursor</code> change.</p>
 <div class="cf-example">
 <span role="button" tabindex="0">Non-button element button</span>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Non-button element button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="misc-elements">Misc Elements <a class="direct-link" href="#misc-elements"></a></h2>
-<h3 id="address">Address <a class="direct-link" href="#address"></a></h3>
+<h2 id="misc-elements" tabindex="-1">Misc Elements <a class="direct-link" href="#misc-elements"></a></h2>
+<h3 id="address" tabindex="-1">Address <a class="direct-link" href="#address"></a></h3>
 <p>The <code>&lt;address&gt;</code> element is updated to reset the browser default <code>font-style</code> from <code>italic</code> to <code>normal</code>. <code>line-height</code> is also now inherited, and <code>margin-bottom: 1rem</code> has been added. <code>&lt;address&gt;</code>s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with <code>&lt;br&gt;</code>.</p>
 <div class="cf-example cf-example-bottom">
   <address>
@@ -635,7 +644,7 @@
     <a href="mailto:first.last@example.com">first.last@example.com</a>
   </address>
 </div>
-<h3 id="blockquote">Blockquote <a class="direct-link" href="#blockquote"></a></h3>
+<h3 id="blockquote" tabindex="-1">Blockquote <a class="direct-link" href="#blockquote"></a></h3>
 <p>The default <code>margin</code> on blockquotes is <code>1em 40px</code>, so we reset that to <code>0 0 1rem</code> for something more consistent with other elements.</p>
 <div class="cf-example cf-example-bottom">
   <blockquote class="blockquote">
@@ -643,14 +652,14 @@
     <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
   </blockquote>
 </div>
-<h3 id="inline-elements">Inline Elements <a class="direct-link" href="#inline-elements"></a></h3>
+<h3 id="inline-elements" tabindex="-1">Inline Elements <a class="direct-link" href="#inline-elements"></a></h3>
 <p>The <code>&lt;abbr&gt;</code> element receives basic styling to make it stand out amongst paragraph text.</p>
 <div class="cf-example cf-example-bottom">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
 </div>
-<h3 id="inline-frame">Inline Frame <a class="direct-link" href="#inline-frame"></a></h3>
+<h3 id="inline-frame" tabindex="-1">Inline Frame <a class="direct-link" href="#inline-frame"></a></h3>
 <p><code>&lt;iframe&gt;</code>s have are set to <code>border: 0;</code> so there is no need for a <code>frameborder=&quot;0&quot;</code> attribute.</p>
-<h3 id="summary">Summary <a class="direct-link" href="#summary"></a></h3>
+<h3 id="summary" tabindex="-1">Summary <a class="direct-link" href="#summary"></a></h3>
 <p>The default <code>cursor</code> on summary is <code>text</code>, so we reset that to <code>pointer</code> to convey that the element can be interacted with by clicking on it.</p>
 <div class="cf-example cf-example-bottom">
   <details>
@@ -662,7 +671,7 @@
     <p>Here are even more details about the details.</p>
   </details>
 </div>
-<h2 id="html5-hidden-attribute">HTML5 <code>[hidden]</code> Attribute <a class="direct-link" href="#html5-hidden-attribute"></a></h2>
+<h2 id="html5-hidden-attribute" tabindex="-1">HTML5 <code>[hidden]</code> Attribute <a class="direct-link" href="#html5-hidden-attribute"></a></h2>
 <p>HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code>[hidden]</code></a>, which is styled as <code>display: none</code> by default. Borrowing an idea from <a href="https://purecss.io/">PureCSS</a>, we improve upon this default by making <code>[hidden] { display: none !important; }</code> to help prevent its <code>display</code> from getting accidentally overridden. While <code>[hidden]</code> isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span></code></pre>
 <div class="cf-callout cf-callout-warning">
@@ -670,8 +679,8 @@
 <p><code>[hidden]</code> is not compatible with jQuery's <code>$(...).hide()</code> and <code>$(...).show()</code> methods. Therefore, we don't currently especially endorse <code>[hidden]</code> over other techniques for managing the <code>display</code> of elements.</p>
 </div>
 <p>To merely toggle the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document, use <a href="/4.1/utilities/visibility/">the <code>.invisible</code> class</a> instead.</p>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.1/get-started/options/">Customization options</a>, or Sass variables, that can be customized for the reboot CSS styles.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -1007,7 +1016,7 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
         </div>
@@ -1027,7 +1036,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Alerts">
 <meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alerts">
+<meta property="og:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,7 +324,7 @@
 
       <p>Enable dismiss functionality for alert messages.</p>
 <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertoptions">.CFW_Alert(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertclose">.CFW_Alert(&#39;close&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertdispose">.CFW_Alert(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li></ul></nav><h2 id="examples">Examples <a class="direct-link" href="#examples"></a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertoptions">.CFW_Alert(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertclose">.CFW_Alert(&#39;close&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_alertdispose">.CFW_Alert(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li></ul></nav><h2 id="examples" tabindex="-1">Examples <a class="direct-link" href="#examples"></a></h2>
 <div class="cf-example">
 <div class="alert alert-warning" role="alert">
   <strong>Warning!</strong> Objects in the mirror are closer than they appear.
@@ -344,13 +353,13 @@
     });
   </script>
 </div>
-<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
-<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
+<h2 id="usage" tabindex="-1">Usage <a class="direct-link" href="#usage"></a></h2>
+<h3 id="via-data-attributes" tabindex="-1">Via Data Attributes <a class="direct-link" href="#via-data-attributes"></a></h3>
 <p>Just add <code>data-cfw-dismiss=&quot;alert&quot;</code> to a close button <strong>inside the alert container</strong> to automatically give an alert close functionality.</p>
-<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
+<h3 id="via-javascript" tabindex="-1">Via JavaScript <a class="direct-link" href="#via-javascript"></a></h3>
 <p>Enable dismissal of an alert via JavaScript:</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">".alert"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Alert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="options">Options <a class="direct-link" href="#options"></a></h3>
+<h3 id="options" tabindex="-1">Options <a class="direct-link" href="#options"></a></h3>
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-alert</code>, as in <code>data-cfw-alert-animate=&quot;false&quot;</code>.</p>
 <table class="table table-scroll table-bordered table-striped">
 <thead>
@@ -376,15 +385,15 @@
     </tr>
 </tbody>
 </table>
-<h3 id="methods">Methods <a class="direct-link" href="#methods"></a></h3>
-<h4 id="cfw_alertoptions"><code>.CFW_Alert(options)</code> <a class="direct-link" href="#cfw_alertoptions"></a></h4>
+<h3 id="methods" tabindex="-1">Methods <a class="direct-link" href="#methods"></a></h3>
+<h4 id="cfw_alertoptions" tabindex="-1"><code>.CFW_Alert(options)</code> <a class="direct-link" href="#cfw_alertoptions"></a></h4>
 <p>Activates the element as a dismiss trigger. (Not necessary when using the Figuration widget API is enabled.) Accepts an optional options <code>object</code>.</p>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myAlert'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Alert</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  animate<span class="token operator">:</span> <span class="token boolean">false</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="cfw_alertclose"><code>.CFW_Alert('close')</code> <a class="direct-link" href="#cfw_alertclose"></a></h4>
+<h4 id="cfw_alertclose" tabindex="-1"><code>.CFW_Alert('close')</code> <a class="direct-link" href="#cfw_alertclose"></a></h4>
 <p>Closes an alert.</p>
-<h4 id="cfw_alertdispose"><code>.CFW_Alert('dispose')</code> <a class="direct-link" href="#cfw_alertdispose"></a></h4>
+<h4 id="cfw_alertdispose" tabindex="-1"><code>.CFW_Alert('dispose')</code> <a class="direct-link" href="#cfw_alertdispose"></a></h4>
 <p>Removes the click event listener from a trigger. This will not disable a dismiss item if the Figuration widget API is enabled.</p>
-<h3 id="events">Events <a class="direct-link" href="#events"></a></h3>
+<h3 id="events" tabindex="-1">Events <a class="direct-link" href="#events"></a></h3>
 <p>Event callbacks happen on the target alert container.</p>
 <table class="table table-scroll table-bordered table-striped">
   <thead>
@@ -421,7 +430,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

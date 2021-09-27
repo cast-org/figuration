@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Accessibility">
 <meta name="twitter:description" content="A brief overview of Figurations’s features and limitations for the creation of accessible content.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Accessibility">
+<meta property="og:description" content="A brief overview of Figurations’s features and limitations for the creation of accessible content.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,13 +324,13 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="disclaimer">Disclaimer <a class="direct-link" href="#disclaimer"></a></h2>
+          <h2 id="disclaimer" tabindex="-1">Disclaimer <a class="direct-link" href="#disclaimer"></a></h2>
 <p>Figuration follows common web standards and—with minimal extra effort—can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
 <p>As stated on our <a href="/about/overview/">about page</a>, our goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications. Figuration includes generalized components and functionality designed to work for keyboard, mouse, and touch users, while providing basic accessibility requirements.</p>
 <p>It is possible to create projects that meet the <a href="https://www.w3.org/TR/WCAG21/"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0</a> (A/AA/AAA), <a href="https://www.section508.gov/">Section 508</a>, or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.</p>
-<h2 id="color-contrast">Color Contrast <a class="direct-link" href="#color-contrast"></a></h2>
+<h2 id="color-contrast" tabindex="-1">Color Contrast <a class="direct-link" href="#color-contrast"></a></h2>
 <p>Some combinations of colors that currently make up Figuration's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—may lead to <em>insufficient</em> color contrast (below the recommended <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 text color contrast ratio of 4.5:1</a> and the <a href="https://www.w3.org/TR/WCAG21/#non-text-contrast">WCAG 2.1 non-text color contrast ratio of 3:1</a>). Authors are encouraged to test their specific uses of color and, where necessary, manually modify/extend these default colors to ensure adequate color contrast ratios.</p>
-<h2 id="skip-navigation">Skip Navigation <a class="direct-link" href="#skip-navigation"></a></h2>
+<h2 id="skip-navigation" tabindex="-1">Skip Navigation <a class="direct-link" href="#skip-navigation"></a></h2>
 <p>For visually hidden interactive controls, such as traditional &quot;skip&quot; links, use the <code>.sr-only-focusable</code> class. This will ensure that the control becomes visible once focused (for sighted keyboard users). <strong>Do not use the <code>.sr-only-focusable</code> class in combination with the <code>.sr-only</code> class.</strong></p>
 <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link before the navigation (for a simple explanation, see this <a href="https://a11yproject.com/posts/skip-nav-links/">A11Y Project article on skip navigation links</a>). Using the <code>.sr-only</code> class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).</p>
 <div class="cf-callout cf-callout-danger">
@@ -330,11 +339,11 @@
 <p>Note that this bug will also affect any other in-page links your site may be using, rendering them useless for keyboard users. You may consider adding a similar stop-gap fix to all other named anchors / fragment identifiers that act as link targets.</p>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#content<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only-focusable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Skip to main content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>  ...<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token comment">&lt;!-- The main page content --></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="nested-headings">Nested Headings <a class="direct-link" href="#nested-headings"></a></h2>
+<h2 id="nested-headings" tabindex="-1">Nested Headings <a class="direct-link" href="#nested-headings"></a></h2>
 <p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
 <p>Avoid skipping heading levels when structuring your document, as it is confusing for screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
 <p>Learn more at <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">HTML CodeSniffer</a> and <a href="http://accessibility.psu.edu/headings/">Penn State's Accessibility</a>.</p>
-<h2 id="screen-reader-only-content">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
+<h2 id="screen-reader-only-content" tabindex="-1">Screen Reader Only Content <a class="direct-link" href="#screen-reader-only-content"></a></h2>
 <p>In some cases the design might call for content or layout that works fine for visual users, but screen reader users might need additional context to help with what the content is trying to convey.</p>
 <p>Some quick examples would be using icons for layout, or links that might all visually contain the same information (the ever present 'read more' links).  In both cases a screen reader is left with no context.</p>
 <p>Using <a href="/4.1/utilities/screen-readers/#screen-reader-only-content">screen reader only content</a> is a way to provide this context without overloading the visual display.</p>
@@ -343,7 +352,7 @@
 <li><a href="http://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/">Text for Screen Readers Only</a></li>
 <li><a href="https://webaim.org/techniques/css/invisiblecontent/">Invisible Content Just for Screen Reader Users</a></li>
 </ul>
-<h2 id="disabled-anchors">Disabled Anchors <a class="direct-link" href="#disabled-anchors"></a></h2>
+<h2 id="disabled-anchors" tabindex="-1">Disabled Anchors <a class="direct-link" href="#disabled-anchors"></a></h2>
 <p>Many of Figuration's components use of a <code>.disabled</code> class to make items <em>visually</em> appear disabled.  While there is the <code>disabled</code> attribute available for <code>&lt;button&gt;</code>s, HTML does not have an easy way to disable user interaction with <code>&lt;a&gt;</code>s.</p>
 <p>It should also be noted that:</p>
 <ul>
@@ -361,12 +370,12 @@
 <li>Use custom JavaScript to disable their functionality. For example:</li>
 </ul>
 <pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.disabled'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="conveying-meaning-with-color">Conveying Meaning With Color <a class="direct-link" href="#conveying-meaning-with-color"></a></h2>
+<h2 id="conveying-meaning-with-color" tabindex="-1">Conveying Meaning With Color <a class="direct-link" href="#conveying-meaning-with-color"></a></h2>
 <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies—such as screen readers—or users that might be colorbind. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class, or through the use of <abbr title="Accessible Rich Internet Applications">ARIA</abbr> attributes.</p>
-<h2 id="reduced-motion">Reduced Motion <a class="direct-link" href="#reduced-motion"></a></h2>
+<h2 id="reduced-motion" tabindex="-1">Reduced Motion <a class="direct-link" href="#reduced-motion"></a></h2>
 <p>Figuration includes support for the <a href="https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion"><code>prefers-reduced-motion</code> media feature</a>. In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at <a href="https://caniuse.com/?search=prefers-reduced-motion">Can I Use</a>.</p>
 <p>On browsers that support <code>prefers-reduced-motion</code>, and where the user has <em>not</em> explicitly signaled that they would prefer reduced motion (i.e. where <code>prefers-reduced-motion: no-preference</code>), Figuration enables smooth scrolling using the <code>scroll-behavior</code> property.</p>
-<h2 id="additional-resources">Additional Resources <a class="direct-link" href="#additional-resources"></a></h2>
+<h2 id="additional-resources" tabindex="-1">Additional Resources <a class="direct-link" href="#additional-resources"></a></h2>
 <ul>
 <li><a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) 2.1</a></li>
 <li><a href="https://www.a11yproject.com/">The A11Y Project</a></li>
@@ -394,7 +403,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

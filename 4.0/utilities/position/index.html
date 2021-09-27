@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Position">
 <meta name="twitter:description" content="Place a component outside the normal document flow.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Position">
+<meta property="og:description" content="Place a component outside the normal document flow.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -323,30 +332,30 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="warnings">Warnings <a class="direct-link" href="#warnings"></a></h2>
+          <h2 id="warnings" tabindex="-1">Warnings <a class="direct-link" href="#warnings"></a></h2>
 <p>Be sure you understand the ramifications of fixed and absolute position in your project; you may need to add aditional CSS.</p>
-<h2 id="common-positioning">Common Positioning <a class="direct-link" href="#common-positioning"></a></h2>
+<h2 id="common-positioning" tabindex="-1">Common Positioning <a class="direct-link" href="#common-positioning"></a></h2>
 <p>The following utilities are available for positioning.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-static<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-relative<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-absolute<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-fixed<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position-sticky<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>Responsive variants are also available in the form of <code>.position{breakpoint}-{type}</code>, such as <code>.position-md-relative</code>. Please refer to how our <a href="/4.0/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
-<h2 id="quick-positioning">Quick Positioning <a class="direct-link" href="#quick-positioning"></a></h2>
+<h2 id="quick-positioning" tabindex="-1">Quick Positioning <a class="direct-link" href="#quick-positioning"></a></h2>
 <p>There are also some quick positioning utilities available, but they are not responsive.</p>
-<h3 id="fixed-top">Fixed Top <a class="direct-link" href="#fixed-top"></a></h3>
+<h3 id="fixed-top" tabindex="-1">Fixed Top <a class="direct-link" href="#fixed-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixed-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="fixed-bottom">Fixed Bottom <a class="direct-link" href="#fixed-bottom"></a></h3>
+<h3 id="fixed-bottom" tabindex="-1">Fixed Bottom <a class="direct-link" href="#fixed-bottom"></a></h3>
 <p>Position an element at the bottom of the viewport, from edge to edge.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fixed-bottom<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="sticky-top">Sticky Top <a class="direct-link" href="#sticky-top"></a></h3>
+<h3 id="sticky-top" tabindex="-1">Sticky Top <a class="direct-link" href="#sticky-top"></a></h3>
 <p>Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.<br>
 This sticky utility uses CSS's <code>position: sticky</code>, which isn't fully supported in all browsers.  Additional support information can be found at <a href="https://caniuse.com/#feat=css-sticky">Can I Use - CSS position:sticky</a>.</p>
 <p><strong>IE11 and IE10 will render <code>position: sticky</code> as <code>position: relative</code>.</strong> As such, we wrap the styles in a <code>@supports</code> query, limiting the stickiness to only browsers that can render it properly.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="responsive-sticky-top">Responsive Sticky Top <a class="direct-link" href="#responsive-sticky-top"></a></h3>
+<h3 id="responsive-sticky-top" tabindex="-1">Responsive Sticky Top <a class="direct-link" href="#responsive-sticky-top"></a></h3>
 <p>Responsive variations also exist for <code>.sticky-top</code> utility.</p>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-sm-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stick to the top on viewports sized SM (small) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-md-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stick to the top on viewports sized MD (medium) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-lg-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stick to the top on viewports sized LG (large) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sticky-xl-top<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Stick to the top on viewports sized XL (extra-large) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -428,7 +437,7 @@ This sticky utility uses CSS's <code>position: sticky</code>, which isn't fully 
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>No mixins available.</p>
 
         </div>
@@ -448,7 +457,7 @@ This sticky utility uses CSS's <code>position: sticky</code>, which isn't fully 
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

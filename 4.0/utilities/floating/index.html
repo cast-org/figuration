@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Floating">
 <meta name="twitter:description" content="Toggle float on elements with responsive float utilities.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Floating">
+<meta property="og:description" content="Toggle float on elements with responsive float utilities.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -109,7 +118,7 @@
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.0</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.2/">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -317,9 +326,9 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="overview">Overview <a class="direct-link" href="#overview"></a></h2>
+          <h2 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview"></a></h2>
 <p>These utility classes float an element to the enable or disable floating, based on the current viewport size using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">CSS <code>float</code> property</a>.</p>
-<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
+<h2 id="usage" tabindex="-1">Usage <a class="direct-link" href="#usage"></a></h2>
 <p>Note that the float utilities do not have any affect on items inside flex container.  Please refer to the <a href="https://www.w3.org/TR/css-flexbox-1/#flex-containers">flexbox specification</a> for details.</p>
 <p>Instead of using <code>left/right</code> designators, the float utilities use <code>start/end</code> designators to match up with the <a href="/4.0/utilities/flexbox/">flexbox utilities</a>.</p>
 <div class="cf-example">
@@ -333,8 +342,8 @@
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-start<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float start aligned on all viewport sizes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float end aligned on all viewport sizes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-none<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Don't float on all viewport sizes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-sm-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float end aligned on viewports sized SM (small) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-md-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float end aligned on viewports sized MD (medium) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-lg-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float end aligned on viewports sized LG (large) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>float-xl-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Float end aligned on viewports sized XL (extra-large) or wider<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span></code></pre>
 <pre class="language-sass"><code class="language-sass"><span class="token comment">// Related simple non-responsive mixins</span><br><span class="token selector">.element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> float-start;</span><br><span class="token selector">}</span><br><span class="token selector">.another-element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> float-end;</span><br><span class="token selector">}</span><br><span class="token selector">.unfloated-element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> float-none;</span><br><span class="token selector">}</span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.0/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -358,15 +367,15 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.</p>
-<h4 id="float-start">float-start() <a class="direct-link" href="#float-start"></a></h4>
+<h4 id="float-start" tabindex="-1">float-start() <a class="direct-link" href="#float-start"></a></h4>
 <p>Apply a float to the 'start' side.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> float-start();</span></code></pre>
-<h4 id="float-end">float-end() <a class="direct-link" href="#float-end"></a></h4>
+<h4 id="float-end" tabindex="-1">float-end() <a class="direct-link" href="#float-end"></a></h4>
 <p>Apply a float to the 'end' side.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> float-end();</span></code></pre>
-<h4 id="float-none">float-none() <a class="direct-link" href="#float-none"></a></h4>
+<h4 id="float-none" tabindex="-1">float-none() <a class="direct-link" href="#float-none"></a></h4>
 <p>Disable float.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> float-none();</span></code></pre>
         </div>
@@ -386,7 +395,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

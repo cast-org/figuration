@@ -30,6 +30,15 @@
 <meta name="twitter:title" content="Clearfix">
 <meta name="twitter:description" content="Clear floated content within a container with the clearfix utility.">
 <meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clearfix">
+<meta property="og:description" content="Clear floated content within a container with the clearfix utility.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
 
 <!-- Google Analytics -->
 <script>
@@ -71,7 +80,7 @@
   <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
 </svg>
 
-    <span class="sr-only-xs-down">CAST Figuration&trade;</span>
+    <span class="sr-only-xs-down">CAST Figuration</span>
   </a>
   <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
     <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
@@ -102,13 +111,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.2.0
+    v4.2.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.2/" class="active" aria-current="true">v4.2.0</a></li>
+    <li><a href="/4.2/" class="active" aria-current="true">v4.2.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -315,13 +324,13 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="overview">Overview <a class="direct-link" href="#overview"></a></h2>
+          <h2 id="overview" tabindex="-1">Overview <a class="direct-link" href="#overview"></a></h2>
 <p>Easily clear <code>float</code>s by adding <code>.clearfix</code> <strong>to the parent element</strong>. A detailed explanation of <a href="http://cssmojo.com/the-very-latest-clearfix-reloaded/">how the clearfix works</a> is available.</p>
-<h2 id="usage">Usage <a class="direct-link" href="#usage"></a></h2>
+<h2 id="usage" tabindex="-1">Usage <a class="direct-link" href="#usage"></a></h2>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clearfix<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>Can also be used as a mixin.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token comment">// Mixin itself</span><br><span class="token atrule-line"><span class="token atrule">@mixin</span> clearfix() {</span><br><span class="token property-line">  <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">after</span> {</span><br><span class="token property-line">    <span class="token property">display</span><span class="token punctuation">:</span> block;</span><br><span class="token property-line">    <span class="token property">clear</span><span class="token punctuation">:</span> both;</span><br><span class="token property-line">    <span class="token property">content</span><span class="token punctuation">:</span> </span><span class="token string">""</span><span class="token selector">;</span><br>  <span class="token selector">}</span><br><span class="token selector">}</span><br><br><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> clearfix();</span><br><span class="token selector">}</span></code></pre>
-<h2 id="example">Example <a class="direct-link" href="#example"></a></h2>
+<pre class="language-sass"><code class="language-sass"><span class="token comment">// Mixin itself</span><br><span class="token atrule-line"><span class="token atrule">@mixin</span> clearfix() {</span><br><span class="token property-line">  <span class="token property">&amp;</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token property">after</span> {</span><br><span class="token property-line">    <span class="token property">display</span><span class="token punctuation">:</span> block;</span><br><span class="token property-line">    <span class="token property">clear</span><span class="token punctuation">:</span> both;</span><br><span class="token property-line">    <span class="token property">content</span><span class="token punctuation">:</span> "";</span><br>  <span class="token selector">}</span><br><span class="token selector">}</span><br><br><span class="token comment">// Usage as a mixin</span><br><span class="token selector">.element {</span><br><span class="token atrule-line">  <span class="token atrule">@include</span> clearfix();</span><br><span class="token selector">}</span></code></pre>
+<h2 id="example" tabindex="-1">Example <a class="direct-link" href="#example"></a></h2>
 <p>The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around the buttons which would cause a broken layout, as shown in the second part of the example.</p>
 <div class="cf-example clearfix">
   <strong>With <code>.clearfix</code></strong>
@@ -336,8 +345,8 @@
   </div>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- With .clearfix --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-info clearfix<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn float-start<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button floated to start<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn float-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button floated to end<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Without .clearfix --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn float-start<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button floated to start<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn float-end<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button floated to end<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="sass-reference">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
-<h3 id="variables">Variables <a class="direct-link" href="#variables"></a></h3>
+<h2 id="sass-reference" tabindex="-1">SASS Reference <a class="direct-link" href="#sass-reference"></a></h2>
+<h3 id="variables" tabindex="-1">Variables <a class="direct-link" href="#variables"></a></h3>
 <p>The available <a href="/4.2/get-started/options/">Customization options</a>, or Sass variables, that can be customized for this grouping of utility classes.</p>
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
@@ -361,12 +370,12 @@
     </tbody>
   </table>
 </div>
-<h3 id="mixins">Mixins <a class="direct-link" href="#mixins"></a></h3>
+<h3 id="mixins" tabindex="-1">Mixins <a class="direct-link" href="#mixins"></a></h3>
 <p>Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.</p>
-<h4 id="clearfix">clearfix() <a class="direct-link" href="#clearfix"></a></h4>
+<h4 id="clearfix" tabindex="-1">clearfix() <a class="direct-link" href="#clearfix"></a></h4>
 <p>Apply a clearfix to an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> clearfix();</span></code></pre>
-<h4 id="clearfix-disable">clearfix-disable() <a class="direct-link" href="#clearfix-disable"></a></h4>
+<h4 id="clearfix-disable" tabindex="-1">clearfix-disable() <a class="direct-link" href="#clearfix-disable"></a></h4>
 <p>Disable the clearfix on an element.</p>
 <pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> clearfix-disable();</span></code></pre>
         </div>
@@ -386,7 +395,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.2.0
+      <strong>Latest version:</strong> 4.2.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
