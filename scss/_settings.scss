@@ -1359,6 +1359,13 @@ $modal-transform-blocked:       scale(1.01) !default;
 // Remove slide when using fullscreen variant
 $modal-transform-fullscreen:    none !default;
 
+// Loader
+// =====
+$loader-circle-size:                    1em !default;
+$loader-circle-border-width:            3px !default;
+$loader-circle-alt-opacity:             .25 !default;
+$loader-circle-vertical-align:          -($loader-circle-border-width / 2) !default;
+$loader-circle-animation-speed:         1s !default;
 
 // Player
 // =====
