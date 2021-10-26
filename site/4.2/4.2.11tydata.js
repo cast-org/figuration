@@ -53,6 +53,7 @@ module.exports = {
           { "title": "Input Group" },
           { "title": "Jumbotron" },
           { "title": "Lists" },
+          { "title": "Loader" },
           { "title": "Media Object" },
           { "title": "Navbar" },
           { "title": "Navs" },
