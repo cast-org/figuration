@@ -1797,7 +1797,6 @@ textarea.form-control.has-validation-icon.is-invalid {
 
 .btn {
   display: inline-block;
-  align-self: center;
   font-weight: 400;
   text-align: center;
   text-decoration: none;
@@ -6342,6 +6341,60 @@ a.drag.disabled {
 
 .alert-dark .alert-link:hover, .alert-dark .alert-link:focus {
   color: #15191d;
+}
+
+@-webkit-keyframes loader-spin-cw {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes loader-spin-cw {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.loader-circle, .loader-double {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -1.5px;
+}
+
+.loader-circle::before, .loader-double::before, .loader-circle::after, .loader-double::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: inherit;
+  height: inherit;
+  content: "";
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+
+.loader-circle::after, .loader-double::after {
+  border-right-color: currentColor;
+  -webkit-animation: 1s linear infinite loader-spin-cw;
+          animation: 1s linear infinite loader-spin-cw;
+}
+
+.loader-circle::before, .loader-double::before {
+  border-color: currentColor;
+  opacity: 0.25;
+}
+
+.loader-double::after {
+  border-left-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-spin-cw {
+    -webkit-animation-duration: 2s;
+            animation-duration: 2s;
+  }
 }
 
 .modal-open {
