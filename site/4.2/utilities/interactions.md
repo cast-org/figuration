@@ -29,7 +29,11 @@ Use the provided `.pe-none` and `.pe-auto` classes to prevent or add element int
 {% renderExample example %}
 
 {% capture callout %}
-The `.pe-none` class (and the `pointer-events` CSS property it sets) only prevents interactions with a pointer (mouse, stylus, touch). Links and controls with `.pe-none` are, by default, still focusable and actionable for keyboard users. To ensure that they are completely neutralized even for keyboard users, you may need to add further attributes such as `tabindex="-1"` (to prevent them from receiving keyboard focus) and `aria-disabled="true"` (to convey the fact they are effectively disabled to assistive technologies), and possibly use JavaScript to completely prevent them from being actionable. For form controls, consider using the `disabled` HTML attribute instead.
+The `.pe-none` class (and the `pointer-events` CSS property it sets) only prevents interactions with a pointer (mouse, stylus, touch). Links and controls with `.pe-none` are, by default, still focusable and actionable for keyboard users. To ensure that they are completely neutralized even for keyboard users, you may need to add further attributes such as `tabindex="-1"` (to prevent them from receiving keyboard focus) and `aria-disabled="true"` (to convey the fact they are effectively disabled to assistive technologies), and possibly use JavaScript to completely prevent them from being actionable.
+
+If possible, the simpler solution is:
+- For form controls, add the `disabled` HTML attribute.
+- For links, remove the `href` attribute, making it a non-interactive anchor or placeholder link.
 
 Additional information can found in the accessibility section about [disabled anchors]({{ site.path }}/{{ version.docs }}/get-started/accessibility/#disabled-anchors).
 {% endcapture %}

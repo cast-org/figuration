@@ -37,7 +37,7 @@ The base `.nav` component is built with flexbox and provides a strong foundation
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -50,7 +50,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
   <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
-  <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link disabled">Disabled</a>
 </nav>
 {% endcapture %}
 {% renderExample example %}
@@ -77,7 +77,7 @@ Centered with `.flex-center`:
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -97,7 +97,7 @@ Right-aligned with `.flex-end`:
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -119,7 +119,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -132,7 +132,7 @@ As always, vertical navigation is possible without `<ul>`s, too.
   <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
-  <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link disabled">Disabled</a>
 </nav>
 {% endcapture %}
 {% renderExample example %}
@@ -153,7 +153,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -175,7 +175,7 @@ Take that same HTML, but use `.nav-pills` instead:
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -197,7 +197,7 @@ Add `.flex-column` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -210,7 +210,7 @@ As always, vertical pills are possible without `<ul>`s.
   <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
-  <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link disabled">Disabled</a>
 </nav>
 {% endcapture %}
 {% renderExample example %}
@@ -231,7 +231,7 @@ Force your `.nav`’s contents to extend the full available width one of two mod
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -251,7 +251,7 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -265,7 +265,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
   <a href="#" class="flex-sm-fill text-sm-center nav-link active" aria-current="page">Active</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
-  <a href="#" class="flex-sm-fill text-sm-center nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
 </nav>
 {% endcapture %}
 {% renderExample example %}
@@ -303,7 +303,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
@@ -330,7 +330,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{
     <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+    <a class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
