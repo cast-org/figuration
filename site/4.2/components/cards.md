@@ -426,7 +426,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
   </div>
@@ -450,7 +450,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
   </div>

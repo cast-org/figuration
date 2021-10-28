@@ -69,15 +69,20 @@ Some helpful references:
 
 Many of Figuration's components use of a `.disabled` class to make items _visually_ appear disabled.  While there is the `disabled` attribute available for `<button>`s, HTML does not have an easy way to disable user interaction with `<a>`s.
 
+Solutions include:
+- The [W3C recommended solution to "disable" a link](https://www.w3.org/TR/html-aria/#docconformance) is to remove the `href` attribute.
+- Another acceptable solution would be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
+
 It should also be noted that:
+- Basic `<a>`s do not have a `.disabled` class defined.
 - `<a>`s don't support the `disabled` attribute.
 - The `.disabled` class uses a future-friendly `pointer-events: none` property to try to disable the `pointer-events` and link functionality of `<a>`s, but that CSS property is not yet standardized.
 - In browsers which support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links.
 - When using both the `pointer-events: none` and `cursor: not-allowed` styles, the disabled cursor is not shown when hovering over the item.
+- Disabled buttons using `<a>` should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+- Disabled buttons using `<a>` *should not* include the `href` attribute.
 
-Some solutions include:
-- In some cases, an acceptable solution would be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
-- Disabled links, especially buttons and navigation items, would benefit from the inclusion of an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+To cover cases where you have to keep the `href` attribute on a disabled link:
 - Add a `tabindex="-1"` attribute on disabled links to prevent them from receiving keyboard focus.
 - Add an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 - Use custom JavaScript to disable their functionality. For example:
