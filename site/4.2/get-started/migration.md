@@ -144,7 +144,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 #### Button
 - Added support for CSS checkbox and radio buttons, using `.btn-check` and `.btn-check-input` classes.
-- Content in buttons will now wrap by default.  You can use the `.text-nowrap` utility class to preserve old behaviour.
+- Content in buttons will now wrap by default.  You can use the `.text-nowrap` utility class to preserve old behavior.
 
 #### Card
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.

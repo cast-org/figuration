@@ -249,7 +249,7 @@ If there is a tab that is disabled, the previous and next navigation items will 
 
 ### Looping
 
-By default the previous or next navigation controls become disabled when the first or last slide, respectively, is active.  Use the `loop` option to override this behaviour and allow users to loop around the ends of the slidehow.
+By default the previous or next navigation controls become disabled when the first or last slide, respectively, is active.  Use the `loop` option to override this behavior and allow users to loop around the ends of the slidehow.
 
 <div class="cf-example">
   <ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">

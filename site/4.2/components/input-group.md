@@ -61,7 +61,7 @@ While multiple `<input>`s are supported visually, validation styles are only ava
 
 ## Wrapping
 
-Input groups wrap by default in order to accommodate the use of custom form field validation within them.  Since this is done with `flex-wrap: wrap;`, you can easily disable this behaviour by using our `.flex-nowrap` utility.
+Input groups wrap by default in order to accommodate the use of custom form field validation within them.  Since this is done with `flex-wrap: wrap;`, you can easily disable this behavior by using our `.flex-nowrap` utility.
 
 {% capture example %}
 <div class="input-group flex-nowrap">

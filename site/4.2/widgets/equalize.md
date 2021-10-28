@@ -71,7 +71,7 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
 
 ### Nested Equalize
 
-Creating nested Equalize behaviour is as simple as creating another Equalize set using a different group name.  Note that each Equalize set will need it own parent element that is different from another sets parent element.
+Creating nested Equalize behavior is as simple as creating another Equalize set using a different group name.  Note that each Equalize set will need it own parent element that is different from another sets parent element.
 
 <div class="cf-example">
   <div data-cfw="equalize" data-cfw-equalize-target="foo">

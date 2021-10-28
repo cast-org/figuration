@@ -19,7 +19,7 @@ Examples focusing on the use of the standard components.
 
 Examples showing the navbar and how it is responsive, can be positioned, or extended.
 
-- [Navbar Examples]({{ site.path }}/{{ version.docs }}/examples/navbars/index.html) - A large variety of navbar types and examples of the responsive behaviours.
+- [Navbar Examples]({{ site.path }}/{{ version.docs }}/examples/navbars/index.html) - A large variety of navbar types and examples of the responsive behaviors.
 - [Static Top Navbar]({{ site.path }}/{{ version.docs }}/examples/navbar-static-top/index.html) - A basic template of a static top navbar and some additional content.
 - [Fixed Top Navbar]({{ site.path }}/{{ version.docs }}/examples/navbar-fixed-top/index.html) - A basic template of a fixed top navbar and some additional content.
 - [Fixed Bottom Navbar]({{ site.path }}/{{ version.docs }}/examples/navbar-fixed-bottom/index.html) - A basic template of a fixed bottom navbar and some additional content.
