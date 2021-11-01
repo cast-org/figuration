@@ -34,7 +34,7 @@ The following list gives a quick run-down of how the breakpoints are utilized.
 - `.navbar-expand-lg` expands at `lg` and up
 - `.navbar-expand-xl` expands at `xl` and up
 
-Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 For the examples throughout this page, you will need to resize your browser window below/above the `lg` breakpoint to see the navbars switch between modes.
 

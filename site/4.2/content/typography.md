@@ -228,7 +228,7 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
 Figuration, by default, does not have responsive typography enabled. However, we have included two different methods to enable this functionality.
 - *Fluid* sizing based on the dimensions of the viewport.  Based on the [Responsive font-size mixin](https://github.com/MartijnCuppens/rfs) by [Martijn Cuppens](https://github.com/MartijnCuppens).
-- *Scaled* sizing is scaling based on current [responsive breakpoint]({{ site.path }}/{{ version.docs }}/layout/overview/#responsive-breakpoints).
+- *Scaled* sizing is scaling based on current [responsive breakpoint]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#responsive-breakpoints).
 
 See the [Global Options]({{ site.path }}/{{ version.docs }}/get-started/options/#global-options) on how the enable either method.  **Note that only one of these methods can be enabled at a time.**
 

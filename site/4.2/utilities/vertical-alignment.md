@@ -16,7 +16,7 @@ Note that only items with the following display properties can be vertically ali
 - inline-table
 - table-cell
 
-The alignments consist of the items in the following list and are also available in responsive variants, in the form `.visible-{breakpoint}-{alignment}`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+The alignments consist of the items in the following list and are also available in responsive variants, in the form `.visible-{breakpoint}-{alignment}`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 - `.valign-baseline`
 - `.valign-top`
 - `.valign-middle`

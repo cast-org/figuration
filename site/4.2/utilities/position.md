@@ -19,7 +19,7 @@ The following utilities are available for positioning.
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-Responsive variants are also available in the form of `.position{breakpoint}-{type}`, such as `.position-md-relative`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+Responsive variants are also available in the form of `.position{breakpoint}-{type}`, such as `.position-md-relative`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 ## Fixed Top
 

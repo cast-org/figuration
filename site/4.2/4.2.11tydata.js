@@ -22,10 +22,12 @@ module.exports = {
       {
         "title": "Layout",
         "pages": [
-          { "title": "Overview" },
+          { "title": "Breakpoints" },
+          { "title": "Containers" },
           { "title": "Grid" },
           { "title": "Layout Utilities" },
-          { "title": "Flexbox" }
+          { "title": "Flexbox" },
+          { "title": "Z-index" }
         ]
       },
       {

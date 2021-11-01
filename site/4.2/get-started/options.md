@@ -236,7 +236,7 @@ You can find and customize these variables for key global options in our `_setti
       <tr>
         <td><code>$enable-bp-smallest</code></td>
         <td><code>true</code> or <code>false</code> (default)</td>
-        <td>Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. <code>.col-xs-12</code>).  Also refer to the <a href="{{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature">Breakpoint Nomenclature</a> section.</td>
+        <td>Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. <code>.col-xs-12</code>).  Also refer to the <a href="{{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature">Breakpoint Nomenclature</a> section.</td>
       </tr>
       <tr>
         <td><code>$enable-rfs-fluid</code></td>

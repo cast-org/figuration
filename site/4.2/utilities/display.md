@@ -26,7 +26,7 @@ Available utilities:
 - `.d-table-cell` sets `display: table-cell;`
 - `.d-none` sets `display: none;`
 
-These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 ## Examples
 
