@@ -1306,7 +1306,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            // Emulate button behaviour
+            // Emulate button behavior
             if (isRoleButton && e.which === KEYCODE_SPACE) {
                 this.toggle(e);
                 return;
