@@ -15,7 +15,7 @@ Easily realign text to components with text alignment classes.
 {% endcapture %}
 {% renderExample example %}
 
-For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 Instead of using `left/right` designators, the text alignment utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/).
 

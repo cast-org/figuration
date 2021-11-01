@@ -4,9 +4,12 @@ $enable-root-colors:                        true !default;
 $enable-root-breakpoints:                   true !default;
 $enable-root-fonts:                         true !default;
 
+// Container
+$enable-container:                          true !default;
+$enable-container-responsive:               true !default;
+
 // Grid layout
 $enable-grid-row-cols:                      true !default;
-$enable-grid-responsive-containers:         true !default;
 $enable-grid-responsive-gutters:            true !default;
 
 // Base Typography

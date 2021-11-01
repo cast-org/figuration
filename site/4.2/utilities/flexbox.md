@@ -10,7 +10,7 @@ toc: true
 
 Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with our responsive flexbox utilities. For more complex implementations, custom CSS may be necessary.
 
-These classes are all available in responsive variants, in the form of `.flex{-breakpoint}-{value}`, such as `.flex-lg-row`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+These classes are all available in responsive variants, in the form of `.flex{-breakpoint}-{value}`, such as `.flex-lg-row`. Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 ## Enable Flex Layout
 

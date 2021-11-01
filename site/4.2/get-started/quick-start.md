@@ -67,7 +67,7 @@ Essentially something like this:
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}/{{ version.docs }}/layout/overview/) to begin building out your content and components.
+That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}/{{ version.docs }}/layout/breakpoints/) to begin building out your content and components.
 
 ## Right-to-left Support
 

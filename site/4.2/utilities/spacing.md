@@ -19,7 +19,7 @@ Where *property* is one of:
 - `m` - for classes that set `margin`
 - `p` - for classes that set `padding`
 
-Where *breakpoint* is one of the responsive breakpoints, if above the minimum `xs` size.  Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
+Where *breakpoint* is one of the responsive breakpoints, if above the minimum `xs` size.  Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature) is used.
 
 Where *sides* is one of:
 

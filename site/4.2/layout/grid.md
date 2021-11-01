@@ -8,7 +8,7 @@ toc: true
 
 ## How It Works
 
-Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.path }}/{{ version.docs }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
+Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 At a high level, here's how the grid system works:
 
@@ -22,7 +22,7 @@ At a high level, here's how the grid system works:
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
 - You can remove the `margin` from rows and `padding` from columns with `.g-0` on the `.row`.
-- To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.path }}/{{ version.docs }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
+- To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.path }}/{{ version.docs }}/layout/breakpoints/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
 - Grid breakpoints are based on minimum width media queries, meaning **they apply to that one breakpoint and all those above it** (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices, but not the first `xs` breakpoint).
 - You can use predefined grid classes (like `.col-4`) or [Sass mixins](#mixins) for more semantic markup.
 - The horizontal gutter width can be changed with `.gx-*` classes like `.gx-1` (smaller horizontal gutters) or `.gx-xl-2` (larger horizontal gutters on viewports larger than the `xl` breakpoint).
@@ -994,7 +994,7 @@ The classes can be used together with utilities to create responsive floated ima
 {% renderExample example %}
 
 
-## Sass Variables and Mixins
+## Sass Reference
 
 When using Figuration's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
@@ -1064,14 +1064,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code$enable-grid-responsive-containers</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the responsive container classes.
-        </td>
-      </tr>
-      <tr>
         <td><code>$enable-grid-responsive-gutters</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -1094,32 +1086,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$responsive-container-breakpoints</code></td>
-        <td>list</td>
-        <td><code>map-keys($grid-breakpoints)</code></td>
-        <td>
-          Subset of breakpoints to generate responsive container classes for.
-        </td>
-      </tr>
-      <tr>
         <td><code>$responsive-gutter-breakpoints</code></td>
         <td>list</td>
         <td><code>map-keys($grid-breakpoints)</code></td>
         <td>
           Subset of breakpoints to generate responsive gutter classes for.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$container-max-widths</code></td>
-        <td>map</td>
-        <td><pre><code>(
-    sm: rem(544px),
-    md: rem(720px),
-    lg: rem(960px),
-    xl: rem(1152px)
-)</code></pre></td>
-        <td>
-          Grid breakpoints widths.  The <code>rem()</code> function converts a pixel value to a <code>rem</code> value.
         </td>
       </tr>
       <tr>

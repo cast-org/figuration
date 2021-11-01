@@ -1,0 +1,59 @@
+// Container widths
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if $enable-container {
+    // Single container class with breakpoint max-widths
+    .container,
+    // Fluid container - 100% wide on all breakpoints
+    .container-fluid {
+        @include make-container();
+    }
+}
+
+// Responsive containers
+// Containers that are 100% wide until a breakpoint
+@if $enable-container {
+    @each $breakpoint in $responsive-container-breakpoints {
+        $rc-max-width: map-get($container-max-widths, $breakpoint);
+
+        @if $rc-max-width != null {
+            .container-#{$breakpoint} {
+                @extend .container-fluid;
+            }
+
+            @include media-breakpoint-up($breakpoint) {
+                %responsive-container-#{$breakpoint} {
+                    max-width: $rc-max-width;
+                }
+
+                // Extend base container
+                .container {
+                    @extend %responsive-container-#{$breakpoint};
+                }
+
+                @if $enable-container-responsive {
+                    // Extend each breakpoint which should be smaller or
+                    // equal to the current breakpoint
+                    $extend-breakpoint: true;
+
+                    @each $name, $width in $grid-breakpoints {
+                        //@if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
+                        @if ($extend-breakpoint) {
+                            $bprule: breakpoint-designator($name);
+                            @if ($bprule != "") {
+                                .container#{$bprule} {
+                                    @extend %responsive-container-#{$breakpoint};
+                                }
+                            }
+                        }
+
+                        // Once the current breakpoint is reached, stop extending
+                        @if ($breakpoint == $name) {
+                            $extend-breakpoint: false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
