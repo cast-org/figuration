@@ -55,8 +55,11 @@
 
     @if $enable-transitions-reduced {
         @media (prefers-reduced-motion: reduce) {
-            .loader-spin-cw {
-                animation-duration: $loader-circle-animation-speed * 2;
+            .loader-circle,
+            .loader-double {
+                &::after {
+                    animation-duration: $loader-circle-animation-speed * 2;
+                }
             }
         }
     }
