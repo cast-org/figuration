@@ -6391,7 +6391,8 @@ a.drag.disabled {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .loader-spin-cw {
+  .loader-circle::after,
+  .loader-double::after {
     -webkit-animation-duration: 2s;
             animation-duration: 2s;
   }
