@@ -9,7 +9,7 @@ module.exports = {
   "url":            "https://figuration.org",
   "domain":         "figuration.org",
   "path":           "",
-  "language":       "en-us",
+  "language":       "en-US",
 
   // Open Graph protocol (https://ogp.me/) - Social media meta tags
   "og": {

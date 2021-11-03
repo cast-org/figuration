@@ -44,7 +44,7 @@ Essentially something like this:
 
 {% capture highlight %}
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-US">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -124,7 +124,7 @@ Figuration requires the use of the HTML5 doctype. Without it, you'll see some in
 
 {% capture highlight %}
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-US">
   ...
 </html>
 {% endcapture %}
