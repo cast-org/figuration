@@ -91,12 +91,12 @@ module.exports = function(grunt) {
 
         eslint: {
             options: {
-                config: '.eslintrc.json',
-                reportUnusedDisableDirectives: 'true'
+                overrideConfigFile: '.eslintrc.json',
+                reportUnusedDisableDirectives: 'error'
             },
             build: {
                 options: {
-                    config: 'build/.eslintrc.json'
+                    overrideConfigFile: 'build/.eslintrc.json'
                 },
                 src: 'build/*.js'
             },
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
             },
             test: {
                 options: {
-                    config: 'test/js/unit/.eslintrc.json'
+                    overrideConfigFile: 'test/js/unit/.eslintrc.json'
                 },
                 src: 'test/js/unit/*.js'
             },
