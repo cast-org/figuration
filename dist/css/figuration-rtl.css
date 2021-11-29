@@ -12988,6 +12988,16 @@ a.text-gray-900:hover, a.text-gray-900:focus {
   visibility: visible !important;
 }
 
+.vr {
+  display: inline-block;
+  align-self: stretch;
+  width: 1px;
+  min-height: 1em;
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+}
+
 @media print {
   *,
   *::before,
