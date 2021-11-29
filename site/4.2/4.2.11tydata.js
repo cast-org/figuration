@@ -84,6 +84,7 @@ module.exports = {
           { "title": "Spacing" },
           { "title": "Typography" },
           { "title": "Vertical Alignment" },
+          { "title": "Vertical Rule" },
           { "title": "Visibility" }
         ]
       },

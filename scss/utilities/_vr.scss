@@ -1,0 +1,11 @@
+@if $enable-utility-vr {
+    .vr {
+        display: inline-block;
+        align-self: stretch;
+        width: $vr-width;
+        min-height: 1em;
+        background-color: $vr-bg;
+        border: $vr-border;
+        opacity: $vr-opacity;
+    }
+}
