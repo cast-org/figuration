@@ -443,9 +443,16 @@ $mark-padding:      .125em .25em !default;
 $mark-bg:           #ff0 !default;
 
 $hr-margin-y:       1rem !default;
+$hr-bg:             currentColor !default;
 $hr-color:          inherit !default;
 $hr-height:         $border-width !default;
+$hr-border:         0 !default;
 $hr-opacity:        .25 !default;
+
+$vr-bg:             $hr-bg !default;
+$vr-width:          $hr-height !default;
+$vr-border:         $hr-border !default;
+$vr-opacity:        $hr-opacity !default;
 
 $blockquote-font-size:          ($font-size-base * 1.1875) !default;
 $blockquote-color:              $body-color !default;

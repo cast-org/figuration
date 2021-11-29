@@ -16,3 +16,6 @@ toc: true
 
 #### Loader
  - Added a new animated loaders, also known as "spinners", to help indicate busy or loading states. Two variations are available - `.loader-circle` and `.loader-double`. Color can be adjusted using `.text-{color}` utility classes, otherwise they inherit the text color with `currentColor`.
+
+#### Utilites
+ - Added new vertical rule utility class. Also extends and reuses `<hr>` Sass settings.

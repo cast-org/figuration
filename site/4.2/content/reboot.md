@@ -641,11 +641,27 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$hr-margin-y</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Horizontal rule vertical spacing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-bg</code></td>
+        <td>string</td>
+        <td><code>currentColor</code></td>
+        <td>
+          Horizontal rule background.
+        </td>
+      </tr>
+      <tr>
         <td><code>$hr-color</code></td>
         <td>string</td>
         <td><code>inherit</code></td>
         <td>
-          Horizontal rule color.
+          Horizontal rule text color.
         </td>
       </tr>
       <tr>
@@ -654,6 +670,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$border-width</code></td>
         <td>
           Horizontal rule height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-border</code></td>
+        <td>string</td>
+        <td><code>0</code></td>
+        <td>
+          Horizontal rule border.
         </td>
       </tr>
       <tr>
@@ -678,14 +702,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>null</code></td>
         <td>
         Font weight for <code>th</code> cells.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$hr-margin-y</code></td>
-        <td>string</td>
-        <td><code>1rem</code></td>
-        <td>
-          Horizontal rule vertical spacing.
         </td>
       </tr>
       <tr>
