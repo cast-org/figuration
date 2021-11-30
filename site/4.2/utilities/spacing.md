@@ -110,7 +110,7 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-Here is a comparison and example of customizing the grid at the medium (`md`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-md-2` and then counteracted that with negative horizontal margin `.mx-md-n2` on the parent `.row`.
+Here is a comparison and example of customizing the grid at the medium (`md`) breakpoint and above. The `.col` horizontal padding is increased with `.px-md-2` and then counteracted that with negative horizontal margin `.mx-md-n2` on the parent `.row`.
 
 {% capture example %}
 <div class="row mb-1">

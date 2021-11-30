@@ -713,7 +713,7 @@ Put a border around the table and every cell with `.table-bordered`.
 
 ## Cell Alignment
 
-By default, table cells of `<thead>` are vertically aligned to the `bottom`. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the `top` by default.
+By default, table cells of `<thead>` are vertically aligned to the `bottom`. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the `top` by default.
 
 {% capture example %}
 <div class="table-scroll">

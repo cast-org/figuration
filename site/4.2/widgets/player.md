@@ -749,7 +749,7 @@ Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](
       <tr>
         <td><code>loop</code></td>
         <td>
-          <p>Toggle the loop/repeat setting.  Looping will cause the the track to resume playing from the start when the end is reached.</p>
+          <p>Toggle the loop/repeat setting.  Looping will cause the track to resume playing from the start when the end is reached.</p>
           <p>An optional boolean value can be given as an argument to force the loop/repeat mode.</p>
           Optional value is passed in the form: <code>$('#myPlayer').CFW_Player('loop', [boolean]);</code>
         </td>

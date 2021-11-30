@@ -591,7 +591,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 Gutters can also be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.path }}/{{ version.docs }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.path }}/{{ version.docs }}/utilities/spacing/) on the `.col`s.
 
-Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
+Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
 
 {% capture example %}
 <div class="container">
