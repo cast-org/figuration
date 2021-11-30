@@ -100,6 +100,9 @@
 // Check to see if standard contrast function meets the minimum contrast
 // ratio, otherwise get the max contrast.
 @function color-auto-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
+    @if type-of($color) != color {
+        @return $color;
+    }
     $colorauto: color-contrast($color, $light, $dark);
     @if (color-get-contrast-ratio($colorauto, $color) >= $color-contrast-min-ratio) {
         @return $colorauto;
@@ -114,6 +117,9 @@
 // Check to see if a color meets minimum contrast ratio and use it,
 // otherwise get the best color contrast possible.
 @function color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
+    @if type-of($colorfore) != color or type-of($colorback) != color {
+        @return $colorfore;
+    }
     @if (color-get-contrast-ratio($colorfore, $colorback) >= $color-contrast-min-ratio) {
         @return $colorfore;
     }
