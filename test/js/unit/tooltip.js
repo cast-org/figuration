@@ -82,6 +82,141 @@ $(function() {
             .CFW_Tooltip('show');
     });
 
+    QUnit.test('should close tooltip when escape key is pressed on tooltip via keydown', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                var $target = $('.tooltip');
+
+                assert.ok($target.is(':visible'), 'tooltip visible');
+                $target.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
+
+                setTimeout(function() {
+                    assert.ok(!$target.is(':visible'), 'tooltip hidden');
+                    done();
+                }, 0);
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should not close tooltip when escape key is pressed on tooltip via keyup', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                var $target = $('.tooltip');
+
+                assert.ok($target.is(':visible'), 'tooltip visible');
+                $target.trigger($.Event('keyup', {
+                    which: 27 // Esc
+                }));
+
+                setTimeout(function() {
+                    assert.ok($target.is(':visible'), 'tooltip still visible');
+                    done();
+                }, 0);
+            });
+
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should close tooltip when escape key is pressed on trigger via keydown', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                var $target = $('.tooltip');
+
+                assert.ok($target.is(':visible'), 'tooltip visible');
+                $trigger.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
+
+                setTimeout(function() {
+                    assert.ok(!$target.is(':visible'), 'tooltip hidden');
+                    done();
+                }, 0);
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should not close tooltip when escape key is pressed on trigger via keyup', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                var $target = $('.tooltip');
+
+                assert.ok($target.is(':visible'), 'tooltip visible');
+                $trigger.trigger($.Event('keyup', {
+                    which: 27 // Esc
+                }));
+
+                setTimeout(function() {
+                    assert.ok($target.is(':visible'), 'tooltip still visible');
+                    done();
+                }, 0);
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
+    QUnit.test('should restore focus to trigger element when tooltip is hidden by escape keydown', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            });
+
+        $trigger
+            .on('afterHide.cfw.tooltip', function() {
+                setTimeout(function() {
+                    assert.ok($(document.activeElement).is($trigger), 'trigger element is once again focused');
+                    done();
+                }, 0);
+            })
+            .on('afterShow.cfw.tooltip', function() {
+                var $target = $('.tooltip');
+                $target.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
+            });
+        $trigger.CFW_Tooltip('show');
+    });
+
     QUnit.test('should assign a unique id tooltip element', function(assert) {
         assert.expect(2);
         $('<a href="#" title="Another tooltip"></a>')
