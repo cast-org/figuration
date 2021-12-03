@@ -125,24 +125,29 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
+For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any HTML as the quote.
 
 {% capture example %}
 <blockquote class="blockquote">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p>A well-known quote, contained in a blockquote element.</p>
 </blockquote>
 {% endcapture %}
 {% renderExample example %}
 
 ### Naming a Source
 
-Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
+The HTML spec requires that blockquote attribution be placed outside the `<blockquote>`. When providing attribution, wrap your `<blockquote>` in a `<figure>` and use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Be sure to wrap the name of the source work in `<cite>` as well.
 
 {% capture example %}
-<blockquote class="blockquote">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+
+<figure>
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {% endcapture %}
 {% renderExample example %}
 
@@ -151,18 +156,26 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 Use [text alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/typography/#text-alignment) to alter the layout of the blockquote.
 
 {% capture example %}
-<blockquote class="blockquote text-center">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {% endcapture %}
 {% renderExample example %}
 
 {% capture example %}
-<blockquote class="blockquote text-end">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="text-end">
+  <blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Someone famous in <cite title="Source Title">Source Title</cite>
+  </figcaption>
+</figure>
 {% endcapture %}
 {% renderExample example %}
 
@@ -615,6 +628,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$blockquote-margin</code></td>
+        <td>string</td>
+        <td><code>0 0 $spacer</code></td>
+        <td>
+          Blockquote margins.
+        </td>
+      </tr>
+      <tr>
         <td><code>$blockquote-font-size</code></td>
         <td>string</td>
         <td><code>($font-size-base * 1.1875)</code></td>
@@ -628,6 +649,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$body-color</code></td>
         <td>
           Blockquote font color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-footer-margin</code></td>
+        <td>string</td>
+        <td><code>-$spacer 0 $spacer</code></td>
+        <td>
+          Blockquote footer margins.
         </td>
       </tr>
       <tr>

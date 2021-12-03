@@ -66,12 +66,16 @@
     // Blockquotes
     @if $enable-typography-blockquote {
         .blockquote {
-            margin-bottom: $spacer;
+            margin: $blockquote-margin;
             @include font-size($blockquote-font-size);
             color: $blockquote-color;
+
+            > :last-child {
+                margin-bottom: 0;
+            }
         }
         .blockquote-footer {
-            display: block;
+            margin: $blockquote-footer-margin;
             @include font-size($blockquote-footer-font-size);
             color: $blockquote-footer-color;
 

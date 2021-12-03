@@ -305,10 +305,14 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     Quote
   </div>
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <figure class="mb-0">
+      <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+      </blockquote>
+      <figcaption class="blockquote-footer mb-0">
+        Someone famous in <cite title="Source Title">Source Title</cite>
+      </figcaption>
+    </figure>
   </div>
 </div>
 {% endcapture %}
@@ -976,14 +980,14 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   </div>
   <div class="card">
     <div class="card-body">
-      <blockquote class="blockquote">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">
-          <small class="text-muted">
-            Someone famous in <cite title="Source Title">Source Title</cite>
-          </small>
-        </footer>
-      </blockquote>
+      <figure class="mb-0">
+        <blockquote class="blockquote">
+          <p>A well-known quote, contained in a blockquote element.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer mb-0">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="card">
@@ -996,14 +1000,14 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   </div>
   <div class="card bg-primary text-light text-center">
     <div class="card-body">
-      <blockquote class="blockquote text-light">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-        <footer class="blockquote-footer text-light">
-          <small>
-            Someone famous in <cite title="Source Title">Source Title</cite>
-          </small>
-        </footer>
-      </blockquote>
+      <figure class="mb-0">
+        <blockquote class="blockquote text-light">
+          <p>A well-known quote, contained in a blockquote element.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer text-light mb-0">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="card text-center">
@@ -1018,14 +1022,14 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   </div>
   <div class="card text-end">
     <div class="card-body">
-      <blockquote class="blockquote">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">
-          <small class="text-muted">
-            Someone famous in <cite title="Source Title">Source Title</cite>
-          </small>
-        </footer>
-      </blockquote>
+      <figure class="mb-0">
+        <blockquote class="blockquote">
+          <p>A well-known quote, contained in a blockquote element.</p>
+        </blockquote>
+        <figcaption class="blockquote-footer mb-0">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+      </figure>
     </div>
   </div>
   <div class="card">
