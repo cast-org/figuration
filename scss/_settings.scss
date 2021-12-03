@@ -454,9 +454,11 @@ $vr-width:          $hr-height !default;
 $vr-border:         $hr-border !default;
 $vr-opacity:        $hr-opacity !default;
 
-$blockquote-font-size:          ($font-size-base * 1.1875) !default;
+$blockquote-margin:             0 0 $spacer !default;
+$blockquote-font-size:          ($font-size-base * 1.25) !default;
 $blockquote-color:              $body-color !default;
-$blockquote-footer-font-size:   $font-size-base !default;
+$blockquote-footer-margin:      -$spacer 0 $spacer !default;
+$blockquote-footer-font-size:   ($font-size-base * .875) !default;
 $blockquote-footer-color:       $uibase-500 !default;
 $blockquote-footer-content:     "\2014\00a0" !default; // em dash, nbsp
 
