@@ -2335,8 +2335,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         bindTip : function(modeInit) {
-            var $selfRef = this;
-
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
                 if (eventType === 'click' || eventType === 'manual') {
@@ -2373,18 +2371,26 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            if (this.$target) {
-                // Key handling for closing
-                this.$target.off('keydown.cfw.' + this.type + '.close')
-                    .on('keydown.cfw.' + this.type + '.close', function(e) {
-                        var KEYCODE_ESC = 27;
-                        if (e.which === KEYCODE_ESC) { // if ESC is pressed
-                            e.stopPropagation();
-                            e.preventDefault();
-                            $selfRef.dismiss();
-                        }
-                    });
-            }
+            // Key handling for closing
+            this._escape(this.$element);
+            this._escape(this.$target);
+        },
+
+        _escape : function($elm) {
+            var $selfRef = this;
+            var KEYCODE_ESC = 27;
+
+            if (!$elm) { return; }
+
+            $elm
+                .off('keydown.cfw.' + this.type + '.close')
+                .on('keydown.cfw.' + this.type + '.close', function(e) {
+                    if (e.which === KEYCODE_ESC) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        $selfRef.dismiss();
+                    }
+                });
         },
 
         toggle : function(e) {

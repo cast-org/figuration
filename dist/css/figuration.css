@@ -431,14 +431,18 @@ template {
 }
 
 .blockquote {
-  margin-bottom: 1rem;
-  font-size: 1.1875rem;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
   color: #262d34;
 }
 
+.blockquote > :last-child {
+  margin-bottom: 0;
+}
+
 .blockquote-footer {
-  display: block;
-  font-size: 1rem;
+  margin: -1rem 0 1rem;
+  font-size: 0.875rem;
   color: #5e7182;
 }
 
