@@ -736,6 +736,27 @@ While Figuration supports styling `<input type="color">` elements, some browsers
 {% endcapture %}
 {% renderExample example %}
 
+## Datalists
+
+Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
+
+Learn more about [support for datalist elements](https://caniuse.com/datalist).
+
+{% capture example %}
+<label for="exampleDataList" class="form-label">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Name a fruit...">
+<datalist id="datalistOptions">
+  <option value="apple"></option>
+  <option value="banana"></option>
+  <option value="kiwi"></option>
+  <option value="orange"></option>
+  <option value="pear"></option>
+  <option value="pineapple"></option>
+  <option value="strawberry"></option>
+</datalist>
+{% endcapture %}
+{% renderExample example %}
+
 ## Layout
 
 Since Figuration applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
