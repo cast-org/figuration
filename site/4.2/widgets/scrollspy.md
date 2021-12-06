@@ -404,6 +404,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
           <ul class="mb-0">
             <li><code>false</code>: Disables the active marker being added to parent navigation items.</li>
             <li><code>'dropdown'</code> Disables the active marker being added to parent navigation items, unless the parent is a dropdown toggle.</li>
+          </ul>
         </td>
       </tr>
       <tr>

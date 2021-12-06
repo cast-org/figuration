@@ -284,9 +284,9 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$position-offsets</code></td>
         <td>string</td>
-        <td><code><pre>("0":    0,
+        <td><pre><code>("0":    0,
 "50":   50%,
-"100":  100%)</pre></code></td>
+"100":  100%)</code></pre></td>
         <td>
           Map of length (offset) values that will be used to generate placement utilities.
         </td>

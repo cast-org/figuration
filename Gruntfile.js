@@ -258,11 +258,12 @@ module.exports = function(grunt) {
         htmllint: {
             options: {
                 ignore: [
-                    'Consider using the "h1" element as a top-level heading only (all "h1" elements are treated as top-level headings by many screen readers and other tools).',
-                    'Element "legend" not allowed as child of element "div" in this context. (Suppressing further errors from this subtree.)',
+                    // Placeholder images using holder.js
                     'Element "img" is missing required attribute "src".',
-                    'The "color" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+                    // Per https://www.w3.org/TR/html-aria/#docconformance having "aria-disabled" on a link is
+                    // NOT RECOMMENDED, but it's still valid - we explain in the docs that it's not ideal,
+                    // and offer more robust alternatives, but also need to show a less-than-ideal example
+                    'An “aria-disabled” attribute whose value is “true” should not be specified on an “a” element that has an “href” attribute.'
                 ]
             },
             docs: {

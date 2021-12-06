@@ -313,7 +313,7 @@ Disabled sytling will also be applied if the input buttons are contained within 
   </div>
   <div class="btn-check">
     <input id="fieldset1" type="radio" name="fieldset1" class="btn-check-input">
-    <label for="fieldset1-0" class="btn">Disabled Radio</label>
+    <label for="fieldset1" class="btn">Disabled Radio</label>
   </div>
 </fieldset>
 {% endcapture %}

@@ -601,7 +601,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
           Text color for pill navs in active state.
         </td>
       </tr>
-      </tr>
     </tbody>
   </table>
 </div>

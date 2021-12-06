@@ -179,7 +179,7 @@ Each event callback, except for `init.cfw.drag`, returns the following additiona
         <td>The moved horizontal position of the drag "target" element, the sum of <code>originalX</code> and <code>deltaX</code>.</td>
       </tr>
       <tr>
-        <td><code>offsetY</td>
+        <td><code>offsetY</code></td>
         <td>The moved vertical position of the drag "target" element, the sum of <code>originalY</code> and <code>deltaY</code>.</td>
       </tr>
     </tbody>

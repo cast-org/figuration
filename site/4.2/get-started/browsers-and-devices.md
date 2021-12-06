@@ -19,17 +19,17 @@ You can find our supported range of browsers and their versions [in our `.browse
 {% capture highlight %}
 # https://github.com/browserslist/browserslist#readme
 
->= 1%
+&gt;= 1%
 last 1 major version
 not dead
-Chrome >= 60
-Firefox >= 60
-Edge >= 15
-Explorer >= 11
-iOS >= 10
-Safari >= 10
-Android >= 6
-not ExplorerMobile <= 11
+Chrome &gt;= 60
+Firefox &gt;= 60
+Edge &gt;= 15
+Explorer &gt;= 11
+iOS &gt;= 10
+Safari &gt;= 10
+Android &gt;= 6
+not ExplorerMobile &lt;= 11
 {% endcapture %}
 {% renderHighlight highlight, "text" %}
 

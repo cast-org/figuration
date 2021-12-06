@@ -226,7 +226,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td><code>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
         <td>

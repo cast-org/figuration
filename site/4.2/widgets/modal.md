@@ -1126,7 +1126,7 @@ While not necessarily recommended, it is possible to chain singular modals toget
         Close this modal and open the first modal with the following button.
       </div>
       <div class="modal-footer">
-        <button role="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</a>
+        <button type="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</button>
       </div>
     </div>
   </div>
@@ -1159,7 +1159,7 @@ While not necessarily recommended, it is possible to chain singular modals toget
       ...
       <div class="modal-footer">
         <!-- Close secondary modal and return to initial modal -->
-        <button role="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</a>
+        <button type="button" class="btn btn-primary" onclick="$('#modalChained2').CFW_Modal('chain', '#modalChained1');">Open First chained modal</button>
       </div>
     </div>
   </div>

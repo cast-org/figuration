@@ -205,7 +205,7 @@ $(function() {
         assert.expect(7);
         $('<button id="test0" type="button" disabled>test</button>' +
            '<fieldset id="test1" disabled></fieldset>' +
-           '<input id="test2" disabled></input>' +
+           '<input id="test2" disabled>' +
            '<optgroup id="test3" disabled></optgroup>' +
            '<option id="test4" disabled></option>' +
            '<select id="test5" disabled></select>' +
@@ -264,7 +264,7 @@ $(function() {
         assert.expect(7);
         $('<button id="test0" type="button">test</button>' +
            '<fieldset id="test1"></fieldset>' +
-           '<input id="test2"></input>' +
+           '<input id="test2">' +
            '<optgroup id="test3"></optgroup>' +
            '<option id="test4"></option>' +
            '<select id="test5"></select>' +

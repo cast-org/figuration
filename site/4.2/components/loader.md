@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Loader
-description: Indicate a busy or loading state for content or component with a loading animation, sometimes called "spinners", using only HTML and CSS.
+description: Indicate a busy or loading state for content or component with a loading animation, sometimes called &quot;spinners&quot;, using only HTML and CSS.
 group: components
 toc: true
 ---

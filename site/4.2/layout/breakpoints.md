@@ -47,7 +47,7 @@ Figuration includes five default breakpoints, sometimes referred to as *grid tie
       </tr>
       <tr>
         <td>Extra large</td>
-        <td><code>xl<code></td>
+        <td><code>xl</code></td>
         <td>&ge;1200px</td>
         <td>&ge;75em</td>
       </tr>
@@ -273,13 +273,13 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$grid-breakpoints</code></td>
         <td>map</td>
-        <td><code><pre>(
+        <td><pre><code>(
     xs: 0,
     sm: bp-to-em(576px),
     md: bp-to-em(768px),
     lg: bp-to-em(992px),
     xl: bp-to-em(1200px)
-);</pre></code></td>
+);</code></pre></td>
         <td>
           Mapping of breakpoint names to their minimum widths.
         </td>

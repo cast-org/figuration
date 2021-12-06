@@ -352,8 +352,8 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$radii</code></td>
         <td>map</td>
         <td>
-<code><pre>("small": .1875rem,
-"large": .3125rem)</pre></code>
+<pre><code>("small": .1875rem,
+"large": .3125rem)</code></pre>
         </td>
         <td>
           Border radius size variants.
@@ -363,11 +363,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$border-widths</code></td>
         <td>map</td>
         <td>
-<code><pre>("1": 1px,
+<pre><code>("1": 1px,
 "2": 2px,
 "3": 3px,
 "4": 4px,
-"5": 5px)</pre></code>
+"5": 5px)</code></pre>
         </td>
         <td>
           Border width size variants.

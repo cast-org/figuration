@@ -198,7 +198,7 @@ Add the `disabled` attribute on an input to prevent user interactions and make i
   <option>Disabled select example</option>
 </select>
 
-<textarea class="form-control" id="disabled-input" type="text" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>
+<textarea class="form-control" id="disabled-textarea" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>
 {% endcapture %}
 {% renderExample example %}
 

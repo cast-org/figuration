@@ -515,7 +515,7 @@ The following key commands are handled when focus is inside the toolip, or on th
 
 Tooltips have additional focus handling when using keyboard navigation.
 
-If navigating from **above** the tooltip's trigger (typically with the <kbd>tab<kbd> key), the trigger becomes focused, the next **forward** focus will move from the trigger to the **first focusable item** inside the tooltip.
+If navigating from **above** the tooltip's trigger (typically with the <kbd>tab</kbd> key), the trigger becomes focused, the next **forward** focus will move from the trigger to the **first focusable item** inside the tooltip.
 
 If navigating from **below** the tooltip's trigger (typically with the <kbd>shift + tab</kbd>` key combination), when the trigger is focused, focus will be moved from the trigger to the **last focusable item** inside the tooltip.
 

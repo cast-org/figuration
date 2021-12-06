@@ -198,25 +198,16 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best, a
 
 Add your text within an element with the `.navbar-brand` class.
 
-<div class="cf-example">
-  <nav class="navbar navbar-light bg-light mb-1">
-    <a href="#" class="navbar-brand">Navbar</a>
-  </nav>
-
-  <nav class="navbar navbar-light bg-light">
-    <h1 class="navbar-brand mb-0">Navbar</h1>
-  </nav>
-</div>
-{% capture highlight %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <a href="#" class="navbar-brand">Navbar</a>
 </nav>
 
 <nav class="navbar navbar-light bg-light">
-  <h1 class="navbar-brand mb-0">Navbar</h1>
+  <span class="navbar-brand mb-0">Navbar</span>
 </nav>
 {% endcapture %}
-{% renderHighlight highlight, "html" %}
+{% renderExample example %}
 
 #### Image
 

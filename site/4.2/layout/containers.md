@@ -185,12 +185,12 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$container-max-widths</code></td>
         <td>map</td>
-        <td><code><pre>(
+        <td><pre><code>(
     sm: rem(544px),
     md: rem(720px),
     lg: rem(960px),
     xl: rem(1152px)
-)</pre></code></td>
+)</code></pre></td>
         <td>
           Grid breakpoints widths.  The <code>rem()</code> function converts a pixel value to a <code>rem</code> value.
         </td>
