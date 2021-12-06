@@ -30,6 +30,7 @@
                 padding: 0;
                 @include font-size(1em);
                 font-weight: $kbd-nested-font-weight;
+                background-color: $kbd-nested-bg;
                 @include box-shadow(none);
             }
         }

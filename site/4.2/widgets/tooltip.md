@@ -517,7 +517,7 @@ Tooltips have additional focus handling when using keyboard navigation.
 
 If navigating from **above** the tooltip's trigger (typically with the <kbd>tab</kbd> key), the trigger becomes focused, the next **forward** focus will move from the trigger to the **first focusable item** inside the tooltip.
 
-If navigating from **below** the tooltip's trigger (typically with the <kbd>shift + tab</kbd>` key combination), when the trigger is focused, focus will be moved from the trigger to the **last focusable item** inside the tooltip.
+If navigating from **below** the tooltip's trigger (typically with the <kbd><kbd>shift</kbd> + <kbd>tab</kbd></kbd> key combination), when the trigger is focused, focus will be moved from the trigger to the **last focusable item** inside the tooltip.
 
 When navigating **forward**, out the *bottom* of the tooltip, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the `container` option is used, the focus will move to next logical item.  Otherwise, when using `container: body`, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.
 

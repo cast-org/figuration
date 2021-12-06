@@ -177,6 +177,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$kbd-nested-bg</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Background color for nested keyboard elements.
+        </td>
+      </tr>
+      <tr>
         <td><code>$kbd-nested-font-weight</code></td>
         <td>string</td>
         <td><code>$font-weight-bold</code></td>
