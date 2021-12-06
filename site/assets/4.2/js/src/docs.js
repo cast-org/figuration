@@ -74,10 +74,7 @@
             $(this).before(btnHtml);
         });
 
-        $('.btn-clipboard')
-            .CFW_Tooltip({
-                animate: false
-            });
+        $('.btn-clipboard').CFW_Tooltip();
 
         var clipboard = new ClipboardJS('.btn-clipboard', {
             target: function(trigger) {
@@ -86,24 +83,54 @@
         });
 
         clipboard.on('success', function(e) {
-            $(e.trigger)
-                .CFW_Tooltip('hide')
-                .attr('data-cfw-tooltip-original-title', 'Copied!')
-                .CFW_Tooltip('show')
-                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard');
+            var $trigger = $(e.trigger);
 
+            $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
+                $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
+                    $trigger
+                        .removeAttr('data-cfw-tooltip-original-title')
+                        .CFW_Tooltip({
+                            title: 'Copy to clipboard'
+                        });
+                });
+
+                $trigger
+                    .removeAttr('data-cfw-tooltip-original-title')
+                    .CFW_Tooltip({
+                        title: 'Copied!',
+                        dispose: true
+                    })
+                    .CFW_Tooltip('show');
+            });
+
+            $trigger.CFW_Tooltip('dispose');
             e.clearSelection();
         });
 
         clipboard.on('error', function(e) {
             var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
             var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
+            var $trigger = $(e.trigger);
 
-            $(e.trigger)
-                .CFW_Tooltip('hide')
-                .attr('data-cfw-tooltip-original-title', fallbackMsg)
-                .CFW_Tooltip('show')
-                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard');
+            $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
+                $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
+                    $trigger
+                        .removeAttr('data-cfw-tooltip-original-title')
+                        .CFW_Tooltip({
+                            title: 'Copy to clipboard'
+                        });
+                });
+
+                $trigger
+                    .removeAttr('data-cfw-tooltip-original-title')
+                    .CFW_Tooltip({
+                        title: fallbackMsg,
+                        dispose: true
+                    })
+                    .CFW_Tooltip('show');
+            });
+
+            $trigger.CFW_Tooltip('dispose');
         });
     };
 
