@@ -24,10 +24,23 @@ $(function() {
         assert.strictEqual($col[0], $el[0], 'collection contains element');
     });
 
-    QUnit.test('should empty title attribute', function(assert) {
-        assert.expect(1);
-        var $trigger = $('<a href="#" title="Another tooltip"></a>').CFW_Tooltip();
-        assert.strictEqual($trigger.attr('title'), '', 'title attribute was emptied');
+    QUnit.test('should remove title attribute if one exists', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip();
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($trigger[0].hasAttribute('title'), false, 'title attribute has been removed');
+                $trigger.CFW_Tooltip('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
+                done();
+            })
+            .CFW_Tooltip('show');
     });
 
     QUnit.test('should add data attribute for referencing original title', function(assert) {
@@ -577,25 +590,6 @@ $(function() {
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
-    });
-
-    QUnit.test('should remove title attribute if one exists', function(assert) {
-        assert.expect(2);
-        var done = assert.async();
-        var $trigger = $('<a href="#" title="Another tooltip"></a>')
-            .appendTo('#qunit-fixture')
-            .CFW_Tooltip();
-
-        $trigger
-            .on('afterShow.cfw.tooltip', function() {
-                assert.strictEqual($trigger[0].hasAttribute('title'), false, 'title attribute has been removed');
-                $trigger.CFW_Tooltip('hide');
-            })
-            .on('afterHide.cfw.tooltip', function() {
-                assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
-                done();
-            })
-            .CFW_Tooltip('show');
     });
 
     QUnit.test('should use title option', function(assert) {
