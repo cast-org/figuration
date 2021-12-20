@@ -140,7 +140,7 @@
                     $e.attr('aria-label', title || '');
                 }
 
-                $e.attr('title', '');
+                $e.removeAttr('title');
             }
         },
 
