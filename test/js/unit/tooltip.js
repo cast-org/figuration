@@ -579,6 +579,24 @@ $(function() {
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
     });
 
+    QUnit.test('should remove title attribute if one exists', function(assert) {
+        assert.expect(2);
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip();
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($trigger[0].getAttribute('title'), null, 'title attribute has been removed');
+                $trigger.CFW_Tooltip('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
+
     QUnit.test('should use title option', function(assert) {
         assert.expect(2);
         var $tooltip = $('<a href="#"></a>')
