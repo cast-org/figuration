@@ -2,6 +2,7 @@ name: Sauce Labs
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
