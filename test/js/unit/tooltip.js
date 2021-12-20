@@ -581,13 +581,14 @@ $(function() {
 
     QUnit.test('should remove title attribute if one exists', function(assert) {
         assert.expect(2);
+        var done = assert.async();
         var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip();
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                assert.strictEqual($trigger[0].getAttribute('title'), null, 'title attribute has been removed');
+                assert.strictEqual($trigger[0].hasAttribute('title'), false, 'title attribute has been removed');
                 $trigger.CFW_Tooltip('hide');
             })
             .on('afterHide.cfw.tooltip', function() {
