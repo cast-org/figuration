@@ -150,7 +150,7 @@
     $lumfore: color-get-luminance(color-get-opaque($colorfore, $colorback)) + .05;
     $lumback: color-get-luminance($colorback) + .05;
 
-    @return max($lumfore, $lumback) / min($lumfore, $lumback);
+    @return divide(max($lumfore, $lumback), min($lumfore, $lumback));
 }
 
 // Opaque color

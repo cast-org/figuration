@@ -326,7 +326,7 @@ $gutters: (
 
 // Container Padding
 // =====
-$container-padding-x:   $grid-gutter-width / 2 !default;
+$container-padding-x:   $grid-gutter-width * .5 !default;
 
 
 // Borders
@@ -422,7 +422,7 @@ $h4-font-size:  ($font-size-base * 1.5) !default;
 $h5-font-size:  ($font-size-base * 1.25) !default;
 $h6-font-size:  ($font-size-base * 1) !default;
 
-$headings-margin-bottom:    ($spacer / 2) !default;
+$headings-margin-bottom:    ($spacer * .5) !default;
 $headings-font-family:      null !default;
 $headings-font-style:       null !default;
 $headings-font-weight:      600 !default;
@@ -625,7 +625,7 @@ $thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 
 // Fluid embed
 // =====
-$embed-fluid-default-ratio: percentage(9 / 16) !default;
+$embed-fluid-default-ratio: percentage(divide(9, 16)) !default;
 $embed-fluid-aspect-ratios: (
     "21x9": (
         x: 21,
@@ -842,12 +842,12 @@ $form-check-label-disabled-opacity: .6 !default;
 
 // Form checkradio
 $form-checkradio-size:                      1em !default;
-$form-checkradio-gutter:                    calc(#{$form-checkradio-size} + .375em) !default;
+$form-checkradio-gutter:                    add($form-checkradio-size, .375em) !default;
 $form-checkradio-bg:                        $white !default;
 $form-checkradio-border-width:              $border-width !default;
 $form-checkradio-border-color:              $uibase-300 !default;
 $form-checkradio-box-shadow:                map-get($shadows, "i1") !default;
-$form-checkradio-icon-size:                 calc(#{$form-checkradio-size} - .375em) !default;
+$form-checkradio-icon-size:                 subtract($form-checkradio-size, .375em) !default;
 
 $form-checkradio-focus-border-color:        $input-focus-border-color !default;
 $form-checkradio-focus-box-shadow:          $input-focus-box-shadow !default;
@@ -869,7 +869,7 @@ $form-checkradio-indeterminate-icon:            encode-svg(url("data:image/svg+x
 
 // Form switch
 $form-switch-width:                         1.75em !default;
-$form-switch-gutter:                        calc(#{$form-switch-width} + .375em) !default;
+$form-switch-gutter:                        add($form-switch-width, .375em) !default;
 
 $form-switch-track-height:                  1em !default;
 $form-switch-track-bg:                      $white !default;
@@ -886,7 +886,7 @@ $form-switch-track-checked-bg:              $white !default;
 $form-switch-track-checked-border-color:    $primary !default;
 $form-switch-track-checked-box-shadow:      $form-switch-track-box-shadow !default;
 
-$form-switch-thumb-offset:                  calc(.25em - #{$form-switch-track-border-width}) !default;
+$form-switch-thumb-offset:                  subtract(.25em, $form-switch-track-border-width) !default;
 $form-switch-thumb-width:                   .625em !default;
 $form-switch-thumb-height:                  .625em !default;
 $form-switch-thumb-bg:                      $uibase-300 !default;
@@ -941,7 +941,7 @@ $form-range-thumb-focus-box-shadow-width: .1875rem !default;
 $form-range-thumb-active-bg:              palette($primary, 600) !default;
 $form-range-thumb-disabled-bg:            $uibase-300 !default;
 
-$form-range-height:                 calc(#{$form-range-thumb-height} + (#{$form-range-thumb-focus-box-shadow-width} * 2)) !default;
+$form-range-height:                 add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
 $form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
@@ -961,7 +961,7 @@ $form-feedback-icon-valid-image:    encode-svg(url("data:image/svg+xml,<svg xmln
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid-image:  encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>")) !default;
 
-$form-feedback-select-icon-position: right calc(#{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) center !default;
+$form-feedback-select-icon-position: right add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false)) center !default;
 
 $form-validation-states: (
     "valid": (
@@ -1041,7 +1041,7 @@ $pagination-spaced-margin-end:  .25em !default;
 // =====
 $divider-border-color:  $uibase-100 !default;
 $divider-border-width:  $border-width !default;
-$divider-spacer:        ($spacer / 2) !default;
+$divider-spacer:        ($spacer * .5) !default;
 
 
 // Dropdowns
@@ -1057,7 +1057,7 @@ $dropdown-color:                $body-color !default;
 $dropdown-border-color:         $component-border-color !default;
 $dropdown-border-width:         $border-width !default;
 $dropdown-border-radius:        $border-radius !default;
-$dropdown-inner-border-radius:  calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
+$dropdown-inner-border-radius:  subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
 $dropdown-divider-spacer:       .3125rem !default;
@@ -1125,7 +1125,7 @@ $nav-pills-active-color:        $component-active-color !default;
 // Navbar
 // =====
 $navbar-padding-x:                  $spacer !default;
-$navbar-padding-y:                  ($spacer / 2) !default;
+$navbar-padding-y:                  ($spacer * .5) !default;
 
 $navbar-item-padding-x:             .5rem !default;
 $navbar-item-padding-y:             .3125rem !default;
@@ -1222,7 +1222,7 @@ $card-border-color:         $component-overlay-border-color !default;
 $card-border-width:         $border-width !default;
 $card-border-radius:        $border-radius !default;
 $card-box-shadow:           null !default;
-$card-inner-border-radius:  calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-inner-border-radius:  subtract($card-border-radius, $card-border-width) !default;
 
 $card-link-margin-left:     1.25rem !default;
 
@@ -1284,7 +1284,7 @@ $popover-max-width:             rem(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
 $popover-border-color:          $component-overlay-border-color !default;
 $popover-border-radius:         .3125rem !default;
-$popover-inner-border-radius:   calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
+$popover-inner-border-radius:   subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:            map-get($shadows, "d2") !default;
 
 $popover-header-padding-y:      .5rem !default;
@@ -1325,7 +1325,7 @@ $modal-content-box-shadow:       map-get($shadows, "d3") !default;
 $modal-content-bp-up-box-shadow: map-get($shadows, "d4") !default;
 
 $modal-border-radius:           .375rem !default;
-$modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
+$modal-inner-border-radius:     subtract($modal-border-radius, $modal-content-border-width) !default;
 
 $modal-backdrop-bg:             $dark !default;
 $modal-backdrop-opacity:        .5 !default;
@@ -1374,7 +1374,7 @@ $modal-transform-fullscreen:    none !default;
 $loader-circle-size:                    1em !default;
 $loader-circle-border-width:            3px !default;
 $loader-circle-alt-opacity:             .25 !default;
-$loader-circle-vertical-align:          -($loader-circle-border-width / 2) !default;
+$loader-circle-vertical-align:          ($loader-circle-border-width * -.5) !default;
 $loader-circle-animation-speed:         1s !default;
 
 // Player

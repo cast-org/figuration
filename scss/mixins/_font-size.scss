@@ -62,7 +62,7 @@ $fs-minimum: strip-unit($fs-minimum);
     $fs-fluid: null;
     @if $fs > $fs-minimum and $responsive-font-size-fluid-factor != 1 {
         // Calculate minimum font-size for given font-size.
-        $fs-min: $fs-minimum + ($fs - $fs-minimum) / $responsive-font-size-fluid-factor;
+        $fs-min: divide($fs-minimum + ($fs - $fs-minimum), $responsive-font-size-fluid-factor);
         // Calculate difference between given font-size and minimum font-size for given font-size.
         $fs-diff: $fs - $fs-min;
 
@@ -73,10 +73,12 @@ $fs-minimum: strip-unit($fs-minimum);
         $variable-unit: if($responsive-font-size-fluid-two-dimensional, vmin, vw);
 
         // Calculate the variable width between 0 and $fs-breakpoint.
-        $variable-width: #{$fs-diff * 100 / $fs-breakpoint}#{$variable-unit};
+        // stylelint-disable-next-line function-whitespace-after
+        $variable-width: divide($fs-diff * 100, $fs-breakpoint)#{$variable-unit};
 
         // Set the calculated font-size.
-        $fs-fluid: calc(#{$fs-min} + #{$variable-width}) #{$fs-append};
+        // stylelint-disable-next-line function-whitespace-after
+        $fs-fluid: add($fs-min, $variable-width)#{$fs-append};
     }
 
     // Render output.

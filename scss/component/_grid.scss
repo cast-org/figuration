@@ -19,12 +19,12 @@
             @each $key, $value in $gutters {
                 .g#{$bprule}-#{$key},
                 .gx#{$bprule}-#{$key} {
-                    margin-right: -$value / 2;
-                    margin-left: -$value / 2;
+                    margin-right: $value * -.5;
+                    margin-left: $value * -.5;
 
                     > * {
-                        padding-right: $value / 2;
-                        padding-left: $value / 2;
+                        padding-right: $value * .5;
+                        padding-left: $value * .5;
                     }
                 }
 

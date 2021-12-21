@@ -141,9 +141,9 @@
     // Header navs
     @if $enable-card-header-tabs {
         .card-header-tabs {
-            margin-right: -($card-header-padding-x / 2);
+            margin-right: $card-header-padding-x * -.5;
             margin-bottom: -$card-header-padding-y;
-            margin-left: -($card-header-padding-x / 2);
+            margin-left: $card-header-padding-x * -.5;
             border-bottom: 0;
 
             .nav-link.active {
@@ -164,8 +164,8 @@
     }
     @if $enable-card-header-pills {
         .card-header-pills {
-            margin-right: -($card-header-padding-x / 2);
-            margin-left: -($card-header-padding-x / 2);
+            margin-right: $card-header-padding-x * -.5;
+            margin-left: $card-header-padding-x * -.5;
         }
     }
 
@@ -379,12 +379,12 @@
         %card-deck-base {
             display: flex;
             flex-direction: column;
-            margin-right: -($card-deck-gutter / 2);
-            margin-left: -($card-deck-gutter / 2);
+            margin-right: $card-deck-gutter * -.5;
+            margin-left: $card-deck-gutter * -.5;
 
             > .card {
-                margin-right: ($card-deck-gutter / 2);
-                margin-left: ($card-deck-gutter / 2);
+                margin-right: $card-deck-gutter * .5;
+                margin-left: $card-deck-gutter * .5;
             }
         }
 

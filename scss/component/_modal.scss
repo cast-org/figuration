@@ -52,10 +52,10 @@
 
     @if $enable-modal-scrollable {
         .modal-dialog-scrollable {
-            max-height: calc(100% - #{$modal-dialog-margin * 2});
+            max-height: subtract(100%, $modal-dialog-margin * 2);
 
             .modal-content {
-                max-height: calc(100vh - #{$modal-dialog-margin * 2});  // IE10/11
+                max-height: subtract(100vh, $modal-dialog-margin * 2);  // IE10/11
                 overflow: hidden;
             }
 
@@ -73,13 +73,13 @@
     @if $enable-modal-centered {
         .modal-dialog-centered {
             align-items: center;
-            min-height: calc(100% - #{$modal-dialog-margin * 2});
+            min-height: subtract(100%, $modal-dialog-margin * 2);
 
             // Extend `modal-dialog-centered` to full viewport height
             // to allow centered modal in IE
             &::before {
                 display: block;
-                height: calc(100vh - #{$modal-dialog-margin * 2});
+                height: subtract(100vh, $modal-dialog-margin * 2);
                 //stylelint-disable-next-line declaration-block-no-duplicate-properties
                 height: min-content; // Reset height to 0 except on IE
                 content: "";
@@ -356,20 +356,20 @@
 
         @if $enable-modal-scrollable {
             .modal-dialog-scrollable {
-                max-height: calc(100% - #{$modal-dialog-bp-up-margin-y * 2});
+                max-height: subtract(100%, $modal-dialog-bp-up-margin-y * 2);
 
                 .modal-content {
-                    max-height: calc(100vh - #{$modal-dialog-bp-up-margin-y * 2});
+                    max-height: subtract(100vh, $modal-dialog-bp-up-margin-y * 2);
                 }
             }
         }
 
         @if $enable-modal-centered {
             .modal-dialog-centered {
-                min-height: calc(100% - #{$modal-dialog-bp-up-margin-y * 2});
+                min-height: subtract(100%, $modal-dialog-bp-up-margin-y * 2);
 
                 &::before {
-                    height: calc(100vh - #{$modal-dialog-bp-up-margin-y * 2});
+                    height: subtract(100vh, $modal-dialog-bp-up-margin-y * 2);
                     //stylelint-disable-next-line declaration-block-no-duplicate-properties
                     height: min-content; // Reset height to 0 except on IE
                 }

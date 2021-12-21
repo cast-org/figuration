@@ -57,7 +57,7 @@
         }
 
         select.form-control {
-            padding-right: calc(#{$input-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+            padding-right: add($input-padding-x, add($form-select-indicator-width, $form-select-indicator-offset, false));
             background-color: $input-bg;
             background-image: $form-select-indicator-image;
             background-repeat: no-repeat;
@@ -162,7 +162,7 @@
                 // Adjust right padding for select items due to indicator
                 @if $sz-padding-x != null {
                     select.form-control-#{$size} {
-                        padding-right: calc(#{$sz-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                        padding-right: add($sz-padding-x, add($form-select-indicator-width, $form-select-indicator-offset, false));
                     }
                 }
             }

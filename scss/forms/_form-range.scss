@@ -54,7 +54,7 @@
             @include border-radius($form-range-track-border-radius);
         }
         &::-ms-fill-upper {
-            margin-right: $form-range-thumb-width / 2;
+            margin-right: $form-range-thumb-width * .5;
             background-color: $form-range-track-bg;
             @include border-radius($form-range-track-border-radius);
         }
@@ -63,7 +63,7 @@
         &::-webkit-slider-thumb {
             @include form-range-thumb();
             // Vertically align thumb
-            margin-top: (($form-range-track-height - $form-range-thumb-height) / 2);
+            margin-top: ($form-range-track-height - $form-range-thumb-height) * .5;
         }
         &::-moz-range-thumb {
             @include form-range-thumb();

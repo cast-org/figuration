@@ -33,6 +33,9 @@
       "numeric", {
         "ignore": ["relative"]
     }],
+    "function-disallowed-list": [
+      "calc"
+    ],
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "indentation": 4,
