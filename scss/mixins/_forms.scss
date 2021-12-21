@@ -7,7 +7,7 @@
     $lh: if($line-height != null, $line-height, $input-line-height);
     $lh: strip-calc($lh);
 
-    $height-font:    1em * #{$lh};
+    $height-font:    1em * $lh;
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
 
     $height-inner: add($height-font, $height-padding);
@@ -22,7 +22,7 @@
     $lh: if($line-height != null, $line-height, $input-line-height);
     $lh: strip-calc($lh);
 
-    $height-font:    1em * #{$lh};
+    $height-font:    1em * $lh;
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
     $height-border:  $input-border-width * 2;
 

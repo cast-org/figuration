@@ -483,6 +483,7 @@ $responsive-font-size-fluid-two-dimensional:   false !default;
 
 // Scaled Responsive Typography
 // Steps font size by breakpoint.
+// stylelint-disable number-max-precision
 $responsive-font-size-scale-factor: (
     xs: .625,
     sm: .71875,
@@ -490,7 +491,7 @@ $responsive-font-size-scale-factor: (
     lg: .90625,
     xl: 1
 ) !default;
-
+// stylelint-enable number-max-precision
 
 // Component base colors
 // =====
