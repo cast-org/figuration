@@ -67,12 +67,10 @@
                 $content.text(content);
             }
 
-            if (!title && $title) {
-                $title.remove();
-            }
-            if (!content && $content) {
-                $content.remove();
-            }
+            // Header gets hidden by :empty CSS rule
+            // if (!title && $title) {
+            //     $title.remove();
+            // }
         }
 
         // Use '.popover-header' for labelledby

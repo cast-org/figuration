@@ -64,11 +64,11 @@ $(function() {
         $popover.CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover-header').length, 0, 'header was removed');
+        assert.strictEqual($('.popover-header:empty').length, 1, 'header is empty');
         assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
     });
 
-    QUnit.test('should create popover with no body if content option not defined', function(assert) {
+    QUnit.test('should create popover with empty body if content option not defined', function(assert) {
         assert.expect(3);
         var $popover = $('<a href="#" title="popover title">Popover</a>')
             .appendTo('#qunit-fixture')
@@ -78,7 +78,7 @@ $(function() {
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
         assert.strictEqual($('.popover-header').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover-body').length, 0, 'body was removed');
+        assert.strictEqual($('.popover-body:empty').length, 1, 'body is empty');
     });
 
     QUnit.test('should get title and content from options', function(assert) {

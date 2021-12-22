@@ -173,20 +173,24 @@
         .popover-body {
             padding: $popover-body-padding-y $popover-body-padding-x;
             color: $popover-body-color;
+
+            &:empty {
+                display: none;
+            }
         }
 
         @if $enable-popover-close {
-            .close + .popover-body {
+            .close ~ .popover-header:empty ~ .popover-body {
                 padding-right: add($close-font-size, $popover-control-padding-x);
             }
         }
         @if $enable-popover-drag {
-            .drag + .popover-body {
+            .drag ~ .popover-header:empty ~ .popover-body {
                 padding-right: add($close-font-size, $popover-control-padding-x);
             }
         }
         @if $enable-popover-close and $enable-popover-drag {
-            .close ~ .drag + .popover-body {
+            .close ~ .drag ~ .popover-header:empty ~ .popover-body {
                 padding-right: add($close-font-size * 2, $popover-control-padding-x * 2);
             }
         }
