@@ -6,7 +6,7 @@
 // @return {Number} - Unitless number
 @function strip-unit($number) {
     @if type-of($number) == "number" and not unitless($number) {
-        @return $number / ($number * 0 + 1);
+        @return divide($number, $number * 0 + 1);
     }
 
     @return $number;
@@ -31,7 +31,7 @@
     // Calculate rem if units for $value is not rem or em
     // Using 16px = 100% font size common in most browsers
     @if unit($value) != "rem" {
-        $value: strip-unit($value) / strip-unit(16px) * 1rem;
+        $value: divide(strip-unit($value), strip-unit(16px)) * 1rem;
     }
 
     // Turn 0rem into 0

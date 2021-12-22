@@ -28,6 +28,9 @@ module.exports = function(grunt) {
     var flexbugs = require('postcss-flexbugs-fixes');
     var calc = require('postcss-calc');
     var sass = require('node-sass');
+    if (process.env.DART_SASS === 'true') {
+        sass = require('sass');
+    }
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),

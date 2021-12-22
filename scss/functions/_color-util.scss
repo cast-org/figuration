@@ -150,7 +150,7 @@
     $lumfore: color-get-luminance(color-get-opaque($colorfore, $colorback)) + .05;
     $lumback: color-get-luminance($colorback) + .05;
 
-    @return max($lumfore, $lumback) / min($lumfore, $lumback);
+    @return divide(max($lumfore, $lumback), min($lumfore, $lumback));
 }
 
 // Opaque color
@@ -171,6 +171,7 @@
 //     var v =  (c < 0.04045) ? (c / 12.92) : Math.pow((c + 0.055) / 1.055, 2.4);
 //     console.log(v);
 // }
+// stylelint-disable number-max-precision
 // stylelint-disable-next-line scss/dollar-variable-default, scss/dollar-variable-colon-space-after
 $color-channel-lookup:
     0

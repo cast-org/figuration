@@ -6,7 +6,7 @@
     @if $enable-form-check {
         .form-check {
             display: block;
-            min-height: calc(1em * #{$line-height-base});
+            min-height: if(unit($line-height-base) == "", $line-height-base * 1em, $line-height-base);
             padding-left: $form-check-gutter;
             margin-bottom: $form-check-margin-bottom;
 
@@ -54,8 +54,8 @@
             .form-check-input {
                 width: $form-checkradio-size;
                 height: $form-checkradio-size;
-                margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) / 2);
-                margin-left: calc(#{$form-checkradio-gutter} * -1);
+                margin-top: subtract($line-height-base * .5em, $form-checkradio-size * .5);
+                margin-left: -$form-checkradio-gutter;
                 @extend %form-check-input-hide;
             }
 
@@ -65,8 +65,8 @@
                     float: left;
                     width: $form-checkradio-size;
                     height: $form-checkradio-size;
-                    margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) / 2);
-                    margin-left: calc(#{$form-checkradio-gutter} * -1);
+                    margin-top: subtract($line-height-base * .5em, $form-checkradio-size * .5);
+                    margin-left: -$form-checkradio-gutter;
                     content: "";
                     background-color: $form-checkradio-bg;
                     background-repeat: no-repeat;
@@ -154,7 +154,7 @@
 
             .form-check-input {
                 @extend %form-check-input-hide;
-                top: calc((.5em * #{$line-height-base}) - (#{$form-switch-track-height} / 2));
+                top: subtract(($line-height-base * .5em), ($form-switch-track-height * .5));
                 left: 0;
                 width: $form-switch-width;
                 height: $form-switch-track-height;
@@ -173,7 +173,7 @@
 
                 // Track
                 &::before {
-                    top: calc((.5em * #{$line-height-base}) - (#{$form-switch-track-height} / 2));
+                    top: subtract($line-height-base * .5em, $form-switch-track-height * .5);
                     left: 0;
                     width: $form-switch-width;
                     height: $form-switch-track-height;
@@ -185,7 +185,7 @@
 
                 // Thumb
                 &::after {
-                    top: calc((.5em * #{$line-height-base}) - (#{$form-switch-thumb-height} / 2));
+                    top: subtract($line-height-base * .5em, $form-switch-thumb-height * .5);
                     left: $form-switch-thumb-offset;
                     width: $form-switch-thumb-width;
                     height: $form-switch-thumb-height;
@@ -233,7 +233,7 @@
                     @include box-shadow($form-switch-track-checked-box-shadow);
                 }
                 &::after {
-                    left: calc(#{$form-switch-width} - #{$form-switch-thumb-width} - #{$form-switch-thumb-offset});
+                    left: subtract($form-switch-width, add($form-switch-thumb-width, $form-switch-thumb-offset, false));
                     background-color: $form-switch-thumb-checked-bg;
                     border-color: $form-switch-thumb-checked-border-color;
                     @include box-shadow($form-switch-thumb-checked-box-shadow);

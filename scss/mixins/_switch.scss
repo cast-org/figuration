@@ -19,7 +19,7 @@
         @include border-radius($border-radius);
 
         &::before {
-            @include border-radius(calc(#{$border-radius} - #{$border-width}));
+            @include border-radius(subtract($border-radius, $border-width));
         }
     }
 

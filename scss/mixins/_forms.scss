@@ -7,12 +7,12 @@
     $lh: if($line-height != null, $line-height, $input-line-height);
     $lh: strip-calc($lh);
 
-    $height-font:    1em * #{$lh};
+    $height-font:    1em * $lh;
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
 
-    $height-inner: #{$height-font} unquote("+") #{$height-padding};
+    $height-inner: add($height-font, $height-padding);
 
-    @return calc(#{$height-inner});
+    @return $height-inner;
 }
 
 @function calc-input-height-outer($padding-y, $line-height) {
@@ -22,14 +22,14 @@
     $lh: if($line-height != null, $line-height, $input-line-height);
     $lh: strip-calc($lh);
 
-    $height-font:    1em * #{$lh};
+    $height-font:    1em * $lh;
     $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
     $height-border:  $input-border-width * 2;
 
     $height-inner: #{$height-font} unquote("+") #{$height-padding};
-    $height-outer: #{$height-inner} unquote("+") #{$height-border};
+    $height-outer: add($height-inner, $height-border);
 
-    @return calc(#{$height-outer});
+    @return $height-outer;
 }
 
 // Form validation states
@@ -157,7 +157,7 @@
     @if $enable-form-control and $enable-form-validation-icon {
         .form-control:not(textarea):not(select) {
             @include form-validation-state-selector-icon($state) {
-                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                padding-right: add($input-padding-x, add($form-feedback-icon-width, $form-feedback-icon-offset, false));
             }
         }
 
@@ -165,7 +165,7 @@
         // stylelint-disable-next-line selector-no-qualifying-type
         select.form-control:not([size]):not([size="1"]):not([multiple]) {
             @include form-validation-state-selector-icon($state) {
-                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                padding-right: add($input-padding-x, add($form-feedback-icon-width, add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false), false), false));
                 background-image: $form-select-indicator-image, $icon;
                 background-repeat: no-repeat, no-repeat;
                 background-position: $form-select-indicator-position, $form-feedback-select-icon-position;
@@ -180,7 +180,7 @@
         select.form-control[multiple],
         textarea.form-control {
             @include form-validation-state-selector-icon($state) {
-                padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                padding-left: add($input-padding-x, add($form-feedback-icon-width, $form-feedback-icon-offset, false));
                 background-position: left $form-feedback-icon-offset center;
             }
         }
@@ -316,21 +316,21 @@
                         .form-control-#{$size}:not(textarea),
                         .input-group-#{$size} > .form-control:not(textarea) {
                             @include form-validation-state-selector-icon($state) {
-                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                                padding-right: add($sz-padding-x, add($form-feedback-icon-width, $form-feedback-icon-offset, false));
                             }
                         }
 
                         textarea.form-control-#{$size},
                         .input-group-#{$size} > textarea.form-control {
                             @include form-validation-state-selector-icon($state) {
-                                padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                                padding-left: add($sz-padding-x, add($form-feedback-icon-width, $form-feedback-icon-offset, false));
                             }
                         }
 
                         select.form-control-#{$size},
                         .input-group-#{$size} > select.form-control {
                             @include form-validation-state-selector-icon($state) {
-                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                                padding-right: add($sz-padding-x, add($form-feedback-icon-width, add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false), false), false));
 
                                 &[size]:not([size="1"]),
                                 &[multiple] {
