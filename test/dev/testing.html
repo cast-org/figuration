@@ -857,7 +857,13 @@ $(window).ready(function() {
             <h2 id="popover">Popover:</h2>
 
             <div class="mb-1">
-                <div class="card" style="width: 25%;" id="card-popover"></div>
+                <button type="button" class="btn btn-secondary" title="popover title" data-cfw="popover">Title only</button>
+                <button type="button" class="btn btn-secondary" data-cfw-popover-content="popover content" data-cfw="popover">Content only</button>
+                <button type="button" class="btn btn-secondary" data-cfw-popover-content="popover content" data-cfw="popover" data-cfw-popover-drag="true">Content only w/ drag</button>
+            </div>
+
+            <div class="mb-1">
+                <div class="card" style="width: 25%;" id="card-popover"><div class="card-body"></div></div>
                 <button type="button" class="btn btn-info" title="Yay, you clicked me!" data-cfw="popover" data-cfw-popover-content="blah" data-cfw-popover-container="#card-popover">Popover Custom Placement</button>
             </div>
 

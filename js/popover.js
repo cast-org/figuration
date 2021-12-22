@@ -42,6 +42,10 @@
         return $tip;
     };
 
+    CFW_Widget_Popover.prototype._hasContent = function() {
+        return Boolean(this.getTitle() || this.getContent());
+    };
+
     CFW_Widget_Popover.prototype.setContent = function() {
         var $tip = this.$target;
         var $title = $tip.find('.popover-header');
@@ -63,9 +67,10 @@
                 $content.text(content);
             }
 
-            if (!title && $title) {
-                $title.remove();
-            }
+            // Header gets hidden by :empty CSS rule
+            // if (!title && $title) {
+            //     $title.remove();
+            // }
         }
 
         // Use '.popover-header' for labelledby
