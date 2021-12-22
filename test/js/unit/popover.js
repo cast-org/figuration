@@ -68,6 +68,19 @@ $(function() {
         assert.strictEqual($('.popover-body').text(), 'popover content', 'content correctly inserted');
     });
 
+    QUnit.test('should create popover with no body if content option not defined', function(assert) {
+        assert.expect(3);
+        var $popover = $('<a href="#" title="popover title">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover();
+
+        $popover.CFW_Popover('show');
+
+        assert.notEqual($('.popover').length, 0, 'popover was inserted');
+        assert.strictEqual($('.popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover-body').length, 0, 'body was removed');
+    });
+
     QUnit.test('should get title and content from options', function(assert) {
         assert.expect(4);
         var $popover = $('<a href="#">Popover</a>')
@@ -149,6 +162,19 @@ $(function() {
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
+    });
+
+    QUnit.test('should not show dynamic popover without title or content provided', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $popover = $('<a href="#" title="" data-cfw-popover-content="">Popover</a>')
+            .appendTo('#qunit-fixture');
+        $popover.CFW_Popover('show');
+
+        setTimeout(function() {
+            assert.strictEqual($('.popover').length, 0, 'popover not created');
+            done();
+        });
     });
 
     QUnit.test('should respect custom template', function(assert) {

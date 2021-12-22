@@ -153,6 +153,10 @@
             return title;
         },
 
+        _hasContent: function() {
+            return Boolean(this.getTitle());
+        },
+
         setContent : function() {
             var $tip = this.$target;
             var $inner = $tip.find('.tooltip-body');
@@ -321,6 +325,10 @@
         show : function() {
             clearTimeout(this.delayTimer);
             var $selfRef = this;
+
+            if (!this._hasContent() && !this.$target) {
+                return;
+            }
 
             // Bail if transition in progress or already shown
             if (this.inTransition) { return; }

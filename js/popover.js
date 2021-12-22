@@ -42,6 +42,10 @@
         return $tip;
     };
 
+    CFW_Widget_Popover.prototype._hasContent = function() {
+        return Boolean(this.getTitle() || this.getContent());
+    };
+
     CFW_Widget_Popover.prototype.setContent = function() {
         var $tip = this.$target;
         var $title = $tip.find('.popover-header');
@@ -65,6 +69,9 @@
 
             if (!title && $title) {
                 $title.remove();
+            }
+            if (!content && $content) {
+                $content.remove();
             }
         }
 

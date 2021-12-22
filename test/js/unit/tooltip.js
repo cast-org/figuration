@@ -622,6 +622,19 @@ $(function() {
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
     });
 
+    QUnit.test('should not show dynamic tooltip without title provided', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $tooltip = $('<a href="#" title="">Popover</a>')
+            .appendTo('#qunit-fixture');
+        $tooltip.CFW_Tooltip('show');
+
+        setTimeout(function() {
+            assert.strictEqual($('.tooltip').length, 0, 'tooltip not created');
+            done();
+        });
+    });
+
     QUnit.test('should position tip on top if viewport has enough space and placement is "auto top"', function(assert) {
         assert.expect(2);
         var styles = '<style>' +
