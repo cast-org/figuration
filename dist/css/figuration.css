@@ -4097,10 +4097,7 @@ a.drag.disabled {
   padding-left: 0.5em;
   margin-top: 0;
   margin-left: -1px;
-  border-top-width: 0;
-  border-right-width: 1px;
-  border-bottom-width: 0;
-  border-left-width: 1px;
+  border-width: 0 1px;
 }
 
 .list-horizontal.list-divided > .list-item + .list-item, .list-horizontal.list-ruled > .list-item + .list-item {
@@ -7010,6 +7007,10 @@ a.drag.disabled {
   border-radius: 0.25rem;
 }
 
+.close + .tooltip-body {
+  padding-right: 1.5625rem;
+}
+
 .popover {
   position: absolute;
   z-index: 1030;
@@ -7065,7 +7066,7 @@ a.drag.disabled {
 }
 
 .cfw-popover-top > .popover-arrow, .cfw-popover-auto[x-placement^="top"] > .popover-arrow {
-  bottom: calc(-0.625rem + -1px);
+  bottom: calc(-0.625rem - 1px);
 }
 
 .cfw-popover-top > .popover-arrow::before, .cfw-popover-auto[x-placement^="top"] > .popover-arrow::before {
@@ -7085,7 +7086,7 @@ a.drag.disabled {
 }
 
 .cfw-popover-right > .popover-arrow, .cfw-popover-auto[x-placement^="right"] > .popover-arrow {
-  left: calc(-0.625rem + -1px);
+  left: calc(-0.625rem - 1px);
   width: 0.625rem;
   height: 1.25rem;
   margin: 0.3125rem 0;
@@ -7108,7 +7109,7 @@ a.drag.disabled {
 }
 
 .cfw-popover-bottom > .popover-arrow, .cfw-popover-auto[x-placement^="bottom"] > .popover-arrow {
-  top: calc(-0.625rem + -1px);
+  top: calc(-0.625rem - 1px);
 }
 
 .cfw-popover-bottom > .popover-arrow::before, .cfw-popover-auto[x-placement^="bottom"] > .popover-arrow::before {
@@ -7128,7 +7129,7 @@ a.drag.disabled {
 }
 
 .cfw-popover-left > .popover-arrow, .cfw-popover-auto[x-placement^="left"] > .popover-arrow {
-  right: calc(-0.625rem + -1px);
+  right: calc(-0.625rem - 1px);
   width: 0.625rem;
   height: 1.25rem;
   margin: 0.3125rem 0;
@@ -7164,6 +7165,22 @@ a.drag.disabled {
 .popover-body {
   padding: 0.5rem 0.75rem;
   color: #262d34;
+}
+
+.popover-body:empty {
+  display: none;
+}
+
+.close ~ .popover-header:empty ~ .popover-body {
+  padding-right: 1.8125rem;
+}
+
+.drag ~ .popover-header:empty ~ .popover-body {
+  padding-right: 1.8125rem;
+}
+
+.close ~ .drag ~ .popover-header:empty ~ .popover-body {
+  padding-right: 3.625rem;
 }
 
 .popover .close, .popover .drag {

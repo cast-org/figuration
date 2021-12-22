@@ -1299,6 +1299,7 @@ if (typeof jQuery === 'undefined') {
             if (e.which === KEYCODE_ESC) {
                 this.hide();
                 this.$element.trigger('focus');
+                return;
             }
 
             // Ignore disabled items
@@ -2300,6 +2301,10 @@ if (typeof jQuery === 'undefined') {
             return title;
         },
 
+        _hasContent: function() {
+            return Boolean(this.getTitle());
+        },
+
         setContent : function() {
             var $tip = this.$target;
             var $inner = $tip.find('.tooltip-body');
@@ -2468,6 +2473,10 @@ if (typeof jQuery === 'undefined') {
         show : function() {
             clearTimeout(this.delayTimer);
             var $selfRef = this;
+
+            if (!this._hasContent() && !this.$target) {
+                return;
+            }
 
             // Bail if transition in progress or already shown
             if (this.inTransition) { return; }
@@ -3205,6 +3214,10 @@ if (typeof jQuery === 'undefined') {
         return $tip;
     };
 
+    CFW_Widget_Popover.prototype._hasContent = function() {
+        return Boolean(this.getTitle() || this.getContent());
+    };
+
     CFW_Widget_Popover.prototype.setContent = function() {
         var $tip = this.$target;
         var $title = $tip.find('.popover-header');
@@ -3226,9 +3239,10 @@ if (typeof jQuery === 'undefined') {
                 $content.text(content);
             }
 
-            if (!title && $title) {
-                $title.remove();
-            }
+            // Header gets hidden by :empty CSS rule
+            // if (!title && $title) {
+            //     $title.remove();
+            // }
         }
 
         // Use '.popover-header' for labelledby
