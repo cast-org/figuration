@@ -82,7 +82,7 @@
             @supports (position: sticky) {
                 position: sticky;
                 top: 3.375rem;
-                max-height: calc(100vh - 3.375rem);
+                max-height: subtract(100vh, 3.375rem);
                 overflow-x: visible;
                 overflow-y: auto;
             }

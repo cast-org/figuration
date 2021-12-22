@@ -22,6 +22,7 @@
     "color-named": "never",
     'custom-property-pattern': null,
     "declaration-block-no-duplicate-properties": true,
+    'declaration-block-no-redundant-longhand-properties': null,
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "declaration-block-semicolon-newline-before": "never-multi-line",
     "declaration-block-semicolon-space-after": "always-single-line",
