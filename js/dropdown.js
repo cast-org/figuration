@@ -350,6 +350,7 @@
             if (e.which === KEYCODE_ESC) {
                 this.hide();
                 this.$element.trigger('focus');
+                return;
             }
 
             // Ignore disabled items

@@ -742,10 +742,10 @@ $(function() {
 
         var $trigger = $('#dropdown-trigger');
 
-        var arrowDown = $.Event('keydown', {
+        var arrowUp = $.Event('keydown', {
             which: 38
         });
-        var arrowUp   = $.Event('keydown', {
+        var arrowDown = $.Event('keydown', {
             which: 40
         });
 
@@ -1164,5 +1164,92 @@ $(function() {
             });
         });
         $dropdown.CFW_Dropdown('show');
+    });
+
+    QUnit.test('should focus trigger when main menu closed by ESC keypress', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button id="itemBtn" type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a id="item0" href="#">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var arrowDown = $.Event('keydown', {
+            which: 40 // Down
+        });
+        var escapeKey = $.Event('keydown', {
+            which: 27 // Esc
+        });
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#item0'), 'menu item focused');
+                    $dropdown.trigger(escapeKey);
+                });
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#itemBtn'), 'trigger is focused');
+                    done();
+                });
+            });
+
+        $dropdown.trigger('focus').trigger(arrowDown);
+    });
+
+    QUnit.test('should focus submenu trigger when submenu closed by ESC keypress', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li>' +
+            '<a href="#" id="subtoggle">Menu link</a>' +
+            '<ul>' +
+            '<li><a id="subitem" href="#">Sub-menu link</a></li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $subtoggle = $('#subtoggle');
+        var $subitem = $('#subitem');
+        var arrowDown = $.Event('keydown', {
+            which: 40 // Down
+        });
+        var arrowRight = $.Event('keydown', {
+            which: 39 // Right
+        });
+        var escapeKey = $.Event('keydown', {
+            which: 27 // Esc
+        });
+        $dropdown.CFW_Dropdown();
+
+        $subtoggle
+            .on('afterShow.cfw.dropdown', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#subitem'), 'submenu item focused');
+                    $subitem.trigger(escapeKey);
+                });
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#subtoggle'), 'submenu trigger is focused');
+                    done();
+                });
+            });
+
+        $dropdown
+            .one('afterShow.cfw.dropdown', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, document.querySelector('#subtoggle'), 'menu item focused');
+                    $subtoggle.trigger(arrowRight);
+                });
+            });
+        $dropdown.trigger('focus').trigger(arrowDown);
     });
 });
