@@ -195,19 +195,19 @@
 }
 .card-deck-col > .card {
     flex-basis: auto;
-    width: calc(100% - 2rem);
+    width: subtract(100%, 2rem);
     margin-right: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
 }
 @media (min-width: 35em) {
     .card-deck-col > .card {
-        width: calc(50% - 2rem);
+        width: subtract(50%, 2rem);
     }
 }
 @media (min-width: 62em) {
     .card-deck-col > .card {
-        width: calc(25% - 2rem);
+        width: subtract(25%, 2rem);
     }
 }
 
