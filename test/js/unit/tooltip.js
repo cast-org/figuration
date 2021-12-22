@@ -1108,11 +1108,11 @@ $(function() {
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement);
                 $trigger.CFW_Tooltip('toggle');
             })
             .on('afterHide.cfw.tooltip', function() {
-                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                assert.notStrictEqual($trigger[0], document.activeElement);
                 done();
             })
             .CFW_Tooltip('toggle');
@@ -1130,11 +1130,11 @@ $(function() {
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement);
                 $trigger.CFW_Tooltip('hide');
             })
             .on('afterHide.cfw.tooltip', function() {
-                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                assert.notStrictEqual($trigger[0], document.activeElement);
                 done();
             })
             .CFW_Tooltip('show');
@@ -1152,11 +1152,11 @@ $(function() {
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                assert.strictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                assert.strictEqual($('.tooltip')[0], document.activeElement);
                 $trigger.trigger('click');
             })
             .on('afterHide.cfw.tooltip', function() {
-                assert.strictEqual($trigger[0], document.activeElement, 'has a unique id');
+                assert.strictEqual($trigger[0], document.activeElement);
                 done();
             })
             .trigger('click');
