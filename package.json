@@ -107,8 +107,5 @@
     "dist/{css,js}/*.{css,js,map}",
     "js/*.js",
     "scss/**/*.scss"
-  ],
-  "dependencies": {
-    "sass": "^1.45.1"
-  }
+  ]
 }
