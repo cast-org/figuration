@@ -13,6 +13,13 @@
 <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="../../dist/js/figuration.js"></script>
 
+<style>
+/* Darker style for visual testing */
+.shadow-d3 {
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -231,6 +238,29 @@
         <div class="btn-check">
             <input id="checkbox9" type="checkbox" class="btn-check-input" checked>
             <label for="checkbox9" class="btn btn-info">Check 9</label>
+        </div>
+    </div>
+
+    <h2>Button group radius</h2>
+    <div class="mb-1">
+        <div class="btn-group btn-group-small shadow-d3 mb-0_25" role="group" aria-label="Small group radius example">
+            <button type="button" class="btn">Left</button>
+            <button type="button" class="btn">Middle</button>
+            <button type="button" class="btn">Right</button>
+        </div>
+    </div>
+    <div class="mb-1">
+        <div class="btn-group shadow-d3 mb-0_25" role="group" aria-label="Default group radius example">
+            <button type="button" class="btn">Left</button>
+            <button type="button" class="btn">Middle</button>
+            <button type="button" class="btn">Right</button>
+        </div>
+    </div>
+    <div class="mb-1">
+        <div class="btn-group btn-group-large shadow-d3 mb-0_25" role="group" aria-label="Large group radius example">
+            <button type="button" class="btn">Left</button>
+            <button type="button" class="btn">Middle</button>
+            <button type="button" class="btn">Right</button>
         </div>
     </div>
 
