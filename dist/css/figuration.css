@@ -4335,6 +4335,7 @@ a.drag.disabled {
   position: relative;
   display: inline-flex;
   vertical-align: middle;
+  border-radius: 0.25rem;
 }
 
 .btn-group > .btn:hover, .btn-group-vertical > .btn:hover, .btn-group > .btn:active, .btn-group-vertical > .btn:active, .btn-group > .btn.active, .btn-group-vertical > .btn.active {
@@ -4374,6 +4375,22 @@ a.drag.disabled {
 .btn-group > .btn-group:not(:first-child) > .btn, .btn-group > .btn-check:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.btn-group-xsmall {
+  border-radius: 0.1875rem;
+}
+
+.btn-group-small {
+  border-radius: 0.1875rem;
+}
+
+.btn-group-large {
+  border-radius: 0.3125rem;
+}
+
+.btn-group-xlarge {
+  border-radius: 0.3125rem;
 }
 
 .btn-group-vertical {
@@ -4423,6 +4440,7 @@ a.drag.disabled {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  border-radius: 0.25rem;
 }
 
 .input-group > .form-control,
@@ -4503,6 +4521,22 @@ a.drag.disabled {
   background-color: #eff1f3;
   border: 1px solid #bfc6cd;
   border-radius: 0.25rem;
+}
+
+.input-group-xsmall {
+  border-radius: 0.1875rem;
+}
+
+.input-group-small {
+  border-radius: 0.1875rem;
+}
+
+.input-group-large {
+  border-radius: 0.3125rem;
+}
+
+.input-group-xlarge {
+  border-radius: 0.3125rem;
 }
 
 .input-group > :not(:last-child):not(.dropdown-menu):not(.input-group-end):not([data-cfw="dropdown"]),

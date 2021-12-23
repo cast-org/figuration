@@ -3957,14 +3957,7 @@ if (typeof jQuery === 'undefined') {
 
         // these following methods are used to handle overflowing modals
         handleUpdate : function() {
-            if (this.settings.backdrop) { this.adjustBackdrop(); }
             this.adjustDialog();
-        },
-
-        adjustBackdrop : function() {
-            this.$backdrop
-                .css('height', 0)
-                .css('height', this.$target[0].scrollHeight);
         },
 
         adjustDialog : function() {
