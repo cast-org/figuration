@@ -918,6 +918,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>false</code></td>
         <td>
           <p>Appends the dropdown menu to a specific element. Example: <code>container: 'body'</code></p>
+          <p>Note: Figuration is still using Popper v1, due to legacy support of IE11, and there is a <a href="https://github.com/floating-ui/floating-ui/issues/628">known issue regarding using a positioned container</a> that was not resolved until Popper v2.  For the time being, be sure to use containers that are not positioned.</p>
         </td>
       </tr>
       <tr>

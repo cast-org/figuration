@@ -863,8 +863,9 @@ $(window).ready(function() {
             </div>
 
             <div class="mb-1">
-                <div class="card" style="width: 25%;" id="card-popover"><div class="card-body"></div></div>
-                <button type="button" class="btn btn-info" title="Yay, you clicked me!" data-cfw="popover" data-cfw-popover-content="blah" data-cfw-popover-container="#card-popover">Popover Custom Placement</button>
+                <!-- Be sure to use container without position - known issue in Popper v1 -->
+                <div class="border radius p-1 me-1 float-start" style="width: 25%;" id="card-popover"></div>
+                <button type="button" class="btn btn-info" title="Yay, you clicked me!" data-cfw="popover" data-cfw-popover-content="blah" data-cfw-popover-container="#card-popover">Popover Container Placement</button>
             </div>
 
             <div class="container-viewport container-viewport-scroll" id="viewport-popover-scroll">
