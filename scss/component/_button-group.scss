@@ -12,6 +12,7 @@
         position: relative;
         display: inline-flex;
         vertical-align: middle; // match .btn alignment
+        @include border-radius($btn-border-radius);
 
         > .btn {
             @extend %btn-group-btn-base;
@@ -103,8 +104,14 @@
     @if $enable-sizing {
         @each $size, $dims in $btn-sizes {
             @if $enable-btn-group-sizing {
-                .btn-group-#{$size} > .btn {
-                    @extend %btn-#{$size};
+                $sz-border-radius: map-get($dims, "border-radius");
+
+                .btn-group-#{$size} {
+                    @include border-radius($sz-border-radius);
+
+                    > .btn {
+                        @extend %btn-#{$size};
+                    }
                 }
                 @if $enable-btn-check {
                     .btn-group-#{$size} > .btn-check > .btn {
