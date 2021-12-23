@@ -6,6 +6,7 @@
         flex-wrap: wrap; // For form validation feedback
         align-items: stretch;
         width: 100%;
+        @include border-radius($input-border-radius);
 
         > .form-control,
         > .form-file {
@@ -105,10 +106,15 @@
     @if $enable-sizing  and $enable-input-group-sizing {
         @each $size, $dims in $input-sizes {
             $sz-padding-x:     map-get($dims, "padding-x");
+            $sz-border-radius: map-get($dims, "border-radius");
 
-            .input-group-#{$size} > .form-control,
-            .input-group-#{$size} > .input-group-text {
-                @extend %form-control-#{$size};
+            .input-group-#{$size} {
+                @include border-radius($sz-border-radius);
+
+                > .form-control,
+                > .input-group-text {
+                    @extend %form-control-#{$size};
+                }
             }
 
             @if $enable-form-file {

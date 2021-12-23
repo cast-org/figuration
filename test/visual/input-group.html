@@ -17,6 +17,11 @@
 .input-group {
     margin-bottom: 1rem;
 }
+
+/* Darker style for visual testing */
+.shadow-d3 {
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+}
 </style>
 
 </head>
@@ -864,6 +869,21 @@
       </label>
     </div>
     <div class="input-group-text">Addon</div>
+</div>
+
+<h2>Input group border radius</h2>
+
+<div class="input-group input-group-small shadow-d3">
+  <div class="input-group-text" id="radius-addon1">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="radius-addon1">
+</div>
+<div class="input-group shadow-d3">
+  <div class="input-group-text" id="radius-addon1">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="radius-addon1">
+</div>
+<div class="input-group input-group-large shadow-d3">
+  <div class="input-group-text" id="radius-addon1">@</div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="radius-addon1">
 </div>
 
 </div></div></div>
