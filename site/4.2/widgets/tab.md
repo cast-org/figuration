@@ -9,13 +9,8 @@ toc: true
 
 ## Notices
 
-{% capture callout %}
-Incompatible Widgets
-{.h5}
-
-For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) and [Dropdown widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcapture %}
-{% renderCallout, callout, "warning" %}
+{%- assign calloutIncompatible = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-danger-dropdown-tab.md" -%}
+{% include calloutIncompatible %}
 
 As a best practice, we recommend using `<button>` elements for the tabs, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.
 

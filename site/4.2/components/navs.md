@@ -274,13 +274,8 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/).
 
-{% capture callout %}
-Incompatible Widgets
-{.h5}
-
-For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) and [Dropdown widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcapture %}
-{% renderCallout, callout, "warning" %}
+{%- assign calloutIncompatible = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-danger-dropdown-tab.md" -%}
+{% include calloutIncompatible %}
 
 ### Tabs with Dropdowns
 
