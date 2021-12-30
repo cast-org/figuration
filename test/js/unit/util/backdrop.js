@@ -149,7 +149,7 @@ $(function() {
         var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         instance.show(function() {
-            wrapper.remove();
+            $(wrapper).remove();
             instance.hide(function() {
                 assert.strictEqual(getElements().length, 0, 'no backdrops');
                 done();

@@ -76,8 +76,7 @@
             }
 
             $(this.element).off('mousedown.cfw.backdrop');
-            // this.element.remove();
-            this.element.parentNode.removeChild(this.element); // IE11
+            $(this.element).remove();
             this.isAppended = false;
         },
 
@@ -119,8 +118,7 @@
             if (this.isAppended) {
                 return;
             }
-            // this.settings.rootElement.append(this._getBackdrop());
-            this.settings.rootElement.appendChild(this._getBackdrop()); // IE11
+            $(this.settings.rootElement).append(this._getBackdrop());
 
             $(this._getBackdrop()).on('mousedown.cfw.backdrop', function() {
                 $selfRef._execute($selfRef.settings.clickCallback);
