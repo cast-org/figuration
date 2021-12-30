@@ -97,7 +97,8 @@ if (typeof jQuery === 'undefined') {
             }
 
             $(this.element).off('mousedown.cfw.backdrop');
-            this.element.remove();
+            // this.element.remove();
+            this.element.parentNode.removeChild(this.element); // IE11
             this.isAppended = false;
         },
 
@@ -134,12 +135,13 @@ if (typeof jQuery === 'undefined') {
             return this.element;
         },
 
-        _append() {
+        _append : function() {
             var $selfRef = this;
             if (this.isAppended) {
                 return;
             }
-            this.settings.rootElement.append(this._getBackdrop());
+            // this.settings.rootElement.append(this._getBackdrop());
+            this.settings.rootElement.appendChild(this._getBackdrop()); // IE11
 
             $(this._getBackdrop()).on('mousedown.cfw.backdrop', function() {
                 $selfRef._execute($selfRef.settings.clickCallback);
