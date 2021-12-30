@@ -21,6 +21,145 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
+ * Figuration (v4.2.1): util/backdrop.js
+ * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+(function($) {
+    'use strict';
+
+    var CFW_Util_Backdrop = function(options) {
+        this.element = null;
+        this.isAppended = false;
+        this.settings = $.extend({}, CFW_Util_Backdrop.DEFAULTS, options);
+
+        this._init();
+    };
+
+    CFW_Util_Backdrop.DEFAULTS = {
+        className: 'modal-backdrop',
+        isVisible: true,        // if DOM element should be used - otherwise just make callback
+        isAnimated: false,
+        rootElement: 'body',    // insert backdrop inside this element
+        clickCallback: null
+    };
+
+    CFW_Util_Backdrop.prototype = {
+        _init : function() {
+            // Update rootElement in case of DOM change
+            this.settings.rootElement = this._getElement(this.settings.rootElement);
+        },
+
+        show : function(callback) {
+            var $selfRef = this;
+
+            if (!this.settings.isVisible) {
+                this._execute(callback);
+                return;
+            }
+
+            this._append();
+
+            if (this.settings.isAnimated) {
+                $.CFW_reflow(this.element); // Reflow for transition
+            }
+            this.element.classList.add('in');
+
+            var complete = function() {
+                $selfRef._execute(callback);
+            };
+
+            $(this.element).CFW_transition(null, complete);
+        },
+
+        hide : function(callback) {
+            var $selfRef = this;
+
+            if (!this.settings.isVisible) {
+                this._execute(callback);
+                return;
+            }
+
+            this._getBackdrop().classList.remove('in');
+
+            var complete = function() {
+                $selfRef.dispose();
+                $selfRef._execute(callback);
+            };
+
+            $(this.element).CFW_transition(null, complete);
+        },
+
+        dispose : function() {
+            if (!this.isAppended) {
+                return;
+            }
+
+            $(this.element).off('mousedown.cfw.backdrop');
+            this.element.remove();
+            this.isAppended = false;
+        },
+
+        _isElement : function(object) {
+            if (!object || typeof object !== 'object') {
+                return false;
+            }
+            if (typeof object.jquery !== 'undefined') {
+                object = object[0];
+            }
+            return typeof object.nodeType !== 'undefined';
+        },
+
+        _getElement : function(object) {
+            // Check for jQuery object or a node element
+            if (this._isElement(object)) {
+                return object.jquery ? object[0] : object;
+            }
+            if (typeof object === 'string' && object.length > 0) {
+                return document.querySelector(object);
+            }
+            return null;
+        },
+
+        _getBackdrop : function() {
+            if (!this.element) {
+                var backdrop = document.createElement('div');
+                backdrop.className = this.settings.className;
+                if (this.settings.isAnimated) {
+                    backdrop.classList.add('fade');
+                }
+                this.element = backdrop;
+            }
+            return this.element;
+        },
+
+        _append() {
+            var $selfRef = this;
+            if (this.isAppended) {
+                return;
+            }
+            this.settings.rootElement.append(this._getBackdrop());
+
+            $(this._getBackdrop()).on('mousedown.cfw.backdrop', function() {
+                $selfRef._execute($selfRef.settings.clickCallback);
+            });
+
+            this.isAppended = true;
+        },
+
+        _execute : function(callback) {
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }
+    };
+
+    window.CFW_Backdrop = CFW_Util_Backdrop;
+}(jQuery));
+
+/**
+ * --------------------------------------------------------------------------
  * Figuration (v4.2.1): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
@@ -3609,6 +3748,7 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+/* global CFW_Backdrop */
 
 (function($) {
     'use strict';
@@ -3618,7 +3758,7 @@ if (typeof jQuery === 'undefined') {
         this.$element = $(element);
         this.$target = null;
         this.$dialog = null;
-        this.$backdrop = null;
+        this._backdrop = null;
         this.$focusLast = null;
         this.isShown = null;
         this.scrollbarWidth = 0;
@@ -3650,6 +3790,7 @@ if (typeof jQuery === 'undefined') {
             if (!selector) { return; }
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
+            this._backdrop = this._initializeBackdrop();
 
             this.$element.attr('data-cfw', 'modal');
 
@@ -4068,16 +4209,17 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
+        _initializeBackdrop : function() {
+            return new CFW_Backdrop({
+                isVisible: Boolean(this.settings.backdrop), // 'static' option will be translated to true, and booleans will keep their value
+                isAnimated: this.settings.animate
+            });
+        },
+
         backdrop : function(callback) {
             var $selfRef = this;
 
-            var animate = this.settings.animate ? 'fade' : '';
-
             if (this.isShown && this.settings.backdrop) {
-                this.$backdrop = $(document.createElement('div'))
-                    .addClass('modal-backdrop ' + animate)
-                    .appendTo(this.$body);
-
                 this.$target.on('click.dismiss.cfw.modal', function(e) {
                     if ($selfRef.ignoreBackdropClick) {
                         $selfRef.ignoreBackdropClick = false;
@@ -4093,29 +4235,11 @@ if (typeof jQuery === 'undefined') {
                     }
                 });
 
-                $.CFW_reflow(this.$backdrop[0]); // Force Reflow
-
-                this.$backdrop.addClass('in');
-
-                this.$backdrop.CFW_transition(null, callback);
-            } else if (!this.isShown && this.$backdrop) {
-                this.$backdrop.removeClass('in');
-
-                var callbackRemove = function() {
-                    $selfRef.removeBackdrop();
-                    if (callback) { callback(); }
-                };
-
-                this.$backdrop.CFW_transition(null, callbackRemove);
+                this._backdrop.show(callback);
+            } else if (!this.isShown && this._backdrop) {
+                this._backdrop.hide(callback);
             } else if (callback) {
                 callback();
-            }
-        },
-
-        removeBackdrop : function() {
-            if (this.$backdrop) {
-                this.$backdrop.remove();
-                this.$backdrop = null;
             }
         },
 
@@ -4163,7 +4287,7 @@ if (typeof jQuery === 'undefined') {
             this.$element = null;
             this.$target = null;
             this.$dialog = null;
-            this.$backdrop = null;
+            this.backdrop = null;
             this.$focusLast = null;
             this.isShown = null;
             this.scrollbarWidth = null;
@@ -4181,6 +4305,7 @@ if (typeof jQuery === 'undefined') {
                 $this.CFW_trigger('dispose.cfw.modal');
                 $this.remove();
             });
+            this._backdrop.dispose();
             this.unlink();
         }
     };
