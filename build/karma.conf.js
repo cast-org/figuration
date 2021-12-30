@@ -58,6 +58,7 @@ const customLaunchers = {
 const files = [
     jqueryFile,
     'node_modules/popper.js/dist/umd/popper.min.js',
+    'js/util/backdrop.js',
     'js/util.js',
     'js/drag.js',
     'js/collapse.js',

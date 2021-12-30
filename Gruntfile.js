@@ -56,6 +56,7 @@ module.exports = function(grunt) {
         // File definitions
         // ==========
         jsCore: [
+            'js/util/backdrop.js',
             'js/util.js',
             'js/drag.js',
             'js/collapse.js',

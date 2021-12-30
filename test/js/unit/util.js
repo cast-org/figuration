@@ -42,7 +42,7 @@ $(function() {
     $.fn.CFW_TestDismiss.Constructor = CFW_Widget_TestDismiss;
     // =====
 
-    QUnit.module('util', {
+    QUnit.module('util:General', {
         beforeEach: function() {
             $(window).scrollTop(0);
         },
