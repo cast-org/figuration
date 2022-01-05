@@ -42,7 +42,7 @@
             return Math.abs(this.getContainerWidth() - this.getContentWidth());
         },
 
-        getSide : function() {
+        getScrollbarSide : function() {
             // Unable to detect side when 0-width scrollbars (such as mobile)
             // are found.  So we use 'right` side as default (more common case).
             var isHTML = this.element === document.documentElement;
@@ -56,8 +56,6 @@
         },
 
         isOverflowing : function() {
-            //var scrollbarWidth = this.scrollbarWith !== null ? this.scrollbarWidth : this.getScrollbarWidth();
-            //return scrollbarWidth > 0;
             return this.getScrollbarWidth() > 0;
         },
 
@@ -73,7 +71,7 @@
                 var newWidth = calculatedVal - $selfRef.scrollbarWidth;
                 return newWidth + 'px';
             };
-            var side = this.getSide();
+            var side = this.getScrollbarSide();
 
             // Update rootElement overflow and padding
             this._disableOverflow();
@@ -96,7 +94,7 @@
 
         reset : function() {
             var $selfRef = this;
-            var side = this.getSide();
+            var side = this.getScrollbarSide();
             this._resetScrollbarAdjustment(this.element, 'overflow');
             this._resetScrollbarAdjustment(this.element, 'padding-' + side);
             $(SELECTOR_CONTENT_SHARED).each(function() {

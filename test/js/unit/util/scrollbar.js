@@ -9,7 +9,7 @@ $(function() {
     var getPaddingX = function(el) { return parseIntDecimal(window.getComputedStyle(el).paddingRight); };
     var getMarginX = function(el) { return parseIntDecimal(window.getComputedStyle(el).marginRight); };
     var getOverflow = function(el) { return el.style.overflow; };
-    var hasPaddingAttr = function(el) {return el.hasAttribute('data-cfw-padding-right'); };
+    var hasPaddingAttr = function(el) { return el.hasAttribute('data-cfw-padding-right'); };
     var hasMarginAttr = function(el) { return el.hasAttribute('data-cfw-margin-right'); };
     var getPaddingAttr = function(el) { return el.getAttribute('data-cfw-padding-right'); };
     var getMarginAttr = function(el) { return el.getAttribute('data-cfw-margin-right'); };
