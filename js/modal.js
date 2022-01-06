@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-/* global CFW_Backdrop */
+/* global CFW_Backdrop, CFW_Scrollbar */
 
 (function($) {
     'use strict';
@@ -15,10 +15,9 @@
         this.$target = null;
         this.$dialog = null;
         this._backdrop = null;
+        this._scrollbar = null;
         this.$focusLast = null;
         this.isShown = null;
-        this.scrollbarWidth = 0;
-        this.scrollbarSide = 'right';
         this.fixedContent = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
         this.stickyContent = '.sticky-top';
         this.ignoreBackdropClick = false;
@@ -47,6 +46,7 @@
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
+            this._scrollbar = new CFW_Scrollbar();
 
             this.$element.attr('data-cfw', 'modal');
 
@@ -108,8 +108,7 @@
 
             this.isShown = true;
 
-            this.checkScrollbar();
-            this.setScrollbar();
+            this._scrollbar.disable();
             this.$body.addClass('modal-open');
 
             this.escape();
@@ -255,7 +254,7 @@
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
-                $selfRef.resetScrollbar();
+                $selfRef._scrollbar.reset();
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
@@ -359,10 +358,12 @@
 
         adjustDialog : function() {
             var modalIsOverflowing = this.$target[0].scrollHeight > document.documentElement.clientHeight;
+            var scrollbarWidth = this._scrollbar.getScrollbarWidth();
+            var bodyIsOverflowing = this._scrollbar.isOverflowing();
 
             this.$target.css({
-                paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
-                paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
+                paddingLeft:  !bodyIsOverflowing && modalIsOverflowing ? scrollbarWidth : '',
+                paddingRight: bodyIsOverflowing && !modalIsOverflowing ? scrollbarWidth : ''
             });
         },
 
@@ -371,77 +372,6 @@
                 paddingLeft: '',
                 paddingRight: ''
             });
-        },
-
-        checkScrollbar : function() {
-            var rect = document.body.getBoundingClientRect();
-            this.bodyIsOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
-            this.scrollbarWidth = $.CFW_measureScrollbar();
-            this.scrollbarSide =  $('html').CFW_getScrollbarSide();
-        },
-
-        setScrollbar : function() {
-            var $selfRef = this;
-
-            if (this.bodyIsOverflowing) {
-                // Update fixed element padding
-                $(this.fixedContent).each(function() {
-                    $selfRef.setScrollbarAdjustment(this, 'padding', function(calculatedDim) { return calculatedDim + $selfRef.scrollbarWidth; });
-                });
-
-                // Update sticky element margin
-                $(this.stickyContent).each(function() {
-                    $selfRef.setScrollbarAdjustment(this, 'margin', function(calculatedDim) { return calculatedDim - $selfRef.scrollbarWidth; });
-                });
-
-                // Update body padding
-                this.setScrollbarAdjustment(document.body, 'padding', function(calculatedDim) { return calculatedDim + $selfRef.scrollbarWidth; });
-            }
-
-            this.$target
-                .on('touchmove.cfw.modal', this._scrollBlock.bind(this))
-                .CFW_trigger('scrollbarSet.cfw.modal');
-        },
-
-        resetScrollbar : function() {
-            var $selfRef = this;
-
-            // Restore fixed element padding
-            $(this.fixedContent).each(function() {
-                $selfRef.resetScrollbarAdjustment(this, 'padding');
-            });
-
-            // Restore sticky element margin
-            $(this.stickyContent).each(function() {
-                $selfRef.resetScrollbarAdjustment(this, 'margin');
-            });
-
-            // Restore body padding
-            this.resetScrollbarAdjustment(document.body, 'padding');
-
-            this.$target
-                .off('touchmove.cfw.modal')
-                .CFW_trigger('scrollbarReset.cfw.modal');
-        },
-
-        setScrollbarAdjustment : function(node, rule, callback) {
-            if (node !== document.body && window.innerWidth > node.clientWidth + this.scrollbarWidth) {
-                return;
-            }
-
-            var propName = rule + this.scrollbarSide.capitalize();
-            var actualDim = node.style[propName];
-            var calculatedDim = parseFloat(window.getComputedStyle(node)[propName]);
-            $(node).data('cfw.' + rule + '-dim', actualDim);
-            node.style[propName] = callback(calculatedDim) + 'px';
-        },
-
-        resetScrollbarAdjustment : function(node, rule) {
-            var savedDim = $(node).data('cfw.' + rule + '-dim');
-            if (typeof savedDim !== 'undefined') {
-                node.style[rule + this.scrollbarSide.capitalize()] = savedDim;
-                $(node).removeData('cfw.' + rule + '-dim');
-            }
         },
 
         _scrollBlock : function(e) {
@@ -543,11 +473,10 @@
             this.$element = null;
             this.$target = null;
             this.$dialog = null;
-            this.backdrop = null;
+            this._backdrop = null;
+            this._scrollbar = null;
             this.$focusLast = null;
             this.isShown = null;
-            this.scrollbarWidth = null;
-            this.scrollbarSide = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
             this.settings = null;

@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         // ==========
         jsCore: [
             'js/util/backdrop.js',
+            'js/util/scrollbar.js',
             'js/util.js',
             'js/drag.js',
             'js/collapse.js',
@@ -111,7 +112,7 @@ module.exports = function(grunt) {
                 options: {
                     overrideConfigFile: 'test/js/unit/.eslintrc.json'
                 },
-                src: 'test/js/unit/*.js'
+                src: 'test/js/unit/**/*.js'
             },
             docs : {
                 src: ['site/assets/<%= pkg.versionShort %>/js/src/*.js', 'site/assets/<%= pkg.versionShort %>/js/*.js', '!site/assets/<%= pkg.versionShort %>/js/*.min.js']

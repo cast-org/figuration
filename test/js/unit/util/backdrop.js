@@ -1,3 +1,4 @@
+/* global CFW_Backdrop */
 $(function() {
     'use strict';
 
@@ -5,6 +6,8 @@ $(function() {
     var CLASS_NAME_FADE = 'fade';
     var CLASS_NAME_SHOW = 'in';
 
+    var getElement = function() { return document.querySelector(CLASS_BACKDROP); };
+    var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); };
 
     QUnit.module('util:CFW_Backdrop', {
         beforeEach: function() {
@@ -23,7 +26,6 @@ $(function() {
             isVisible: true,
             isAnimated: false
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         assert.strictEqual(getElements().length, 0, 'no backdrops');
 
@@ -42,7 +44,6 @@ $(function() {
             isVisible: false,
             isAnimated: true
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         assert.strictEqual(getElements().length, 0, 'no backdrops');
 
@@ -60,7 +61,6 @@ $(function() {
             isVisible: true,
             isAnimated: true
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         assert.strictEqual(getElements().length, 0, 'no backdrops');
 
@@ -79,7 +79,6 @@ $(function() {
             isVisible: true,
             isAnimated: true
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         assert.strictEqual(getElements().length, 0, 'no backdrops');
 
@@ -101,7 +100,6 @@ $(function() {
     //         isVisible: true,
     //         isAnimated: true
     //     });
-    //     var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
     //
     //     instance.show(function() {
     //         assert.ok(document.querySelector(CLASS_BACKDROP).classList.contains(CLASS_NAME_SHOW), 'backdrop has `show` class');
@@ -119,9 +117,8 @@ $(function() {
             isVisible: false,
             isAnimated: true
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
         var disposeCalled = false;
-        instance.dispose = function() { disposeCalled = true; }
+        instance.dispose = function() { disposeCalled = true; };
 
         assert.strictEqual(getElements().length, 0, 'no backdrops');
         assert.strictEqual(instance.isAppended, false);
@@ -146,7 +143,6 @@ $(function() {
             isAnimated: true,
             rootElement: wrapper
         });
-        var getElements = function() { return document.querySelectorAll(CLASS_BACKDROP); }
 
         instance.show(function() {
             $(wrapper).remove();
@@ -171,7 +167,7 @@ $(function() {
                 assert.strictEqual(callbackCalled, true);
                 done();
             }, 10);
-        }
+        };
 
         instance.show(function() {
             $(document.querySelector(CLASS_BACKDROP)).trigger('mousedown');
@@ -185,7 +181,6 @@ $(function() {
         var instance = new CFW_Backdrop({
             isVisible: true
         });
-        var getElement = function() { return document.querySelector(CLASS_BACKDROP); }
 
         instance.show(function() {
             assert.strictEqual(getElement().parentElement, document.body);
@@ -202,7 +197,6 @@ $(function() {
             isVisible: true,
             rootElement: wrapper
         });
-        var getElement = function() { return document.querySelector(CLASS_BACKDROP); }
 
         instance.show(function() {
             assert.strictEqual(getElement().parentElement, wrapper);
@@ -217,12 +211,11 @@ $(function() {
             isVisible: true,
             className: 'foo'
         });
-        var getElement = function() { return document.querySelector('.foo'); }
+        var getClassElement = function() { return document.querySelector('.foo'); };
 
         instance.show(function() {
-            assert.strictEqual(getElement(), instance._getBackdrop());
+            assert.strictEqual(getClassElement(), instance._getBackdrop());
             done();
         });
     });
-
 });
