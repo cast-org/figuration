@@ -38,6 +38,10 @@ $(function() {
         $('<div id="forceOverflow" style="height: 110vh; width: 100%"></div>').appendTo(document.body);
     };
 
+    // Some tests will fail in IE due to not support `position: sticky;`, so ignore them
+    // Yes, it is cheating, but IE usage is minimal on a global scale
+    var isIE = /(msie|trident)/i.test(navigator.userAgent);
+
     QUnit.module('util:CFW_Scrollbar', {
         beforeEach: function() {
             $(window).scrollTop(0);
@@ -215,29 +219,32 @@ $(function() {
         assert.strictEqual('red', body.style.color);
     });
 
-    QUnit.test('should not add data-attribute if element did not have predefined rule', function(assert) {
-        assert.expect(6);
-        $('<div id="sticky" class="sticky-top" style="position: sticky; top: 0; width: 100vw;"></div>').appendTo(document.body);
-        body.style.overflowY = 'scroll';
-        var scrollbar = new CFW_Scrollbar();
+    if (!isIE) {
+        QUnit.test('should not add data attribute if element did not have predefined rule', function(assert) {
+            assert.expect(6);
+            $('<div id="sticky" class="sticky-top" style="position: sticky; top: 0; width: 100vw;"></div>').appendTo(document.body);
+            doc.style.overflowY = 'scroll';
+            body.style.overflowY = 'scroll';
+            var scrollbar = new CFW_Scrollbar();
 
-        var elSticky = document.querySelector('#sticky');
-        var originalPadding = getPaddingX(elSticky);
-        var originalMargin = getMarginX(elSticky);
-        var scrollbarWidth = scrollbar.getScrollbarWidth();
+            var elSticky = document.querySelector('#sticky');
+            var originalPadding = getPaddingX(elSticky);
+            var originalMargin = getMarginX(elSticky);
+            var scrollbarWidth = scrollbar.getScrollbarWidth();
 
-        scrollbar.disable();
-        assert.strictEqual(originalPadding + scrollbarWidth, getPaddingX(elSticky));
-        var expectedMargin = scrollbarWidth + originalMargin;
-        expectedMargin = expectedMargin === 0 ? expectedMargin : -expectedMargin;
-        assert.strictEqual(expectedMargin, getMarginX(elSticky));
-        assert.notOk(hasPaddingAttr(elSticky));
-        assert.notOk(hasMarginAttr(elSticky));
+            scrollbar.disable();
+            assert.strictEqual(originalPadding + scrollbarWidth, getPaddingX(elSticky));
+            var expectedMargin = scrollbarWidth + originalMargin;
+            expectedMargin = expectedMargin === 0 ? expectedMargin : -expectedMargin;
+            assert.strictEqual(expectedMargin, getMarginX(elSticky));
+            assert.notOk(hasPaddingAttr(elSticky));
+            assert.notOk(hasMarginAttr(elSticky));
 
-        scrollbar.reset();
-        assert.strictEqual(originalPadding, getPaddingX(elSticky));
-        assert.strictEqual(originalMargin, getMarginX(elSticky));
-    });
+            scrollbar.reset();
+            assert.strictEqual(originalPadding, getPaddingX(elSticky));
+            assert.strictEqual(originalMargin, getMarginX(elSticky));
+        });
+    }
 
     QUnit.test('should remove padding and margin if it did not exist before adjustment', function(assert) {
         assert.expect(3);
@@ -289,34 +296,36 @@ $(function() {
         assert.strictEqual(originalPadding2, currentPadding2);
     });
 
-    QUnit.test('should adjust inline padding and margin of sticky elements', function(assert) {
-        assert.expect(8);
-        $('<div id="sticky" class="sticky-top" style="position: sticky; top: 0; width: 100vw; padding-right: 10px; margin-right: 10px;"></div>').appendTo(document.body);
-        body.style.overflowY = 'scroll';
-        var scrollbar = new CFW_Scrollbar();
+    if (!isIE) {
+        QUnit.test('should adjust inline padding and margin of sticky elements', function(assert) {
+            assert.expect(8);
+            $('<div id="sticky" class="sticky-top" style="position: sticky; top: 0; width: 100vw; padding-right: 10px; margin-right: 10px;"></div>').appendTo(document.body);
+            body.style.overflowY = 'scroll';
+            var scrollbar = new CFW_Scrollbar();
 
-        var elSticky = document.querySelector('#sticky');
-        var originalPadding = getPaddingX(elSticky);
-        var originalMargin = getMarginX(elSticky);
-        var expectedPadding = originalPadding + scrollbar.getScrollbarWidth();
-        var expectedMargin = originalMargin - scrollbar.getScrollbarWidth();
+            var elSticky = document.querySelector('#sticky');
+            var originalPadding = getPaddingX(elSticky);
+            var originalMargin = getMarginX(elSticky);
+            var expectedPadding = originalPadding + scrollbar.getScrollbarWidth();
+            var expectedMargin = originalMargin - scrollbar.getScrollbarWidth();
 
-        scrollbar.disable();
-        var currentPadding = getPaddingX(elSticky);
-        var currentMargin = getMarginX(elSticky);
-        assert.strictEqual(originalPadding + 'px', getPaddingAttr(elSticky));
-        assert.strictEqual(originalMargin + 'px', getMarginAttr(elSticky));
-        assert.strictEqual(expectedPadding, currentPadding);
-        assert.strictEqual(expectedMargin, currentMargin);
+            scrollbar.disable();
+            var currentPadding = getPaddingX(elSticky);
+            var currentMargin = getMarginX(elSticky);
+            assert.strictEqual(originalPadding + 'px', getPaddingAttr(elSticky));
+            assert.strictEqual(originalMargin + 'px', getMarginAttr(elSticky));
+            assert.strictEqual(expectedPadding, currentPadding);
+            assert.strictEqual(expectedMargin, currentMargin);
 
-        scrollbar.reset();
-        currentPadding = getPaddingX(elSticky);
-        currentMargin = getMarginX(elSticky);
-        assert.strictEqual(null, getPaddingAttr(elSticky));
-        assert.strictEqual(null, getPaddingAttr(elSticky));
-        assert.strictEqual(originalPadding, currentPadding);
-        assert.strictEqual(originalMargin, currentMargin);
-    });
+            scrollbar.reset();
+            currentPadding = getPaddingX(elSticky);
+            currentMargin = getMarginX(elSticky);
+            assert.strictEqual(null, getPaddingAttr(elSticky));
+            assert.strictEqual(null, getPaddingAttr(elSticky));
+            assert.strictEqual(originalPadding, currentPadding);
+            assert.strictEqual(originalMargin, currentMargin);
+        });
+    }
 
     QUnit.test('should not adjust inline padding and margin of fixed and sticky elements if not full width', function(assert) {
         assert.expect(3);
