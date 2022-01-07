@@ -29,9 +29,16 @@
             this.element = this._getElement(this.settings.rootElement);
         },
 
-        // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
         getContainerWidth : function() {
-            return this.element === document.body ? window.innerWidth : this.element.getBoundingClientRect().width;
+            // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+            if (this.element === document.body) {
+                return window.innerWidth;
+            }
+
+            // Subtract border width from element
+            var borderStart = parseFloat(window.getComputedStyle(this.element).getPropertyValue('border-left-width'));
+            var borderEnd = parseFloat(window.getComputedStyle(this.element).getPropertyValue('border-right-width'));
+            return this.element.offsetWidth - borderStart - borderEnd;
         },
 
         getContentWidth : function() {
@@ -64,11 +71,11 @@
             this.scrollbarWidth = this.getScrollbarWidth();
 
             var paddingCalc = function(calculatedVal) {
-                var newWidth = calculatedVal + $selfRef.scrollbarWidth;
+                var newWidth = parseFloat(calculatedVal) + $selfRef.scrollbarWidth;
                 return newWidth + 'px';
             };
             var marginCalc = function(calculatedVal) {
-                var newWidth = calculatedVal - $selfRef.scrollbarWidth;
+                var newWidth = parseFloat(calculatedVal) - $selfRef.scrollbarWidth;
                 return newWidth + 'px';
             };
             var side = this.getScrollbarSide();
@@ -78,14 +85,14 @@
             this._setScrollbarAdjustment(this.element, 'padding-' + side, paddingCalc);
 
             // Update fixed/sticky positioned element padding
-            $(SELECTOR_CONTENT_SHARED).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_SHARED).each(function() {
                 if ($selfRef._isFixed(this) || $selfRef._isSticky(this)) {
                     $selfRef._setScrollbarAdjustment(this, 'padding-' + side, paddingCalc);
                 }
             });
 
             // Update sticky positioned element margin
-            $(SELECTOR_CONTENT_STICKY).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_STICKY).each(function() {
                 if ($selfRef._isSticky(this)) {
                     $selfRef._setScrollbarAdjustment(this, 'margin-' + side, marginCalc);
                 }
@@ -96,14 +103,23 @@
             var $selfRef = this;
             var side = this.getScrollbarSide();
             this._resetScrollbarAdjustment(this.element, 'overflow');
+            this._resetScrollbarAdjustment(this.element, 'overflow-y');
+            this._resetScrollbarAdjustment(this.element, 'overflow-x');
             this._resetScrollbarAdjustment(this.element, 'padding-' + side);
-            $(SELECTOR_CONTENT_SHARED).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_SHARED).each(function() {
                 $selfRef._resetScrollbarAdjustment(this, 'padding-' + side);
             });
-            $(SELECTOR_CONTENT_STICKY).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_STICKY).each(function() {
                 $selfRef._resetScrollbarAdjustment(this, 'margin-' + side);
             });
             this.scrollbarWidth = null;
+        },
+
+        _saveInitialAttribute : function(node, property) {
+            var actualVal = node.style.getPropertyValue(property);
+            if (actualVal) {
+                node.setAttribute('data-cfw-' + property, actualVal);
+            }
         },
 
         _setScrollbarAdjustment : function(node, property, callback) {
@@ -111,11 +127,9 @@
                 return;
             }
 
-            var actualVal = node.style.getPropertyValue(property);
-            var calculatedVal = parseFloat(window.getComputedStyle(node).getPropertyValue(property));
-            if (actualVal) {
-                node.setAttribute('data-cfw-' + property, actualVal);
-            }
+            this._saveInitialAttribute(node, property);
+
+            var calculatedVal = window.getComputedStyle(node).getPropertyValue(property);
             node.style.setProperty(property, typeof callback === 'function' ? callback(calculatedVal) : callback);
         },
 
@@ -129,7 +143,10 @@
         },
 
         _disableOverflow : function() {
-            this._setScrollbarAdjustment(this.element, 'overflow', 'hidden');
+            this._saveInitialAttribute(this.element, 'overflow');
+            this._saveInitialAttribute(this.element, 'overflow-y');
+            this._saveInitialAttribute(this.element, 'overflow-x');
+            this.element.style.overflow = 'hidden';
         },
 
         _isFixed : function(node) {
