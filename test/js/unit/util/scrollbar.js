@@ -49,6 +49,7 @@ $(function() {
         afterEach: function() {
             $('#qunit-fixture').empty();
             $('#forceOverflow').remove();
+            $('#rootElement').remove();
             $('.fixed-top').remove();
             $('.sticky-top').remove();
             var attributes = ['data-cfw-padding-right', 'style'];
@@ -350,5 +351,44 @@ $(function() {
         assert.strictEqual(originalMarginS, currentMarginS);
 
         scrollbar.reset();
+    });
+
+    QUnit.test('isOverflowing() should return true if rootElement is overflowing', function(assert) {
+        assert.expect(1);
+        // Trigger body scrollbar for isScrollbarHidden() test
+        body.style.overflowY = 'scroll';
+        $('<div id="rootElement" style="height: 100px; width: 100%; overflow: scroll;"><div style="height: 120px; width: 100px;"></div></div>').appendTo(document.body);
+
+        var result = new CFW_Scrollbar({
+            rootElement: '#rootElement'
+        }).isOverflowing();
+
+        if (isScrollbarHidden()) {
+            assert.notOk(result);
+        } else {
+            assert.ok(result);
+        }
+    });
+
+    QUnit.test('isOverflowing() should return false if rootElement is not overflowing', function(assert) {
+        assert.expect(1);
+        $('<div id="rootElement" style="height: 100px; width: 100%;"><div style="height: 50px; width: 100px;"></div></div>').appendTo(document.body);
+
+        var result = new CFW_Scrollbar({
+            rootElement: '#rootElement'
+        }).isOverflowing();
+
+        assert.notOk(result);
+    });
+
+    QUnit.test('getContainerWidth() should return rootElement width minus horizontal side margins', function(assert) {
+        assert.expect(1);
+        var containerWidth = 100;
+        $('<div id="rootElement" style="height: ' + containerWidth + 'px; width: 100px; border: 3px;"></div>').appendTo(document.body);
+        var result = new CFW_Scrollbar({
+            rootElement: '#rootElement'
+        }).getContainerWidth();
+
+        assert.strictEqual(containerWidth, result);
     });
 });

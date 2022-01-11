@@ -1316,7 +1316,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       </tr>
       <tr>
         <td><code>rootElement</code></td>
-        <td>string</code></td>
+        <td>string</td>
         <td><code>'body'</code></td>
         <td>The selector of the container to display modal within.</td>
       </tr>
