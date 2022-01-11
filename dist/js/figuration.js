@@ -189,9 +189,16 @@ if (typeof jQuery === 'undefined') {
             this.element = this._getElement(this.settings.rootElement);
         },
 
-        // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
         getContainerWidth : function() {
-            return this.element === document.body ? window.innerWidth : this.element.getBoundingClientRect().width;
+            // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+            if (this.element === document.body) {
+                return window.innerWidth;
+            }
+
+            // Subtract border width from element
+            var borderStart = parseFloat(window.getComputedStyle(this.element).getPropertyValue('border-left-width'));
+            var borderEnd = parseFloat(window.getComputedStyle(this.element).getPropertyValue('border-right-width'));
+            return this.element.offsetWidth - borderStart - borderEnd;
         },
 
         getContentWidth : function() {
@@ -224,11 +231,11 @@ if (typeof jQuery === 'undefined') {
             this.scrollbarWidth = this.getScrollbarWidth();
 
             var paddingCalc = function(calculatedVal) {
-                var newWidth = calculatedVal + $selfRef.scrollbarWidth;
+                var newWidth = parseFloat(calculatedVal) + $selfRef.scrollbarWidth;
                 return newWidth + 'px';
             };
             var marginCalc = function(calculatedVal) {
-                var newWidth = calculatedVal - $selfRef.scrollbarWidth;
+                var newWidth = parseFloat(calculatedVal) - $selfRef.scrollbarWidth;
                 return newWidth + 'px';
             };
             var side = this.getScrollbarSide();
@@ -238,14 +245,14 @@ if (typeof jQuery === 'undefined') {
             this._setScrollbarAdjustment(this.element, 'padding-' + side, paddingCalc);
 
             // Update fixed/sticky positioned element padding
-            $(SELECTOR_CONTENT_SHARED).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_SHARED).each(function() {
                 if ($selfRef._isFixed(this) || $selfRef._isSticky(this)) {
                     $selfRef._setScrollbarAdjustment(this, 'padding-' + side, paddingCalc);
                 }
             });
 
             // Update sticky positioned element margin
-            $(SELECTOR_CONTENT_STICKY).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_STICKY).each(function() {
                 if ($selfRef._isSticky(this)) {
                     $selfRef._setScrollbarAdjustment(this, 'margin-' + side, marginCalc);
                 }
@@ -256,14 +263,23 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
             var side = this.getScrollbarSide();
             this._resetScrollbarAdjustment(this.element, 'overflow');
+            this._resetScrollbarAdjustment(this.element, 'overflow-y');
+            this._resetScrollbarAdjustment(this.element, 'overflow-x');
             this._resetScrollbarAdjustment(this.element, 'padding-' + side);
-            $(SELECTOR_CONTENT_SHARED).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_SHARED).each(function() {
                 $selfRef._resetScrollbarAdjustment(this, 'padding-' + side);
             });
-            $(SELECTOR_CONTENT_STICKY).each(function() {
+            $(this.element).find(SELECTOR_CONTENT_STICKY).each(function() {
                 $selfRef._resetScrollbarAdjustment(this, 'margin-' + side);
             });
             this.scrollbarWidth = null;
+        },
+
+        _saveInitialAttribute : function(node, property) {
+            var actualVal = node.style.getPropertyValue(property);
+            if (actualVal) {
+                node.setAttribute('data-cfw-' + property, actualVal);
+            }
         },
 
         _setScrollbarAdjustment : function(node, property, callback) {
@@ -271,11 +287,9 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            var actualVal = node.style.getPropertyValue(property);
-            var calculatedVal = parseFloat(window.getComputedStyle(node).getPropertyValue(property));
-            if (actualVal) {
-                node.setAttribute('data-cfw-' + property, actualVal);
-            }
+            this._saveInitialAttribute(node, property);
+
+            var calculatedVal = window.getComputedStyle(node).getPropertyValue(property);
             node.style.setProperty(property, typeof callback === 'function' ? callback(calculatedVal) : callback);
         },
 
@@ -289,7 +303,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         _disableOverflow : function() {
-            this._setScrollbarAdjustment(this.element, 'overflow', 'hidden');
+            this._saveInitialAttribute(this.element, 'overflow');
+            this._saveInitialAttribute(this.element, 'overflow-y');
+            this._saveInitialAttribute(this.element, 'overflow-x');
+            this.element.style.overflow = 'hidden';
         },
 
         _isFixed : function(node) {
@@ -3941,7 +3958,7 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     var CFW_Widget_Modal = function(element, options) {
-        this.$body = $(document.body);
+        this.$rootElement = null;
         this.$element = $(element);
         this.$target = null;
         this.$dialog = null;
@@ -3966,18 +3983,24 @@ if (typeof jQuery === 'undefined') {
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
-        show         : false    // Show modal afer initialize
+        show         : false,   // Show modal afer initialize
+        rootElement  : 'body'
     };
 
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
+            var rootSelector = this.$element.CFW_getSelectorFromChain('modal', this.settings.rootElement);
+            if (!rootSelector) { return; }
+            this.$rootElement = $(rootSelector);
             var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
-            this._scrollbar = new CFW_Scrollbar();
+            this._scrollbar = new CFW_Scrollbar({
+                rootElement: this.settings.rootElement
+            });
 
             this.$element.attr('data-cfw', 'modal');
 
@@ -4040,7 +4063,8 @@ if (typeof jQuery === 'undefined') {
             this.isShown = true;
 
             this._scrollbar.disable();
-            this.$body.addClass('modal-open');
+            this.$target.CFW_trigger('scrollbarSet.cfw.modal');
+            this.$rootElement.addClass('modal-open');
 
             this.escape();
             this.resize();
@@ -4124,7 +4148,8 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (!this.$target.parent().length) {
-                this.$target.appendTo(this.$body); // don't move modals dom position
+                // Don't move modals dom position
+                this.$target.appendTo(this.$rootElement);
             }
 
             this.$target.css('display', 'block');
@@ -4183,9 +4208,10 @@ if (typeof jQuery === 'undefined') {
             this.$element.trigger('focus');
 
             this.backdrop(function() {
-                $selfRef.$body.removeClass('modal-open');
+                $selfRef.$rootElement.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef._scrollbar.reset();
+                $selfRef.$target.CFW_trigger('scrollbarReset.cfw.modal');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
@@ -4305,31 +4331,11 @@ if (typeof jQuery === 'undefined') {
             });
         },
 
-        _scrollBlock : function(e) {
-            // Allow scrolling for scrollable modal body
-            var $content = this.$target.find('.modal-dialog-scrollable');
-            if ($content.length && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
-                e.stopPropagation();
-                return;
-            }
-
-            var top = this.$target[0].scrollTop;
-            var totalScroll = this.$target[0].scrollHeight;
-            var currentScroll = top + this.$target[0].offsetHeight;
-
-            if (top <= 0 && currentScroll >= totalScroll) {
-                e.preventDefault();
-            } else if (top === 0) {
-                this.$target[0].scrollTop = 1;
-            } else if (currentScroll === totalScroll) {
-                this.$target[0].scrollTop = top - 1;
-            }
-        },
-
         _initializeBackdrop : function() {
             return new CFW_Backdrop({
                 isVisible: Boolean(this.settings.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-                isAnimated: this.settings.animate
+                isAnimated: this.settings.animate,
+                rootElement: this.settings.rootElement
             });
         },
 
@@ -4400,7 +4406,7 @@ if (typeof jQuery === 'undefined') {
                 .removeAttr('data-cfw aria-controls')
                 .removeData('cfw.modal');
 
-            this.$body = null;
+            this.$rootElement = null;
             this.$element = null;
             this.$target = null;
             this.$dialog = null;
