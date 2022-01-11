@@ -10,7 +10,7 @@
     'use strict';
 
     var CFW_Widget_Modal = function(element, options) {
-        this.$body = $(document.body);
+        this.$rootElement = null;
         this.$element = $(element);
         this.$target = null;
         this.$dialog = null;
@@ -35,18 +35,24 @@
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
-        show         : false    // Show modal afer initialize
+        show         : false,   // Show modal afer initialize
+        rootElement  : 'body'
     };
 
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
+            var rootSelector = this.$element.CFW_getSelectorFromChain('modal', this.settings.rootElement);
+            if (!rootSelector) { return; }
+            this.$rootElement = $(rootSelector);
             var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
-            this._scrollbar = new CFW_Scrollbar();
+            this._scrollbar = new CFW_Scrollbar({
+                rootElement: this.settings.rootElement
+            });
 
             this.$element.attr('data-cfw', 'modal');
 
@@ -109,7 +115,8 @@
             this.isShown = true;
 
             this._scrollbar.disable();
-            this.$body.addClass('modal-open');
+            this.$target.CFW_trigger('scrollbarSet.cfw.modal');
+            this.$rootElement.addClass('modal-open');
 
             this.escape();
             this.resize();
@@ -193,7 +200,8 @@
             }
 
             if (!this.$target.parent().length) {
-                this.$target.appendTo(this.$body); // don't move modals dom position
+                // Don't move modals dom position
+                this.$target.appendTo(this.$rootElement);
             }
 
             this.$target.css('display', 'block');
@@ -252,9 +260,10 @@
             this.$element.trigger('focus');
 
             this.backdrop(function() {
-                $selfRef.$body.removeClass('modal-open');
+                $selfRef.$rootElement.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef._scrollbar.reset();
+                $selfRef.$target.CFW_trigger('scrollbarReset.cfw.modal');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
@@ -374,31 +383,11 @@
             });
         },
 
-        _scrollBlock : function(e) {
-            // Allow scrolling for scrollable modal body
-            var $content = this.$target.find('.modal-dialog-scrollable');
-            if ($content.length && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
-                e.stopPropagation();
-                return;
-            }
-
-            var top = this.$target[0].scrollTop;
-            var totalScroll = this.$target[0].scrollHeight;
-            var currentScroll = top + this.$target[0].offsetHeight;
-
-            if (top <= 0 && currentScroll >= totalScroll) {
-                e.preventDefault();
-            } else if (top === 0) {
-                this.$target[0].scrollTop = 1;
-            } else if (currentScroll === totalScroll) {
-                this.$target[0].scrollTop = top - 1;
-            }
-        },
-
         _initializeBackdrop : function() {
             return new CFW_Backdrop({
                 isVisible: Boolean(this.settings.backdrop), // 'static' option will be translated to true, and booleans will keep their value
-                isAnimated: this.settings.animate
+                isAnimated: this.settings.animate,
+                rootElement: this.settings.rootElement
             });
         },
 
@@ -469,7 +458,7 @@
                 .removeAttr('data-cfw aria-controls')
                 .removeData('cfw.modal');
 
-            this.$body = null;
+            this.$rootElement = null;
             this.$element = null;
             this.$target = null;
             this.$dialog = null;

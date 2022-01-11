@@ -570,6 +570,88 @@
   </div>
 </div>
 
+<!-- modal will appear within this element and not document.body -->
+<div class="container my-1">
+  <div id="another-element" class="position-relative border mb-0_5" style="height: 300px; overflow-y:scroll;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between sticky-top">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Other</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <!-- modal -->
+    <div id="modal-root-example" class="modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-root-scroll">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-side-start">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Modal title</h4>
+                  <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                  <h4>Overflowing text to show scroll behavior</h4>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+  <button type="button" class="btn btn-primary mt-3" data-cfw="modal" data-cfw-modal-target="#modal-root-example" data-cfw-modal-root-element="#another-element">
+    Show contained centered modal
+  </button>
+  <button type="button" class="btn btn-primary mt-3" data-cfw="modal" data-cfw-modal-target="#modal-root-scroll" data-cfw-modal-root-element="#another-element">
+    Show contained side aligned, scrollable modal
+  </button>
+</div>
+
 <p>Vivamus sollicitudin porttitor nisl, sed tempor leo. Maecenas ut rhoncus nisi. Morbi ut bibendum est. Donec tincidunt nec tellus a egestas. Donec id tortor elementum, aliquet magna euismod, commodo felis. Sed a nulla viverra, malesuada nisi a, fringilla velit. Donec justo felis, cursus eu justo ac, vehicula consequat mauris. Duis a interdum lectus, eu dictum nibh. Cras ligula velit, vehicula et luctus a, cursus quis sapien. Aenean a molestie libero. Nam congue ultrices turpis, sed tempus arcu malesuada sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eu ligula eleifend, rutrum purus id, pharetra enim. Pellentesque a posuere ex, ac egestas quam. Etiam lobortis massa at elementum consectetur. Nullam tempor orci quis ligula eleifend auctor.</p>
 <p>Integer eget fringilla ex. Quisque ex ante, eleifend non massa a, tempus condimentum lorem. Donec a est sed enim ullamcorper posuere eu sed libero. Etiam sit amet tellus mi. Mauris dui risus, finibus sed turpis vitae, pulvinar pretium felis. Duis id metus at eros laoreet tempus. Nunc mattis efficitur dolor, nec maximus tellus commodo nec. Etiam ac molestie dolor, at hendrerit ante. Donec vehicula ipsum et mauris finibus, eu pellentesque felis rhoncus. Pellentesque viverra arcu sapien, ut lobortis ante ultrices vel. Vivamus quis justo nec ipsum vestibulum tempor. Nullam lacinia dui sed libero tempor tempus.</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis eros, eget porttitor neque tempor auctor. Aliquam elementum pretium tortor ut euismod. Aliquam vel dignissim augue. Cras auctor nec quam et iaculis. Praesent non augue vitae nulla varius cursus et eu diam. Nulla at blandit ante, at pellentesque ligula. Nunc sagittis arcu nec ornare sagittis. In a massa porta, hendrerit nulla a, tristique velit.</p>

@@ -764,4 +764,24 @@ $(function() {
         $trigger2.CFW_Modal();
         $trigger.CFW_Modal('show');
     });
+
+    QUnit.test('should append backdrop to specified element defined by rootElement option', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $modalRoot = $('<div id="modal-root"></div>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"></div>').appendTo($modalRoot);
+
+        $target.on('afterShow.cfw.modal', function() {
+            assert.strictEqual($modalRoot[0], document.querySelector('.modal-open'));
+            assert.strictEqual($modalRoot[0], document.querySelector('.modal-backdrop').parentElement);
+
+            done();
+        });
+
+        $trigger.CFW_Modal({
+            rootElement: '#modal-root'
+        });
+        $trigger.CFW_Modal('show');
+    });
 });

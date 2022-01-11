@@ -1167,6 +1167,77 @@ While not necessarily recommended, it is possible to chain singular modals toget
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Contained Modals
+
+Contained modals will display the backdrop and modal within a specified element and not cover the entire page.
+
+Place the modal HTML within the container, apply `position: relative;` to the container, and specify the `rootElement` option on the trigger button to limit the modal to the container.
+
+While most modal positioning options are supported, the fullscreen variants should not be used within a container.
+
+**Note:** Contained modals do not work well within Internet Explorer and are not supported. Issues could include multiple scrollbars or having to scroll within the container to locate the modal.  Since IE is a low usage browser at this point effort has not been made to fix these issues specific to IE, and will most likely not be attempted in the future.
+
+{% capture example %}
+<!-- Modal will appear within this element, and not the document body -->
+<div id="modalRootElement" class="position-relative border" style="height: 300px;">
+  <!-- Modal -->
+  <div id="modalContained" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Contained modal title</h4>
+          <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body content&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalContainedSide" class="modal">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-side-start modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>
+          <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <h4>Overflowing text to show scroll behavior</h4>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modalContained" data-cfw-modal-root-element="#modalRootElement">
+  Show contained modal
+</button>
+<button type="button" class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modalContainedSide" data-cfw-modal-root-element="#modalRootElement">
+  Show contained, side-aligned modal
+</button>
+{% endcapture %}
+{% renderExample example %}
 
 ## Usage
 
@@ -1244,6 +1315,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>The selector of the target modal.</td>
       </tr>
       <tr>
+        <td><code>rootElement</code></td>
+        <td>string</td>
+        <td><code>'body'</code></td>
+        <td>The selector of the container to display modal within.</td>
+      </tr>
+      <tr>
         <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -1281,7 +1358,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Shows the modal when initialized.</td>
-    </tr>
+      </tr>
     </tbody>
   </table>
 </div>
