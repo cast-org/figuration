@@ -464,10 +464,13 @@
                 return true;
             }
         }
+        if (element.classList.contains('disabled')) {
+            return true;
+        }
         if (typeof element.disabled === 'boolean') {
             return element.disabled;
         }
-        return element.classList.contains('disabled') || element.hasAttribute('disabled');
+        return element.hasAttribute('disabled');
     };
 
     $.CFW_isVisible = function(element) {
@@ -488,8 +491,11 @@
         if (element instanceof jQuery) {
             element = element[0];
         }
-        var tabindex = element.getAttribute('tabindex') || '';
-        if (tabindex !== '') {
+        var tabindex = null;
+        if (element.hasAttribute('tabindex')) {
+            tabindex = element.getAttribute('tabindex');
+        }
+        if (tabindex !== null) {
             if (isNaN(tabindex) || tabindex < 0) {
                 return false;
             }
@@ -516,9 +522,9 @@
         var items = element.querySelectorAll(allowed);
         var focusables = [];
 
-        for (var item of items) {
-            if ($.CFW_isFocusable(item)) {
-                focusables.push(item);
+        for (var i = 0; i < items.length; i++) {
+            if ($.CFW_isFocusable(items[i])) {
+                focusables.push(items[i]);
             }
         }
 

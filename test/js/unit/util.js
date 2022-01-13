@@ -1,6 +1,8 @@
 $(function() {
     'use strict';
 
+    var isIE = /(msie|trident)/i.test(navigator.userAgent);
+
     // Global timer for tests using setTimeout
     var timer = null;
 
@@ -298,25 +300,34 @@ $(function() {
         assert.strictEqual($.CFW_isVisible($el), true);
     });
 
-    QUnit.test('CFW_isVisible should return false element is hidden, but not via display or visibility rules', function(assert) {
-        assert.expect(2);
-        $('<details><div id="foo"</div></details>').appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#foo');
-        var $el = $('#foo');
+    if (!isIE) {
+        QUnit.test('CFW_isVisible should return false if element is hidden, but not via display or visibility rules', function(assert) {
+            assert.expect(2);
+            $('<details><div id="foo"></div></details>').appendTo($('#qunit-fixture'));
+            var el = document.querySelector('#foo');
+            var $el = $('#foo');
 
-        assert.strictEqual($.CFW_isVisible(el), false);
-        assert.strictEqual($.CFW_isVisible($el), false);
-    });
+            assert.strictEqual($.CFW_isVisible(el), false);
+            assert.strictEqual($.CFW_isVisible($el), false);
+        });
+    }
 
     QUnit.test('CFW_isFocusable should return true for elements with non-negative tabindex', function(assert) {
-        assert.expect(4);
+        if (isIE) {
+            assert.expect(3);
+        } else {
+            assert.expect(4);
+        }
         $('<div tabindex>content</div>' +
             '<div tabindex="0">content</div>' +
             '<div tabindex="10">content</div>')
             .appendTo($('#qunit-fixture'));
         var fixtureEl = document.querySelector('#qunit-fixture');
 
-        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex]')), true);
+        if (!isIE) {
+            // Will fail in IE11 since default value for tabindex is "-32768"
+            assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex]')), true);
+        }
         assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="0"]')), true);
         assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="10"]')), true);
         assert.strictEqual($.CFW_isFocusable($(fixtureEl).find('[tabindex="0"]')), true);
