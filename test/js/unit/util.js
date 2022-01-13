@@ -1,6 +1,7 @@
 $(function() {
     'use strict';
 
+    var isEdge = /edge\/\d+/i.test(navigator.userAgent);
     var isIE = /(msie|trident)/i.test(navigator.userAgent);
 
     // Global timer for tests using setTimeout
@@ -344,7 +345,7 @@ $(function() {
     }
 
     QUnit.test('CFW_isFocusable should return true for elements with non-negative tabindex', function(assert) {
-        if (isIE) {
+        if (isIE || isEdge) {
             assert.expect(3);
         } else {
             assert.expect(4);
@@ -355,8 +356,8 @@ $(function() {
             .appendTo($('#qunit-fixture'));
         var fixtureEl = document.querySelector('#qunit-fixture');
 
-        if (!isIE) {
-            // Will fail in IE11 since default value for tabindex is "-32768"
+        if (!isIE && !isEdge) {
+            // Will fail in IE11 and legacy Edge since default value for tabindex is "-32768"
             assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex]')), true);
         }
         assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="0"]')), true);
