@@ -301,6 +301,7 @@ $(function() {
     });
 
     if (!isIE) {
+        // IE does not support details or summary elements
         QUnit.test('CFW_isVisible should return false if element is hidden, but not via display or visibility rules', function(assert) {
             assert.expect(2);
             $('<details><div id="foo"></div></details>').appendTo($('#qunit-fixture'));
@@ -309,6 +310,36 @@ $(function() {
 
             assert.strictEqual($.CFW_isVisible(el), false);
             assert.strictEqual($.CFW_isVisible($el), false);
+        });
+
+        QUnit.test('CFW_isVisible should return true if element is a closed details container', function(assert) {
+            assert.expect(2);
+            $('<details id="foo"></details>').appendTo($('#qunit-fixture'));
+            var el = document.querySelector('#foo');
+            var $el = $('#foo');
+
+            assert.strictEqual($.CFW_isVisible(el), true);
+            assert.strictEqual($.CFW_isVisible($el), true);
+        });
+
+        QUnit.test('CFW_isVisible should return true if element is visible inside an open details container', function(assert) {
+            assert.expect(2);
+            $('<details open><div id="foo"></div></details>').appendTo($('#qunit-fixture'));
+            var el = document.querySelector('#foo');
+            var $el = $('#foo');
+
+            assert.strictEqual($.CFW_isVisible(el), true);
+            assert.strictEqual($.CFW_isVisible($el), true);
+        });
+
+        QUnit.test('CFW_isVisible should return true if element is visible summary in a closed details container', function(assert) {
+            assert.expect(2);
+            $('<details><summary id="foo"><div id="bar"></div></summary></details>').appendTo($('#qunit-fixture'));
+            var el1 = document.querySelector('#foo');
+            var el2 = document.querySelector('#bar');
+
+            assert.strictEqual($.CFW_isVisible(el1), true);
+            assert.strictEqual($.CFW_isVisible(el2), true);
         });
     }
 
