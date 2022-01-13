@@ -935,63 +935,14 @@
             $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
         },
 
-        /*
-         * jQuery UI Focusable 1.12.1
-         * http://jqueryui.com
-         *
-         * Copyright jQuery Foundation and other contributors
-         * Released under the MIT license.
-         * http://jquery.org/license
-         */
-        _focusable : function(element, isTabIndexNotNaN) {
-            var map;
-            var mapName;
-            var $img;
-            var focusableIfVisible;
-            var fieldset;
-            var nodeName = element.nodeName.toLowerCase();
-
-            if (nodeName === 'area') {
-                map = element.parentNode;
-                mapName = map.name;
-                if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
-                    return false;
-                }
-                $img = $('img[usemap="#' + mapName + '"]');
-                return $img.length > 0 && $img.is(':visible');
-            }
-
-            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
-                focusableIfVisible = !element.disabled;
-
-                if (focusableIfVisible) {
-                    // Form controls within a disabled fieldset are disabled.
-                    // However, controls within the fieldset's legend do not get disabled.
-                    // Since controls generally aren't placed inside legends, we skip
-                    // this portion of the check.
-                    fieldset = $(element).closest('fieldset')[0];
-                    if (fieldset) {
-                        focusableIfVisible = !fieldset.disabled;
-                    }
-                }
-            } else if (nodeName === 'a') {
-                focusableIfVisible = element.href || isTabIndexNotNaN;
-            } else {
-                focusableIfVisible = isTabIndexNotNaN;
-            }
-
-            return focusableIfVisible && $(element).is(':visible');
-        },
-
         _tabItems : function($node) {
             var $selfRef = this;
             if (typeof $node === 'undefined') { $node = $(document); }
-            var items = $node.find('*').filter(function() {
-                var tabIndex = $(this).attr('tabindex');
-                var isTabIndexNaN = isNaN(tabIndex);
+            var items = $.CFW_getFocusable($node[0]);
+            items = items.filter(function() {
                 if ($selfRef.$focusFirst !== null && this === $selfRef.$focusFirst[0]) { return false; }
                 if ($selfRef.$focusLast !== null && this === $selfRef.$focusLast[0]) { return false; }
-                return (isTabIndexNaN || tabIndex >= 0) && $selfRef._focusable(this, !isTabIndexNaN);
+                return true;
             });
             return items;
         }

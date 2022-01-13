@@ -423,6 +423,9 @@
     };
 
     $.CFW_reflow = function(element) {
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
         return element.offsetHeight;
     };
 
@@ -449,7 +452,127 @@
     };
 
     $.CFW_isDisabled = function(element) {
-        return $(element).is('.disabled, :disabled');
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+            return true;
+        }
+        if (/^(button|input|select|textarea)$/i.test(element.nodeName)) {
+            var fieldset = $(element).closest('fieldset')[0];
+            if (fieldset && fieldset.disabled) {
+                return true;
+            }
+        }
+        if (element.classList.contains('disabled')) {
+            return true;
+        }
+        if (typeof element.disabled === 'boolean') {
+            return element.disabled;
+        }
+        return element.hasAttribute('disabled');
+    };
+
+    $.CFW_isVisible = function(element) {
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        if (!$.CFW_isElement(element) || element.getClientRects().length === 0) {
+            return false;
+        }
+        var elementIsVisible = window.getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+
+        // Handle 'details' elements, as content may falsie appear visible when closed
+        var detailsClosed = $(element).closest('details:not([open])').get(0);
+        if (typeof detailsClosed === 'undefined') {
+            detailsClosed = null;
+        }
+        if (!detailsClosed) {
+            return elementIsVisible;
+        }
+        if (detailsClosed !== element) {
+            var summary = $(element).closest('summary').get(0);
+            if (typeof summary === 'undefined') {
+                summary = null;
+            }
+            if (summary && summary.parentNode !== detailsClosed) {
+                return false;
+            }
+            if (summary === null) {
+                return false;
+            }
+        }
+
+        return elementIsVisible;
+    };
+
+    $.CFW_isFocusable = function(element) {
+        // This is only a cursory check - mostly to be used with `$.CFW_getFocusable()`
+        // Many elements will pass this test if they do not explicitly fail
+        // the conditions below.  For example, passing `<div></div>` through
+        // this method will return true, but the `<div>` is not actually focusable.
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        var tabindex = null;
+        if (element.hasAttribute('tabindex')) {
+            tabindex = element.getAttribute('tabindex');
+        }
+        if (tabindex !== null) {
+            if (isNaN(tabindex) || tabindex < 0) {
+                return false;
+            }
+        }
+        return !$.CFW_isDisabled(element) && $.CFW_isVisible(element);
+    };
+
+    $.CFW_getFocusable = function(element, allowed) {
+        if (typeof allowed === 'undefined') {
+            allowed = [
+                'a',
+                'button',
+                'details',
+                'input',
+                'select',
+                'textarea',
+                '[tabindex]',
+                '[contenteditable="true"]'
+            ].map(function(selector) {
+                return selector + ':not([tabindex^="-"])';
+            }).join(', ');
+        }
+
+        var items = element.querySelectorAll(allowed);
+        var focusables = [];
+
+        for (var i = 0; i < items.length; i++) {
+            if ($.CFW_isFocusable(items[i])) {
+                focusables.push(items[i]);
+            }
+        }
+
+        return focusables;
+    };
+
+    $.CFW_isElement = function(object) {
+        if (!object || typeof object !== 'object') {
+            return false;
+        }
+        if (typeof object.jquery !== 'undefined') {
+            object = object[0];
+        }
+        return typeof object.nodeType !== 'undefined';
+    };
+
+    $.CFW_getElement = function(object) {
+        // Check for jQuery object or a node element
+        if ($.CFW_isElement(object)) {
+            return object.jquery ? object[0] : object;
+        }
+        if (typeof object === 'string' && object.length > 0) {
+            return document.querySelector(object);
+        }
+        return null;
     };
 
     $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {

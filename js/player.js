@@ -1043,7 +1043,7 @@
                         $(this).prop('checked', $selfRef.settings.transcriptScroll);
                     });
                     this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
-                        if (!$.CFW_isDisabled($(e.target))) {
+                        if (!$.CFW_isDisabled(e.target)) {
                             $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
                             $(this).prop('checked', $selfRef.settings.transcriptDescribe);
                             $selfRef.scriptLoad();
@@ -1424,7 +1424,7 @@
                     $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
                 });
                 this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
-                    if (!$.CFW_isDisabled($(e.target))) {
+                    if (!$.CFW_isDisabled(e.target)) {
                         $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
                         $(this).prop('checked', $selfRef.settings.textDescribeVisible);
                         $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);

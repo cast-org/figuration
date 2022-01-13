@@ -27,7 +27,7 @@
     CFW_Util_Backdrop.prototype = {
         _init : function() {
             // Update rootElement in case of DOM change
-            this.settings.rootElement = this._getElement(this.settings.rootElement);
+            this.settings.rootElement = $.CFW_getElement(this.settings.rootElement);
         },
 
         show : function(callback) {
@@ -78,27 +78,6 @@
             $(this.element).off('mousedown.cfw.backdrop');
             $(this.element).remove();
             this.isAppended = false;
-        },
-
-        _isElement : function(object) {
-            if (!object || typeof object !== 'object') {
-                return false;
-            }
-            if (typeof object.jquery !== 'undefined') {
-                object = object[0];
-            }
-            return typeof object.nodeType !== 'undefined';
-        },
-
-        _getElement : function(object) {
-            // Check for jQuery object or a node element
-            if (this._isElement(object)) {
-                return object.jquery ? object[0] : object;
-            }
-            if (typeof object === 'string' && object.length > 0) {
-                return document.querySelector(object);
-            }
-            return null;
         },
 
         _getBackdrop : function() {

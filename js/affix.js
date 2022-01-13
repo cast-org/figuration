@@ -88,7 +88,7 @@
         },
 
         checkPosition : function() {
-            if (!this.$element.is(':visible')) { return; }
+            if (!$.CFW_isVisible(this.$element[0])) { return; }
 
             var height       = this.$element.height();
             var offsetTop    = this.settings.top;

@@ -26,7 +26,7 @@
 
     CFW_Util_Scrollbar.prototype = {
         _init : function() {
-            this.element = this._getElement(this.settings.rootElement);
+            this.element = $.CFW_getElement(this.settings.rootElement);
         },
 
         getContainerWidth : function() {
@@ -155,27 +155,6 @@
 
         _isSticky : function(node) {
             return Boolean(window.getComputedStyle(node).position === 'sticky');
-        },
-
-        _isElement : function(object) {
-            if (!object || typeof object !== 'object') {
-                return false;
-            }
-            if (typeof object.jquery !== 'undefined') {
-                object = object[0];
-            }
-            return typeof object.nodeType !== 'undefined';
-        },
-
-        _getElement : function(object) {
-            // Check for jQuery object or a node element
-            if (this._isElement(object)) {
-                return object.jquery ? object[0] : object;
-            }
-            if (typeof object === 'string' && object.length > 0) {
-                return document.querySelector(object);
-            }
-            return null;
         },
 
         _normalizeData : function(val) {

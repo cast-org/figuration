@@ -253,7 +253,10 @@
             }
 
             var $items = $menu.children('li').find('a, .dropdown-item, button, input, textarea, select');
-            $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea):not(:has(select)):visible');
+            $items = $items.filter(':not(:has(input)):not(:has(textarea):not(:has(select))');
+            $items = $items.filter(function() {
+                return $.CFW_isFocusable(this);
+            });
             return $items;
         },
 
