@@ -482,17 +482,17 @@
         }
         var elementIsVisible = window.getComputedStyle(element).getPropertyValue('visibility') === 'visible';
 
-        // Handle 'details' elements, as content may incorrectly appear visible when closed
+        // Handle 'details' elements, as content may falsie appear visible when closed
         var detailsClosed = $(element).closest('details:not([open])').get(0);
-        if (typeof detailsClosed !== 'undefined') {
+        if (typeof detailsClosed === 'undefined') {
             detailsClosed = null;
         }
         if (!detailsClosed) {
             return elementIsVisible;
         }
         if (detailsClosed !== element) {
-            var summary = $(detailsClosed).closest('summary').get(0);
-            if (typeof summary !== 'undefined') {
+            var summary = $(element).closest('summary').get(0);
+            if (typeof summary === 'undefined') {
                 summary = null;
             }
             if (summary && summary.parentNode !== detailsClosed) {
