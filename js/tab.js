@@ -179,7 +179,10 @@
 
             var $node = $(node);
             var $list = $node.closest('[role="tablist"]');
-            var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
+            var $items = $list.find('[role="tab"]');
+            $items = $items.filter(function() {
+                return !$.CFW_isDisabled(this) && $.CFW_isVisible(this);
+            });
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             var doIncrement = e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN;

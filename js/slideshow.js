@@ -106,7 +106,11 @@
         },
 
         _getTabs : function() {
-            return this.$element.find('[role="tab"]:visible').not('.disabled, :disabled');
+            var $items = this.$element.find('[role="tab"]');
+            $items = $items.filter(function() {
+                return !$.CFW_isDisabled(this) && $.CFW_isVisible(this);
+            });
+            return $items;
         },
 
         _currIndex : function($tabs) {

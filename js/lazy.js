@@ -28,7 +28,7 @@
         animate   : false,      // Should the image fade in
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
-        invisible : false,      // Load sources that are not :visible
+        invisible : false,      // Load sources that are not visible
         placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
     };
 
@@ -74,14 +74,8 @@
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
 
-        isVisible : function() {
-            // Normalize on using the newer jQuery 3 visibility method
-            var elem = this.$element[0];
-            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
-        },
-
         inViewport : function() {
-            if (!this.settings.invisible && !this.isVisible) {
+            if (!this.settings.invisible && !$.CFW_isVisible(this.$element)) {
                 return false;
             }
             return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();

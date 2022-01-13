@@ -148,14 +148,39 @@ $(function() {
 
         var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'));
         if (!document.documentElement.attachShadow) {
-            assert.equal(null, $().CFW_findShadowRoot($div[0]));
+            assert.equal($().CFW_findShadowRoot($div[0]), null);
         } else {
-            assert.equal(null, $().CFW_findShadowRoot($div[0]));
+            assert.equal($().CFW_findShadowRoot($div[0]), null);
         }
     });
 
-    QUnit.test('CFW_isDisabled should return true if the element has disabled attribute', function(assert) {
+    QUnit.test('CFW_isDisabled should return false if the element is not defined', function(assert) {
         assert.expect(3);
+        assert.strictEqual($.CFW_isDisabled(null), true);
+        assert.strictEqual($.CFW_isDisabled(undefined), true); // eslint-disable-line no-undefined
+        assert.strictEqual($.CFW_isDisabled(), true);
+    });
+
+    QUnit.test('CFW_isDisabled should return false if the element is not disabled', function(assert) {
+        assert.expect(6);
+        $('<fieldset id="fieldset">' +
+            '<button id="button"></button>' +
+            '<input id="input" type="text">' +
+            '<select id="select"><option>one</option></select>' +
+            '<textarea id="textarea"></textarea>' +
+            '</fieldset>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#fieldset')), false);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#button')), false);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#input')), false);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#select')), false);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#textarea')), false);
+        assert.strictEqual($.CFW_isDisabled($('#input')), false);
+    });
+
+    QUnit.test('CFW_isDisabled should return true if the element has disabled attribute', function(assert) {
+        assert.expect(4);
         $('<button id="test0" disabled="disabled"></button>' +
             '<button id="test1" type="button" disabled="true"></button>' +
             '<button id="test2" type="button" disabled></button>')
@@ -164,6 +189,7 @@ $(function() {
         assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
         assert.strictEqual($.CFW_isDisabled(document.querySelector('#test1')), true);
         assert.strictEqual($.CFW_isDisabled(document.querySelector('#test2')), true);
+        assert.strictEqual($.CFW_isDisabled($('#test0')), true);
     });
 
     QUnit.test('CFW_isDisabled should return true if the element has disabled="false"', function(assert) {
@@ -175,11 +201,255 @@ $(function() {
     });
 
     QUnit.test('CFW_isDisabled should return true if the element has class "disabled', function(assert) {
-        assert.expect(1);
+        assert.expect(2);
         $('<a id="test0" href="#" class="disabled">test</a>')
             .appendTo($('#qunit-fixture'));
 
         assert.strictEqual($.CFW_isDisabled(document.querySelector('#test0')), true);
+        assert.strictEqual($.CFW_isDisabled($('#test0')), true);
+    });
+
+    QUnit.test('CFW_isDisabled should return true for form controls within a disabled fieldset', function(assert) {
+        assert.expect(5);
+        $('<fieldset id="fieldset" disabled>' +
+            '<button id="button"></button>' +
+            '<input id="input" type="text">' +
+            '<select id="select"><option>one</option></select>' +
+            '<textarea id="textarea"></textarea>' +
+            '</fieldset>')
+            .appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#fieldset')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#button')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#input')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#select')), true);
+        assert.strictEqual($.CFW_isDisabled(document.querySelector('#textarea')), true);
+    });
+
+    QUnit.test('CFW_isVisible should return false if the element is not defined', function(assert) {
+        assert.expect(3);
+        assert.strictEqual($.CFW_isVisible(null), false);
+        assert.strictEqual($.CFW_isVisible(undefined), false); // eslint-disable-line no-undefined
+        assert.strictEqual($.CFW_isVisible(), false);
+    });
+
+    QUnit.test('CFW_isVisible should return false if the element is not a DOM element', function(assert) {
+        assert.expect(1);
+        assert.strictEqual($.CFW_isVisible({}), false);
+    });
+
+    QUnit.test('CFW_isVisible should return false if the element is not visible with `display: none;`', function(assert) {
+        assert.expect(2);
+        $('<div id="foo" style="display: none;"></div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), false);
+        assert.strictEqual($.CFW_isVisible($el), false);
+    });
+
+    QUnit.test('CFW_isVisible should return false if the element is not visible with `visibility: hidden;`', function(assert) {
+        assert.expect(2);
+        $('<div id="foo" style="visibility: hidden;"></div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), false);
+        assert.strictEqual($.CFW_isVisible($el), false);
+    });
+
+    QUnit.test('CFW_isVisible should return false if ancestor element is not visible with `display: none;`', function(assert) {
+        assert.expect(2);
+        $('<div style="display: none;"><div><div id="foo"></div></div></div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), false);
+        assert.strictEqual($.CFW_isVisible($el), false);
+    });
+
+    QUnit.test('CFW_isVisible should return false if ancestor element is not visible with `visibility: hidden;`', function(assert) {
+        assert.expect(2);
+        $('<div style="visibility: hidden;"><div><div id="foo"></div></div></div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), false);
+        assert.strictEqual($.CFW_isVisible($el), false);
+    });
+
+    QUnit.test('CFW_isVisible should return true if ancestor element is not visible with `visibility: hidden;`, but is reverted', function(assert) {
+        assert.expect(2);
+        $('<div style="visibility: hidden;"><div style="visibility: visible;"><div id="foo"></div></div></div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), true);
+        assert.strictEqual($.CFW_isVisible($el), true);
+    });
+
+    QUnit.test('CFW_isVisible should return true element is visible', function(assert) {
+        assert.expect(2);
+        $('<div id="foo"</div>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), true);
+        assert.strictEqual($.CFW_isVisible($el), true);
+    });
+
+    QUnit.test('CFW_isVisible should return false element is hidden, but not via display or visibility rules', function(assert) {
+        assert.expect(2);
+        $('<details><div id="foo"</div></details>').appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_isVisible(el), false);
+        assert.strictEqual($.CFW_isVisible($el), false);
+    });
+
+    QUnit.test('CFW_isFocusable should return true for elements with non-negative tabindex', function(assert) {
+        assert.expect(4);
+        $('<div tabindex>content</div>' +
+            '<div tabindex="0">content</div>' +
+            '<div tabindex="10">content</div>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex]')), true);
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="0"]')), true);
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="10"]')), true);
+        assert.strictEqual($.CFW_isFocusable($(fixtureEl).find('[tabindex="0"]')), true);
+    });
+
+    QUnit.test('CFW_isFocusable should return false for elements with negative or non-numeric tabindex', function(assert) {
+        assert.expect(3);
+        $('<div tabindex="false">content</div>' +
+            '<div tabindex="-1">content</div>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="false"]')), false);
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('[tabindex="-1"]')), false);
+        assert.strictEqual($.CFW_isFocusable($(fixtureEl).find('[tabindex="-1"]')), false);
+    });
+
+    QUnit.test('CFW_isFocusable should return false for disabled elements', function(assert) {
+        assert.expect(3);
+        $('<button id="foo" disabled>content</button>' +
+            '<button id="bar" disabled="true">content</button>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('#foo')), false);
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('#bar')), false);
+        assert.strictEqual($.CFW_isFocusable($(fixtureEl).find('#foo')), false);
+    });
+
+    QUnit.test('CFW_isFocusable should return false for invisible elements', function(assert) {
+        assert.expect(3);
+        $('<button id="foo" style="display: none;">content</button>' +
+            '<button id="bar" style="visibility: hidden;">content</button>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('#foo')), false);
+        assert.strictEqual($.CFW_isFocusable(fixtureEl.querySelector('#bar')), false);
+        assert.strictEqual($.CFW_isFocusable($(fixtureEl).find('#foo')), false);
+    });
+
+    QUnit.test('CFW_getFocusable should return a specific allowed subset of elements by default', function(assert) {
+        assert.expect(1);
+        $('<div>content</div>' +
+            '<span>content</span>' +
+            '<a>content</a>' +
+            '<button>content</button>' +
+            '<input>' +
+            '<textarea></textarea>' +
+            '<select></select>' +
+            '<details></details>' +
+            '<span tabindex="0"></span>' +
+            '<span tabindex="-1"></span>' +
+            '<div contenteditable="true"></div>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+        var expectedElements = [
+            fixtureEl.querySelector('a'),
+            fixtureEl.querySelector('button'),
+            fixtureEl.querySelector('input'),
+            fixtureEl.querySelector('textarea'),
+            fixtureEl.querySelector('select'),
+            fixtureEl.querySelector('details'),
+            fixtureEl.querySelector('[tabindex]:not([tabindex^="-"])'),
+            fixtureEl.querySelector('[contenteditable="true"]')
+        ];
+
+        assert.deepEqual($.CFW_getFocusable(fixtureEl), expectedElements);
+    });
+
+
+    QUnit.test('CFW_getFocusable should allow for custom selector', function(assert) {
+        assert.expect(1);
+        $('<div>content</div>' +
+            '<span>content</span>' +
+            '<a>content</a>' +
+            '<button>content</button>' +
+            '<input>' +
+            '<textarea></textarea>' +
+            '<select></select>' +
+            '<details></details>' +
+            '<span tabindex="0"></span>' +
+            '<span tabindex="-1"></span>' +
+            '<div contenteditable="true"></div>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+        var expectedElements = [
+            fixtureEl.querySelector('a'),
+            fixtureEl.querySelector('button')
+        ];
+        var customAllowed = 'a, button';
+
+        assert.deepEqual($.CFW_getFocusable(fixtureEl, customAllowed), expectedElements);
+    });
+
+    QUnit.test('CFW_isElement should detect if the parameter is an argument or not and return Boolean', function(assert) {
+        assert.expect(3);
+        $('<div id="foo" class="test"></div>' +
+            '<div id="bar" class="test"></div>')
+            .appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#foo');
+
+        assert.strictEqual($.CFW_isElement(el), true);
+        assert.strictEqual($.CFW_isElement({}), false);
+        assert.strictEqual($.CFW_isElement(document.querySelectorAll('.test')), false);
+    });
+
+    QUnit.test('CFW_isElement should detect jQuery element', function(assert) {
+        assert.expect(1);
+        $('<div id="foo"></div>').appendTo($('#qunit-fixture'));
+        var el = $('#foo');
+
+        assert.strictEqual($.CFW_isElement(el), true);
+    });
+
+    QUnit.test('CFW_getElement should try to parse element', function(assert) {
+        assert.expect(9);
+        $('<div id="foo" class="test"></div>' +
+            '<div id="bar" class="test"></div>')
+            .appendTo($('#qunit-fixture'));
+        var fixtureEl = document.querySelector('#qunit-fixture');
+        var el = fixtureEl.querySelector('div');
+        var $el = $('#foo');
+
+        assert.strictEqual($.CFW_getElement(el), el);
+        assert.strictEqual($.CFW_getElement('#foo'), el);
+        assert.strictEqual($.CFW_getElement('#null'), null);
+        assert.strictEqual($.CFW_getElement({}), null);
+        assert.strictEqual($.CFW_getElement([]), null);
+        assert.strictEqual($.CFW_getElement(), null);
+        assert.strictEqual($.CFW_getElement(null), null);
+        assert.strictEqual($.CFW_getElement(document.querySelectorAll('.test')), null);
+        assert.strictEqual($.CFW_getElement($el), el);
     });
 
     QUnit.test('CFW_controlEnable should remove disabled class from link', function(assert) {
