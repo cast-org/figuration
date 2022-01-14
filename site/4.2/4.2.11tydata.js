@@ -3,6 +3,7 @@ module.exports = {
     "current":      "4.2.1",
     "docs":         "4.2"
   },
+  "date": "Last Modified",
   "sitemapIgnore":  false,
 
   "nav": [
