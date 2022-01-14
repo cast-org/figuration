@@ -35,7 +35,6 @@
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
-        focus        : true,    // Trap focus within the modal
         show         : false,   // Show modal afer initialize
         rootElement  : 'body'
     };
@@ -230,12 +229,9 @@
                     $selfRef.handleUpdate();
                 });
 
-            if (this.settings.focus) {
-                this._focustrap.activate();
-            }
+            this._focustrap.activate();
 
             var complete = function() {
-                $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
