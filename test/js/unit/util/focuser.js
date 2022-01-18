@@ -1,8 +1,8 @@
-/* global CFW_FocusTrap */
+/* global CFW_Focuser */
 $(function() {
     'use strict';
 
-    QUnit.module('util:CFW_FocusTrap', {
+    QUnit.module('util:CFW_Focuser', {
         beforeEach: function() {
             $(window).scrollTop(0);
         },
@@ -11,41 +11,41 @@ $(function() {
         }
     });
 
-    QUnit.test('should autofocus itself by deafult', function(assert) {
+    QUnit.test('should autoFocus itself by deafult', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1"></div>')
+            '<div id="focuser" tabindex="-1"></div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
-        var focustrap = new CFW_FocusTrap({
+        var el = document.querySelector('#focuser');
+        var focuser = new CFW_Focuser({
             element: el
         });
 
-        focustrap.activate();
+        focuser.activate();
         setTimeout(function() {
             assert.strictEqual(document.activeElement, el);
             done();
         });
     });
 
-    QUnit.test('should not autofocus itself if autofocus option is false', function(assert) {
+    QUnit.test('should not auto focus itself if autoFocus option is false', function(assert) {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1"></div>')
+            '<div id="focuser" tabindex="-1"></div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
+        var el = document.querySelector('#focuser');
         var outside = document.querySelector('#outside');
-        var focustrap = new CFW_FocusTrap({
+        var focuser = new CFW_Focuser({
             element: el,
-            autofocus: false
+            autoFocus: false
         });
 
         outside.focus();
         setTimeout(function() {
             assert.strictEqual(document.activeElement, outside);
-            focustrap.activate();
+            focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, outside);
                 done();
@@ -53,26 +53,26 @@ $(function() {
         });
     });
 
-    QUnit.test('should force focus inside focustrap element if possible', function(assert) {
+    QUnit.test('should force focus inside focuser element if possible', function(assert) {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1">' +
+            '<div id="focuser" tabindex="-1">' +
             '<a href="#" id="inside">inside</a>' +
             '</div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
+        var el = document.querySelector('#focuser');
         var inside = document.querySelector('#inside');
         var outside = document.querySelector('#outside');
-        var focustrap = new CFW_FocusTrap({
+        var focuser = new CFW_Focuser({
             element: el
         });
 
         document.body.focus();
         setTimeout(function() {
             assert.strictEqual(document.activeElement, document.body);
-            focustrap.activate();
-            $(outside).trigger('focusin');
+            focuser.activate();
+            $(el).trigger('focusout');
 
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, inside);
@@ -85,15 +85,15 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1">' +
+            '<div id="focuser" tabindex="-1">' +
             '<a href="#" id="first">first</a>' +
             '<a href="#" id="last">last</a>' +
             '</div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
+        var el = document.querySelector('#focuser');
         var first = document.querySelector('#first');
         var outside = document.querySelector('#outside');
-        var focustrap = new CFW_FocusTrap({
+        var focuser = new CFW_Focuser({
             element: el
         });
         var keyTab = jQuery.Event('keydown', {
@@ -102,19 +102,19 @@ $(function() {
         });
 
         setTimeout(function() {
-            $(document).on('focusin', $(first), function() {
-                $(document).off('focusin');
+            $(document).on('focusout', $(first), function() {
+                $(document).off('focusout');
                 setTimeout(function() {
                     assert.strictEqual(document.activeElement, first);
                     done();
                 }, 10);
             });
 
-            focustrap.activate();
+            focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, el);
-                $(document).trigger(keyTab);
-                $(outside).trigger('focusin');
+                $(el).trigger(keyTab);
+                $(el).trigger('focusout');
             });
         });
     });
@@ -123,15 +123,15 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1">' +
+            '<div id="focuser" tabindex="-1">' +
             '<a href="#" id="first">first</a>' +
             '<a href="#" id="last">last</a>' +
             '</div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
+        var el = document.querySelector('#focuser');
         var last = document.querySelector('#last');
         var outside = document.querySelector('#outside');
-        var focustrap = new CFW_FocusTrap({
+        var focuser = new CFW_Focuser({
             element: el
         });
         var keyShiftTab = jQuery.Event('keydown', {
@@ -150,11 +150,11 @@ $(function() {
             });
 
             document.body.focus();
-            focustrap.activate();
+            focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, el);
-                $(document).trigger(keyShiftTab);
-                $(outside).trigger('focusin');
+                $(el).trigger(keyShiftTab);
+                $(el).trigger('focusout');
             });
         });
     });
@@ -163,15 +163,15 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
-            '<div id="focustrap" tabindex="-1">' +
+            '<div id="focuser" tabindex="-1">' +
             '</div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
+        var el = document.querySelector('#focuser');
         var first = document.querySelector('#first');
         var outside = document.querySelector('#outside');
-        var focustrap = new CFW_FocusTrap({
+        var focuser = new CFW_Focuser({
             element: el,
-            autofocus: false
+            autoFocus: false
         });
 
         outside.focus();
@@ -184,26 +184,26 @@ $(function() {
                 }, 50);
             });
 
-            focustrap.activate();
+            focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, outside);
-                $(outside).trigger('focusin');
+                $(el).trigger('focusout');
             });
         });
     });
 
     QUnit.test('should should set and reset _isActive flag', function(assert) {
         assert.expect(2);
-        $('<div id="focustrap" tabindex="-1"></div>')
+        $('<div id="focuser" tabindex="-1"></div>')
             .appendTo($('#qunit-fixture'));
-        var el = document.querySelector('#focustrap');
-        var focustrap = new CFW_FocusTrap({
+        var el = document.querySelector('#focuser');
+        var focuser = new CFW_Focuser({
             element: el
         });
 
-        focustrap.activate();
-        assert.strictEqual(focustrap._isActive, true);
-        focustrap.deactivate();
-        assert.strictEqual(focustrap._isActive, false);
+        focuser.activate();
+        assert.strictEqual(focuser._isActive, true);
+        focuser.deactivate();
+        assert.strictEqual(focuser._isActive, false);
     });
 });

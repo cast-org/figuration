@@ -48,7 +48,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Util_Backdrop.prototype = {
         _init : function() {
             // Update rootElement in case of DOM change
-            this.settings.rootElement = this._getElement(this.settings.rootElement);
+            this.settings.rootElement = $.CFW_getElement(this.settings.rootElement);
         },
 
         show : function(callback) {
@@ -101,27 +101,6 @@ if (typeof jQuery === 'undefined') {
             this.isAppended = false;
         },
 
-        _isElement : function(object) {
-            if (!object || typeof object !== 'object') {
-                return false;
-            }
-            if (typeof object.jquery !== 'undefined') {
-                object = object[0];
-            }
-            return typeof object.nodeType !== 'undefined';
-        },
-
-        _getElement : function(object) {
-            // Check for jQuery object or a node element
-            if (this._isElement(object)) {
-                return object.jquery ? object[0] : object;
-            }
-            if (typeof object === 'string' && object.length > 0) {
-                return document.querySelector(object);
-            }
-            return null;
-        },
-
         _getBackdrop : function() {
             if (!this.element) {
                 var backdrop = document.createElement('div');
@@ -160,6 +139,148 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
+ * Figuration (v4.2.1): util/focuser.js
+ * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+(function($) {
+    'use strict';
+
+    var KEYCODE_TAB = 9;
+    var NAV_DIR_FORWARD = 'forward';
+    var NAV_DIR_BACKWARD = 'backward';
+
+    var CFW_Util_Focuser = function(options) {
+        this._instance = null;
+        this._isActive = false;
+        this._lastNavDirection = null;
+        this._previousFocused = null;
+        this.settings = $.extend({}, CFW_Util_Focuser.DEFAULTS, options);
+
+        this._init();
+    };
+
+    CFW_Util_Focuser.DEFAULTS = {
+        element: null,
+        autoFocus: true,
+        flowElement: null,
+        flowFocus: false
+
+    };
+
+    CFW_Util_Focuser.prototype = {
+        _init: function() {
+            this._instance = $(this.settings.element).CFW_getID('cfw-focuser');
+        },
+
+        activate : function() {
+            if (this._isActive) {
+                return;
+            }
+
+            if (this.settings.autoFocus) {
+                this.settings.element.focus();
+            }
+
+            $(this.settings.element).off('.cfw.focuser.' + this._instance);
+            $(this.settings.element).on('keydown.cfw.focuser.' + this._instance, this._handleKeydown.bind(this));
+            if (this.settings.flowFocus) {
+                $(this.settings.element).on('focusout.cfw.focuser.' + this._instance, this._focusFlow.bind(this));
+            } else {
+                $(this.settings.element).on('focusout.cfw.focuser.' + this._instance, this._focusTrap.bind(this));
+            }
+
+            this._isActive = true;
+        },
+
+        deactivate : function() {
+            if (!this._isActive) {
+                return;
+            }
+            this._isActive = false;
+
+            $(this.settings.element).off('.cfw.focuser.' + this._instance);
+        },
+
+        _focusHelper : function() {
+        },
+
+        _focusFlow : function(event) {
+            var target = event.target;
+            //var target = event.relatedTarget;
+            var element = this.settings.element;
+            var flowElement = this.settings.flowElement;
+
+console.log('FOCUSFLOW', event)
+console.log(target);
+            if (!target) {
+            //if (target && (target === document || target === element)) {
+            //if (target && (target === document || target === element || element.contains(target))) {
+                return;
+            }
+
+            var items = $.CFW_getFocusable(element);
+
+            if (items.length === 0 || this._lastNavDirection === NAV_DIR_BACKWARD) {
+console.log('FLOW FIRST')
+                this.settings.flowElement.focus();
+                return;
+            }
+
+console.log(this._lastNavDirection === NAV_DIR_FORWARD, target, items[items.length - 1]);
+
+            if (this._lastNavDirection === NAV_DIR_FORWARD && target === items[items.length - 1]) {
+console.log('FLOW LAST')
+                var extItems = $.CFW_getFocusable(document);
+
+                // Remove items from inside element
+                var selectables = extItems.filter(function(item) {
+                    return !element.contains(item);
+                });
+console.log($.CFW_getNextActiveElement(selectables, flowElement, true, true));
+event.preventDefault()
+event.stopPropagation();
+                $.CFW_getNextActiveElement(selectables, flowElement, true, true).focus();
+
+            }
+        },
+
+        _focusTrap : function(event) {
+            var target = event.target;
+            var element = this.settings.element;
+            var items = $.CFW_getFocusable(element);
+
+            if (items.length === 0) {
+                this.settings.element.focus();
+            } else {
+                $.CFW_getNextActiveElement(items, target, this._lastNavDirection === NAV_DIR_FORWARD, true, true).focus();
+            }
+        },
+
+        _handleKeydown : function(event) {
+            if (event.which !== KEYCODE_TAB) {
+                return;
+            }
+            this._previousFocused = document.activeElement;
+            this._lastNavDirection = event.shiftKey ? NAV_DIR_BACKWARD : NAV_DIR_FORWARD;
+
+            // Intercept the keypress to stop from leaving document
+            event.preventDefault();
+            event.stopPropagation();
+            if (this.settings.flowFocus) {
+                this._focusFlow(event);
+            } else {
+                this._focusTrap(event);
+            }
+        }
+    };
+
+    window.CFW_Focuser = CFW_Util_Focuser;
+}(jQuery));
+
+/**
+ * --------------------------------------------------------------------------
  * Figuration (v4.2.1): util/scrollbar.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
@@ -186,7 +307,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Util_Scrollbar.prototype = {
         _init : function() {
-            this.element = this._getElement(this.settings.rootElement);
+            this.element = $.CFW_getElement(this.settings.rootElement);
         },
 
         getContainerWidth : function() {
@@ -315,27 +436,6 @@ if (typeof jQuery === 'undefined') {
 
         _isSticky : function(node) {
             return Boolean(window.getComputedStyle(node).position === 'sticky');
-        },
-
-        _isElement : function(object) {
-            if (!object || typeof object !== 'object') {
-                return false;
-            }
-            if (typeof object.jquery !== 'undefined') {
-                object = object[0];
-            }
-            return typeof object.nodeType !== 'undefined';
-        },
-
-        _getElement : function(object) {
-            // Check for jQuery object or a node element
-            if (this._isElement(object)) {
-                return object.jquery ? object[0] : object;
-            }
-            if (typeof object === 'string' && object.length > 0) {
-                return document.querySelector(object);
-            }
-            return null;
         },
 
         _normalizeData : function(val) {
@@ -787,6 +887,9 @@ if (typeof jQuery === 'undefined') {
     };
 
     $.CFW_reflow = function(element) {
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
         return element.offsetHeight;
     };
 
@@ -813,7 +916,127 @@ if (typeof jQuery === 'undefined') {
     };
 
     $.CFW_isDisabled = function(element) {
-        return $(element).is('.disabled, :disabled');
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+            return true;
+        }
+        if (/^(button|input|select|textarea)$/i.test(element.nodeName)) {
+            var fieldset = $(element).closest('fieldset')[0];
+            if (fieldset && fieldset.disabled) {
+                return true;
+            }
+        }
+        if (element.classList.contains('disabled')) {
+            return true;
+        }
+        if (typeof element.disabled === 'boolean') {
+            return element.disabled;
+        }
+        return element.hasAttribute('disabled');
+    };
+
+    $.CFW_isVisible = function(element) {
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        if (!$.CFW_isElement(element) || element.getClientRects().length === 0) {
+            return false;
+        }
+        var elementIsVisible = window.getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+
+        // Handle 'details' elements, as content may falsie appear visible when closed
+        var detailsClosed = $(element).closest('details:not([open])').get(0);
+        if (typeof detailsClosed === 'undefined') {
+            detailsClosed = null;
+        }
+        if (!detailsClosed) {
+            return elementIsVisible;
+        }
+        if (detailsClosed !== element) {
+            var summary = $(element).closest('summary').get(0);
+            if (typeof summary === 'undefined') {
+                summary = null;
+            }
+            if (summary && summary.parentNode !== detailsClosed) {
+                return false;
+            }
+            if (summary === null) {
+                return false;
+            }
+        }
+
+        return elementIsVisible;
+    };
+
+    $.CFW_isFocusable = function(element) {
+        // This is only a cursory check - mostly to be used with `$.CFW_getFocusable()`
+        // Many elements will pass this test if they do not explicitly fail
+        // the conditions below.  For example, passing `<div></div>` through
+        // this method will return true, but the `<div>` is not actually focusable.
+        if (element instanceof jQuery) {
+            element = element[0];
+        }
+        var tabindex = null;
+        if (element.hasAttribute('tabindex')) {
+            tabindex = element.getAttribute('tabindex');
+        }
+        if (tabindex !== null) {
+            if (isNaN(tabindex) || tabindex < 0) {
+                return false;
+            }
+        }
+        return !$.CFW_isDisabled(element) && $.CFW_isVisible(element);
+    };
+
+    $.CFW_getFocusable = function(element, allowed) {
+        if (typeof allowed === 'undefined') {
+            allowed = [
+                'a',
+                'button',
+                'details',
+                'input',
+                'select',
+                'textarea',
+                '[tabindex]',
+                '[contenteditable="true"]'
+            ].map(function(selector) {
+                return selector + ':not([tabindex^="-"])';
+            }).join(', ');
+        }
+
+        var items = element.querySelectorAll(allowed);
+        var focusables = [];
+
+        for (var i = 0; i < items.length; i++) {
+            if ($.CFW_isFocusable(items[i])) {
+                focusables.push(items[i]);
+            }
+        }
+
+        return focusables;
+    };
+
+    $.CFW_isElement = function(object) {
+        if (!object || typeof object !== 'object') {
+            return false;
+        }
+        if (typeof object.jquery !== 'undefined') {
+            object = object[0];
+        }
+        return typeof object.nodeType !== 'undefined';
+    };
+
+    $.CFW_getElement = function(object) {
+        // Check for jQuery object or a node element
+        if ($.CFW_isElement(object)) {
+            return object.jquery ? object[0] : object;
+        }
+        if (typeof object === 'string' && object.length > 0) {
+            return document.querySelector(object);
+        }
+        return null;
     };
 
     $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {
@@ -1545,7 +1768,10 @@ if (typeof jQuery === 'undefined') {
             }
 
             var $items = $menu.children('li').find('a, .dropdown-item, button, input, textarea, select');
-            $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea):not(:has(select)):visible');
+            $items = $items.filter(':not(:has(input)):not(:has(textarea):not(:has(select))');
+            $items = $items.filter(function() {
+                return $.CFW_isFocusable(this);
+            });
             return $items;
         },
 
@@ -2236,7 +2462,10 @@ if (typeof jQuery === 'undefined') {
 
             var $node = $(node);
             var $list = $node.closest('[role="tablist"]');
-            var $items = $list.find('[role="tab"]:visible').not('.disabled').not(':disabled');
+            var $items = $list.find('[role="tab"]');
+            $items = $items.filter(function() {
+                return !$.CFW_isDisabled(this) && $.CFW_isVisible(this);
+            });
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             var doIncrement = e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN;
@@ -2406,7 +2635,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         checkPosition : function() {
-            if (!this.$element.is(':visible')) { return; }
+            if (!$.CFW_isVisible(this.$element[0])) { return; }
 
             var height       = this.$element.height();
             var offsetTop    = this.settings.top;
@@ -2542,6 +2771,7 @@ if (typeof jQuery === 'undefined') {
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
+            this._focuser = null;
             this.instance = null;
             this.isDialog = false;
             this.follow = false;
@@ -2553,10 +2783,6 @@ if (typeof jQuery === 'undefined') {
             this.hoverState = null;
             this.dynamicTip = false;
             this.inserted = false;
-            this.flags = {
-                keyShift: false,
-                keyTab : false
-            };
             this.popper = null;
 
             this.settings = this.getSettings(options);
@@ -2734,8 +2960,10 @@ if (typeof jQuery === 'undefined') {
                 .off('keydown.cfw.' + this.type + '.close')
                 .on('keydown.cfw.' + this.type + '.close', function(e) {
                     if (e.which === KEYCODE_ESC) {
-                        e.stopPropagation();
-                        e.preventDefault();
+                        // Allow esc to propagate from trigger if tooltip is not showing
+                        if ($selfRef.$target && ($elm === $selfRef.$target || $selfRef.$target.hasClass('in'))) {
+                            e.stopPropagation();
+                        }
                         $selfRef.dismiss();
                     }
                 });
@@ -2861,105 +3089,13 @@ if (typeof jQuery === 'undefined') {
 
             // Additional tab/focus handlers for non-inline items
             if (this.settings.container) {
-                this.$target
-                    .off('.cfw.' + this.type + '.keyflag')
-                    .on('keydown.cfw.' + this.type + '.keyflag', function(e) {
-                        $selfRef._tabSet(e);
-                    })
-                    .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        var KEYCODE_TAB = 9;
-                        if (e.which === KEYCODE_TAB) {
-                            $selfRef._tabReset();
-                        }
-                    });
-
-                // Inject focus helper item at start to fake loss of focus going out the top
-                if (!this.$focusFirst) {
-                    this.$focusFirst = $(document.createElement('span'))
-                        .addClass(this.type + '-focusfirst')
-                        .attr('tabindex', 0)
-                        .prependTo(this.$target);
-                }
-                if (this.$focusFirst) {
-                    this.$focusFirst
-                        .off('focusin.cfw.' + this.type + '.focusFirst')
-                        .on('focusin.cfw.' + this.type + '.focusFirst', function(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if ($selfRef.flags.keyTab) {
-                                if ($selfRef.flags.keyShift) {
-                                    // Go back to trigger element
-                                    $selfRef.$element.trigger('focus');
-                                } else {
-                                    // Go to next tabbable item
-                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
-                                }
-                            }
-                            $selfRef._tabReset();
-                        });
-                }
-
-                // Inject focus helper item at end to fake loss of focus going out the bottom
-                // Also helps if tip has last tabbable item in document - otherwise focus drops off page
-                if (!this.$focusLast) {
-                    this.$focusLast = $(document.createElement('span'))
-                        .addClass(this.type + '-focuslast')
-                        .attr('tabindex', 0)
-                        .appendTo(this.$target);
-                }
-                if (this.$focusLast) {
-                    this.$focusLast
-                        .off('focusin.cfw.' + this.type + '.focusLast')
-                        .on('focusin.cfw.' + this.type + '.focusLast', function(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
-                                return;
-                            }
-                            $selfRef._tabNext($selfRef.$element[0]);
-                        });
-                }
-
-                this.$element
-                    .off('focusin.cfw.' + this.type + '.focusStart')
-                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
-                                var selectables = $selfRef._tabItems();
-                                var $prevNode = $(e.relatedTarget);
-
-                                // Edge case: if coming from another tooltip/popover
-                                if ($prevNode.closest('.tooltip, .popover').length) {
-                                    $prevNode = null;
-                                }
-
-                                if ($prevNode && $prevNode.length) {
-                                    var currIndex = selectables.index($selfRef.$element);
-                                    var prevIndex = selectables.index($prevNode);
-                                    if (currIndex < prevIndex) {
-                                        $selfRef._tabPrev($selfRef.$focusLast[0], $selfRef.$target);
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    .off('keydown.cfw.' + this.type + '.focusStart')
-                    .on('keydown.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            $selfRef._tabSet(e);
-                            if ($selfRef.flags.keyTab) {
-                                if (!$selfRef.flags.keyShift) {
-                                    var selectables = $selfRef._tabItems($selfRef.$target);
-                                    if (selectables.length) {
-                                        e.stopPropagation();
-                                        e.preventDefault();
-                                        $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
-                                    }
-                                }
-                            }
-                            $selfRef._tabReset();
-                        }
-                    });
+                this._focuser = new CFW_Focuser({
+                    element: this.$target[0],
+                    autoFocus: this.isDialog,
+                    flowElement: this.$element[0],
+                    flowFocus: true
+                });
+                this._focuser.activate();
             }
 
             if ($.CFW_isTouch) {
@@ -3037,6 +3173,7 @@ if (typeof jQuery === 'undefined') {
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
+            this._focuser = null;
             this.instance = null;
             this.settings = null;
             this.type = null;
@@ -3051,7 +3188,6 @@ if (typeof jQuery === 'undefined') {
             this.inState = null;
             this.dynamicTip = null;
             this.inserted = null;
-            this.flags = null;
             if (this.popper) {
                 this.popper.destroy();
             }
@@ -3214,12 +3350,18 @@ if (typeof jQuery === 'undefined') {
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
+            if (this._focuser) {
+                this._focuser.deactivate();
+                this._focuser = null;
+            }
+/*
             if (this.$focusFirst) {
                 this.$focusFirst.off('.cfw.' + this.type + '.focusFirst');
             }
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
+*/
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
                 $('body').children().off('mouseover', null, $.noop);
@@ -3385,107 +3527,6 @@ if (typeof jQuery === 'undefined') {
             }
             return false;
         },
-
-        // Set flags for `tab` key interactions
-        _tabSet : function(e) {
-            var KEYCODE_TAB = 9;
-            this._tabReset();
-            if (e.which === KEYCODE_TAB) {
-                this.flags.keyTab = true;
-                if (e.shiftKey) { this.flags.keyShift = true; }
-            }
-        },
-
-        // Reset flags for `tab` key interactions
-        _tabReset : function() {
-            this.flags = {
-                keyShift: false,
-                keyTab: false
-            };
-        },
-
-        // Move focus to next tabbable item before given element
-        _tabPrev : function(current, $scope) {
-            var selectables = this._tabItems($scope);
-
-            $.CFW_getNextActiveElement(selectables.toArray(), current, false, true).focus();
-        },
-
-        // Move focus to next tabbable item after given element
-        _tabNext : function(current, $scope) {
-            var $selfRef = this;
-            var selectables = this._tabItems($scope);
-
-            // Remove items from inside target
-            if (typeof $scope === 'undefined') {
-                selectables = selectables.filter(function() {
-                    return !$.contains($selfRef.$target[0], this);
-                });
-            }
-
-            $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
-        },
-
-        /*
-         * jQuery UI Focusable 1.12.1
-         * http://jqueryui.com
-         *
-         * Copyright jQuery Foundation and other contributors
-         * Released under the MIT license.
-         * http://jquery.org/license
-         */
-        _focusable : function(element, isTabIndexNotNaN) {
-            var map;
-            var mapName;
-            var $img;
-            var focusableIfVisible;
-            var fieldset;
-            var nodeName = element.nodeName.toLowerCase();
-
-            if (nodeName === 'area') {
-                map = element.parentNode;
-                mapName = map.name;
-                if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
-                    return false;
-                }
-                $img = $('img[usemap="#' + mapName + '"]');
-                return $img.length > 0 && $img.is(':visible');
-            }
-
-            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
-                focusableIfVisible = !element.disabled;
-
-                if (focusableIfVisible) {
-                    // Form controls within a disabled fieldset are disabled.
-                    // However, controls within the fieldset's legend do not get disabled.
-                    // Since controls generally aren't placed inside legends, we skip
-                    // this portion of the check.
-                    fieldset = $(element).closest('fieldset')[0];
-                    if (fieldset) {
-                        focusableIfVisible = !fieldset.disabled;
-                    }
-                }
-            } else if (nodeName === 'a') {
-                focusableIfVisible = element.href || isTabIndexNotNaN;
-            } else {
-                focusableIfVisible = isTabIndexNotNaN;
-            }
-
-            return focusableIfVisible && $(element).is(':visible');
-        },
-
-        _tabItems : function($node) {
-            var $selfRef = this;
-            if (typeof $node === 'undefined') { $node = $(document); }
-            var items = $node.find('*').filter(function() {
-                var tabIndex = $(this).attr('tabindex');
-                var isTabIndexNaN = isNaN(tabIndex);
-                if ($selfRef.$focusFirst !== null && this === $selfRef.$focusFirst[0]) { return false; }
-                if ($selfRef.$focusLast !== null && this === $selfRef.$focusLast[0]) { return false; }
-                return (isTabIndexNaN || tabIndex >= 0) && $selfRef._focusable(this, !isTabIndexNaN);
-            });
-            return items;
-        }
     };
 
     var Plugin = function(option) {
@@ -3952,7 +3993,7 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-/* global CFW_Backdrop, CFW_Scrollbar */
+/* global CFW_Backdrop, CFW_Focuser, CFW_Scrollbar */
 
 (function($) {
     'use strict';
@@ -3963,8 +4004,8 @@ if (typeof jQuery === 'undefined') {
         this.$target = null;
         this.$dialog = null;
         this._backdrop = null;
+        this._focuser = null;
         this._scrollbar = null;
-        this.$focusLast = null;
         this.isShown = null;
         this.fixedContent = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
         this.stickyContent = '.sticky-top';
@@ -3984,6 +4025,7 @@ if (typeof jQuery === 'undefined') {
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
         show         : false,   // Show modal afer initialize
+        focus        : true,    // Keep focus within the modal dialog
         rootElement  : 'body'
     };
 
@@ -3998,6 +4040,9 @@ if (typeof jQuery === 'undefined') {
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
+            this._focuser = new CFW_Focuser({
+                element: this.$target[0]
+            });
             this._scrollbar = new CFW_Scrollbar({
                 rootElement: this.settings.rootElement
             });
@@ -4111,7 +4156,7 @@ if (typeof jQuery === 'undefined') {
 
             this.isShown = false;
 
-            $(document).off('focusin.cfw.modal');
+            this._focuser.deactivate();
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
@@ -4129,10 +4174,6 @@ if (typeof jQuery === 'undefined') {
                 });
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
-
-            if (this.$focusLast) {
-                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
-            }
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -4178,11 +4219,11 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.handleUpdate();
                 });
 
-            this.enforceFocus();
-            this.enforceFocusLast();
+            if (this.settings.focus) {
+                this._focuser.activate();
+            }
 
             var complete = function() {
-                $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
@@ -4245,36 +4286,6 @@ if (typeof jQuery === 'undefined') {
                 this.hide();
             } else {
                 $dest.CFW_Modal('show');
-            }
-        },
-
-        enforceFocus : function() {
-            var $selfRef = this;
-            $(document)
-                .off('focusin.cfw.modal') // guard against infinite focus loop
-                .on('focusin.cfw.modal', function(e) {
-                    if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
-                        $selfRef.$target.trigger('focus');
-                    }
-                });
-        },
-
-        enforceFocusLast : function() {
-            var $selfRef = this;
-            // Inject an item to fake loss of focus in case the modal
-            // is last tabbable item in document - otherwise focus drops off page
-            if (!this.$focusLast) {
-                this.$focusLast = $(document.createElement('span'))
-                    .addClass('modal-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
-            }
-            if (this.$focusLast) {
-                this.$focusLast
-                    .off('focusin.cfw.modal.focusLast')
-                    .on('focusin.cfw.modal.focusLast', function() {
-                        $selfRef.$target.trigger('focus');
-                    });
             }
         },
 
@@ -4411,8 +4422,8 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.$dialog = null;
             this._backdrop = null;
+            this._focustrsp = null;
             this._scrollbar = null;
-            this.$focusLast = null;
             this.isShown = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
@@ -4428,6 +4439,7 @@ if (typeof jQuery === 'undefined') {
                 $this.remove();
             });
             this._backdrop.dispose();
+            this._focuser.deactivate();
             this.unlink();
         }
     };
@@ -4778,7 +4790,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _getTabs : function() {
-            return this.$element.find('[role="tab"]:visible').not('.disabled, :disabled');
+            var $items = this.$element.find('[role="tab"]');
+            $items = $items.filter(function() {
+                return !$.CFW_isDisabled(this) && $.CFW_isVisible(this);
+            });
+            return $items;
         },
 
         _currIndex : function($tabs) {
@@ -5202,7 +5218,7 @@ if (typeof jQuery === 'undefined') {
         animate   : false,      // Should the image fade in
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
-        invisible : false,      // Load sources that are not :visible
+        invisible : false,      // Load sources that are not visible
         placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
     };
 
@@ -5248,14 +5264,8 @@ if (typeof jQuery === 'undefined') {
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
 
-        isVisible : function() {
-            // Normalize on using the newer jQuery 3 visibility method
-            var elem = this.$element[0];
-            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
-        },
-
         inViewport : function() {
-            if (!this.settings.invisible && !this.isVisible) {
+            if (!this.settings.invisible && !$.CFW_isVisible(this.$element)) {
                 return false;
             }
             return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();
@@ -6645,7 +6655,7 @@ if (typeof jQuery === 'undefined') {
                         $(this).prop('checked', $selfRef.settings.transcriptScroll);
                     });
                     this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
-                        if (!$.CFW_isDisabled($(e.target))) {
+                        if (!$.CFW_isDisabled(e.target)) {
                             $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
                             $(this).prop('checked', $selfRef.settings.transcriptDescribe);
                             $selfRef.scriptLoad();
@@ -7026,7 +7036,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
                 });
                 this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
-                    if (!$.CFW_isDisabled($(e.target))) {
+                    if (!$.CFW_isDisabled(e.target)) {
                         $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
                         $(this).prop('checked', $selfRef.settings.textDescribeVisible);
                         $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);

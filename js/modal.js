@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-/* global CFW_Backdrop, CFW_FocusTrap, CFW_Scrollbar */
+/* global CFW_Backdrop, CFW_Focuser, CFW_Scrollbar */
 
 (function($) {
     'use strict';
@@ -15,7 +15,7 @@
         this.$target = null;
         this.$dialog = null;
         this._backdrop = null;
-        this._focustrap = null;
+        this._focuser = null;
         this._scrollbar = null;
         this.isShown = null;
         this.fixedContent = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
@@ -36,6 +36,7 @@
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
         show         : false,   // Show modal afer initialize
+        focus        : true,    // Keep focus within the modal dialog
         rootElement  : 'body'
     };
 
@@ -50,7 +51,7 @@
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
-            this._focustrap = new CFW_FocusTrap({
+            this._focuser = new CFW_Focuser({
                 element: this.$target[0]
             });
             this._scrollbar = new CFW_Scrollbar({
@@ -166,7 +167,7 @@
 
             this.isShown = false;
 
-            this._focustrap.deactivate();
+            this._focuser.deactivate();
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
@@ -229,7 +230,9 @@
                     $selfRef.handleUpdate();
                 });
 
-            this._focustrap.activate();
+            if (this.settings.focus) {
+                this._focuser.activate();
+            }
 
             var complete = function() {
                 $selfRef.$target
@@ -447,7 +450,7 @@
                 $this.remove();
             });
             this._backdrop.dispose();
-            this._focustrap.deactivate();
+            this._focuser.deactivate();
             this.unlink();
         }
     };
