@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+/* global CFW_Focuser */
 
 (function($) {
     'use strict';
@@ -49,8 +50,6 @@
             this.$element = $(element);
             this.$target = null;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
             this._focuser = null;
             this.instance = null;
             this.isDialog = false;
@@ -323,7 +322,6 @@
 
         show : function() {
             clearTimeout(this.delayTimer);
-            var $selfRef = this;
 
             if (!this._hasContent() && !this.$target) {
                 return;
@@ -451,8 +449,6 @@
             this.$element = null;
             this.$target = null;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
             this._focuser = null;
             this.instance = null;
             this.settings = null;
@@ -634,14 +630,7 @@
                 this._focuser.deactivate();
                 this._focuser = null;
             }
-/*
-            if (this.$focusFirst) {
-                this.$focusFirst.off('.cfw.' + this.type + '.focusFirst');
-            }
-            if (this.$focusLast) {
-                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
-            }
-*/
+
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
                 $('body').children().off('mouseover', null, $.noop);
@@ -696,8 +685,6 @@
             this.inserted = false;
             this.closeAdded = false;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
         },
 
         _removeDynamicTipExt : function() {
@@ -806,7 +793,7 @@
                 if (this.inState[key]) { return true; }
             }
             return false;
-        },
+        }
     };
 
     var Plugin = function(option) {
