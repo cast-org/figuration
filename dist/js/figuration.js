@@ -1102,8 +1102,8 @@ if (typeof jQuery === 'undefined') {
 
         for (var i = 0; i < items.length; i++) {
             item = items[i];
-            if (item.nodeName === 'INPUT' && item.getAttribute('type').toLowerCase() === 'radio') {
-                if (radioName && radioName === item.getAttribute('name').toLowerCase()) {
+            if (item.nodeName === 'INPUT' && item.getAttribute('type') !== null && item.getAttribute('type').toLowerCase() === 'radio') {
+                if (radioName && item.getAttribute('name') !== null && radioName === item.getAttribute('name').toLowerCase()) {
                     if (item.checked) {
                         // Hold checked radio
                         radioHold = item;

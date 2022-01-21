@@ -25,6 +25,7 @@ $(function() {
         focuser.activate();
         setTimeout(function() {
             assert.strictEqual(document.activeElement, el);
+            focuser.deactivate();
             done();
         });
     });
@@ -48,6 +49,7 @@ $(function() {
             focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, outside);
+                focuser.deactivate();
                 done();
             });
         });
@@ -76,6 +78,7 @@ $(function() {
 
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, inside);
+                focuser.deactivate();
                 done();
             });
         });
@@ -102,12 +105,13 @@ $(function() {
         });
 
         setTimeout(function() {
-            $(document).on('focusin', $(first), function() {
+            $(document).on('focusin', function() {
                 $(document).off('focusin');
                 setTimeout(function() {
                     assert.strictEqual(document.activeElement, first);
+                    focuser.deactivate();
                     done();
-                }, 10);
+                }, 25);
             });
 
             focuser.activate();
@@ -141,12 +145,13 @@ $(function() {
         });
 
         setTimeout(function() {
-            $(document).on('focusin', $(last), function() {
+            $(document).on('focusin', function() {
                 $(document).off('focusin');
                 setTimeout(function() {
                     assert.strictEqual(document.activeElement, last);
+                    focuser.deactivate();
                     done();
-                }, 50);
+                }, 25);
             });
 
             document.body.focus();
@@ -167,7 +172,6 @@ $(function() {
             '</div>')
             .appendTo($('#qunit-fixture'));
         var el = document.querySelector('#focuser');
-        var first = document.querySelector('#first');
         var outside = document.querySelector('#outside');
         var focuser = new CFW_Focuser({
             element: el,
@@ -176,12 +180,13 @@ $(function() {
 
         outside.focus();
         setTimeout(function() {
-            $(document).on('focusin', $(first), function() {
+            $(document).on('focusin', function() {
                 $(document).off('focusin');
                 setTimeout(function() {
                     assert.strictEqual(document.activeElement, el);
+                    focuser.deactivate();
                     done();
-                }, 50);
+                });
             });
 
             focuser.activate();
@@ -205,5 +210,177 @@ $(function() {
         assert.strictEqual(focuser._isActive, true);
         focuser.deactivate();
         assert.strictEqual(focuser._isActive, false);
+    });
+
+    QUnit.test('flowFocus: should move focus to item after flowElement on tab navigation exiting the element', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        $('<a href="#" id="first">first</a>' +
+            '<a href="#" id="last">last</a>' +
+            '<div id="focuser" tabindex="-1">' +
+            '<a href="#" id="inside">inside</a>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#focuser');
+        var first = document.querySelector('#first');
+        var last = document.querySelector('#last');
+        var inside = document.querySelector('#inside');
+        var focuser = new CFW_Focuser({
+            element: el,
+            flowElement: first,
+            flowFocus: true
+        });
+        var keyTab = jQuery.Event('keydown', {
+            which: 9,
+            keyCode: 9
+        });
+
+        setTimeout(function() {
+            $(document).on('focusin', function() {
+                $(document).off('focusin');
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, last);
+                    focuser.deactivate();
+                    done();
+                }, 25);
+            });
+
+            focuser.activate();
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, el);
+                $(inside).trigger(keyTab);
+            });
+        });
+    });
+
+    QUnit.test('flowFocus: should move focus to flowElement on shift+tab navigation exiting the element', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        $('<a href="#" id="first">first</a>' +
+            '<a href="#" id="last">last</a>' +
+            '<div id="focuser" tabindex="-1">' +
+            '<a href="#" id="inside">inside</a>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#focuser');
+        var first = document.querySelector('#first');
+        var inside = document.querySelector('#inside');
+        var focuser = new CFW_Focuser({
+            element: el,
+            flowElement: first,
+            flowFocus: true
+        });
+        var keyShiftTab = jQuery.Event('keydown', {
+            which: 9,
+            keyCode: 9,
+            shiftKey: true
+        });
+
+        setTimeout(function() {
+            $(document).on('focusin', function() {
+                $(document).off('focusin');
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, first);
+                    focuser.deactivate();
+                    done();
+                }, 25);
+            });
+
+            focuser.activate();
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, el);
+                $(inside).trigger(keyShiftTab);
+            });
+        });
+    });
+
+    QUnit.test('flowFocus: should move focus from flowElement on tab navigation into the element when showing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        $('<a href="#" id="outside">outside</a>' +
+            '<a href="#" id="external">external</a>' +
+            '<div id="focuser" tabindex="-1">' +
+            '<a href="#" id="first">first</a>' +
+            '<a href="#" id="last">last</a>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#focuser');
+        var first = document.querySelector('#first');
+        var outside = document.querySelector('#outside');
+        var focuser = new CFW_Focuser({
+            element: el,
+            flowElement: outside,
+            flowFocus: true
+        });
+        var keyTab = jQuery.Event('keydown', {
+            which: 9,
+            keyCode: 9
+        });
+
+        focuser.activate();
+        outside.focus();
+        setTimeout(function() {
+            $(document).on('focusin', function() {
+                $(document).off('focusin');
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, first);
+                    focuser.deactivate();
+                    done();
+                }, 25);
+            });
+
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, outside);
+                $(outside).trigger(keyTab);
+            });
+        });
+    });
+
+    QUnit.test('flowFocus: should move focus on shift+tab navigation onto flowElement into the element to last item when showing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        $('<a href="#" id="outside">outside</a>' +
+            '<a href="#" id="external">external</a>' +
+            '<div id="focuser" tabindex="-1">' +
+            '<a href="#" id="first">first</a>' +
+            '<a href="#" id="last">last</a>' +
+            '</div>')
+            .appendTo($('#qunit-fixture'));
+        var el = document.querySelector('#focuser');
+        var last = document.querySelector('#last');
+        var outside = document.querySelector('#outside');
+        var external = document.querySelector('#external');
+        var focuser = new CFW_Focuser({
+            element: el,
+            flowElement: outside,
+            flowFocus: true
+        });
+        var keyShiftTab = jQuery.Event('keydown', {
+            which: 9,
+            keyCode: 9,
+            shiftKey: true
+        });
+        var focusIn = jQuery.Event('focusin', {
+            relatedTarget: external
+        });
+
+        setTimeout(function() {
+            $(document).on('focusin', function() {
+                $(document).off('focusin');
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, last);
+                    focuser.deactivate();
+                    done();
+                }, 25);
+            });
+
+            focuser.activate();
+            external.focus();
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, external);
+                $(external).trigger(keyShiftTab);
+                $(outside).trigger(focusIn);
+            });
+        });
     });
 });

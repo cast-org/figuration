@@ -1527,6 +1527,14 @@ It is recommended that a `.modal-title` item is used, even if visually hidden, w
 The following key commands are handled when focus is inside the modal:
 
 - <kbd>Esc</kbd> - Close the modal
+- <kbd>Tab</kbd> - Moves focus to next focusable element inside the dialog. When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the dialog.
+- <kbd>Shift + Tab</kbd> - Moves focus to previous focusable element inside the dialog. When focus is on the first focusable element in the dialog, moves focus to the last focusable element in the dialog.
+
+### Enforced Focus
+
+Modals employ a 'focus trap' in an attempt to keep focus with the modal dialog when one is open, as specified by the [WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/) recommendations.
+
+If for some reason you need to disable the enforced focus for modals, you can override the behavior by setting the `focus` option to `false`.
 
 ## SASS Reference
 
