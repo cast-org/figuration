@@ -151,11 +151,11 @@
 
         _handleFlowElement : function(event) {
             var element = this.settings.element;
+            var items = $.CFW_getFocusable(element);
 
             if (event.type === 'keydown') {
                 if (event.which === KEYCODE_TAB && !event.shiftKey) {
                     event.preventDefault();
-                    var items = $.CFW_getFocusable(element);
                     items = $.CFW_slimRadioInput(items, false);
                     if (items.length === 0) {
                         element.focus();
@@ -173,7 +173,6 @@
                     // If navigating backwards onto trigger (flowElement), try to focus at end of element
                     var docItems = $.CFW_getFocusable(document.body);
                     if (docItems.indexOf(this.settings.flowElement) < docItems.indexOf(prevNode)) {
-                        var items = $.CFW_getFocusable(element);
                         items = $.CFW_slimRadioInput(items, true);
                         if (items.length === 0) {
                             element.focus();

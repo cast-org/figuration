@@ -533,11 +533,12 @@ $(function() {
                     });
                 });
                 assert.strictEqual(document.activeElement, $target[0], 'modal is focused');
-                $target.trigger('focusout');
+                $trigger.trigger('focusin');
             });
         });
 
         $trigger
+            .CFW_Modal()
             .CFW_Modal('show');
     });
 

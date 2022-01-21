@@ -11,7 +11,7 @@ $(function() {
         }
     });
 
-    QUnit.test('should autoFocus itself by deafult', function(assert) {
+    QUnit.test('should autofocus itself by default', function(assert) {
         assert.expect(1);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
@@ -29,7 +29,7 @@ $(function() {
         });
     });
 
-    QUnit.test('should not auto focus itself if autoFocus option is false', function(assert) {
+    QUnit.test('should not autofocus itself if autoFocus option is false', function(assert) {
         assert.expect(2);
         var done = assert.async();
         $('<a href="#" id="outside">outside</a>' +
@@ -72,7 +72,7 @@ $(function() {
         setTimeout(function() {
             assert.strictEqual(document.activeElement, document.body);
             focuser.activate();
-            $(el).trigger('focusout');
+            $(outside).trigger('focusin');
 
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, inside);
@@ -102,8 +102,8 @@ $(function() {
         });
 
         setTimeout(function() {
-            $(document).on('focusout', $(first), function() {
-                $(document).off('focusout');
+            $(document).on('focusin', $(first), function() {
+                $(document).off('focusin');
                 setTimeout(function() {
                     assert.strictEqual(document.activeElement, first);
                     done();
@@ -114,7 +114,7 @@ $(function() {
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, el);
                 $(el).trigger(keyTab);
-                $(el).trigger('focusout');
+                $(outside).trigger('focusin');
             });
         });
     });
@@ -154,7 +154,7 @@ $(function() {
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, el);
                 $(el).trigger(keyShiftTab);
-                $(el).trigger('focusout');
+                $(outside).trigger('focusin');
             });
         });
     });
@@ -187,7 +187,7 @@ $(function() {
             focuser.activate();
             setTimeout(function() {
                 assert.strictEqual(document.activeElement, outside);
-                $(el).trigger('focusout');
+                $(outside).trigger('focusin');
             });
         });
     });
