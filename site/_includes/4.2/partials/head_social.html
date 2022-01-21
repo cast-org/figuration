@@ -7,16 +7,16 @@
 <meta name="twitter:card" content="{% if layout == 'home' %}summary_large_image{% else %}summary{% endif %}">
 <meta name="twitter:site" content="@{{ twitter.name | default: site.twitter.name }}">
 <meta name="twitter:creator" content="@{{ twitter.name | default: site.twitter.name }}">
-<meta name="twitter:title" content="{{ title | default: site.title | smartify }}">
-<meta name="twitter:description" content="{{ description | default: site.description | smartify }}">
+<meta name="twitter:title" content="{{ title | default: site.title | escape }}">
+<meta name="twitter:description" content="{{ description | default: site.description | escape }}">
 {% if twitterImage != "" -%}
 <meta name="twitter:image" content="{{ site.url | append: site.path | append: twitterImage }}">
 {% endif -%}
 <!-- Open Graph -->
 <meta property="og:url" content="{{ site.url }}">
 <meta property="og:type" content="{% if layout == 'home' %}website{% else %}article{% endif %}">
-<meta property="og:title" content="{{ title | default: site.title | smartify }}">
-<meta property="og:description" content="{{ description | default: site.description | smartify }}">
+<meta property="og:title" content="{{ title | default: site.title | escape }}">
+<meta property="og:description" content="{{ description | default: site.description | escape }}">
 <meta property="og:image" content="{{ site.url | append: site.path | append: ogImage}}">
 <meta property="og:image:type" content="{{ og.image_type | default: site.og.image_type }}">
 <meta property="og:image:width" content="{{ og.image_width | default: site.og.image_width }}">

@@ -457,7 +457,7 @@ $gutters: (
   </div>
 </div>
 {% endcapture %}
-{% renderExample example%}
+{% renderExample example %}
 
 An alternative solution is to add a wrapper around the `.row` with the `.overflow-hidden` class:
 
@@ -970,7 +970,7 @@ $grid-breakpoints: (xs: 0);
 
 The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non direct children of a row, the paddings are omitted.
 
-{% capture example%}
+{% capture example %}
 <div class="col-3 bg-light p-0_5 border">
   .col-3: width of 25%
 </div>
@@ -980,9 +980,9 @@ The `.col-*` classes can also be used outside a `.row` to give an element a spec
 {% endcapture %}
 {% renderExample example %}
 
-The classes can be used together with utilities to create responsive floated images. Make sure to wrap the content in a [`.clearfix`]({{< docsref "/helpers/clearfix" >}}) wrapper to clear the float if the text is shorter.
+The classes can be used together with utilities to create responsive floated images. Make sure to wrap the content in a [`.clearfix`]({{ site.path }}/{{ version.docs }}/utilities/clearfix/) wrapper to clear the float if the text is shorter.
 
-{% capture example%}
+{% capture example %}
 <div class="clearfix">
   <img class="col-md-6 img-fluid float-md-end mb-0_5 ms-md-0_5" src="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls.jpg" alt="Responsive floated image">
 
