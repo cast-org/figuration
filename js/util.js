@@ -575,6 +575,56 @@
         return null;
     };
 
+    $.CFW_slimRadioInput = function(items, isBackward) {
+        // For a given set of focusable items, reduce each set of named radio inputs
+        // to a single item based on navigation direction
+        // Use checked input if one exists, otherwise:
+        // Forward movement - set first item
+        // Backward movement - set last item
+        isBackward = typeof isBackward === 'undefined' ? false : isBackward;
+        var output = [];
+        var item = null;
+        var radioName = null;
+        var radioHold = null;
+        var radioHasActive = false;
+
+        for (var i = 0; i < items.length; i++) {
+            item = items[i];
+            if (item.nodeName === 'INPUT' && item.getAttribute('type') !== null && item.getAttribute('type').toLowerCase() === 'radio') {
+                if (radioName && item.getAttribute('name') !== null && radioName === item.getAttribute('name').toLowerCase()) {
+                    if (item.checked) {
+                        // Hold checked radio
+                        radioHold = item;
+                        radioHasActive = true;
+                    } else if (!radioHasActive && isBackward) {
+                        // Hold last radio
+                        radioHold = item;
+                    }
+                } else {
+                    // Hold first radio
+                    radioName = item.getAttribute('name').toLowerCase();
+                    radioHold = item;
+                    radioHasActive = false;
+                }
+                continue;
+            }
+
+            if (radioHold) {
+                output.push(radioHold);
+                radioName = null;
+                radioHold = null;
+                radioHasActive = false;
+            }
+            output.push(item);
+        }
+
+        if (radioHold) {
+            output.push(radioHold);
+        }
+
+        return output;
+    };
+
     $.CFW_getNextActiveElement = function(list, activeElement, doIncrement, allowLoop, allowStartEnd) {
         var index = list.indexOf(activeElement);
         var listLength = list.length;

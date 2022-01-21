@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-/* global CFW_Backdrop, CFW_Scrollbar */
+/* global CFW_Backdrop, CFW_Focuser, CFW_Scrollbar */
 
 (function($) {
     'use strict';
@@ -15,8 +15,8 @@
         this.$target = null;
         this.$dialog = null;
         this._backdrop = null;
+        this._focuser = null;
         this._scrollbar = null;
-        this.$focusLast = null;
         this.isShown = null;
         this.fixedContent = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
         this.stickyContent = '.sticky-top';
@@ -36,6 +36,7 @@
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
         show         : false,   // Show modal afer initialize
+        focus        : true,    // Keep focus within the modal dialog
         rootElement  : 'body'
     };
 
@@ -50,6 +51,9 @@
             this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
             this._backdrop = this._initializeBackdrop();
+            this._focuser = new CFW_Focuser({
+                element: this.$target[0]
+            });
             this._scrollbar = new CFW_Scrollbar({
                 rootElement: this.settings.rootElement
             });
@@ -163,7 +167,7 @@
 
             this.isShown = false;
 
-            $(document).off('focusin.cfw.modal');
+            this._focuser.deactivate();
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
@@ -181,10 +185,6 @@
                 });
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
-
-            if (this.$focusLast) {
-                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
-            }
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -230,11 +230,11 @@
                     $selfRef.handleUpdate();
                 });
 
-            this.enforceFocus();
-            this.enforceFocusLast();
+            if (this.settings.focus) {
+                this._focuser.activate();
+            }
 
             var complete = function() {
-                $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
@@ -297,36 +297,6 @@
                 this.hide();
             } else {
                 $dest.CFW_Modal('show');
-            }
-        },
-
-        enforceFocus : function() {
-            var $selfRef = this;
-            $(document)
-                .off('focusin.cfw.modal') // guard against infinite focus loop
-                .on('focusin.cfw.modal', function(e) {
-                    if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
-                        $selfRef.$target.trigger('focus');
-                    }
-                });
-        },
-
-        enforceFocusLast : function() {
-            var $selfRef = this;
-            // Inject an item to fake loss of focus in case the modal
-            // is last tabbable item in document - otherwise focus drops off page
-            if (!this.$focusLast) {
-                this.$focusLast = $(document.createElement('span'))
-                    .addClass('modal-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
-            }
-            if (this.$focusLast) {
-                this.$focusLast
-                    .off('focusin.cfw.modal.focusLast')
-                    .on('focusin.cfw.modal.focusLast', function() {
-                        $selfRef.$target.trigger('focus');
-                    });
             }
         },
 
@@ -463,8 +433,8 @@
             this.$target = null;
             this.$dialog = null;
             this._backdrop = null;
+            this._focustrsp = null;
             this._scrollbar = null;
-            this.$focusLast = null;
             this.isShown = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
@@ -480,6 +450,7 @@
                 $this.remove();
             });
             this._backdrop.dispose();
+            this._focuser.deactivate();
             this.unlink();
         }
     };

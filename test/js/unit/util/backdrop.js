@@ -215,6 +215,7 @@ $(function() {
 
         instance.show(function() {
             assert.strictEqual(getClassElement(), instance._getBackdrop());
+            $('.foo').remove();
             done();
         });
     });

@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+/* global CFW_Focuser */
 
 (function($) {
     'use strict';
@@ -49,8 +50,7 @@
             this.$element = $(element);
             this.$target = null;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
+            this._focuser = null;
             this.instance = null;
             this.isDialog = false;
             this.follow = false;
@@ -62,10 +62,6 @@
             this.hoverState = null;
             this.dynamicTip = false;
             this.inserted = false;
-            this.flags = {
-                keyShift: false,
-                keyTab : false
-            };
             this.popper = null;
 
             this.settings = this.getSettings(options);
@@ -243,8 +239,10 @@
                 .off('keydown.cfw.' + this.type + '.close')
                 .on('keydown.cfw.' + this.type + '.close', function(e) {
                     if (e.which === KEYCODE_ESC) {
-                        e.stopPropagation();
-                        e.preventDefault();
+                        // Allow esc to propagate from trigger if tooltip is not showing
+                        if ($selfRef.$target && ($elm === $selfRef.$target || $selfRef.$target.hasClass('in'))) {
+                            e.stopPropagation();
+                        }
                         $selfRef.dismiss();
                     }
                 });
@@ -324,7 +322,6 @@
 
         show : function() {
             clearTimeout(this.delayTimer);
-            var $selfRef = this;
 
             if (!this._hasContent() && !this.$target) {
                 return;
@@ -370,105 +367,13 @@
 
             // Additional tab/focus handlers for non-inline items
             if (this.settings.container) {
-                this.$target
-                    .off('.cfw.' + this.type + '.keyflag')
-                    .on('keydown.cfw.' + this.type + '.keyflag', function(e) {
-                        $selfRef._tabSet(e);
-                    })
-                    .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        var KEYCODE_TAB = 9;
-                        if (e.which === KEYCODE_TAB) {
-                            $selfRef._tabReset();
-                        }
-                    });
-
-                // Inject focus helper item at start to fake loss of focus going out the top
-                if (!this.$focusFirst) {
-                    this.$focusFirst = $(document.createElement('span'))
-                        .addClass(this.type + '-focusfirst')
-                        .attr('tabindex', 0)
-                        .prependTo(this.$target);
-                }
-                if (this.$focusFirst) {
-                    this.$focusFirst
-                        .off('focusin.cfw.' + this.type + '.focusFirst')
-                        .on('focusin.cfw.' + this.type + '.focusFirst', function(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if ($selfRef.flags.keyTab) {
-                                if ($selfRef.flags.keyShift) {
-                                    // Go back to trigger element
-                                    $selfRef.$element.trigger('focus');
-                                } else {
-                                    // Go to next tabbable item
-                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
-                                }
-                            }
-                            $selfRef._tabReset();
-                        });
-                }
-
-                // Inject focus helper item at end to fake loss of focus going out the bottom
-                // Also helps if tip has last tabbable item in document - otherwise focus drops off page
-                if (!this.$focusLast) {
-                    this.$focusLast = $(document.createElement('span'))
-                        .addClass(this.type + '-focuslast')
-                        .attr('tabindex', 0)
-                        .appendTo(this.$target);
-                }
-                if (this.$focusLast) {
-                    this.$focusLast
-                        .off('focusin.cfw.' + this.type + '.focusLast')
-                        .on('focusin.cfw.' + this.type + '.focusLast', function(e) {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
-                                return;
-                            }
-                            $selfRef._tabNext($selfRef.$element[0]);
-                        });
-                }
-
-                this.$element
-                    .off('focusin.cfw.' + this.type + '.focusStart')
-                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
-                                var selectables = $selfRef._tabItems();
-                                var $prevNode = $(e.relatedTarget);
-
-                                // Edge case: if coming from another tooltip/popover
-                                if ($prevNode.closest('.tooltip, .popover').length) {
-                                    $prevNode = null;
-                                }
-
-                                if ($prevNode && $prevNode.length) {
-                                    var currIndex = selectables.index($selfRef.$element);
-                                    var prevIndex = selectables.index($prevNode);
-                                    if (currIndex < prevIndex) {
-                                        $selfRef._tabPrev($selfRef.$focusLast[0], $selfRef.$target);
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    .off('keydown.cfw.' + this.type + '.focusStart')
-                    .on('keydown.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            $selfRef._tabSet(e);
-                            if ($selfRef.flags.keyTab) {
-                                if (!$selfRef.flags.keyShift) {
-                                    var selectables = $selfRef._tabItems($selfRef.$target);
-                                    if (selectables.length) {
-                                        e.stopPropagation();
-                                        e.preventDefault();
-                                        $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
-                                    }
-                                }
-                            }
-                            $selfRef._tabReset();
-                        }
-                    });
+                this._focuser = new CFW_Focuser({
+                    element: this.$target[0],
+                    autoFocus: this.isDialog,
+                    flowElement: this.$element[0],
+                    flowFocus: true
+                });
+                this._focuser.activate();
             }
 
             if ($.CFW_isTouch) {
@@ -544,8 +449,7 @@
             this.$element = null;
             this.$target = null;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
+            this._focuser = null;
             this.instance = null;
             this.settings = null;
             this.type = null;
@@ -560,7 +464,6 @@
             this.inState = null;
             this.dynamicTip = null;
             this.inserted = null;
-            this.flags = null;
             if (this.popper) {
                 this.popper.destroy();
             }
@@ -723,12 +626,11 @@
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
-            if (this.$focusFirst) {
-                this.$focusFirst.off('.cfw.' + this.type + '.focusFirst');
+            if (this._focuser) {
+                this._focuser.deactivate();
+                this._focuser = null;
             }
-            if (this.$focusLast) {
-                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
-            }
+
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
                 $('body').children().off('mouseover', null, $.noop);
@@ -783,8 +685,6 @@
             this.inserted = false;
             this.closeAdded = false;
             this.$arrow = null;
-            this.$focusFirst = null;
-            this.$focusLast = null;
         },
 
         _removeDynamicTipExt : function() {
@@ -893,58 +793,6 @@
                 if (this.inState[key]) { return true; }
             }
             return false;
-        },
-
-        // Set flags for `tab` key interactions
-        _tabSet : function(e) {
-            var KEYCODE_TAB = 9;
-            this._tabReset();
-            if (e.which === KEYCODE_TAB) {
-                this.flags.keyTab = true;
-                if (e.shiftKey) { this.flags.keyShift = true; }
-            }
-        },
-
-        // Reset flags for `tab` key interactions
-        _tabReset : function() {
-            this.flags = {
-                keyShift: false,
-                keyTab: false
-            };
-        },
-
-        // Move focus to next tabbable item before given element
-        _tabPrev : function(current, $scope) {
-            var selectables = this._tabItems($scope);
-
-            $.CFW_getNextActiveElement(selectables.toArray(), current, false, true).focus();
-        },
-
-        // Move focus to next tabbable item after given element
-        _tabNext : function(current, $scope) {
-            var $selfRef = this;
-            var selectables = this._tabItems($scope);
-
-            // Remove items from inside target
-            if (typeof $scope === 'undefined') {
-                selectables = selectables.filter(function() {
-                    return !$.contains($selfRef.$target[0], this);
-                });
-            }
-
-            $.CFW_getNextActiveElement(selectables.toArray(), current, true, true).focus();
-        },
-
-        _tabItems : function($node) {
-            var $selfRef = this;
-            if (typeof $node === 'undefined') { $node = $(document); }
-            var items = $.CFW_getFocusable($node[0]);
-            items = items.filter(function() {
-                if ($selfRef.$focusFirst !== null && this === $selfRef.$focusFirst[0]) { return false; }
-                if ($selfRef.$focusLast !== null && this === $selfRef.$focusLast[0]) { return false; }
-                return true;
-            });
-            return items;
         }
     };
 

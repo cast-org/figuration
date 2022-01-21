@@ -59,6 +59,7 @@ const files = [
     jqueryFile,
     'node_modules/popper.js/dist/umd/popper.min.js',
     'js/util/backdrop.js',
+    'js/util/focuser.js',
     'js/util/scrollbar.js',
     'js/util.js',
     'js/drag.js',

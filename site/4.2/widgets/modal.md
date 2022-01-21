@@ -1354,6 +1354,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>Closes the modal when escape key is pressed.</td>
       </tr>
       <tr>
+        <td><code>focus</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>Enforce focus when using keyboard navigation to remain within the modal dialog.</td>
+      </tr>
+      <tr>
         <td><code>show</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
@@ -1521,45 +1527,14 @@ It is recommended that a `.modal-title` item is used, even if visually hidden, w
 The following key commands are handled when focus is inside the modal:
 
 - <kbd>Esc</kbd> - Close the modal
+- <kbd>Tab</kbd> - Moves focus to next focusable element inside the dialog. When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the dialog.
+- <kbd>Shift + Tab</kbd> - Moves focus to previous focusable element inside the dialog. When focus is on the first focusable element in the dialog, moves focus to the last focusable element in the dialog.
 
 ### Enforced Focus
 
-In order to keep assistive technology users from interacting with the rest of the page when a modal is open, the focus is automatically forced back to the modal when a user tries to navigate out.
+Modals employ a 'focus trap' in an attempt to keep focus with the modal dialog when one is open, as specified by the [WAI-ARIA](https://www.w3.org/TR/wai-aria-1.2/) recommendations.
 
-When navigating **forward**, out the *bottom* of the modal, focus will be moved to the **top of the modal**.
-
-When navigation **backward**, out the *top* of the modal, focus will be moved back to the **top of the modal**.
-
-If for some reason you need to disable the enforced focus for modals, you can override the `enforceFocus()` method.
-
-{% capture highlight %}
-// This needs to be loaded after Figuration's JavaScript
-// PLEASE DO NOT DO THIS!!! - Just here for reference
-$.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {};
-// SERIOUSLY DO NOT DO THIS!!!
-{% endcapture %}
-{% renderHighlight highlight, "js" %}
-
-However, we do not advise disabling it completely, but overriding the function to handle the focus conditionally.
-
-{% capture highlight %}
-// This needs to be loaded after Figuration's JavaScript
-$.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {
-var $selfRef = this;
-  $(document)
-    .off('focusin.cfw.modal') // guard against infinite focus loop
-    .on('focusin.cfw.modal', function(event) {
-      if (document !== event.target && $selfRef.$targetElm[0] !== event.target && !$selfRef.$targetElm.has(event.target).length)
-        // Add conditions here
-        // In this case items with a 'focusuable-item' class
-        && !$(event.target.parentNode).hasClass('focusuable-item') {
-          $selfRef.$targetElm.trigger('focus');
-      }
-    });
-  }
-};
-{% endcapture %}
-{% renderHighlight highlight, "js" %}
+If for some reason you need to disable the enforced focus for modals, you can override the behavior by setting the `focus` option to `false`.
 
 ## SASS Reference
 
