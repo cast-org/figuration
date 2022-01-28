@@ -13,13 +13,15 @@ We use a defined set because of the layered components—tooltips, popovers, nav
 Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
 {% capture highlight %}
-$zindex-dropdown:          1000 !default;
-$zindex-sticky:            1010 !default;
-$zindex-fixed:             1020 !default;
-$zindex-popover:           1030 !default;
-$zindex-tooltip:           1040 !default;
-$zindex-modal-backdrop:    1050 !default;
-$zindex-modal:             1060 !default;
+$zindex-dropdown:           1000 !default;
+$zindex-sticky:             1010 !default;
+$zindex-fixed:              1020 !default;
+$zindex-offcanvas-backdrop: 1030 !default;
+$zindex-offcanvas:          1035 !default;
+$zindex-popover:            1040 !default;
+$zindex-tooltip:            1050 !default;
+$zindex-modal-backdrop:     1060 !default;
+$zindex-modal:              1065 !default;
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 

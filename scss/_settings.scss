@@ -602,6 +602,7 @@ $transition-collapse-x:     width .3s ease !default;
 // Component transitions
 $btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$offcanvas-transition:      transform .3s linear !default;
 $modal-transition:          transform .15s linear !default;
 $navbar-toggle-transition:  box-shadow .15s ease-in-out !default;
 $nav-link-transition:       color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
@@ -1312,6 +1313,43 @@ $popover-arrow-color:           $popover-bg !default;
 $popover-arrow-outer-color:     $popover-border-color !default;
 
 
+// Offcanvas
+// =====
+$offcanvas-bg:                  $component-bg !default;
+$offcanvas-color:               null !default;
+$offcanvas-border-color:        $component-overlay-border-color !default;
+$offcanvas-border-width:        $border-width !default;
+$offcanvas-box-shadow:          map-get($shadows, "d3") !default;
+
+$offcanvas-backdrop-bg:         $dark !default;
+$offcanvas-backdrop-opacity:    .5 !default;
+
+$offcanvas-header-padding-y:    .75rem !default;
+$offcanvas-header-padding-x:    1rem !default;
+$offcanvas-header-bg:           null !default;
+$offcanvas-header-color:        null !default;
+$offcanvas-header-border-color: rgba($uibase-900, .2) !default;
+$offcanvas-header-border-width: 0 !default;
+
+$offcanvas-title-line-height:   $line-height-base !default;
+
+$offcanvas-close-padding-y:     .75rem !default;
+$offcanvas-close-padding-x:     .75rem !default;
+
+$offcanvas-body-padding-y:      .75rem !default;
+$offcanvas-body-padding-x:      1rem !default;
+
+$offcanvas-footer-padding-y:    .75rem !default;
+$offcanvas-footer-padding-x:    1rem !default;
+$offcanvas-footer-bg:           null !default;
+$offcanvas-footer-color:        null !default;
+$offcanvas-footer-border-color: $offcanvas-header-border-color !default;
+$offcanvas-footer-border-width: $offcanvas-header-border-width !default;
+
+$offcanvas-horizontal-width:    rem(400px) !default; // 400px=>25rem !default;
+$offcanvas-vertical-height:     33vh !default;
+
+
 // Modals
 // =====
 // Padding applied to the modal body
@@ -1389,13 +1427,15 @@ $loader-circle-animation-speed:         1s !default;
 
 // Figuration puts modals above popover/tooltip items that could be held open.
 // Tooltips/popovers should also be able to appear over fixed/sticky navbars.
-$zindex-dropdown:          1000 !default;
-$zindex-sticky:            1010 !default;
-$zindex-fixed:             1020 !default;
-$zindex-popover:           1030 !default;
-$zindex-tooltip:           1040 !default;
-$zindex-modal-backdrop:    1050 !default;
-$zindex-modal:             1060 !default;
+$zindex-dropdown:           1000 !default;
+$zindex-sticky:             1010 !default;
+$zindex-fixed:              1020 !default;
+$zindex-offcanvas-backdrop: 1030 !default;
+$zindex-offcanvas:          1035 !default;
+$zindex-popover:            1040 !default;
+$zindex-tooltip:            1050 !default;
+$zindex-modal-backdrop:     1060 !default;
+$zindex-modal:              1065 !default;
 
 
 // Utilities

@@ -102,6 +102,7 @@ module.exports = {
           { "title": "Equalize" },
           { "title": "Lazy" },
           { "title": "Modal" },
+          { "title": "Offcanvas" },
           { "title": "Player" },
           { "title": "Popover" },
           { "title": "Scrollspy" },

@@ -310,6 +310,14 @@
     overflow: auto;
 }
 
+// Offcanvas
+.cf-example-offcanvas .offcanvas {
+    position: static;
+    height: 200px;
+    visibility: visible;
+    transform: translate(0);
+}
+
 // Border utilities
 .cf-example-border {
     [class^="border"] {

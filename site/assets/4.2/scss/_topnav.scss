@@ -9,8 +9,7 @@
         .cf-header {
             position: sticky;
             top: 0;
-            //z-index: $zindex-sticky;
-            z-index: 1045;
+            z-index: $zindex-sticky;
         }
 
         .cf-content {

@@ -61,7 +61,7 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
 
 ## Usage
 
-To set up a responsive tab, all tabs must be under the same resposive tab ancestor, and then one collapse item per tab-pane is needed.
+To set up a responsive tab, all tabs must be under the same responsive tab ancestor, and then one collapse item per tab-pane is needed.
 
 You must provide the necessary CSS to determine how items should appear across breakpoints.  For example, you can hide the collapse triggers on desktops, but show on mobile devices where the tabs are hidden.
 

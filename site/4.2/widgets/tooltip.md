@@ -5,6 +5,8 @@ subtitle: tooltip.js
 description: Add stylized tooltips to items for contextual or informational support.
 group: widgets
 toc: true
+extras:
+  name: tooltip
 ---
 
 ## Notices
@@ -171,8 +173,8 @@ If the tooltip item is already created, you can link to it using <code>data-cfw-
 
 #### Dismiss
 
-{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
-{% include jsDismiss with name: 'tooltip' %}
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./site/_includes/" | append: "/partials/js-dismiss.md" -%}
+{% renderFile jsDismiss, extras %}
 
 ### Via JavaScript
 

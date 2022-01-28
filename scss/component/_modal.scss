@@ -1,19 +1,8 @@
-// .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg, border, border-radius, etc
 
 @if $enable-modal {
-    .modal-open {
-        // Kill the scroll on the body
-        overflow: hidden;
-
-        .modal {
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-    }
-
     // Container that the modal scrolls within
     .modal {
         position: fixed;
@@ -242,19 +231,8 @@
         }
     }
 
-    // Modal background
     .modal-backdrop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: $zindex-modal-backdrop;
-        width: 100vw;
-        height: 100vh;
-        background-color: $modal-backdrop-bg;
-
-        // Fade for backdrop
-        &.fade { opacity: 0; }
-        &.in { opacity: $modal-backdrop-opacity; }
+        @include backdrop-overlay($zindex-modal-backdrop, $modal-backdrop-bg, $modal-backdrop-opacity);
     }
 
     // Modal rootElement specified

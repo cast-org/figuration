@@ -5,6 +5,8 @@ subtitle: popover.js
 description: A more robust version of a tooltip, that allows for larger pieces of content or interactive functionality.
 group: widgets
 toc: true
+extras:
+  name: popover
 ---
 
 ## Notices
@@ -255,8 +257,8 @@ If the popover item is already created, you can link to it using <code>data-cfw-
 
 #### Dismiss
 
-{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
-{% include jsDismiss with name: 'popover' %}
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./site/_includes/" | append: "/partials/js-dismiss.md" -%}
+{% renderFile jsDismiss, extras %}
 
 ### Via JavaScript
 

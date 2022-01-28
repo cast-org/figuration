@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Figuration - Offcanvas</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
+
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../../js/util/backdrop.js"></script>
+<script src="../../js/util/focuser.js"></script>
+<script src="../../js/util/scrollbar.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../../js/drag.js"></script>
+<script src="../../js/collapse.js"></script>
+<script src="../../js/dropdown.js"></script>
+<script src="../../js/tab.js"></script>
+<script src="../../js/affix.js"></script>
+<script src="../../js/tooltip.js"></script>
+<script src="../../js/popover.js"></script>
+<script src="../../js/offcanvas.js"></script>
+<script src="../../js/modal.js"></script>
+<script src="../../js/tab-responsive.js"></script>
+<script src="../../js/accordion.js"></script>
+<script src="../../js/slideshow.js"></script>
+<script src="../../js/scrollspy.js"></script>
+<script src="../../js/alert.js"></script>
+<script src="../../js/lazy.js"></script>
+<script src="../../js/equalize.js"></script>
+<script src="../../js/common.js"></script>
+
+<style>
+body {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.example-offcanvas .offcanvas {
+    position: static;
+    height: 200px;
+    visibility: visible;
+    transform: translate(0);
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="example-offcanvas mt-1 bg-light border overflow-hidden">
+    <div class="offcanvas offcanvas-start">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Offcanvas</h5>
+            <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="offcanvas-body">
+            Content for the offcanvas goes here. You can place just about any component or custom element here.
+        </div>
+        <div class="offcanvas-footer">
+            Offcanvas footer
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<a class="btn btn-primary" data-cfw="offcanvas" href="#offcanvasEx-0" role="button">
+  Link with href
+</a>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasEx-1">
+  Button with data-*-target
+</button>
+
+<div id="offcanvasEx-0"  class="offcanvas offcanvas-start">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Offcanvas</h5>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-1">
+      <button class="btn btn-secondary" type="button" data-cfw="dropdown">
+        Dropdown button
+        <span class="caret aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="offcanvasEx-1"  class="offcanvas offcanvas-start">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Offcanvas</h5>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-1">
+      <button class="btn btn-secondary" type="button" data-cfw="dropdown">
+        Dropdown button
+        <span class="caret aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasDirS">Placement: start</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasDirE">Placement: end</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasDirT">Placement: top</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasDirB">Placement: bottom</button>
+
+<div id="offcanvasDirS" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas start</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasDirE" class="offcanvas offcanvas-end">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas end</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasDirT" class="offcanvas offcanvas-top">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas top</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasDirB" class="offcanvas offcanvas-bottom">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas bottom</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+
+<hr>
+
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBack" data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="false">backdrop: true, scroll false (default)</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasScroll"  data-cfw-offcanvas-backdrop="false" data-cfw-offcanvas-scroll="true">backdrop: false, scroll true</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBackScroll"  data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="true">backdrop: true, scroll true</button>
+
+<div id="offcanvasBack" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas backdrop</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasScroll" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas scroll</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasBackScroll" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas backdrop and scroll</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+
+<hr>
+
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasAnim"  data-cfw-offcanvas-animate="false">animate: false</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasKbd"  data-cfw-offcanvas-keyboard="false">keyboard: false</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasDismiss"  data-cfw-offcanvas-keyboard="false">dismiss button</button>
+
+<div id="offcanvasAnim" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas title</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+
+<div id="offcanvasKbd" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas title</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+
+<div id="offcanvasDismiss" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas title</h5>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+    <div class="offcanvas-footer">
+        <button type="button" class="btn btn-secondary" data-cfw-dismiss="offcanvas">Close</button>
+    </div>
+</div>
+
+<hr>
+
+<div id="offcanvasEx-2-container" class="mt-1 bg-light border overflow-hidden position-relative" style="height: 200px; z-index: 1;">
+    <div id="offcanvasEx-2" class="offcanvas offcanvas-start">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Offcanvas</h5>
+            <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="offcanvas-body">
+            Content for the offcanvas goes here. You can place just about any component or custom element here.
+        </div>
+        <div class="offcanvas-footer">
+            Offcanvas footer
+        </div>
+    </div>
+    <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasEx-2" data-cfw-offcanvas-root-element="#offcanvasEx-2-container">
+        Offcanvas in container
+    </button>
+</div>
+
+<!------------------->
+
+<nav class="navbar navbar-light bg-light fixed-top">
+  <div class="container-fluid flex-between">
+    <a class="navbar-brand" href="#">Offcanvas navbar</a>
+    <button class="navbar-toggle" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasNavbarTop">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
+    <div id="offcanvasNavbarTop" class="offcanvas offcanvas-end">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas top</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-end flex-grow-1 pe-1">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-cfw="dropdown">
+              Dropdown
+              <span class="caret aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-0_5" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-light navbar-expand-lg bg-light fixed-bottom">
+  <div class="container-fluid flex-between">
+    <a class="navbar-brand" href="#">Offcanvas navbar 'lg'</a>
+    <button class="navbar-toggle" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasNavbarBottom">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
+    <div id="offcanvasNavbarBottom" class="offcanvas offcanvas-end">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas bottom</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-end flex-grow-1 pe-1">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-cfw="dropdown">
+              Dropdown
+              <span class="caret aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-0_5" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+</div>
+
+</body>
+</html>
