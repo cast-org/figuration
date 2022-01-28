@@ -27,7 +27,7 @@
       position: -webkit-sticky;
       position: sticky;
       top: 0;
-      z-index: 1045;
+      z-index: 1010;
     }
     .cf-content > [id] {
       scroll-margin-top: 4.5rem;
@@ -1266,6 +1266,13 @@ pre[class*="language-"] {
   height: 20rem;
   margin-top: .5rem;
   overflow: auto;
+}
+
+.cf-example-offcanvas .offcanvas {
+  position: static;
+  height: 200px;
+  visibility: visible;
+  transform: translate(0);
 }
 
 .cf-example-border [class^="border"] {
