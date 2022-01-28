@@ -200,6 +200,55 @@
                             display: none;
                         }
                     }
+
+                    @if $enable-navbar-offcanvas and $enable-offcanvas {
+                        .offcanvas {
+                            position: inherit;
+                            bottom: 0;
+                            z-index: auto;
+                            flex-grow: 1;
+                            visibility: visible !important; // stylelint-disable-line declaration-no-important
+                            background-color: transparent;
+                            border-right: 0;
+                            border-left: 0;
+                            @include box-shadow(none);
+                            @include transition(none);
+                            transform: none;
+                        }
+
+                        %navbar-offcanvas-side-vertical-#{$bp} {
+                            height: auto;
+                            border-top: 0;
+                            border-bottom: 0;
+                        }
+
+                        @if $enable-offcanvas-side-top {
+                            .offcanvas-top {
+                                @extend %navbar-offcanvas-side-vertical-#{$bp};
+                            }
+                        }
+
+                        @if $enable-offcanvas-side-bottom {
+                            .offcanvas-bottom {
+                                @extend %navbar-offcanvas-side-vertical-#{$bp};
+                            }
+                        }
+
+                        @if $enable-offcanvas-header {
+                            .offcanvas-header {
+                                display: none;
+                            }
+                        }
+
+                        @if $enable-offcanvas-body {
+                            .offcanvas-body {
+                                display: flex;
+                                flex-grow: 0;
+                                padding: 0;
+                                overflow-y: visible;
+                            }
+                        }
+                    }
                 }
             }
         }

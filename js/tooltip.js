@@ -369,7 +369,7 @@
             if (this.settings.container) {
                 this._focuser = new CFW_Focuser({
                     element: this.$target[0],
-                    autoFocus: this.isDialog,
+                    autoFocus: false,
                     flowElement: this.$element[0],
                     flowFocus: true
                 });

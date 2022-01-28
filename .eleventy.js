@@ -6,11 +6,14 @@ const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItAnchor = require('markdown-it-anchor');
 const nestingToc = require('eleventy-plugin-nesting-toc');
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.setDataDeepMerge(true);
 
     // Plugins
+    eleventyConfig.addPlugin(EleventyRenderPlugin);
+
     eleventyConfig.addPlugin(nestingToc,
         {
             tags: ['.cf-content > h2', '.cf-content > h3', '.cf-content > h4'],

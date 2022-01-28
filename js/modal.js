@@ -43,9 +43,8 @@
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
-            var rootSelector = this.$element.CFW_getSelectorFromChain('modal', this.settings.rootElement);
-            if (!rootSelector) { return; }
-            this.$rootElement = $(rootSelector);
+            this.$rootElement = $(this.settings.rootElement);
+            if (!this.$rootElement) { return; }
             var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);

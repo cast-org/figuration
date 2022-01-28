@@ -14,6 +14,7 @@
         '[data-cfw="tab"]': 'CFW_Tab',
         '[data-cfw="tooltip"]': 'CFW_Tooltip',
         '[data-cfw="popover"]': 'CFW_Popover',
+        '[data-cfw="offcanvas"]': 'CFW_Offcanvas',
         '[data-cfw="modal"]': 'CFW_Modal',
         '[data-cfw="affix"]': 'CFW_Affix',
         '[data-cfw="tabResponsive"]': 'CFW_TabResponsive',

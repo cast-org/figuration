@@ -67,6 +67,7 @@ module.exports = function(grunt) {
             'js/affix.js',
             'js/tooltip.js',
             'js/popover.js',
+            'js/offcanvas.js',
             'js/modal.js',
             'js/accordion.js',
             'js/tab-responsive.js',

@@ -149,6 +149,77 @@ With the `.navbar-brand` in the collapsing area.
 {% endcapture %}
 {% renderExample example %}
 
+### Offcanvas
+
+Add an offcanvas drawer with the [Offcanvas widget]({{ site.path }}/{{ version.docs }}/widgets/offcanvas/). The offcanvas styles are adjusted when contained within a navbar, and with use of `.navbar-expand-*` classes, you can create flexible and respsonsive navigation.
+
+To create an offcanvas navbar that is always collapsed, simply leave off the `.navbar-expand-*` class from the `.navbar` element.
+
+{% capture example %}
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid flex-between">
+    <a class="navbar-brand" href="#">Offcanvas navbar</a>
+    <button class="navbar-toggle" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasNavbar">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
+    <div id="offcanvasNavbar" class="offcanvas offcanvas-end">
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title h5">Offcanvas navbar example</h4>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-end flex-grow-1 pe-1">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-cfw="dropdown">
+              Dropdown
+              <span class="caret" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu mb-1">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-0_5" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-info" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+{% renderExample example %}
+
+To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `lg`, use `.navbar-expand-lg`.
+
+For a working example, please check out the [Offcanvas Navbar example]({{ site.path }}/{{ version.docs }}/examples/navbar-offcanvas/).
+
+{% capture highlight %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid flex-between">
+    <a class="navbar-brand" href="#">Offcanvas navbar</a>
+    <button class="navbar-toggle" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasNavbar">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
+    <div id="offcanvasNavbar" class="offcanvas offcanvas-end">
+      ...
+    </div>
+  </div>
+</nav>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Supported Content
 
 Navbars come with built-in support for a handful of sub-components. Mix and match from the following as you need:

@@ -5,6 +5,8 @@ subtitle: modal.js
 description: The Modal widget allows you to add dialog style windows to your site or application.
 group: widgets
 toc: true
+extras:
+  name: modal
 ---
 
 ## Important Notes
@@ -1173,13 +1175,15 @@ Contained modals will display the backdrop and modal within a specified element 
 
 Place the modal HTML within the container, apply `position: relative;` to the container, and specify the `rootElement` option on the trigger button to limit the modal to the container.
 
+It may also be useful to add a `z-index` to the container, this will keep the modal from appearing above other items that exist outside the container, such as a navbar.  In the example below a `z-index: 1;` has been added to the `#modalRootElement` container so that the contained modal, and backdrop, do not overlap the site header when the page is scrolled.
+
 While most modal positioning options are supported, the fullscreen variants should not be used within a container.
 
 **Note:** Contained modals do not work well within Internet Explorer and are not supported. Issues could include multiple scrollbars or having to scroll within the container to locate the modal.  Since IE is a low usage browser at this point effort has not been made to fix these issues specific to IE, and will most likely not be attempted in the future.
 
 {% capture example %}
 <!-- Modal will appear within this element, and not the document body -->
-<div id="modalRootElement" class="position-relative border" style="height: 300px;">
+<div id="modalRootElement" class="position-relative border" style="height: 300px; z-index: 1;">
   <!-- Modal -->
   <div id="modalContained" class="modal">
     <div class="modal-dialog">
@@ -1256,8 +1260,8 @@ Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a control
 
 #### Dismiss
 
-{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
-{% include jsDismiss with name: 'modal' %}
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./site/_includes/" | append: "/partials/js-dismiss.md" -%}
+{% renderFile jsDismiss, extras %}
 
 {% capture callout %}
 While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
@@ -1680,6 +1684,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$component-bg</code></td>
         <td>
           Background color for modal content container.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-content-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for modal content container.
         </td>
       </tr>
       <tr>

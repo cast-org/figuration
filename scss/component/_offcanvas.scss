@@ -1,0 +1,143 @@
+@if $enable-offcanvas {
+    .offcanvas {
+        position: fixed;
+        bottom: 0;
+        z-index: $zindex-offcanvas;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        color: $offcanvas-color;
+        visibility: hidden;
+        background-color: $offcanvas-bg;
+        background-clip: padding-box;
+        outline: 0;
+        @include box-shadow($offcanvas-box-shadow);
+
+        &.showing,
+        &.in:not(.hiding) {
+            transform: none;
+        }
+
+        &.showing,
+        &.in.hiding {
+            @include transition($offcanvas-transition);
+        }
+
+        &.showing,
+        &.hiding,
+        &.in {
+            visibility: visible;
+        }
+    }
+
+    .offcanvas-backdrop {
+        @include backdrop-overlay($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+    }
+
+    // Offcanvas rootElement specified
+    .offcanvas-open:not(body) {
+        .offcanvas {
+            position: absolute;
+        }
+        .offcanvas-backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @if $enable-offcanvas-header {
+        .offcanvas-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: $offcanvas-header-padding-y $offcanvas-header-padding-x;
+            color: $offcanvas-header-color;
+            background-color: $offcanvas-header-bg;
+            border-bottom: $offcanvas-header-border-width solid $offcanvas-header-border-color;
+
+            // Close icon
+            .close {
+                // Make sure close appears 'after' the title
+                order: 1;
+                padding: $offcanvas-close-padding-y $offcanvas-close-padding-x;
+                // Left auto margin keeps close pushed to the right side even when no title
+                margin: (-$offcanvas-header-padding-y) (-$offcanvas-header-padding-x) (-$offcanvas-header-padding-y) auto;
+            }
+        }
+    }
+
+    @if $enable-offcanvas-title {
+        .offcanvas-title {
+            margin: 0;
+            line-height: $offcanvas-title-line-height;
+        }
+    }
+
+    @if $enable-offcanvas-body {
+        .offcanvas-body {
+            flex-grow: 1;
+            padding: $offcanvas-body-padding-y $offcanvas-body-padding-x;
+            overflow-y: auto;
+        }
+    }
+
+    @if $enable-offcanvas-footer {
+        .offcanvas-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; // right align buttons
+            padding: $offcanvas-footer-padding-y $offcanvas-footer-padding-x;
+            color: $offcanvas-footer-color;
+            background-color: $offcanvas-footer-bg;
+            border-top: $offcanvas-footer-border-width solid $offcanvas-footer-border-color;
+
+            // Simulate spaces between footer elements with margins
+            > :not(:first-child) { margin-left: .25rem; }
+            > :not(:last-child) { margin-right: .25rem; }
+        }
+    }
+
+    @if $enable-offcanvas-side-start {
+        .offcanvas-start {
+            top: 0;
+            left: 0;
+            width: $offcanvas-horizontal-width;
+            border-right: $offcanvas-border-width solid $offcanvas-border-color;
+            transform: translateX(-100%);
+        }
+    }
+
+    @if $enable-offcanvas-side-end {
+        .offcanvas-end {
+            top: 0;
+            right: 0;
+            width: $offcanvas-horizontal-width;
+            border-left: $offcanvas-border-width solid $offcanvas-border-color;
+            transform: translateX(100%);
+        }
+    }
+
+    @if $enable-offcanvas-side-top {
+        .offcanvas-top {
+            top: 0;
+            right: 0;
+            left: 0;
+            height: $offcanvas-vertical-height;
+            max-height: 100%;
+            border-bottom: $offcanvas-border-width solid $offcanvas-border-color;
+            transform: translateY(-100%);
+        }
+    }
+
+    @if $enable-offcanvas-side-bottom {
+        .offcanvas-bottom {
+            right: 0;
+            left: 0;
+            height: $offcanvas-vertical-height;
+            max-height: 100%;
+            border-top: $offcanvas-border-width solid $offcanvas-border-color;
+            transform: translateY(100%);
+        }
+    }
+}

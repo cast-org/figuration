@@ -5,6 +5,8 @@ subtitle: alert.js
 description: Enable dismiss functionality for alert messages.
 group: widgets
 toc: true
+extras:
+  name: alert
 ---
 
 {% capture callout %}
@@ -97,8 +99,8 @@ If the dismiss button is disabled, then the close action will be blocked.
 
 ### Via Data Attributes
 
-{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/js-dismiss.md" -%}
-{% include jsDismiss with name: 'popover' %}
+{% assign jsDismiss = version.docs | valueIfEmpty: site.version.docs | prepend: "./site/_includes/" | append: "/partials/js-dismiss.md" -%}
+{% renderFile jsDismiss, extras %}
 
 An example can be found in the [JavaScript Intergration section within the Badges component page]({{ site.path }}/{{ version.docs }}/components/badges/#javascript-integration).
 

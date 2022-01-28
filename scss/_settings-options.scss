@@ -168,6 +168,7 @@ $enable-navbar-text:                        true !default;
 $enable-navbar-divider:                     true !default;
 $enable-navbar-collapse:                    true !default;
 $enable-navbar-toggle:                      true !default;
+$enable-navbar-offcanvas:                   true !default;
 $enable-navbar-light:                       true !default;
 $enable-navbar-dark:                        true !default;
 
@@ -198,6 +199,17 @@ $enable-dropdown-text:                      true !default;
 $enable-dropdown-divider:                   true !default;
 $enable-dropdown-dropup:                    true !default;
 $enable-dropdown-back:                      true !default;
+
+// Offcanvas
+$enable-offcanvas:                          true !default;
+$enable-offcanvas-side-start:               true !default;
+$enable-offcanvas-side-end:                 true !default;
+$enable-offcanvas-side-top:                 true !default;
+$enable-offcanvas-side-bottom:              true !default;
+$enable-offcanvas-header:                   true !default;
+$enable-offcanvas-title:                    true !default;
+$enable-offcanvas-body:                     true !default;
+$enable-offcanvas-footer:                   true !default;
 
 // Modal
 $enable-modal:                              true !default;
