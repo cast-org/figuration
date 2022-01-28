@@ -218,7 +218,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
 
 Offcanvas is supported within the navbar component allowing for flexible navigation options along with support for responsive layouts.
 
-Information and examples can be found in the [Offcavnas section on the Navbar component page]({{ site.path }}/{{ version.docs }}/components/navbar/#offcanvas).
+Information and examples can be found in the [Offcanvas section on the Navbar component page]({{ site.path }}/{{ version.docs }}/components/navbar/#offcanvas).
 
 ### Contained Offcanvas
 
