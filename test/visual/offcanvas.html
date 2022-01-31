@@ -169,6 +169,7 @@ body {
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBack" data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="false">backdrop: true, scroll false (default)</button>
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasScroll"  data-cfw-offcanvas-backdrop="false" data-cfw-offcanvas-scroll="true">backdrop: false, scroll true</button>
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBackScroll"  data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="true">backdrop: true, scroll true</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasStatic"  data-cfw-offcanvas-backdrop="static">backdrop: static</button>
 
 <div id="offcanvasBack" class="offcanvas offcanvas-start">
     <div class="offcanvas-header">
@@ -189,6 +190,15 @@ body {
     </div>
 </div>
 <div id="offcanvasBackScroll" class="offcanvas offcanvas-start">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Offcanvas backdrop and scroll</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+<div id="offcanvasStatic" class="offcanvas offcanvas-start">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title">Offcanvas backdrop and scroll</h5>
         <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>

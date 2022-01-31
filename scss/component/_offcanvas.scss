@@ -140,4 +140,10 @@
             transform: translateY(100%);
         }
     }
+
+    // Close is blocked animation
+    .offcanvas.offcanvas-blocked.in {
+        @include transition($offcanvas-blocked-transition);
+        transform: $offcanvas-blocked-transform;
+    }
 }

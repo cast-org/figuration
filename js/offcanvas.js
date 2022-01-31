@@ -208,11 +208,15 @@
             var $selfRef = this;
             return new CFW_Backdrop({
                 className: 'offcanvas-backdrop',
-                isVisible: this.settings.backdrop,
+                isVisible: Boolean(this.settings.backdrop), // 'static' option will be translated to true, and booleans will keep their value
                 isAnimated: this.settings.animate,
                 rootElement: this.$target.parent(),
                 clickCallback: function() {
-                    $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef._hideBlocked();
+                    } else {
+                        $selfRef.hide();
+                    }
                 }
             });
         },
@@ -223,11 +227,30 @@
 
             if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.offcanvas', function(e) {
-                    if ($selfRef.settings.keyboard && e.which === KEYCODE_ESC) {
-                        $selfRef.hide();
+                    if (e.which === KEYCODE_ESC) {
+                        if (!$selfRef.settings.keyboard) {
+                            $selfRef._hideBlocked();
+                        } else {
+                            $selfRef.hide();
+                        }
                     }
                 });
             }
+        },
+
+        _hideBlocked : function() {
+            var $selfRef = this;
+            if (!this.$target.CFW_trigger('beforeHide.cfw.offcanvas')) {
+                return;
+            }
+
+            var complete = function() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target.removeClass('offcanvas-blocked');
+            };
+
+            this.$target.addClass('offcanvas-blocked');
+            this.$target.CFW_transition(null, complete);
         }
     };
 

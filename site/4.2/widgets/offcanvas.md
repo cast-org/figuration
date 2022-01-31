@@ -171,15 +171,18 @@ There is no default placement for an offcanvas components, so you must add one o
 {% endcapture %}
 {% renderExample example %}
 
-### Backdrop
+### Backdrop and Scrolling
 
 Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `scroll` option to toggle `<body>` scrolling and the `backdrop` option to toggle the use of a backdrop.
+
+When `backdrop` option is set to `static`, the offcanvas will not close when clicking outside it.
 
 {% capture example %}
 <!-- Toggle buttons -->
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBack" data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="false">Enable backdrop (default)</button>
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasScroll"  data-cfw-offcanvas-backdrop="false" data-cfw-offcanvas-scroll="true">Disabled backdrop and enable scrolling</button>
 <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasBackScroll"  data-cfw-offcanvas-backdrop="true" data-cfw-offcanvas-scroll="true">Enable both backdrop and scrolling</button>
+<button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasStatic" data-cfw-offcanvas-backdrop="static">Static backdrop</button>
 
 <!-- Offcanvas elements -->
 <div id="offcanvasBack" class="offcanvas offcanvas-start">
@@ -209,6 +212,16 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
   </div>
   <div class="offcanvas-body">
     Scrolling is enabled so you can scroll and interact with the page, but clicking on the backdrop will dismiss the offcanvas item.
+  </div>
+</div>
+
+<div id="offcanvasStatic" class="offcanvas offcanvas-start">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title h5">Offcanvas static backdrop</h4>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body">
+    Clicking on a 'static' backdrop will not dismiss the offcanvas item.
   </div>
 </div>
 {% endcapture %}
@@ -779,6 +792,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>transform .3s linear</code></td>
         <td>
           Transition settings for the <code>.offcanvas</code> animations.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$offcanvas-blocked-transition</code></td>
+        <td>string</td>
+        <td><code>transform .15s linear</code></td>
+        <td>
+          Transition setting for close being blocked.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$offcanvas-blocked-transform</code></td>
+        <td>string</td>
+        <td><code>scale(1.01)</code></td>
+        <td>
+          Transform setting for close being blocked.
         </td>
       </tr>
     </tbody>
