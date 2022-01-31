@@ -6702,6 +6702,17 @@ a.drag.disabled {
   transform: translateY(100%);
 }
 
+.offcanvas.offcanvas-blocked.in {
+  transition: transform 0.15s linear;
+  transform: scale(1.01);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offcanvas.offcanvas-blocked.in {
+    transition: none;
+  }
+}
+
 .modal {
   position: fixed;
   top: 0;

@@ -343,6 +343,7 @@ if (typeof jQuery === 'undefined') {
 
     var CFW_Util_Scrollbar = function(options) {
         this.element = null;
+        this._isActive = false;
         this.scrollbarWidth = null;
         this.settings = $.extend({}, CFW_Util_Scrollbar.DEFAULTS, options);
 
@@ -396,6 +397,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         disable : function() {
+            if (this._isActive) {
+                return;
+            }
+
             var $selfRef = this;
             this.scrollbarWidth = this.getScrollbarWidth();
 
@@ -426,9 +431,15 @@ if (typeof jQuery === 'undefined') {
                     $selfRef._setScrollbarAdjustment(this, 'margin-' + side, marginCalc);
                 }
             });
+
+            this._isActive = true;
         },
 
         reset : function() {
+            if (!this._isActive) {
+                return;
+            }
+
             var $selfRef = this;
             var side = this.getScrollbarSide();
             this._resetScrollbarAdjustment(this.element, 'overflow');
@@ -442,6 +453,7 @@ if (typeof jQuery === 'undefined') {
                 $selfRef._resetScrollbarAdjustment(this, 'margin-' + side);
             });
             this.scrollbarWidth = null;
+            this._isActive = false;
         },
 
         _saveInitialAttribute : function(node, property) {
@@ -4184,7 +4196,7 @@ if (typeof jQuery === 'undefined') {
 
             this.isShown = true;
             this._backdrop.show();
-            if (!this.settings.scroll) {
+            if (this._disableScrollbar()) {
                 this._scrollbar.disable();
             }
             this.$rootElement.addClass('offcanvas-open');
@@ -4199,6 +4211,8 @@ if (typeof jQuery === 'undefined') {
                 this.$target.addClass('showing');
             }
             this.$target.data('cfw.offcanvas', this);
+
+            $(window).on('resize.cfw.offcanvas', this._handleResize.bind(this));
 
             var complete = function() {
                 $selfRef.$target
@@ -4225,6 +4239,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             this._focuser.deactivate();
+            $(window).off('resize.cfw.offcanvas');
             this.$target
                 .off('.dismiss.cfw.offcanvas')
                 .trigger('blur');
@@ -4242,9 +4257,7 @@ if (typeof jQuery === 'undefined') {
 
                 $selfRef.$rootElement.removeClass('offcanvas-open');
 
-                if (!$selfRef.settings.scroll) {
-                    $selfRef._scrollbar.reset();
-                }
+                $selfRef._scrollbar.reset();
 
                 $selfRef.$element.CFW_trigger('afterHide.cfw.offcanvas');
 
@@ -4261,6 +4274,7 @@ if (typeof jQuery === 'undefined') {
             this._focuser.deactivate();
             this._scrollbar.reset();
 
+            $(window).off('resize.cfw.offcanvas');
             this.$target
                 .off('.cfw.offcanvas')
                 .removeData('cfw.offcanvas');
@@ -4282,11 +4296,15 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
             return new CFW_Backdrop({
                 className: 'offcanvas-backdrop',
-                isVisible: this.settings.backdrop,
+                isVisible: Boolean(this.settings.backdrop), // 'static' option will be translated to true, and booleans will keep their value
                 isAnimated: this.settings.animate,
                 rootElement: this.$target.parent(),
                 clickCallback: function() {
-                    $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef._hideBlocked();
+                    } else {
+                        $selfRef.hide();
+                    }
                 }
             });
         },
@@ -4297,10 +4315,58 @@ if (typeof jQuery === 'undefined') {
 
             if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.offcanvas', function(e) {
-                    if ($selfRef.settings.keyboard && e.which === KEYCODE_ESC) {
-                        $selfRef.hide();
+                    if (e.which === KEYCODE_ESC) {
+                        if (!$selfRef.settings.keyboard) {
+                            $selfRef._hideBlocked();
+                        } else {
+                            $selfRef.hide();
+                        }
                     }
                 });
+            }
+        },
+
+        _hideBlocked : function() {
+            var $selfRef = this;
+            if (!this.$target.CFW_trigger('beforeHide.cfw.offcanvas')) {
+                return;
+            }
+
+            var complete = function() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target.removeClass('offcanvas-blocked');
+            };
+
+            this.$target.addClass('offcanvas-blocked');
+            this.$target.CFW_transition(null, complete);
+        },
+
+        _disableScrollbar : function() {
+            var rootWidth = this.$rootElement[0] === document.body ? document.body.offsetWidth : this.$rootElement[0].offsetWidth;
+            var rootHeight = this.$rootElement[0] === document.body ? window.innerHeight : this.$rootElement[0].offsetHeight;
+
+            return !this.settings.scroll || (this.$target[0].offsetWidth >= rootWidth && this.$target[0].offsetHeight >= rootHeight);
+        },
+
+        _isPositioned : function() {
+            var position = window.getComputedStyle(this.$target[0], null).getPropertyValue('position');
+            return /(fixed|absolute)/i.test(position);
+        },
+
+        _handleResize : function() {
+            if (!this.isShown) {
+                return;
+            }
+
+            if (!this._isPositioned()) {
+                this.hide();
+                return;
+            }
+
+            if (this._disableScrollbar()) {
+                this._scrollbar.disable();
+            } else {
+                this._scrollbar.reset();
             }
         }
     };
