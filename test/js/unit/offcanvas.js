@@ -286,6 +286,30 @@ $(function() {
             .CFW_Offcanvas('show');
     });
 
+    QUnit.test('should not close offcanvas when clicking backdrop with "backdrop:static"', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+
+        var $trigger = $('<button data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvas">Offcanvas</button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="offcanvas" class="offcanvas"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Offcanvas({
+            backdrop: 'static'
+        });
+
+        $trigger
+            .on('afterShow.cfw.offcanvas', function() {
+                assert.ok($target.hasClass('in'), 'offcanvas shown');
+                assert.ok($('.offcanvas-backdrop'), 1, 'offcanvas-backdrop created');
+                $('.offcanvas-backdrop').trigger('mousedown');
+
+                setTimeout(function() {
+                    assert.ok($target.hasClass('in'));
+                    done();
+                });
+            })
+            .CFW_Offcanvas('show');
+    });
+
     QUnit.test('`scroll: false` should auto focus on offcanvas element', function(assert) {
         assert.expect(1);
         var done = assert.async();

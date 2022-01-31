@@ -1349,6 +1349,9 @@ $offcanvas-footer-border-width: $offcanvas-header-border-width !default;
 $offcanvas-horizontal-width:    rem(400px) !default; // 400px=>25rem !default;
 $offcanvas-vertical-height:     33vh !default;
 
+$offcanvas-blocked-transition:  transform .15s linear !default;
+$offcanvas-blocked-transform:   scale(1.01) !default;
+
 
 // Modals
 // =====
