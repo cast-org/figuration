@@ -110,7 +110,7 @@
 
             this.isShown = true;
             this._backdrop.show();
-            if (!this.settings.scroll) {
+            if (this._disableScrollbar()) {
                 this._scrollbar.disable();
             }
             this.$rootElement.addClass('offcanvas-open');
@@ -125,6 +125,8 @@
                 this.$target.addClass('showing');
             }
             this.$target.data('cfw.offcanvas', this);
+
+            $(window).on('resize.cfw.offcanvas', this._handleResize.bind(this));
 
             var complete = function() {
                 $selfRef.$target
@@ -151,6 +153,7 @@
             }
 
             this._focuser.deactivate();
+            $(window).off('resize.cfw.offcanvas');
             this.$target
                 .off('.dismiss.cfw.offcanvas')
                 .trigger('blur');
@@ -168,9 +171,7 @@
 
                 $selfRef.$rootElement.removeClass('offcanvas-open');
 
-                if (!$selfRef.settings.scroll) {
-                    $selfRef._scrollbar.reset();
-                }
+                $selfRef._scrollbar.reset();
 
                 $selfRef.$element.CFW_trigger('afterHide.cfw.offcanvas');
 
@@ -187,6 +188,7 @@
             this._focuser.deactivate();
             this._scrollbar.reset();
 
+            $(window).off('resize.cfw.offcanvas');
             this.$target
                 .off('.cfw.offcanvas')
                 .removeData('cfw.offcanvas');
@@ -251,6 +253,35 @@
 
             this.$target.addClass('offcanvas-blocked');
             this.$target.CFW_transition(null, complete);
+        },
+
+        _disableScrollbar : function() {
+            var rootWidth = this.$rootElement[0] === document.body ? document.body.offsetWidth : this.$rootElement[0].offsetWidth;
+            var rootHeight = this.$rootElement[0] === document.body ? window.innerHeight : this.$rootElement[0].offsetHeight;
+
+            return !this.settings.scroll || (this.$target[0].offsetWidth >= rootWidth && this.$target[0].offsetHeight >= rootHeight);
+        },
+
+        _isPositioned : function() {
+            var position = window.getComputedStyle(this.$target[0], null).getPropertyValue('position');
+            return /(fixed|absolute)/i.test(position);
+        },
+
+        _handleResize : function() {
+            if (!this.isShown) {
+                return;
+            }
+
+            if (!this._isPositioned()) {
+                this.hide();
+                return;
+            }
+
+            if (this._disableScrollbar()) {
+                this._scrollbar.disable();
+            } else {
+                this._scrollbar.reset();
+            }
         }
     };
 

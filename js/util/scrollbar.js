@@ -14,6 +14,7 @@
 
     var CFW_Util_Scrollbar = function(options) {
         this.element = null;
+        this._isActive = false;
         this.scrollbarWidth = null;
         this.settings = $.extend({}, CFW_Util_Scrollbar.DEFAULTS, options);
 
@@ -67,6 +68,10 @@
         },
 
         disable : function() {
+            if (this._isActive) {
+                return;
+            }
+
             var $selfRef = this;
             this.scrollbarWidth = this.getScrollbarWidth();
 
@@ -97,9 +102,15 @@
                     $selfRef._setScrollbarAdjustment(this, 'margin-' + side, marginCalc);
                 }
             });
+
+            this._isActive = true;
         },
 
         reset : function() {
+            if (!this._isActive) {
+                return;
+            }
+
             var $selfRef = this;
             var side = this.getScrollbarSide();
             this._resetScrollbarAdjustment(this.element, 'overflow');
@@ -113,6 +124,7 @@
                 $selfRef._resetScrollbarAdjustment(this, 'margin-' + side);
             });
             this.scrollbarWidth = null;
+            this._isActive = false;
         },
 
         _saveInitialAttribute : function(node, property) {
