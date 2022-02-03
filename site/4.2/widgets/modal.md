@@ -1291,11 +1291,15 @@ If you want for example a zoom-in animation, you can set `$modal-transform-fade:
 
 If the height of a modal changes while it is open, you will need to call `$('#myModal').CFW_Modal('handleUpdate');` to readjust the modal's position and backdrop.
 
-### With Fixed Position Content
+### With Positioned Content
 
-Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the [fixed positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the `padding-right` CSS value will be reset.
+Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed or sticky positioned elements.
 
-There is also an additional special classname that the modal widget will look for when adjusting padding values.  Simply add the `.is-fixed` class to your element, and it will automatically be handled.
+The scrollbar handler will attempt to adjust padding values, and margin for sticky elements, to mitigate the content shift.  These values will then be reset when the modal dialog is closed.
+
+Some [positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes (`.fixed-top`, `.fixed-bottom`, and `.sticky-top`) are automatically handled.  For respsonsive or custom positioned items, there additional `.is-fixed` and `.is-sticky` helper classes can be added to an element to trigger the scrollbar handler to adjust for the shift.  The scrollbar handler will check the computed style on any item with these classes, and only adjust when neccessary.
+
+Custom positioned elements using translation to modify their position may not be handled correctly, so a custom solution may be needed.
 
 ### Options
 
