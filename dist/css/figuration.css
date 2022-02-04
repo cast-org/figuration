@@ -71,7 +71,7 @@ body {
 hr {
   margin: 1rem 0;
   color: inherit;
-  background-color: currentColor;
+  background-color: currentcolor;
   border: 0;
   opacity: 0.25;
 }
@@ -6545,18 +6545,18 @@ a.drag.disabled {
 }
 
 .loader-circle::after, .loader-double::after {
-  border-left-color: currentColor;
+  border-left-color: currentcolor;
   -webkit-animation: 1s linear infinite loader-spin-cw;
           animation: 1s linear infinite loader-spin-cw;
 }
 
 .loader-circle::before, .loader-double::before {
-  border-color: currentColor;
+  border-color: currentcolor;
   opacity: 0.25;
 }
 
 .loader-double::after {
-  border-right-color: currentColor;
+  border-right-color: currentcolor;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6721,7 +6721,8 @@ a.drag.disabled {
   display: none;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   direction: ltr /*rtl:ignore*/;
   outline: 0;
 }
@@ -13334,7 +13335,7 @@ a.text-gray-900:hover, a.text-gray-900:focus {
   align-self: stretch;
   width: 1px;
   min-height: 1em;
-  background-color: currentColor;
+  background-color: currentcolor;
   border: 0;
   opacity: 0.25;
 }
