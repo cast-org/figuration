@@ -367,6 +367,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>true</code></td>
         <td>Enforce focus when using keyboard navigation to remain within the offcanvas dialog.</td>
       </tr>
+      <tr>
+        <td><code>manual</code></td>
+        <td>boolean</td>
+        <td><code>false</code></td>
+        <td>If the offcanvas should be triggered manually through method calls, not from clicking the trigger element.  Closing a manual offcanvas will not autoamatically return focus to the trigger item when the offcanvas is hidden.</td>
+      </tr>
     </tbody>
   </table>
 </div>

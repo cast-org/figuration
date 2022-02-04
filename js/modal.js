@@ -35,6 +35,7 @@
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
+        manual       : false,   // If modal should trigger manually (programatically)
         show         : false,   // Show modal afer initialize
         focus        : true,    // Keep focus within the modal dialog
         rootElement  : 'body'
@@ -84,7 +85,9 @@
             });
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', this.toggle.bind(this));
+            if (!this.settings.manual) {
+                this.$element.on('click.cfw.modal', this.toggle.bind(this));
+            }
 
             this.$target.data('cfw.modal', this);
 
@@ -256,7 +259,9 @@
                 .CFW_mutationIgnore()
                 .css('display', 'none');
 
-            this.$element.trigger('focus');
+            if (!this.settings.manual) {
+                this.$element.trigger('focus');
+            }
 
             this.backdrop(function() {
                 $selfRef.$rootElement.removeClass('modal-open');

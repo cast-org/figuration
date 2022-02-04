@@ -550,4 +550,62 @@ $(function() {
             })
             .CFW_Offcanvas('show');
     });
+
+    QUnit.test('`manual: true` should not add click toggle to trigger', function(assert) {
+        assert.expect(1);
+        var $trigger = $('<button data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvas">Offcanvas</button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="offcanvas" class="offcanvas"></div>').appendTo('#qunit-fixture');
+        $trigger
+            .CFW_Offcanvas({
+                manual: true
+            })
+            .trigger('focus')
+            .trigger('click');
+
+        assert.ok(!$target.hasClass('in'), 'does not have class "in"');
+    });
+
+    QUnit.test('`manual: true` should still auto focus on offcanvas element', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $trigger = $('<button data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvas">Offcanvas</button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="offcanvas" class="offcanvas"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Offcanvas({
+            manual: true
+        });
+
+        $trigger
+            .on('afterShow.cfw.offcanvas', function() {
+                assert.strictEqual(document.activeElement, $target[0]);
+                done();
+            })
+            .CFW_Offcanvas('show');
+    });
+
+
+    QUnit.test('`manual: true` should not return focus to trigger on close', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<button data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvas">Offcanvas</button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="offcanvas" class="offcanvas"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Offcanvas({
+            manual: true
+        });
+
+        $trigger
+            .on('afterShow.cfw.offcanvas', function() {
+                setTimeout(function() {
+                    assert.strictEqual(document.activeElement, $target[0], 'offcanvas is focused');
+                    $trigger.CFW_Offcanvas('hide');
+                });
+            })
+            .on('afterHide.cfw.offcanvas', function() {
+                setTimeout(function() {
+                    assert.notEqual(document.activeElement, $trigger[0], 'trigger is not focused');
+                    done();
+                });
+            });
+
+        $trigger.CFW_Offcanvas('show');
+    });
 });

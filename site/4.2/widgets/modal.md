@@ -1373,6 +1373,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>false</code></td>
         <td>Shows the modal when initialized.</td>
       </tr>
+      <tr>
+        <td><code>manual</code></td>
+        <td>boolean</td>
+        <td><code>false</code></td>
+        <td>If the modal should be triggered manually through method calls, not from clicking the trigger element.  Closing a manual modal will not autoamatically return focus to the trigger item when the modal is hidden.</td>
+      </tr>
     </tbody>
   </table>
 </div>

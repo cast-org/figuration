@@ -248,6 +248,22 @@ body {
 
 <hr>
 
+<button id="offcanvasManualBtn" class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasManual"  data-cfw-offcanvas-manual="true" data-cfw-offcanvas-backdrop="false">manual: true</button>
+<button class="btn btn-link" type="button" onclick="$('#offcanvasManualBtn').CFW_Offcanvas('show'); return false;">show</button>
+<button class="btn btn-link" type="button" onclick="$('#offcanvasManualBtn').CFW_Offcanvas('hide'); return false;">hide</button>
+
+<div id="offcanvasManual" class="offcanvas offcanvas-end">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Manual offcanvas</h5>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+        Offcanvas content
+    </div>
+</div>
+
+<hr>
+
 <div id="offcanvasEx-2-container" class="mt-1 bg-light border overflow-hidden position-relative" style="height: 200px; z-index: 1;">
     <div id="offcanvasEx-2" class="offcanvas offcanvas-start">
         <div class="offcanvas-header">
