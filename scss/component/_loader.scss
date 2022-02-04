@@ -27,12 +27,12 @@
 
         }
         &::after {
-            border-left-color: currentColor;
+            border-left-color: currentcolor;
             animation: $loader-circle-animation-speed linear infinite loader-spin-cw;
         }
 
         &::before {
-            border-color: currentColor;
+            border-color: currentcolor;
             opacity: $loader-circle-alt-opacity;
         }
     }
@@ -48,7 +48,7 @@
             @extend %loader-circle-base;
 
             &::after {
-                border-right-color: currentColor;
+                border-right-color: currentcolor;
             }
         }
     }
