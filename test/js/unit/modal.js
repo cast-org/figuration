@@ -790,4 +790,77 @@ $(function() {
         });
         $trigger.CFW_Modal('show');
     });
+
+    QUnit.test('manual=true option should not add click toggle to trigger', function(assert) {
+        assert.expect(1);
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><button class="close" data-cfw-dismiss="modal"></button></div>').appendTo(document.body);
+
+        $trigger
+            .CFW_Modal({
+                manual: true
+            })
+            .trigger('focus')
+            .trigger('click');
+
+        assert.notOk($target.hasClass('in'), 'modal visible');
+    });
+
+
+    QUnit.test('manual=true should still enforce focus by default', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><button class="close" data-cfw-dismiss="modal"></button></div>').appendTo(document.body);
+        var $close = $('.close');
+
+        $target.one('afterShow.cfw.modal', function() {
+            setTimeout(function() {
+                $target.one('focusin', function() {
+                    setTimeout(function() {
+                        assert.strictEqual(document.activeElement, $close[0], 'focused moved inside modal');
+                        done();
+                    });
+                });
+                assert.strictEqual(document.activeElement, $target[0], 'modal is focused');
+                $trigger.trigger('focusin');
+            });
+        });
+
+        $trigger
+            .CFW_Modal({
+                manual: true
+            })
+            .CFW_Modal('show');
+    });
+
+    QUnit.test('manual=true should not return focus to trigger on close', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><button class="close" data-cfw-dismiss="modal"></button></div>').appendTo(document.body);
+        var $close = $('.close');
+
+        $target.one('afterShow.cfw.modal', function() {
+            setTimeout(function() {
+                assert.strictEqual(document.activeElement, $target[0], 'modal is focused');
+                $close.trigger('click');
+            });
+        });
+        $target.one('afterHide.cfw.modal', function() {
+            setTimeout(function() {
+                assert.notEqual(document.activeElement, $trigger[0], 'trigger is not focused');
+                done();
+            });
+        });
+
+        $trigger
+            .CFW_Modal({
+                manual: true
+            })
+            .CFW_Modal('show');
+    });
 });

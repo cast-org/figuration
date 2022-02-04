@@ -33,6 +33,7 @@
         keyboard     : true,    // Close offcanvas on ESC press
         scroll       : false,   // Allow rootElement to scroll
         focus        : true,    // Keep focus within the offcanvas element
+        manual       : false,   // If offcanvas should trigger manually (programatically)
         rootElement  : 'body'
     };
 
@@ -70,7 +71,11 @@
             this.$target.attr('tabindex', -1);
 
             // Bind click handler
-            this.$element.on('click.cfw.offcanvas', this.toggle.bind(this));
+            if (!this.settings.manual) {
+                this.$element.on('click.cfw.offcanvas', this.toggle.bind(this));
+            }
+
+            this.$target.data('cfw.offcanvas', this);
 
             this.$element.CFW_trigger('init.cfw.offcanvas');
         },
@@ -138,6 +143,8 @@
                 $selfRef.$element.CFW_trigger('afterShow.cfw.offcanvas');
             };
 
+            this.$target.data('cfw.offcanvas', this);
+
             this.$target.CFW_transition(null, complete);
         },
 
@@ -175,7 +182,7 @@
 
                 $selfRef.$element.CFW_trigger('afterHide.cfw.offcanvas');
 
-                if ($.CFW_isVisible($selfRef.$element)) {
+                if ($.CFW_isVisible($selfRef.$element) && !$selfRef.settings.manual) {
                     $selfRef.$element.trigger('focus');
                 }
             };
