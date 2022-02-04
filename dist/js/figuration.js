@@ -4119,6 +4119,7 @@ if (typeof jQuery === 'undefined') {
         keyboard     : true,    // Close offcanvas on ESC press
         scroll       : false,   // Allow rootElement to scroll
         focus        : true,    // Keep focus within the offcanvas element
+        manual       : false,   // If offcanvas should trigger manually (programatically)
         rootElement  : 'body'
     };
 
@@ -4156,7 +4157,11 @@ if (typeof jQuery === 'undefined') {
             this.$target.attr('tabindex', -1);
 
             // Bind click handler
-            this.$element.on('click.cfw.offcanvas', this.toggle.bind(this));
+            if (!this.settings.manual) {
+                this.$element.on('click.cfw.offcanvas', this.toggle.bind(this));
+            }
+
+            this.$target.data('cfw.offcanvas', this);
 
             this.$element.CFW_trigger('init.cfw.offcanvas');
         },
@@ -4224,6 +4229,8 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$element.CFW_trigger('afterShow.cfw.offcanvas');
             };
 
+            this.$target.data('cfw.offcanvas', this);
+
             this.$target.CFW_transition(null, complete);
         },
 
@@ -4261,7 +4268,7 @@ if (typeof jQuery === 'undefined') {
 
                 $selfRef.$element.CFW_trigger('afterHide.cfw.offcanvas');
 
-                if ($.CFW_isVisible($selfRef.$element)) {
+                if ($.CFW_isVisible($selfRef.$element) && !$selfRef.settings.manual) {
                     $selfRef.$element.trigger('focus');
                 }
             };
@@ -4433,6 +4440,7 @@ if (typeof jQuery === 'undefined') {
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
         keyboard     : true,    // Close modal on ESC press
+        manual       : false,   // If modal should trigger manually (programatically)
         show         : false,   // Show modal afer initialize
         focus        : true,    // Keep focus within the modal dialog
         rootElement  : 'body'
@@ -4482,7 +4490,9 @@ if (typeof jQuery === 'undefined') {
             });
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', this.toggle.bind(this));
+            if (!this.settings.manual) {
+                this.$element.on('click.cfw.modal', this.toggle.bind(this));
+            }
 
             this.$target.data('cfw.modal', this);
 
@@ -4654,7 +4664,9 @@ if (typeof jQuery === 'undefined') {
                 .CFW_mutationIgnore()
                 .css('display', 'none');
 
-            this.$element.trigger('focus');
+            if (!this.settings.manual) {
+                this.$element.trigger('focus');
+            }
 
             this.backdrop(function() {
                 $selfRef.$rootElement.removeClass('modal-open');
