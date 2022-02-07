@@ -730,6 +730,7 @@ $table-foot-border-width:       2 * $table-border-width !default;
 $table-foot-border-color:       null !default;
 
 $table-striped-selector:        odd !default;
+$table-striped-cols-selector:   even !default;
 $table-striped-box-shadow:      inset 0 0 0 999rem rgba($uibase-900, .075) !default;
 $table-striped-alt-box-shadow:  inset 0 0 0 999rem rgba($white, .125) !default;
 

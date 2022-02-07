@@ -61,7 +61,7 @@ Using the most basic table markup, a `.table` will result in a mostly unstyled t
 
 ### Striped Rows
 
-Use `.table-striped{-alt}` to add zebra-striping to any table row within the `<tbody>`.  This is done by using a semi-opaque, inset `box-shadow` within each cell to adjust the perceived background color.
+Use `.table-striped{-alt}` to add zebra-striping to table rows within the `<tbody>`.  This is done by using a semi-opaque, inset `box-shadow` within each cell to adjust the perceived background color.
 
 Variants include:
 - `.table-striped` - darken the striped row's background-color
@@ -154,6 +154,108 @@ Variants include:
 </div>
 {% capture highlight %}
 <table class="table table-striped-alt bg-dark text-white">
+  ...
+</table>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Striped Columns
+
+Use `.table-striped-cols{-alt}` to add zebra-striping to table columns.
+
+Variants include:
+- `.table-striped-cols` - darken the striped columns's background-color
+- `.table-striped-cols-alt` - lighten the striped columns's background-color
+
+<div class="cf-example">
+  <table class="table table-striped-cols">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% capture highlight %}
+<table class="table table-striped-cols">
+  ...
+</table>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+<div class="cf-example">
+  <table class="table table-striped-cols-alt bg-dark text-white">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% capture highlight %}
+<table class="table table-striped-cols-alt bg-dark text-white">
   ...
 </table>
 {% endcapture %}
@@ -1738,7 +1840,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable the generation of striped table classes.
+          Enable the generation of striped table row classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-table-striped-cols</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of striped table column classes.
         </td>
       </tr>
       <tr>
@@ -1938,7 +2048,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>odd</code></td>
         <td>
-          Selector for table striping.
+          Selector for table row striping.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-striped-cols-selector</code></td>
+        <td>string</td>
+        <td><code>even</code></td>
+        <td>
+          Selector for table column striping.
         </td>
       </tr>
       <tr>

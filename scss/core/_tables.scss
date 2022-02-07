@@ -127,7 +127,7 @@
         }
     }
 
-    // Striped table
+    // Striped rows
     @if $enable-table-striped {
         .table-striped {
             > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
@@ -136,6 +136,20 @@
         }
         .table-striped-alt {
             > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
+                box-shadow: $table-striped-alt-box-shadow;
+            }
+        }
+    }
+
+    // Striped cols
+    @if $enable-table-striped-cols {
+        .table-striped-cols {
+            > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
+                box-shadow: $table-striped-box-shadow;
+            }
+        }
+        .table-striped-cols-alt {
+            > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
                 box-shadow: $table-striped-alt-box-shadow;
             }
         }
