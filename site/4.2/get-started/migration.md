@@ -17,7 +17,7 @@ toc: true
 - Split containers out into their own component with the addition of the `$enable-container` and `$enable-container-responsive` (replaces `$enable-grid-responsive-containers`).
 - Moved container related Sass into `.\scss\component\container.scss`
 
-### Content
+### Contents
 
 #### Tables
 - Added striped column variant.
