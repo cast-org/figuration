@@ -366,7 +366,7 @@
             this.locateTip();
 
             // Additional tab/focus handlers for non-inline items
-            if (this.settings.container) {
+            if (this.settings.container && this.isDialog) {
                 this._focuser = new CFW_Focuser({
                     element: this.$target[0],
                     autoFocus: false,
