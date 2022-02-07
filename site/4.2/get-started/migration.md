@@ -11,9 +11,16 @@ toc: true
 ### CSS
 - `z-index` values for tooltip, popover, modal-backdrop and modal elements were increased slightly to make space for the new Offcanvas components.
 
-### Grid
+### Layout
+
+#### Grid
 - Split containers out into their own component with the addition of the `$enable-container` and `$enable-container-responsive` (replaces `$enable-grid-responsive-containers`).
 - Moved container related Sass into `.\scss\component\container.scss`
+
+### Content
+
+#### Tables
+- Added striped column variant.
 
 ### Components
 
@@ -43,6 +50,7 @@ toc: true
 #### Modals
 - New 'contained' variant.  Set a modal within a container, instead of blocking the entire page.
 - New `focus` option - to disable the modal's focus trap.  Replaces the need to create an override function.
+- New `manual` option - trigger element will not get click toggle handler, and closing modal does not force focus back to trigger.
 
 #### Offcanvas
 - New widget!  Similar to the side-aligned modals, there a few slight differences in functionality, such as the responsive drawer capabilities when contained within a navbar.
