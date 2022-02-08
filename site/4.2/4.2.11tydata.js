@@ -77,6 +77,7 @@ module.exports = {
           { "title": "Icons" },
           { "title": "Interactions" },
           { "title": "Links" },
+          { "title": "Opacity" },
           { "title": "Overflow" },
           { "title": "Position" },
           { "title": "Screen Readers" },

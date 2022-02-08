@@ -1447,3 +1447,10 @@ $utility-display:           block, flex, inline, inline-block, inline-flex, grid
 $utility-overflow:          auto, hidden !default;
 $utility-position:          static, relative, absolute, fixed, sticky !default;
 $utility-order-max:         6 !default;
+$utility-opacity: (
+    "0": 0,
+    "25":.25,
+    "50": .5,
+    "75": .75,
+    "100": 1
+) !default;
