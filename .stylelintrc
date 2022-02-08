@@ -40,6 +40,7 @@
     "function-disallowed-list": [
       "calc"
     ],
+    "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "indentation": 4,
