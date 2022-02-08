@@ -338,7 +338,7 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     var SELECTOR_CONTENT_FIXED = '.fixed-top, .fixed-bottom, .is-fixed';
-    var SELECTOR_CONTENT_STICKY = '.sticky-top, .is-sticky';
+    var SELECTOR_CONTENT_STICKY = '.sticky-top, .sticky-bottom, .is-sticky';
     var SELECTOR_CONTENT_SHARED = [SELECTOR_CONTENT_FIXED, SELECTOR_CONTENT_STICKY].join(', ');
 
     var CFW_Util_Scrollbar = function(options) {
@@ -5654,7 +5654,7 @@ if (typeof jQuery === 'undefined') {
                 this.settings.delay = CFW_Widget_Lazy.DEFAULTS.delay;
             }
 
-            // Add placholder if src is not defined
+            // Add placeholder if src is not defined
             if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
