@@ -10,7 +10,7 @@ toc: true
 
 Loaders, or "spinners", are useful for showing a busy or loading state when applicable.  While they are built using only HTML and CSS, but you may need some custom JavaScript to toggle their visibility.
 
-By default the loaders border color inherit from the current text color using `border-color: currentColor`. The size, color, and alignment can be further adjusted through the use of utility classes.
+By default the loaders border color inherit from the current text color using `border-color: currentcolor`. The size, color, and alignment can be further adjusted through the use of utility classes.
 
 For accessibility the loader should use a `role="status"` attribute.  If a visible message is not being provided, a screen reader friendly message should be included.  Something as simple as `<span class="sr-only">Loading...</span>` contained within the loader element will suffice.
 
@@ -111,7 +111,7 @@ Use [font size utilities]({{ site.path }}/{{ version.docs }}/utilities/typograph
 Use [text color utilities]({{ site.path }}/{{ version.docs }}/utilities/color/#text) to control the loader color.
 
 {% capture callout %}
-Use `.text-{color}` utility classes instead of the `border-{color}` ones because the loaders make use of `border-color: currentColor` on their pseudo-elements. Using `.border-{color}` utilities will not result in a color change.
+Use `.text-{color}` utility classes instead of the `border-{color}` ones because the loaders make use of `border-color: currentcolor` on their pseudo-elements. Using `.border-{color}` utilities will not result in a color change.
 {% endcapture %}
 {% renderCallout, callout, "info" %}
 

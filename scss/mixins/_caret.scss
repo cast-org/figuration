@@ -1,5 +1,5 @@
-// Caret `border` will inherit the text color by default with `currentColor`
-// Default color value is `currentColor` when not defined
+// Caret `border` will inherit the text color by default with `currentcolor`
+// Default color value is `currentcolor` when not defined
 
 @mixin caret-down($width: $caret-border-width, $color: null) {
     margin-top: $width * -.5;

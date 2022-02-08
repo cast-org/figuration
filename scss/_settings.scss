@@ -1421,6 +1421,16 @@ $loader-circle-alt-opacity:             .25 !default;
 $loader-circle-vertical-align:          ($loader-circle-border-width * -.5) !default;
 $loader-circle-animation-speed:         1s !default;
 
+// Placeholder
+// =====
+$placeholder-opacity-max:               .5 !default;
+$placeholder-opacity-min:               .2 !default;
+$placeholder-sizes: (
+    "xsmall":   .5em,
+    "small":    .75em,
+    "large":    1.25em
+) !default;
+
 // Player
 // =====
 //$player-placeholder:    none !default;

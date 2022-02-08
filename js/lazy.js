@@ -44,7 +44,7 @@
                 this.settings.delay = CFW_Widget_Lazy.DEFAULTS.delay;
             }
 
-            // Add placholder if src is not defined
+            // Add placeholder if src is not defined
             if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
