@@ -286,6 +286,7 @@ $utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
 $utility-float-breakpoints:         map-keys($grid-breakpoints) !default;
 $utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
 $utility-sticky-top-breakpoints:    map-keys($grid-breakpoints) !default;
+$utility-sticky-bottom-breakpoints: map-keys($grid-breakpoints) !default;
 $utility-placement-breakpoints:     "xs" !default;
 $utility-translate-breakpoints:     "xs" !default;
 $utility-screen-reader-breakpoints: map-keys($grid-breakpoints) !default;

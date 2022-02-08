@@ -9,7 +9,7 @@
     'use strict';
 
     var SELECTOR_CONTENT_FIXED = '.fixed-top, .fixed-bottom, .is-fixed';
-    var SELECTOR_CONTENT_STICKY = '.sticky-top, .is-sticky';
+    var SELECTOR_CONTENT_STICKY = '.sticky-top, .sticky-bottom, .is-sticky';
     var SELECTOR_CONTENT_SHARED = [SELECTOR_CONTENT_FIXED, SELECTOR_CONTENT_STICKY].join(', ');
 
     var CFW_Util_Scrollbar = function(options) {

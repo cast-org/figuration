@@ -1297,7 +1297,7 @@ Since the scrollbar is removed from the `<body>` when a modal is shown, there ca
 
 The scrollbar handler will attempt to adjust padding values, and margin for sticky elements, to mitigate the content shift.  These values will then be reset when the modal dialog is closed.
 
-Some [positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes (`.fixed-top`, `.fixed-bottom`, and `.sticky-top`) are automatically handled.  For respsonsive or custom positioned items, there additional `.is-fixed` and `.is-sticky` helper classes can be added to an element to trigger the scrollbar handler to adjust for the shift.  The scrollbar handler will check the computed style on any item with these classes, and only adjust when neccessary.
+Some [positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes (`.fixed-top`, `.fixed-bottom`, `.sticky-top`, and `.sticky-bottom`) are automatically handled.  For respsonsive or custom positioned items, there additional `.is-fixed` and `.is-sticky` helper classes can be added to an element to trigger the scrollbar handler to adjust for the shift.  The scrollbar handler will check the computed style on any item with these classes, and only adjust when neccessary.
 
 Custom positioned elements using translation to modify their position may not be handled correctly, so a custom solution may be needed.
 
