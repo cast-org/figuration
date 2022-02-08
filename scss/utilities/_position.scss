@@ -59,6 +59,33 @@
         }
     }
 
+    @if $enable-utility-position-sticky-bottom {
+        @supports (position: sticky) {
+            .sticky-bottom {
+                position: sticky;
+                bottom: 0;
+                z-index: $zindex-sticky;
+            }
+
+            @if $enable-utility-position-sticky-bottom-responsive {
+                @each $bp in $utility-sticky-bottom-breakpoints {
+                    // Skip smallest breakpoint for up (equivalent to `.sticky-bottom`)
+                    @if breakpoint-min($bp, $grid-breakpoints) != null {
+                        $bprule: breakpoint-designator($bp);
+
+                        @include media-breakpoint-up($bp) {
+                            .sticky#{$bprule}-bottom {
+                                position: sticky;
+                                bottom: 0;
+                                z-index: $zindex-sticky;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @if $enable-utility-position-placement {
         @each $bp in $utility-placement-breakpoints {
             $bprule: breakpoint-designator($bp);

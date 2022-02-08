@@ -301,11 +301,16 @@ $('#myOffcanvas').CFW_Offcanvas();
 
 Any an element with a data attribute of `data-cfw-dismiss="offcanvas"` within the offcanvas element will act as a close trigger for the offcanvas.  There can be multiple close triggers, such as a header/titlebar close and a cancel button in the footer.
 
-### With Fixed Position Content
+### With Positioned Content
 
-When the scrollbar is removed from the `<body>` when an offcanvas is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when an offcanvas is shown, any elements using the [fixed positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the offcanvas is hidden, the `padding-right` CSS value will be reset.
+Since the scrollbar is removed from the `<body>` when an offcanvas is shown, there can be some shifting of content in fixed or sticky positioned elements.
 
-There is also an additional special classname that the offcanvas widget will look for when adjusting padding values.  Simply add the `.is-fixed` class to your element, and it will automatically be handled.
+The scrollbar handler will attempt to adjust padding values, and margin for sticky elements, to mitigate the content shift.  These values will then be reset when the offcanvas dialog is closed.
+
+Some [positioning utility]({{ site.path }}/{{ version.docs }}/utilities/position/) classes (`.fixed-top`, `.fixed-bottom`, `.sticky-top`, and `.sticky-bottom`) are automatically handled.  For respsonsive or custom positioned items, there additional `.is-fixed` and `.is-sticky` helper classes can be added to an element to trigger the scrollbar handler to adjust for the shift.  The scrollbar handler will check the computed style on any item with these classes, and only adjust when neccessary.
+
+Custom positioned elements using translation to modify their position may not be handled correctly, so a custom solution may be needed.
+
 
 ### Options
 
@@ -773,7 +778,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>$offcanvas-header-border-width</code></td>
         <td>
-          Border width for modal footer.
+          Border width for offcanvas footer.
         </td>
       </tr>
       <tr>

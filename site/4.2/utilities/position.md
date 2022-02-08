@@ -41,7 +41,7 @@ Position an element at the bottom of the viewport, from edge to edge.
 
 ## Sticky Top
 
-Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.
+Position an element at the top of the viewport, or container, from edge to edge, but only after you scroll past it.
 This sticky utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found at [Can I Use - CSS position:sticky](https://caniuse.com/css-sticky).
 
 **IE11 and IE10 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that can render it properly.
@@ -51,7 +51,7 @@ This sticky utility uses CSS's `position: sticky`, which isn't fully supported i
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-## Responsive Sticky Top
+### Responsive Sticky Top
 
 Responsive variations also exist for `.sticky-top` utility.
 
@@ -60,6 +60,27 @@ Responsive variations also exist for `.sticky-top` utility.
 <div class="sticky-md-top">Stick to the top on viewports sized MD (medium) or wider</div>
 <div class="sticky-lg-top">Stick to the top on viewports sized LG (large) or wider</div>
 <div class="sticky-xl-top">Stick to the top on viewports sized XL (extra-large) or wider</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+## Sticky Bottom
+
+Position an element at the bottom of the viewport, or container, from edge to edge, but only until you scroll past it.
+
+{% capture highlight %}
+<div class="sticky-bottom">...</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Responsive Sticky Bottom
+
+Responsive variations also exist for `.sticky-bottom` utility.
+
+{% capture highlight %}
+<div class="sticky-sm-bottom">Stick to the bottom on viewports sized SM (small) or wider</div>
+<div class="sticky-md-bottom">Stick to the bottom on viewports sized MD (medium) or wider</div>
+<div class="sticky-lg-bottom">Stick to the bottom on viewports sized LG (large) or wider</div>
+<div class="sticky-xl-bottom">Stick to the bottom on viewports sized XL (extra-large) or wider</div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
@@ -224,6 +245,23 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-utility-position-sticky-bottom</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the sticky bottom position utility class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-utility-position-sticky-bottom-responsive</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the additional responsive sticky bottom position utility class.
+          <code>$enable-utility-position-sticky-bottom</code> needs to be <code>true</code> for this setting be be observed.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-utility-position-placement</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -253,6 +291,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>map-keys($grid-breakpoints)</code></td>
         <td>
           Map of breakpoints that will be used to generate responsive sticky-top utilities.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$utility-sticky-bottom-breakpoints</code></td>
+        <td>string</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Map of breakpoints that will be used to generate responsive sticky-bottom utilities.
         </td>
       </tr>
       <tr>
