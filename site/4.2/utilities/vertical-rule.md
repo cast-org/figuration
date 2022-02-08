@@ -11,7 +11,7 @@ toc: true
 Vertical rules are inspired by the `<hr>` element, allowing you to create vertical dividers. They inherit styling from the `<hr>` Sass settings, which by default result in:
 
 - a `1px` width
-- color is set via `currentColor` and `opacity`
+- color is set via `currentcolor` and `opacity`
 - additionaly a `min-height: 1em;` is set
 
 Feel free to further customize as needed with additional styles.

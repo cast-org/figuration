@@ -651,7 +651,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$hr-bg</code></td>
         <td>string</td>
-        <td><code>currentColor</code></td>
+        <td><code>currentcolor</code></td>
         <td>
           Horizontal rule background.
         </td>

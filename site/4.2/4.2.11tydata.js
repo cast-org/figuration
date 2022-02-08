@@ -61,6 +61,7 @@ module.exports = {
           { "title": "Navbar" },
           { "title": "Navs" },
           { "title": "Pagination" },
+          { "title": "Placeholder" },
           { "title": "Progress" }
         ]
       },
