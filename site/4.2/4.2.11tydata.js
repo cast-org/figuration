@@ -79,6 +79,7 @@ module.exports = {
           { "title": "Interactions" },
           { "title": "Links" },
           { "title": "Opacity" },
+          { "title": "Orientation" },
           { "title": "Overflow" },
           { "title": "Position" },
           { "title": "Screen Readers" },
