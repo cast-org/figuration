@@ -9,14 +9,6 @@
         }
     }
 
-    @if $enable-utility-orientation-origin {
-        @each $name, $value in $utility-origin {
-            .origin-#{$name} {
-                transform-origin: $value !important;
-            }
-        }
-    }
-
     @if $enable-utility-orientation-flip {
         .flip-horizontal {
             transform: scaleX(-1) !important;
