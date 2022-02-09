@@ -9,6 +9,7 @@ toc: true
 ## v4.3.0
 
 ### CSS
+- Reboot now has an opinionated sizing for the browser default checkbox and radio inputs.
 - `z-index` values for tooltip, popover, modal-backdrop and modal elements were increased slightly to make space for the new Offcanvas components.
 
 ### Layout
@@ -24,11 +25,20 @@ toc: true
 
 ### Components
 
+#### Forms
+- Reverse layout for `.form-check` now possible using the `.form-check-reverse` modifier class.  Works for both default and custom checkbox and radio inputs that use the `.form-check` markup.
+
 #### Loader
 - Added a new animated loaders, also known as "spinners", to help indicate busy or loading states. Two variations are available - `.loader-circle` and `.loader-double`. Color can be adjusted using `.text-{color}` utility classes, otherwise they inherit the text color with `currentcolor`.
 
-#### Utilites
+#### Placeholder
+- Added a new 'skeleton' or placeholder component as another way to indicate that content is in a loading state.  Comes with static and animated variants.
+
+### Utilites
 - Added new vertical rule utility class. Also extends and reuses `<hr>` Sass settings.
+- Added opacity utilities.
+- Added orientation utilities to rotate and flip elements.
+- Added `.sticky-bottom` and related responsive classes to positioning utilities.
 
 ### Widgets
 
