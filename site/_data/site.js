@@ -4,7 +4,7 @@ module.exports = {
   "title":          "CAST Figuration",
   "author":         "CAST, Inc.",
   "description":    "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "regtitle":       "CAST Figuration&trade;",
+  "regtitle":       "CAST Figuration<sup>&reg;</sup>",
 
   "url":            "https://figuration.org",
   "domain":         "figuration.org",
