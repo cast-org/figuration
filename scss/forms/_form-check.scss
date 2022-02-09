@@ -30,6 +30,23 @@
             }
         }
 
+        @if $enable-form-check-reverse {
+            .form-check-reverse {
+                &.form-check {
+                    padding-right: $form-check-gutter;
+                    padding-left: 0;
+                    text-align: right;
+
+                    > input {
+                        float: right;
+                        margin-top: subtract(if(unit($line-height-base) == "", $line-height-base * .5em, $line-height-base * .5), $input-checkradio-size * .5);
+                        margin-right: -$form-check-gutter;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
         .form-check-label {
             display: inline;
             margin-bottom: 0; // Override default `<label>` bottom margin
@@ -144,6 +161,28 @@
                 }
             }
         }
+
+        @if $enable-form-check-reverse {
+            .form-check-reverse {
+                &.form-checkradio {
+                    padding-right: $form-checkradio-gutter;
+                    padding-left: 0;
+
+                    .form-check-input {
+                        margin-right: -$form-checkradio-gutter;
+                        margin-left: 0;
+                    }
+
+                    .form-check-label {
+                        &::before {
+                            float: right;
+                            margin-right: -$form-checkradio-gutter;
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // Switch
@@ -246,6 +285,41 @@
                 }
                 &::after {
                     @include box-shadow($form-switch-thumb-checked-box-shadow, $form-switch-thumb-focus-box-shadow);
+                }
+            }
+        }
+
+        @if $enable-form-check-reverse {
+            .form-check-reverse {
+                &.form-switch {
+                    padding-right: $form-switch-gutter;
+                    padding-left: 0;
+
+                    .form-check-input {
+                        right: 0;
+                        left: auto;
+                    }
+
+                    .form-check-label {
+                        // Track
+                        &::before {
+                            right: 0;
+                            left: auto;
+                        }
+
+                        // Thumb
+                        &::after {
+                            right: subtract($form-switch-width, add($form-switch-thumb-width, $form-switch-thumb-offset, false));
+                            left: auto;
+                        }
+                    }
+
+                    .form-check-input:checked ~ .form-check-label {
+                        &::after {
+                            right: $form-switch-thumb-offset;
+                            left: auto;
+                        }
+                    }
                 }
             }
         }
