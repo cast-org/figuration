@@ -86,6 +86,7 @@ module.exports = {
           { "title": "Shadows" },
           { "title": "Sizing" },
           { "title": "Spacing" },
+          { "title": "Stacks" },
           { "title": "Typography" },
           { "title": "Vertical Alignment" },
           { "title": "Vertical Rule" },
