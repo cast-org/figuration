@@ -332,6 +332,8 @@ button:not(:disabled),
 input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box;
+  width: 0.875rem;
+  height: 0.875rem;
   padding: 0;
 }
 
@@ -992,6 +994,19 @@ textarea.form-control:not([rows="1"]) {
   opacity: .999;
 }
 
+.form-check-reverse.form-check {
+  padding-left: 1.25em;
+  padding-right: 0;
+  text-align: left;
+}
+
+.form-check-reverse.form-check > input {
+  float: left;
+  margin-top: calc(0.75em - 0.4375rem);
+  margin-left: -1.25em;
+  margin-right: 0;
+}
+
 .form-check-label {
   display: inline;
   margin-bottom: 0;
@@ -1076,6 +1091,22 @@ textarea.form-control:not([rows="1"]) {
   border-color: #0055e9;
 }
 
+.form-check-reverse.form-checkradio {
+  padding-left: 1.375em;
+  padding-right: 0;
+}
+
+.form-check-reverse.form-checkradio .form-check-input {
+  margin-left: -1.375em;
+  margin-right: 0;
+}
+
+.form-check-reverse.form-checkradio .form-check-label::before {
+  float: left;
+  margin-left: -1.375em;
+  margin-right: 0;
+}
+
 .form-switch {
   position: relative;
   padding-right: 2.125em;
@@ -1149,6 +1180,31 @@ textarea.form-control:not([rows="1"]) {
   right: calc(0.875em + 1px);
   background-color: #0055e9;
   border-color: #0055e9;
+}
+
+.form-check-reverse.form-switch {
+  padding-left: 2.125em;
+  padding-right: 0;
+}
+
+.form-check-reverse.form-switch .form-check-input {
+  left: 0;
+  right: auto;
+}
+
+.form-check-reverse.form-switch .form-check-label::before {
+  left: 0;
+  right: auto;
+}
+
+.form-check-reverse.form-switch .form-check-label::after {
+  left: calc(0.875em + 1px);
+  right: auto;
+}
+
+.form-check-reverse.form-switch .form-check-input:checked ~ .form-check-label::after {
+  left: calc(0.25em - 1px);
+  right: auto;
 }
 
 .form-file {
@@ -12328,6 +12384,20 @@ a.drag.disabled {
   .gap-xl-2 {
     gap: 2rem !important;
   }
+}
+
+.hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+}
+
+.vstack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
 }
 
 .text-justify {
