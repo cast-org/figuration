@@ -413,10 +413,15 @@ button,
     border-style: none;
 }
 
+// 1. Add the correct box sizing in IE 10-
+// 2. Opinionated normalize of dimensions across browsers
+// 3. Remove the padding in IE 10-
 input[type="radio"],
 input[type="checkbox"] {
-    box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
-    padding: 0; // 2. Remove the padding in IE 10-
+    box-sizing: border-box; // 1
+    width: $input-checkradio-size; // 2
+    height: $input-checkradio-size; // 2
+    padding: 0; // 3
 }
 
 textarea {

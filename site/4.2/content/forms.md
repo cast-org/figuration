@@ -605,6 +605,51 @@ You can also set a `font-size` on the `.form-check` container, then reset `font-
 {% endcapture %}
 {% renderExample example %}
 
+### Reverse
+
+Put your checkboxes, radios, and switches on the opposite side with the `.form-check-reverse` modifier class. Also works with default checkbox and radio inputs using the `.form-check` markup.
+
+{% capture example %}
+<div class="form-group">
+  <div class="form-check form-check-reverse">
+    <input class="form-check-input" type="checkbox" value="" id="reverseCheck0">
+    <label class="form-check-label" for="reverseCheck0">Reverse default checkbox</label>
+  </div>
+  <div class="form-check form-checkradio form-check-reverse">
+    <input class="form-check-input" type="checkbox" value="" id="reverseCheck1">
+    <label class="form-check-label" for="reverseCheck1">Reverse custom checkbox</label>
+    <small class="text-muted d-block">Some additional help text could appear right here.</small>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="form-check form-check-reverse">
+    <input class="form-check-input" type="radio" name="reverseRadio" value="" id="reverseRadio0">
+    <label class="form-check-label" for="reverseRadio0">Reverse default radio</label>
+  </div>
+  <div class="form-check form-checkradio form-check-reverse">
+    <input class="form-check-input" type="radio" name="reverseRadio" value="" id="reverseRadio1">
+    <label class="form-check-label" for="reverseRadio1">Reverse custom radio</label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="form-check form-switch form-check-reverse">
+    <input class="form-check-input" type="checkbox" value="" id="reverseSwitch0">
+    <label class="form-check-label" for="reverseSwitch0">Reverse switch checkbox</label>
+  </div>
+  <div class="form-check form-switch form-check-reverse">
+    <input class="form-check-input" type="radio" name="reverseSwitch" value="" id="reverseSwitch1" checked>
+    <label class="form-check-label" for="reverseSwitch1">Reverse switch radio</label>
+  </div>
+  <div class="form-check form-switch form-check-reverse">
+    <input class="form-check-input" type="radio" name="reverseSwitch" value="" id="reverseSwitch2">
+    <label class="form-check-label" for="reverseSwitch2">Reverse switch radio</label>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## File Browser
 
 Using `.form-file` as a wrapper, we hide the default file `<input>` via `opacity` and instead style the `<label>` with some additional child elements to recreate the filename text and button portions of the input.  A `width` and `height` are also set on the `<input>` for proper spacing for surrounding content.
@@ -1713,6 +1758,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-form-check-reverse</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the reverse layout styles checkbox and radio inputs.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-form-file</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -2001,6 +2054,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$input-checkradio-size</code></td>
+        <td>string</td>
+        <td><code>.875rem</code></td>
+        <td>
+          Dimension for checkbox and radio inputs.
+        </td>
+      </tr>
+      <tr>
         <td><code>$form-label-font-weight</code></td>
         <td>string</td>
         <td><code>$font-weight-normal</code></td>
@@ -2251,7 +2312,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-checkbox-icon</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for custom styled checkbox inputs when in checked state.
         </td>
@@ -2267,7 +2328,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-radio-icon</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for custom styled radio inputs when in checked state.
         </td>
@@ -2291,7 +2352,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-indeterminate-icon</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for custom styled checkbox inputs when in indeterminate state.
         </td>
@@ -2563,7 +2624,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-select-indicator-image</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for visual indicator of custom select input.
         </td>
@@ -2844,7 +2905,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-feedback-icon-valid-image</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for <em>valid</em> feedback state.
         </td>
@@ -2860,7 +2921,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-feedback-icon-invalid-image</code></td>
         <td>string</td>
-        <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>"))</code></td>
+        <td>encoded svg</td>
         <td>
           Icon for <em>invalid</em> feedback state.
         </td>
