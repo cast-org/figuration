@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Z-indexes specify how our component and widget pieces overlay with one another to control visuals and interactions.">
+<meta name="author" content="CAST, Inc.">
+
+<meta name="docsearch:language" content="en-US">
+<meta name="docsearch:version" content="4.3">
+
+<title>Z-index &#124; CAST Figuration (v4.3)</title>
+
+<link rel="canonical" href="https://figuration.org/4.3/layout/z-index/">
+
+<!-- Favicons -->
+<link sizes="180x180" rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png"/>
+<link sizes="32x32" rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png"/>
+<link sizes="16x16" rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png"/>
+<link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+<link color="#5bbad5" rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg"/>
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico"/>
+<meta name="msapplication-TileColor" content="#117cba"/>
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@figuration_org">
+<meta name="twitter:creator" content="@figuration_org">
+<meta name="twitter:title" content="Z-index">
+<meta name="twitter:description" content="Z-indexes specify how our component and widget pieces overlay with one another to control visuals and interactions.">
+<meta name="twitter:image" content="https://figuration.org/assets/brand/figuration-social.png">
+<!-- Open Graph -->
+<meta property="og:url" content="https://figuration.org">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Z-index">
+<meta property="og:description" content="Z-indexes specify how our component and widget pieces overlay with one another to control visuals and interactions.">
+<meta property="og:image" content="https://figuration.org/assets/brand/figuration-social-large.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9130143-15', 'figuration.org');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- Font CSS -->
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" rel="stylesheet">
+
+
+<!-- Algolia DocSearch CSS -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<!-- Figuration CSS -->
+<link href="/assets/4.3/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
+<link href="/assets/4.3/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha384-Qg00WFl9r0Xr6rUqNLv1ffTSSKEFFCDCKVyHZ+sVt8KuvG99nWw5RNvbhuKgif9z" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/assets/4.3/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+<!-- Popper -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script>window.Popper || document.write('<script src="/assets/4.3/js/vendor/popper.min.js"><\/script>')</script>
+
+<!-- Figuration JS -->
+<script src="/assets/4.3/dist/js/figuration.min.js"></script><!-- Docs Js -->
+<script src="/assets/4.3/js/docs.min.js"></script>
+
+</head>
+<body>
+<a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
+
+<header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
+  <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
+  <title>Figuration</title>
+  <path fill="currentColor" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.5.4 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM197 52c17.1 21.4 29.4 37.7 29.3 38.7-.6 4.9-20.3 90.7-21 91.4-1.1 1.1-83.6 41.1-84.8 41.2-1.8 0-85-40.2-85.8-41.5-.4-.7-5.5-21.7-11.2-46.6L13 90l28.7-36.3C57.4 33.8 71 16.9 71.8 16.2c1.2-.9 12.4-1.2 48.6-1.1h47.1L197 52z"/>
+  <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
+</svg>
+
+    <span class="sr-only-xs-down">CAST Figuration<sup>&reg;</sup></span>
+  </a>
+  <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+    <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+  </button>
+  <nav class="navbar-collapse collapse order-last order-lg-unordered text-nowrap" id="cf-topnav" aria-label="Main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/4.3/get-started/quick-start/" class="nav-link">Get Started</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.3/layout/breakpoints/" class="nav-link active" aria-current="true">Layout</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.3/content/reboot/" class="nav-link">Content</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.3/components/alerts/" class="nav-link">Components</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.3/utilities/borders/" class="nav-link">Utilities</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.3/widgets/overview/" class="nav-link">Widgets</a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
+    <li class="nav-item me-1"><div class="dropdown">
+  <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    v4.3.0
+    <span class="caret" aria-hidden="true"></span>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Latest</li>
+    
+    <li><a href="/4.3/" class="active" aria-current="true">v4.3.0</a></li>
+    
+    <li class="dropdown-divider"></li>
+    
+    <li class="dropdown-header">Older</li><li><a href="/4.2/">v4.2.2</a></li>
+    <li><a href="/4.1/">v4.1.1</a></li>
+    <li><a href="/4.0/">v4.0.3</a></li>
+    <li><a href="/3.0/">v3.0.5</a></li>
+    </ul>
+</div>
+    </li><li class="nav-item">
+      <a href="https://twitter.com/figuration_org" class="nav-link px-0_5" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/cast-org/figuration" class="nav-link px-0_5" aria-label="Github">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Github</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item"><div class="dropdown">
+  <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  class="cf-nav-img" width="16" height="16">
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+  </a>
+  <ul class="dropdown-menu dropreverse position-absolute">
+    <li class="dropdown-header">Direction</li>
+    <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+    <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+  </ul>
+</div>
+    </li>
+  </ul>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
+      <form class="cf-search" role="search">
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.3"/>
+</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+  <span aria-hidden="true">Pages <span class="caret" ></span></span>
+</button>
+<nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
+  <ul class="list-unstyled">
+    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span>
+        </span></button><div id="sidenav1">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
+          <li class="nav-item"><a href="/4.3/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav2" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Layout</span>
+        </span></button><div id="sidenav2">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/layout/breakpoints/" class="nav-link"><span class="nav-link-inner">Breakpoints</span></a></li>
+          <li class="nav-item"><a href="/4.3/layout/containers/" class="nav-link"><span class="nav-link-inner">Containers</span></a></li>
+          <li class="nav-item"><a href="/4.3/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
+          <li class="nav-item"><a href="/4.3/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
+          <li class="nav-item"><a href="/4.3/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          <li class="nav-item"><a href="/4.3/layout/z-index/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Z-index</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+        </span></button><div id="sidenav3">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
+          <li class="nav-item"><a href="/4.3/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+        </span></button><div id="sidenav4">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/lists/" class="nav-link"><span class="nav-link-inner">Lists</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/loader/" class="nav-link"><span class="nav-link-inner">Loader</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/placeholder/" class="nav-link"><span class="nav-link-inner">Placeholder</span></a></li>
+          <li class="nav-item"><a href="/4.3/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+        </span></button><div id="sidenav5">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/interactions/" class="nav-link"><span class="nav-link-inner">Interactions</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/links/" class="nav-link"><span class="nav-link-inner">Links</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/opacity/" class="nav-link"><span class="nav-link-inner">Opacity</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/orientation/" class="nav-link"><span class="nav-link-inner">Orientation</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/overflow/" class="nav-link"><span class="nav-link-inner">Overflow</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/shadows/" class="nav-link"><span class="nav-link-inner">Shadows</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/stacks/" class="nav-link"><span class="nav-link-inner">Stacks</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/vertical-rule/" class="nav-link"><span class="nav-link-inner">Vertical Rule</span></a></li>
+          <li class="nav-item"><a href="/4.3/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+        </span></button><div id="sidenav6">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.3/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/offcanvas/" class="nav-link"><span class="nav-link-inner">Offcanvas</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/tab/" class="nav-link"><span class="nav-link-inner">Tab</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
+          <li class="nav-item"><a href="/4.3/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
+          </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+    </aside>
+
+    <main class="col-md-9 col-xl-10 cf-main">
+      <div class="cf-toc-align">
+        <div class="cf-content-lead">
+          <h1 class="cf-title" id="content">Z-index</h1>
+
+          <p class="fs-large font-weight-sbold">Z-indexes specify how our component and widget pieces overlay with one another to control visuals and interactions.</p>
+        </div>
+        
+        <div class="cf-content">
+          <p>Several Figuration components utilize <code>z-index</code>, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.</p>
+<p>We use a defined set because of the layered components—tooltips, popovers, navbars, dropdowns, modals—so they remain consistent in terms of behavior.</p>
+<p>Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$zindex-dropdown</span><span class="token punctuation">:</span>           1000 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-sticky</span><span class="token punctuation">:</span>             1010 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-fixed</span><span class="token punctuation">:</span>              1020 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-offcanvas-backdrop</span><span class="token punctuation">:</span> 1030 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-offcanvas</span><span class="token punctuation">:</span>          1035 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-popover</span><span class="token punctuation">:</span>            1040 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-tooltip</span><span class="token punctuation">:</span>            1050 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-modal-backdrop</span><span class="token punctuation">:</span>     1060 !default;</span><br><span class="token variable-line"><span class="token variable">$zindex-modal</span><span class="token punctuation">:</span>              1065 !default;</span></code></pre>
+<p>Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower <code>z-index</code>s, while navigation and popovers utilize higher <code>z-index</code>s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.</p>
+<p>To handle overlapping borders within components (e.g., buttons and inputs in input groups), we use low single digit <code>z-index</code> values of <code>1</code>, <code>2</code>, and <code>3</code> for default, hover, and active states. On hover/focus/active, we bring a particular element to the forefront with a higher <code>z-index</code> value to show their border over the sibling elements.</p>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toplink">
+    <a href="#content">Top of Page <span class="caret"></span></a>
+  </div>
+</div>
+<footer class="cf-footer fs-small py-1">
+  <div class="container">
+    <ul class="list list-horizontal font-weight-bold">
+      <li class="pe-0_5"><a href="/about/overview/">About <span class="sr-only">Figuration</span></a></li>
+      <li class="px-0_5"><a href="https://github.com/cast-org/figuration">GitHub</a></li>
+      <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
+    </ul>
+    <p>
+      <strong>Latest version:</strong> 4.3.0
+      <br>
+      <a href="/versions/">Previous versions</a>
+    </p>
+    <p>
+      &copy; 2013-2022 <a href="http://www.cast.org/">CAST, Inc.</a>
+      <br>
+      Portions: &copy; 2011-2022 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+    <p>
+      Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
+      docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/site/LICENSE">CC BY 4.0</a>.
+    </p>
+
+    <div class="border-t pt-1">
+      <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
+      <div class="row">
+        <div class="media col">
+          <div class="d-flex me-0_5">
+            <img src="/assets/aem/aem-logo.png" width="40" height="40" alt="AEM logo" />
+          </div>
+          <div class="media-body">
+            <span class="font-weight-bold"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+            <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119 37" focusable="false" role="img"  class="cf-footer-cast-logo">
+  <title>CAST</title>
+  <path fill="currentColor" d="M17.83 36.48c-.013 0-.025-.003-.032-.003 0 0-.006 0 .01-2.31l.023-3.223s.016-2.31-2.294-2.326L5.36 28.547s-2.31-.016-3.283-1.463C1.103 25.636-.026 22.148 0 18.396.07 8.49 8.143.518 15.73.554c0 0 2.309.012 2.293 2.321L18 6.277s-.016 2.31 2.294 2.326l10.373.073s2.31.016 3.247 1.445c.937 1.43 2.021 4.851 1.995 8.526-.068 9.918-8.164 17.902-18.08 17.833m.057-8.037c5.43.038 9.865-4.335 9.902-9.767.038-5.432-4.334-9.867-9.765-9.905-5.431-.038-9.865 4.335-9.903 9.767-.037 5.432 4.335 9.867 9.766 9.905"/>
+  <path fill="currentColor" d="M60.73 24.958c-2.246 2.8-5.195 4.2-8.85 4.2-1.53 0-2.93-.258-4.2-.774-1.272-.516-2.36-1.231-3.263-2.145-.904-.914-1.609-2.006-2.115-3.277-.507-1.272-.76-2.671-.76-4.201 0-1.51.248-2.906.745-4.186a9.853 9.853 0 0 1 2.115-3.337 9.621 9.621 0 0 1 3.278-2.205c1.27-.526 2.67-.79 4.2-.79 1.729 0 3.327.288 4.798.864 1.469.577 2.71 1.579 3.723 3.01l-3.485 3.515a6.688 6.688 0 0 0-1.996-1.817c-.776-.457-1.66-.685-2.653-.685-.833 0-1.578.139-2.234.416a4.622 4.622 0 0 0-1.654 1.163 5.197 5.197 0 0 0-1.027 1.743 6.362 6.362 0 0 0-.358 2.16c0 .794.124 1.53.373 2.204.248.676.6 1.262 1.058 1.758a4.786 4.786 0 0 0 1.653 1.162c.645.278 1.365.417 2.16.417 1.152 0 2.09-.203 2.815-.61.725-.408 1.435-1.048 2.13-1.922l3.546 3.337zM73.301 20.697l-2.204-7.3-2.294 7.3h4.498zM68.267 8.78h6.047l7.032 19.872h-5.69l-1.281-4.111H67.73l-1.311 4.111h-5.453l7.3-19.872zM85.025 22.366c.556.556 1.281 1.062 2.175 1.52.894.456 1.877.684 2.95.684.257 0 .526-.024.804-.074.278-.05.526-.134.745-.253.218-.12.397-.278.536-.477.14-.199.209-.457.209-.774 0-.517-.263-.944-.79-1.282-.526-.337-1.296-.675-2.309-1.013l-1.102-.358a12.649 12.649 0 0 1-1.862-.774 7.71 7.71 0 0 1-1.683-1.147 5.387 5.387 0 0 1-1.207-1.58c-.308-.605-.462-1.315-.462-2.13 0-.913.168-1.762.507-2.547a5.894 5.894 0 0 1 1.475-2.055c.644-.586 1.444-1.044 2.398-1.371.953-.328 2.056-.492 3.307-.492.973 0 1.857.09 2.652.268.793.18 1.49.398 2.085.656a8.246 8.246 0 0 1 1.52.834c.416.298.734.566.953.804l-2.681 3.397a10.956 10.956 0 0 0-2.176-1.266 5.77 5.77 0 0 0-2.324-.492c-.258 0-.516.03-.774.09-.258.059-.492.148-.7.268-.209.119-.378.273-.506.461-.13.19-.194.423-.194.7 0 .298.074.557.223.775.149.219.352.407.611.566.258.16.57.304.938.433s.76.263 1.178.401l.953.299c.675.218 1.36.471 2.056.76.695.288 1.32.675 1.877 1.162a5.774 5.774 0 0 1 1.37 1.817c.358.725.536 1.614.536 2.666 0 .914-.214 1.758-.64 2.533a6.372 6.372 0 0 1-1.729 1.996c-.725.556-1.578.988-2.562 1.296-.983.308-2.03.462-3.143.462-1.986 0-3.65-.264-4.99-.79-1.34-.526-2.479-1.236-3.412-2.13l3.188-3.843zM105.669 13.398H99.56V8.779h17.49v4.619H111v15.254h-5.332z"/>
+</svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    if (!window.docsearch) {
+        return;
+    }
+
+    var inputElement = document.getElementById('docsearch');
+    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+
+    window.docsearch({
+        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        indexName: 'figuration',
+        inputSelector: '#docsearch',
+        algoliaOptions: {
+            facetFilters: ['version:' + siteDocsVersion]
+        },
+        transformData: function(hits) {
+            return hits.map(function(hit) {
+                // Prevent jumping to first header
+                if (hit.anchor === 'content') {
+                    hit.url = hit.url.replace(/#content$/, '');
+                    hit.anchor = null;
+                }
+                return hit;
+            });
+        },
+        // Set debug to true if you want to inspect the dropdown
+        debug: false
+    });
+}());
+</script>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-# [CAST Figuration](https://figuration.org/)
+# [Figuration](https://figuration.org/)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework.
 
@@ -26,12 +26,8 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 [![JS size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?label=JS%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
 [![JS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
 
-**Dependencies**
-[![peerDependencies Status](https://david-dm.org/cast-org/figuration/peer-status.svg)](https://david-dm.org/cast-org/figuration/?type=peer)
-[![devDependencies Status](https://david-dm.org/cast-org/figuration/dev-status.svg)](https://david-dm.org/cast-org/figuration/?type=dev)
-
 **Development Build Status**
-[![Build Status](https://img.shields.io/travis/cast-org/figuration/master)](https://travis-ci.com/cast-org/figuration)
+[![Build Status](https://img.shields.io/github/workflow/status/cast-org/figuration/JS/master?label=JS%20Tests&logo=github)](https://github.com/cast-org/figuration/actions?query=workflow%3Ajs+branch%3Amaster)
 [![Sauce Labs Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
 
@@ -39,12 +35,12 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.2.0.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.3.0.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.2.0`
-- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.2.0`
+- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.3.0`
+- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.3.0`
 
-Read the [Get Started page](https://figuration.org/4.2/get-started/quick-start/) for information on the framework, templates, and examples.
+Read the [Get Started page](https://figuration.org/4.3/get-started/quick-start/) for information on the framework, templates, and examples.
 
 
 ### What's Included
@@ -115,4 +111,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2021 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/master/docs/LICENSE).
+Code and documentation copyright 2013-2022 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/master/docs/LICENSE).

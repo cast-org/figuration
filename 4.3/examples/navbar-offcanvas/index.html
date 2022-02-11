@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Offcanvas Navbar Example</title>
+
+<!-- Figuration CSS -->
+<link rel="stylesheet" href="/assets/4.3/dist/css/figuration.min.css">
+
+<!-- jQuery and Figuration JS -->
+<script src="/assets/4.3/js/vendor/jquery.slim.min.js"></script>
+<script src="/assets/4.3/js/vendor/popper.min.js"></script>
+<script src="/assets/4.3/dist/js/figuration.min.js"></script>
+
+<style>
+body {
+    min-height: 75rem;
+}
+.jumbotron {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between fixed-top">
+    <div class="container-fluid flex-between">
+        <a href="#" class="navbar-brand">Offcanvas Navbar</a>
+        <button class="navbar-toggle" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasNavbar">
+            <span aria-hidden="true">&#8801;</span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Offcanvas navbar menu</h5>
+                <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-end flex-grow-1 pe-1">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown mb-1 mb-lg-0">
+                        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-0_5" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-info" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="jumbotron">
+        <h1>Offcanvas Navbar</h1>
+        <p class="lead">
+            This example page shows off how a top-aligned navbar and its responsive behaviors.
+            This navbar will remain fixed at the top of your browser's viewport as you scroll.
+        </p>
+        <p>
+            In order to experience the responsive behavior of the navbar, you will have to resize your browser above and below the <code>lg</code> breakpoint.
+        </p>
+        <p>
+            <a href="/4.3/components/navbar/" class="btn btn-lg btn-primary">View navbar docs &raquo;</a>
+        </p>
+    </div>
+</main>
+
+</body>
+</html>
