@@ -3,14 +3,18 @@ module.exports = [
     "set": "Latest",
     "versions": [
       {
-        "ver": "v4.2.1",
-        "path": "4.2"
+        "ver": "v4.3.0",
+        "path": "4.3"
       }
     ]
   },
   {
     "set": "Older",
     "versions": [
+      {
+        "ver": "v4.2.2",
+        "path": "4.2"
+      },
       {
         "ver": "v4.1.1",
         "path": "4.1"
