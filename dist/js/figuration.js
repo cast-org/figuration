@@ -1703,7 +1703,7 @@ if (typeof jQuery === 'undefined') {
             }
         }
 
-        var $items = $('[data-cfw="dropdown"]');
+        var $items = $('[data-cfw="dropdown"].open');
         // Do menu items in reverse to close from bottom up
         for (var i = $items.length; i--;) {
             var $trigger = $($items[i]);
@@ -1714,9 +1714,6 @@ if (typeof jQuery === 'undefined') {
 
             var $itemMenu = itemData.$target;
             if ($itemMenu === null) {
-                continue;
-            }
-            if (!$itemMenu.hasClass('open')) {
                 continue;
             }
 
