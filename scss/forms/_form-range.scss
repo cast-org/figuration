@@ -1,6 +1,6 @@
 // Form range
 
-// Each browser's pseudo-elements need to be seperate and cannot be
+// Each browser's pseudo-elements need to be separate and cannot be
 // combined to provide for shared state support. Duplication is handled
 // with mixins.  Also some additional rules per browser.
 @if $enable-form and $enable-form-range {

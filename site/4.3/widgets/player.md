@@ -503,7 +503,7 @@ Note: If the player uses `input type="range"` sliders, the range keyboard comman
 
 ### Regions and Controls
 
-Regions and controls are specified by data attributes `data-cfw-player="name"` to seperate functionality from layout.  See the following table for the names:
+Regions and controls are specified by data attributes `data-cfw-player="name"` to separate functionality from layout.  See the following table for the names:
 
 <div class="table-scroll">
   <table class="table table-bordered table-striped">
