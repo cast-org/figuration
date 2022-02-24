@@ -351,7 +351,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>true</code></td>
         <td>
           <p>Include an offcanvas-backdrop element.</p>
-          <p>The backdrop is the semi-opaque overlay used to visually seperate the offcanvas from the page content.</p>
+          <p>The backdrop is the semi-opaque overlay used to visually separate the offcanvas from the page content.</p>
          </td>
       </tr>
       <tr>

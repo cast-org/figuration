@@ -1352,7 +1352,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>true</code></td>
         <td>
           <p>Includes a modal-backdrop element. Alternatively, specify <code>'static'</code> for a backdrop which doesn't close the modal on click.</p>
-          <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
+          <p>The backdrop is the semi-opaque overlay used to visually separate the modal from the page content.</p>
          </td>
       </tr>
       <tr>

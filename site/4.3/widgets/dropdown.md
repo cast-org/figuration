@@ -140,7 +140,7 @@ The use of the `.btn-group-end` class allows us to place the dropdown within the
 
 ### Within a Navbar
 
-Dropdowns also work in a navbar, but require the use of a wrapping element for positioning.  Make sure to use seperate and nested `.nav-item` and `.nav-link` elements as in the following example.
+Dropdowns also work in a navbar, but require the use of a wrapping element for positioning.  Make sure to use separate and nested `.nav-item` and `.nav-link` elements as in the following example.
 
 {% capture example %}
 <nav class="navbar navbar-expand navbar-light bg-light">
