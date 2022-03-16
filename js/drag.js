@@ -63,9 +63,13 @@
         _dragStart : function(e) {
             var $selfRef = this;
 
+            // ignore potential disabled handle
+            if ($.CFW_isDisabled(e.target)) { return; }
+
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
-                return;
+            if (this.settings.handle) {
+                var $handle = this.$element[0].querySelector(this.settings.handle);
+                if (!$handle.contains(e.target)) { return; }
             }
 
             // check for disabled element
@@ -75,7 +79,6 @@
             this.dragging = true;
 
             $(document)
-                .off('.cfw.dragin.' + this.instance)
                 .on('mousemove.cfw.dragin.' + this.instance + ' touchmove.cfw.dragin.' + this.instance + ' MSPointerMove.cfw.dragin.' + this.instance, function(e) {
                     $selfRef._drag(e);
                 })
