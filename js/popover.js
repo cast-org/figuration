@@ -146,14 +146,17 @@
         this.$target.off('.cfw.drag');
 
         this.$target
-            .on('dragStart.cfw.drag', function() {
+            .on('dragStart.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef._updateZ();
                 $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
             })
             .on('drag.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef.locateDragTip(e.offsetY, e.offsetX);
             })
-            .on('dragEnd.cfw.drag', function() {
+            .on('dragEnd.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
             })
             .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
