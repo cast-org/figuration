@@ -1299,6 +1299,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-divider-opacity</code></td>
+                <td>string</td>
+                <td><code>1</code></td>
+                <td>
+                    Opacity for dropdown menu dividers.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-box-shadow</code></td>
                 <td>string</td>
                 <td><code>map-get($shadows, "d2")</code></td>

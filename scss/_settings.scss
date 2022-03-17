@@ -444,15 +444,13 @@ $mark-padding:      .125em .25em !default;
 $mark-bg:           #ff0 !default;
 
 $hr-margin-y:       1rem !default;
-$hr-bg:             currentcolor !default;
 $hr-color:          inherit !default;
-$hr-height:         $border-width !default;
-$hr-border:         0 !default;
+$hr-border-width:   $border-width !default;
+$hr-border-color:   null !default;
 $hr-opacity:        .25 !default;
 
-$vr-bg:             $hr-bg !default;
-$vr-width:          $hr-height !default;
-$vr-border:         $hr-border !default;
+$vr-border-width:   $hr-border-width !default;
+$vr-border-color:   $hr-border-color !default;
 $vr-opacity:        $hr-opacity !default;
 
 $blockquote-margin:             0 0 $spacer !default;
@@ -1048,7 +1046,7 @@ $pagination-spaced-margin-end:  .25em !default;
 $divider-border-color:  $uibase-100 !default;
 $divider-border-width:  $border-width !default;
 $divider-spacer:        ($spacer * .5) !default;
-
+$divider-opacity:       1 !default;
 
 // Dropdowns
 // =====
@@ -1067,6 +1065,7 @@ $dropdown-inner-border-radius:  subtract($dropdown-border-radius, $dropdown-bord
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
 $dropdown-divider-spacer:       .3125rem !default;
+$dropdown-divider-opacity:      1 !default;
 $dropdown-box-shadow:           map-get($shadows, "d2") !default;
 
 $dropdown-link-color:           $component-action-color !default;
