@@ -143,7 +143,7 @@
     // Divider (basically an `<hr>`) within the dropdown
     @if $enable-dropdown-divider {
         .dropdown-divider {
-            @include divider-h($dropdown-divider-color, $dropdown-divider-width, $dropdown-divider-spacer);
+            @include divider-h($dropdown-divider-color, $dropdown-divider-width, $dropdown-divider-spacer, $dropdown-divider-opacity);
         }
     }
 

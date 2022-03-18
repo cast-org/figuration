@@ -72,27 +72,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$vr-bg</code></td>
+        <td><code>$vr-border-width</code></td>
         <td>string</td>
-        <td><code>$hr-bg</code></td>
+        <td><code>$hr-border-width</code></td>
         <td>
-          Vertical rule background.
+          Vertical rule border width.
         </td>
       </tr>
       <tr>
-        <td><code>$vr-width</code></td>
+        <td><code>$vr-border-color</code></td>
         <td>string</td>
-        <td><code>$hr-height</code></td>
+        <td><code>$hr-border-color</code></td>
         <td>
-          Vertical rule width.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$vr-border</code></td>
-        <td>string</td>
-        <td><code>$hr-border</code></td>
-        <td>
-          Vertical rule border.
+          Vertical rule border color.
         </td>
       </tr>
       <tr>

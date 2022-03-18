@@ -649,14 +649,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$hr-bg</code></td>
-        <td>string</td>
-        <td><code>currentcolor</code></td>
-        <td>
-          Horizontal rule background.
-        </td>
-      </tr>
-      <tr>
         <td><code>$hr-color</code></td>
         <td>string</td>
         <td><code>inherit</code></td>
@@ -665,19 +657,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$hr-height</code></td>
+        <td><code>$hr-border-width</code></td>
         <td>string</td>
         <td><code>$border-width</code></td>
         <td>
-          Horizontal rule height.
+          Horizontal rule border width.
         </td>
       </tr>
       <tr>
-        <td><code>$hr-border</code></td>
+        <td><code>$hr-border-color</code></td>
         <td>string</td>
-        <td><code>0</code></td>
+        <td><code>null</code></td>
         <td>
-          Horizontal rule border.
+          Horizontal rule border color.
         </td>
       </tr>
       <tr>

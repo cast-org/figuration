@@ -6,6 +6,11 @@ group: get-started
 toc: true
 ---
 
+## v4.3.1
+
+### CSS
+- `<hr>`, `.vr`, and other component dividers have all been consolidated to use borders, instead of `background-color` and `height` or `width`, to create dividers.
+
 ## v4.3.0
 
 ### CSS

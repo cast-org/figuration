@@ -2,10 +2,7 @@
     .vr {
         display: inline-block;
         align-self: stretch;
-        width: $vr-width;
         min-height: 1em;
-        background-color: $vr-bg;
-        border: $vr-border;
-        opacity: $vr-opacity;
+        @include divider-v($vr-border-color, $vr-border-width, null, $vr-opacity);
     }
 }
