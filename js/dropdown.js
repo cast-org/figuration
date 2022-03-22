@@ -520,6 +520,7 @@
             return reference;
         },
 
+        /* eslint-disable complexity */
         _getPlacement : function() {
             var isRTL = $.CFW_isRTL(this.$element[0]);
             var attachmentMap = {
@@ -531,14 +532,20 @@
                 BOTTOM: isRTL ? 'bottom-end' : 'bottom-start',
                 BOTTOMEND: isRTL ? 'bottom-start' : 'bottom-end',
                 REVERSE: isRTL ? 'right-start' : 'left-start',
-                REVERSEEND: isRTL ? 'right-end' : 'left-end'
+                REVERSEEND: isRTL ? 'right-end' : 'left-end',
+                TOPCENTER: 'top',
+                BOTTOMCENTER: 'bottom',
+                FORWARDMIDDLE: isRTL ? 'left' : 'right',
+                REVERSEMIDDLE: isRTL ? 'right' : 'left'
             };
 
-            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend');
+            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend, .dropcenter, .dropmiddle');
             var dirV = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
             var appendV = $dirNode.hasClass('dropreverse') ? 'END' : '';
             var dirH = $dirNode.hasClass('dropstart') || $dirNode.hasClass('dropreverse') ? 'REVERSE' : 'FORWARD';
             var appendH = $dirNode.hasClass('dropup') ? 'END' : '';
+            if ($dirNode.hasClass('dropcenter')) { appendV = 'CENTER'; }
+            if ($dirNode.hasClass('dropmiddle')) { appendH = 'MIDDLE'; }
 
             var placement = attachmentMap[dirV + appendV];
 
@@ -551,6 +558,7 @@
             }
             return placement;
         },
+        /* eslint-enable complexity */
 
         _getPopperConfig : function() {
             var defaultConfig = {

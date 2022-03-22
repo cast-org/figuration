@@ -644,6 +644,126 @@ Submenus will continue to open in the same direction as the parent, unless [Subm
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Center Aligned
+
+Use `.dropcenter` to have the menu centered below the toggle control.  Combine with `.dropup` to have the menu centered above the toggle control.
+
+<div class="cf-example">
+  <div class="dropdown d-inline-block">
+    <button type="button" class="btn" data-cfw="dropdown">
+      Center Down <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropcenter">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li>
+        <a href="#">Something else here</a>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown d-inline-block">
+    <button type="button" class="btn" data-cfw="dropdown">
+      Center Up <span class="caretup" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropup dropcenter">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li>
+        <a href="#">Something else here</a>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Centered Dropdown <span class="caretup" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropcenter">
+    ...
+  </ul>
+</div>
+
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Centered Dropup <span class="caretup" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropup dropcenter">
+    ...
+  </ul>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Middle Aligned
+
+Use `.dropmiddle` to align the menu with the middle of the toggle control.  The use `.dropstart` or `.dropend` is required in order to indicate which side of the toggle control to attach the menu.
+
+<div class="cf-example">
+  <div class="dropdown d-inline-block">
+    <button type="button" class="btn" data-cfw="dropdown">
+      Start Middle Dropdown <span class="caretstart" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropstart dropmiddle">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li>
+        <a href="#">Something else here</a>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown d-inline-block">
+    <button type="button" class="btn" data-cfw="dropdown">
+      End Middle Dropdown <span class="caretend" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropend dropmiddle">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li>
+        <a href="#">Something else here</a>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Start Middle Dropdown <span class="caretup" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropstart dropmiddle">
+    ...
+  </ul>
+</div>
+
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    End Middle Dropdown <span class="caretup" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropend dropmiddle">
+    ...
+  </ul>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ### Submenu Alignment
 
 You can also use the available `.dropstart` and `.dropend` to switch submenu directions if needed.  Place either class on the `ol` or `ul` submenu list element.
