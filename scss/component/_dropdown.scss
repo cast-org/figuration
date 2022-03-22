@@ -175,6 +175,18 @@
         margin-left: 0;
     }
 
+    .dropcenter {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .dropmiddle {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+
     // Allow for dropdowns to go bottom up (aka, dropup menu)
     // Add .dropup onto the .dropdown-menu element
     @if $enable-dropdown-dropup {
@@ -209,6 +221,7 @@
             right: auto;
             bottom: auto;
             left: auto;
+            transform: none;
         }
     }
 

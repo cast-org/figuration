@@ -12,6 +12,11 @@ toc: true
 - Font stack has been updated to give preference to Linux fonts over Arial.
 - `<hr>`, `.vr`, and other component dividers have all been consolidated to use borders, instead of `background-color` and `height` or `width`, to create dividers.
 
+### Widgets
+
+#### Dropdown
+- Added 'centered' and 'middle' alignment variants.  Submenus do not inherit the centered or middle alignment, but will logically align based on direction.
+
 ## v4.3.0
 
 ### CSS
