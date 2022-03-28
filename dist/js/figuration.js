@@ -1259,9 +1259,13 @@ if (typeof jQuery === 'undefined') {
         _dragStart : function(e) {
             var $selfRef = this;
 
+            // ignore potential disabled handle
+            if ($.CFW_isDisabled(e.target)) { return; }
+
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
-                return;
+            if (this.settings.handle) {
+                var $handle = this.$element[0].querySelector(this.settings.handle);
+                if (!$handle.contains(e.target)) { return; }
             }
 
             // check for disabled element
@@ -1271,7 +1275,6 @@ if (typeof jQuery === 'undefined') {
             this.dragging = true;
 
             $(document)
-                .off('.cfw.dragin.' + this.instance)
                 .on('mousemove.cfw.dragin.' + this.instance + ' touchmove.cfw.dragin.' + this.instance + ' MSPointerMove.cfw.dragin.' + this.instance, function(e) {
                     $selfRef._drag(e);
                 })
@@ -2145,6 +2148,7 @@ if (typeof jQuery === 'undefined') {
             return reference;
         },
 
+        /* eslint-disable complexity */
         _getPlacement : function() {
             var isRTL = $.CFW_isRTL(this.$element[0]);
             var attachmentMap = {
@@ -2156,14 +2160,20 @@ if (typeof jQuery === 'undefined') {
                 BOTTOM: isRTL ? 'bottom-end' : 'bottom-start',
                 BOTTOMEND: isRTL ? 'bottom-start' : 'bottom-end',
                 REVERSE: isRTL ? 'right-start' : 'left-start',
-                REVERSEEND: isRTL ? 'right-end' : 'left-end'
+                REVERSEEND: isRTL ? 'right-end' : 'left-end',
+                TOPCENTER: 'top',
+                BOTTOMCENTER: 'bottom',
+                FORWARDMIDDLE: isRTL ? 'left' : 'right',
+                REVERSEMIDDLE: isRTL ? 'right' : 'left'
             };
 
-            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend');
+            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend, .dropcenter, .dropmiddle');
             var dirV = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
             var appendV = $dirNode.hasClass('dropreverse') ? 'END' : '';
             var dirH = $dirNode.hasClass('dropstart') || $dirNode.hasClass('dropreverse') ? 'REVERSE' : 'FORWARD';
             var appendH = $dirNode.hasClass('dropup') ? 'END' : '';
+            if ($dirNode.hasClass('dropcenter')) { appendV = 'CENTER'; }
+            if ($dirNode.hasClass('dropmiddle')) { appendH = 'MIDDLE'; }
 
             var placement = attachmentMap[dirV + appendV];
 
@@ -2176,6 +2186,7 @@ if (typeof jQuery === 'undefined') {
             }
             return placement;
         },
+        /* eslint-enable complexity */
 
         _getPopperConfig : function() {
             var defaultConfig = {
@@ -3796,14 +3807,17 @@ if (typeof jQuery === 'undefined') {
         this.$target.off('.cfw.drag');
 
         this.$target
-            .on('dragStart.cfw.drag', function() {
+            .on('dragStart.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef._updateZ();
                 $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
             })
             .on('drag.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef.locateDragTip(e.offsetY, e.offsetX);
             })
-            .on('dragEnd.cfw.drag', function() {
+            .on('dragEnd.cfw.drag', function(e) {
+                if (e.namespace !== 'cfw.drag') { return; }
                 $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
             })
             .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {

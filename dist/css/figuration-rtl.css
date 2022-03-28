@@ -21,7 +21,7 @@
   --breakpoint-md: 48em;
   --breakpoint-lg: 62em;
   --breakpoint-xl: 75em;
-  --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-serif: Georgia, "Times New Roman", Times, serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -54,7 +54,7 @@ section {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -71,13 +71,9 @@ body {
 hr {
   margin: 1rem 0;
   color: inherit;
-  background-color: currentcolor;
   border: 0;
+  border-top: 1px solid;
   opacity: 0.25;
-}
-
-hr:not([size]) {
-  height: 1px;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -4891,6 +4887,7 @@ a.drag.disabled {
   margin: 0.3125rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(38, 45, 52, 0.3);
+  opacity: 1;
 }
 
 .dropdown-subalign-reverse,
@@ -4919,6 +4916,18 @@ a.drag.disabled {
   margin-right: 0;
 }
 
+.dropcenter {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.dropmiddle {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
 .dropup {
   top: auto;
   bottom: 100%;
@@ -4943,6 +4952,7 @@ a.drag.disabled {
   left: auto;
   bottom: auto;
   right: auto;
+  transform: none;
 }
 
 .dropdown-back {
@@ -7326,7 +7336,7 @@ a.drag.disabled {
   z-index: 1050;
   display: none;
   margin: 0.125rem;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7456,7 +7466,7 @@ a.drag.disabled {
   display: none;
   max-width: 18rem;
   margin: 0.125rem;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -12521,7 +12531,7 @@ a.drag.disabled {
 }
 
 .font-family-sans-serif {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
 
 .font-family-serif {
@@ -13566,10 +13576,10 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 .vr {
   display: inline-block;
   align-self: stretch;
-  width: 1px;
   min-height: 1em;
-  background-color: currentcolor;
-  border: 0;
+  width: 0;
+  overflow: hidden;
+  border-right: 1px solid;
   opacity: 0.25;
 }
 
