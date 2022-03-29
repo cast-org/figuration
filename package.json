@@ -2,7 +2,9 @@
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
   "version": "4.3.0",
-  "version_short": "4.3",
+  "config": {
+    "versionShort": "4.3"
+  },
   "keywords": [
     "css",
     "sass",
@@ -19,11 +21,11 @@
     "test": "grunt test",
     "css-lint-vars": "npm-run-all --continue-on-error --parallel css-lint-vars-*",
     "css-lint-vars-core": "fusv scss/",
-    "css-lint-vars-docs": "fusv site/assets/",
+    "css-lint-vars-docs": "cross-env-shell \"fusv site/assets/$npm_package_config_versionShort/scss/\"",
     "docs-build": "npm run docs-serve-clean && npm run docs-serve-copy && eleventy --quiet",
     "docs-serve": "npm-run-all --parallel docs-serve-*",
     "docs-serve-clean": "rimraf _siteout",
-    "docs-serve-copy": "cross-env-shell \"shx rm -rf site/assets/$npm_package_version_short/dist/ && shx cp -r dist/ site/assets/$npm_package_version_short/\"",
+    "docs-serve-copy": "cross-env-shell \"shx rm -rf site/assets/$npm_package_config_versionShort/dist/ && shx cp -r dist/ site/assets/$npm_package_config_versionShort/\"",
     "docs-serve-11ty": "eleventy --serve --port=9001",
     "docs-prod": "npm run docs-serve-clean && cross-env ELEVENTY_ENV=production eleventy",
     "docs-prod-serve": "npm run docs-serve-clean && cross-env ELEVENTY_ENV=production eleventy --serve",
