@@ -66,38 +66,49 @@ The *start/end sides* are designated as follows depending on which version of th
 
 ### Sizes
 
-A few sizes are available, the default border-radius size, along with `small` and `large` variants. Responsive classes are built in the form `.radius{-side}-{size}`.
+A few sizes are available, the default border-radius size, along with multiple sizes of variants. Responsive classes are built in the form `.radius{-side}-{size}`.
 
 <div class="cf-example">
-  <img data-src="holder.js/100x100?text=Small" class="radius-small" alt="Placeholder iamge slightly rounded corners" />
-  <img data-src="holder.js/100x100?text=Default" class="radius" alt="Placeholder image with rounded corners" />
-  <img data-src="holder.js/100x100?text=Large" class="radius-large" alt="Placeholder image with more rounded corners" />
+  <img data-src="holder.js/85x85?text=No Radius" class="m-0_25 radius-0" alt="Placeholder iamge with no rounded corners" />
+  <img data-src="holder.js/85x85?text=Extra Small" class="m-0_25 radius-xsmall" alt="Placeholder iamge very slightly rounded corners" />
+  <img data-src="holder.js/85x85?text=Small" class="m-0_25 radius-small" alt="Placeholder iamge slightly rounded corners" />
+  <img data-src="holder.js/85x85?text=Default" class="m-0_25 radius" alt="Placeholder image with rounded corners" />
+  <img data-src="holder.js/85x85?text=Large" class="m-0_25 radius-large" alt="Placeholder image with large rounded corners" />
+  <img data-src="holder.js/85x85?text=Extra Large" class="m-0_25 radius-xlarge" alt="Placeholder image with extra large rounded corners" />
+  <img data-src="holder.js/85x85?text=Extra Extra Large" class="m-0_25 radius-2xlarge" alt="Placeholder image with extra extra large rounded corners" />
 </div>
 
 {% capture highlight %}
+<img src="..." class="radius-0" alt="...">
+<img src="..." class="radius-xsmall" alt="...">
 <img src="..." class="radius-small" alt="...">
 <img src="..." class="radius" alt="...">
 <img src="..." class="radius-large" alt="...">
+<img src="..." class="radius-xlarge" alt="...">
+<img src="..." class="radius-2xlarge" alt="...">
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
 ### Removing
 
-There is also the special case size of `0` (zero) to remove  a radius.
+Use the special case size of `0` (zero) to remove an elements radius, or a subset of radii.
 
-{% capture example %}
-<button type="button" class="btn radius-s-0">Button</button>
+<div class="cf-example">
+  <img data-src="holder.js/85x85?text=End side radius" class="radius-large radius-s-0" alt="Placeholder iamge with rounded corners on only one vertical side" />
+</div>
+{% capture highlight %}
+<img src="..." class="radius-large radius-s-0" alt="..." />
 {% endcapture %}
-{% renderExample example %}
+{% renderHighlight highlight, "html" %}
 
 ### Circles
 
 When elements are of a square (1:1) aspect ratio, you can create a circle using `.radius-circle`.  If the element has an unequal aspect ratio, you will get more on an elipse shape.
 
 <div class="cf-example">
-  <img data-src="holder.js/100x100/?text=Circle" class="radius-circle" width="100" height="100" alt="Completely round" />
-  <img data-src="holder.js/100x50/?text=Elipse" class="radius-circle" width="100" height="50" alt="Horizontal elipse" />
-  <img data-src="holder.js/50x100/?text=Elipse" class="radius-circle" width="50" height="100" alt="Vertical elipse" />
+  <img data-src="holder.js/100x100/?text=Circle" class="m-0_25 radius-circle" width="100" height="100" alt="Completely round" />
+  <img data-src="holder.js/100x50/?text=Elipse" class="m-0_25 radius-circle" width="100" height="50" alt="Horizontal elipse" />
+  <img data-src="holder.js/50x100/?text=Elipse" class="m-0_25 radius-circle" width="50" height="100" alt="Vertical elipse" />
 </div>
 
 {% capture highlight %}
@@ -112,8 +123,8 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 Create a 'pill' shape with `.radius-pill`.
 
 <div class="cf-example">
-  <img data-src="holder.js/100x50/?text=Pill" class="radius-pill" width="100" height="50" alt="Rounded pill image" />
-  <img data-src="holder.js/75x32/?text=Pill" class="radius-pill" width="75" height="32" alt="Rounded pill image" />
+  <img data-src="holder.js/100x50/?text=Pill" class="m-0_25 radius-pill" width="100" height="50" alt="Rounded pill image" />
+  <img data-src="holder.js/75x32/?text=Pill" class="m-0_25 radius-pill" width="75" height="32" alt="Rounded pill image" />
 </div>
 
 {% capture highlight %}
@@ -352,8 +363,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$radii</code></td>
         <td>map</td>
         <td>
-<pre><code>("small": .1875rem,
-"large": .3125rem)</code></pre>
+<pre><code>("xsmall":   .1875rem,
+    "small":    .25rem,
+    "large":   .5rem,
+    "xlarge":   .75rem,
+    "2xlarge":   1rem)</code></pre>
         </td>
         <td>
           Border radius size variants.

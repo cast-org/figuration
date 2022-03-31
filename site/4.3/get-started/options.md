@@ -275,30 +275,30 @@ $component-sizes: (
     "padding-x":     null,
     "font-size":     ($font-size-base * .75),
     "line-height":   null,
-    "border-radius": .1875rem
+    "border-radius": .25rem
   ),
   "small": (
     "padding-y":     null,
     "padding-x":     null,
     "font-size":     ($font-size-base * .875),
     "line-height":   null,
-    "border-radius": .1875rem
+    "border-radius": .25rem
   ),
   "large": (
     "padding-y":     null,
     "padding-x":     null,
     "font-size":     ($font-size-base * 1.125),
     "line-height":   null,
-    "border-radius": .3125rem
+    "border-radius": .375rem
   ),
   "xlarge": (
     "padding-y":     null,
     "padding-x":     null,
     "font-size":     ($font-size-base * 1.25),
     "line-height":   null,
-    "border-radius": .3125rem
+    "border-radius": .5rem
   )
-);
+) !default;
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 

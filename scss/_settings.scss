@@ -229,8 +229,11 @@ $sizes-height:                      $sizes !default;
 // =====
 // Set values for border radius utility classes.
 $radii: (
-    "small":   .1875rem,
-    "large":   .3125rem
+    "xsmall":   .1875rem,
+    "small":    .25rem,
+    "large":   .5rem,
+    "xlarge":   1rem,
+    "2xlarge":   1.5rem
 ) !default;
 
 // Border width
@@ -335,7 +338,7 @@ $container-padding-x:   $grid-gutter-width * .5 !default;
 // Border dimension in pixels to get proper visual layout
 $border-width:      1px !default;
 $border-color:      $uibase-200 !default;
-$border-radius:     .25rem !default;
+$border-radius:     .375rem !default;
 
 
 // Body
@@ -524,28 +527,28 @@ $component-sizes: (
         "padding-x":     null,
         "font-size":     ($font-size-base * .75),
         "line-height":   null,
-        "border-radius": .1875rem
+        "border-radius": .25rem
     ),
     "small": (
         "padding-y":     null,
         "padding-x":     null,
         "font-size":     ($font-size-base * .875),
         "line-height":   null,
-        "border-radius": .1875rem
+        "border-radius": .25rem
     ),
     "large": (
         "padding-y":     null,
         "padding-x":     null,
         "font-size":     ($font-size-base * 1.125),
         "line-height":   null,
-        "border-radius": .3125rem
+        "border-radius": .375rem
     ),
     "xlarge": (
         "padding-y":     null,
         "padding-x":     null,
         "font-size":     ($font-size-base * 1.25),
         "line-height":   null,
-        "border-radius": .3125rem
+        "border-radius": .5rem
     )
 ) !default;
 
@@ -861,7 +864,7 @@ $form-checkradio-checked-color:             $white !default;
 $form-checkradio-checked-border-color:      $primary !default;
 $form-checkradio-checked-box-shadow:        map-get($shadows, "i1") !default;
 
-$form-checkradio-checkbox-border-radius:    $border-radius !default;
+$form-checkradio-checkbox-border-radius:    .25rem !default;
 $form-checkradio-checkbox-icon:             encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
 
 $form-checkradio-radio-border-radius:       50% !default;
