@@ -2302,7 +2302,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-checkbox-border-radius</code></td>
         <td>string</td>
-        <td><code>$border-radius</code></td>
+        <td><code>.25rem</code></td>
         <td>
           Border radius for custom styled checkbox inputs.
         </td>
