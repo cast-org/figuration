@@ -17,6 +17,7 @@
         justify-content: center;
         min-width: 2.25em;
         padding: $pagination-padding-y $pagination-padding-x;
+        @include font-size($pagination-font-size);
         line-height: $pagination-line-height;
         border: 0 solid $pagination-border-color;
         @include border-radius($pagination-border-radius);
