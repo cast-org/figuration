@@ -37,14 +37,16 @@
             border-color: $pagination-hover-border-color;
         }
 
-        &.active {
+        &.active,
+        .active > & {
             z-index: 1;
             color: $pagination-active-color;
             background-color: $pagination-active-bg;
             border-color: $pagination-active-border-color;
         }
 
-        &.disabled {
+        &.disabled,
+        .disabled > & {
             color: $pagination-disabled-color;
             pointer-events: none;
             background-color: $pagination-disabled-bg;
