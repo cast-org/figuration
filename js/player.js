@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.3.0): player.js
+ * Figuration (v4.3.1): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

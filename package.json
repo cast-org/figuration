@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "config": {
     "versionShort": "4.3"
   },
