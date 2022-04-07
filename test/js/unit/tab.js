@@ -580,4 +580,46 @@ $(function() {
             });
         });
     });
+
+    QUnit.test('should appy tabindex="0" to panel', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual(typeof $('#home').attr('tabindex'), 'undefined', 'panel does not have tabindex="0"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#home').attr('tabindex'), '0', 'panel has tabindex="0" after invoking');
+    });
+
+    QUnit.test('should appy role="tabpanel" to panel', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual(typeof $('#home').attr('role'), 'undefined', 'panel does not have role="tabpanel"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#home').attr('role'), 'tabpanel', 'panel has role="tabpanel" after invoking');
+    });
+
+    QUnit.test('should appy aria-labelledby to panel pointing back to trigger', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul>' +
+            '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
+            '<li><button type="button" data-cfw="tab" ata-cfw-tab-target="#profile">Profile</button></li>' +
+            '</ul>';
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual(typeof $('#home').attr('aria-labelledby'), 'undefined', 'panel does not have aria-labelledby');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#home').attr('aria-labelledby'), $('[data-cfw-tab-target="#home"]').attr('id'), 'panel has aria-labelledby linked to trigger after invoking');
+    });
 });
