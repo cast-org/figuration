@@ -4666,6 +4666,7 @@ a.drag.disabled {
   justify-content: center;
   min-width: 2.25em;
   padding: 0.25em 0.5em;
+  font-size: 1rem;
   line-height: 1.5;
   border: 0 solid #9eaab4;
   border-radius: 0.375rem;
@@ -7636,6 +7637,7 @@ a.drag.disabled {
 }
 
 .popover.draggable {
+  z-index: 1045;
   margin: 0;
 }
 
