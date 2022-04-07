@@ -2450,6 +2450,7 @@ if (typeof jQuery === 'undefined') {
 
             // Target should have id already - set ARIA attributes
             this.$target.attr({
+                'tabindex': 0,
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
