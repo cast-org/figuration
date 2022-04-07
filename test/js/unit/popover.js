@@ -538,4 +538,55 @@ $(function() {
 
         $popover.CFW_Popover('show');
     });
+
+    QUnit.test('should set and reset z-index when drag item is changed', function(assert) {
+        assert.expect(8);
+        var done = assert.async();
+        var $trigger0 = $('<button class="btn" title="popover title" data-cfw-popover-drag="true" data-cfw-popover-container="body">Popover</button>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover();
+        var $trigger1 = $('<button class="btn" title="popover title" data-cfw-popover-drag="true" data-cfw-popover-container="body">Popover</button>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover();
+        var $popover0 = null;
+        var $popover1 = null;
+
+        var getPopovers = function() {
+            $popover0 = $trigger0.data('cfw.popover').$target;
+            $popover1 = $trigger1.data('cfw.popover').$target;
+        };
+        var hasZ = function($node) {
+            var savedVal = $node.attr('data-cfw-zindex');
+            if (typeof savedVal !== 'undefined') {
+                return true;
+            }
+            return false;
+        };
+
+        $trigger1
+            .on('afterShow.cfw.popover', function() {
+                getPopovers();
+                assert.notOk(hasZ($popover0));
+                assert.notOk(hasZ($popover1));
+
+                $popover0.find('[data-cfw-drag="popover"]').trigger('mousedown');
+                assert.ok(hasZ($popover0));
+                assert.notOk(hasZ($popover1));
+                $popover0.find('[data-cfw-drag="popover"]').trigger('mouseup');
+
+                $popover1.find('[data-cfw-drag="popover"]').trigger('mousedown');
+                assert.notOk(hasZ($popover0));
+                assert.notOk(hasZ($popover1));
+                $popover0.find('[data-cfw-drag="popover"]').trigger('mouseup');
+
+                $popover0.find('[data-cfw-drag="popover"]').trigger('mousedown');
+                assert.ok(hasZ($popover0));
+                assert.notOk(hasZ($popover1));
+                $popover0.find('[data-cfw-drag="popover"]').trigger('mouseup');
+                done();
+            });
+
+        $trigger0.CFW_Popover('show');
+        $trigger1.CFW_Popover('show');
+    });
 });

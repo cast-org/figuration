@@ -216,6 +216,7 @@
     // Draggable variant
     @if $enable-popover-draggable {
         .popover.draggable {
+            z-index: $zindex-popover-draggable;
             margin: 0;
 
             .popover-arrow {

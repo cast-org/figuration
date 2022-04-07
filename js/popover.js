@@ -315,6 +315,8 @@
             this.$element.CFW_trigger('dragEnd.cfw.' + this.type);
             clearTimeout(this.keyTimer);
         }
+        // Reset z-index
+        this._resetZ(this.$target);
         // Call tooltip hide
         $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
@@ -337,20 +339,39 @@
         this.dragAdded = false;
     };
 
+    CFW_Widget_Popover.prototype._resetZ = function($item) {
+        // Reset z-index if one is already stored
+        var savedVal = $item.attr('data-cfw-zindex');
+        if (typeof savedVal !== 'undefined') {
+            $item.removeAttr('data-cfw-zindex');
+            $item[0].style.removeProperty('z-index');
+        }
+    };
+
     CFW_Widget_Popover.prototype._updateZ = function() {
+        var $selfRef = this;
         // Find highest z-indexed visible popover
         var zMax = 0;
         var $zObj = null;
         $('.popover:visible').each(function() {
-            var zCurr = parseInt($(this).css('z-index'), 10);
-            if (zCurr > zMax) {
+            var $item = $(this);
+            // Reset z-index
+            $selfRef._resetZ($item);
+
+            var zCurr = parseInt($item.css('z-index'), 10);
+            if (isNaN(zCurr)) { zCurr = 0; }
+            if (zCurr >= zMax) {
                 zMax = zCurr;
-                $zObj = $(this);
+                $zObj = $item;
             }
         });
-        // Only increase if highest is not current popover
-        if (this.$target[0] !== $zObj[0]) {
-            this.$target.css('z-index', ++zMax);
+        // Only increase if not highest
+        if ($zObj && this.$target[0] !== $zObj[0]) {
+            // Store
+            var actualVal = this.$target.css('z-index');
+            this.$target.attr('data-cfw-zindex', actualVal);
+            // Update
+            this.$target.css('z-index', parseInt(actualVal, 10) + 1);
         }
     };
 
