@@ -111,13 +111,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.3.0
+    v4.3.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.3/" class="active" aria-current="true">v4.3.0</a></li>
+    <li><a href="/4.3/" class="active" aria-current="true">v4.3.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -300,11 +300,29 @@
           <nav class="cf-toc">
                 <ol>
                     
-                    <li><a href="#v430">v4.3.0</a>
+                    <li><a href="#v431">v4.3.1</a>
             
                 <ol>
                     
                     <li><a href="#css">CSS</a>
+            		</li>
+
+                    <li><a href="#widgets">Widgets</a>
+            
+                <ol>
+                    
+                    <li><a href="#dropdown">Dropdown</a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#v430">v4.3.0</a>
+            
+                <ol>
+                    
+                    <li><a href="#css-1">CSS</a>
             		</li>
 
                     <li><a href="#layout">Layout</a>
@@ -343,7 +361,7 @@
                     <li><a href="#utilites">Utilites</a>
             		</li>
 
-                    <li><a href="#widgets">Widgets</a>
+                    <li><a href="#widgets-1">Widgets</a>
             
                 <ol>
                     
@@ -364,8 +382,20 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="v430" tabindex="-1">v4.3.0 <a class="direct-link" href="#v430"></a></h2>
+          <h2 id="v431" tabindex="-1">v4.3.1 <a class="direct-link" href="#v431"></a></h2>
 <h3 id="css" tabindex="-1">CSS <a class="direct-link" href="#css"></a></h3>
+<ul>
+<li>Font stack has been updated to give preference to Linux fonts over Arial.</li>
+<li><code>&lt;hr&gt;</code>, <code>.vr</code>, and other component dividers have all been consolidated to use borders, instead of <code>background-color</code> and <code>height</code> or <code>width</code>, to create dividers.</li>
+<li><code>border-radius</code> values have been slightly increased to soften the corners of most components.  Additional <code>.radius-*</code> utility classes have also been added.</li>
+</ul>
+<h3 id="widgets" tabindex="-1">Widgets <a class="direct-link" href="#widgets"></a></h3>
+<h4 id="dropdown" tabindex="-1">Dropdown <a class="direct-link" href="#dropdown"></a></h4>
+<ul>
+<li>Added 'centered' and 'middle' alignment variants.  Submenus do not inherit the centered or middle alignment, but will logically align based on direction.</li>
+</ul>
+<h2 id="v430" tabindex="-1">v4.3.0 <a class="direct-link" href="#v430"></a></h2>
+<h3 id="css-1" tabindex="-1">CSS <a class="direct-link" href="#css-1"></a></h3>
 <ul>
 <li>Reboot now has an opinionated sizing for the browser default checkbox and radio inputs.</li>
 <li><code>z-index</code> values for tooltip, popover, modal-backdrop and modal elements were increased slightly to make space for the new Offcanvas components.</li>
@@ -401,7 +431,7 @@
 <li>Added orientation utilities to rotate and flip elements.</li>
 <li>Added <code>.sticky-bottom</code> and related responsive classes to positioning utilities.</li>
 </ul>
-<h3 id="widgets" tabindex="-1">Widgets <a class="direct-link" href="#widgets"></a></h3>
+<h3 id="widgets-1" tabindex="-1">Widgets <a class="direct-link" href="#widgets-1"></a></h3>
 <h4 id="new-helper-utilites" tabindex="-1">New helper utilites <a class="direct-link" href="#new-helper-utilites"></a></h4>
 <ul>
 <li><code>$.CFW_Backdrop()</code> - control backdrop visibility within a defined element</li>
@@ -461,7 +491,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.3.0
+      <strong>Latest version:</strong> 4.3.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

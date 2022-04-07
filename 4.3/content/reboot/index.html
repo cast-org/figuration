@@ -111,13 +111,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.3.0
+    v4.3.1
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.3/" class="active" aria-current="true">v4.3.0</a></li>
+    <li><a href="/4.3/" class="active" aria-current="true">v4.3.1</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -387,7 +387,7 @@
 </ul>
 <h2 id="native-font-stack" tabindex="-1">Native Font Stack <a class="direct-link" href="#native-font-stack"></a></h2>
 <p>Figuration uses a &quot;native font stack&quot;, sometimes called a &quot;system font stack&quot;, for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
-<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token punctuation">,</span><br>    <span class="token selector">-apple-system</span><span class="token punctuation">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token punctuation">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span><br>    <span class="token selector">Arial</span><span class="token punctuation">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token punctuation">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token punctuation">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token punctuation">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
+<pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-family-sans-serif</span><span class="token punctuation">:</span></span><br>    <span class="token comment">// macOS and iOS</span><br>    <span class="token selector">system-ui</span><span class="token punctuation">,</span><br>    <span class="token selector">-apple-system</span><span class="token punctuation">,</span><br>    <span class="token comment">// Windows</span><br>    <span class="token string">"Segoe UI"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Android</span><br>    <span class="token selector">Roboto</span><span class="token punctuation">,</span><br>    <span class="token comment">// older macOS and iOS</span><br>    <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Linux</span><br>    <span class="token string">"Noto Sans"</span><span class="token punctuation">,</span><br>    <span class="token string">"Liberation Sans"</span><span class="token punctuation">,</span><br>    <span class="token comment">// Basic web fallback</span><br>    <span class="token selector">Arial</span><span class="token punctuation">,</span><br>    <span class="token comment">// Sans serif fallback</span><br>    <span class="token selector">sans-serif</span><span class="token punctuation">,</span><br>    <span class="token comment">// Emoji fonts</span><br>    <span class="token string">"Apple Color Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Emoji"</span><span class="token punctuation">,</span><br>    <span class="token string">"Segoe UI Symbol"</span><span class="token punctuation">,</span><br>    <span class="token string">"Noto Color Emoji"</span></code></pre>
 <p>Note that because the font stack includes emoji fonts, many common symbol/dingbat unicode characters will be rendered as multi-colored pictographs. Their appearance will vary, depending on the style used in the browser/platform's native emoji font, and they won't be affected by any CSS <code>color</code> styles.</p>
 <p>This <code>font-family</code> is applied to the <code>&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code>font-family</code>, update <code>$font-family-base</code> and recompile Figuration.</p>
 <h2 id="headings-and-paragraphs" tabindex="-1">Headings and Paragraphs <a class="direct-link" href="#headings-and-paragraphs"></a></h2>
@@ -917,14 +917,6 @@
         </td>
       </tr>
       <tr>
-        <td><code>$hr-bg</code></td>
-        <td>string</td>
-        <td><code>currentcolor</code></td>
-        <td>
-          Horizontal rule background.
-        </td>
-      </tr>
-      <tr>
         <td><code>$hr-color</code></td>
         <td>string</td>
         <td><code>inherit</code></td>
@@ -933,19 +925,19 @@
         </td>
       </tr>
       <tr>
-        <td><code>$hr-height</code></td>
+        <td><code>$hr-border-width</code></td>
         <td>string</td>
         <td><code>$border-width</code></td>
         <td>
-          Horizontal rule height.
+          Horizontal rule border width.
         </td>
       </tr>
       <tr>
-        <td><code>$hr-border</code></td>
+        <td><code>$hr-border-color</code></td>
         <td>string</td>
-        <td><code>0</code></td>
+        <td><code>null</code></td>
         <td>
-          Horizontal rule border.
+          Horizontal rule border color.
         </td>
       </tr>
       <tr>
@@ -1059,7 +1051,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.3.0
+      <strong>Latest version:</strong> 4.3.1
       <br>
       <a href="/versions/">Previous versions</a>
     </p>

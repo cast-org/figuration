@@ -475,7 +475,7 @@
   color: #fff;
   text-decoration: none;
   background-color: #1680a4;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 
 .cf-links .has-children .caret {
@@ -911,7 +911,7 @@ pre[class*="language-"] {
   padding: 1rem;
   background-color: #fff;
   border: 1px solid #dfe3e6;
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-radius: 0.375rem 0.375rem 0 0;
 }
 
 .cf-example + .cf-clipboard + pre[class*="language-"] {
@@ -1405,7 +1405,7 @@ pre[class*="language-"] {
   width: 2em;
   height: 2em;
   background-color: #343e48;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 
 .cf-callout {
@@ -1413,7 +1413,7 @@ pre[class*="language-"] {
   margin: 1rem 0;
   border: 1px solid #9eaab4;
   border-left-width: .5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
 }
 
 .cf-callout .h3,

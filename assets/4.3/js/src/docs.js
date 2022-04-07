@@ -6,7 +6,7 @@
 /* global ClipboardJS, Holder */
 
 /*!
- * Figuration (v4.3.0)
+ * Figuration (v4.3.1)
  * https://figuration.org
  * Copyright 2013-2022 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -85,25 +85,21 @@
         clipboard.on('success', function(e) {
             var $trigger = $(e.trigger);
 
-            $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
+            $trigger.one('afterHide.cfw.tooltip', $trigger, function() {
                 $(document).one('afterUnlink.cfw.tooltip', $trigger, function() {
                     $trigger
-                        .removeAttr('data-cfw-tooltip-original-title')
+                        .removeAttr('data-cfw-tooltip-title')
                         .CFW_Tooltip({
                             title: 'Copy to clipboard'
                         });
                 });
-
-                $trigger
-                    .removeAttr('data-cfw-tooltip-original-title')
-                    .CFW_Tooltip({
-                        title: 'Copied!',
-                        dispose: true
-                    })
-                    .CFW_Tooltip('show');
+                $trigger.CFW_Tooltip('dispose');
             });
 
-            $trigger.CFW_Tooltip('dispose');
+            $trigger.data('cfw.tooltip').$target.find('.tooltip-body').text('Copied!');
+            setTimeout(function() {
+                $trigger.CFW_Tooltip('locateUpdate');
+            });
             e.clearSelection();
         });
 
