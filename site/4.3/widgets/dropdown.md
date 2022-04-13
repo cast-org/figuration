@@ -459,7 +459,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu. Use [spacing
     </li>
     <li class="dropdown-divider"></li>
     <li>
-      <a class="dropdown-item" href="#">New around here? Sign up</a></li>
+      <a class="dropdown-item" href="#">New around here? Sign up</a>
     </li>
     <li>
       <a class="dropdown-item" href="#">Forgot password?</a>
