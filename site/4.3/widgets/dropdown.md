@@ -427,6 +427,49 @@ Add `<input>`, `<textarea>`, or `<select>` items to your dropdown menu.  Other t
 {% endcapture %}
 {% renderExample example %}
 
+### Form
+
+Put a form within a dropdown menu, or make it into a dropdown menu. Use [spacing utilities]({{ site.path }}/{{ version.docs }}/utilities/spacing/) to adjust layout as needed.  However as mentioned earlier, using a [Popover widget]({{ site.path }}/{{ version.docs }}/widgets/popover/) may be a more accessible alternative.
+
+{% capture example %}
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Dropdown form
+    <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-text pb-1">
+      <form>
+        <div class="mb-0_5">
+          <label for="dropdownForm0" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="dropdownForm0" placeholder="email@example.com">
+        </div>
+        <div class="mb-1">
+          <label for="dropdownForm1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="dropdownForm1" placeholder="Password">
+        </div>
+        <div class="mb-1">
+          <div class="form-check form-checkradio">
+            <input type="checkbox" id="dropdownForm2" class="form-check-input">
+            <label for="dropdownForm2" class="form-check-label">Remember me</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </li>
+    <li class="dropdown-divider"></li>
+    <li>
+      <a class="dropdown-item" href="#">New around here? Sign up</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#">Forgot password?</a>
+     </li>
+  </ul>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+
 ## Variants
 
 ### Reverse Alignment
