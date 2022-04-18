@@ -93,7 +93,7 @@
     "postcss": "^8.4.12",
     "postcss-calc": "^8.2.4",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.28.0",
     "qunit": "^2.18.1",
     "shelljs": "^0.8.5",
     "shx": "^0.3.4",
