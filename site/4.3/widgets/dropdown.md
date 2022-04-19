@@ -1614,11 +1614,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-caret-spacer-y</code></td>
+                <td>string</td>
+                <td><code>calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5)</code></td>
+                <td>
+                    Top offset for dropdown submenu indicator.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-caret-spacer-x</code></td>
                 <td>string</td>
                 <td><code>.375rem</code></td>
                 <td>
-                    Horizontal spacing for dropdown submenu indicator.
+                    Horizontal offset for dropdown submenu indicator.
                 </td>
             </tr>
             <tr>
@@ -1638,11 +1646,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-back-spacer-y</code></td>
+                <td>string</td>
+                <td><code>calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5)</code></td>
+                <td>
+                    Top offset for dropdown menu 'back' indicator.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-back-spacer-x</code></td>
                 <td>string</td>
                 <td><code>.375rem</code></td>
                 <td>
-                    Horizontal spacing for dropdown menu 'back' indicator.
+                    Horizontal offset for dropdown menu 'back' indicator.
                 </td>
             </tr>
         </tbody>

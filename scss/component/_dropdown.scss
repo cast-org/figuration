@@ -48,7 +48,7 @@
         > .dropdown-item {
             &::after {
                 position: absolute;
-                top: add($dropdown-line-height * $dropdown-font-size * .5, 0);
+                top: $dropdown-caret-spacer-y;
                 right: $dropdown-caret-spacer-x;
                 @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
             }
@@ -232,7 +232,7 @@
 
             > button::before {
                 position: absolute;
-                top: add($dropdown-line-height * $dropdown-font-size * .5, 0);
+                top: $dropdown-back-spacer-y;
                 left: $dropdown-back-spacer-x;
                 @include caret(start, $dropdown-back-width, $dropdown-back-color);
             }
