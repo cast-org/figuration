@@ -6,7 +6,7 @@
     @if $enable-form-check {
         .form-check {
             display: block;
-            min-height: if(unit($line-height-base) == "", $line-height-base * 1em, $line-height-base);
+            min-height: calc(#{$line-height-base} * 1em); // stylelint-disable-line function-disallowed-list
             padding-left: $form-check-gutter;
             margin-bottom: $form-check-margin-bottom;
 
@@ -39,7 +39,7 @@
 
                     > input {
                         float: right;
-                        margin-top: subtract(if(unit($line-height-base) == "", $line-height-base * .5em, $line-height-base * .5), $input-checkradio-size * .5);
+                        margin-top: calc((1em * #{$line-height-base} - #{$input-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
                         margin-right: -$form-check-gutter;
                         margin-left: 0;
                     }
@@ -71,7 +71,7 @@
             .form-check-input {
                 width: $form-checkradio-size;
                 height: $form-checkradio-size;
-                margin-top: subtract($line-height-base * .5em, $form-checkradio-size * .5);
+                margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
                 margin-left: -$form-checkradio-gutter;
                 @extend %form-check-input-hide;
             }
@@ -82,7 +82,7 @@
                     float: left;
                     width: $form-checkradio-size;
                     height: $form-checkradio-size;
-                    margin-top: subtract($line-height-base * .5em, $form-checkradio-size * .5);
+                    margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
                     margin-left: -$form-checkradio-gutter;
                     content: "";
                     background-color: $form-checkradio-bg;
@@ -193,7 +193,7 @@
 
             .form-check-input {
                 @extend %form-check-input-hide;
-                top: subtract(($line-height-base * .5em), ($form-switch-track-height * .5));
+                top: calc((1em * #{$line-height-base} - #{$form-switch-track-height}) * .5); // stylelint-disable-line function-disallowed-list
                 left: 0;
                 width: $form-switch-width;
                 height: $form-switch-track-height;
@@ -212,7 +212,7 @@
 
                 // Track
                 &::before {
-                    top: subtract($line-height-base * .5em, $form-switch-track-height * .5);
+                    top: calc((1em * #{$line-height-base} - #{$form-switch-track-height}) * .5); // stylelint-disable-line function-disallowed-list
                     left: 0;
                     width: $form-switch-width;
                     height: $form-switch-track-height;
@@ -224,7 +224,7 @@
 
                 // Thumb
                 &::after {
-                    top: subtract($line-height-base * .5em, $form-switch-thumb-height * .5);
+                    top: calc((1em * #{$line-height-base} - #{$form-switch-thumb-height}) * .5); // stylelint-disable-line function-disallowed-list
                     left: $form-switch-thumb-offset;
                     width: $form-switch-thumb-width;
                     height: $form-switch-thumb-height;

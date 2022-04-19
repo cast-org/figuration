@@ -1096,10 +1096,12 @@ $dropdown-caret-width:          $caret-border-width !default;
 $dropdown-caret-color:          $uibase-400 !default;
 $dropdown-caret-active-color:   $component-active-color !default;
 $dropdown-caret-spacer-x:       .375rem !default;
+$dropdown-caret-spacer-y:       calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5) !default; // stylelint-disable-line function-disallowed-list
 
 $dropdown-back-width:           $caret-border-width !default;
 $dropdown-back-color:           $uibase-400 !default;
 $dropdown-back-spacer-x:        .375rem !default;
+$dropdown-back-spacer-y:        calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5) !default; // stylelint-disable-line function-disallowed-list
 
 
 // Navs
