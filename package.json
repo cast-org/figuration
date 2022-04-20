@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "config": {
     "versionShort": "4.3"
   },
@@ -75,7 +75,7 @@
     "grunt-stylelint": "^0.18.0",
     "ip": "^1.1.5",
     "jquery": "^3.6.0",
-    "karma": "^6.3.17",
+    "karma": "^6.3.19",
     "karma-chrome-launcher": "^3.1.1",
     "karma-cli": "^2.0.0",
     "karma-detect-browsers": "^2.3.3",
