@@ -84,7 +84,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home');
     });
 
-    QUnit.test('should not appy role="tablist" to parent nav', function(assert) {
+    QUnit.test('should not apply role="tablist" to parent nav', function(assert) {
         assert.expect(3);
         var tabsHTML = '<nav>' +
             '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
@@ -259,7 +259,7 @@ $(function() {
         $last.CFW_Tab('show');
     });
 
-    QUnit.test('should appy role="tablist" to parent <ul>', function(assert) {
+    QUnit.test('should apply role="tablist" to parent <ul>', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ul>' +
             '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
@@ -273,7 +273,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('ul[role="tablist"]').length, 1, 'parent <ul> has role="tablist" after invoking');
     });
 
-    QUnit.test('should appy role="tablist" to parent <ol>', function(assert) {
+    QUnit.test('should apply role="tablist" to parent <ol>', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ol>' +
             '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
@@ -287,7 +287,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('ol[role="tablist"]').length, 1, 'parent <ol> has role="tablist" after invoking');
     });
 
-    QUnit.test('should appy role="tablist" to parent .nav', function(assert) {
+    QUnit.test('should apply role="tablist" to parent .nav', function(assert) {
         assert.expect(2);
         var tabsHTML = '<div class="nav">' +
             '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
@@ -301,7 +301,7 @@ $(function() {
         assert.strictEqual($('#qunit-fixture').find('.nav[role="tablist"]').length, 1, 'parent .nav has role="tablist" after invoking');
     });
 
-    QUnit.test('should appy role="tablist" to parent .list', function(assert) {
+    QUnit.test('should apply role="tablist" to parent .list', function(assert) {
         assert.expect(2);
         var tabsHTML = '<div class="list">' +
             '<button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button>' +
@@ -581,7 +581,7 @@ $(function() {
         });
     });
 
-    QUnit.test('should appy tabindex="0" to panel', function(assert) {
+    QUnit.test('should apply tabindex="0" to panel', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ul>' +
             '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
@@ -595,7 +595,7 @@ $(function() {
         assert.strictEqual($('#home').attr('tabindex'), '0', 'panel has tabindex="0" after invoking');
     });
 
-    QUnit.test('should appy role="tabpanel" to panel', function(assert) {
+    QUnit.test('should apply role="tabpanel" to panel', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ul>' +
             '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
@@ -609,7 +609,7 @@ $(function() {
         assert.strictEqual($('#home').attr('role'), 'tabpanel', 'panel has role="tabpanel" after invoking');
     });
 
-    QUnit.test('should appy aria-labelledby to panel pointing back to trigger', function(assert) {
+    QUnit.test('should apply aria-labelledby to panel pointing back to trigger', function(assert) {
         assert.expect(2);
         var tabsHTML = '<ul>' +
             '<li><button type="button" data-cfw="tab" data-cfw-tab-target="#home">Home</button></li>' +
