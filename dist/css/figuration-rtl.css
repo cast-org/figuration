@@ -1045,7 +1045,8 @@ textarea.form-control:not([rows="1"]) {
   border: 1px solid #9eaab4;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+     color-adjust: exact;
+          print-color-adjust: exact;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1126,7 +1127,8 @@ textarea.form-control:not([rows="1"]) {
   content: "";
   transition: all 0.15s ease-in-out;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+     color-adjust: exact;
+          print-color-adjust: exact;
 }
 
 @media (prefers-reduced-motion: reduce) {
