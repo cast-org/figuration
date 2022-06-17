@@ -608,4 +608,25 @@ $(function() {
 
         $trigger.CFW_Offcanvas('show');
     });
+
+    QUnit.test('should call `hide` on `resize` if element is not positioned', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<button data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvas">Offcanvas</button>').appendTo('#qunit-fixture');
+        var $target = $('<div id="offcanvas" class="offcanvas"></div>').appendTo('#qunit-fixture');
+        $trigger.CFW_Offcanvas();
+
+        $trigger
+            .on('afterShow.cfw.offcanvas', function() {
+                assert.ok($target.hasClass('in'), 'offcanvas shown');
+                $target.css('position', 'static');
+                $(document).trigger('resize');
+            })
+            .on('afterHide.cfw.offcanvas', function() {
+                assert.notOk($target.hasClass('in'), 'offcanvas hidden');
+                done();
+            });
+
+        $trigger.CFW_Offcanvas('show');
+    });
 });

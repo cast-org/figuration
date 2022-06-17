@@ -90,7 +90,7 @@
             }
 
             // Close any other open offcanvas to avoid conflicts
-            var offcanvasShow = document.querySelector('.offcanvas.in');
+            var offcanvasShow = document.querySelector('[class*=offcanvas].in');
             if (offcanvasShow && offcanvasShow !== this.$target[0]) {
                 $(offcanvasShow).CFW_Offcanvas('hide');
             }

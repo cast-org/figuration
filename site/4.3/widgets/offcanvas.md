@@ -263,6 +263,80 @@ It may also be useful to add a `z-index` to the container, this will keep the of
 {% endcapture %}
 {% renderExample example %}
 
+### Responsive
+
+Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Classes are available in the form of `.offcanvas{-breakpoint}`.
+
+Note the added case that target selectors are requred when using a dismiss control within a responsive offcanvas.  In the following examples, the `data-cfw-offcanvas-target` attribute is set for the `data-cfw-dismiss="offcanvas"` controls.
+
+<div class="cf-example">
+  <div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
+  <button class="btn btn-primary d-lg-none" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasResponsive">Toggle offcanvas</button>
+  <div class="offcanvas-lg offcanvas-end" id="offcanvasResponsive">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Responsive offcanvas</h5>
+      <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#offcanvasResponsive" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+      <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<button class="btn btn-primary d-lg-none" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasResponsive">Toggle offcanvas</button>
+
+<div class="offcanvas-lg offcanvas-end" id="offcanvasResponsive">
+  <div class="offcanvas-header">
+    <h45 class="offcanvas-title h5">Responsive offcanvas</h4>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#offcanvasResponsive" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+Creating a responsive, contained offcanvas is also possible.
+
+<div class="cf-example">
+  <div id="offcanvasRootElementResponsive" class="bg-light border overflow-hidden position-relative" style="height: 200px; z-index: 1;">
+    <div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
+    <button class="btn btn-primary d-lg-none" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasContainedResponsive" data-cfw-offcanvas-root-element="#offcanvasRootElementResponsive">
+      Responsive Contained offcanvas
+    </button>
+    <div id="offcanvasContainedResponsive" class="offcanvas-lg offcanvas-start">
+      <div class="offcanvas-header">
+        <h4 class="offcanvas-title h5">Responsive Contained offcanvas</h4>
+        <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#offcanvasContainedResponsive" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="offcanvas-body">
+        Responsive contained offcanvas content
+      </div>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<div id="offcanvasRootElementResponsive" class="bg-light border overflow-hidden position-relative" style="height: 200px; z-index: 1;">
+  <button class="btn btn-primary d-lg-none" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasContainedResponsive" data-cfw-offcanvas-root-element="#offcanvasRootElementResponsive">
+    Responsive Contained offcanvas
+  </button>
+
+  <div id="offcanvasContainedResponsive" class="offcanvas-lg offcanvas-start">
+    <div class="offcanvas-header">
+      <h4 class="offcanvas-title h5">Responsive Contained offcanvas</h4>
+      <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#offcanvasContainedResponsive" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="offcanvas-body">
+      Responsive contained offcanvas content
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Usage
 
 The offcanvas widget toggles your hidden content on demand, via data attributes or JavaScript. It also generates a `.offcanvas-backdrop` to provide a click area for dismissing shown offcanvas when clicking outside the offcanvas.
@@ -582,6 +656,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-offcanvas-responsive</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive offcanvas variants.
+        </td>
+      </tr>
+      <tr>
         <td><code>$offcanvas-bg</code></td>
         <td>string</td>
         <td><code>$component-bg</code></td>
@@ -819,6 +901,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>scale(1.01)</code></td>
         <td>
           Transform setting for close being blocked.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$offcanvas-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Breakpoint list for responsive offcanvas variants.
         </td>
       </tr>
     </tbody>
