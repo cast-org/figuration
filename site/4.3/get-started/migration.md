@@ -6,6 +6,13 @@ group: get-started
 toc: true
 ---
 
+## v4.3.3
+
+### Widgets
+
+#### Offcanvas
+ - New responsive offcanvas variants have been added.  These will hide content when below the specified breakpoint, otherwise the content will appear normally.
+
 ## v4.3.1
 
 ### CSS
