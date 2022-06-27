@@ -97,6 +97,34 @@ Don't want to mess around with trying to figure out what text color provides pro
 {% endcapture %}
 {% renderExample example %}
 
+### With Components
+
+Use the `.bgtext-*` utilities in place of combined `.text-*` and `.bg-*` classes, like on [badges]({{ site.path }}/{{ version.docs }}/components/badges/#contextual-variations):
+
+{% capture example %}
+<span class="badge bgtext-success">Primary</span>
+<span class="badge bgtext-warning">Info</span>
+{% endcapture %}
+{% renderExample example %}
+
+Or on [cards]({{ site.path }}/{{ version.docs }}/components/cards/#background-and-text):
+
+{% capture example %}
+<div class="card bgtext-secondary mb-1" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+<div class="card bgtext-light mb-1" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## Borders
 
 Borders also be colored with their own set of contextual classes. Borders do not change color on hover and focus state.
