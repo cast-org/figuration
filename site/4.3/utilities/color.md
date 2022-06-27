@@ -69,7 +69,7 @@ There is also a `.bg-transparent` for removing the background color of an elemen
 
 {% capture example %}
 <div class="p-0_5 mb-1 bg-primary text-white">.bg-primary</div>
-<div class="p-0_5 mb-1 bg-success text-black">.bg-success</div>
+<div class="p-0_5 mb-1 bg-success text-white">.bg-success</div>
 <div class="p-0_5 mb-1 bg-info text-white">.bg-info</div>
 <div class="p-0_5 mb-1 bg-warning text-black">.bg-warning</div>
 <div class="p-0_5 mb-1 bg-danger text-white">.bg-danger</div>
@@ -79,6 +79,21 @@ There is also a `.bg-transparent` for removing the background color of an elemen
 <div class="p-0_5 mb-1 bg-white text-black">.bg-white</div>
 <div class="p-0_5 mb-1 bg-black text-white">.bg-black</div>
 <div class="p-0_5 mb-1 bg-transparent text-black">.bg-transparent</div>
+{% endcapture %}
+{% renderExample example %}
+
+## Backgrounds with Contrasting Text
+
+Don't want to mess around with trying to figure out what text color provides proper contrast for a given background? Combine the power of the `bg-*` and `.text-*` utilities into one class where a foreground `color` of proper contrast is automatically determined through our Sass `color-contrast()` function based on the given `background-color`.
+
+{% capture example %}
+<div class="p-0_5 mb-1 bgtext-primary">.bgtext-primary</div>
+<div class="p-0_5 mb-1 bgtext-success">.bgtext-success</div>
+<div class="p-0_5 mb-1 bgtext-info">.bgtext-info</div>
+<div class="p-0_5 mb-1 bgtext-warning">.bgtext-warning</div>
+<div class="p-0_5 mb-1 bgtext-danger">.bgtext-danger</div>
+<div class="p-0_5 mb-1 bgtext-light">.bgtext-light</div>
+<div class="p-0_5 mb-1 bgtext-dark">.bgtext-dark</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -158,6 +173,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-utility-bgtext</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the theme background colors with contrasting text utility classes.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-utility-border-colors</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -219,6 +242,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$palette-colors</code></td>
         <td>
           Palette-based background colors.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$utility-bgtext-colors</code></td>
+        <td>map</td>
+        <td><code>$base-colors</code></td>
+        <td>
+          Themed background colors with contrasting text.
         </td>
       </tr>
       <tr>
