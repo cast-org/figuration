@@ -33,4 +33,14 @@
         .bg-black { background-color: $black !important; }
         .bg-transparent { background-color: transparent !important; }
     }
+
+    // Background colors with contrasting text
+    @if $enable-utility-bgtext {
+        @each $color, $value in $utility-bgtext-colors {
+            .bgtext-#{$color} {
+                color: color-contrast($value) !important;
+                background-color: $value !important;
+            }
+        }
+    }
 }
