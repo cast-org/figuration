@@ -2,7 +2,6 @@
 .cf-sidebar {
     position: relative;
     z-index: 1;
-    padding-top: .5rem;
     padding-bottom: 0;
     background-color: palette($uibase, 50);
     border-bottom: 1px solid $uibase-200;
@@ -30,12 +29,10 @@
 
 .cf-links {
     padding-top: .5rem;
-    border-top: 1px solid $border-color;
 
     @include media-breakpoint-up(md) {
         // stylelint-disable-next-line declaration-no-important
         display: block !important;
-        border-top: 0;
 
         @supports (position: sticky) {
             max-height: subtract(100vh, 3.375rem);

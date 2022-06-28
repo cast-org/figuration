@@ -267,7 +267,7 @@ It may also be useful to add a `z-index` to the container, this will keep the of
 
 Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Classes are available in the form of `.offcanvas{-breakpoint}`.
 
-Note the added case that target selectors are requred when using a dismiss control within a responsive offcanvas.  In the following examples, the `data-cfw-offcanvas-target` attribute is set for the `data-cfw-dismiss="offcanvas"` controls.
+**Note the added case that target selectors are requred when using a dismiss control within a responsive offcanvas.**  In the following examples, the `data-cfw-offcanvas-target` attribute is set for the `data-cfw-dismiss="offcanvas"` controls.
 
 <div class="cf-example">
   <div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
