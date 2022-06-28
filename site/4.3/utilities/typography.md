@@ -45,7 +45,7 @@ Allow text to wrap with a `.text-wrap` class.
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% capture example %}
-<div class="card card-body text-nowrap" style="width: 8rem;">
+<div class="text-nowrap bg-light border" style="width: 8rem;">
   This text should overflow the parent.
 </div>
 {% endcapture %}

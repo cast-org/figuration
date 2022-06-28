@@ -32,6 +32,12 @@ Some widgets and CSS components depend on other widgets. If you include widgets 
 {% endcapture %}
 {% renderCallout, callout, "info" %}
 
+## Usage with JavaScript Frameworks
+
+While the Figuration CSS can be used with any framework, **the Figuration JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Figuration and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the "open" position.
+
+Unfortunately, at this time, CAST cannot offer an alternative for those using these types of frameworks due to limited available resources.
+
 ## Util
 
 All of Figuration's widgets depend on `util.js` and it has to be included alongside the other JavaScript files. If you're using the compiled (or minified) `figuration.js`, there is no need to include this—it's already there.
