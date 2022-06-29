@@ -1,7 +1,9 @@
 {%- assign currVersion = version.docs | valueIfEmpty: site.version.docs -%}
 <div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    <span class="sr-only">Figuration</span>
     v{{ version.current | valueIfEmpty: site.version.current }}
+    <span class="sr-only">(switch to other versions)</span>
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
