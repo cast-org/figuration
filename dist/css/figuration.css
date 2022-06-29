@@ -854,13 +854,10 @@ pre code {
   opacity: 1;
 }
 
-.form-control:disabled, .form-control[readonly] {
-  background-color: #eff1f3;
-  opacity: 1;
-}
-
 .form-control:disabled {
   color: #9eaab4;
+  background-color: #eff1f3;
+  opacity: 1;
 }
 
 select.form-control {
