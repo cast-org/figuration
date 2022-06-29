@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ description | default: site.description | escape }}">
 <meta name="author" content="{{ site.author }}">
+<meta name="generator" content="{{ eleventy.generator }}">
 
 {% if site.environment == "production" -%}
 <meta name="docsearch:language" content="{{ site.language }}">
