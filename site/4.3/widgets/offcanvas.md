@@ -358,7 +358,7 @@ Activate an offcanvas without writing JavaScript. Set `data-cfw="offcanvas"` on 
 {% renderFile jsDismiss, extras %}
 
 {% capture callout %}
-While both ways to dismiss an offcanvas are supported, keep in mind that dismissing from outside an offcanvas does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+While both ways to dismiss an offcanvas are supported, keep in mind that dismissing from outside an offcanvas does not match [ARIA Authoring Practices Guide dialog (modal) pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/). Do this at your own risk.
 {% endcapture %}
 {% renderCallout callout, "warning" %}
 
