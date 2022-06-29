@@ -100,9 +100,69 @@ The sizing classes also work on other inputs such as `<select>`s and `<textarea>
 {% endcapture %}
 {% renderExample example %}
 
+### Disabled States
+
+Add the `disabled` attribute on an input to prevent user interactions.  Disabled inputs have a grayed out appearance, remove pointer events, and prevent focusing.
+
+{% capture example %}
+<input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+
+<select class="form-control" aria-label="Disable select example" disabled>
+  <option>Disabled select example</option>
+</select>
+
+<textarea class="form-control" id="disabled-textarea" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>
+{% endcapture %}
+{% renderExample example %}
+
+Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
+
+{% capture example %}
+<form>
+  <fieldset disabled>
+    <legend>Disabled fieldset example</legend>
+    <div class="form-group">
+      <label for="disabled-text">Disabled input</label>
+      <input type="text" id="disabled-text" class="form-control" placeholder="Disabled input">
+    </div>
+    <div class="form-group">
+      <label for="disabled-select">Disabled select menu</label>
+      <select id="disabled-select" class="form-control">
+        <option>Disabled select</option>
+      </select>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="disabled-check">
+      <label class="form-check-label" for="disabled-check">Can't check this</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+{% endcapture %}
+{% renderExample example %}
+
+{% capture callout %}
+Caveat About Link Functionality of `<a>`
+{.h5}
+
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
+
+However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the accessibility section about [disabled anchors]({{ site.path }}/{{ version.docs }}/get-started/accessibility/#disabled-anchors), you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
+{% endcapture %}
+{% renderCallout, callout, "warning" %}
+
+{% capture callout %}
+Cross-browser Compatibility
+{.h5}
+
+While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
+{% endcapture %}
+{% renderCallout, callout, "danger" %}
+
+
 ### Readonly Inputs
 
-Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. `readonly` inputs can still be focused and selected, while `disabled` inputs cannot.
 
 {% capture example %}
 <input class="form-control" type="text" value="Readonly input" aria-label="Readonly input example" readonly>
@@ -186,65 +246,6 @@ Just like sizing the form inputs, you can size `<label>`s, `<legends>`, and stat
 </div>
 {% endcapture %}
 {% renderExample example %}
-
-## Disabled States
-
-Add the `disabled` attribute on an input to prevent user interactions and make it appear lighter in color.
-
-{% capture example %}
-<input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-
-<select class="form-control" aria-label="Disable select example" disabled>
-  <option>Disabled select example</option>
-</select>
-
-<textarea class="form-control" id="disabled-textarea" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>
-{% endcapture %}
-{% renderExample example %}
-
-Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
-
-{% capture example %}
-<form>
-  <fieldset disabled>
-    <legend>Disabled fieldset example</legend>
-    <div class="form-group">
-      <label for="disabled-text">Disabled input</label>
-      <input type="text" id="disabled-text" class="form-control" placeholder="Disabled input">
-    </div>
-    <div class="form-group">
-      <label for="disabled-select">Disabled select menu</label>
-      <select id="disabled-select" class="form-control">
-        <option>Disabled select</option>
-      </select>
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="disabled-check">
-      <label class="form-check-label" for="disabled-check">Can't check this</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
-</form>
-{% endcapture %}
-{% renderExample example %}
-
-{% capture callout %}
-Caveat About Link Functionality of `<a>`
-{.h5}
-
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
-
-However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the accessibility section about [disabled anchors]({{ site.path }}/{{ version.docs }}/get-started/accessibility/#disabled-anchors), you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
-{% endcapture %}
-{% renderCallout, callout, "warning" %}
-
-{% capture callout %}
-Cross-browser Compatibility
-{.h5}
-
-While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
-{% endcapture %}
-{% renderCallout, callout, "danger" %}
 
 ## Help Text
 
