@@ -546,57 +546,93 @@ You can even bring in your ordered list numbers into your list group.  The use o
 
 ### Checkbox and Radio Inputs
 
+Place checkboxes and radios within list group items and customize as needed. You can also use them without `<label>`s, but you should include an `aria-label` attribute and value for accessibility.
+
+{% capture example %}
+<ul class="list list-spaced list-group">
+  <li class="list-item">
+    <input type="checkbox" value="" id="firstCheckbox">
+    <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+  </li>
+  <li class="list-item">
+    <input type="checkbox" value="" id="secondCheckbox">
+    <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+  </li>
+  <li class="list-item">
+    <input type="checkbox" value="" id="thirdCheckbox">
+    <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
 Use `<label>`s as the `.list-item` and place checkboxes and radios within them to create large hit areas, then customize as needed.
 
 {% capture example %}
 <div class="list list-spaced list-group">
   <label class="list-item">
-    <input class="form-check-input" type="checkbox" value="">
-    Cras justo odio
+    <input type="checkbox" value="">
+    First checkbox
   </label>
   <label class="list-item ps-2">
-    <input class="form-check-input ms-n1" type="checkbox" value="">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit volutpat quam id dictum in fermentum libero vel orci hendrerit fermentum
+    <input class="ms-n1" type="checkbox" value="">
+    Third checkbox with a really long section of example text for the label to show how the label text can be wrapped and remain aligned using utility classes.
   </label>
   <label class="list-item">
-    <input class="form-check-input" type="checkbox" value="">
-    Morbi leo risus
-  </label>
-  <label class="list-item">
-    <input class="form-check-input" type="checkbox" value="">
-    Porta ac consectetur ac
-  </label>
-  <label class="list-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
-    Vestibulum at eros
+    <input type="checkbox" value="">
+    Third checkbox
   </label>
 </div>
 {% endcapture %}
 {% renderExample example %}
 
-You can also use them without `<label>`s, but you should include an `aria-label` attribute and value for accessibility.
+Custom checkbox and radio buttons using `.form-checkradio` are also supported within lists.
 
 {% capture example %}
 <ul class="list list-spaced list-group">
   <li class="list-item">
-    <input class="form-check-input" type="checkbox" value="" aria-label="...">
-    Cras justo odio
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="fisrtFormCheck">
+      <label class="form-check-label" for="fisrtFormCheck">First checkbox</label>
+    </div>
   </li>
   <li class="list-item">
-    <input class="form-check-input" type="checkbox" value="" aria-label="...">
-    Dapibus ac facilisis in
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="secondFormCheck">
+      <label class="form-check-label" for="secondFormCheck">Second checkbox</label>
+    </div>
   </li>
   <li class="list-item">
-    <input class="form-check-input" type="checkbox" value="" aria-label="...">
-    Morbi leo risus
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="thirdFormCheck">
+      <label class="form-check-label" for="thirdFormCheck">Third checkbox</label>
+    </div>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+Create large hit areas for `.form-checkradio` inputs by using `.link-stretch` on the `<label>` to make the entire list group item clickable.
+
+{% capture example %}
+<ul class="list list-spaced list-group">
+  <li class="list-item">
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="fisrtFormCheckStretch">
+      <label class="form-check-label link-stretch" for="fisrtFormCheckStretch">First checkbox</label>
+    </div>
   </li>
   <li class="list-item">
-    <input class="form-check-input" type="checkbox" value="" aria-label="...">
-    Porta ac consectetur ac
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="secondFormCheckStretch">
+      <label class="form-check-label link-stretch" for="secondFormCheckStretch">Second checkbox</label>
+    </div>
   </li>
   <li class="list-item">
-    <input class="form-check-input" type="checkbox" value="" aria-label="...">
-    Vestibulum at eros
+    <div class="form-check form-checkradio">
+      <input class="form-check-input" type="checkbox" value="" id="thirdFormCheckStretch">
+      <label class="form-check-label link-stretch" for="thirdFormCheckStretch">Third checkbox</label>
+    </div>
   </li>
 </ul>
 {% endcapture %}
@@ -948,7 +984,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$list-spaced-item-padding-y</code></td>
         <td>string</td>
-        <td><code>.75em</code></td>
+        <td><code>.5em</code></td>
         <td>
             Vertical padding for list items in a spaced list.
         </td>
