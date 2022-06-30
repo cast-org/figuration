@@ -593,19 +593,19 @@ Custom checkbox and radio buttons using `.form-checkradio` are also supported wi
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="fisrtFormCheck">
-      <label class="form-check-label" for="fisrtFormCheck">First checkbox</span>
+      <label class="form-check-label" for="fisrtFormCheck">First checkbox</label>
     </div>
   </li>
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="secondFormCheck">
-      <label class="form-check-label" for="secondFormCheck">Second checkbox</span>
-      <div>
+      <label class="form-check-label" for="secondFormCheck">Second checkbox</label>
+    </div>
   </li>
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="thirdFormCheck">
-      <label class="form-check-label" for="thirdFormCheck">Third checkbox</span>
+      <label class="form-check-label" for="thirdFormCheck">Third checkbox</label>
     </div>
   </li>
 </ul>
@@ -619,19 +619,19 @@ Create large hit areas for `.form-checkradio` inputs by using `.link-stretch` on
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="fisrtFormCheckStretch">
-      <label class="form-check-label link-stretch" for="fisrtFormCheckStretch">First checkbox</span>
+      <label class="form-check-label link-stretch" for="fisrtFormCheckStretch">First checkbox</label>
     </div>
   </li>
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="secondFormCheckStretch">
-      <label class="form-check-label link-stretch" for="secondFormCheckStretch">Second checkbox</span>
-      <div>
+      <label class="form-check-label link-stretch" for="secondFormCheckStretch">Second checkbox</label>
+    </div>
   </li>
   <li class="list-item">
     <div class="form-check form-checkradio">
       <input class="form-check-input" type="checkbox" value="" id="thirdFormCheckStretch">
-      <label class="form-check-label link-stretch" for="thirdFormCheckStretch">Third checkbox</span>
+      <label class="form-check-label link-stretch" for="thirdFormCheckStretch">Third checkbox</label>
     </div>
   </li>
 </ul>
