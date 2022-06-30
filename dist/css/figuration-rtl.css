@@ -4120,12 +4120,12 @@ a.drag.disabled {
 }
 
 .list-spaced > .list-item {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .list-spaced-y > .list-item {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .list-spaced-x > .list-item {
@@ -4209,12 +4209,12 @@ a.drag.disabled {
 }
 
 .list-horizontal.list-spaced > .list-item {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .list-horizontal.list-spaced-y > .list-item {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .list-horizontal.list-spaced-x > .list-item {
