@@ -1,5 +1,5 @@
 {%- assign page_slug = page.url | pathLast -%}
-<button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle docs navigation" data-cfw="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas">
+<button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle docs navigation" data-cfw="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" data-cfw-offcanvas-scroll="true">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <div id="cf-links-offcanvas" class="offcanvas-md offcanvas-start">
@@ -8,10 +8,8 @@
     <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   </div>
   <div class="offcanvas-body d-md-block">
-    {% if site.environment == "production" -%}
-    <form class="cf-search" role="search">
-      <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ version.docs | valueIfEmpty: site.version.docs }}"/>
-    </form>
+    {% if layout == "doc" and search != false -%}
+    <div class="cf-search" id="docsearch" data-docs-version="{{ version.docs | valueIfEmpty: site.version.docs }}"></div>
     {%- endif %}
 
     <nav id="cf-links-nav" class="cf-links" aria-label="Docs">
