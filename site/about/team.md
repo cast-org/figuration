@@ -4,6 +4,7 @@ title: Team
 description: An overview of who the core contributors are for Figuration.
 group: about
 toc: false
+search: false
 ---
 
 Figuration is maintained by a small team. Hopefully soon we can generate support and involvement from the community.

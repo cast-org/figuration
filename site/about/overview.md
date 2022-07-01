@@ -4,6 +4,7 @@ title: About
 description: A brief history of Figuration, why we did it, who we are, and more.
 group: about
 toc: false
+search: false
 ---
 
 ## Figuration <small>\[fig-yuh-**rey**-shuhn\]</small>

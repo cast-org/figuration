@@ -5,9 +5,9 @@
 <link href="{{ site.path }}/assets{{ pathVersion }}/fonts/fontawesome/css/all.min.css" rel="stylesheet">
 {% endif %}
 
-{% if site.environment == "production" -%}
+{% if layout == "doc" and search != false -%}
 <!-- Algolia DocSearch CSS -->
-<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet" >
 {% endif -%}
 
 <!-- Figuration CSS -->

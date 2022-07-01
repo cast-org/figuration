@@ -20,7 +20,7 @@
 {% include body %}
 {% include footer -%}
 
-{% if site.environment == "production" -%}
+{% if layout == "doc" -%}
 {% include algolia %}
 {% endif -%}
 </body>
