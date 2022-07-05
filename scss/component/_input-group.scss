@@ -9,6 +9,7 @@
         @include border-radius($input-border-radius);
 
         > .form-control,
+        > .form-control-static,
         > .form-file {
             position: relative;  // Needed for z-index on focus/active state
             flex: 1 1 0%;
