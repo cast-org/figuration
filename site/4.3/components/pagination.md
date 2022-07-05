@@ -453,6 +453,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$pagination-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for pagination items.
+        </td>
+      </tr>
+      <tr>
         <td><code>$pagination-line-height</code></td>
         <td>string</td>
         <td><code>$btn-line-height</code></td>
