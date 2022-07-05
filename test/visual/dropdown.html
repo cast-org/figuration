@@ -756,7 +756,7 @@ var setRTL = function() {
     </div>
 </div>
 
-<ul class="nav nav-pills">
+<ul class="nav nav-pills mb-1">
     <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -781,6 +781,26 @@ var setRTL = function() {
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </li>
 </ul>
+
+<hr>
+
+<div class="dropdown mb-1">
+    <button id="dropdown0" class="btn btn-info" type="button" data-cfw="dropdown">
+        Nested Dropdown using buttons<span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul id="dropdown0_menu" class="dropdown-menu">
+        <li><button type="button" class="dropdown-item">Button</button></li>
+        <li>
+            <button type="button" class="dropdown-item">Submenu Button</button>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+            </ul>
+        </li>
+        <li><button type="button" class="dropdown-item">Button</button></li>
+    </ul>
+</div>
 
 </body>
 </html>
