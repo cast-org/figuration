@@ -957,6 +957,51 @@ $(function() {
         $element.trigger('click');
     });
 
+    QUnit.test('should initialize subtoggle link and submenu', function(assert) {
+        assert.expect(2);
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li>' +
+            '<a href="#" id="subtoggle">Menu link</a>' +
+            '<ul id="submenu">' +
+            '<li><a id="subitem" href="#">Sub-menu link</a></li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var $subtoggle = $('#subtoggle');
+        var $submenu = $('#submenu');
+
+        assert.notEqual($subtoggle.data('cfw.dropdown'), 'undefined');
+        assert.equal($submenu.attr('aria-labelledby'), $subtoggle.attr('id'));
+    });
+
+    QUnit.test('should initialize subtoggle button and submenu', function(assert) {
+        assert.expect(2);
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li>' +
+            '<button id="subtoggle">Menu button</button>' +
+            '<ul id="submenu">' +
+            '<li><a id="subitem" href="#">Sub-menu link</a></li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var $subtoggle = $('#subtoggle');
+        var $submenu = $('#submenu');
+
+        assert.notEqual($subtoggle.data('cfw.dropdown'), 'undefined');
+        assert.equal($submenu.attr('aria-labelledby'), $subtoggle.attr('id'));
+    });
+
+
     QUnit.test('right arrow keypress should open submenu and select first item', function(assert) {
         assert.expect(3);
         var done = assert.async();
