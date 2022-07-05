@@ -4507,6 +4507,7 @@ a.drag.disabled {
 }
 
 .input-group > .form-control,
+.input-group > .form-control-static,
 .input-group > .form-file {
   position: relative;
   flex: 1 1;
@@ -4516,6 +4517,7 @@ a.drag.disabled {
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .input-group > .form-control,
+  .input-group > .form-control-static,
   .input-group > .form-file {
     flex-basis: auto;
     width: 1%;

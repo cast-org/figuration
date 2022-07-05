@@ -1828,7 +1828,7 @@ if (typeof jQuery === 'undefined') {
             var $subToggle = this.$target.children('li').children('ul, ol').parent();
             $subToggle.each(function() {
                 var $this = $(this);
-                var $subElement = $this.children('a').eq(0);
+                var $subElement = $this.children('a, button').eq(0);
                 var $subTarget = $this.children('ul, ol').eq(0);
                 var subOptions = {};
 
