@@ -107,7 +107,11 @@
 <div class="form-check form-checkradio">
     <input class="form-check-input showindeterminate" type="checkbox" id="check1">
     <label class="form-check-label" for="check1">Indeterminate custom checkbox</label>
-    <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript—there's no HTML attribute for this.</small>
+    <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript as there is no HTML attribute for this.</small>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input showindeterminate" type="checkbox" id="check1d" disabled>
+    <label class="form-check-label" for="check1d">Disabled Indeterminate custom checkbox</label>
 </div>
 <div class="form-check form-checkradio">
     <input class="form-check-input" type="checkbox" id="check2">
@@ -293,10 +297,10 @@
 </div>
 
 <script>
-    var showind = document.getElementsByClassName("showindeterminate");
-    for (var i = 0; i < showind.length; i++) {
-        showind[i].indeterminate = true;
-    }
+document.querySelectorAll('.showindeterminate[type="checkbox"]')
+  .forEach(checkbox => {
+    checkbox.indeterminate = true
+  });
 </script>
 
 </body>

@@ -349,7 +349,7 @@ In the checked and indeterminate states, we use icons from [Open Iconic](https:/
   <small class="text-muted d-block">Some additional help text could appear right here.</small>
 </div>
 <div class="form-check form-checkradio">
-  <input class="form-check-input" type="checkbox" id="check1">
+  <input class="form-check-input showindeterminate" type="checkbox" id="check1">
   <label class="form-check-label" for="check1">Indeterminate custom checkbox</label>
   <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript—there's no HTML attribute for this.</small>
 </div>
@@ -364,6 +364,11 @@ In the checked and indeterminate states, we use icons from [Open Iconic](https:/
 <div class="form-check form-checkradio">
   <input class="form-check-input" type="checkbox" id="check4" disabled checked>
   <label class="form-check-label" for="check4">Disabled checked custom checkbox</label>
+</div>
+<div class="form-check form-checkradio">
+    <input class="form-check-input showindeterminate" type="checkbox" id="check1d" disabled>
+    <label class="form-check-label" for="check1d">Disabled Indeterminate custom checkbox</label>
+    <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript—there's no HTML attribute for this.</small>
 </div>
 <fieldset class="mt-1" disabled>
   <legend class="form-label">Disabled fieldset</legend>
@@ -410,14 +415,20 @@ In the checked and indeterminate states, we use icons from [Open Iconic](https:/
 {% endcapture %}
 {% renderExample example %}
 
-For the indeterminate checkbox above we are using the following script:
+For the indeterminate checkboxes above we are using the following script:
 
 {% capture highlight %}
-document.getElementById("check1").indeterminate = true;
+document.querySelectorAll('.showindeterminate[type="checkbox"]')
+  .forEach(checkbox => {
+    checkbox.indeterminate = true
+  });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 <script>
-  document.getElementById("check1").indeterminate = true;
+  document.querySelectorAll('.showindeterminate[type="checkbox"]')
+    .forEach(checkbox => {
+      checkbox.indeterminate = true
+    });
 </script>
 
 ### Switch
