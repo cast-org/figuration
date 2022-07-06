@@ -1287,28 +1287,53 @@ $(function() {
 
     QUnit.test('should add an aria-label attribute referencing original title', function(assert) {
         assert.expect(1);
+        var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"></a>')
-            .CFW_Tooltip();
-
-        assert.strictEqual($trigger.attr('aria-label'), 'Another tooltip');
+        var $trigger = $('<a href="#" title="Another tooltip"></a>');
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($trigger.attr('aria-label'), 'Another tooltip');
+                done();
+            })
+            .CFW_Tooltip('show');
     });
 
-    QUnit.test('should update aria-label attribute if the element has existing aria-label', function(assert) {
+    QUnit.test('should not update aria-label attribute if the element has existing aria-label', function(assert) {
         assert.expect(1);
+        var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip" aria-label="Different label"></a>')
-            .CFW_Tooltip();
-
-        assert.strictEqual($trigger.attr('aria-label'), 'Different label');
+        var $trigger = $('<a href="#" title="Another tooltip" aria-label="Different label"></a>');
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($trigger.attr('aria-label'), 'Different label');
+                done();
+            })
+            .CFW_Tooltip('show');
     });
 
     QUnit.test('should not add an aria-label attribute if the element has text content', function(assert) {
         assert.expect(1);
+        var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip">Text content</a>')
-            .CFW_Tooltip();
+        var $trigger = $('<a href="#" title="Another tooltip">Text content</a>');
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual(typeof $trigger.attr('aria-label'), 'undefined');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
 
-        assert.strictEqual(typeof $trigger.attr('aria-label'), 'undefined');
+    QUnit.test('should add the aria-label attribute when element text content is a whitespace string', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"><span>    </span></a>');
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($trigger.attr('aria-label'), 'Another tooltip');
+                done();
+            })
+            .CFW_Tooltip('show');
     });
 });
