@@ -258,9 +258,6 @@
         pageToc();
         docsDirection();
 
-        // Indeterminate checkbox example
-        $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
-
         // Disable empty links in docs examples
         $('.cf-content [href="#"]').on('click', function(e) {
             e.preventDefault();
