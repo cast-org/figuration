@@ -2971,7 +2971,7 @@ if (typeof jQuery === 'undefined') {
             if (title || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
                 $e.attr('data-cfw-' + this.type + '-original-title', title || '');
 
-                if (title && typeof $e.attr('aria-label') === 'undefined' && !$e[0].textContent) {
+                if (title && typeof $e.attr('aria-label') === 'undefined' && !$e[0].textContent.trim()) {
                     $e.attr('aria-label', title || '');
                 }
 
