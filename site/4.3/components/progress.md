@@ -15,7 +15,7 @@ Progress components are built with two HTML elements, some CSS to set the width,
 - Use the `.progress` as a wrapper to indicate the max value of the progress bar.
 - Use the inner `.progress-bar` to indicate the progress so far.
 - The `.progress-bar` requires an inline style or custom CSS to set their width.
-- The `.progress-bar` also requires `role="progressbar"` and some `aria-` attributes to make it accessible.
+- The `.progress-bar` also requires `role="progressbar"` and some `aria-` attributes to make it accessible, including an accessible name (using `aria-label`, `aria-labelledby`, or similar).
 
 ## Example
 
@@ -23,19 +23,19 @@ Put that all together, and you have the following examples.
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 0%" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 25%" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 50%" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 75%" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -50,7 +50,7 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -59,13 +59,13 @@ To ensure that the label text remains legible even for low percentages, consider
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%; min-width: 2rem;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+  <div class="progress-bar" role="progressbar" style="width: 0%; min-width: 2rem;" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
 </div>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 2%; min-width: 2rem;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>
+  <div class="progress-bar" role="progressbar" style="width: 2%; min-width: 2rem;" aria-label="Example with label" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -76,10 +76,10 @@ By setting a `height` value on the outer `.progress`, you change the height acco
 
 {% capture example %}
 <div class="progress" style="height: .5rem;">
-  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-label="Example with .5rem height" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress" style="height: 2rem">
-  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-label="Example with 2rem height" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -93,19 +93,19 @@ Use our [color utility]({{ site.path }}/{{ version.docs }}/utilities/color/) cla
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress bg-dark">
-  <div class="progress-bar bg-cyan-300 text-dark" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+  <div class="progress-bar bg-cyan-300 text-dark" role="progressbar" style="width: 50%" aria-label="Dark example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -116,19 +116,19 @@ Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gra
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-label="Info striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-label="Warning striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-label="Danger striped example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -141,7 +141,7 @@ Animated progress bars are not available in browsers that do not support CSS3 an
 
 <div class="cf-example">
   <div class="progress">
-    <div id="animTarget" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    <div id="animTarget" class="progress-bar progress-bar-striped" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
   </div>
   <div class="btn-check mt-0_5 cf-toggle-animated-progress">
     <input id="animToggle" type="checkbox" class="btn-check-input">
@@ -151,7 +151,7 @@ Animated progress bars are not available in browsers that do not support CSS3 an
 
 {% capture highlight %}
 <div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 </div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
@@ -162,9 +162,9 @@ Include multiple progress bars in a progress component if you need.
 
 {% capture example %}
 <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 15%" aria-label="Segment one" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 30%" aria-label="Segment two" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-label="Segment three" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endcapture %}
 {% renderExample example %}

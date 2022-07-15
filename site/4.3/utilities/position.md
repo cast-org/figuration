@@ -176,7 +176,7 @@ You can use these classes with existing components to create new ones. Remember 
 {% capture example %}
 <div class="position-relative m-1_5">
   <div class="progress" style="height: 1px;">
-    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;" aria-label="Progress" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
   <button type="button" class="position-absolute top-0 start-0 translate-middle btn btn-sm btn-primary radius-circle">1</button>
   <button type="button" class="position-absolute top-0 start-50 translate-middle btn btn-sm btn-primary radius-circle">2</button>
