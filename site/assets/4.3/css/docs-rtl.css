@@ -263,9 +263,15 @@
   border-bottom: 1px solid #bfc6cd;
 }
 
+.DocSearch-Modal {
+  margin-top: 1rem;
+  --docsearch-modal-height: calc(100vh - 2rem);
+}
+
 .DocSearch-Container {
   --docsearch-muted-color: #5e7182;
   --docsearch-hit-shadow: none;
+  z-index: 2000;
 }
 
 .DocSearch-Button {

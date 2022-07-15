@@ -6,9 +6,15 @@
     border-bottom: 1px solid $border-color;
 }
 
+.DocSearch-Modal {
+    margin-top: 1rem;
+    --docsearch-modal-height: calc(100vh - 2rem);
+}
+
 .DocSearch-Container {
     --docsearch-muted-color: #{$text-muted};
     --docsearch-hit-shadow: none;
+    z-index: 2000;
 }
 
 .DocSearch-Button {
