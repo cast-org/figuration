@@ -264,8 +264,8 @@
 }
 
 .DocSearch-Modal {
-  margin-top: 1rem;
   --docsearch-modal-height: calc(100vh - 2rem);
+  margin-top: 1rem;
 }
 
 .DocSearch-Container {

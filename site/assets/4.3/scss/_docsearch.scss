@@ -7,8 +7,8 @@
 }
 
 .DocSearch-Modal {
+    --docsearch-modal-height: calc(100vh - 2rem); // stylelint-disable-line function-disallowed-list
     margin-top: 1rem;
-    --docsearch-modal-height: calc(100vh - 2rem);
 }
 
 .DocSearch-Container {
