@@ -1,0 +1,123 @@
+.docsearch {
+  position: relative;
+  padding: .5rem 0;
+  margin-top: -0.75rem;
+  border-bottom: 1px solid #bfc6cd;
+}
+
+.DocSearch-Modal {
+    margin-top: 1rem;
+    --docsearch-modal-height: calc(100vh - 2rem);
+}
+
+.DocSearch-Container {
+  --docsearch-muted-color: #5e7182;
+  --docsearch-hit-shadow: none;
+  z-index: 2000;
+}
+
+.DocSearch-Button {
+  --docsearch-searchbox-background: #fff;
+  --docsearch-searchbox-color: #424f5b;
+  --docsearch-searchbox-focus-background: #fff;
+  --docsearch-searchbox-shadow: 0 0 0 0.25rem rgba(0, 85, 233, 0.4);
+  --docsearch-text-color: #424f5b;
+  --docsearch-muted-color: #999;
+  width: 100%;
+  margin: 0;
+  border: 1px solid #bfc6cd;
+  border-radius: 0.375rem;
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  opacity: .65;
+}
+
+.DocSearch-Button:active, .DocSearch-Button:focus, .DocSearch-Button:hover {
+  border-color: #0055e9;
+}
+
+.DocSearch-Button:active .DocSearch-Search-Icon, .DocSearch-Button:focus .DocSearch-Search-Icon, .DocSearch-Button:hover .DocSearch-Search-Icon {
+  opacity: 1;
+}
+
+.DocSearch-Button-Keys {
+  min-width: 0;
+  padding-right: .25rem;
+  padding-left: .25rem;
+  background: #eff1f3;
+  border-radius: 0.25rem;
+}
+
+.DocSearch-Button-Key {
+  top: 0;
+  width: auto;
+  height: 1.25rem;
+  padding-right: .125rem;
+  padding-left: .125rem;
+  margin-right: 0;
+  color: #5e7182;
+  font-size: 0.875rem;
+  background: none;
+  box-shadow: none;
+}
+
+.DocSearch-Commands-Key {
+  padding-left: 1px;
+  font-size: 0.875rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: none;
+  box-shadow: none;
+}
+
+.DocSearch-Form {
+  border-radius: 0.375rem;
+}
+
+.DocSearch-Hits mark {
+  padding: 0;
+}
+
+.DocSearch-Hit {
+  padding-bottom: 0;
+  border-radius: 0;
+}
+
+.DocSearch-Hit a {
+  border-radius: 0;
+  border: solid #bfc6cd;
+  border-width: 0 1px 1px;
+}
+
+.DocSearch-Hit:first-child a {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  border-top-width: 1px;
+}
+
+.DocSearch-Hit:last-child a {
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.DocSearch-Hit-icon {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 750px) {
+  .DocSearch-Button-Keys {
+    display: flex;
+  }
+  .DocSearch-Button-Placeholder {
+    display: block;
+  }
+}
+
+@media (min-width: 48em) {
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .docsearch ~ .cf-links {
+      max-height: calc(100vh - 6.5rem - 1px);
+    }
+  }
+}

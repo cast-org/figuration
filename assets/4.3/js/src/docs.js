@@ -6,7 +6,7 @@
 /* global ClipboardJS, Holder */
 
 /*!
- * Figuration (v4.3.2)
+ * Figuration (v4.3.3)
  * https://figuration.org
  * Copyright 2013-2022 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -257,9 +257,6 @@
         paletteHex();
         pageToc();
         docsDirection();
-
-        // Indeterminate checkbox example
-        $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
 
         // Disable empty links in docs examples
         $('.cf-content [href="#"]').on('click', function(e) {

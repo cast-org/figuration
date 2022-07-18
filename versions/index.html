@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Available hosted version of Figuration documentation.">
 <meta name="author" content="CAST, Inc.">
+<meta name="generator" content="Eleventy v1.0.1">
 
 <meta name="docsearch:language" content="en-US">
 <meta name="docsearch:version" content="4.3">
@@ -40,20 +41,18 @@
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
 
-<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBZN0PLXQV"></script>
 <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-9130143-15', 'figuration.org');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BBZN0PLXQV');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" rel="stylesheet">
 
 
-<!-- Algolia DocSearch CSS -->
-<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
 <!-- Figuration CSS -->
 <link href="/assets/4.3/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
 <link href="/assets/4.3/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
@@ -71,6 +70,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
+<a class="skiplink sr-only-focusable d-md-down-none" href="#cf-links-nav">Skip to docs navigation</a>
 
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
@@ -111,13 +111,15 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.3.2
+    <span class="sr-only">Figuration</span>
+    v4.3.3
+    <span class="sr-only">(switch to other versions)</span>
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.3/" class="active" aria-current="true">v4.3.2</a></li>
+    <li><a href="/4.3/" class="active" aria-current="true">v4.3.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -165,16 +167,24 @@
 <div class="container-fluid">
   <div class="row">
     <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
-      <form class="cf-search" role="search">
-  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.3"/>
-</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+      <button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle docs navigation" data-cfw="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" data-cfw-offcanvas-scroll="true">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
-<nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
-  <ul class="list-unstyled">
+<div id="cf-links-offcanvas" class="offcanvas-md offcanvas-start">
+  <div class="offcanvas-header border-b">
+    <div class="offcanvas-title h5">Browse docs</div>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body d-md-block">
     
-  </ul>
-</nav>
+
+    <nav id="cf-links-nav" class="cf-links" aria-label="Docs">
+      <ul class="list-unstyled">
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
     </aside>
 
@@ -189,7 +199,7 @@
         <div class="cf-content">
           
 <h2>Latest</h2>
-<ul><li><a href="https://figuration.org/4.3/">v4.3.2</a></li>
+<ul><li><a href="https://figuration.org/4.3/">v4.3.3</a></li>
   </ul>
 
 <h2>Older</h2>
@@ -216,7 +226,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.3.2
+      <strong>Latest version:</strong> 4.3.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
@@ -253,33 +263,36 @@
     </div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<link href="https://VVDVJM0JO8-dsn.algolia.net" rel="preconnect" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script>
 (function() {
     'use strict';
 
-    if (!window.docsearch) {
+    var searchElement = document.getElementById('docsearch');
+
+    if (!window.docsearch || !searchElement) {
         return;
     }
 
-    var inputElement = document.getElementById('docsearch');
-    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+    var siteDocsVersion = searchElement.getAttribute('data-docs-version');
 
     window.docsearch({
-        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        apiKey: 'b69a9a2a34fe6a689f65620db813cab3',
+        appId: "VVDVJM0JO8",
         indexName: 'figuration',
-        inputSelector: '#docsearch',
-        algoliaOptions: {
+        container: searchElement,
+        searchParameters: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function(hits) {
-            return hits.map(function(hit) {
+        transformItems: function(items) {
+            return items.map(function(item) {
                 // Prevent jumping to first header
-                if (hit.anchor === 'content') {
-                    hit.url = hit.url.replace(/#content$/, '');
-                    hit.anchor = null;
+                if (item.anchor === 'content') {
+                    item.url = item.url.replace(/#content$/, '');
+                    item.anchor = null;
                 }
-                return hit;
+                return item;
             });
         },
         // Set debug to true if you want to inspect the dropdown
@@ -287,6 +300,7 @@
     });
 }());
 </script>
-
+<!-- Interim fix for Safari scroll issue: https://github.com/algolia/docsearch/issues/1260 -->
+<div class="position-fixed"><input type="text"></div>
 </body>
 </html>

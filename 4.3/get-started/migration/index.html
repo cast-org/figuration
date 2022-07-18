@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A brief rundown of major changes to get you started upgrading.">
 <meta name="author" content="CAST, Inc.">
+<meta name="generator" content="Eleventy v1.0.1">
 
 <meta name="docsearch:language" content="en-US">
 <meta name="docsearch:version" content="4.3">
@@ -40,20 +41,20 @@
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
 
-<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBZN0PLXQV"></script>
 <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-9130143-15', 'figuration.org');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BBZN0PLXQV');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" rel="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
-<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
 <!-- Figuration CSS -->
 <link href="/assets/4.3/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
 <link href="/assets/4.3/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
@@ -71,6 +72,7 @@
 </head>
 <body>
 <a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
+<a class="skiplink sr-only-focusable d-md-down-none" href="#cf-links-nav">Skip to docs navigation</a>
 
 <header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
   <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
@@ -111,13 +113,15 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.3.2
+    <span class="sr-only">Figuration</span>
+    v4.3.3
+    <span class="sr-only">(switch to other versions)</span>
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.3/" class="active" aria-current="true">v4.3.2</a></li>
+    <li><a href="/4.3/" class="active" aria-current="true">v4.3.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -165,125 +169,133 @@
 <div class="container-fluid">
   <div class="row">
     <aside class="col-md-3 col-xl-2 cf-sidebar print-none">
-      <form class="cf-search" role="search">
-  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.3"/>
-</form><button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+      <button class="btn btn-default my-0_5 d-md-none" aria-label="Toggle docs navigation" data-cfw="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" data-cfw-offcanvas-scroll="true">
   <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
-<nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
-  <ul class="list-unstyled">
-    <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav1" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Get Started</span>
-        </span></button><div id="sidenav1">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
-          <li class="nav-item"><a href="/4.3/get-started/migration/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Migration</span></a></li>
-          </ul>
-      </div>
-    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
-        </span></button><div id="sidenav2">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/layout/breakpoints/" class="nav-link"><span class="nav-link-inner">Breakpoints</span></a></li>
-          <li class="nav-item"><a href="/4.3/layout/containers/" class="nav-link"><span class="nav-link-inner">Containers</span></a></li>
-          <li class="nav-item"><a href="/4.3/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
-          <li class="nav-item"><a href="/4.3/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
-          <li class="nav-item"><a href="/4.3/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
-          <li class="nav-item"><a href="/4.3/layout/z-index/" class="nav-link"><span class="nav-link-inner">Z-index</span></a></li>
-          </ul>
-      </div>
-    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
-        </span></button><div id="sidenav3">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
-          <li class="nav-item"><a href="/4.3/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
-          </ul>
-      </div>
-    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
-        </span></button><div id="sidenav4">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/lists/" class="nav-link"><span class="nav-link-inner">Lists</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/loader/" class="nav-link"><span class="nav-link-inner">Loader</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/placeholder/" class="nav-link"><span class="nav-link-inner">Placeholder</span></a></li>
-          <li class="nav-item"><a href="/4.3/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
-          </ul>
-      </div>
-    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
-        </span></button><div id="sidenav5">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/interactions/" class="nav-link"><span class="nav-link-inner">Interactions</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/links/" class="nav-link"><span class="nav-link-inner">Links</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/opacity/" class="nav-link"><span class="nav-link-inner">Opacity</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/orientation/" class="nav-link"><span class="nav-link-inner">Orientation</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/overflow/" class="nav-link"><span class="nav-link-inner">Overflow</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/shadows/" class="nav-link"><span class="nav-link-inner">Shadows</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/stacks/" class="nav-link"><span class="nav-link-inner">Stacks</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/vertical-rule/" class="nav-link"><span class="nav-link-inner">Vertical Rule</span></a></li>
-          <li class="nav-item"><a href="/4.3/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
-          </ul>
-      </div>
-    </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
-        </span></button><div id="sidenav6">
-        <ul class="nav flex-column mb-0 pb-0_25">
-          <li class="nav-item"><a href="/4.3/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/offcanvas/" class="nav-link"><span class="nav-link-inner">Offcanvas</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/tab/" class="nav-link"><span class="nav-link-inner">Tab</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
-          <li class="nav-item"><a href="/4.3/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
-          </ul>
-      </div>
-    </li>
-  </ul>
-</nav>
+<div id="cf-links-offcanvas" class="offcanvas-md offcanvas-start">
+  <div class="offcanvas-header border-b">
+    <div class="offcanvas-title h5">Browse docs</div>
+    <button type="button" class="close" data-cfw-dismiss="offcanvas" data-cfw-offcanvas-target="#cf-links-offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="offcanvas-body d-md-block">
+    <div class="cf-search" id="docsearch" data-docs-version="4.3"></div>
+
+    <nav id="cf-links-nav" class="cf-links" aria-label="Docs">
+      <ul class="list-unstyled">
+        <li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav1" aria-current="true"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Get Started</span>
+            </span></button><div id="sidenav1">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
+              <li class="nav-item"><a href="/4.3/get-started/migration/" class="nav-link active" aria-current="page"><span class="nav-link-inner">Migration</span></a></li>
+              </ul>
+          </div>
+        </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span>
+            </span></button><div id="sidenav2">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/layout/breakpoints/" class="nav-link"><span class="nav-link-inner">Breakpoints</span></a></li>
+              <li class="nav-item"><a href="/4.3/layout/containers/" class="nav-link"><span class="nav-link-inner">Containers</span></a></li>
+              <li class="nav-item"><a href="/4.3/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
+              <li class="nav-item"><a href="/4.3/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
+              <li class="nav-item"><a href="/4.3/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+              <li class="nav-item"><a href="/4.3/layout/z-index/" class="nav-link"><span class="nav-link-inner">Z-index</span></a></li>
+              </ul>
+          </div>
+        </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span>
+            </span></button><div id="sidenav3">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
+              <li class="nav-item"><a href="/4.3/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
+              </ul>
+          </div>
+        </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span>
+            </span></button><div id="sidenav4">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/lists/" class="nav-link"><span class="nav-link-inner">Lists</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/loader/" class="nav-link"><span class="nav-link-inner">Loader</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/placeholder/" class="nav-link"><span class="nav-link-inner">Placeholder</span></a></li>
+              <li class="nav-item"><a href="/4.3/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
+              </ul>
+          </div>
+        </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span>
+            </span></button><div id="sidenav5">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/interactions/" class="nav-link"><span class="nav-link-inner">Interactions</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/links/" class="nav-link"><span class="nav-link-inner">Links</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/opacity/" class="nav-link"><span class="nav-link-inner">Opacity</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/orientation/" class="nav-link"><span class="nav-link-inner">Orientation</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/overflow/" class="nav-link"><span class="nav-link-inner">Overflow</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/shadows/" class="nav-link"><span class="nav-link-inner">Shadows</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/stacks/" class="nav-link"><span class="nav-link-inner">Stacks</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/vertical-rule/" class="nav-link"><span class="nav-link-inner">Vertical Rule</span></a></li>
+              <li class="nav-item"><a href="/4.3/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
+              </ul>
+          </div>
+        </li><li class="mb-0_25 has-children"><button class="nav-link cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Widgets</span>
+            </span></button><div id="sidenav6">
+            <ul class="nav flex-column mb-0 pb-0_25">
+              <li class="nav-item"><a href="/4.3/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/offcanvas/" class="nav-link"><span class="nav-link-inner">Offcanvas</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/tab/" class="nav-link"><span class="nav-link-inner">Tab</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
+              <li class="nav-item"><a href="/4.3/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
+              </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
     </aside>
 
@@ -300,6 +312,21 @@
           <nav class="cf-toc">
                 <ol>
                     
+                    <li><a href="#v433">v4.3.3</a>
+            
+                <ol>
+                    
+                    <li><a href="#widgets">Widgets</a>
+            
+                <ol>
+                    
+                    <li><a href="#offcanvas">Offcanvas</a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            		</li>
+
                     <li><a href="#v431">v4.3.1</a>
             
                 <ol>
@@ -307,7 +334,7 @@
                     <li><a href="#css">CSS</a>
             		</li>
 
-                    <li><a href="#widgets">Widgets</a>
+                    <li><a href="#widgets-1">Widgets</a>
             
                 <ol>
                     
@@ -361,7 +388,7 @@
                     <li><a href="#utilites">Utilites</a>
             		</li>
 
-                    <li><a href="#widgets-1">Widgets</a>
+                    <li><a href="#widgets-2">Widgets</a>
             
                 <ol>
                     
@@ -371,7 +398,7 @@
                     <li><a href="#modals">Modals</a>
             		</li>
 
-                    <li><a href="#offcanvas">Offcanvas</a>
+                    <li><a href="#offcanvas-1">Offcanvas</a>
             		</li>
                 </ol>
             		</li>
@@ -382,14 +409,20 @@
         </div>
         
         <div class="cf-content">
-          <h2 id="v431" tabindex="-1">v4.3.1 <a class="direct-link" href="#v431"></a></h2>
+          <h2 id="v433" tabindex="-1">v4.3.3 <a class="direct-link" href="#v433"></a></h2>
+<h3 id="widgets" tabindex="-1">Widgets <a class="direct-link" href="#widgets"></a></h3>
+<h4 id="offcanvas" tabindex="-1">Offcanvas <a class="direct-link" href="#offcanvas"></a></h4>
+<ul>
+<li>New responsive offcanvas variants have been added.  These will hide content when below the specified breakpoint, otherwise the content will appear normally.</li>
+</ul>
+<h2 id="v431" tabindex="-1">v4.3.1 <a class="direct-link" href="#v431"></a></h2>
 <h3 id="css" tabindex="-1">CSS <a class="direct-link" href="#css"></a></h3>
 <ul>
 <li>Font stack has been updated to give preference to Linux fonts over Arial.</li>
 <li><code>&lt;hr&gt;</code>, <code>.vr</code>, and other component dividers have all been consolidated to use borders, instead of <code>background-color</code> and <code>height</code> or <code>width</code>, to create dividers.</li>
 <li><code>border-radius</code> values have been slightly increased to soften the corners of most components.  Additional <code>.radius-*</code> utility classes have also been added.</li>
 </ul>
-<h3 id="widgets" tabindex="-1">Widgets <a class="direct-link" href="#widgets"></a></h3>
+<h3 id="widgets-1" tabindex="-1">Widgets <a class="direct-link" href="#widgets-1"></a></h3>
 <h4 id="dropdown" tabindex="-1">Dropdown <a class="direct-link" href="#dropdown"></a></h4>
 <ul>
 <li>Added 'centered' and 'middle' alignment variants.  Submenus do not inherit the centered or middle alignment, but will logically align based on direction.</li>
@@ -431,7 +464,7 @@
 <li>Added orientation utilities to rotate and flip elements.</li>
 <li>Added <code>.sticky-bottom</code> and related responsive classes to positioning utilities.</li>
 </ul>
-<h3 id="widgets-1" tabindex="-1">Widgets <a class="direct-link" href="#widgets-1"></a></h3>
+<h3 id="widgets-2" tabindex="-1">Widgets <a class="direct-link" href="#widgets-2"></a></h3>
 <h4 id="new-helper-utilites" tabindex="-1">New helper utilites <a class="direct-link" href="#new-helper-utilites"></a></h4>
 <ul>
 <li><code>$.CFW_Backdrop()</code> - control backdrop visibility within a defined element</li>
@@ -469,7 +502,7 @@
 <li>New <code>focus</code> option - to disable the modal's focus trap.  Replaces the need to create an override function.</li>
 <li>New <code>manual</code> option - trigger element will not get click toggle handler, and closing modal does not force focus back to trigger.</li>
 </ul>
-<h4 id="offcanvas" tabindex="-1">Offcanvas <a class="direct-link" href="#offcanvas"></a></h4>
+<h4 id="offcanvas-1" tabindex="-1">Offcanvas <a class="direct-link" href="#offcanvas-1"></a></h4>
 <ul>
 <li>New widget!  Similar to the side-aligned modals, there a few slight differences in functionality, such as the responsive drawer capabilities when contained within a navbar.</li>
 </ul>
@@ -491,7 +524,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.3.2
+      <strong>Latest version:</strong> 4.3.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
@@ -528,33 +561,36 @@
     </div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<link href="https://VVDVJM0JO8-dsn.algolia.net" rel="preconnect" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script>
 (function() {
     'use strict';
 
-    if (!window.docsearch) {
+    var searchElement = document.getElementById('docsearch');
+
+    if (!window.docsearch || !searchElement) {
         return;
     }
 
-    var inputElement = document.getElementById('docsearch');
-    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+    var siteDocsVersion = searchElement.getAttribute('data-docs-version');
 
     window.docsearch({
-        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        apiKey: 'b69a9a2a34fe6a689f65620db813cab3',
+        appId: "VVDVJM0JO8",
         indexName: 'figuration',
-        inputSelector: '#docsearch',
-        algoliaOptions: {
+        container: searchElement,
+        searchParameters: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function(hits) {
-            return hits.map(function(hit) {
+        transformItems: function(items) {
+            return items.map(function(item) {
                 // Prevent jumping to first header
-                if (hit.anchor === 'content') {
-                    hit.url = hit.url.replace(/#content$/, '');
-                    hit.anchor = null;
+                if (item.anchor === 'content') {
+                    item.url = item.url.replace(/#content$/, '');
+                    item.anchor = null;
                 }
-                return hit;
+                return item;
             });
         },
         // Set debug to true if you want to inspect the dropdown
@@ -562,6 +598,7 @@
     });
 }());
 </script>
-
+<!-- Interim fix for Safari scroll issue: https://github.com/algolia/docsearch/issues/1260 -->
+<div class="position-fixed"><input type="text"></div>
 </body>
 </html>

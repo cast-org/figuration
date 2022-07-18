@@ -40,23 +40,24 @@
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="500">
 
-<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBZN0PLXQV"></script>
 <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-9130143-15', 'figuration.org');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BBZN0PLXQV');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- Font CSS -->
 <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" integrity="sha384-VVoO3UHXsmXwXvf1kJx2jV3b1LbOfTqKL46DdeLG8z4pImkQ4GAP9GMy+MxHMDYG" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 
 
 <!-- Algolia DocSearch CSS -->
-<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" rel="stylesheet">
 <!-- Figuration CSS -->
 <link href="/assets/3.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
-<link href="/assets/3.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><link href="/assets/3.0/css/docs_patch.css" rel="stylesheet"><!-- jQuery -->
+<link href="/assets/3.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><link href="/assets/3.0/custom/docs_patch.css" rel="stylesheet">
+<link href="/assets/3.0/custom/custom.css" rel="stylesheet"><!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/3.0/js/vendor/jquery.min.js"><\/script>')</script>
 
@@ -115,11 +116,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    <span class="sr-only">Figuration</span>
     v3.0.5
+    <span class="sr-only">(switch to other versions)</span>
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li><li><a href="/4.3/">v4.3.2</a></li>
+    <li class="dropdown-header">Latest</li><li><a href="/4.3/">v4.3.3</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -170,9 +173,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 col-xl-2 cf-sidebar print-hide">
-      <form class="cf-search docsearch-wrapper" style="width: 100%;" role="search">
-  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="3.0"/>
-</form><button class="btn btn-default mt-0_5 mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+      <div class="docsearch" id="docsearch" data-docs-version="3.0"></div><button class="btn btn-default mt-0_5 mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
   <span aria-hidden="true">Pages <span class="caret"></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse d-md-block mt-0_5" aria-label="Page">
@@ -357,7 +358,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.3.2
+      <strong>Latest version:</strong> 4.3.3
       <br>
       <a href="/versions/">Previous versions</a>
     </p>
@@ -394,33 +395,36 @@
     </div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<link href="https://VVDVJM0JO8-dsn.algolia.net" rel="preconnect" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script>
-(function () {
+(function() {
     'use strict';
 
-    if (!window.docsearch) {
+    var searchElement = document.getElementById('docsearch');
+
+    if (!window.docsearch || !searchElement) {
         return;
     }
 
-    var inputElement = document.getElementById('docsearch');
-    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+    var siteDocsVersion = searchElement.getAttribute('data-docs-version');
 
     window.docsearch({
-        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        apiKey: 'b69a9a2a34fe6a689f65620db813cab3',
+        appId: "VVDVJM0JO8",
         indexName: 'figuration',
-        inputSelector: '#docsearch',
-        algoliaOptions: {
+        container: searchElement,
+        searchParameters: {
             facetFilters: ['version:' + siteDocsVersion]
         },
-        transformData: function (hits) {
-            return hits.map(function (hit) {
+        transformItems: function(items) {
+            return items.map(function(item) {
                 // Prevent jumping to first header
-                if (hit.anchor === 'content') {
-                    hit.url = hit.url.replace(/#content$/, '');
-                    hit.anchor = null;
+                if (item.anchor === 'content') {
+                    item.url = item.url.replace(/#content$/, '');
+                    item.anchor = null;
                 }
-                return hit;
+                return item;
             });
         },
         // Set debug to true if you want to inspect the dropdown
@@ -428,6 +432,7 @@
     });
 }());
 </script>
-
+<!-- Interim fix for Safari scroll issue: https://github.com/algolia/docsearch/issues/1260 -->
+<div class="position-fixed"><input type="text"></div>
 </body>
 </html>
