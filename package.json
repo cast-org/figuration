@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "version": "4.3.2",
+  "version": "4.3.3",
   "config": {
     "versionShort": "4.3"
   },
@@ -55,7 +55,7 @@
     "autoprefixer": "^10.4.7",
     "cross-env": "^7.0.3",
     "eleventy-plugin-nesting-toc": "^1.3.0",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-figuration": "file:build/eslint-plugin-figuration",
     "eslint-plugin-node": "^11.1.0",
@@ -82,7 +82,7 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-qunit": "^4.1.2",
     "karma-sauce-launcher": "^4.3.6",
-    "linkinator": "^4.0.0",
+    "linkinator": "^4.0.2",
     "load-grunt-tasks": "^5.1.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.4",
@@ -99,7 +99,7 @@
     "shx": "^0.3.4",
     "slugify": "^1.6.5",
     "stylelint": "^14.9.1",
-    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-recommended-scss": "^7.0.0",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.3.0",
