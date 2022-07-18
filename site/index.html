@@ -20,10 +20,10 @@ layout: home
 
         <div class="row text-center text-md-start">
           <div class="col-md-auto">
-            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/quick-start/" class="btn btn-home btn-start w-100" onclick="ga('send', 'event', 'Homepage', 'Get Started', 'Get Started {{ site.version.current }}');">Get Started</a>
+            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/quick-start/" class="btn btn-home btn-start w-100"{% if site.environment == "production" %} onclick="gtag('event', 'Get Started {{ site.version.current }}');"{% endif %}>Get Started</a>
           </div>
           <div class="col-md-auto mt-1 mt-md-0">
-            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/download/" class="btn btn-home btn-download w-100" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.version.current }}');">Download</a>
+            <a href="{{ site.path }}/{{ site.version.docs }}/get-started/download/" class="btn btn-home btn-download w-100"{% if site.environment == "production" %} onclick="gtag('event', 'Download {{ site.version.current }}');"{% endif %}>Download</a>
           </div>
           <div class="col-12 mt-1">
             Current version: <strong>v{{ site.version.current }}</strong>
