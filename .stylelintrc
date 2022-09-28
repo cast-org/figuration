@@ -8,6 +8,9 @@
   ],
   "rules": {
     'alpha-value-notation': null,
+    "annotation-no-unknown": [ true, {
+      ignoreAnnotations: ["default", "="]
+    }],
     "at-rule-empty-line-before": [null, {
       "except": ["first-nested"]
     }],
