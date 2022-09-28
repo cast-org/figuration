@@ -288,7 +288,7 @@ You can replace the text within the `.navbar-brand` with an `<img>`.
 <!-- Just an image -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.path }}/assets/{{ version.docs }}/img/home.svg" width="30" height="30" alt="">
+    <img src="{{ site.path }}/assets/{{ version.docs }}/img/home.svg" width="30" height="30" alt="Logo">
   </a>
 </nav>
 {% endcapture %}
@@ -302,7 +302,7 @@ You can also make use of some additional utilities to add an image and text at t
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.path }}/assets/brand/figuration-solid.svg" width="30" height="30" class="d-inline-block valign-text-top" alt="">
+    <img src="{{ site.path }}/assets/brand/figuration-solid.svg" width="30" height="30" class="d-inline-block valign-text-top" alt="Figuration">
     Navbar
   </a>
 </nav>
