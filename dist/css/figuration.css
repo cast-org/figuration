@@ -3967,12 +3967,6 @@ a.drag.disabled {
   pointer-events: none;
 }
 
-@-webkit-keyframes progress-bar-stripes {
-  0% {
-    background-position-x: 1rem;
-  }
-}
-
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: 1rem;
@@ -4012,14 +4006,12 @@ a.drag.disabled {
 }
 
 .progress-bar-animated {
-  -webkit-animation: progress-bar-stripes 1s linear infinite;
-          animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-animated {
-    -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }
 
@@ -6568,12 +6560,6 @@ a.drag.disabled {
   color: #15191d;
 }
 
-@-webkit-keyframes loader-spin-cw {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes loader-spin-cw {
   to {
     transform: rotate(360deg);
@@ -6602,8 +6588,7 @@ a.drag.disabled {
 
 .loader-circle::after, .loader-double::after {
   border-left-color: currentcolor;
-  -webkit-animation: 1s linear infinite loader-spin-cw;
-          animation: 1s linear infinite loader-spin-cw;
+  animation: 1s linear infinite loader-spin-cw;
 }
 
 .loader-circle::before, .loader-double::before {
@@ -6618,8 +6603,7 @@ a.drag.disabled {
 @media (prefers-reduced-motion: reduce) {
   .loader-circle::after,
   .loader-double::after {
-    -webkit-animation-duration: 2s;
-            animation-duration: 2s;
+    animation-duration: 2s;
   }
 }
 
@@ -6650,14 +6634,7 @@ a.drag.disabled {
 }
 
 .placeholder-glow .placeholder {
-  -webkit-animation: placeholder-glow 2s ease-in-out infinite;
-          animation: placeholder-glow 2s ease-in-out infinite;
-}
-
-@-webkit-keyframes placeholder-glow {
-  50% {
-    opacity: 0.2;
-  }
+  animation: placeholder-glow 2s ease-in-out infinite;
 }
 
 @keyframes placeholder-glow {
@@ -6671,15 +6648,7 @@ a.drag.disabled {
           mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
   -webkit-mask-size: 200% 100%;
           mask-size: 200% 100%;
-  -webkit-animation: placeholder-wave 2s linear infinite;
-          animation: placeholder-wave 2s linear infinite;
-}
-
-@-webkit-keyframes placeholder-wave {
-  100% {
-    -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
-  }
+  animation: placeholder-wave 2s linear infinite;
 }
 
 @keyframes placeholder-wave {
