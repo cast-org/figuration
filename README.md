@@ -27,7 +27,7 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 [![JS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
 
 **Development Build Status**
-[![Build Status](https://img.shields.io/github/workflow/status/cast-org/figuration/JS/master?label=JS%20Tests&logo=github)](https://github.com/cast-org/figuration/actions?query=workflow%3Ajs+branch%3Amaster)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/cast-org/figuration/js.yml?branch=master&label=JS%20Tests&logo=github)](https://github.com/cast-org/figuration/actions?query=workflow%3Ajs+branch%3Amaster)
 [![Sauce Labs Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
 
