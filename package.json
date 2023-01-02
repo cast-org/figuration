@@ -55,7 +55,7 @@
     "autoprefixer": "^10.4.12",
     "cross-env": "^7.0.3",
     "eleventy-plugin-nesting-toc": "^1.3.0",
-    "eslint": "^8.24.0",
+    "eslint": "^8.31.0",
     "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-figuration": "file:build/eslint-plugin-figuration",
     "eslint-plugin-node": "^11.1.0",
