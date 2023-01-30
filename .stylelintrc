@@ -46,6 +46,7 @@
     "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
+    "import-notation": "string",
     "indentation": 4,
     "length-zero-no-unit": true,
     "max-empty-lines": 2,

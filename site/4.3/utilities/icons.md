@@ -65,7 +65,7 @@ The *start/end directions* are designated as follows depending on which version 
 {% renderHighlight highlight, "sass" %}
 
 {% capture example %}
-Hover over, or focus on the following button to change caret direction:<br />
+Hover over, or focus on the following button to change caret direction:<br>
 <button type="button" class="btn">
   Caret example
   <span class="example-caret" aria-hidden="true"></span>

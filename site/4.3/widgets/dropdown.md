@@ -402,7 +402,7 @@ Add `<input>`, `<textarea>`, or `<select>` items to your dropdown menu.  Other t
     <li>
       <div class="dropdown-text">
         <label for="input1" class="sr-only">Example input</label>
-        <input type="text" id="input1" class="form-control" placeholder="text input"/>
+        <input type="text" id="input1" class="form-control" placeholder="text input">
       </div>
     </li>
     <li>

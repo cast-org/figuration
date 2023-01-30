@@ -156,7 +156,7 @@
 // Opaque color
 // color-get-opaque(rgba(0, 0, 0, .5), #fff) => #808080
 @function color-get-opaque($colorfore, $colorback) {
-    @return mix(rgba($colorfore, 1), $colorback, opacity($colorfore) * 100);
+    @return mix(rgba($colorfore, 1), $colorback, opacity($colorfore) * 100%);
 }
 
 // Lookup table for channel color values in sRGB space

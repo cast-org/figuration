@@ -894,7 +894,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$navbar-padding-y</code></td>
         <td>string</td>
-        <td><code>($spacer / 2)</code></td>
+        <td><code>($spacer * .5)</code></td>
         <td>
           Vertical padding for navbar.
         </td>

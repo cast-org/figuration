@@ -185,7 +185,7 @@ Green checkmarks indicate the element **is visible** in your current viewport.
   </div>
 </div>
 
-<hr />
+<hr>
 
 <div class="row responsive-utilities-test visible-on">
   <div class="col-6 col-sm-3">
@@ -206,7 +206,7 @@ Green checkmarks indicate the element **is visible** in your current viewport.
   </div>
 </div>
 
-<hr />
+<hr>
 
 <div class="row responsive-utilities-test visible-on">
   <div class="col-6 col-sm-3">

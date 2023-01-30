@@ -55,7 +55,7 @@ const browsers = {
         platformName:'iOS',
         platformVersion:'13.0',
         browserName:'Safari',
-        appiumVersion:'1.19.2',
+        appiumVersion:'1.22.3',
         deviceOrientation:'portrait'
     },
     android: {
@@ -64,7 +64,7 @@ const browsers = {
         platform: 'Android',
         version: '9.0',
         browserName: 'Chrome',
-        appiumVersion: '1.19.2',
+        appiumVersion: '1.22.1',
         deviceOrientation: 'portrait'
     }
 };

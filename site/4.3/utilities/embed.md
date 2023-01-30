@@ -29,7 +29,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 <div class="embed-fluid">
   <video poster="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls.jpg" controls>
     <source src="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls.mp4">
-    <track src="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+    <track src="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default>
   </video>
 </div>
 {% endcapture %}

@@ -76,17 +76,17 @@
 
     // Active focus state
     @if $enable-shadows {
-        %btn-variant-#{$parent}-active-focus {
+        %btn-variant-#{$extender}-active-focus {
             @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
         }
         #{$parent}:active:focus,
         #{$parent}.active:focus,
         #{$parent}.open[data-cfw="dropdown"]:focus {
-            @extend %btn-variant-#{$parent}-active-focus;
+            @extend %btn-variant-#{$extender}-active-focus;
         }
         @if $enable-btn-check {
             .btn-check-input:not([disabled]):not(:disabled):checked:focus ~ #{$parent} {
-                @extend %btn-variant-#{$parent}-active-focus;
+                @extend %btn-variant-#{$extender}-active-focus;
             }
         }
     }

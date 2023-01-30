@@ -16,11 +16,11 @@ Lazy delays the loading of images outside of the viewport (visible part of the p
 A lazy loaded image with delay and a fade in animation.
 
 <div class="cf-example">
-  <img data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="{{ site.path}}/assets/{{ version.docs }}/img/test.gif" width="360" height="202" alt="Test pattern" />
+  <img data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="{{ site.path}}/assets/{{ version.docs }}/img/test.gif" width="360" height="202" alt="Test pattern">
 </div>
 
 {% capture highlight %}
-<img src="" data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="test.gif" width="360" height="202" alt="Test pattern" />
+<img src="" data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="test.gif" width="360" height="202" alt="Test pattern">
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 

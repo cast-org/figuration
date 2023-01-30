@@ -36,7 +36,7 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
         <div class="card-body">
           <h4>Card 3</h4>
           <p>Nam porta malesuada mi, quis hendrerit purus.</p>
-          <img src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="test pattern" class="img-fluid" />
+          <img src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="test pattern" class="img-fluid">
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@ Creating nested Equalize behavior is as simple as creating another Equalize set 
           <div class="card-body">
             <h4>Card 1</h4>
             <div class="card" data-cfw-equalize-group="bar"><div class="card-body">one</div></div>
-            one<br />one
+            one<br>one
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ Creating nested Equalize behavior is as simple as creating another Equalize set 
         <div class="card" data-cfw-equalize-group="foo">
           <div class="card-body">
             <h4>Card 2</h4>
-            <div class="card" data-cfw-equalize-group="bar"><div class="card-body">two<br />two</div></div>
+            <div class="card" data-cfw-equalize-group="bar"><div class="card-body">two<br>two</div></div>
             two
           </div>
         </div>
@@ -98,7 +98,7 @@ Creating nested Equalize behavior is as simple as creating another Equalize set 
         <div class="card" data-cfw-equalize-group="foo">
           <div class="card-body">
             <h4>Card 3</h4>
-            <div class="card" data-cfw-equalize-group="bar"><div class="card-body">three<br />three<br />three</div></div>
+            <div class="card" data-cfw-equalize-group="bar"><div class="card-body">three<br>three<br>three</div></div>
           </div>
         </div>
       </div>

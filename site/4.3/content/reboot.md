@@ -580,7 +580,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$headings-margin-bottom</code></td>
         <td>string</td>
-        <td><code>($spacer / 2)</code></td>
+        <td><code>($spacer * .5)</code></td>
         <td>
           Bottom margin for <code>&lt;hN&gt;</code> headings and heading classes.
         </td>

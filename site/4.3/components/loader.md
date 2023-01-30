@@ -330,7 +330,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$loader-circle-vertical-align</code></td>
         <td>string</td>
-        <td><code>-($loader-circle-border-width / 2)</code></td>
+        <td><code>($loader-circle-border-width * -.5)</code></td>
         <td>
           Vertical alignment adjustment for the loader.
         </td>

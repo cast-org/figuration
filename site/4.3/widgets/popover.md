@@ -322,20 +322,20 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td><code>'top'</code></td>
         <td>
           <p>
-            <strong>string:</strong><br />
+            <strong>string:</strong><br>
             How to position the popover - top | bottom | reverse | forward | auto.
-            <br />
+            <br>
             When "auto" is specified with a directional value, it will dynamically reorient the popover. For example, if placement is "auto reverse", the popover will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
             When just "auto" is specified, a best fit approach will be used.
           </p>
           <p>
-            <strong>object:</strong><br />
+            <strong>object:</strong><br>
             This is a way to custom position a popover in a specific place not handled by the standard placement locations.
             A custom positioned popover is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
             Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
           </p>
           <p>
-            <strong>function:</strong><br />
+            <strong>function:</strong><br>
             A function call can return either a string or object placement type.
             The function allows access to the complete popover data-api, as well as passing the popover target and trigger as arguments.
           </p>
@@ -611,11 +611,11 @@ $('#myPopover').on('afterHide.cfw.popover', function() {
 
 Popovers are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the popover content after the initial page load.
 
-A quick example:<br />
+A quick example:<br>
 <ol>
   <li>An item with an event handler that makes a callback to create a new popover is interacted with.</li>
   <li>
-    Call as needed:<br />
+    Call as needed:<br>
     <ul>
       <li><code>$('#myPopover').CFW_Popover('hide');</code></li>
       <li>or <code>$('#myPopover').CFW_Popover('unlink');</code></li>

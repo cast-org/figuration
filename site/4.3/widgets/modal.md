@@ -75,7 +75,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
           <div id="modal_collapse" class="collapse">
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
           </div>
-        <hr />
+        <hr>
         <h4>Overflowing text to show scroll behavior</h4>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
@@ -1514,11 +1514,11 @@ $('#myModal').on('afterHide.cfw.modal', function() {
 
 Modals are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the modal content after the initial page load.
 
-A quick example:<br />
+A quick example:<br>
 <ol>
   <li>An item with an event handler that makes a callback to create a new modal is interacted with.</li>
   <li>
-    Call as needed:<br />
+    Call as needed:<br>
     <ul>
       <li><code>$('#myModal').CFW_Modal('hide');</code></li>
       <li>or <code>$('#myModal').CFW_Modal('unlink');</code></li>

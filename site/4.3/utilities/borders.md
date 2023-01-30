@@ -34,17 +34,17 @@ The *start/end sides* are designated as follows depending on which version of th
 
 <div class="cf-example">
   <div class="mb-1">
-    <img data-src="holder.js/100x100/?text=All" class="radius" alt="Example radiused image" />
-    <img data-src="holder.js/100x100/?text=Top" class="radius-t" alt="Example top radiused image" />
-    <img data-src="holder.js/100x100/?text=Bottom" class="radius-b" alt="Example bottom radiused image" />
-    <img data-src="holder.js/100x100/?text='End'" class="radius-e" alt="Example 'start' radiused image" />
-    <img data-src="holder.js/100x100/?text='Start'" class="radius-s" alt="Example 'end' radiused image" />
+    <img data-src="holder.js/100x100/?text=All" class="radius" alt="Example radiused image">
+    <img data-src="holder.js/100x100/?text=Top" class="radius-t" alt="Example top radiused image">
+    <img data-src="holder.js/100x100/?text=Bottom" class="radius-b" alt="Example bottom radiused image">
+    <img data-src="holder.js/100x100/?text='End'" class="radius-e" alt="Example 'start' radiused image">
+    <img data-src="holder.js/100x100/?text='Start'" class="radius-s" alt="Example 'end' radiused image">
   </div>
   <div>
-    <img data-src="holder.js/100x100/?text=Top 'End'" class="radius-te" alt="A generic square placeholder image a rounded corner on the top 'end'" />
-    <img data-src="holder.js/100x100/?text=Top 'Start'" class="radius-ts" alt="A generic square placeholder image a rounded corner on the top 'start'" />
-    <img data-src="holder.js/100x100/?text=Bottom 'End'" class="radius-be" alt="A generic square placeholder image a rounded corner on the bottom 'end'" />
-    <img data-src="holder.js/100x100/?text=Bottom 'Start'" class="radius-bs" alt="A generic square placeholder image a rounded corner on the bottom 'start'" />
+    <img data-src="holder.js/100x100/?text=Top 'End'" class="radius-te" alt="A generic square placeholder image a rounded corner on the top 'end'">
+    <img data-src="holder.js/100x100/?text=Top 'Start'" class="radius-ts" alt="A generic square placeholder image a rounded corner on the top 'start'">
+    <img data-src="holder.js/100x100/?text=Bottom 'End'" class="radius-be" alt="A generic square placeholder image a rounded corner on the bottom 'end'">
+    <img data-src="holder.js/100x100/?text=Bottom 'Start'" class="radius-bs" alt="A generic square placeholder image a rounded corner on the bottom 'start'">
   </div>
 </div>
 
@@ -69,13 +69,13 @@ The *start/end sides* are designated as follows depending on which version of th
 A few sizes are available, the default border-radius size, along with multiple sizes of variants. Responsive classes are built in the form `.radius{-side}-{size}`.
 
 <div class="cf-example">
-  <img data-src="holder.js/85x85?text=No Radius" class="m-0_25 radius-0" alt="Placeholder iamge with no rounded corners" />
-  <img data-src="holder.js/85x85?text=Extra Small" class="m-0_25 radius-xsmall" alt="Placeholder iamge very slightly rounded corners" />
-  <img data-src="holder.js/85x85?text=Small" class="m-0_25 radius-small" alt="Placeholder iamge slightly rounded corners" />
-  <img data-src="holder.js/85x85?text=Default" class="m-0_25 radius" alt="Placeholder image with rounded corners" />
-  <img data-src="holder.js/85x85?text=Large" class="m-0_25 radius-large" alt="Placeholder image with large rounded corners" />
-  <img data-src="holder.js/85x85?text=Extra Large" class="m-0_25 radius-xlarge" alt="Placeholder image with extra large rounded corners" />
-  <img data-src="holder.js/85x85?text=Extra Extra Large" class="m-0_25 radius-2xlarge" alt="Placeholder image with extra extra large rounded corners" />
+  <img data-src="holder.js/85x85?text=No Radius" class="m-0_25 radius-0" alt="Placeholder iamge with no rounded corners">
+  <img data-src="holder.js/85x85?text=Extra Small" class="m-0_25 radius-xsmall" alt="Placeholder iamge very slightly rounded corners">
+  <img data-src="holder.js/85x85?text=Small" class="m-0_25 radius-small" alt="Placeholder iamge slightly rounded corners">
+  <img data-src="holder.js/85x85?text=Default" class="m-0_25 radius" alt="Placeholder image with rounded corners">
+  <img data-src="holder.js/85x85?text=Large" class="m-0_25 radius-large" alt="Placeholder image with large rounded corners">
+  <img data-src="holder.js/85x85?text=Extra Large" class="m-0_25 radius-xlarge" alt="Placeholder image with extra large rounded corners">
+  <img data-src="holder.js/85x85?text=Extra Extra Large" class="m-0_25 radius-2xlarge" alt="Placeholder image with extra extra large rounded corners">
 </div>
 
 {% capture highlight %}
@@ -94,10 +94,10 @@ A few sizes are available, the default border-radius size, along with multiple s
 Use the special case size of `0` (zero) to remove an elements radius, or a subset of radii.
 
 <div class="cf-example">
-  <img data-src="holder.js/85x85?text=End side radius" class="radius-large radius-s-0" alt="Placeholder iamge with rounded corners on only one vertical side" />
+  <img data-src="holder.js/85x85?text=End side radius" class="radius-large radius-s-0" alt="Placeholder iamge with rounded corners on only one vertical side">
 </div>
 {% capture highlight %}
-<img src="..." class="radius-large radius-s-0" alt="..." />
+<img src="..." class="radius-large radius-s-0" alt="...">
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
@@ -106,9 +106,9 @@ Use the special case size of `0` (zero) to remove an elements radius, or a subse
 When elements are of a square (1:1) aspect ratio, you can create a circle using `.radius-circle`.  If the element has an unequal aspect ratio, you will get more on an elipse shape.
 
 <div class="cf-example">
-  <img data-src="holder.js/100x100/?text=Circle" class="m-0_25 radius-circle" width="100" height="100" alt="Completely round" />
-  <img data-src="holder.js/100x50/?text=Elipse" class="m-0_25 radius-circle" width="100" height="50" alt="Horizontal elipse" />
-  <img data-src="holder.js/50x100/?text=Elipse" class="m-0_25 radius-circle" width="50" height="100" alt="Vertical elipse" />
+  <img data-src="holder.js/100x100/?text=Circle" class="m-0_25 radius-circle" width="100" height="100" alt="Completely round">
+  <img data-src="holder.js/100x50/?text=Elipse" class="m-0_25 radius-circle" width="100" height="50" alt="Horizontal elipse">
+  <img data-src="holder.js/50x100/?text=Elipse" class="m-0_25 radius-circle" width="50" height="100" alt="Vertical elipse">
 </div>
 
 {% capture highlight %}
@@ -123,8 +123,8 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 Create a 'pill' shape with `.radius-pill`.
 
 <div class="cf-example">
-  <img data-src="holder.js/100x50/?text=Pill" class="m-0_25 radius-pill" width="100" height="50" alt="Rounded pill image" />
-  <img data-src="holder.js/75x32/?text=Pill" class="m-0_25 radius-pill" width="75" height="32" alt="Rounded pill image" />
+  <img data-src="holder.js/100x50/?text=Pill" class="m-0_25 radius-pill" width="100" height="50" alt="Rounded pill image">
+  <img data-src="holder.js/75x32/?text=Pill" class="m-0_25 radius-pill" width="75" height="32" alt="Rounded pill image">
 </div>
 
 {% capture highlight %}
