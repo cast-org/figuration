@@ -3,21 +3,27 @@
 const browsers = {
     safariMac: {
         base: 'SauceLabs',
-        platform: 'macOS 10.13',
+        platformName: 'macOS 10.13',
         browserName: 'safari',
-        version: 'latest'
+        browserVersion: 'latest'
     },
     chromeMac: {
         base: 'SauceLabs',
-        platform: 'macOS 10.13',
+        platformName: 'macOS 10.13',
         browserName: 'chrome',
-        version: 'latest'
+        browserVersion: 'latest'
     },
     firefoxMac: {
         base: 'SauceLabs',
-        platform: 'macOS 10.13',
+        platformName: 'macOS 10.13',
         browserName: 'firefox',
-        version: 'latest'
+        browserVersion: 'latest'
+    },
+    edgeMac: {
+        base: 'SauceLabs',
+        platformName: 'macOS 10.13',
+        browserName: 'MicrosoftEdge',
+        browserVersion: 'latest'
     },
     edgeWin10Legacy: {
         base: 'SauceLabs',
@@ -27,44 +33,45 @@ const browsers = {
     },
     edgeWin10: {
         base: 'SauceLabs',
-        platform: 'Windows 10',
+        platformName: 'Windows 10',
         browserName: 'MicrosoftEdge',
-        version: 'latest'
+        browserVersion: 'latest'
     },
     ie11Win10: {
         base: 'SauceLabs',
-        platform: 'Windows 10',
+        platformName: 'Windows 10',
         browserName: 'internet explorer',
-        version: 'latest'
+        browserVersion: 'latest'
     },
     chromeWin10: {
         base: 'SauceLabs',
-        platform: 'Windows 10',
+        platformName: 'Windows 10',
         browserName: 'chrome',
-        version: 'latest'
+        browserVersion: 'latest'
     },
     firefoxWin10: {
         base: 'SauceLabs',
-        platform: 'Windows 10',
+        platformName: 'Windows 10',
         browserName: 'firefox',
-        version: 'latest'
+        browserVersion: 'latest'
     },
+    /* Disable iOS test for now as it passes, but also runs a second test that fails
+     * tries to run both Selenium and Appiums test - ???
     iPhone: {
         base: 'SauceLabs',
-        deviceName:'iPhone 11 Simulator',
-        platformName:'iOS',
-        platformVersion:'13.0',
-        browserName:'Safari',
-        appiumVersion:'1.22.3',
-        deviceOrientation:'portrait'
+        deviceName: 'iPhone 11 Simulator',
+        platformName: 'iOS',
+        platformVersion: '13.0',
+        browserName: 'Safari',
+        deviceOrientation: 'portrait',
     },
+    */
     android: {
         base: 'SauceLabs',
         deviceName: 'Android GoogleAPI Emulator',
-        platform: 'Android',
-        version: '9.0',
+        platformName: 'Android',
+        platformVersion: '9.0',
         browserName: 'Chrome',
-        appiumVersion: '1.22.1',
         deviceOrientation: 'portrait'
     }
 };

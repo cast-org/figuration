@@ -117,7 +117,10 @@ if (SAUCE) {
         tunnelIdentifier: `figuration-${dateTime}`,
         username: ENV.SAUCE_USERNAME,
         accessKey: ENV.SAUCE_ACCESS_KEY,
-        startConnect: true
+        startConnect: true,
+        // https://github.com/karma-runner/karma-sauce-launcher/issues/275
+        // https://saucelabs.com/blog/update-firefox-tests-before-oct-4-2022
+        geckodriverVersion: '0.30.0' // temporary workaround for firefox
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;
