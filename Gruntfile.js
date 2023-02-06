@@ -5,7 +5,7 @@
 
 /*!
  * Figuration
- * Copyright 2013-2022 CAST, Inc.
+ * Copyright 2013-2023 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 

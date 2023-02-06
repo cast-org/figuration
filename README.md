@@ -111,4 +111,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2022 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/master/docs/LICENSE).
+Code and documentation copyright 2013-2023 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/master/docs/LICENSE).
