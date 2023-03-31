@@ -1,56 +1,60 @@
+@use "../mixins/breakpoints";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-position {
+@if settings-options.$enable-utility-position {
     // Common positioning
-    @each $breakpoint in $utility-position-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
+    @each $breakpoint in settings.$utility-position-breakpoints {
+        $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-        @include media-breakpoint-up($breakpoint) {
-            @each $value in $utility-position {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
+            @each $value in settings.$utility-position {
                 .position#{$bprule}-#{$value} { position: $value !important; }
             }
         }
     }
 
     // Quick use
-    @if $enable-utility-position-fixed-top {
+    @if settings-options.$enable-utility-position-fixed-top {
         .fixed-top {
             position: fixed;
             top: 0;
             right: 0;
             left: 0;
-            z-index: $zindex-fixed;
+            z-index: settings.$zindex-fixed;
         }
     }
-    @if $enable-utility-position-fixed-bottom {
+    @if settings-options.$enable-utility-position-fixed-bottom {
         .fixed-bottom {
             position: fixed;
             right: 0;
             bottom: 0;
             left: 0;
-            z-index: $zindex-fixed;
+            z-index: settings.$zindex-fixed;
         }
     }
 
-    @if $enable-utility-position-sticky-top {
+    @if settings-options.$enable-utility-position-sticky-top {
         @supports (position: sticky) {
             .sticky-top {
                 position: sticky;
                 top: 0;
-                z-index: $zindex-sticky;
+                z-index: settings.$zindex-sticky;
             }
 
-            @if $enable-utility-position-sticky-top-responsive {
-                @each $bp in $utility-sticky-top-breakpoints {
+            @if settings-options.$enable-utility-position-sticky-top-responsive {
+                @each $bp in settings.$utility-sticky-top-breakpoints {
                     // Skip smallest breakpoint for up (equivalent to `.sticky-top`)
-                    @if breakpoint-min($bp, $grid-breakpoints) != null {
-                        $bprule: breakpoint-designator($bp);
+                    @if breakpoints.breakpoint-min($bp, settings.$grid-breakpoints) != null {
+                        $bprule: breakpoints.breakpoint-designator($bp);
 
-                        @include media-breakpoint-up($bp) {
+                        @include breakpoints.media-breakpoint-up($bp) {
                             .sticky#{$bprule}-top {
                                 position: sticky;
                                 top: 0;
-                                z-index: $zindex-sticky;
+                                z-index: settings.$zindex-sticky;
                             }
                         }
                     }
@@ -59,25 +63,25 @@
         }
     }
 
-    @if $enable-utility-position-sticky-bottom {
+    @if settings-options.$enable-utility-position-sticky-bottom {
         @supports (position: sticky) {
             .sticky-bottom {
                 position: sticky;
                 bottom: 0;
-                z-index: $zindex-sticky;
+                z-index: settings.$zindex-sticky;
             }
 
-            @if $enable-utility-position-sticky-bottom-responsive {
-                @each $bp in $utility-sticky-bottom-breakpoints {
+            @if settings-options.$enable-utility-position-sticky-bottom-responsive {
+                @each $bp in settings.$utility-sticky-bottom-breakpoints {
                     // Skip smallest breakpoint for up (equivalent to `.sticky-bottom`)
-                    @if breakpoint-min($bp, $grid-breakpoints) != null {
-                        $bprule: breakpoint-designator($bp);
+                    @if breakpoints.breakpoint-min($bp, settings.$grid-breakpoints) != null {
+                        $bprule: breakpoints.breakpoint-designator($bp);
 
-                        @include media-breakpoint-up($bp) {
+                        @include breakpoints.media-breakpoint-up($bp) {
                             .sticky#{$bprule}-bottom {
                                 position: sticky;
                                 bottom: 0;
-                                z-index: $zindex-sticky;
+                                z-index: settings.$zindex-sticky;
                             }
                         }
                     }
@@ -86,30 +90,30 @@
         }
     }
 
-    @if $enable-utility-position-placement {
-        @each $bp in $utility-placement-breakpoints {
-            $bprule: breakpoint-designator($bp);
+    @if settings-options.$enable-utility-position-placement {
+        @each $bp in settings.$utility-placement-breakpoints {
+            $bprule: breakpoints.breakpoint-designator($bp);
 
-            @include media-breakpoint-up($bp) {
-                @each $size, $length in $position-top-offsets {
+            @include breakpoints.media-breakpoint-up($bp) {
+                @each $size, $length in settings.$position-top-offsets {
                     .top#{$bprule}-#{$size} {
                         top: #{$length} !important;
                     }
                 }
 
-                @each $size, $length in $position-end-offsets {
+                @each $size, $length in settings.$position-end-offsets {
                     .end#{$bprule}-#{$size} {
                         right: #{$length} !important;
                     }
                 }
 
-                @each $size, $length in $position-bottom-offsets {
+                @each $size, $length in settings.$position-bottom-offsets {
                     .bottom#{$bprule}-#{$size} {
                         bottom: #{$length} !important;
                     }
                 }
 
-                @each $size, $length in $position-start-offsets {
+                @each $size, $length in settings.$position-start-offsets {
                     .start#{$bprule}-#{$size} {
                         left: #{$length} !important;
                     }
@@ -118,11 +122,11 @@
         }
     }
 
-    @if $enable-utility-position-translate {
-        @each $bp in $utility-translate-breakpoints {
-            $bprule: breakpoint-designator($bp);
+    @if settings-options.$enable-utility-position-translate {
+        @each $bp in settings.$utility-translate-breakpoints {
+            $bprule: breakpoints.breakpoint-designator($bp);
 
-            @include media-breakpoint-up($bp) {
+            @include breakpoints.media-breakpoint-up($bp) {
                 .translate-middle#{$bprule} {
                     transform: translate(-50%, -50%) !important;
                 }

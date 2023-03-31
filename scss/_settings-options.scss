@@ -1,3 +1,21 @@
+// Options
+// =====
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-rounded:                true !default;      // true
+$enable-shadows:                false !default;     // false
+$enable-transitions:            true !default;      // true
+$enable-transitions-reduced:    true !default;      // true
+$enable-smooth-scroll:          true !default;      // true
+$enable-grid-classes:           true !default;      // true
+$enable-print-styles:           true !default;      // true
+$enable-palette:                true !default;      // true
+$enable-sizing:                 true !default;      // true
+$enable-bp-smallest:            false !default;     // false
+$enable-rfs-fluid:              false !default;     // false
+$enable-rfs-scale:              false !default;     // false
+$enable-color-warnings:         false !default;     // false
+
+
 // Root CSS variables
 $enable-root:                               true !default;
 $enable-root-colors:                        true !default;

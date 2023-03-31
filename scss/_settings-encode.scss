@@ -1,0 +1,8 @@
+// Characters to encode for SVG data URLs, used by `encode-svg()` SCSS function
+$encode-svg-chars: (
+    ("<", "%3c"),
+    (">", "%3e"),
+    ("#", "%23"),
+    ("(", "%28"),
+    (")", "%29")
+) !default;

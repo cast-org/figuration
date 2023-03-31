@@ -1,38 +1,43 @@
-@if $enable-badge {
+@use "../mixins/border";
+@use "../mixins/font-size";
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-badge {
     // Base class
     .badge {
         display: inline-block;
-        padding: $badge-padding-y $badge-padding-x;
-        font-family: $badge-font-family;
-        @include font-size($badge-font-size);
-        font-weight: $badge-font-weight;
-        line-height: $badge-line-height;
-        color: $badge-color;
+        padding: settings.$badge-padding-y settings.$badge-padding-x;
+        font-family: settings.$badge-font-family;
+        @include font-size.font-size(settings.$badge-font-size);
+        font-weight: settings.$badge-font-weight;
+        line-height: settings.$badge-line-height;
+        color: settings.$badge-color;
         text-align: center;
         text-decoration: none;
         white-space: nowrap;
         vertical-align: baseline;
-        background-color: $badge-bg;
-        border: $badge-border-width solid transparent;
-        @include border-radius($badge-border-radius);
+        background-color: settings.$badge-bg;
+        border: settings.$badge-border-width solid transparent;
+        @include border.border-radius(settings.$badge-border-radius);
 
         // Empty badges collapse automatically
         &:empty {
             display: none;
         }
 
-        @if $enable-badge-close {
+        @if settings-options.$enable-badge-close {
             .close {
-                padding-right: $badge-close-padding-x;
-                padding-left: $badge-close-padding-x;
-                margin-right: -$badge-close-padding-x;
-                @include font-size($badge-close-font-size);
+                padding-right: settings.$badge-close-padding-x;
+                padding-left: settings.$badge-close-padding-x;
+                margin-right: -(settings.$badge-close-padding-x);
+                @include font-size.font-size(settings.$badge-close-font-size);
             }
         }
     }
 
     // Quick fix for badges in buttons
-    @if $enable-btn {
+    @if settings-options.$enable-btn {
         .btn .badge {
             position: relative;
             top: -1px;
@@ -40,19 +45,19 @@
     }
 
     // Badge group
-    @if $enable-badge-group {
+    @if settings-options.$enable-badge-group {
         .badge-group {
             display: inline-flex;
             vertical-align: baseline;
 
             > .badge {
                 &:not(:first-child) {
-                    margin-left: -$badge-border-width;
-                    @include border-start-radius(0);
+                    margin-left: -(settings.$badge-border-width);
+                    @include border.border-start-radius(0);
                 }
 
                 &:not(:last-child) {
-                    @include border-end-radius(0);
+                    @include border.border-end-radius(0);
                 }
             }
         }

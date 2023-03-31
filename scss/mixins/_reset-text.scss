@@ -1,11 +1,13 @@
+@use "../settings";
+
 // stylelint-disable declaration-block-no-duplicate-properties
 
 @mixin reset-text {
-    font-family: $font-family-base;
+    font-family: settings.$font-family-base;
     // We deliberately do NOT reset font-size or word-wrap.
     font-style: normal;
-    font-weight: $font-weight-normal;
-    line-height: $line-height-base;
+    font-weight: settings.$font-weight-normal;
+    line-height: settings.$line-height-base;
     line-break: auto;
     text-align: left; // Fallback for where `start` is not supported
     text-align: start;

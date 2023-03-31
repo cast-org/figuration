@@ -1,3 +1,5 @@
+@use "../settings";
+
 // Tables
 @mixin table-row-variant($state, $bg, $hover-bg) {
     // Exact selectors below required to override `.table-striped` and prevent
@@ -24,7 +26,7 @@
 // Scrolling table
 // Tables will scroll when they will no longer fit width-wise in their container.
 @mixin table-scroll() {
-    margin-bottom: $table-margin-bottom;
+    margin-bottom: settings.$table-margin-bottom;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 

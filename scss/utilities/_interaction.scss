@@ -1,6 +1,8 @@
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-user-select {
+@if settings-options.$enable-utility-user-select {
     .user-select-all {
         user-select: all !important;
     }
@@ -12,7 +14,7 @@
     }
 }
 
-@if $enable-utility-pointer-events {
+@if settings-options.$enable-utility-pointer-events {
     .pe-none {
         pointer-events: none !important;
     }

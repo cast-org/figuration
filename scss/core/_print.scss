@@ -1,3 +1,6 @@
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important, selector-no-qualifying-type
 
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
@@ -8,7 +11,7 @@
 // http://www.phpied.com/delay-loading-your-print-css/
 // ==========================================================================
 
-@if $enable-print-styles {
+@if settings-options.$enable-print-styles {
     @media print {
         *,
         *::before,
@@ -42,7 +45,7 @@
         }
         pre,
         blockquote {
-            border: $border-width solid #999;   // Figuration change - use `$border-width` setting instead of 1px default
+            border: settings.$border-width solid #999;   // Figuration change - use `$border-width` setting instead of 1px default
             page-break-inside: avoid;
         }
 
@@ -72,14 +75,14 @@
         // Figuration components start
 
         .badge {
-            border: $border-width solid #000;
+            border: settings.$border-width solid #000;
         }
 
-        @if $enable-table {
+        @if settings-options.$enable-table {
             .table {
                 color: inherit !important;
                 border-collapse: collapse !important;
-                border-color: $table-border-color !important;
+                border-color: settings.$table-border-color !important;
 
                 thead,
                 tbody,

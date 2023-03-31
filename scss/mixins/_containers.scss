@@ -1,5 +1,7 @@
+@use "../settings";
+
 // Containers
-@mixin make-container($padding-x: $container-padding-x) {
+@mixin make-container($padding-x: settings.$container-padding-x) {
     width: 100%;  // Prevent too narrow
     max-width: 100%; // Prevent too wide
     padding-right: $padding-x;

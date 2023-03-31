@@ -1,3 +1,7 @@
+@use "../functions/math";
+@use "border";
+@use "font-size";
+
 // Switch color variants
 @mixin switch-variant($active-indicator-bg) {
     .switch-input {
@@ -14,12 +18,12 @@
     .switch-control {
         width: ($font-size * $switch-width-multiplier);
         height: $outer-height;
-        @include font-size($font-size);
+        @include font-size.font-size($font-size);
         line-height: $line-height;
-        @include border-radius($border-radius);
+        @include border.border-radius($border-radius);
 
         &::before {
-            @include border-radius(subtract($border-radius, $border-width));
+            @include border.border-radius(math.subtract($border-radius, $border-width));
         }
     }
 
@@ -29,11 +33,11 @@
 
     &.switch-rounded {
         .switch-control {
-            @include border-radius($outer-height);
+            @include border.border-radius($outer-height);
 
             &::before {
                 width: $inner-height;
-                @include border-radius($inner-height);
+                @include border.border-radius($inner-height);
             }
         }
     }

@@ -1,22 +1,32 @@
+@use "sass:list";
+@use "sass:meta";
+@use "../mixins/breakpoints";
+@use "../mixins/font-size";
+@use "../mixins/text-emphasis";
+@use "../mixins/text-truncate";
+@use "../settings";
+@use "../settings-colors";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-text {
-    @if $enable-utility-text-justify {
+@if settings-options.$enable-utility-text {
+    @if settings-options.$enable-utility-text-justify {
         .text-justify { text-align: justify !important; }
     }
-    @if $enable-utility-text-wrap {
+    @if settings-options.$enable-utility-text-wrap {
         .text-wrap  { white-space: normal !important; }
     }
-    @if $enable-utility-text-nowrap {
+    @if settings-options.$enable-utility-text-nowrap {
         .text-nowrap  { white-space: nowrap !important; }
     }
 
     // Responsive alignment
-    @if $enable-utility-text-align {
-        @each $breakpoint in $utility-text-align-breakpoints {
-            $bprule: breakpoint-designator($breakpoint);
+    @if settings-options.$enable-utility-text-align {
+        @each $breakpoint in settings.$utility-text-align-breakpoints {
+            $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-            @include media-breakpoint-up($breakpoint) {
+            @include breakpoints.media-breakpoint-up($breakpoint) {
                 .text#{$bprule}-start  { text-align: left !important; }
                 .text#{$bprule}-end    { text-align: right !important; }
                 .text#{$bprule}-center { text-align: center !important; }
@@ -25,46 +35,46 @@
     }
 
     // Transformation
-    @if $enable-utility-text-transform {
+    @if settings-options.$enable-utility-text-transform {
         .text-lowercase  { text-transform: lowercase !important; }
         .text-uppercase  { text-transform: uppercase !important; }
         .text-capitalize { text-transform: capitalize !important; }
     }
 
     // Weight and italics
-    @if $enable-utility-text-weight {
-        @each $size, $dim in $font-weights {
+    @if settings-options.$enable-utility-text-weight {
+        @each $size, $dim in settings.$font-weights {
             .font-weight-#{$size} { font-weight: #{$dim} !important; }
         }
     }
-    @if $enable-utility-text-style {
+    @if settings-options.$enable-utility-text-style {
         .font-italic         { font-style: italic !important; }
         .font-normal         { font-style: normal !important; }
     }
 
     // Font families
-    @if $enable-utility-text-family {
-        .font-family-sans-serif { font-family: $font-family-sans-serif !important; }
-        .font-family-serif      { font-family: $font-family-serif !important; }
-        .font-family-monospace  { font-family: $font-family-monospace !important; }
+    @if settings-options.$enable-utility-text-family {
+        .font-family-sans-serif { font-family: settings.$font-family-sans-serif !important; }
+        .font-family-serif      { font-family: settings.$font-family-serif !important; }
+        .font-family-monospace  { font-family: settings.$font-family-monospace !important; }
     }
 
     // Truncated text
-    @if $enable-utility-text-truncate {
+    @if settings-options.$enable-utility-text-truncate {
         .text-truncate {
-            @include text-truncate();
+            @include text-truncate.text-truncate();
         }
     }
 
     // Text decoration
-    @if $enable-utility-text-decoration {
+    @if settings-options.$enable-utility-text-decoration {
         .text-decoration-none { text-decoration: none !important; }
         .text-decoration-underline { text-decoration: underline !important; }
         .text-decoration-line-through { text-decoration: line-through !important; }
     }
 
     // Word break
-    @if $enable-utility-text-break {
+    @if settings-options.$enable-utility-text-break {
         .text-break {
             word-break: break-word !important;
             word-wrap: break-word !important;
@@ -72,54 +82,54 @@
     }
 
     // Contextual colors
-    @if $enable-utility-text-colors {
-        @if (type-of($utility-text-colors) == "map" and length($utility-text-colors) != 0) {
-            @each $theme, $color in $utility-text-colors {
-                @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
+    @if settings-options.$enable-utility-text-colors {
+        @if (meta.type-of(settings.$utility-text-colors) == "map" and list.length(settings.$utility-text-colors) != 0) {
+            @each $theme, $color in settings.$utility-text-colors {
+                @include text-emphasis.text-emphasis-variant(".text-#{$theme}", $color, settings-colors.$level-delta-hover-color);
             }
         }
     }
 
     // Palette colors
-    @if $enable-palette and $enable-utility-text-palette {
-        $palette-colors-text: $palette-colors !default;
-        $palette-levels-text: $palette-levels !default;
+    @if settings-options.$enable-palette and settings-options.$enable-utility-text-palette {
+        $palette-colors-text: settings.$palette-colors !default;
+        $palette-levels-text: settings-colors.$palette-levels !default;
 
         @each $theme, $color in $palette-colors-text {
             @each $level in $palette-levels-text {
-                @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
+                @include text-emphasis.text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, settings-colors.$level-delta-hover-color);
             }
         }
     }
 
     // Special text colors
-    @if $enable-utility-text-special {
-        .text-body { color: $body-color !important; }
-        .text-muted { color: $text-muted !important; }
-        .text-white { color: $white !important; }
-        .text-black { color: $black !important; }
+    @if settings-options.$enable-utility-text-special {
+        .text-body { color: settings.$body-color !important; }
+        .text-muted { color: settings.$text-muted !important; }
+        .text-white { color: settings.$white !important; }
+        .text-black { color: settings.$black !important; }
     }
 
     // Reset text color
-    @if $enable-utility-text-reset {
+    @if settings-options.$enable-utility-text-reset {
         .text-reset { color: inherit !important; }
     }
 
     // Line heights
-    @if $enable-utility-text-height {
-        @each $size, $dim in $line-heights {
+    @if settings-options.$enable-utility-text-height {
+        @each $size, $dim in settings.$line-heights {
             .lh-#{$size} { line-height: #{$dim} !important; }
         }
     }
 
     // Font sizes
-    @if $enable-utility-text-size {
-        @each $breakpoint in $utility-text-size-breakpoints {
-            $bprule: breakpoint-designator($breakpoint);
+    @if settings-options.$enable-utility-text-size {
+        @each $breakpoint in settings.$utility-text-size-breakpoints {
+            $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-            @include media-breakpoint-up($breakpoint) {
-                @each $size, $dim in $font-sizes {
-                    .fs#{$bprule}-#{$size} { @include font-size(#{$dim}, true); }
+            @include breakpoints.media-breakpoint-up($breakpoint) {
+                @each $size, $dim in settings.$font-sizes {
+                    .fs#{$bprule}-#{$size} { @include font-size.font-size(#{$dim}, true); }
                 }
             }
         }

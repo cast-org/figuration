@@ -1,9 +1,17 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "../settings-colors";
+@use "../settings-options";
+@use "math";
+
 // Generate palette colors
 // Valid levels 0-1000
 @function palette($color, $level) {
     $base: 500;
-    $light-interval: $palette-interval-light;
-    $dark-interval: $palette-interval-dark;
+    $light-interval: settings-colors.$palette-interval-light;
+    $dark-interval: settings-colors.$palette-interval-dark;
 
     $level-delta: $level - $base;
 
@@ -14,11 +22,11 @@
     } @else if $level < $base {
         // lighten - flip negative value
         $light-pct: if($level-delta * $light-interval > 100, 100, $level-delta * $light-interval);
-        @return mix(#fff, $color, $light-pct * -1);
+        @return color.mix(#fff, $color, $light-pct * -1);
     } @else if $level > $base {
         // darken
         $dark-pct: if($level-delta * $dark-interval > 100, 100, $level-delta * $dark-interval);
-        @return mix(#000, $color, $dark-pct);
+        @return color.mix(#000, $color, $dark-pct);
     }
 
     // level==500
@@ -26,18 +34,18 @@
 }
 
 // Generate contextual color theme
-@function _mix-context-colors($colors, $levels) {
+@function mix-context-colors($colors, $levels) {
     $result:            ();
 
-    $level-bg:            map-get($levels, "bg");
-    $level-color:         map-get($levels, "color");
-    $level-border:        map-get($levels, "border-color");
-    $level-hover-bg:      map-get($levels, "hover-bg");
-    $level-hover-color:   map-get($levels, "hover-color");
-    $level-hover-border:  map-get($levels, "hover-border-color");
-    $level-active-bg:     map-get($levels, "active-bg");
-    $level-active-color:  map-get($levels, "active-color");
-    $level-active-border: map-get($levels, "active-border-color");
+    $level-bg:            map.get($levels, "bg");
+    $level-color:         map.get($levels, "color");
+    $level-border:        map.get($levels, "border-color");
+    $level-hover-bg:      map.get($levels, "hover-bg");
+    $level-hover-color:   map.get($levels, "hover-color");
+    $level-hover-border:  map.get($levels, "hover-border-color");
+    $level-active-bg:     map.get($levels, "active-bg");
+    $level-active-color:  map.get($levels, "active-color");
+    $level-active-border: map.get($levels, "active-border-color");
 
     @each $theme, $base in $colors {
         // Color adjustments
@@ -70,7 +78,7 @@
             "active-border-color": $cutil-active-border
         );
         // Merge into theme map
-        $result: map-merge($result, ($theme: $new-map));
+        $result: map.merge($result, ($theme: $new-map));
     }
 
     @return $result;
@@ -80,8 +88,8 @@
 
 // Get color with hopefully minimum contrast ratio against a given one
 // based on the minimum contrast ratio setting.
-@function color-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
-    @if (color-get-contrast-ratio($light, $color) <= $color-contrast-min-ratio) {
+@function color-contrast($color, $light: settings-colors.$color-contrast-base-light, $dark: settings-colors.$color-contrast-base-dark) {
+    @if (color-get-contrast-ratio($light, $color) <= settings-colors.$color-contrast-min-ratio) {
         @return $dark;
     }
     @return $light;
@@ -99,32 +107,32 @@
 
 // Check to see if standard contrast function meets the minimum contrast
 // ratio, otherwise get the max contrast.
-@function color-auto-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
-    @if type-of($color) != color {
+@function color-auto-contrast($color, $light: settings-colors.$color-contrast-base-light, $dark: settings-colors.$color-contrast-base-dark) {
+    @if meta.type-of($color) != color {
         @return $color;
     }
     $colorauto: color-contrast($color, $light, $dark);
-    @if (color-get-contrast-ratio($colorauto, $color) >= $color-contrast-min-ratio) {
+    @if (color-get-contrast-ratio($colorauto, $color) >= settings-colors.$color-contrast-min-ratio) {
         @return $colorauto;
     }
 
-    @if $enable-color-warnings {
-        @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
+    @if settings-options.$enable-color-warnings {
+        @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{settings-colors.$color-contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
     }
     @return color-max-contrast($color);
 }
 
 // Check to see if a color meets minimum contrast ratio and use it,
 // otherwise get the best color contrast possible.
-@function color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
-    @if type-of($colorfore) != color or type-of($colorback) != color {
+@function color-if-contrast($colorfore, $colorback, $light: settings-colors.$color-contrast-base-light, $dark: settings-colors.$color-contrast-base-dark) {
+    @if meta.type-of($colorfore) != color or meta.type-of($colorback) != color {
         @return $colorfore;
     }
-    @if (color-get-contrast-ratio($colorfore, $colorback) >= $color-contrast-min-ratio) {
+    @if (color-get-contrast-ratio($colorfore, $colorback) >= settings-colors.$color-contrast-min-ratio) {
         @return $colorfore;
     }
-    @if $enable-color-warnings {
-        @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color that should meet minimum contrast.";
+    @if settings-options.$enable-color-warnings {
+        @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{settings-colors.$color-contrast-min-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color that should meet minimum contrast.";
     }
     @return color-auto-contrast($colorback, $light, $dark);
 }
@@ -138,9 +146,9 @@
 
 // Color luminance
 @function color-get-luminance($color) {
-    $red: nth($color-channel-lookup, red($color) + 1);
-    $green: nth($color-channel-lookup, green($color) + 1);
-    $blue: nth($color-channel-lookup, blue($color) + 1);
+    $red: list.nth($color-channel-lookup, color.red($color) + 1);
+    $green: list.nth($color-channel-lookup, color.green($color) + 1);
+    $blue: list.nth($color-channel-lookup, color.blue($color) + 1);
 
     @return (.2126 * $red) + (.7152 * $green) + (.0722 * $blue);
 }
@@ -150,13 +158,13 @@
     $lumfore: color-get-luminance(color-get-opaque($colorfore, $colorback)) + .05;
     $lumback: color-get-luminance($colorback) + .05;
 
-    @return divide(max($lumfore, $lumback), min($lumfore, $lumback));
+    @return math.divide(max($lumfore, $lumback), min($lumfore, $lumback));
 }
 
 // Opaque color
 // color-get-opaque(rgba(0, 0, 0, .5), #fff) => #808080
 @function color-get-opaque($colorfore, $colorback) {
-    @return mix(rgba($colorfore, 1), $colorback, opacity($colorfore) * 100%);
+    @return color.mix(rgba($colorfore, 1), $colorback, opacity($colorfore) * 100%);
 }
 
 // Lookup table for channel color values in sRGB space

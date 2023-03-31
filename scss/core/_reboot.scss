@@ -1,3 +1,8 @@
+@use "../mixins/font-size";
+@use "../mixins/hover";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 // Reboot
@@ -39,9 +44,9 @@ section {
 //    null by default, thus nothing is generated.
 :root {
     // stylelint-disable-next-line property-disallowed-list
-    font-size: $font-size-root; // 1
+    font-size: settings.$font-size-root; // 1
 
-    @if $enable-smooth-scroll {
+    @if settings-options.$enable-smooth-scroll {
         @media (prefers-reduced-motion: no-preference) {
             scroll-behavior: smooth;
         }
@@ -56,15 +61,15 @@ section {
 // 4. Change the default tap highlight to be completely transparent in iOS.
 body {
     margin: 0; // 1
-    font-family: $font-family-base;
-    @include font-size($font-size-base);
-    font-weight: $font-weight-base;
-    line-height: $line-height-base;
-    color: $body-color;
-    text-align: $body-text-align;
-    background-color: $body-bg; // 2
+    font-family: settings.$font-family-base;
+    @include font-size.font-size(settings.$font-size-base);
+    font-weight: settings.$font-weight-base;
+    line-height: settings.$line-height-base;
+    color: settings.$body-color;
+    text-align: settings.$body-text-align;
+    background-color: settings.$body-bg; // 2
     -webkit-text-size-adjust: 100%; // 3
-    -webkit-tap-highlight-color: rgba($black, 0); // 4
+    -webkit-tap-highlight-color: rgba(settings.$black, 0); // 4
 }
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
@@ -85,11 +90,11 @@ body {
 //
 // 1. Reset Firefox's gray color
 hr {
-    margin: $hr-margin-y 0;
-    color: $hr-color; // 1
+    margin: settings.$hr-margin-y 0;
+    color: settings.$hr-color; // 1
     border: 0;
-    border-top: $hr-border-width solid $hr-border-color;
-    opacity: $hr-opacity;
+    border-top: settings.$hr-border-width solid settings.$hr-border-color;
+    opacity: settings.$hr-opacity;
 }
 
 // Typography
@@ -100,44 +105,43 @@ hr {
 // margin for easier control within type scales as it avoids margin collapsing.
 %heading {
     margin-top: 0;
-    margin-bottom: $headings-margin-bottom;
-    font-family: $headings-font-family;
-    font-style: $headings-font-style;
-    font-weight: $headings-font-weight;
-    line-height: $headings-line-height;
-    color: $headings-color;
+    margin-bottom: settings.$headings-margin-bottom;
+    font-family: settings.$headings-font-family;
+    font-style: settings.$headings-font-style;
+    font-weight: settings.$headings-font-weight;
+    line-height: settings.$headings-line-height;
+    color: settings.$headings-color;
 }
 
 h1 {
     @extend %heading;
-    @include font-size($h1-font-size);
+    @include font-size.font-size(settings.$h1-font-size);
 }
 
 h2 {
     @extend %heading;
-    @include font-size($h2-font-size);
+    @include font-size.font-size(settings.$h2-font-size);
 }
 
 h3 {
     @extend %heading;
-    @include font-size($h3-font-size);
+    @include font-size.font-size(settings.$h3-font-size);
 }
 
 h4 {
     @extend %heading;
-    @include font-size($h4-font-size);
+    @include font-size.font-size(settings.$h4-font-size);
 }
 
 h5 {
     @extend %heading;
-    @include font-size($h5-font-size);
+    @include font-size.font-size(settings.$h5-font-size);
 }
 
 h6 {
     @extend %heading;
-    @include font-size($h6-font-size);
+    @include font-size.font-size(settings.$h6-font-size);
 }
-
 
 // Reset margins on paragraphs
 //
@@ -145,7 +149,7 @@ h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
     margin-top: 0;
-    margin-bottom: $paragraph-spacer-y;
+    margin-bottom: settings.$paragraph-spacer-y;
 }
 
 
@@ -187,7 +191,7 @@ ul ol {
 }
 
 dt {
-    font-weight: $dt-font-weight;
+    font-weight: settings.$dt-font-weight;
 }
 
 dd {
@@ -205,12 +209,12 @@ strong {
 }
 
 small {
-    @include font-size($small-font-size); // Add the correct font size in all browsers
+    @include font-size.font-size(settings.$small-font-size); // Add the correct font size in all browsers
 }
 
 mark {
-    padding: $mark-padding;
-    background-color: $mark-bg;
+    padding: settings.$mark-padding;
+    background-color: settings.$mark-bg;
 }
 
 // Prevent `sub` and `sup` elements from affecting the line height in
@@ -218,7 +222,7 @@ mark {
 sub,
 sup {
     position: relative;
-    @include font-size($sub-sup-font-size);
+    @include font-size.font-size(settings.$sub-sup-font-size);
     line-height: 0;
     vertical-align: baseline;
 }
@@ -232,12 +236,12 @@ sup {
 
 // Links
 a {
-    color: $link-color;
-    text-decoration: $link-decoration;
+    color: settings.$link-color;
+    text-decoration: settings.$link-decoration;
 
-    @include hover() {
-        color: $link-hover-color;
-        text-decoration: $link-hover-decoration;
+    @include hover.hover() {
+        color: settings.$link-hover-color;
+        text-decoration: settings.$link-hover-decoration;
     }
 }
 
@@ -261,8 +265,8 @@ pre,
 code,
 kbd,
 samp {
-    font-family: $font-family-monospace;
-    @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+    font-family: settings.$font-family-monospace;
+    @include font-size.font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
 pre {
@@ -298,9 +302,9 @@ table {
 }
 
 caption {
-    padding-top: $table-cell-padding;
-    padding-bottom: $table-cell-padding;
-    color: $table-caption-color;
+    padding-top: settings.$table-cell-padding;
+    padding-bottom: settings.$table-cell-padding;
+    color: settings.$table-caption-color;
     text-align: left;
 }
 
@@ -309,7 +313,7 @@ caption {
 // 2. Matches default `<td>` alignment by inheriting `text-align`.
 // 3. Fix alignment for Safari
 th {
-    font-weight: $table-th-font-weight; // 1
+    font-weight: settings.$table-th-font-weight; // 1
     text-align: inherit; // 2
     // stylelint-disable-next-line declaration-block-no-duplicate-properties
     text-align: -webkit-match-parent; // 3
@@ -330,7 +334,7 @@ td {
 // Forms
 label {
     display: inline-block;
-    margin-bottom: $label-margin-bottom; // Allow labels to use `margin` for spacing.
+    margin-bottom: settings.$label-margin-bottom; // Allow labels to use `margin` for spacing.
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
@@ -355,7 +359,7 @@ optgroup,
 textarea {
     margin: 0; // Remove the margin in Firefox and Safari
     font-family: inherit;
-    @include font-size(inherit);
+    @include font-size.font-size(inherit);
     line-height: inherit;
 }
 
@@ -421,8 +425,8 @@ button,
 input[type="radio"],
 input[type="checkbox"] {
     box-sizing: border-box; // 1
-    width: $input-checkradio-size; // 2
-    height: $input-checkradio-size; // 2
+    width: settings.$input-checkradio-size; // 2
+    height: settings.$input-checkradio-size; // 2
     padding: 0; // 3
 }
 
@@ -452,9 +456,9 @@ legend {
     float: left; // 1
     width: 100%;
     padding: 0;
-    margin-bottom: $legend-margin-bottom;
-    @include font-size($legend-font-size);
-    font-weight: $legend-font-weight;
+    margin-bottom: settings.$legend-margin-bottom;
+    @include font-size.font-size(settings.$legend-font-size);
+    font-weight: settings.$legend-font-weight;
     line-height: inherit;
     white-space: normal; // 2
 

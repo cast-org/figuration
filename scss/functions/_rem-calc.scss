@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "math" as functions-math;
+
 // stylelint-disable length-zero-no-unit
 
 // Remove the unit from a value, returning number only.
@@ -5,8 +10,8 @@
 // @param {Number} $number - Number to remove unit from
 // @return {Number} - Unitless number
 @function strip-unit($number) {
-    @if type-of($number) == "number" and not unitless($number) {
-        @return divide($number, $number * 0 + 1);
+    @if meta.type-of($number) == "number" and not math.is-unitless($number) {
+        @return functions-math.divide($number, $number * 0 + 1);
     }
 
     @return $number;
@@ -18,20 +23,20 @@
 // @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function _any-to-rem($value) {
     // Check if the value is a number
-    @if type-of($value) != "number" {
-        @warn inspect($value) + " was passed to rem(), which is not a number.";
+    @if meta.type-of($value) != "number" {
+        @warn meta.inspect($value) + " was passed to rem(), which is not a number.";
         @return $value;
     }
 
     // Convert em into rem
-    @if unit($value) == "em" {
+    @if math.unit($value) == "em" {
         $value: strip-unit($value) * 1rem;
     }
 
     // Calculate rem if units for $value is not rem or em
     // Using 16px = 100% font size common in most browsers
-    @if unit($value) != "rem" {
-        $value: divide(strip-unit($value), strip-unit(16px)) * 1rem;
+    @if math.unit($value) != "rem" {
+        $value: functions-math.divide(strip-unit($value), strip-unit(16px)) * 1rem;
     }
 
     // Turn 0rem into 0
@@ -47,14 +52,14 @@
 // @returns {List} A list of converted values.
 @function rem($values) {
     $rem-values: ();
-    $count: length($values);
+    $count: list.length($values);
 
     @if $count == 1 {
         @return _any-to-rem($values);
     }
 
     @for $i from 1 through $count {
-        $rem-values: append($rem-values, _any-to-rem(nth($values, $i)));
+        $rem-values: list.append($rem-values, _any-to-rem(list.nth($values, $i)));
     }
 
     @return $rem-values;
@@ -63,7 +68,7 @@
 // Converts a unitless, pixel, or rem value to em, for use in breakpoints.
 @function bp-to-em($value) {
     // Pixel and unitless values are converted to rem
-    @if unit($value) == "px" or unitless($value) {
+    @if math.unit($value) == "px" or math.is-unitless($value) {
         $value: rem($value);
     }
 

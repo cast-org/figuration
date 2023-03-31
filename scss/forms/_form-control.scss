@@ -1,27 +1,37 @@
+@use "sass:map";
+@use "../functions/math";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/font-size";
+@use "../mixins/forms";
+@use "../mixins/transition";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable selector-no-qualifying-type
-@if $enable-form {
+@if settings-options.$enable-form {
     // Textual form controls
-    @if $enable-form-control {
+    @if settings-options.$enable-form-control {
         .form-control {
             display: block;
             width: 100%;
-            height: calc-input-height-outer($input-padding-y, $input-line-height);
-            padding: $input-padding-y $input-padding-x;
-            font-family: $input-font-family;
-            @include font-size($input-font-size);
-            font-weight: $input-font-weight;
-            line-height: $input-line-height;
-            color: $input-color;
-            background-color: $input-bg;
-            border: $input-border-width solid $input-border-color;
+            height: forms.calc-input-height-outer(settings.$input-padding-y, settings.$input-line-height);
+            padding: settings.$input-padding-y settings.$input-padding-x;
+            font-family: settings.$input-font-family;
+            @include font-size.font-size(settings.$input-font-size);
+            font-weight: settings.$input-font-weight;
+            line-height: settings.$input-line-height;
+            color: settings.$input-color;
+            background-color: settings.$input-bg;
+            border: settings.$input-border-width solid settings.$input-border-color;
             appearance: none; // Fix appearance for date inputs in Safari
 
             // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
             // Provide a fallback to override to the iOS default
-            @include border-radius($input-border-radius, 0);
+            @include border.border-radius(settings.$input-border-radius, 0);
 
-            @include box-shadow($input-box-shadow);
-            @include transition($input-transition);
+            @include box-shadow.box-shadow(settings.$input-box-shadow);
+            @include transition.transition(settings.$input-transition);
 
             // Unstyle the caret on `<select>`s in IE10+.
             &::-ms-expand {
@@ -30,11 +40,11 @@
             }
 
             // Customize the `:focus` state to imitate native WebKit styles.
-            @include form-control-focus();
+            @include forms.form-control-focus();
 
             // Placeholder
             &::placeholder {
-                color: $input-placeholder-color;
+                color: settings.$input-placeholder-color;
                 // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
                 opacity: 1;
             }
@@ -45,20 +55,20 @@
             // disabled if the fieldset is disabled. Due to implementation difficulty, we
             // don't honor that edge case; we style them as disabled anyway.
             &:disabled {
-                color: $input-disabled-color;
-                background-color: $input-disabled-bg;
-                border-color: $input-disabled-border-color;
-                opacity: $input-disabled-opacity;
+                color: settings.$input-disabled-color;
+                background-color: settings.$input-disabled-bg;
+                border-color: settings.$input-disabled-border-color;
+                opacity: settings.$input-disabled-opacity;
             }
         }
 
         select.form-control {
-            padding-right: add($input-padding-x, add($form-select-indicator-width, $form-select-indicator-offset, false));
-            background-color: $input-bg;
-            background-image: $form-select-indicator-image;
+            padding-right: math.add(settings.$input-padding-x, math.add(settings.$form-select-indicator-width, settings.$form-select-indicator-offset, false));
+            background-color: settings.$input-bg;
+            background-image: settings.$form-select-indicator-image;
             background-repeat: no-repeat;
-            background-position: $form-select-indicator-position;
-            background-size: $form-select-indicator-width $form-select-indicator-height;
+            background-position: settings.$form-select-indicator-position;
+            background-size: settings.$form-select-indicator-width settings.$form-select-indicator-height;
 
             &:disabled {
                 pointer-events: none;
@@ -67,7 +77,7 @@
             &[size]:not([size="1"]),
             &[multiple] {
                 height: auto;
-                padding-right: $input-padding-x;
+                padding-right: settings.$input-padding-x;
                 background-image: none;
             }
 
@@ -77,8 +87,8 @@
                 // in IE and (under certain conditions) Edge, as it cannot be made to
                 // match the appearance of the native widget.
                 // See https://github.com/twbs/bootstrap/issues/19398.
-                color: $input-focus-color;
-                background-color: $input-focus-bg;
+                color: settings.$input-focus-color;
+                background-color: settings.$input-focus-bg;
             }
 
             // Hide the default caret in IE11
@@ -89,12 +99,12 @@
             // Remove outline from select box in FF
             &:-moz-focusring {
                 color: transparent;
-                text-shadow: 0 0 0 $input-color;
+                text-shadow: 0 0 0 settings.$input-color;
             }
         }
 
         textarea.form-control {
-            min-height: calc-input-height-outer($input-padding-y, $input-line-height);
+            min-height: forms.calc-input-height-outer(settings.$input-padding-y, settings.$input-line-height);
 
             &:not([rows="1"]) {
                 height: auto;
@@ -105,52 +115,45 @@
     // Static form control text
     // Reset some styling to make the input look like normal text again,
     // but keep the vertical aligning properties.
-    @if $enable-form-control-static {
+    @if settings-options.$enable-form-control-static {
         .form-control-static {
             display: block;
             width: 100%;
-            padding: $input-padding-y 0;
+            padding: settings.$input-padding-y 0;
             margin-bottom: 0;
-            @include font-size($input-font-size);
-            line-height: $input-line-height;
-            color: $input-static-color;
+            @include font-size.font-size(settings.$input-font-size);
+            line-height: settings.$input-line-height;
+            color: settings.$input-static-color;
             background-color: transparent;
             border: solid transparent;
-            border-width: $input-border-width 0;
+            border-width: settings.$input-border-width 0;
         }
     }
 
     // Form control sizing
     // Build on `.form-control` with modifier classes to decrease or increase the
     // height and font-size of form controls.
-    @if $enable-sizing {
-        @each $size, $dims in $input-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-line-height:   map-get($dims, "line-height");
-            $sz-padding-y:     map-get($dims, "padding-y");
-            $sz-padding-x:     map-get($dims, "padding-x");
-            $sz-border-radius: map-get($dims, "border-radius");
+    @if settings-options.$enable-sizing {
+        @each $size, $dims in settings.$input-sizes {
+            $sz-font-size:     map.get($dims, "font-size");
+            $sz-line-height:   map.get($dims, "line-height");
+            $sz-padding-y:     map.get($dims, "padding-y");
+            $sz-padding-x:     map.get($dims, "padding-x");
+            $sz-border-radius: map.get($dims, "border-radius");
 
             %form-control-#{$size} {
-                height: calc-input-height-outer($sz-padding-y, $sz-line-height);
+                height: forms.calc-input-height-outer($sz-padding-y, $sz-line-height);
                 @if $sz-padding-y != null and $sz-padding-x != null {
-                    $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
-                    $my-padding-x: if($sz-padding-x != null, $sz-padding-x, $input-padding-x);
+                    $my-padding-y: if($sz-padding-y != null, $sz-padding-y, settings.$input-padding-y);
+                    $my-padding-x: if($sz-padding-x != null, $sz-padding-x, settings.$input-padding-x);
                     padding: $my-padding-y $my-padding-x;
                 }
-                @include font-size($sz-font-size);
+                @include font-size.font-size($sz-font-size);
                 line-height: $sz-line-height;
-                @include border-radius($sz-border-radius);
+                @include border.border-radius($sz-border-radius);
             }
 
-            @if $sz-padding-y != null and $sz-line-height != null {
-                $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
-                textarea.form-control {
-                    min-height: calc-input-height-outer($my-padding-y, $sz-line-height);
-                }
-            }
-
-            @if $enable-form-control and $enable-form-control-sizing {
+            @if settings-options.$enable-form-control and settings-options.$enable-form-control-sizing {
                 .form-control-#{$size} {
                     @extend %form-control-#{$size};
                 }
@@ -158,22 +161,29 @@
                 // Adjust right padding for select items due to indicator
                 @if $sz-padding-x != null {
                     select.form-control-#{$size} {
-                        padding-right: add($sz-padding-x, add($form-select-indicator-width, $form-select-indicator-offset, false));
+                        padding-right: math.add($sz-padding-x, math.add(settings.$form-select-indicator-width, settings.$form-select-indicator-offset, false));
+                    }
+                }
+
+                @if $sz-padding-y != null and $sz-line-height != null {
+                    $my-padding-y: if($sz-padding-y != null, $sz-padding-y, settings.$input-padding-y);
+                    textarea.form-control-#{$size} {
+                        min-height: forms.calc-input-height-outer($my-padding-y, $sz-line-height);
                     }
                 }
             }
         }
     }
 
-    @if $enable-form-text {
+    @if settings-options.$enable-form-text {
         .form-text {
             display: block;
-            margin-top: $form-text-margin-top;
-            @include font-size($form-text-font-size);
-            font-style: $form-text-font-style;
-            font-weight: $form-text-font-weight;
-            line-height: $form-text-line-height;
-            color: $form-text-color;
+            margin-top: settings.$form-text-margin-top;
+            @include font-size.font-size(settings.$form-text-font-size);
+            font-style: settings.$form-text-font-style;
+            font-weight: settings.$form-text-font-weight;
+            line-height: settings.$form-text-line-height;
+            color: settings.$form-text-color;
         }
     }
 }

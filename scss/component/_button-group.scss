@@ -1,4 +1,10 @@
-@if $enable-btn-group {
+@forward "../core/buttons";
+@use "sass:map";
+@use "../mixins/border";
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-btn-group {
     // Placeholder for buttons inside a button group
     %btn-group-btn-base {
         position: relative;
@@ -12,7 +18,7 @@
         position: relative;
         display: inline-flex;
         vertical-align: middle; // match .btn alignment
-        @include border-radius($btn-border-radius);
+        @include border.border-radius(settings.$btn-border-radius);
 
         > .btn {
             @extend %btn-group-btn-base;
@@ -29,7 +35,7 @@
             }
         }
 
-        @if $enable-btn-check {
+        @if settings-options.$enable-btn-check {
             > .btn-check {
                 flex: 1 1 auto;
 
@@ -50,47 +56,47 @@
         }
     }
 
-    @if $enable-btn-group-horizontal {
+    @if settings-options.$enable-btn-group-horizontal {
         .btn-group {
             @extend %btn-group-base;
 
             // Prevent double borders when buttons are next to each other
             %btn-group-btn-not-first-align {
-                margin-left: -$btn-border-width;
+                margin-left: -(settings.$btn-border-width);
             }
             > .btn:not(:first-child),
             > .btn-group:not(:first-child) {
                 @extend %btn-group-btn-not-first-align;
             }
-            @if $enable-btn-check {
+            @if settings-options.$enable-btn-check {
                 > .btn-check:not(:first-child) {
                     @extend %btn-group-btn-not-first-align;
                 }
             }
 
             // Reset rounded corners
-            @if $enable-rounded {
+            @if settings-options.$enable-rounded {
                 %btn-group-btn-not-last-radius {
-                    @include border-end-radius(0);
+                    @include border.border-end-radius(0);
                 }
                 > .btn:not(:last-child):not(.btn-group-end),
                 > .btn-group:not(:last-child) > .btn {
                     @extend %btn-group-btn-not-last-radius;
                 }
-                @if $enable-btn-check {
+                @if settings-options.$enable-btn-check {
                     > .btn-check:not(:last-child) > .btn {
                         @extend %btn-group-btn-not-last-radius;
                     }
                 }
 
                 %btn-group-btn-not-first-radius {
-                    @include border-start-radius(0);
+                    @include border.border-start-radius(0);
                 }
                 > .btn:not(:first-child),
                 > .btn-group:not(:first-child) > .btn {
                     @extend %btn-group-btn-not-first-radius;
                 }
-                @if $enable-btn-check {
+                @if settings-options.$enable-btn-check {
                     > .btn-check:not(:first-child) > .btn {
                         @extend %btn-group-btn-not-first-radius;
                     }
@@ -101,24 +107,24 @@
 
     // Sizing
     // Remix the button sizing classes into new ones for easier manipulation
-    @if $enable-sizing {
-        @each $size, $dims in $btn-sizes {
-            @if $enable-btn-group-sizing {
-                $sz-border-radius: map-get($dims, "border-radius");
+    @if settings-options.$enable-sizing {
+        @each $size, $dims in settings.$btn-sizes {
+            @if settings-options.$enable-btn-group-sizing {
+                $sz-border-radius: map.get($dims, "border-radius");
 
                 .btn-group-#{$size} {
-                    @include border-radius($sz-border-radius);
+                    @include border.border-radius($sz-border-radius);
 
                     > .btn {
                         @extend %btn-#{$size};
                     }
                 }
-                @if $enable-btn-check {
+                @if settings-options.$enable-btn-check {
                     .btn-group-#{$size} > .btn-check > .btn {
                         @extend %btn-#{$size};
                     }
                 }
-                @if $enable-btn-icon {
+                @if settings-options.$enable-btn-icon {
                     .btn-group-#{$size} > .btn-icon {
                         @extend %btn-icon-#{$size} !optional;
                     }
@@ -127,7 +133,7 @@
         }
     }
 
-    @if $enable-btn-group-vertical {
+    @if settings-options.$enable-btn-group-vertical {
         // Vertical button groups
         .btn-group-vertical {
             @extend %btn-group-base;
@@ -145,7 +151,7 @@
             > .btn-group > .btn {
                 @extend %btn-group-vertical-btn-base;
             }
-            @if $enable-btn-check {
+            @if settings-options.$enable-btn-check {
                 > .btn-check,
                 > .btn-check > .btn {
                     @extend %btn-group-vertical-btn-base;
@@ -153,41 +159,41 @@
             }
 
             %btn-group-vertical-btn-not-first-align {
-                margin-top: -$btn-border-width;
+                margin-top: -(settings.$btn-border-width);
             }
             > .btn ~ .btn,
             > .btn-group:not(:first-child) {
                 @extend %btn-group-vertical-btn-not-first-align;
             }
-            @if $enable-btn-check {
+            @if settings-options.$enable-btn-check {
                 > .btn-check:not(:first-child) {
                     @extend %btn-group-vertical-btn-not-first-align;
                 }
             }
 
             // Reset rounded corners
-            @if $enable-rounded {
+            @if settings-options.$enable-rounded {
                 %btn-group-vertical-btn-not-last-radius {
-                    @include border-bottom-radius(0);
+                    @include border.border-bottom-radius(0);
                 }
                 > .btn:not(:last-child):not(.btn-group-end),
                 > .btn-group:not(:last-child) > .btn {
                     @extend %btn-group-vertical-btn-not-last-radius;
                 }
-                @if $enable-btn-check {
+                @if settings-options.$enable-btn-check {
                     > .btn-check:not(:last-child) > .btn {
                         @extend %btn-group-vertical-btn-not-last-radius;
                     }
                 }
 
                 %btn-group-vertical-btn-not-first-radius {
-                    @include border-top-radius(0);
+                    @include border.border-top-radius(0);
                 }
                 > .btn ~ .btn,
                 > .btn-group:not(:first-child) > .btn {
                     @extend %btn-group-vertical-btn-not-first-radius;
                 }
-                @if $enable-btn-check {
+                @if settings-options.$enable-btn-check {
                     > .btn-check:not(:first-child) > .btn {
                         @extend %btn-group-vertical-btn-not-first-radius;
                     }
@@ -197,13 +203,13 @@
     }
 
     // Group multiple button groups together for a toolbar
-    @if $enable-btn-toolbar {
+    @if settings-options.$enable-btn-toolbar {
         .btn-toolbar {
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
 
-            @if $enable-input-group {
+            @if settings-options.$enable-input-group {
                 .input-group {
                     width: auto;
                 }

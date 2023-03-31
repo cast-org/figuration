@@ -1,5 +1,15 @@
+@use "../functions/math";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/caret";
+@use "../mixins/divider";
+@use "../mixins/font-size";
+@use "../mixins/hover";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable selector-no-qualifying-type
-@if $enable-dropdown {
+@if settings-options.$enable-dropdown {
     // The dropdown wrapper (`<div>`) and submenu (`<ul>`)
     .dropdown,
     .dropdown-submenu {
@@ -16,39 +26,39 @@
         position: absolute;
         top: 100%;
         left: 0;
-        z-index: $zindex-dropdown;
+        z-index: settings.$zindex-dropdown;
         display: none; // none by default, but block on "open" of the menu
-        min-width: $dropdown-min-width;
-        padding: $dropdown-padding-y $dropdown-padding-x;
-        margin: $dropdown-spacer 0; // override default ul
-        @include font-size($dropdown-font-size);
-        line-height: $dropdown-line-height;
-        color: $dropdown-color;
+        min-width: settings.$dropdown-min-width;
+        padding: settings.$dropdown-padding-y settings.$dropdown-padding-x;
+        margin: settings.$dropdown-spacer 0; // override default ul
+        @include font-size.font-size(settings.$dropdown-font-size);
+        line-height: settings.$dropdown-line-height;
+        color: settings.$dropdown-color;
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
         list-style: none;
         pointer-events: auto;
-        background-color: $dropdown-bg;
+        background-color: settings.$dropdown-bg;
         background-clip: padding-box;
-        border: $dropdown-border-width solid $dropdown-border-color;
-        @include border-radius($dropdown-border-radius);
-        @include box-shadow($dropdown-box-shadow);
+        border: settings.$dropdown-border-width solid settings.$dropdown-border-color;
+        @include border.border-radius(settings.$dropdown-border-radius);
+        @include box-shadow.box-shadow(settings.$dropdown-box-shadow);
 
         &.open {
             display: block;
         }
 
         // Prevent item from overflowing when no horizontal menu padding
-        @if $dropdown-padding-y == 0 {
+        @if settings.$dropdown-padding-y == 0 {
             > dropdown-item:first-child,
             > li:first-child a,
             > li:first-child .dropdown-item {
-                @include border-top-radius($dropdown-inner-border-radius);
+                @include border.border-top-radius(settings.$dropdown-inner-border-radius);
             }
 
             > dropdown-item:last-child,
             > li:last-child a,
             > li:last-child .dropdown-item {
-                @include border-bottom-radius($dropdown-inner-border-radius);
+                @include border.border-bottom-radius(settings.$dropdown-inner-border-radius);
             }
         }
     }
@@ -56,20 +66,20 @@
     // Dropdown submenu additions
     .dropdown-submenu {
         > .dropdown-menu {
-            margin-top: subtract($dropdown-border-width, add($dropdown-spacer, $dropdown-padding-y, false));
+            margin-top: math.subtract(settings.$dropdown-border-width, math.add(settings.$dropdown-spacer, settings.$dropdown-padding-y, false));
         }
 
         > a,
         > .dropdown-item {
             &::after {
                 position: absolute;
-                top: $dropdown-caret-spacer-y;
-                right: $dropdown-caret-spacer-x;
-                @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
+                top: settings.$dropdown-caret-spacer-y;
+                right: settings.$dropdown-caret-spacer-x;
+                @include caret.caret(end, settings.$dropdown-caret-width, settings.$dropdown-caret-color);
             }
 
             &.active:not(:hover):not(:focus)::after {
-                @include caret-end($dropdown-caret-width, $dropdown-caret-active-color);
+                @include caret.caret-end(settings.$dropdown-caret-width, settings.$dropdown-caret-active-color);
             }
         }
     }
@@ -89,65 +99,65 @@
     .dropdown-item {
         display: block;
         width: 100%; // 1
-        padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+        padding: settings.$dropdown-item-padding-y settings.$dropdown-item-padding-x;
         margin: 0;
         clear: both;
-        font-weight: $font-weight-normal;
-        color: $dropdown-link-color;
+        font-weight: settings.$font-weight-normal;
+        color: settings.$dropdown-link-color;
         text-align: inherit; // 1
-        text-decoration: if($link-decoration == none, null, none);
+        text-decoration: if(settings.$link-decoration == none, null, none);
         white-space: nowrap; // prevent links from randomly breaking onto new lines
         background: none; // 1
         border: 0; // 1
 
         &.active {
-            color: $dropdown-link-active-color;
-            background-color: $dropdown-link-active-bg;
+            color: settings.$dropdown-link-active-color;
+            background-color: settings.$dropdown-link-active-bg;
         }
 
-        @include hover-focus() {
-            color: $dropdown-link-hover-color;
-            text-decoration: if($link-hover-decoration == underline, none, null);
-            background-color: $dropdown-link-hover-bg;
+        @include hover.hover-focus() {
+            color: settings.$dropdown-link-hover-color;
+            text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+            background-color: settings.$dropdown-link-hover-bg;
         }
 
         &.disabled,
         &:disabled {
-            color: $dropdown-link-disabled-color;
+            color: settings.$dropdown-link-disabled-color;
             text-decoration: none;
             pointer-events: none;
-            background-color: $dropdown-link-disabled-bg;
+            background-color: settings.$dropdown-link-disabled-bg;
             background-image: none; // Remove CSS gradient
         }
     }
 
     // Dropdown section headers
-    @if $enable-dropdown-header {
+    @if settings-options.$enable-dropdown-header {
         .dropdown-header {
             display: block;
-            padding: $dropdown-header-padding;
+            padding: settings.$dropdown-header-padding;
             margin-bottom: 0;
-            @include font-size($dropdown-header-font-size);
-            font-weight: $dropdown-header-font-weight;
+            @include font-size.font-size(settings.$dropdown-header-font-size);
+            font-weight: settings.$dropdown-header-font-weight;
             line-height: inherit;
-            color: $dropdown-header-color;
+            color: settings.$dropdown-header-color;
             white-space: nowrap; // as with > li > a
         }
     }
 
     // Dropdown non-interactive text item
-    @if $enable-dropdown-text {
+    @if settings-options.$enable-dropdown-text {
         .dropdown-text {
             display: block;
-            padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-            color: $dropdown-text-color;
+            padding: settings.$dropdown-item-padding-y settings.$dropdown-item-padding-x;
+            color: settings.$dropdown-text-color;
         }
     }
 
     // Divider (basically an `<hr>`) within the dropdown
-    @if $enable-dropdown-divider {
+    @if settings-options.$enable-dropdown-divider {
         .dropdown-divider {
-            @include divider-h($dropdown-divider-color, $dropdown-divider-width, $dropdown-divider-spacer, $dropdown-divider-opacity);
+            @include divider.divider-h(settings.$dropdown-divider-color, settings.$dropdown-divider-width, settings.$dropdown-divider-spacer, settings.$dropdown-divider-opacity);
         }
     }
 
@@ -161,7 +171,7 @@
         right: 100%;
         left: auto;
         margin-top: 0;
-        margin-right: $dropdown-spacer;
+        margin-right: settings.$dropdown-spacer;
     }
     .dropdown-subalign-reverse {
         margin-right: 0;
@@ -173,7 +183,7 @@
         right: auto;
         left: 100%;
         margin-top: 0;
-        margin-left: $dropdown-spacer;
+        margin-left: settings.$dropdown-spacer;
     }
     .dropdown-subalign-forward {
         margin-left: 0;
@@ -193,19 +203,19 @@
 
     // Allow for dropdowns to go bottom up (aka, dropup menu)
     // Add .dropup onto the .dropdown-menu element
-    @if $enable-dropdown-dropup {
+    @if settings-options.$enable-dropdown-dropup {
         .dropup {
             top: auto;
             bottom: 100%;
             margin-top: 0;
-            margin-bottom: $dropdown-spacer;
+            margin-bottom: settings.$dropdown-spacer;
 
             .dropdown-submenu {
                 > .dropdown-menu {
                     top: auto;
                     bottom: 0;
                     margin-top: 0;
-                    margin-bottom: subtract($dropdown-border-width, add($dropdown-spacer, $dropdown-padding-y, false));
+                    margin-bottom: math.subtract(settings.$dropdown-border-width, math.add(settings.$dropdown-spacer, settings.$dropdown-padding-y, false));
                 }
             }
 
@@ -229,16 +239,16 @@
         }
     }
 
-    @if $enable-dropdown-back {
+    @if settings-options.$enable-dropdown-back {
         // Backwards navigation item - extends a menu item
         .dropdown-back {
             position: relative;
 
             > button::before {
                 position: absolute;
-                top: $dropdown-back-spacer-y;
-                left: $dropdown-back-spacer-x;
-                @include caret(start, $dropdown-back-width, $dropdown-back-color);
+                top: settings.$dropdown-back-spacer-y;
+                left: settings.$dropdown-back-spacer-x;
+                @include caret.caret(start, settings.$dropdown-back-width, settings.$dropdown-back-color);
             }
         }
 
@@ -247,9 +257,9 @@
         // This removes the need for overly convoluted CSS rules
         .dropdown-back-reverse {
             > a::before {
-                right: $dropdown-back-spacer-x;
+                right: settings.$dropdown-back-spacer-x;
                 left: auto;
-                @include caret-end($dropdown-back-width, $dropdown-back-color);
+                @include caret.caret-end(settings.$dropdown-back-width, settings.$dropdown-back-color);
             }
         }
     }

@@ -1,24 +1,28 @@
+@use "../mixins/caret";
+@use "../settings";
+@use "../settings-options";
+
 %caret-base {
     display: inline-block;
-    width: $caret-width;
+    width: settings.$caret-width;
     text-align: center;
 }
 %caret-after {
-    @include caret(null, null);
+    @include caret.caret(null, null);
 }
 
-@if $enable-utility-caret {
+@if settings-options.$enable-utility-caret {
     .caret {
         @extend %caret-base;
 
         &::after {
             @extend %caret-after;
-            @include caret-down($caret-border-width);
+            @include caret.caret-down(settings.$caret-border-width);
         }
     }
     .open > .caret {
         &::after {
-            @include caret-up($caret-border-width);
+            @include caret.caret-up(settings.$caret-border-width);
         }
     }
 
@@ -27,12 +31,12 @@
 
         &::after {
             @extend %caret-after;
-            @include caret-up($caret-border-width);
+            @include caret.caret-up(settings.$caret-border-width);
         }
     }
     .open > .caretup {
         &::after {
-            @include caret-down($caret-border-width);
+            @include caret.caret-down(settings.$caret-border-width);
         }
     }
 
@@ -41,12 +45,12 @@
 
         &::after {
             @extend %caret-after;
-            @include caret-start($caret-border-width);
+            @include caret.caret-start(settings.$caret-border-width);
         }
     }
     .open > .caretstart {
         &::after {
-            @include caret-end($caret-border-width);
+            @include caret.caret-end(settings.$caret-border-width);
         }
     }
 
@@ -55,12 +59,12 @@
 
         &::after {
             @extend %caret-after;
-            @include caret-end($caret-border-width);
+            @include caret.caret-end(settings.$caret-border-width);
         }
     }
     .open > .caretend {
         &::after {
-            @include caret-start($caret-border-width);
+            @include caret.caret-start(settings.$caret-border-width);
         }
     }
 }
