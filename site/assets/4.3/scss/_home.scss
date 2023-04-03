@@ -1,19 +1,26 @@
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/mixins/breakpoints";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/mixins/hover";
+@use "../../../../scss/settings";
+@use "settings" as docs;
+
 .home-icons {
-    color: $uibase-700;
+    color: settings.$uibase-700;
     white-space: nowrap;
 
     .far,
     .fas {
-        @include font-size(3.5rem);
+        @include font-size.font-size(3.5rem);
         vertical-align: middle;
         filter: drop-shadow(2px 2px .2rem rgba(0, 0, 0, .35));
     }
 
     .fa-mobile-alt {
-        @include font-size(2.5rem);
+        @include font-size.font-size(2.5rem);
     }
     .fa-tablet-alt {
-        @include font-size(3rem);
+        @include font-size.font-size(3rem);
     }
 
     .far + .far,
@@ -28,7 +35,7 @@
     .list-item img {
         filter: drop-shadow(2px 2px .2rem rgba(0, 0, 0, .35));
     }
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         margin-top: 2.25rem;
     }
 }
@@ -46,30 +53,30 @@
 
     h1,
     h2 {
-        font-weight: $font-weight-bold;
-        color: $white;
+        font-weight: settings.$font-weight-bold;
+        color: settings.$white;
     }
 
     h1 {
-        @include font-size(3rem);
+        @include font-size.font-size(3rem);
         line-height: 1;
     }
 
     .home-icons {
-        color: $uibase-100;
+        color: settings.$uibase-100;
     }
 
     .lead {
         margin-top: .5rem;
         margin-bottom: 1.5rem;
-        @include font-size(1.5rem);
+        @include font-size.font-size(1.5rem);
     }
 
     .splash-home {
         border-bottom: 1px solid rgba(255, 255, 255, .5);
     }
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         .container {
             width: 100%;
         }
@@ -84,13 +91,13 @@
     height: 1.25em;
     line-height: 1;
     vertical-align: text-bottom;
-    @include border-radius(.5rem);
+    @include border.border-radius(.5rem);
     box-shadow: 2px 2px .2rem rgba(0, 0, 0, .35);
 
     .fab,
     .far,
     .fas {
-        @include font-size(.75em);
+        @include font-size.font-size(.75em);
     }
 }
 
@@ -108,13 +115,13 @@
     border-color: #dee;
 
     &:focus {
-        box-shadow: 0 0 0 .1875rem rgba($docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
+        box-shadow: 0 0 0 .1875rem rgba(docs.$docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
     }
 
-    @include hover-focus() {
+    @include hover.hover-focus() {
         color: #222;
         background-color: #bfdff8;
-        border-color: $uibase-800;
+        border-color: settings.$uibase-800;
     }
 
 }
@@ -124,13 +131,13 @@
     border-color: #dee;
 
     &:focus {
-        box-shadow: 0 0 0 .1875rem rgba($docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
+        box-shadow: 0 0 0 .1875rem rgba(docs.$docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
     }
 
-    @include hover-focus() {
+    @include hover.hover-focus() {
         color: #222;
         background-color: #e7f0f5;
-        border-color: $uibase-800;
+        border-color: settings.$uibase-800;
     }
 }
 

@@ -1,3 +1,7 @@
+@use "../../../../scss/functions/color-util";
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/settings";
+
 // stylelint-disable selector-no-qualifying-type, declaration-block-no-duplicate-properties
 
 // Modified version of:
@@ -39,9 +43,9 @@ code.language-bash::before {
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1.75em 1rem .5rem;
-    background-color: palette($uibase, 25);
-    border: 1px solid palette($uibase, 100);
-    @include border-radius(.25rem);
+    background-color: color-util.palette(settings.$uibase, 25);
+    border: 1px solid color-util.palette(settings.$uibase, 100);
+    @include border.border-radius(.25rem);
 
 }
 
@@ -50,7 +54,7 @@ pre[class*="language-"] {
     padding: 1.65rem 1rem .5rem;
     background-color: #f8f8f8;
     border: 1px solid #e1e1e8;
-    @include border-radius(.25rem);
+    @include border.border-radius(.25rem);
 }
 
 .token.comment,
@@ -118,7 +122,7 @@ pre[class*="language-"] {
 .token.important,
 .token.function,
 .token.bold {
-    font-weight: $font-weight-bold;
+    font-weight: settings.$font-weight-bold;
 }
 
 .token.italic {

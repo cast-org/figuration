@@ -1,15 +1,21 @@
+@use "sass:map";
+@use "../../../../scss/functions/color-util";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/mixins/hover";
+@use "../../../../scss/settings";
+
 // Footer
 .cf-footer {
-    @include font-size(map-get($font-sizes, "small"));
-    color: $black;
-    background-color: palette($uibase, 100);
-    border-top: 1px solid $uibase-400;
+    @include font-size.font-size(map.get(settings.$font-sizes, "small"));
+    color: settings.$black;
+    background-color: color-util.palette(settings.$uibase, 100);
+    border-top: 1px solid settings.$uibase-400;
 
     a {
-        color: palette($primary, 600);
+        color: color-util.palette(settings.$primary, 600);
 
-        @include hover-focus() {
-            color: palette($primary, 800);
+        @include hover.hover-focus() {
+            color: color-util.palette(settings.$primary, 800);
         }
     }
 }

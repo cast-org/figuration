@@ -1,16 +1,23 @@
+@use "../../../../scss/functions/color-util";
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/mixins/breakpoints";
+@use "../../../../scss/mixins/caret";
+@use "../../../../scss/mixins/hover";
+@use "../../../../scss/settings";
+
 // stylelint-disable selector-no-qualifying-type
 .cf-sidebar {
     position: relative;
     z-index: 1;
     padding-bottom: 0;
-    background-color: palette($uibase, 50);
-    border-bottom: 1px solid $uibase-200;
+    background-color: color-util.palette(settings.$uibase, 50);
+    border-bottom: 1px solid settings.$uibase-200;
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         padding-top: 0;
         padding-bottom: 1rem;
         //overflow: hidden;
-        border-right: 1px solid $uibase-200;
+        border-right: 1px solid settings.$uibase-200;
         border-bottom: 0;
 
         @supports (position: sticky) {
@@ -30,7 +37,7 @@
 .cf-links {
     padding-top: .5rem;
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         // stylelint-disable-next-line declaration-no-important
         display: block !important;
 
@@ -52,12 +59,12 @@
         display: block;
         width: 100%;
         padding: 0;
-        color: $uibase-700;
+        color: settings.$uibase-700;
         text-align: left;
         text-decoration: none;
         background-color: transparent;
         border-width: 0;
-        @include border-radius(0);
+        @include border.border-radius(0);
 
         .nav-link-inner {
             display: inline-block;
@@ -65,18 +72,18 @@
         }
 
         &.active {
-            font-weight: $font-weight-bolder;
-            color: $uibase-900;
+            font-weight: settings.$font-weight-bolder;
+            color: settings.$uibase-900;
         }
 
-        @include hover-focus() {
+        @include hover.hover-focus() {
             outline: 0;
 
             .nav-link-inner {
-                color: $white;
+                color: settings.$white;
                 text-decoration: none;
-                background-color: $info;
-                @include border-radius($border-radius);
+                background-color: settings.$info;
+                @include border.border-radius(settings.$border-radius);
             }
         }
     }
@@ -87,12 +94,12 @@
             left: -.25em;
 
             &::after {
-                @include caret-end($caret-border-width);
+                @include caret.caret-end(settings.$caret-border-width);
             }
         }
         .open .caret {
             &::after {
-                @include caret-down($caret-border-width);
+                @include caret.caret-down(settings.$caret-border-width);
             }
         }
         .nav-link:not(.cf-sidebar-header) {

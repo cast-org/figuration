@@ -1,22 +1,14 @@
-// stylelint-disable scss/dollar-variable-default
-
-@import "../../../../scss/functions";
-@import "../../../../scss/settings";
-@import "../../../../scss/mixins";
-
-$docs-primary:          #246;
-
-@import "skiplink";
-@import "notification";
-@import "topnav";
-@import "footer";
-@import "toplink";
-@import "home";
-@import "docsearch";
-@import "sidebar";
-@import "toc";
-@import "content";
-@import "syntax";
-@import "example";
-@import "callout";
-@import "player";
+@use "skiplink";
+@use "notification";
+@use "topnav";
+@use "footer";
+@use "toplink";
+@use "home";
+@use "docsearch";
+@use "sidebar";
+@use "toc";
+@use "content";
+@use "syntax";
+@use "example";
+@use "callout";
+@use "player";

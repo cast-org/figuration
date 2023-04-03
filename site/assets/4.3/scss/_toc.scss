@@ -1,6 +1,11 @@
+@use "../../../../scss/mixins/breakpoints";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/mixins/hover";
+@use "../../../../scss/settings";
+
 .cf-toc-align {
-    margin-right: $grid-gutter-width * -.5;
-    margin-left: $grid-gutter-width * -.5;
+    margin-right: settings.$grid-gutter-width * -.5;
+    margin-left: settings.$grid-gutter-width * -.5;
 }
 
 .cf-content-lead,
@@ -10,12 +15,12 @@
     padding-left: 1rem;
 
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         padding-right: 1.5rem;
         padding-left: 1.5rem;
     }
 
-    @include media-breakpoint-up(lg) {
+    @include breakpoints.media-breakpoint-up(lg) {
         padding-right: 2rem;
         padding-left: 2rem;
     }
@@ -27,12 +32,12 @@
         flex-direction: column;
         min-width: 0;
         padding: 0;
-        margin-left: $list-margin-left;
+        margin-left: settings.$list-margin-left;
         list-style: disc;
-        @include font-size(.9375rem);
+        @include font-size.font-size(.9375rem);
 
         ol {
-            margin: .125rem 0 -.125rem $list-margin-left;
+            margin: .125rem 0 -.125rem settings.$list-margin-left;
         }
     }
 
@@ -41,7 +46,7 @@
     }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
     .cf-sidebar {
         width: 20%;
     }
@@ -52,13 +57,13 @@
 
 @supports (display: grid) {
     .cf-toc-align {
-        @include media-breakpoint-up(lg) {
+        @include breakpoints.media-breakpoint-up(lg) {
             display: grid;
             grid-template-areas: "lead toc" "content toc";
             grid-template-columns: 3.25fr 1fr;
             grid-template-rows: auto 1fr;
         }
-        @include media-breakpoint-up(xl) {
+        @include breakpoints.media-breakpoint-up(xl) {
             grid-template-columns: 4fr 1fr;
         }
     }
@@ -74,10 +79,10 @@
         min-width: 1px;
     }
 
-    @include media-breakpoint-up(lg) {
+    @include breakpoints.media-breakpoint-up(lg) {
         .cf-content-toc {
             padding: 1rem;
-            border-left: 1px solid $border-color;
+            border-left: 1px solid settings.$border-color;
 
             @supports (position: sticky) {
                 position: sticky;
@@ -90,26 +95,26 @@
     }
 
     .cf-toc {
-        @include media-breakpoint-up(lg) {
+        @include breakpoints.media-breakpoint-up(lg) {
             ol {
                 margin-left: 0;
                 list-style: none;
-                @include font-size(.875rem);
+                @include font-size.font-size(.875rem);
             }
 
             a {
-                color: palette($text-muted, 600);
+                color: palette(settings.$text-muted, 600);
                 text-decoration: none;
 
 
-                @include hover-focus() {
-                    color: palette($text-muted, 700);
+                @include hover.hover-focus() {
+                    color: palette(settings.$text-muted, 700);
                     text-decoration: underline;
                 }
             }
 
             .active {
-                background-color: palette($info, 100);
+                background-color: palette(settings.$info, 100);
             }
         }
     }

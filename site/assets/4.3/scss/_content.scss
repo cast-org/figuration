@@ -1,3 +1,8 @@
+@use "../../../../scss/mixins/clearfix";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/mixins/transition";
+@use "../../../../scss/settings";
+
 // stylelint-disable selector-max-type
 
 .font-weight-sbold {
@@ -28,7 +33,7 @@
 
 
 :not(.cf-example) table {
-    @include font-size(.875rem);
+    @include font-size.font-size(.875rem);
 
     th,
     td{
@@ -47,18 +52,18 @@ h4 {
 }
 
 .cf-title {
-    @include font-size(3rem);
+    @include font-size.font-size(3rem);
 }
 
 // markdown-it-anchor icon
 .direct-link {
-    color: rgba($link-color, .7);
+    color: rgba(settings.$link-color, .7);
     text-decoration: none;
     opacity: 0;
-    @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
+    @include transition.transition(color .15s ease-in-out, opacity .15s ease-in-out);
 
     :focus {
-        color: $link-color;
+        color: settings.$link-color;
         text-decoration: none;
     }
 
@@ -96,7 +101,7 @@ h4 {
 .palette-base,
 .palette-item {
     padding: .5rem 1rem;
-    @include font-size(.875rem);
+    @include font-size.font-size(.875rem);
 }
 .palette-base {
     margin-bottom: .25rem;
@@ -117,7 +122,7 @@ h4 {
     min-height: 1.75rem;
     margin-left: 5rem;
 
-    @include clearfix();
+    @include clearfix.clearfix();
 }
 
 // Tables - merged .table and .table-bordered styles
@@ -125,28 +130,28 @@ h4 {
     width: 100%;
     max-width: 100%;
     margin-bottom: 1rem;
-    border: $table-border-width solid $table-border-color;
+    border: settings.$table-border-width solid settings.$table-border-color;
 
     th,
     td {
-        padding: $table-cell-padding;
+        padding: settings.$table-cell-padding;
         vertical-align: top;
-        border: $table-border-width solid $table-border-color;
+        border: settings.$table-border-width solid settings.$table-border-color;
     }
 
     thead {
         th,
         td {
             vertical-align: bottom;
-            border-bottom-width: (2 * $table-border-width);
+            border-bottom-width: (2 * settings.$table-border-width);
         }
     }
 
     tbody + tbody {
-        border-top: (2 * $table-border-width) solid $table-border-color;
+        border-top: (2 * settings.$table-border-width) solid settings.$table-border-color;
     }
 
     .table {
-        background-color: $body-bg;
+        background-color: settings.$body-bg;
     }
 }

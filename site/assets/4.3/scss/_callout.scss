@@ -1,12 +1,17 @@
+@use "../../../../scss/functions/color-util";
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/settings";
+
 // stylelint-disable scss/dollar-variable-default
 
 // Callouts
 .cf-callout {
     padding: 1rem;
     margin: 1rem 0;
-    border: $border-width solid $uibase-300;
+    border: settings.$border-width solid settings.$uibase-300;
     border-left-width: .5rem;
-    @include border-radius($border-radius);
+    @include border.border-radius(settings.$border-radius);
 
     .h3,
     .h4,
@@ -14,7 +19,7 @@
     .h6 {
         margin-top: 0;
         margin-bottom: .5rem;
-        @include font-size(1.25rem);
+        @include font-size.font-size(1.25rem);
     }
 
     p:last-child,
@@ -40,14 +45,14 @@
 }
 
 $callout-colors: (
-    "info" : $info,
-    "warning" : $warning,
-    "danger" : $danger
+    "info" : settings.$info,
+    "warning" : settings.$warning,
+    "danger" : settings.$danger
 );
 @each $theme, $color in $callout-colors {
-    $cv-bg:           palette($color, 25);
-    $cv-color:        palette($color, 800);
-    $cv-border-color: palette($color, 600);
+    $cv-bg:           color-util.palette($color, 25);
+    $cv-color:        color-util.palette($color, 800);
+    $cv-border-color: color-util.palette($color, 600);
 
     .cf-callout-#{$theme} {
         @include callout-variant($cv-bg, $cv-color, $cv-border-color);
