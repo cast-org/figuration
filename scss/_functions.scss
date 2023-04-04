@@ -1,6 +1,6 @@
-@use "functions/math";
-@use "functions/assert";
-@use "functions/rem-calc";
-@use "functions/str-util";
-@use "functions/map-util";
-@use "functions/color-util";
+@forward "functions/math";
+@forward "functions/assert";
+@forward "functions/rem-calc";
+@forward "functions/str-util";
+@forward "functions/map-util";
+@forward "functions/color-util";
