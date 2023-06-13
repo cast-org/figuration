@@ -1,3 +1,4 @@
+@use "../../../../scss/functions/math";
 @use "../../../../scss/mixins/breakpoints";
 @use "../../../../scss/mixins/font-size";
 @use "../../../../scss/mixins/hover";
@@ -87,7 +88,7 @@
             @supports (position: sticky) {
                 position: sticky;
                 top: 3.375rem;
-                max-height: subtract(100vh, 3.375rem);
+                max-height: math.subtract(100vh, 3.375rem);
                 overflow-x: visible;
                 overflow-y: auto;
             }

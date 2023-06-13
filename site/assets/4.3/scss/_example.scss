@@ -1,5 +1,6 @@
 @use "sass:string";
 @use "../../../../scss/functions/color-util";
+@use "../../../../scss/functions/math";
 @use "../../../../scss/mixins/border";
 @use "../../../../scss/mixins/breakpoints";
 @use "../../../../scss/mixins/caret";
@@ -206,19 +207,19 @@
 }
 .card-deck-col > .card {
     flex-basis: auto;
-    width: subtract(100%, 2rem);
+    width: math.subtract(100%, 2rem);
     margin-right: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
 }
 @media (min-width: 35em) {
     .card-deck-col > .card {
-        width: subtract(50%, 2rem);
+        width: math.subtract(50%, 2rem);
     }
 }
 @media (min-width: 62em) {
     .card-deck-col > .card {
-        width: subtract(25%, 2rem);
+        width: math.subtract(25%, 2rem);
     }
 }
 

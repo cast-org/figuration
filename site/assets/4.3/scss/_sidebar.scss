@@ -1,4 +1,5 @@
 @use "../../../../scss/functions/color-util";
+@use "../../../../scss/functions/math";
 @use "../../../../scss/mixins/border";
 @use "../../../../scss/mixins/breakpoints";
 @use "../../../../scss/mixins/caret";
@@ -23,7 +24,7 @@
         @supports (position: sticky) {
             position: sticky;
             top: 3.375rem;
-            max-height: subtract(100vh, 3.375rem);
+            max-height: math.subtract(100vh, 3.375rem);
         }
     }
 }
@@ -42,7 +43,7 @@
         display: block !important;
 
         @supports (position: sticky) {
-            max-height: subtract(100vh, 3.375rem);
+            max-height: math.subtract(100vh, 3.375rem);
             padding-right: 1rem;
             padding-bottom: 1rem;
             margin-right: -1rem;
@@ -50,7 +51,7 @@
             overflow-y: auto;
 
             .cf-search ~ & {
-                max-height: subtract(100vh, add(3.375rem, add(3.125rem, 1px, false), false));
+                max-height: math.subtract(100vh, math.add(3.375rem, math.add(3.125rem, 1px, false), false));
             }
         }
     }

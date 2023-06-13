@@ -358,7 +358,7 @@
       position: -webkit-sticky;
       position: sticky;
       top: 3.375rem;
-      max-height: subtract(100vh, 3.375rem);
+      max-height: calc(100vh - 3.375rem);
     }
   }
 }
@@ -378,7 +378,7 @@
   }
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .cf-links {
-      max-height: subtract(100vh, 3.375rem);
+      max-height: calc(100vh - 3.375rem);
       padding-right: 1rem;
       padding-bottom: 1rem;
       margin-right: -1rem;
@@ -386,7 +386,7 @@
       overflow-y: auto;
     }
     .cf-search ~ .cf-links {
-      max-height: subtract(100vh, add(3.375rem, add(3.125rem, 1px, false), false));
+      max-height: calc(100vh - 6.5rem - 1px);
     }
   }
 }
@@ -526,7 +526,7 @@
         position: -webkit-sticky;
         position: sticky;
         top: 3.375rem;
-        max-height: subtract(100vh, 3.375rem);
+        max-height: calc(100vh - 3.375rem);
         overflow-x: visible;
         overflow-y: auto;
       }
@@ -1042,7 +1042,7 @@ pre[class*=language-] {
 
 .card-deck-col > .card {
   flex-basis: auto;
-  width: subtract(100%, 2rem);
+  width: calc(100% - 2rem);
   margin-right: 1rem;
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -1050,12 +1050,12 @@ pre[class*=language-] {
 
 @media (min-width: 35em) {
   .card-deck-col > .card {
-    width: subtract(50%, 2rem);
+    width: calc(50% - 2rem);
   }
 }
 @media (min-width: 62em) {
   .card-deck-col > .card {
-    width: subtract(25%, 2rem);
+    width: calc(25% - 2rem);
   }
 }
 .accordion > .card {
