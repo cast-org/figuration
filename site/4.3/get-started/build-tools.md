@@ -7,7 +7,7 @@ toc: true
 ---
 
 [sass]: http://sass-lang.com/
-[node-sass]: https://github.com/sass/node-sass
+[dart-sass]: https://github.com/sass/dart-sass
 [grunt-sass]: https://github.com/sindresorhus/grunt-sass
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [postcss-flexbugs-fixes]: https://github.com/luisrudge/postcss-flexbugs-fixes
@@ -46,9 +46,7 @@ Our Gruntfile includes the following commands and tasks:
 
 ## Sass Compiler
 
-Figuration is compiled with [node-sass][node-sass] via [grunt-sass][grunt-sass]. There are no alternative options at this time.
-
-In order to reduce potential issues with browser rounding, our build process has increased the [Sass rounding precision](https://sass-lang.com/documentation/js-api#precision) to 6 (by default it's 5).
+Figuration is compiled with [Dart Sass][dart-sass] via [grunt-sass][grunt-sass]. There are no alternative options at this time.
 
 ## Autoprefixer
 

@@ -1,0 +1,55 @@
+// Contrast
+// ====
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+// WCAG 2.1 values are 3, 4.5, or 7
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$color-contrast-min-ratio:  4.5 !default;
+$color-contrast-base-light: #fff !default;
+$color-contrast-base-dark:  #000 !default;
+
+// Palette
+// =====
+// List of levels to build CSS out for each of the palette themes
+// Valid levels 0-1000
+$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
+
+// Percentage value per level to mix against white or black
+// Darker levels (>500) get narrower step interval than lighter
+// Values must be <= .2%
+$palette-interval-light:    .2% !default;
+$palette-interval-dark:     .15% !default;
+
+
+// Palette levels for use in _mix-context-colors() to determine
+// standardized contextual color mapping.
+// Special values:
+//   - level < 0 = #fff
+//   - level > 1000 = #000
+$level-control: (
+    "bg":                   500,
+    "color":                -1,
+    "border-color":         600,
+    "hover-bg":             600,
+    "hover-color":          -1,
+    "hover-border-color":   700,
+    "active-bg":            700,
+    "active-color":         -1,
+    "active-border-color":  700
+) !default;
+
+$level-context: (
+    "bg":                   100,
+    "color":                800,
+    "border-color":         200,
+    "hover-bg":             200,
+    "hover-color":          900,
+    "hover-border-color":   300,
+    "active-bg":            300,
+    "active-color":         900,
+    "active-border-color":  300
+) !default;
+
+
+// Increase (or decrease with negative number) to alter color for the hover state of
+// `.text-{color}-(palette-level}` utilities
+$level-delta-hover-color:           100 !default;

@@ -1,7 +1,14 @@
+@use "../mixins/border";
+@use "../mixins/font-size";
+@use "../mixins/hover";
+@use "../mixins/transition";
+@use "../settings";
+@use "../settings-options";
+
 // Base class
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
-@if $enable-nav {
+@if settings-options.$enable-nav {
     .nav {
         display: flex;
         flex-wrap: wrap;
@@ -12,72 +19,72 @@
 
     .nav-link {
         display: block;
-        padding: $nav-link-padding-y $nav-link-padding-x;
-        @include font-size($nav-link-font-size);
-        font-weight: $nav-link-font-weight;
-        color: $nav-link-color;
-        text-decoration: $nav-link-decoration;
+        padding: settings.$nav-link-padding-y settings.$nav-link-padding-x;
+        @include font-size.font-size(settings.$nav-link-font-size);
+        font-weight: settings.$nav-link-font-weight;
+        color: settings.$nav-link-color;
+        text-decoration: settings.$nav-link-decoration;
         background: none;
         border: 0;
-        @include transition($nav-link-transition);
+        @include transition.transition(settings.$nav-link-transition);
 
-        @include hover-focus() {
-            color: $nav-link-hover-color;
-            text-decoration: $nav-link-hover-decoration;
+        @include hover.hover-focus() {
+            color: settings.$nav-link-hover-color;
+            text-decoration: settings.$nav-link-hover-decoration;
         }
 
         // Disabled state lightens text and removes hover/focus effects
         // By default it also influences `.nav-tab` and `.nav-pills`
         &.disabled,
         &:disabled {
-            color: $nav-link-disabled-color;
+            color: settings.$nav-link-disabled-color;
             text-decoration: none;
             pointer-events: none;
             cursor: default;
-            opacity: $nav-link-disabled-opacity;
+            opacity: settings.$nav-link-disabled-opacity;
         }
     }
 
 
     // Tabs
-    @if $enable-nav-tabs {
+    @if settings-options.$enable-nav-tabs {
         .nav-tabs {
             flex-flow: row wrap;
-            border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+            border-bottom: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
 
             .nav-link {
                 // Make the list-items overlay the bottom border
-                margin-bottom: -$nav-tabs-border-width;
-                border: $nav-tabs-border-width solid transparent;
-                @include border-radius($border-radius $border-radius 0 0);
+                margin-bottom: -(settings.$nav-tabs-border-width);
+                border: settings.$nav-tabs-border-width solid transparent;
+                @include border.border-radius(settings.$border-radius settings.$border-radius 0 0);
 
-                @include hover-focus() {
-                    color: $nav-tabs-hover-color;
-                    background-color: $nav-tabs-hover-bg;
-                    border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
+                @include hover.hover-focus() {
+                    color: settings.$nav-tabs-hover-color;
+                    background-color: settings.$nav-tabs-hover-bg;
+                    border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color;
                 }
 
                 &.disabled,
                 &:disabled {
-                    color: $nav-link-disabled-color;
+                    color: settings.$nav-link-disabled-color;
                     background-color: transparent;
                     border-color: transparent;
                 }
 
                 &.active,
                 &.open {
-                    color: $nav-tabs-active-color;
-                    background-color: $nav-tabs-active-bg;
-                    border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+                    color: settings.$nav-tabs-active-color;
+                    background-color: settings.$nav-tabs-active-bg;
+                    border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg;
                 }
             }
 
-            @if $enable-dropdown {
+            @if settings-options.$enable-dropdown {
                 .dropdown-menu {
                     // Make dropdown border overlap tab border
-                    margin-top: -$nav-tabs-border-width;
+                    margin-top: -(settings.$nav-tabs-border-width);
                     // Remove the top rounded corners here since there is a hard edge above the menu
-                    @include border-top-radius(0);
+                    @include border.border-top-radius(0);
                 }
             }
         }
@@ -85,29 +92,29 @@
 
 
     // Pills
-    @if $enable-nav-pills {
+    @if settings-options.$enable-nav-pills {
         .nav-pills {
             flex-flow: row wrap;
 
             .nav-link {
-                @include border-radius($nav-pills-border-radius);
+                @include border.border-radius(settings.$nav-pills-border-radius);
 
-                @include hover-focus() {
-                    color: $nav-pills-hover-color;
-                    background-color: $nav-pills-hover-bg;
+                @include hover.hover-focus() {
+                    color: settings.$nav-pills-hover-color;
+                    background-color: settings.$nav-pills-hover-bg;
                 }
 
                 &.disabled,
                 &:disabled {
-                    color: $nav-link-disabled-color;
+                    color: settings.$nav-link-disabled-color;
                     background-color: transparent;
                     border-color: transparent;
                 }
 
                 &.active,
                 &.open {
-                    color: $nav-pills-active-color;
-                    background-color: $nav-pills-active-bg;
+                    color: settings.$nav-pills-active-color;
+                    background-color: settings.$nav-pills-active-bg;
                 }
             }
         }
@@ -115,14 +122,14 @@
 
 
     // Vertical navigation
-    @if $enable-nav-vertical {
+    @if settings-options.$enable-nav-vertical {
         .nav-vertical {
             flex-direction: column;
         }
     }
 
     // Justified variants
-    @if $enable-nav-fill {
+    @if settings-options.$enable-nav-fill {
         .nav-fill {
             > .nav-link,
             .nav-item {
@@ -132,7 +139,7 @@
         }
     }
 
-    @if $enable-nav-justify {
+    @if settings-options.$enable-nav-justify {
         .nav-justify {
             > .nav-link,
             .nav-item {
@@ -149,13 +156,13 @@
             width: 100%;
         }
     }
-    @if $enable-nav-fill {
+    @if settings-options.$enable-nav-fill {
         .nav-fill {
             @extend %nav-fill-justify-link-grow;
 
         }
     }
-    @if $enable-nav-justify {
+    @if settings-options.$enable-nav-justify {
         .nav-justify {
             @extend %nav-fill-justify-link-grow;
 
@@ -165,7 +172,7 @@
 
 // Tab content panes
 // Hide tabbable panes to start, show them when `.active`
-@if $enable-tab-content {
+@if settings-options.$enable-tab-content {
     .tab-content {
         > .tab-pane {
             display: none;

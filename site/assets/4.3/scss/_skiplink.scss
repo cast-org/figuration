@@ -1,3 +1,5 @@
+@use "../../../../scss/settings";
+
 //stylelint-disable declaration-no-important
 
 .skiplink {
@@ -6,15 +8,15 @@
     left: 50%;
     z-index: 1200;
     padding: .25rem .5rem;
-    color: $white;
+    color: settings.$white;
     text-align: center;
     text-decoration: none;
     background-color: #116fa9;
-    border: 2px solid $white;
+    border: 2px solid settings.$white;
     outline: 0;
     transform: translateX(-50%);
 
     &:hover {
-        color: $white;
+        color: settings.$white;
     }
 }

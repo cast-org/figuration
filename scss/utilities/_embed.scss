@@ -1,13 +1,19 @@
-@if $enable-utility-embed {
+@use "sass:map";
+@use "sass:math";
+@use "../functions/math" as functions-math;
+@use "../settings";
+@use "../settings-options";
 
-    @if $enable-utility-embed-fluid {
+@if settings-options.$enable-utility-embed {
+
+    @if settings-options.$enable-utility-embed-fluid {
         .embed-fluid {
             position: relative;
             width: 100%;
 
             &::before {
                 display: block;
-                padding-top: $embed-fluid-default-ratio;
+                padding-top: settings.$embed-fluid-default-ratio;
                 content: "";
             }
 
@@ -24,17 +30,17 @@
             }
         }
 
-        @each $key, $ratio in $embed-fluid-aspect-ratios {
+        @each $key, $ratio in settings.$embed-fluid-aspect-ratios {
             .embed-fluid-#{$key} {
                 &::before {
-                    padding-top: percentage(divide(map-get($ratio, y), map-get($ratio, x)));
+                    padding-top: math.percentage(functions-math.divide(map.get($ratio, y), map.get($ratio, x)));
                 }
             }
         }
     }
 
     // Fullscreen video
-    @if $enable-utility-embed-fullscreen {
+    @if settings-options.$enable-utility-embed-fullscreen {
         :fullscreen .embed-fluid {
             position: initial;
         }

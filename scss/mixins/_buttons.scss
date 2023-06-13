@@ -1,10 +1,18 @@
+@use "sass:map";
+@use "../functions/str-util";
+@use "../settings";
+@use "../settings-options";
+@use "border";
+@use "box-shadow";
+@use "font-size";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
 @mixin button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border) {
-    $extender: str-replace($parent, ".", "");
+    $extender: str-util.str-replace($parent, ".", "");
 
     #{$parent} {
         color: $color;
@@ -21,16 +29,16 @@
     // Focus state
     %btn-variant-#{$extender}-focus {
         // No mixin use, so feedback is always present
-        @if $enable-shadows {
-            @include box-shadow($btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+        @if settings-options.$enable-shadows {
+            @include box-shadow.box-shadow(settings.$btn-box-shadow, settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha));
         } @else {
-            box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+            box-shadow: settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha);
         }
     }
     #{$parent}:focus {
         @extend %btn-variant-#{$extender}-focus;
     }
-    @if $enable-btn-check {
+    @if settings-options.$enable-btn-check {
         .btn-check-input:focus ~ #{$parent} {
             @extend %btn-variant-#{$extender}-focus;
         }
@@ -46,7 +54,7 @@
     #{$parent}:disabled {
         @extend %btn-variant-#{$extender}-disable;
     }
-    @if $enable-btn-check {
+    @if settings-options.$enable-btn-check {
         .btn-check-input {
             &[disabled],
             &:disabled {
@@ -68,23 +76,23 @@
     #{$parent}.open[data-cfw="dropdown"] {
         @extend %btn-variant-#{$extender}-active;
     }
-    @if $enable-btn-check {
+    @if settings-options.$enable-btn-check {
         .btn-check-input:not([disabled]):not(:disabled):checked ~ #{$parent} {
             @extend %btn-variant-#{$extender}-active;
         }
     }
 
     // Active focus state
-    @if $enable-shadows {
+    @if settings-options.$enable-shadows {
         %btn-variant-#{$extender}-active-focus {
-            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+            @include box-shadow.box-shadow(settings.$btn-active-box-shadow, settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha));
         }
         #{$parent}:active:focus,
         #{$parent}.active:focus,
         #{$parent}.open[data-cfw="dropdown"]:focus {
             @extend %btn-variant-#{$extender}-active-focus;
         }
-        @if $enable-btn-check {
+        @if settings-options.$enable-btn-check {
             .btn-check-input:not([disabled]):not(:disabled):checked:focus ~ #{$parent} {
                 @extend %btn-variant-#{$extender}-active-focus;
             }
@@ -93,36 +101,36 @@
 }
 
 @mixin button-variant-control($parent, $colors) {
-    $bg:              map-get($colors, "bg");
-    $color:           map-get($colors, "color");
-    $border:          map-get($colors, "border-color");
-    $focus-shadow:    map-get($colors, "base");
-    $hover-bg:        map-get($colors, "hover-bg");
-    $hover-color:     map-get($colors, "hover-color");
-    $hover-border:    map-get($colors, "hover-border-color");
-    $active-bg:       map-get($colors, "active-bg");
-    $active-color:    map-get($colors, "active-color");
-    $active-border:   map-get($colors, "active-border-color");
-    $disabled-bg:     if(map-has-key($colors, "disabled-bg"), map-get($colors, "disabled-bg"), $bg);
-    $disabled-color:  if(map-has-key($colors, "disabled-color"), map-get($colors, "disabled-color"), $color);
-    $disabled-border: if(map-has-key($colors, "disabled-border-color"), map-get($colors, "disabled-border-color"), $border);
+    $bg:              map.get($colors, "bg");
+    $color:           map.get($colors, "color");
+    $border:          map.get($colors, "border-color");
+    $focus-shadow:    map.get($colors, "base");
+    $hover-bg:        map.get($colors, "hover-bg");
+    $hover-color:     map.get($colors, "hover-color");
+    $hover-border:    map.get($colors, "hover-border-color");
+    $active-bg:       map.get($colors, "active-bg");
+    $active-color:    map.get($colors, "active-color");
+    $active-border:   map.get($colors, "active-border-color");
+    $disabled-bg:     if(map.has-key($colors, "disabled-bg"), map.get($colors, "disabled-bg"), $bg);
+    $disabled-color:  if(map.has-key($colors, "disabled-color"), map.get($colors, "disabled-color"), $color);
+    $disabled-border: if(map.has-key($colors, "disabled-border-color"), map.get($colors, "disabled-border-color"), $border);
 
     @include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border);
 }
 
-@mixin button-variant-control-outline($parent, $colors, $bg: $btn-outline-bg) {
-    $color:           map-get($colors, "base");
-    $border:          map-get($colors, "bg");
-    $focus-shadow:    map-get($colors, "base");
-    $hover-bg:        map-get($colors, "bg");
-    $hover-color:     map-get($colors, "hover-color");
-    $hover-border:    map-get($colors, "border-color");
-    $active-bg:       map-get($colors, "hover-bg");
-    $active-color:    map-get($colors, "hover-color");
-    $active-border:   map-get($colors, "active-border-color");
-    $disabled-bg:     if(map-has-key($colors, "disabled-bg"), map-get($colors, "disabled-bg"), $bg);
-    $disabled-color:  if(map-has-key($colors, "disabled-color"), map-get($colors, "disabled-color"), $color);
-    $disabled-border: if(map-has-key($colors, "disabled-border-color"), map-get($colors, "disabled-border-color"), $border);
+@mixin button-variant-control-outline($parent, $colors, $bg: settings.$btn-outline-bg) {
+    $color:           map.get($colors, "base");
+    $border:          map.get($colors, "bg");
+    $focus-shadow:    map.get($colors, "base");
+    $hover-bg:        map.get($colors, "bg");
+    $hover-color:     map.get($colors, "hover-color");
+    $hover-border:    map.get($colors, "border-color");
+    $active-bg:       map.get($colors, "hover-bg");
+    $active-color:    map.get($colors, "hover-color");
+    $active-border:   map.get($colors, "active-border-color");
+    $disabled-bg:     if(map.has-key($colors, "disabled-bg"), map.get($colors, "disabled-bg"), $bg);
+    $disabled-color:  if(map.has-key($colors, "disabled-color"), map.get($colors, "disabled-color"), $color);
+    $disabled-border: if(map.has-key($colors, "disabled-border-color"), map.get($colors, "disabled-border-color"), $border);
 
     @include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border);
 }
@@ -132,14 +140,14 @@
     @if $padding-y == null and $padding-x == null {
         // No padding output
     } @else if $padding-y == null or $padding-x == null {
-        $padding-y: if($padding-y != null, $padding-y, $btn-padding-y);
-        $padding-x: if($padding-x != null, $padding-x, $btn-padding-x);
+        $padding-y: if($padding-y != null, $padding-y, settings.$btn-padding-y);
+        $padding-x: if($padding-x != null, $padding-x, settings.$btn-padding-x);
         padding: $padding-y $padding-x;
     } @else {
         padding: $padding-y $padding-x;
     }
-    @include font-size($font-size);
+    @include font-size.font-size($font-size);
     line-height: $line-height;
     // Provide a fallback to override to the browser default
-    @include border-radius($border-radius, 0);
+    @include border.border-radius($border-radius, 0);
 }

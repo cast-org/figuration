@@ -1,3 +1,7 @@
+@use "../mixins/transition";
+@use "../settings";
+@use "../settings-options";
+
 .lazy {
     opacity: 0;
 
@@ -5,13 +9,13 @@
     // before fading back in
     &.in {
         opacity: 1;
-        @include transition($transition-lazy-fade);
+        @include transition.transition(settings.$transition-lazy-fade);
     }
 }
 
 .fade {
     opacity: 0;
-    @include transition($transition-fade);
+    @include transition.transition(settings.$transition-fade);
 
     &.in {
         opacity: 1;
@@ -28,15 +32,15 @@
     height: 0;
     overflow: hidden;
 
-    @include transition($transition-collapse-y);
+    @include transition.transition(settings.$transition-collapse-y);
 
     // Horizontal collapse variant
     &.width {
         width: 0;
         height: auto;
 
-        @if $enable-transitions {
-            @include transition($transition-collapse-x);
+        @if settings-options.$enable-transitions {
+            @include transition.transition(settings.$transition-collapse-x);
         }
     }
 }

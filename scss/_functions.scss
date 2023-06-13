@@ -1,6 +1,6 @@
-@import "functions/math";
-@import "functions/assert";
-@import "functions/rem-calc";
-@import "functions/str-util";
-@import "functions/map-util";
-@import "functions/color-util";
+@forward "functions/math";
+@forward "functions/assert";
+@forward "functions/rem-calc";
+@forward "functions/str-util";
+@forward "functions/map-util";
+@forward "functions/color-util";

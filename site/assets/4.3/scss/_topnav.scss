@@ -1,15 +1,19 @@
+@use "../../../../scss/mixins/breakpoints";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/settings";
+
 // stylelint-disable selector-no-qualifying-type
 
 .cf-header {
     background-color: #246;
 }
 
-@include media-breakpoint-up(md) {
+@include breakpoints.media-breakpoint-up(md) {
     @supports (position: sticky) {
         .cf-header {
             position: sticky;
             top: 0;
-            z-index: $zindex-sticky;
+            z-index: settings.$zindex-sticky;
         }
 
         .cf-content {
@@ -28,8 +32,8 @@
 .cf-header-menu {
     display: inline-block;
     margin-top: -.25rem;
-    @include font-size(1.5rem);
-    font-weight: $font-weight-bold;
+    @include font-size.font-size(1.5rem);
+    font-weight: settings.$font-weight-bold;
     line-height: .75;
 }
 

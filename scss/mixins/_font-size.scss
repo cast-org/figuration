@@ -1,19 +1,28 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "../functions/math" as functions-math;
+@use "../functions/rem-calc";
+@use "../settings";
+@use "../settings-options";
+@use "breakpoints";
+
 // stylelint-disable property-disallowed-list
 
 // Make sure only one responsive typography method is enabled.
-@if $enable-rfs-fluid and $enable-rfs-scale {
+@if settings-options.$enable-rfs-fluid and settings-options.$enable-rfs-scale {
     @error "More than one Responsive Typography (font-size) method has been selected. Please update your settings to only use one of the available Responsive Typography methods.";
 }
 
 // Calculate minimum font size as unitless rem equivalent.
 // stylelint-disable scss/dollar-variable-default
-$fs-minimum: rem($responsive-font-size-minimum-size);
-$fs-minimum: strip-unit($fs-minimum);
+$fs-minimum: rem-calc.rem(settings.$responsive-font-size-minimum-size);
+$fs-minimum: rem-calc.strip-unit($fs-minimum);
 // stylelint-enable scss/dollar-variable-default
 
 @mixin font-size($fs, $important: false) {
     // Cache $fs unit
-    $fs-unit: if(type-of($fs) == "number", unit($fs), false);
+    $fs-unit: if(meta.type-of($fs) == "number", math.unit($fs), false);
 
     // Add !important rule to the append if set
     $fs-append: if($important, " !important", "");
@@ -21,10 +30,10 @@ $fs-minimum: strip-unit($fs-minimum);
     // If $fs isn't a number (like inherit) or $fs has a unit (not px or rem, like 1.5em) or $fs is 0, just print the value.
     @if not $fs-unit or $fs-unit != "" and $fs-unit != "px" and $fs-unit != "rem" or $fs == 0 {
         font-size: #{$fs}#{$fs-append};
-    } @else if ($enable-rfs-fluid) {
+    } @else if (settings-options.$enable-rfs-fluid) {
         // Use fluid variant
         @include font-size-fluid($fs, $fs-append);
-    } @else if ($enable-rfs-scale) {
+    } @else if (settings-options.$enable-rfs-scale) {
         // Use scaled variant
         @include font-size-scale($fs, $fs-append);
     } @else {
@@ -36,23 +45,23 @@ $fs-minimum: strip-unit($fs-minimum);
 // Responsive typography sizing using viewport ratio
 @mixin font-size-fluid($fs, $fs-append) {
     // Check breakpoint unit.
-    $fs-breakpoint-unit: unit($responsive-font-size-fluid-breakpoint);
+    $fs-breakpoint-unit: math.unit(settings.$responsive-font-size-fluid-breakpoint);
     @if $fs-breakpoint-unit != em {
         @error "`#{$fs-breakpoint-unit}` is not a valid unit for $responsive-font-size-fluid-breakpoint. Please use `em`.";
     }
 
     // Check scaling factor.
-    @if type-of($responsive-font-size-fluid-factor) != "number" or $responsive-font-size-fluid-factor < 1 {
-        @error "`#{$responsive-font-size-fluid-factor}` is not a valid  $responsive-font-size-fluid-factor, it must be greater or equal to 1.";
+    @if meta.type-of(settings.$responsive-font-size-fluid-factor) != "number" or settings.$responsive-font-size-fluid-factor < 1 {
+        @error "`#{settings.$responsive-font-size-fluid-factor}` is not a valid  $responsive-font-size-fluid-factor, it must be greater or equal to 1.";
     }
 
     // Calculate breakpoint as unitless rem equivalent.
-    $fs-breakpoint: rem($responsive-font-size-fluid-breakpoint);
-    $fs-breakpoint: strip-unit($fs-breakpoint);
+    $fs-breakpoint: rem-calc.rem(settings.$responsive-font-size-fluid-breakpoint);
+    $fs-breakpoint: rem-calc.strip-unit($fs-breakpoint);
 
     // Calculate font size as unitless rem equivalent.
-    $fs: rem($fs);
-    $fs: strip-unit($fs);
+    $fs: rem-calc.rem($fs);
+    $fs: rem-calc.strip-unit($fs);
 
     // Set default font-size output.
     $fs-static: #{$fs}rem#{$fs-append};
@@ -60,9 +69,9 @@ $fs-minimum: strip-unit($fs-minimum);
     // Only add media query if font-size is bigger than the minimum font-size.
     // If $responsive-font-size-fluid-factor == 1, no rescaling will take place.
     $fs-fluid: null;
-    @if $fs > $fs-minimum and $responsive-font-size-fluid-factor != 1 {
+    @if $fs > $fs-minimum and settings.$responsive-font-size-fluid-factor != 1 {
         // Calculate minimum font-size for given font-size.
-        $fs-min: divide($fs-minimum + ($fs - $fs-minimum), $responsive-font-size-fluid-factor);
+        $fs-min: functions-math.divide($fs-minimum + ($fs - $fs-minimum), settings.$responsive-font-size-fluid-factor);
         // Calculate difference between given font-size and minimum font-size for given font-size.
         $fs-diff: $fs - $fs-min;
 
@@ -70,15 +79,15 @@ $fs-minimum: strip-unit($fs-minimum);
         $fs-min: #{$fs-min}rem;
 
         // If two-dimensional, use smallest of screen width and height.
-        $variable-unit: if($responsive-font-size-fluid-two-dimensional, vmin, vw);
+        $variable-unit: if(settings.$responsive-font-size-fluid-two-dimensional, vmin, vw);
 
         // Calculate the variable width between 0 and $fs-breakpoint.
         // stylelint-disable-next-line function-whitespace-after
-        $variable-width: divide($fs-diff * 100, $fs-breakpoint)#{$variable-unit};
+        $variable-width: functions-math.divide($fs-diff * 100, $fs-breakpoint)#{$variable-unit};
 
         // Set the calculated font-size.
         // stylelint-disable-next-line function-whitespace-after
-        $fs-fluid: add($fs-min, $variable-width)#{$fs-append};
+        $fs-fluid: functions-math.add($fs-min, $variable-width)#{$fs-append};
     }
 
     // Render output.
@@ -86,9 +95,9 @@ $fs-minimum: strip-unit($fs-minimum);
         // Only render static font-size if no fluid font-size is available.
         font-size: $fs-static;
     } @else {
-        $mq-value: $responsive-font-size-fluid-breakpoint;
+        $mq-value: settings.$responsive-font-size-fluid-breakpoint;
 
-        @if $responsive-font-size-generate-static {
+        @if settings.$responsive-font-size-generate-static {
             // Adding an extra class increases specificity, which
             // prevents the media query from overriding the font size.
             &,
@@ -100,7 +109,7 @@ $fs-minimum: strip-unit($fs-minimum);
             font-size: $fs-static;
         }
 
-        @if $responsive-font-size-fluid-two-dimensional {
+        @if settings.$responsive-font-size-fluid-two-dimensional {
             @media (max-width: #{$mq-value}), (max-height: #{$mq-value}) {
                 font-size: $fs-fluid;
             }
@@ -115,14 +124,14 @@ $fs-minimum: strip-unit($fs-minimum);
 // Responsive typography sizing using breakpoint scaling
 @mixin font-size-scale($fs, $fs-append) {
     // Calculate font size as unitless rem equivalent.
-    $fs: rem($fs);
-    $fs: strip-unit($fs);
+    $fs: rem-calc.rem($fs);
+    $fs: rem-calc.strip-unit($fs);
 
     // Set default font-size output.
     $fs-static: #{$fs}rem#{$fs-append};
     $fs-prev: null;
-    @each $breakpoint in map-keys($grid-breakpoints) {
-        $factor: map-get($responsive-font-size-scale-factor, $breakpoint);
+    @each $breakpoint in map.keys(settings.$grid-breakpoints) {
+        $factor: map.get(settings.$responsive-font-size-scale-factor, $breakpoint);
 
         // Only add media query if font-size is bigger than the minimum font-size.
         // If $factor == 1, no rescaling will take place.
@@ -137,8 +146,8 @@ $fs-minimum: strip-unit($fs-minimum);
         @if $fs-scaled == null {
             @if $fs-prev != $fs {
                 // Only render static font-size if no scaled font-size is available.
-                @if $responsive-font-size-generate-static and $fs > $fs-minimum {
-                    @include media-breakpoint-up($breakpoint) {
+                @if settings.$responsive-font-size-generate-static and $fs > $fs-minimum {
+                    @include breakpoints.media-breakpoint-up($breakpoint) {
                         font-size: $fs-static;
                     }
                     // Adding an extra class increases specificity, which
@@ -148,7 +157,7 @@ $fs-minimum: strip-unit($fs-minimum);
                         font-size: $fs-static;
                     }
                 } @else {
-                    @include media-breakpoint-up($breakpoint) {
+                    @include breakpoints.media-breakpoint-up($breakpoint) {
                         font-size: $fs-static;
                     }
                 }
@@ -156,7 +165,7 @@ $fs-minimum: strip-unit($fs-minimum);
             $fs-prev: $fs;
         } @else {
             @if $fs-prev != $fs-scaled {
-                @include media-breakpoint-up($breakpoint) {
+                @include breakpoints.media-breakpoint-up($breakpoint) {
                     font-size: $fs-output;
                 }
             }

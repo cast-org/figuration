@@ -1,80 +1,18 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
+@use "functions/assert";
+@use "functions/color-util";
+@use "functions/map-util";
+@use "functions/math" as functions-math;
+@use "functions/rem-calc";
+@use "functions/str-util";
+@use "settings-colors";
+@use "settings-options";
+
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
 // https://github.com/iconic/open-iconic
-
-// Options
-// =====
-// Quickly modify global styling by enabling or disabling optional features.
-$enable-rounded:                true !default;      // true
-$enable-shadows:                false !default;     // false
-$enable-transitions:            true !default;      // true
-$enable-transitions-reduced:    true !default;      // true
-$enable-smooth-scroll:          true !default;      // true
-$enable-grid-classes:           true !default;      // true
-$enable-print-styles:           true !default;      // true
-$enable-palette:                true !default;      // true
-$enable-sizing:                 true !default;      // true
-$enable-bp-smallest:            false !default;     // false
-$enable-rfs-fluid:              false !default;     // false
-$enable-rfs-scale:              false !default;     // false
-$enable-color-warnings:         false !default;     // false
-
-
-// Characters to encode for SVG data URLs, used by `encode-svg()` SCSS function
-$encode-svg-chars: (
-    ("<", "%3c"),
-    (">", "%3e"),
-    ("#", "%23"),
-    ("(", "%28"),
-    (")", "%29")
-) !default;
-
-
-// Palette
-// =====
-// List of levels to build CSS out for each of the palette themes
-// Valid levels 0-1000
-$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
-
-// Percentage value per level to mix against white or black
-// Darker levels (>500) get narrower step interval than lighter
-// Values must be <= .2%
-$palette-interval-light:    .2% !default;
-$palette-interval-dark:     .15% !default;
-
-// Palette levels for use in _mix-context-colors() to determine
-// standardized contextual color mapping.
-// Special values:
-//  level < 0 = #fff
-//  level > 1000 = #000
-$level-control: (
-    "bg":                   500,
-    "color":                -1,
-    "border-color":         600,
-    "hover-bg":             600,
-    "hover-color":          -1,
-    "hover-border-color":   700,
-    "active-bg":            700,
-    "active-color":         -1,
-    "active-border-color":  700
-) !default;
-
-$level-context: (
-    "bg":                   100,
-    "color":                800,
-    "border-color":         200,
-    "hover-bg":             200,
-    "hover-color":          900,
-    "hover-border-color":   300,
-    "active-bg":            300,
-    "active-color":         900,
-    "active-border-color":  300
-) !default;
-
-
-// Increase (or decrease with negative number) to alter color for the hover state of
-// `.text-{color}-(palette-level}` utilities
-$level-delta-hover-color:           100 !default;
 
 
 // Colors
@@ -91,16 +29,16 @@ $cyan:      #1680a4 !default;
 $yellow:    #f8c223 !default;
 
 // Base UI Scale
-$uibase-50:   palette($uibase, 50) !default;
-$uibase-100:  palette($uibase, 100) !default;
-$uibase-200:  palette($uibase, 200) !default;
-$uibase-300:  palette($uibase, 300) !default;
-$uibase-400:  palette($uibase, 400) !default;
-$uibase-500:  palette($uibase, 500) !default;
-$uibase-600:  palette($uibase, 600) !default;
-$uibase-700:  palette($uibase, 700) !default;
-$uibase-800:  palette($uibase, 800) !default;
-$uibase-900:  palette($uibase, 900) !default;
+$uibase-50:   color-util.palette($uibase, 50) !default;
+$uibase-100:  color-util.palette($uibase, 100) !default;
+$uibase-200:  color-util.palette($uibase, 200) !default;
+$uibase-300:  color-util.palette($uibase, 300) !default;
+$uibase-400:  color-util.palette($uibase, 400) !default;
+$uibase-500:  color-util.palette($uibase, 500) !default;
+$uibase-600:  color-util.palette($uibase, 600) !default;
+$uibase-700:  color-util.palette($uibase, 700) !default;
+$uibase-800:  color-util.palette($uibase, 800) !default;
+$uibase-900:  color-util.palette($uibase, 900) !default;
 
 // Color Variables
 $primary:   $blue !default;
@@ -109,8 +47,8 @@ $info:      $cyan !default;
 $success:   $green !default;
 $warning:   $yellow !default;
 $danger:    $red !default;
-$light:     palette($uibase, 50) !default;
-$dark:      palette($uibase, 800) !default;
+$light:     color-util.palette($uibase, 50) !default;
+$dark:      color-util.palette($uibase, 800) !default;
 
 // Base Color Map - used for generating contextual variants
 $base-colors: (
@@ -137,17 +75,10 @@ $palette-colors: (
     "gray":      $gray
 ) !default;
 
-// Color Contrast
-// =====
-// Minimum contrast ratio - WCAG 2.1 level AA spec
-$color-contrast-min-ratio:  4.5 !default;
-$color-contrast-base-light: $white !default;
-$color-contrast-base-dark:  $uibase-900 !default;
-
 
 // Component Color Variants and Levels
 // =====
-$root-colors:           map-merge($base-colors, $palette-colors) !default;
+$root-colors:           map.merge($base-colors, $palette-colors) !default;
 $alert-colors:          $base-colors !default;
 $btn-colors:            $base-colors !default;
 $btn-outline-colors:    $base-colors !default;
@@ -158,11 +89,11 @@ $utility-bgtext-colors: $base-colors !default;
 $utility-border-colors: $base-colors !default;
 $utility-text-colors:   $base-colors !default;
 
-$alert-levels:          $level-context !default;
-$btn-levels:            $level-control !default;
-$btn-outline-levels:    $level-control !default;
-$list-levels:           $level-context !default;
-$table-levels:          $level-context !default;
+$alert-levels:          settings-colors.$level-context !default;
+$btn-levels:            settings-colors.$level-control !default;
+$btn-outline-levels:    settings-colors.$level-control !default;
+$list-levels:           settings-colors.$level-context !default;
+$table-levels:          settings-colors.$level-context !default;
 
 
 // Component Theme Initialization
@@ -256,17 +187,17 @@ $border-widths: (
 // If only one breakpoint is desired, use: $grid-breakpoints: (xs: 0);
 $grid-breakpoints: (
     xs: 0,
-    sm: bp-to-em(576px),
-    md: bp-to-em(768px),
-    lg: bp-to-em(992px),
-    xl: bp-to-em(1200px)
+    sm: rem-calc.bp-to-em(576px),
+    md: rem-calc.bp-to-em(768px),
+    lg: rem-calc.bp-to-em(992px),
+    xl: rem-calc.bp-to-em(1200px)
 ) !default;
 
 // stylelint-disable-next-line scss/dollar-variable-default
-$grid-breakpoints: map-sort-by-values($grid-breakpoints);
+$grid-breakpoints: map-util.map-sort-by-values($grid-breakpoints);
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+@include assert.assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include assert.assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
 // Component and utility breakpoints
 // =====
@@ -274,43 +205,43 @@ $grid-breakpoints: map-sort-by-values($grid-breakpoints);
 // of breakpoint keys based upon the master `$grid-breakpoints` map.
 // This way each the CSS for each of the items can be controlled and reduced as needed.
 // The items in the following lists *must* be in the keys for the `$grid-breakpoints` map.
-$responsive-container-breakpoints:  map-keys($grid-breakpoints) !default;
-$responsive-gutter-breakpoints:     map-keys($grid-breakpoints) !default;
-$row-columns-breakpoints:           map-keys($grid-breakpoints) !default;
-$card-horizontal-breakpoints:       map-keys($grid-breakpoints) !default;
-$card-deck-breakpoints:             map-keys($grid-breakpoints) !default;
-$card-group-breakpoints:            map-keys($grid-breakpoints) !default;
-$card-columns-breakpoints:          map-keys($grid-breakpoints) !default;
-$navbar-expand-breakpoints:         map-keys($grid-breakpoints) !default;
-$offcanvas-breakpoints:             map-keys($grid-breakpoints) !default;
-$table-scroll-breakpoints:          map-keys($grid-breakpoints) !default;
-$modal-fullscreen-breakpoints:      map-keys($grid-breakpoints) !default;
-$utility-border-breakpoints:        map-keys($grid-breakpoints) !default;
-$utility-display-breakpoints:       map-keys($grid-breakpoints) !default;
-$utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
-$utility-float-breakpoints:         map-keys($grid-breakpoints) !default;
-$utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
-$utility-sticky-top-breakpoints:    map-keys($grid-breakpoints) !default;
-$utility-sticky-bottom-breakpoints: map-keys($grid-breakpoints) !default;
+$responsive-container-breakpoints:  map.keys($grid-breakpoints) !default;
+$responsive-gutter-breakpoints:     map.keys($grid-breakpoints) !default;
+$row-columns-breakpoints:           map.keys($grid-breakpoints) !default;
+$card-horizontal-breakpoints:       map.keys($grid-breakpoints) !default;
+$card-deck-breakpoints:             map.keys($grid-breakpoints) !default;
+$card-group-breakpoints:            map.keys($grid-breakpoints) !default;
+$card-columns-breakpoints:          map.keys($grid-breakpoints) !default;
+$navbar-expand-breakpoints:         map.keys($grid-breakpoints) !default;
+$offcanvas-breakpoints:             map.keys($grid-breakpoints) !default;
+$table-scroll-breakpoints:          map.keys($grid-breakpoints) !default;
+$modal-fullscreen-breakpoints:      map.keys($grid-breakpoints) !default;
+$utility-border-breakpoints:        map.keys($grid-breakpoints) !default;
+$utility-display-breakpoints:       map.keys($grid-breakpoints) !default;
+$utility-flex-breakpoints:          map.keys($grid-breakpoints) !default;
+$utility-float-breakpoints:         map.keys($grid-breakpoints) !default;
+$utility-position-breakpoints:      map.keys($grid-breakpoints) !default;
+$utility-sticky-top-breakpoints:    map.keys($grid-breakpoints) !default;
+$utility-sticky-bottom-breakpoints: map.keys($grid-breakpoints) !default;
 $utility-placement-breakpoints:     "xs" !default;
 $utility-translate-breakpoints:     "xs" !default;
-$utility-screen-reader-breakpoints: map-keys($grid-breakpoints) !default;
-$utility-spacing-breakpoints:       map-keys($grid-breakpoints) !default;
-$utility-text-align-breakpoints:    map-keys($grid-breakpoints) !default;
-$utility-text-size-breakpoints:     map-keys($grid-breakpoints) !default;
-$utility-valign-breakpoints:        map-keys($grid-breakpoints) !default;
+$utility-screen-reader-breakpoints: map.keys($grid-breakpoints) !default;
+$utility-spacing-breakpoints:       map.keys($grid-breakpoints) !default;
+$utility-text-align-breakpoints:    map.keys($grid-breakpoints) !default;
+$utility-text-size-breakpoints:     map.keys($grid-breakpoints) !default;
+$utility-valign-breakpoints:        map.keys($grid-breakpoints) !default;
 
 // Grid containers
 // =====
 // Define the maximum width of `.container` for different screen sizes.
 $container-max-widths: (
-    sm: rem(544px),
-    md: rem(720px),
-    lg: rem(960px),
-    xl: rem(1152px)
+    sm: rem-calc.rem(544px),
+    md: rem-calc.rem(720px),
+    lg: rem-calc.rem(960px),
+    xl: rem-calc.rem(1152px)
 ) !default;
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+@include assert.assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid
@@ -355,7 +286,7 @@ $body-text-align:       null !default;
 // Style anchor elements
 $link-color:                    $primary !default;
 $link-decoration:               underline !default;
-$link-hover-color:              palette($primary, 700) !default;
+$link-hover-color:              color-util.palette($primary, 700) !default;
 $link-hover-decoration:         null !default;
 
 $link-stretch-pseudo-element:   after !default;
@@ -481,7 +412,7 @@ $responsive-font-size-generate-static:  false !default;
 
 // Ratioed Responsive Typography
 // Fluidly scales font size ratio by viewport dimension.
-$responsive-font-size-fluid-breakpoint:        bp-to-em(1200px) !default;
+$responsive-font-size-fluid-breakpoint:        rem-calc.bp-to-em(1200px) !default;
 $responsive-font-size-fluid-factor:            5 !default;
 $responsive-font-size-fluid-two-dimensional:   false !default;
 
@@ -508,8 +439,8 @@ $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
 $component-active-bg:           $primary !default;
-$component-active-color:        color-if-contrast($white, $primary) !default;
-$component-active-border-color: palette($primary, 600) !default;
+$component-active-color:        color-util.color-if-contrast($white, $primary) !default;
+$component-active-border-color: color-util.palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
@@ -631,7 +562,7 @@ $thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 
 // Fluid embed
 // =====
-$embed-fluid-default-ratio: percentage(divide(9, 16)) !default;
+$embed-fluid-default-ratio: math.percentage(functions-math.divide(9, 16)) !default;
 $embed-fluid-aspect-ratios: (
     "21x9": (
         x: 21,
@@ -656,7 +587,7 @@ $embed-fluid-aspect-ratios: (
 $code-font-size:            .875em !default;
 $code-padding-x:            null !default;
 $code-padding-y:            null !default;
-$code-color:                palette($red, 550) !default;
+$code-color:                color-util.palette($red, 550) !default;
 $code-bg:                   null !default;
 $code-border-radius:        null !default;
 
@@ -767,14 +698,14 @@ $btn-block-spacing-y:       .25rem !default;
 $btn-icon-multiplier:       .5 !default;
 
 $btn-default-bg:                    $white !default;
-$btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;
+$btn-default-color:                 color-util.color-if-contrast($uibase-500, $btn-default-bg) !default;
 $btn-default-border-color:          $uibase-300 !default;
 $btn-default-focus-box-shadow-color: $component-active-bg !default;
 $btn-default-hover-bg:              $uibase-50 !default;
-$btn-default-hover-color:           color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
+$btn-default-hover-color:           color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
 $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
-$btn-default-active-color:          color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
+$btn-default-active-color:          color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
 $btn-default-active-border-color:   $uibase-400 !default;
 $btn-default-disabled-bg:           $btn-default-bg !default;
 $btn-default-disabled-color:        $btn-default-color !default;
@@ -805,11 +736,11 @@ $input-color:                   $uibase-700 !default;
 $input-border-color:            $uibase-200 !default;
 $input-border-width:            $border-width !default;
 $input-border-radius:           $border-radius !default;
-$input-box-shadow:              map-get($shadows, "i1") !default;
+$input-box-shadow:              map.get($shadows, "i1") !default;
 
 $input-focus-bg:                $input-bg !default;
 $input-focus-color:             $input-color !default;
-$input-focus-border-color:      palette($primary, 300) !default;
+$input-focus-border-color:      color-util.palette($primary, 300) !default;
 $input-focus-box-shadow-size:   0 0 0 .1875rem !default;
 $input-focus-box-shadow-alpha:  .35 !default;
 $input-focus-box-shadow:        $input-focus-box-shadow-size rgba($component-active-bg, $input-focus-box-shadow-alpha) !default;
@@ -851,12 +782,12 @@ $form-check-label-disabled-opacity: .6 !default;
 
 // Form checkradio
 $form-checkradio-size:                      1em !default;
-$form-checkradio-gutter:                    add($form-checkradio-size, .375em) !default;
+$form-checkradio-gutter:                    functions-math.add($form-checkradio-size, .375em) !default;
 $form-checkradio-bg:                        $white !default;
 $form-checkradio-border-width:              $border-width !default;
 $form-checkradio-border-color:              $uibase-300 !default;
-$form-checkradio-box-shadow:                map-get($shadows, "i1") !default;
-$form-checkradio-icon-size:                 subtract($form-checkradio-size, .375em) !default;
+$form-checkradio-box-shadow:                map.get($shadows, "i1") !default;
+$form-checkradio-icon-size:                 functions-math.subtract($form-checkradio-size, .375em) !default;
 
 $form-checkradio-focus-border-color:        $input-focus-border-color !default;
 $form-checkradio-focus-box-shadow:          $input-focus-box-shadow !default;
@@ -864,28 +795,28 @@ $form-checkradio-focus-box-shadow:          $input-focus-box-shadow !default;
 $form-checkradio-checked-bg:                $primary !default;
 $form-checkradio-checked-color:             $white !default;
 $form-checkradio-checked-border-color:      $primary !default;
-$form-checkradio-checked-box-shadow:        map-get($shadows, "i1") !default;
+$form-checkradio-checked-box-shadow:        map.get($shadows, "i1") !default;
 
 $form-checkradio-checkbox-border-radius:    .25rem !default;
-$form-checkradio-checkbox-icon:             encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
+$form-checkradio-checkbox-icon:             str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
 
 $form-checkradio-radio-border-radius:       50% !default;
-$form-checkradio-radio-icon:                encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
+$form-checkradio-radio-icon:                str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
 
 $form-checkradio-indeterminate-bg:              $primary !default;
 $form-checkradio-indeterminate-border-color:    $form-checkradio-indeterminate-bg !default;
-$form-checkradio-indeterminate-icon:            encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
+$form-checkradio-indeterminate-icon:            str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
 
 // Form switch
 $form-switch-width:                         1.75em !default;
-$form-switch-gutter:                        add($form-switch-width, .375em) !default;
+$form-switch-gutter:                        functions-math.add($form-switch-width, .375em) !default;
 
 $form-switch-track-height:                  1em !default;
 $form-switch-track-bg:                      $white !default;
 $form-switch-track-border-width:            $input-border-width !default;
 $form-switch-track-border-color:            $uibase-300 !default;
 $form-switch-track-border-radius:           1em !default;
-$form-switch-track-box-shadow:              map-get($shadows, "i1") !default;
+$form-switch-track-box-shadow:              map.get($shadows, "i1") !default;
 
 $form-switch-track-focus-bg:                null !default;
 $form-switch-track-focus-border-color:      $input-focus-border-color !default;
@@ -895,7 +826,7 @@ $form-switch-track-checked-bg:              $white !default;
 $form-switch-track-checked-border-color:    $primary !default;
 $form-switch-track-checked-box-shadow:      $form-switch-track-box-shadow !default;
 
-$form-switch-thumb-offset:                  subtract(.25em, $form-switch-track-border-width) !default;
+$form-switch-thumb-offset:                  functions-math.subtract(.25em, $form-switch-track-border-width) !default;
 $form-switch-thumb-width:                   .625em !default;
 $form-switch-thumb-height:                  .625em !default;
 $form-switch-thumb-bg:                      $uibase-300 !default;
@@ -904,7 +835,7 @@ $form-switch-thumb-border-color:            $form-switch-thumb-bg !default;
 $form-switch-thumb-border-radius:           50% !default;
 $form-switch-thumb-box-shadow:              none !default;
 
-$form-switch-thumb-focus-bg:                palette($primary, 300) !default;
+$form-switch-thumb-focus-bg:                color-util.palette($primary, 300) !default;
 $form-switch-thumb-focus-border-color:      $form-switch-thumb-focus-bg !default;
 $form-switch-thumb-focus-box-shadow:        null !default;
 
@@ -917,16 +848,16 @@ $form-select-indicator-offset:      .375em !default;
 $form-select-indicator-width:       .75em !default;
 $form-select-indicator-height:      .75em !default;
 $form-select-indicator-color:       rgba($uibase-700, .85) !default;
-$form-select-indicator-image:       encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>")) !default;
+$form-select-indicator-image:       str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>")) !default;
 $form-select-indicator-position:    right $form-select-indicator-offset center !default;
 
 // Form file
 $form-file-button-bg:               $uibase-50 !default;
-$form-file-button-color:            color-if-contrast($uibase-600, $form-file-button-bg) !default;
+$form-file-button-color:            color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default;
 $form-file-button-font-family:      $btn-font-family !default;
 $form-file-button-font-weight:      $btn-font-weight !default;
 $form-file-button-hover-bg:         $uibase-100 !default;
-$form-file-button-hover-color:      color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
+$form-file-button-hover-color:      color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
 $form-file-button-disabled-color:   $component-disabled-color !default;
 $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;
@@ -937,20 +868,20 @@ $form-range-track-cursor:           pointer !default;
 $form-range-track-bg:               $uibase-100 !default;
 $form-range-track-border:           0 !default;
 $form-range-track-border-radius:    $form-range-track-height !default;
-$form-range-track-box-shadow:       map-get($shadows, "i1") !default;
+$form-range-track-box-shadow:       map.get($shadows, "i1") !default;
 
 $form-range-thumb-width:                  1.125em !default;
 $form-range-thumb-height:                 $form-range-thumb-width !default;
 $form-range-thumb-bg:                     $primary !default;
 $form-range-thumb-border:                 0 !default;
 $form-range-thumb-border-radius:          50% !default;
-$form-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
+$form-range-thumb-box-shadow:             map.get($shadows, "d1") !default;
 $form-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width: .1875rem !default;
-$form-range-thumb-active-bg:              palette($primary, 600) !default;
+$form-range-thumb-active-bg:              color-util.palette($primary, 600) !default;
 $form-range-thumb-disabled-bg:            $uibase-300 !default;
 
-$form-range-height:                 add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
+$form-range-height:                 functions-math.add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
 $form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
@@ -958,19 +889,19 @@ $form-range-min-width:              8rem !default;  // Browser default seems to 
 // Icons from OpenIconic: https://github.com/iconic/open-iconic
 $form-feedback-margin-top:      $form-text-margin-top !default;
 $form-feedback-font-size:       $form-text-font-size !default;
-$form-feedback-valid-color:     map-get($base-colors, "success") !default;
-$form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
+$form-feedback-valid-color:     map.get($base-colors, "success") !default;
+$form-feedback-invalid-color:   map.get($base-colors, "danger") !default;
 
 $form-feedback-icon-offset:         .25em !default;
 $form-feedback-icon-width:          1em !default;
 $form-feedback-icon-height:         1em !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
-$form-feedback-icon-valid-image:    encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
+$form-feedback-icon-valid-image:    str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
-$form-feedback-icon-invalid-image:  encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>")) !default;
+$form-feedback-icon-invalid-image:  str-util.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>")) !default;
 
-$form-feedback-select-icon-position: right add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false)) center !default;
+$form-feedback-select-icon-position: right functions-math.add($form-feedback-icon-offset, functions-math.add($form-select-indicator-width, $form-select-indicator-offset, false)) center !default;
 
 $form-validation-states: (
     "valid": (
@@ -1000,7 +931,7 @@ $progress-height:               1rem !default;
 $progress-font-size:            ($font-size-base * .75) !default;
 $progress-bg:                   $uibase-100 !default;
 $progress-border-radius:        $border-radius !default;
-$progress-box-shadow:           map-get($shadows, "i1") !default;
+$progress-box-shadow:           map.get($shadows, "i1") !default;
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $uibase-300 !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
@@ -1016,7 +947,7 @@ $breadcrumb-active-color:       $uibase-700 !default;
 
 $breadcrumb-item-padding-x:     .5rem !default;
 $breadcrumb-divider-color:      $uibase-300 !default;
-$breadcrumb-divider:            quote("/") !default;
+$breadcrumb-divider:            string.quote("/") !default;
 
 
 // Pagination
@@ -1068,12 +999,12 @@ $dropdown-color:                $body-color !default;
 $dropdown-border-color:         $component-border-color !default;
 $dropdown-border-width:         $border-width !default;
 $dropdown-border-radius:        $border-radius !default;
-$dropdown-inner-border-radius:  subtract($dropdown-border-radius, $dropdown-border-width) !default;
+$dropdown-inner-border-radius:  functions-math.subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
 $dropdown-divider-spacer:       .3125rem !default;
 $dropdown-divider-opacity:      1 !default;
-$dropdown-box-shadow:           map-get($shadows, "d2") !default;
+$dropdown-box-shadow:           map.get($shadows, "d2") !default;
 
 $dropdown-link-color:           $component-action-color !default;
 $dropdown-link-hover-color:     $component-action-hover-color !default;
@@ -1236,7 +1167,7 @@ $card-border-color:         $component-overlay-border-color !default;
 $card-border-width:         $border-width !default;
 $card-border-radius:        $border-radius !default;
 $card-box-shadow:           null !default;
-$card-inner-border-radius:  subtract($card-border-radius, $card-border-width) !default;
+$card-inner-border-radius:  functions-math.subtract($card-border-radius, $card-border-width) !default;
 
 $card-link-margin-left:     1.25rem !default;
 
@@ -1266,14 +1197,14 @@ $card-columns-column-gap:       1.25rem !default;
 
 // Tooltips
 // =====
-$tooltip-max-width:             rem(208px) !default;  // 208px=>13rem
+$tooltip-max-width:             rem-calc.rem(208px) !default;  // 208px=>13rem
 $tooltip-padding-y:             .25rem !default;
 $tooltip-padding-x:             .5rem !default;
 $tooltip-margin:                .125rem !default;
 
 $tooltip-font-size:             ($font-size-base * .875) !default;
 $tooltip-bg:                    $uibase-900 !default;
-$tooltip-color:                 color-auto-contrast($uibase-900) !default;
+$tooltip-color:                 color-util.color-auto-contrast($uibase-900) !default;
 $tooltip-opacity:               .9 !default;
 $tooltip-border-radius:         $border-radius !default;
 
@@ -1294,12 +1225,12 @@ $tooltip-arrow-color:           $tooltip-bg !default;
 $popover-font-size:             .9375rem !default;
 $popover-bg:                    $component-bg !default;
 $popover-margin:                .125rem !default;
-$popover-max-width:             rem(288px) !default;  // 288px=>18rem
+$popover-max-width:             rem-calc.rem(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
 $popover-border-color:          $component-overlay-border-color !default;
 $popover-border-radius:         .3125rem !default;
-$popover-inner-border-radius:   subtract($popover-border-radius, $popover-border-width) !default;
-$popover-box-shadow:            map-get($shadows, "d2") !default;
+$popover-inner-border-radius:   functions-math.subtract($popover-border-radius, $popover-border-width) !default;
+$popover-box-shadow:            map.get($shadows, "d2") !default;
 
 $popover-header-padding-y:      .5rem !default;
 $popover-header-padding-x:      .75rem !default;
@@ -1331,7 +1262,7 @@ $offcanvas-bg:                  $component-bg !default;
 $offcanvas-color:               null !default;
 $offcanvas-border-color:        $component-overlay-border-color !default;
 $offcanvas-border-width:        $border-width !default;
-$offcanvas-box-shadow:          map-get($shadows, "d3") !default;
+$offcanvas-box-shadow:          map.get($shadows, "d3") !default;
 
 $offcanvas-backdrop-bg:         $dark !default;
 $offcanvas-backdrop-opacity:    .5 !default;
@@ -1358,7 +1289,7 @@ $offcanvas-footer-color:        null !default;
 $offcanvas-footer-border-color: $offcanvas-header-border-color !default;
 $offcanvas-footer-border-width: $offcanvas-header-border-width !default;
 
-$offcanvas-horizontal-width:    rem(400px) !default; // 400px=>25rem !default;
+$offcanvas-horizontal-width:    rem-calc.rem(400px) !default; // 400px=>25rem !default;
 $offcanvas-vertical-height:     33vh !default;
 
 $offcanvas-blocked-transition:  transform .15s linear !default;
@@ -1375,11 +1306,11 @@ $modal-content-bg:               $component-bg !default;
 $modal-content-color:            null !default;
 $modal-content-border-color:     $component-overlay-border-color !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-box-shadow:       map-get($shadows, "d3") !default;
-$modal-content-bp-up-box-shadow: map-get($shadows, "d4") !default;
+$modal-content-box-shadow:       map.get($shadows, "d3") !default;
+$modal-content-bp-up-box-shadow: map.get($shadows, "d4") !default;
 
 $modal-border-radius:           .375rem !default;
-$modal-inner-border-radius:     subtract($modal-border-radius, $modal-content-border-width) !default;
+$modal-inner-border-radius:     functions-math.subtract($modal-border-radius, $modal-content-border-width) !default;
 
 $modal-backdrop-bg:             $dark !default;
 $modal-backdrop-opacity:        .5 !default;
@@ -1406,9 +1337,9 @@ $modal-footer-color:            null !default;
 $modal-footer-border-color:     $modal-header-border-color !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
 
-$modal-sm:                      rem(304px) !default; // 304px=>19rem
-$modal-md:                      rem(528px) !default; // 528px=>33rem
-$modal-lg:                      rem(896px) !default; // 896px=>56rem
+$modal-sm:                      rem-calc.rem(304px) !default; // 304px=>19rem
+$modal-md:                      rem-calc.rem(528px) !default; // 528px=>33rem
+$modal-lg:                      rem-calc.rem(896px) !default; // 896px=>56rem
 
 $modal-breakpoint:              sm !default; // When to start scaling up modal width
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`

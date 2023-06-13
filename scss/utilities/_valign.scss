@@ -1,10 +1,14 @@
+@use "../mixins/breakpoints";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-valign {
-    @each $breakpoint in $utility-valign-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
+@if settings-options.$enable-utility-valign {
+    @each $breakpoint in settings.$utility-valign-breakpoints {
+        $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-        @include media-breakpoint-up($breakpoint) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
             .valign#{$bprule}-baseline { vertical-align: baseline !important; }
             .valign#{$bprule}-top { vertical-align: top !important; }
             .valign#{$bprule}-middle { vertical-align: middle !important; }

@@ -1,16 +1,21 @@
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/mixins/hover";
+@use "../../../../scss/settings";
+
 // Top of page item
 .toplink {
     a {
         display: inline-block;
         padding: .15rem .5rem;
-        @include font-size(.875rem);
+        @include font-size.font-size(.875rem);
         color: #c3c3c3;
         text-decoration: none;
         white-space: nowrap;
         background: #424242;
-        @include border-radius(.5rem 0 0 0);
+        @include border.border-radius(.5rem 0 0 0);
 
-        @include hover-focus() {
+        @include hover.hover-focus() {
             color: #fff;
         }
     }
@@ -18,7 +23,7 @@
     .caret {
         &::after {
             border-top: 0;
-            border-bottom: $caret-border-width solid;
+            border-bottom: settings.$caret-border-width solid;
         }
     }
 

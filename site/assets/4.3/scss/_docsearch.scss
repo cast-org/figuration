@@ -1,9 +1,13 @@
+@use "../../../../scss/mixins/border";
+@use "../../../../scss/mixins/font-size";
+@use "../../../../scss/settings";
+
 // stylelint-disable selector-class-pattern
 
 .cf-search {
     position: relative;
     padding: .5rem 0;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid settings.$border-color;
 }
 
 .DocSearch-Modal {
@@ -12,23 +16,23 @@
 }
 
 .DocSearch-Container {
-    --docsearch-muted-color: #{$text-muted};
+    --docsearch-muted-color: #{settings.$text-muted};
     --docsearch-hit-shadow: none;
     z-index: 2000;
 }
 
 .DocSearch-Button {
-    --docsearch-searchbox-background: #{$input-bg};
-    --docsearch-searchbox-color: #{$input-color};
-    --docsearch-searchbox-focus-background: #{$input-focus-bg};
-    --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba($primary, .4)};
-    --docsearch-text-color: #{$input-color};
-    --docsearch-muted-color: #{$input-placeholder-color};
+    --docsearch-searchbox-background: #{settings.$input-bg};
+    --docsearch-searchbox-color: #{settings.$input-color};
+    --docsearch-searchbox-focus-background: #{settings.$input-focus-bg};
+    --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba(settings.$primary, .4)};
+    --docsearch-text-color: #{settings.$input-color};
+    --docsearch-muted-color: #{settings.$input-placeholder-color};
 
     width: 100%;
     margin: 0;
-    border: $input-border-width solid $input-border-color;
-    @include border-radius($border-radius);
+    border: settings.$input-border-width solid settings.$input-border-color;
+    @include border.border-radius(settings.$border-radius);
 
     .DocSearch-Search-Icon {
         opacity: .65;
@@ -37,7 +41,7 @@
     &:active,
     &:focus,
     &:hover {
-        border-color: rgba($primary, 1);
+        border-color: rgba(settings.$primary, 1);
 
         .DocSearch-Search-Icon {
             opacity: 1;
@@ -49,8 +53,8 @@
     min-width: 0;
     padding-right: .25rem;
     padding-left: .25rem;
-    background: $uibase-50;
-    @include border-radius(.25rem);
+    background: settings.$uibase-50;
+    @include border.border-radius(.25rem);
 }
 
 .DocSearch-Button-Key {
@@ -60,22 +64,22 @@
     padding-right: .125rem;
     padding-left: .125rem;
     margin-right: 0;
-    color: $uibase-500;
-    @include font-size(.875rem);
+    color: settings.$uibase-500;
+    @include font-size.font-size(.875rem);
     background: none;
     box-shadow: none;
 }
 
 .DocSearch-Commands-Key {
     padding-left: 1px;
-    @include font-size(.875rem);
-    background-color: rgba($black, .1);
+    @include font-size.font-size(.875rem);
+    background-color: rgba(settings.$black, .1);
     background-image: none;
     box-shadow: none;
 }
 
 .DocSearch-Form {
-    @include border-radius($border-radius);
+    @include border.border-radius(settings.$border-radius);
 }
 
 .DocSearch-Hits {
@@ -86,20 +90,20 @@
 
 .DocSearch-Hit {
     padding-bottom: 0;
-    @include border-radius(0);
+    @include border.border-radius(0);
 
     a {
-        @include border-radius(0);
-        border: solid $border-color;
+        @include border.border-radius(0);
+        border: solid settings.$border-color;
         border-width: 0 1px 1px;
     }
 
     &:first-child a {
-        @include border-top-radius($border-radius);
+        @include border.border-top-radius(settings.$border-radius);
         border-top-width: 1px;
     }
     &:last-child a {
-        @include border-bottom-radius($border-radius);
+        @include border.border-bottom-radius(settings.$border-radius);
     }
 }
 

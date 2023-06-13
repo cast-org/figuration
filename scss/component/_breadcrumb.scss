@@ -1,23 +1,28 @@
-@if $enable-breadcrumb {
+@use "../mixins/font-size";
+@use "../mixins/lists";
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-breadcrumb {
     .breadcrumb {
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: $breadcrumb-margin-bottom;
-        @include font-size($breadcrumb-font-size);
-        @include list-unstyled();
+        margin-bottom: settings.$breadcrumb-margin-bottom;
+        @include font-size.font-size(settings.$breadcrumb-font-size);
+        @include lists.list-unstyled();
     }
 
     .breadcrumb-item {
 
         // The separator between breadcrumbs (by default, a forward-slash: "/")
         + .breadcrumb-item {
-            padding-left: $breadcrumb-item-padding-x;
+            padding-left: settings.$breadcrumb-item-padding-x;
 
             &::before {
                 float: left; // Suppress inline spacing and underlining of the separator
-                padding-right: $breadcrumb-item-padding-x;
-                color: $breadcrumb-divider-color;
-                content: $breadcrumb-divider;
+                padding-right: settings.$breadcrumb-item-padding-x;
+                color: settings.$breadcrumb-divider-color;
+                content: settings.$breadcrumb-divider;
             }
         }
 
@@ -37,7 +42,7 @@
         // stylelint-enable no-duplicate-selectors
 
         &.active {
-            color: $breadcrumb-active-color;
+            color: settings.$breadcrumb-active-color;
         }
     }
 }

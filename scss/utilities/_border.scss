@@ -1,68 +1,77 @@
+@use "sass:list";
+@use "sass:meta";
+@use "../functions/color-util";
+@use "../mixins/border";
+@use "../mixins/breakpoints";
+@use "../settings";
+@use "../settings-colors";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important, property-disallowed-list
 
-@if $enable-utility-border {
+@if settings-options.$enable-utility-border {
     // Perfect circle
-    @if $enable-utility-border-radius-circle {
+    @if settings-options.$enable-utility-border-radius-circle {
         .radius-circle {
             border-radius: 50% !important;
         }
     }
 
-    @if $enable-utility-border-radius-pill {
+    @if settings-options.$enable-utility-border-radius-pill {
         .radius-pill {
-            border-radius: $radius-pill !important;
+            border-radius: settings.$radius-pill !important;
         }
     }
 
     // Radius addition - Default size
-    @if $enable-utility-border-radius-addition {
-        @include radius-sides($radius-border-radius);
-        @include radius-corners($radius-border-radius);
+    @if settings-options.$enable-utility-border-radius-addition {
+        @include border.radius-sides(settings.$radius-border-radius);
+        @include border.radius-corners(settings.$radius-border-radius);
     }
 
     // Radius addition - Size variants
-    @if $enable-utility-border-radius-sizing {
-        @each $size, $dim in $radii {
-            @include radius-sides($dim, $size);
-            @include radius-corners($dim, $size);
+    @if settings-options.$enable-utility-border-radius-sizing {
+        @each $size, $dim in settings.$radii {
+            @include border.radius-sides($dim, $size);
+            @include border.radius-corners($dim, $size);
         }
     }
 
     // Radius removal
-    @if $enable-utility-border-radius-removal {
-        @include radius-sides(0 !important, 0);
-        @include radius-corners(0 !important, 0);
+    @if settings-options.$enable-utility-border-radius-removal {
+        @include border.radius-sides(0 !important, 0);
+        @include border.radius-corners(0 !important, 0);
     }
 
 
     // Responsive border addition and removal
-    @each $breakpoint in $utility-border-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
+    @each $breakpoint in settings.$utility-border-breakpoints {
+        $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-        @include media-breakpoint-up($breakpoint) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
             // Border addition
-            @if $enable-utility-border-addition {
-                .border#{$bprule} { border: $border-width solid $border-color !important; }
+            @if settings-options.$enable-utility-border-addition {
+                .border#{$bprule} { border: settings.$border-width solid settings.$border-color !important; }
                 .border#{$bprule}-t,
                 .border#{$bprule}-y {
-                    border-top: $border-width solid $border-color !important;
+                    border-top: settings.$border-width solid settings.$border-color !important;
                 }
                 .border#{$bprule}-e,
                 .border#{$bprule}-x {
-                    border-right: $border-width solid $border-color !important;
+                    border-right: settings.$border-width solid settings.$border-color !important;
                 }
                 .border#{$bprule}-b,
                 .border#{$bprule}-y {
-                    border-bottom: $border-width solid $border-color !important;
+                    border-bottom: settings.$border-width solid settings.$border-color !important;
                 }
                 .border#{$bprule}-s,
                 .border#{$bprule}-x {
-                    border-left: $border-width solid $border-color !important;
+                    border-left: settings.$border-width solid settings.$border-color !important;
                 }
             }
 
             // Border removal
-            @if $enable-utility-border-removal {
+            @if settings-options.$enable-utility-border-removal {
                 .border#{$bprule}-0 { border: 0 !important; }
                 .border#{$bprule}-t-0,
                 .border#{$bprule}-y-0 {
@@ -85,8 +94,8 @@
     }
 
     // Border width
-    @if $enable-utility-border-width {
-        @each $size, $dim in $border-widths {
+    @if settings-options.$enable-utility-border-width {
+        @each $size, $dim in settings.$border-widths {
             .border-#{$size} {
                 border-width: $dim !important;
             }
@@ -94,9 +103,9 @@
     }
 
     // Contextual borders
-    @if $enable-utility-border-colors {
-        @if (type-of($utility-border-colors) == "map" and length($utility-border-colors) != 0) {
-            @each $theme, $color in $utility-border-colors {
+    @if settings-options.$enable-utility-border-colors {
+        @if (meta.type-of(settings.$utility-border-colors) == "map" and list.length(settings.$utility-border-colors) != 0) {
+            @each $theme, $color in settings.$utility-border-colors {
                 .border-#{$theme} {
                     border-color: $color !important;
                 }
@@ -105,23 +114,23 @@
     }
 
     // Palette colors
-    @if $enable-palette and $enable-utility-border-palette {
-        $palette-colors-borders: $palette-colors !default;
-        $palette-levels-borders: $palette-levels !default;
+    @if settings-options.$enable-palette and settings-options.$enable-utility-border-palette {
+        $palette-colors-borders: settings.$palette-colors !default;
+        $palette-levels-borders: settings-colors.$palette-levels !default;
 
         @each $theme, $color in $palette-colors-borders {
             @each $level in $palette-levels-borders {
                 .border-#{$theme}-#{$level} {
-                    border-color: palette($color, $level) !important;
+                    border-color: color-util.palette($color, $level) !important;
                 }
             }
         }
     }
 
     // Special border colors
-    @if $enable-utility-border-special {
-        .border-white { border-color: $white !important; }
-        .border-black { border-color: $black !important; }
+    @if settings-options.$enable-utility-border-special {
+        .border-white { border-color: settings.$white !important; }
+        .border-black { border-color: settings.$black !important; }
         .border-transparent { border-color: transparent !important; }
         .border-inherit { border-color: inherit !important; }
     }

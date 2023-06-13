@@ -1,24 +1,28 @@
+@use "sass:meta";
+@use "../settings";
+@use "../settings-options";
+
 // Custom variable values only support SassScript inside `#{}`.
-@if $enable-root {
+@if settings-options.$enable-root {
     :root {
-        @if $enable-root-colors {
-            @each $color, $value in $root-colors {
+        @if settings-options.$enable-root-colors {
+            @each $color, $value in settings.$root-colors {
                 --color-#{$color}: #{$value};
             }
         }
 
-        @if $enable-root-breakpoints {
-            @each $bp, $value in $grid-breakpoints {
+        @if settings-options.$enable-root-breakpoints {
+            @each $bp, $value in settings.$grid-breakpoints {
                 --breakpoint-#{$bp}: #{$value};
             }
         }
 
-        @if $enable-root-fonts {
+        @if settings-options.$enable-root-fonts {
             // Use `inspect` for lists so that quoted items keep the quotes.
             // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-            --font-family-sans-serif: #{inspect($font-family-sans-serif)};
-            --font-family-serif: #{inspect($font-family-serif)};
-            --font-family-monospace: #{inspect($font-family-monospace)};
+            --font-family-sans-serif: #{meta.inspect(settings.$font-family-sans-serif)};
+            --font-family-serif: #{meta.inspect(settings.$font-family-serif)};
+            --font-family-monospace: #{meta.inspect(settings.$font-family-monospace)};
         }
     }
 }

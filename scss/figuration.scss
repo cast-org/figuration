@@ -6,60 +6,62 @@
  */
 
 // Functions
-@import "functions";
+@forward "functions";
 
 // Settings variables
-@import "settings";
+@forward "settings";
+@forward "settings-colors";
+@forward "settings-encode";
 
 // Enable/disable granular options
-@import "settings-options";
+@forward "settings-options";
 
 // Mixins
-@import "mixins";
+@forward "mixins";
 
 // Core CSS items - extend on the base HTML
-@import "core/root";
-@import "core/reboot";
-@import "core/typography";
-@import "core/code";
-@import "core/images";
-@import "core/tables";
-@import "forms";
-@import "core/buttons";
+@use "core/root";
+@use "core/reboot";
+@use "core/typography";
+@use "core/code";
+@use "core/images";
+@use "core/tables";
+@use "forms";
+@use "core/buttons";
 
 // Components - additional functionality and layout
-@import "component/container";
-@import "component/grid";
-@import "component/animation";
-@import "component/caret";
-@import "component/close";
-@import "component/drag";
-@import "component/progress";
-@import "component/list";
-@import "component/button-group";
-@import "component/input-group";
-@import "component/breadcrumb";
-@import "component/pagination";
-@import "component/dropdown";
-@import "component/nav";
-@import "component/navbar";
-@import "component/jumbotron";
-@import "component/badge";
-@import "component/media";
-@import "component/card";
-@import "component/alert";
-@import "component/loader";
-@import "component/placeholder";
+@use "component/container";
+@use "component/grid";
+@use "component/animation";
+@use "component/caret";
+@use "component/close";
+@use "component/drag";
+@use "component/progress";
+@use "component/list";
+@use "component/button-group";
+@use "component/input-group";
+@use "component/breadcrumb";
+@use "component/pagination";
+@use "component/dropdown";
+@use "component/nav";
+@use "component/navbar";
+@use "component/jumbotron";
+@use "component/badge";
+@use "component/media";
+@use "component/card";
+@use "component/alert";
+@use "component/loader";
+@use "component/placeholder";
 
 // Components w/ JavaScript
-@import "component/offcanvas";
-@import "component/modal";
-@import "component/tooltip";
-@import "component/popover";
+@use "component/offcanvas";
+@use "component/modal";
+@use "component/tooltip";
+@use "component/popover";
 //@import "component/player"; -- Create base CSS ?
 
 // Utility classes
-@import "utilities";
+@use "utilities";
 
 // Print overrides
-@import "core/print";
+@use "core/print";

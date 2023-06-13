@@ -1,14 +1,17 @@
+@use "../settings-options";
+@use "hover";
+
 // Alerts
 @mixin alert-variant($color, $bg, $border, $hover-color) {
     color: $color;
     background-color: $bg;
     border-color: $border;
 
-    @if $enable-alert-link {
+    @if settings-options.$enable-alert-link {
         .alert-link {
             color: $color;
 
-            @include hover-focus() {
+            @include hover.hover-focus() {
                 color: $hover-color;
             }
         }

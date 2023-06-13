@@ -1,11 +1,15 @@
+@use "../mixins/forms";
+@use "../settings";
+@use "../settings-options";
+
 // Form validation
 
 // Provide feedback to users when form field values are valid or invalid. Works
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
-@if $enable-form and $enable-form-validation {
-    @each $state, $data in $form-validation-states {
-        @include form-validation-state($state, $data...);
+@if settings-options.$enable-form and settings-options.$enable-form-validation {
+    @each $state, $data in settings.$form-validation-states {
+        @include forms.form-validation-state($state, $data...);
     }
 }

@@ -1,6 +1,12 @@
-@if $enable-typography {
+@forward "reboot";
+@use "../mixins/font-size";
+@use "../mixins/lists";
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-typography {
     // Headings
-    @if $enable-typography-headings {
+    @if settings-options.$enable-typography-headings {
         .h1 {
             @extend h1;
         }
@@ -27,60 +33,60 @@
     }
 
     // Lead in
-    @if $enable-typography-lead {
+    @if settings-options.$enable-typography-lead {
         .lead {
-            @include font-size($lead-font-size);
-            font-weight: $lead-font-weight;
-            line-height: $lead-line-height;
+            @include font-size.font-size(settings.$lead-font-size);
+            font-weight: settings.$lead-font-weight;
+            line-height: settings.$lead-line-height;
         }
     }
 
     // Emphasis
-    @if $enable-typography-small {
+    @if settings-options.$enable-typography-small {
         .small {
             @extend small;
         }
     }
 
-    @if $enable-typography-mark {
+    @if settings-options.$enable-typography-mark {
         .mark {
             @extend mark;
         }
     }
 
     // Lists
-    @if $enable-typography-list-unstyled {
+    @if settings-options.$enable-typography-list-unstyled {
         .list-unstyled {
-            @include list-unstyled();
+            @include lists.list-unstyled();
         }
     }
 
     //  Abbr extension
-    @if $enable-typography-initialism {
+    @if settings-options.$enable-typography-initialism {
         .initialism {
-            @include font-size($initialism-font-size);
+            @include font-size.font-size(settings.$initialism-font-size);
             text-transform: uppercase;
         }
     }
 
     // Blockquotes
-    @if $enable-typography-blockquote {
+    @if settings-options.$enable-typography-blockquote {
         .blockquote {
-            margin: $blockquote-margin;
-            @include font-size($blockquote-font-size);
-            color: $blockquote-color;
+            margin: settings.$blockquote-margin;
+            @include font-size.font-size(settings.$blockquote-font-size);
+            color: settings.$blockquote-color;
 
             > :last-child {
                 margin-bottom: 0;
             }
         }
         .blockquote-footer {
-            margin: $blockquote-footer-margin;
-            @include font-size($blockquote-footer-font-size);
-            color: $blockquote-footer-color;
+            margin: settings.$blockquote-footer-margin;
+            @include font-size.font-size(settings.$blockquote-footer-font-size);
+            color: settings.$blockquote-footer-color;
 
             &::before {
-                content: $blockquote-footer-content;
+                content: settings.$blockquote-footer-content;
             }
         }
     }

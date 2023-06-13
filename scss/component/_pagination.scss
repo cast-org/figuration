@@ -1,8 +1,15 @@
-@if $enable-pagination {
+@use "sass:map";
+@use "../mixins/border";
+@use "../mixins/font-size";
+@use "../mixins/pagination";
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-pagination {
     .pagination {
         display: flex;
         padding-left: 0;
-        margin-bottom: $pagination-margin-bottom;
+        margin-bottom: settings.$pagination-margin-bottom;
         list-style: none;
     }
 
@@ -16,80 +23,80 @@
         align-items: center;
         justify-content: center;
         min-width: 2.25em;
-        padding: $pagination-padding-y $pagination-padding-x;
-        @include font-size($pagination-font-size);
-        font-weight: $pagination-font-weight;
-        line-height: $pagination-line-height;
-        border: 0 solid $pagination-border-color;
-        @include border-radius($pagination-border-radius);
+        padding: settings.$pagination-padding-y settings.$pagination-padding-x;
+        @include font-size.font-size(settings.$pagination-font-size);
+        font-weight: settings.$pagination-font-weight;
+        line-height: settings.$pagination-line-height;
+        border: 0 solid settings.$pagination-border-color;
+        @include border.border-radius(settings.$pagination-border-radius);
     }
 
     .page-link {
         position: relative;
-        color: $pagination-color;
-        text-decoration: if($link-decoration == none, null, none);
-        background-color: $pagination-bg;
+        color: settings.$pagination-color;
+        text-decoration: if(settings.$link-decoration == none, null, none);
+        background-color: settings.$pagination-bg;
 
         &:hover,
         &:focus {
             z-index: 2;
-            color: $pagination-hover-color;
-            text-decoration: if($link-hover-decoration == underline, none, null);
-            background-color: $pagination-hover-bg;
-            border-color: $pagination-hover-border-color;
+            color: settings.$pagination-hover-color;
+            text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+            background-color: settings.$pagination-hover-bg;
+            border-color: settings.$pagination-hover-border-color;
         }
 
         &.active,
         .active > & {
             z-index: 1;
-            color: $pagination-active-color;
-            background-color: $pagination-active-bg;
-            border-color: $pagination-active-border-color;
+            color: settings.$pagination-active-color;
+            background-color: settings.$pagination-active-bg;
+            border-color: settings.$pagination-active-border-color;
         }
 
         &.disabled,
         .disabled > & {
-            color: $pagination-disabled-color;
+            color: settings.$pagination-disabled-color;
             pointer-events: none;
-            background-color: $pagination-disabled-bg;
+            background-color: settings.$pagination-disabled-bg;
         }
     }
 
     // Sizing
-    @if $enable-sizing and $enable-pagination-sizing {
-        @each $size, $dims in $pagination-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-line-height:   map-get($dims, "line-height");
-            $sz-padding-y:     map-get($dims, "padding-y");
+    @if settings-options.$enable-sizing and settings-options.$enable-pagination-sizing {
+        @each $size, $dims in settings.$pagination-sizes {
+            $sz-font-size:     map.get($dims, "font-size");
+            $sz-line-height:   map.get($dims, "line-height");
+            $sz-padding-y:     map.get($dims, "padding-y");
             //$sz-padding-x:     map-get($dims, "padding-x");
-            $sz-padding-x:    $pagination-padding-x;
-            $sz-border-radius: map-get($dims, "border-radius");
+            $sz-padding-x:    settings.$pagination-padding-x;
+            $sz-border-radius: map.get($dims, "border-radius");
 
             .pagination-#{$size} {
-                @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-line-height, $sz-border-radius);
+                @include pagination.pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-line-height, $sz-border-radius);
             }
         }
     }
 
-    @if $enable-pagination-spaced {
+    @if settings-options.$enable-pagination-spaced {
         .pagination-spaced {
             .page-link {
-                border-width: $pagination-border-width;
+                border-width: settings.$pagination-border-width;
             }
 
             .page-item {
                 &:not(:last-child) {
-                    margin-right: $pagination-spaced-margin-end;
+                    margin-right: settings.$pagination-spaced-margin-end;
                 }
             }
         }
     }
 
-    @if $enable-pagination-group {
+    @if settings-options.$enable-pagination-group {
         .pagination-group {
             .page-text,
             .page-link {
-                border-width: $pagination-border-width;
+                border-width: settings.$pagination-border-width;
             }
 
             .page-item {
@@ -98,14 +105,14 @@
                 &:not(:first-child) {
                     .page-text,
                     .page-link {
-                        margin-left: -$pagination-border-width;
-                        @include border-start-radius(0);
+                        margin-left: -(settings.$pagination-border-width);
+                        @include border.border-start-radius(0);
                     }
                 }
                 &:not(:last-child) {
                     .page-text,
                     .page-link {
-                        @include border-end-radius(0);
+                        @include border.border-end-radius(0);
                     }
                 }
             }
