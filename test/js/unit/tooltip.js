@@ -538,6 +538,30 @@ $(function() {
         $tooltip.CFW_Tooltip('show');
     });
 
+    QUnit.test('dispose should reset the title attribute if it existed at init', function(assert) {
+        assert.expect(4);
+        var $triggerTitle = $('<a href="#" title="Title attribute"></a>').appendTo('#qunit-fixture');
+        var $triggerNoTitle = $('<a href="#" data-cfw-tooltip-title="No title attribute"></a>').appendTo('#qunit-fixture');
+
+        $triggerTitle.CFW_Tooltip();
+        assert.strictEqual($triggerTitle[0].hasAttribute('title'), false, 'title attribute has been removed');
+        $triggerTitle.CFW_Tooltip('dispose');
+        assert.strictEqual($triggerTitle.attr('title'), 'Title attribute', 'title attribute has been restored');
+
+        $triggerNoTitle.CFW_Tooltip();
+        assert.strictEqual($triggerNoTitle[0].hasAttribute('title'), false, 'title attribute does not exist');
+        $triggerNoTitle.CFW_Tooltip('dispose');
+        assert.strictEqual($triggerNoTitle[0].hasAttribute('title'), false, 'title attribute was not created');
+    });
+
+    QUnit.test('dispose should remove data attribute for referencing original title', function(assert) {
+        assert.expect(2);
+        var $trigger = $('<a href="#" title="Another tooltip"></a>').CFW_Tooltip();
+        assert.strictEqual($trigger.attr('data-cfw-tooltip-original-title'), 'Another tooltip', 'original title preserved in data attribute');
+        $trigger.CFW_Tooltip('dispose');
+        assert.strictEqual($trigger[0].hasAttribute('data-tooltip-original-title'), false, 'data-tooltip-original-title attribute has been removed');
+    });
+
     QUnit.test('should show tooltip when toggle is called', function(assert) {
         assert.expect(1);
         $('<a href="#" title="tooltip on toggle"></a>')

@@ -438,6 +438,12 @@
         _unlinkComplete : function() {
             var $element = this.$element;
             var type = this.type;
+            // TODO: Change original title to use internal variable instead of data attribute
+            var originalTtle = this.$element.attr('data-cfw-' + this.type + '-original-title');
+            if (typeof originalTtle !== 'undefined' && originalTtle.length > 0) {
+                this.$element.attr('title', originalTtle);
+            }
+            this.$element.removeAttr('data-cfw-' + this.type + '-original-title');
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
