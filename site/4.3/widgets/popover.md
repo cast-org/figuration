@@ -160,6 +160,26 @@ Locate a popover anywhere you need with the `placement` option.
 {% endcapture %}
 {% renderExample example %}
 
+### Custom Container
+
+When you have some styles on a parent element that interfere with a popover, you may want to specify a custom `container` so that the popover's HTML appears within that element instead. This is common in elements with overflow styles, or dimensions smaller than the popover, such as responsive tables or input groups.
+
+{% capture highlight %}
+$('#example-popover').CFW_Popover({
+  container: 'body'
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
+Another situation where you will want to set an explicit custom `container` are popovers inside a [modal dialog]({{ site.path }}/{{ version.docs }}/widgets/modal/), to make sure that the popover itself is appended to the modal. This is particularly important for popovers that contain interactive elements – modal dialogs will trap focus, so unless the popover is a child element of the modal, users won't be able to focus or activate these interactive elements.
+
+{% capture highlight %}
+$('#example-popover').CFW_Popover({
+  container: '#example-modal .modal-body'
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
 ### Viewport Constrainment
 
 Keep popovers in their place with the `viewport` option.
