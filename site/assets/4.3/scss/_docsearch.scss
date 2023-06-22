@@ -15,6 +15,7 @@
     --docsearch-muted-color: #{$text-muted};
     --docsearch-hit-shadow: none;
     z-index: 2000;
+    cursor: auto;
 }
 
 .DocSearch-Button {
