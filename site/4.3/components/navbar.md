@@ -110,7 +110,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
         <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ms-auto">
+    <form class="d-flex">
       <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -140,7 +140,7 @@ With the `.navbar-brand` in the collapsing area.
         <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ms-auto">
+    <form class="d-flex">
       <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -190,7 +190,7 @@ To create an offcanvas navbar that is always collapsed, simply leave off the `.n
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex mt-1" role="search">
           <input class="form-control me-0_5" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-info" type="submit">Search</button>
         </form>
@@ -226,7 +226,6 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name.
 - `.navbar-nav` for navigation links (including support for dropdowns).
-- `.form-inline` for any form controls and actions.
 - `.navbar-text` for adding vertically aligned text content with support for recoloring, using [color scheme](#color-schemes).
 - `.navbar-toggle` for use with our [Collapse widget]({{ site.path }}/{{ version.docs }}/widgets/collapse/) and other [navigation toggling](#collapsible-content) behaviors.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
@@ -252,7 +251,7 @@ Here's an example of some sub-components included in a default, light navbar:
         <a class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ms-auto">
+    <form class="d-flex">
       <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -403,11 +402,11 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
 
 ### Forms and Buttons
 
-Place various form controls and components within a navbar with `.form-inline`.
+Place various form controls and components within a navbar.
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+  <form class="d-flex">
     <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
@@ -415,12 +414,12 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% endcapture %}
 {% renderExample example %}
 
-Align the contents of your inline forms with utilities as needed.
+Immediate child elements of `.navbar` use flex layout. Align the contents of your inline forms with [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/) as needed.
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
-  <form class="form-inline">
+  <form class="d-flex">
     <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
@@ -428,11 +427,11 @@ Align the contents of your inline forms with utilities as needed.
 {% endcapture %}
 {% renderExample example %}
 
-Input groups work, too:
+Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<form>` element as the container and save some HTML.
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+  <form class="container-fluid">
     <div class="input-group">
       <span class="input-group-text" id="basic-addon1">@</span>
       <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
@@ -446,7 +445,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+  <form>
     <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
     <button type="button" class="btn btn-small align-middle btn-outline-secondary">Smaller button</button>
   </form>
@@ -651,7 +650,7 @@ Here are some examples to show what we mean.
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-end">
+      <form class="d-flex float-end">
         <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
@@ -674,7 +673,7 @@ Here are some examples to show what we mean.
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-end">
+      <form class="d-flex float-end">
         <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
@@ -697,7 +696,7 @@ Here are some examples to show what we mean.
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-end">
+      <form class="d-flex float-end">
         <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
