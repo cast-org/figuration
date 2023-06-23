@@ -316,6 +316,30 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+    QUnit.test('should not close modal when clicking element removed from modal content', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal" data-cfw-modal-backdrop="static">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog"><div class="modal-content"><button class="btn>Button</button></div>').appendTo(document.body);
+        var $btn = $target.find('.btn');
+
+        $btn.on('click', function() {
+            $btn.remove();
+        });
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $target.trigger('mousedown');
+                $btn.trigger('click');
+                assert.equal($target.find('.btn').length, 0, 'button was removed');
+                assert.ok($target.is(':visible'), 'modal still visible');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
 
     QUnit.test('should not close modal when clicking outside of modal-content with "backdrop:static"', function(assert) {
         assert.expect(1);
