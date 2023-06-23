@@ -944,6 +944,7 @@ $(window).ready(function() {
                 <button type="button" class="btn btn-info" id="pop_manual" data-cfw="popover" data-cfw-popover-trigger="manual" data-cfw-popover-target="#popman" data-cfw-popover-drag=true>Popover Manual</button>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('show'); return false;">Show</a>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('hide'); return false;">Hide</a>
+                <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('toggle'); return false;">Toggle</a>
 
                 <div id="popman" class="popover">
                     <button type="button" class="close" data-cfw-dismiss="popover" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -955,6 +956,31 @@ $(window).ready(function() {
                     <div class="popover-arrow"></div>
                 </div>
             </div>
+
+            <div class="mb-1">
+                <button type="button" class="btn btn-info" id="pop_manual2" data-cfw="popover" data-cfw-popover-trigger="manual" data-cfw-popover-target="#popman2" data-cfw-popover-drag=true>Popover Manual</button>
+                Click button to toggle - checks to see if there is no autohide on toggle call
+                <!-- See BS: https://github.com/twbs/bootstrap/pull/37086 -->
+
+                <script>
+                    $('#pop_manual2').on('click', function() {
+                        $('#pop_manual2').CFW_Popover('toggle');
+                    });
+                </script>
+
+                <div id="popman2" class="popover">
+                    <button type="button" class="close" data-cfw-dismiss="popover" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <span role="button" tabindex="0" class="drag" data-cfw-drag="popover" aria-label="Drag"><span aria-hidden="true">+</span></span>
+                    <h3 class="popover-header">Default Popover</h3>
+                    <div class="popover-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas, nisl id vehicula malesuada, libero augue iaculis lectus, ut ultricies enim ex a justo.</p>
+                    </div>
+                    <div class="popover-arrow"></div>
+                </div>
+            </div>
+
+
+
 
             <button type="button" class="btn btn-info" id="pop_6" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Custom Placement</button>
             <script type="text/javascript">
