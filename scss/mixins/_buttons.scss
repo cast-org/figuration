@@ -6,10 +6,13 @@
 @mixin button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border) {
     $extender: str-replace($parent, ".", "");
 
-    #{$parent} {
+    %btn-variant-#{$extender}-base {
         color: $color;
         background-color: $bg;
         border-color: $border;
+    }
+    #{$parent} {
+        @extend %btn-variant-#{$extender}-base;
     }
 
     #{$parent}:hover {
@@ -33,6 +36,9 @@
     @if $enable-btn-check {
         .btn-check-input:focus ~ #{$parent} {
             @extend %btn-variant-#{$extender}-focus;
+        }
+        .btn-check > #{$parent}:hover {
+            @extend %btn-variant-#{$extender}-base;
         }
     }
 
