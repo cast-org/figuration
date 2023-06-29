@@ -52,6 +52,11 @@ Below is a static modal example (meaning its `position` and `display` have been 
 {% endcapture %}
 {% renderExample example %}
 
+{% capture callout %}
+In the above static example, we use `<h4>`, to avoid issues with the heading hierarchy in the documentation page. Structurally, however, a modal dialog represents its own separate document/context, so the `.modal-title` should ideally be a `<h1>`. If necessary, you can use the [font size utilities]({{ site.path }}/{{ version.docs }}/utilities/typography/#font-size) to control the heading's appearance. All the following live examples use this approach.
+{% endcapture %}
+{% renderCallout callout, "info" %}
+
 ### Live Demo
 
 Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page. Examples of tooltips, popover, and scroll handling included.
@@ -60,23 +65,23 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Text in a modal</h4>
+        <h2 class="fs-xlarge">Text in a modal</h2>
         <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-        <h4>Popover in a modal</h4>
+        <h2 class="fs-xlarge">Popover in a modal</h2>
         <p>This <button type="button" class="btn btn-secondary" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
-        <h4>Tooltips in a modal</h4>
+        <h2 class="fs-xlarge">Tooltips in a modal</h2>
         <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
-        <h4>Collapse in a modal</h4>
+        <h2 class="fs-xlarge">Collapse in a modal</h2>
         <a href="#modal_collapse" role="button" class="btn btn-secondary" data-cfw="collapse">Collapse <span class="caret"></span></a>
           <div id="modal_collapse" class="collapse">
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
           </div>
         <hr>
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -112,7 +117,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -136,7 +141,7 @@ When modals become too long for the user's viewport or device, they scroll indep
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -176,7 +181,7 @@ When modals become too long for the user's viewport or device, they scroll indep
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -200,7 +205,7 @@ Add `.modal-dialog-scrollable` to `.modal-dialog` where the `.modal-body` is the
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -240,7 +245,7 @@ Add `.modal-dialog-scrollable` to `.modal-dialog` where the `.modal-body` is the
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -264,7 +269,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -295,7 +300,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -317,11 +322,11 @@ A vertically centered dialog will also scroll when the content is longer than th
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -357,7 +362,7 @@ A vertically centered dialog will also scroll when the content is longer than th
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -379,7 +384,7 @@ You can also combine `.modal-dialog-centered` with `.modal-dialog-scrollable` to
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -419,7 +424,7 @@ You can also combine `.modal-dialog-centered` with `.modal-dialog-scrollable` to
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -443,7 +448,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Grid in a Modal</h4>
+        <h1 class="modal-title fs-2xlarge">Grid in a Modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -528,7 +533,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -568,7 +573,7 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Large modal</h4>
+        <h1 class="modal-title fs-2xlarge">Large modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -582,7 +587,7 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Small modal</h4>
+        <h1 class="modal-title fs-2xlarge">Small modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -630,7 +635,7 @@ When `backdrop` option is set to `static`, the modal will not close when clickin
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Static backdrop modal</h4>
+        <h1 class="modal-title fs-2xlarge">Static backdrop modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -669,7 +674,7 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
   <div class="modal-dialog modal-dialog-side-start">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Start side modal</h4>
+        <h1 class="modal-title fs-2xlarge">Start side modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -696,7 +701,7 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
   <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">End side modal</h4>
+        <h1 class="modal-title fs-2xlarge">End side modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -755,11 +760,11 @@ Top and bottom modals require the use of `.modal-dialog-scrollable` to keep thei
   <div class="modal-dialog modal-dialog-side-top modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header py-0_25">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -775,11 +780,11 @@ Top and bottom modals require the use of `.modal-dialog-scrollable` to keep thei
   <div class="modal-dialog modal-dialog-side-bottom modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header py-0_25">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -830,11 +835,11 @@ Enlarge a modal to fill the entire viewport with a `.modal-fullscreen` modifider
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Fullscreen modal</h4>
+        <h1 class="modal-title fs-2xlarge">Fullscreen modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -880,7 +885,7 @@ Responsive variants are also available. These work for a given breakpoint and be
   <div class="modal-dialog modal-fullscreen-xs-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Fullscreen modal at `xs`</h4>
+        <h1 class="modal-title fs-2xlarge">Fullscreen modal at `xs`</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -897,7 +902,7 @@ Responsive variants are also available. These work for a given breakpoint and be
   <div class="modal-dialog modal-fullscreen-sm-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Fullscreen modal at `sm` and below</h4>
+        <h1 class="modal-title fs-2xlarge">Fullscreen modal at `sm` and below</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -914,7 +919,7 @@ Responsive variants are also available. These work for a given breakpoint and be
   <div class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Fullscreen modal at `md` and below</h4>
+        <h1 class="modal-title fs-2xlarge">Fullscreen modal at `md` and below</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -931,7 +936,7 @@ Responsive variants are also available. These work for a given breakpoint and be
   <div class="modal-dialog modal-fullscreen-lg-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Fullscreen modal at `lg` and below</h4>
+        <h1 class="modal-title fs-2xlarge">Fullscreen modal at `lg` and below</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -980,11 +985,11 @@ You can also combine fullscreen variants with the centered and scrollable varian
   <div class="modal-dialog modal-fullscreen-md-down modal-dialog-scrollable">
       <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -1010,11 +1015,11 @@ You can also combine fullscreen variants with the centered and scrollable varian
   <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -1040,11 +1045,11 @@ You can also combine fullscreen variants with the centered and scrollable varian
   <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h1 class="modal-title fs-2xlarge">Modal title</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h4>Overflowing text to show scroll behavior</h4>
+        <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
         <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -1104,7 +1109,7 @@ While not necessarily recommended, it is possible to chain singular modals toget
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title">First chained modal</div>
+        <h1 class="modal-title fs-2xlarge">First chained modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -1121,7 +1126,7 @@ While not necessarily recommended, it is possible to chain singular modals toget
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title">Second chained modal</div>
+        <h1 class="modal-title fs-2xlarge">Second chained modal</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
@@ -1189,7 +1194,7 @@ While most modal positioning options are supported, the fullscreen variants shou
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Contained modal title</h4>
+          <h1 class="modal-title fs-2xlarge">Contained modal title</h1>
           <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
@@ -1207,11 +1212,11 @@ While most modal positioning options are supported, the fullscreen variants shou
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-side-start modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Modal title</h4>
+          <h1 class="modal-title fs-2xlarge">Modal title</h1>
           <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          <h4>Overflowing text to show scroll behavior</h4>
+          <h2 class="fs-xlarge">Overflowing text to show scroll behavior</h2>
           <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
           <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>

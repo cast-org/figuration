@@ -381,11 +381,11 @@ When the player widget is used inside of one of our other widgets, such as [coll
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Player auto pause test</h4>
+        <h1 class="modal-title fs-2xlarge">Player auto pause test</h1>
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h3 class="h6">Ambient Acoustic by StrangerEight</h3>
+        <h2 class="h6">Ambient Acoustic by StrangerEight</h2>
         <div data-cfw="player" role="region" aria-label="audio player">
           <div class="player" data-cfw-player="player">
             <span class="player-control" data-cfw-player="control">
