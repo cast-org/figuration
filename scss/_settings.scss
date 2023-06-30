@@ -1327,6 +1327,7 @@ $popover-arrow-outer-color:     $popover-border-color !default;
 
 // Offcanvas
 // =====
+$offcanvas-font-size:           $font-size-base !default;
 $offcanvas-bg:                  $component-bg !default;
 $offcanvas-color:               null !default;
 $offcanvas-border-color:        $component-overlay-border-color !default;
@@ -1371,6 +1372,7 @@ $offcanvas-blocked-transform:   scale(1.01) !default;
 $modal-dialog-margin:           .625rem !default;
 $modal-dialog-bp-up-margin-y:   1.875rem !default;
 
+$modal-content-font-size:        $font-size-base !default;
 $modal-content-bg:               $component-bg !default;
 $modal-content-color:            null !default;
 $modal-content-border-color:     $component-overlay-border-color !default;
