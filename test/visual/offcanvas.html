@@ -264,14 +264,15 @@ body {
 
 <hr>
 
-<div id="offcanvasEx-2-container" class="mt-1 bg-light border overflow-hidden position-relative" style="height: 200px; z-index: 1;">
+<div id="offcanvasEx-2-container" class="mt-1 bg-light border overflow-hidden position-relative text-center" style="height: 200px; z-index: 1;">
     <div id="offcanvasEx-2" class="offcanvas offcanvas-start">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title">Offcanvas</h5>
             <button type="button" class="close" data-cfw-dismiss="offcanvas" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="offcanvas-body">
-            Content for the offcanvas goes here. You can place just about any component or custom element here.
+            <p>Text should not be centered.</p>
+            <p>Content for the offcanvas goes here. You can place just about any component or custom element here.</p>
         </div>
         <div class="offcanvas-footer">
             Offcanvas footer
@@ -280,6 +281,9 @@ body {
     <button class="btn btn-primary" type="button" data-cfw="offcanvas" data-cfw-offcanvas-target="#offcanvasEx-2" data-cfw-offcanvas-root-element="#offcanvasEx-2-container">
         Offcanvas in container
     </button>
+    <p class="mt-2">
+        I am content that is centered by the container styles.
+    </p>
 </div>
 
 <hr >

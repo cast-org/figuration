@@ -185,6 +185,12 @@
         flex-direction: column;
         width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
         color: $modal-content-color;
+        // Our parent element can be arbitrary since modals can be inserted into specified containers.
+        // So reset our font and text properties to avoid inheriting weird values.
+        @include reset-text();
+        @include font-size($modal-content-font-size);
+        // Allow breaking very long words so they don't overflow the modal bounds
+        word-wrap: break-word;
         // Override the `pointer-events: none;` in the .modal-dialog
         pointer-events: auto;
         background-color: $modal-content-bg;

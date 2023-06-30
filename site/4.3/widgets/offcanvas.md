@@ -664,6 +664,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$offcanvas-font-size</code></td>
+        <td>string</td>
+        <td><code>$font-size-base</code></td>
+        <td>
+          Font size for offcanvas container.
+        </td>
+      </tr>
+      <tr>
         <td><code>$offcanvas-bg</code></td>
         <td>string</td>
         <td><code>$component-bg</code></td>

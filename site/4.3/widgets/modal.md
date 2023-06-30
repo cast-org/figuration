@@ -1694,6 +1694,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$modal-content font-size</code></td>
+        <td>string</td>
+        <td><code>$font-size-base</code></td>
+        <td>
+          Font size for modal content container.
+        </td>
+      </tr>
+      <tr>
         <td><code>$modal-content-bg</code></td>
         <td>string</td>
         <td><code>$component-bg</code></td>

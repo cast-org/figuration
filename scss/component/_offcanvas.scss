@@ -13,6 +13,12 @@
                 flex-direction: column;
                 max-width: 100%;
                 color: $offcanvas-color;
+                // Our parent element can be arbitrary since offcanvas can be inserted into specified containers.
+                // So reset our font and text properties to avoid inheriting weird values.
+                @include reset-text();
+                @include font-size($offcanvas-font-size);
+                // Allow breaking very long words so they don't overflow the offcanvas bounds
+                word-wrap: break-word;
                 visibility: hidden;
                 background-color: $offcanvas-bg;
                 background-clip: padding-box;
