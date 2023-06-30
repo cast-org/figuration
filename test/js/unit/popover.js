@@ -339,44 +339,6 @@ $(function() {
         $popover.CFW_Popover('show');
     });
 
-    QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function(assert) {
-        assert.expect(1);
-        var done = assert.async();
-        var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture');
-
-        var handlerCalled = false;
-        $('.content-with-handler .btn').on('click', function() {
-            handlerCalled = true;
-        });
-
-        var $div = $('<div><a href="#">Show popover</a></div>')
-            .appendTo('#qunit-fixture')
-            .CFW_Popover({
-                html: true,
-                trigger: 'manual',
-                container: 'body',
-                content: function() {
-                    return $content;
-                }
-            });
-
-        $div
-            .one('afterShow.cfw.popover', function() {
-                $div
-                    .one('afterHide.cfw.popover', function() {
-                        $div
-                            .one('afterShow.cfw.popover', function() {
-                                $('.content-with-handler .btn').trigger('click');
-                                assert.ok(handlerCalled, 'content\'s event handler still present');
-                                done();
-                            })
-                            .CFW_Popover('show');
-                    })
-                    .CFW_Popover('hide');
-            })
-            .CFW_Popover('show');
-    });
-
     QUnit.test('should do nothing when an attempt is made to hide an uninitialized popover', function(assert) {
         assert.expect(1);
 

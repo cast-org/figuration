@@ -334,7 +334,7 @@
     };
 
     CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
-        this.$target.detach();
+        this.$target.remove();
         this.$target = null;
         this.dragAdded = false;
     };
