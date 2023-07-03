@@ -27,6 +27,8 @@
                     item.url = item.url.replace(/#content$/, '');
                     item.anchor = null;
                 }
+                // Strip production hostname for local development
+                item.url = item.url.replace(/^https:\/\/figuration.org/, '');
                 return item;
             });
         },
