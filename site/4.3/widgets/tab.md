@@ -493,7 +493,7 @@ $('button[data-cfw="tab"]').on('afterShow.cfw.tab', function(event) {
 
 <dl class="cf-docs-keys">
   <dt>
-    <kbd>tab</kbd>
+    <kbd>Tab</kbd>
   </dt>
   <dd>
     When the tab list if recieving focus, the active tab element becomes focused.

@@ -448,7 +448,7 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
 ### Keyboard Controls
 <dl class="cf-docs-keys">
   <dt>
-    <kbd>space</kbd>
+    <kbd>Space</kbd>
   </dt>
   <dd>
     Play / pause
@@ -468,13 +468,13 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
     Skip backwards or forwards in the timeline by 5 seconds
   </dd>
   <dt>
-    <kbd>home</kbd>
+    <kbd>Home</kbd>
   </dt>
   <dd>
     Jump to start of timeline
   </dd>
   <dt>
-    <kbd>end</kbd>
+    <kbd>End</kbd>
   </dt>
   <dd>
     Jump to end of timline
@@ -492,7 +492,7 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
     Toggle fullscreen
   </dd>
   <dt>
-    <kbd>esc</kbd>
+    <kbd>Esc</kbd>
   </dt>
   <dd>
     Exit fullscreen

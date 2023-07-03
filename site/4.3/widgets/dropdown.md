@@ -901,7 +901,7 @@ Use the `reference` option to help control the location of a dropdown menu.
 
 By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the `autoClose` option to change this behavior of the dropdown.
 
-When auto close is being used, pressing the <kbd>ESC</kbd> key will still close the menu (or submenu), and all methods should work as expected.
+When auto close is being used, pressing the <kbd>Esc</kbd> key will still close the menu (or submenu), and all methods should work as expected.
 
 <div class="cf-example">
   <div class="btn-group">
@@ -1255,13 +1255,13 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
 
 <dl class="cf-docs-keys">
   <dt>
-    <kbd>enter</kbd> / <kbd>space</kbd>
+    <kbd>Enter</kbd> / <kbd>Space</kbd>
   </dt>
   <dd>
     When the focus is on the main trigger item, the menu is opened, and the menu items can be navigated using the arrow keys.
   </dd>
   <dt>
-    <kbd>esc</kbd>
+    <kbd>Esc</kbd>
   </dt>
   <dd>
     Closes the currently focused menu, and moved focus to the main trigger.

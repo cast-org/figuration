@@ -557,7 +557,7 @@ The following key commands are handled when focus is inside the offcanvas:
 
 - <kbd>Esc</kbd> - Close the offcanvas
 - <kbd>Tab</kbd> - Moves focus to next focusable element inside the dialog. When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the dialog.
-- <kbd>Shift + Tab</kbd> - Moves focus to previous focusable element inside the dialog. When focus is on the first focusable element in the dialog, moves focus to the last focusable element in the dialog.
+- <kbd><kbd>Shift</kbd> + <kbd>Tab</kbd></kbd> - Moves focus to previous focusable element inside the dialog. When focus is on the first focusable element in the dialog, moves focus to the last focusable element in the dialog.
 
 ### Enforced Focus
 
