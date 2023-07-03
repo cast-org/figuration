@@ -2,8 +2,7 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2020 The Bootstrap Authors
- * Copyright 2020 Twitter, Inc.
+ * Portions Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 

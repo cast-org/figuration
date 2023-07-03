@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 ' * Copyright 2013-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
                 ' * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)\n' +
                 ' * -----\n' +
-                ' * Portions Copyright 2011-<%= grunt.template.today("yyyy") %>  the Bootstrap Authors and Twitter, Inc.\n' +
+                ' * Portions Copyright 2011-<%= grunt.template.today("yyyy") %> The Bootstrap Authors\n' +
                 ' * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
                 ' */\n',
         jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
