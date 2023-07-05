@@ -537,8 +537,8 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
         <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h5>Popover in a modal</h5>
-        <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
+        <h2 class="fs-xlarge">Popover in a modal</h2>
+        <p>This <button type="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</button> triggers a popover on click.</p>
         <hr>
         <h5>Tooltips in a modal</h5>
         <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
@@ -555,8 +555,8 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 
 {% capture highlight %}
 <div class="modal-body">
-  <h5>Popover in a modal</h5>
-  <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
+  <h2 class="fs-xlarge">Popover in a modal</h2>
+  <p>This <button type="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</button> triggers a popover on click.</p>
   <hr>
   <h5>Tooltips in a modal</h5>
   <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>

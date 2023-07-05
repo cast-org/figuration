@@ -1719,18 +1719,18 @@ function toggleRadio () {
 
 <h3>Dropdown</h3>
 <div class="dropdown-sample">
-    <div class="dropdown open">
-        <button class="btn btn-info" type="button">
+    <div class="dropdown">
+        <button class="btn btn-info open" type="button">
             Dropdown <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu open">
             <li class="dropdown-header">Sample Header</li>
             <li><a href="#">Action</a></li>
             <li class="active"><a href="#">Active action</a></li>
             <li class="disabled"><a href="#">Disabled action</a></li>
             <li class="dropdown-submenu open">
-                <a href="#">Something else here</a>
-                <ul class="dropdown-menu">
+                <button type="button" class="dropdown-item open">Nested menu</button>
+                <ul class="dropdown-menu dropdown-subalign-forward open">
                     <li class="dropdown-back"><a href="#">Back</a></li>
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>

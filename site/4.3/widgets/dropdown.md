@@ -47,7 +47,7 @@ Here is a static example showing the dropdown layout and content pieces.
       <li><a href="#">Action</a></li>
       <li><a class="disabled">Disabled action</a></li>
       <li class="dropdown-submenu">
-        <a href="#" class="open">Something else here</a>
+        <button class="dropdown-item open">Something else here</button>
         <ul class="dropdown-menu dropdown-subalign-forward open">
           <li class="dropdown-back"><button type="button" class="dropdown-item">Back</button></li>
           <li><a href="#">Action</a></li>
@@ -64,6 +64,23 @@ Here is a static example showing the dropdown layout and content pieces.
 ### Basic Dropdown
 
 Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then, add the menu's HTML.
+
+
+{% capture example %}
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Toggle Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+  </ul>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+While `<button>` is the recommended control for a dropdown toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control's purpose to assistive technologies such as screen readers.
 
 {% capture example %}
 <div class="dropdown">
@@ -87,9 +104,9 @@ We use this method instead of using a class placed on the control so that you ca
 
 {% capture example %}
 <div class="dropdown">
-  <a href="#" role="button" data-cfw="dropdown">
+  <button class="btn btn-info" data-cfw="dropdown">
     Toggle Dropdown<span class="caret ms-0_25" aria-hidden="true"></span>
-  </a>
+  </button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
@@ -254,7 +271,7 @@ You can nest submenus by adding a nested list along side it's toggle.
     <li class="dropdown-header">Sample Header</li>
     <li><a href="#">Action</a></li>
     <li>
-      <a href="#">Something else here</a>
+      <button type="button" class="dropdown-item">Nested menu</button>
       <ul>
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
@@ -279,12 +296,12 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li>
-      <a href="#">Something else here</a>
+      <button type="button" class="dropdown-item">Nested menu</button>
       <ul>
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
         <li>
-          <a href="#">Something else here</a>
+          <button type="button" class="dropdown-item">Nested menu</button>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -490,12 +507,12 @@ Add `.dropreverse` to a `.dropdown-menu` to align the dropdown menu to the right
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li>
-      <a href="#">Something else here</a>
+      <button type="button" class="dropdown-item">Nested menu</button>
       <ul>
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
         <li>
-          <a href="#">Something else here</a>
+          <button type="button" class="dropdown-item">Nested menu</button>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -526,12 +543,12 @@ Trigger dropdown menus above elements by adding `.dropup` to the `.dropdown-menu
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
       <li>
-        <a href="#">Something else here</a>
+        <button type="button" class="dropdown-item">Nested menu</button>
         <ul>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li>
-            <a href="#">Something else here</a>
+            <button type="button" class="dropdown-item">Nested menu</button>
             <ul>
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
@@ -575,7 +592,7 @@ Submenus will continue to open in the same direction as the parent, unless [Subm
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
         <li>
-          <a href="#">Something else here</a>
+          <button type="button" class="dropdown-item">Nested menu</button>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -591,7 +608,7 @@ Submenus will continue to open in the same direction as the parent, unless [Subm
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
         <li>
-          <a href="#">Something else here</a>
+          <button type="button" class="dropdown-item">Nested menu</button>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -610,7 +627,7 @@ Submenus will continue to open in the same direction as the parent, unless [Subm
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li>
-            <a href="#">Something else here</a>
+            <button type="button" class="dropdown-item">Nested menu</button>
             <ul>
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
@@ -630,7 +647,7 @@ Submenus will continue to open in the same direction as the parent, unless [Subm
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li>
-            <a href="#">Something else here</a>
+            <button type="button" class="dropdown-item">Nested menu</button>
             <ul>
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
@@ -700,7 +717,7 @@ Use `.dropcenter` to have the menu centered below the toggle control.  Combine w
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
       <li>
-        <a href="#">Something else here</a>
+        <button type="button" class="dropdown-item">Nested menu</button>
         <ul>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -716,7 +733,7 @@ Use `.dropcenter` to have the menu centered below the toggle control.  Combine w
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
       <li>
-        <a href="#">Something else here</a>
+        <button type="button" class="dropdown-item">Nested menu</button>
         <ul>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -760,7 +777,7 @@ Use `.dropmiddle` to align the menu with the middle of the toggle control.  The 
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
       <li>
-        <a href="#">Something else here</a>
+        <button type="button" class="dropdown-item">Nested menu</button>
         <ul>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -776,7 +793,7 @@ Use `.dropmiddle` to align the menu with the middle of the toggle control.  The 
       <li><a href="#">Action</a></li>
       <li><a href="#">Another action</a></li>
       <li>
-        <a href="#">Something else here</a>
+        <button type="button" class="dropdown-item">Nested menu</button>
         <ul>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -1002,7 +1019,7 @@ Be sure to add the class `dropdown-menu` to the dropdown menu to ensure there is
 
 {% capture highlight %}
 <div class="dropdown">
-  <a href="#" role="button" data-cfw="dropdown">Dropdown trigger</a>
+  <button type="button" class="btn btn-info" data-cfw="dropdown">Dropdown trigger</button>
   <ul class="dropdown-menu">
     ...
   </ul>
