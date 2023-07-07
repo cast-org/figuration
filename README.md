@@ -20,11 +20,11 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 ## Status
 
 **Latest Release**
-[![npm version](https://img.shields.io/npm/v/figuration)](https://www.npmjs.com/package/figuration)
-[![CSS size](http://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?label=CSS%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
-[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
-[![JS size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?label=JS%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
-[![JS gzip size](http://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
+[![npm version](https://img.shields.io/npm/v/figuration?logo=npm&logoColor=fff)](https://www.npmjs.com/package/figuration)
+[![CSS size](https://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?label=CSS%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
+[![CSS gzip size](https://img.badgesize.io/cast-org/figuration/master/dist/css/figuration.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/css/figuration.min.css)
+[![JS size](https://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?label=JS%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
+[![JS gzip size](https://img.badgesize.io/cast-org/figuration/master/dist/js/figuration.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/cast-org/figuration/tree/master/dist/js/figuration.min.js)
 
 **Development Build Status**
 [![Build Status](https://img.shields.io/github/actions/workflow/status/cast-org/figuration/js.yml?branch=master&label=JS%20Tests&logo=github)](https://github.com/cast-org/figuration/actions?query=workflow%3Ajs+branch%3Amaster)
