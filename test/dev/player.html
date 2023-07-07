@@ -98,6 +98,9 @@ body {
     width: 100px;
     vertical-align: middle;
 }
+.player-seek > .progress {
+    width: 100%;
+}
 .player-seek .progress-bar {
     -webkit-transition-duration: 0s;
          -o-transition-duration: 0s;
@@ -384,6 +387,7 @@ body {
 <h1>Figuration Audio/Video Player</h1>
 
 <h2 class="h4">Drumroll by Heigh-hoo</h2>
+Revised (v4.4.0+) progress bar
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
@@ -393,9 +397,10 @@ body {
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
-            <span class="player-seek progress" data-cfw-player="seek">
-                <span class="progress-bar" role="progressbar" data-cfw-player="seek-current"></span>
-                <span class="progress-bar" role="progressbar" data-cfw-player="seek-buffer"></span>
+            <span class="player-seek" data-cfw-player="seek">
+                <span class="progress" role="progressbar" data-cfw-player="seek-current">
+                    <span class="progress-bar"></span>
+                </span>
             </span>
             <!--<span class="player-time-remainder" data-cfw-player="time-remainder"></span>-->
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
@@ -421,6 +426,47 @@ body {
     </audio>
 </div>
 
+<h2 class="h4">Drumroll by Heigh-hoo</h2>
+Legacy progress bar:
+<div data-cfw="player" role="region" aria-label="audio player">
+    <div class="player" data-cfw-player="player">
+        <span class="player-control" data-cfw-player="control">
+            <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+        </span>
+        <span class="player-time" data-cfw-player="time">
+            <span class="player-time-current" data-cfw-player="time-current"></span>
+            <span class="player-seek progress" data-cfw-player="seek">
+                <span class="progress-bar" role="progressbar" data-cfw-player="seek-current"></span>
+                <!-- Buffer is not supported -->
+                <!-- <span class="progress-bar" role="progressbar" data-cfw-player="seek-buffer"></span> -->
+            </span>
+            <!--<span class="player-time-remainder" data-cfw-player="time-remainder"></span>-->
+            <span class="player-time-duration" data-cfw-player="time-duration"></span>
+        </span>
+        <span class="player-mute" data-cfw-player="mute">
+            <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+        </span>
+        <span class="" data-cfw-player="volume">
+            <!--
+            min: 0
+            max: 1
+            step: 1/100
+            value: 1
+            -->
+        </span>
+        <button type="button" class="btn btn-icon" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+    </div>
+
+    <audio controls>
+        <source src="../../site/assets/4.3/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg">
+        <p>HTML5 audio not supported</p>
+    </audio>
+</div>
+
+
 <hr>
 
 <h2 class="h4">Ambient Acoustic by StrangerEight</h2>
@@ -436,9 +482,12 @@ body {
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
-        <span class="player-seek progress" data-cfw-player="seek">
-            <span class="progress-bar" role="progressbar" data-cfw-player="seek-current"></span>
-            <span class="progress-bar" role="progressbar" data-cfw-player="seek-buffer"></span>
+        <span class="player-seek" data-cfw-player="seek">
+            <span class="player-seek" data-cfw-player="seek">
+                <span class="progress" role="progressbar" data-cfw-player="seek-current">
+                    <span class="progress-bar"></span>
+                </span>
+            </span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
             <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>

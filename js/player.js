@@ -484,7 +484,7 @@
 
             if ($seekElm.find('input[type="range"]').length) {
                 this.seekRange();
-            } else if ($seekElm.hasClass('progress')) {
+            } else {
                 this.seekProgress();
             }
         },
@@ -539,17 +539,22 @@
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
 
             var $curElm = this.$player.find('[data-cfw-player="seek-current"]');
-            $curElm.attr('role', 'progressbar').attr('aria-label', 'Playback progress');
+            // Handle legacy and revised (v4.4.0+) progress bar
+            // - determine if '.progress-bar' element is child or current element
+            var $barElm = $curElm.children('.progress-bar').length > 0 ? $curElm.children('.progress-bar').first() : $curElm;
 
             var cp = (this.media.currentTime / this.media.duration) * 100;
             if (cp > 100) { cp = 100; }
 
             $curElm
                 .attr({
+                    'role': 'progressbar',
+                    'aria-label': 'Playback progress',
                     'aria-valuemin' : 0,
                     'aria-valuemax' : 100,
                     'aria-valuenow' : cp
-                })
+                });
+            $barElm
                 .css('width', cp + '%');
         },
 

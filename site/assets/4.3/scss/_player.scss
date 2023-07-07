@@ -29,6 +29,7 @@
     display: inline-block;
     width: 34px;
     text-align: center;
+    vertical-align: middle;
 }
 .player-time-remainder::before {
     display: inline-block;
@@ -40,7 +41,8 @@
     width: 100px;
     vertical-align: middle;
 }
-.player-seek.progress {
+.player-seek > .progress {
+    width: 100%;
     vertical-align: middle;
 }
 .player-seek .progress-bar {

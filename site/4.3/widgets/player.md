@@ -56,8 +56,10 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
     </span>
     <span class="player-time me-0_25" data-cfw-player="time">
       <span class="player-time-current" data-cfw-player="time-current"></span>
-      <span class="player-seek progress" data-cfw-player="seek">
-        <span class="progress-bar" role="progressbar" data-cfw-player="seek-current"></span>
+      <span class="player-seek" data-cfw-player="seek">
+        <span class="progress" role="progressbar" data-cfw-player="seek-current">
+          <span class="progress-bar"></span>
+        </span>
       </span>
       <span class="player-time-duration" data-cfw-player="time-duration"></span>
     </span>
@@ -554,7 +556,7 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         <td><code>seek</code></td>
         <td>
           <p>Container for the seek progress bar or slider.</p>
-          <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
+          <p>By default a progress bar will be assumed. There must be a child [progress component]({{ site.path }}/{{ version.docs }}/components/progress/) with the data attribute <code>data-cfw-player="seek-current"</code> in order for the progress bar to display properly.</p>
           <p>Otherwise, use a child <code>&lt;input type="range"&gt;</code> element for a slider style control.</p>
         </td>
       </tr>

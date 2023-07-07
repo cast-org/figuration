@@ -6,7 +6,8 @@
         }
     }
 
-    .progress {
+    .progress,
+    .progress-stacked {
         display: flex;
         height: $progress-height;
         overflow: hidden; // Force rounded corners by cropping
@@ -27,6 +28,14 @@
         background-color: $progress-bar-bg;
         @include box-shadow($progress-bar-box-shadow);
         @include transition($progress-bar-transition);
+    }
+
+    .progress-stacked > .progress {
+        overflow: visible;
+    }
+
+    .progress-stacked > .progress > .progress-bar {
+        width: 100%;
     }
 
     @if $enable-progress-striped {

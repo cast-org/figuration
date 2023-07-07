@@ -262,10 +262,5 @@
         $('.cf-content [href="#"]').on('click', function(e) {
             e.preventDefault();
         });
-
-        // Toggle animated progress bar
-        $('#animToggle').on('click', function() {
-            $('#animTarget').toggleClass('progress-bar-animated');
-        });
     });
 }(jQuery));
