@@ -72,17 +72,102 @@
                 }
             }
 
-            @if $enable-dropdown {
+            @if $enable-nav-reverse {
+                &.nav-reverse {
+                    border-top: $nav-tabs-border-width solid $nav-tabs-border-color;
+                    border-bottom: 0;
+
+                    .nav-link {
+                        margin-top: -$nav-tabs-border-width;
+                        margin-bottom: 0;
+                        @include border-radius(0 0 $border-radius $border-radius);
+
+                        @include hover-focus() {
+                            border-color: $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
+                        }
+
+                        &.active,
+                        &.open {
+                            border-color: $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        @if $enable-dropdown {
+            // Make dropdown border overlap tab border
+            // Remove the rounded corners where there is a hard edge
+            %tabs-dropdown-bottom {
                 .dropdown-menu {
-                    // Make dropdown border overlap tab border
-                    margin-top: -$nav-tabs-border-width;
-                    // Remove the top rounded corners here since there is a hard edge above the menu
-                    @include border-top-radius(0);
+                    &[x-placement^="bottom"] {
+                        margin-top: -$nav-tabs-border-width;
+                        @include border-top-radius(0);
+                    }
+                }
+            }
+
+            %tabs-dropdown-top {
+                .dropdown-menu {
+                    &[x-placement^="top"] {
+                        margin-bottom: -$nav-tabs-border-width;
+                        @include border-bottom-radius(0);
+                    }
+                }
+            }
+
+            %tabs-dropdown-start {
+                .dropdown-menu {
+                    &[x-placement^="left"] {
+                        margin-right: -$nav-tabs-border-width;
+                        @include border-end-radius(0);
+                    }
+                }
+            }
+
+            %tabs-dropdown-end {
+                .dropdown-menu {
+                    &[x-placement^="right"] {
+                        margin-left: -$nav-tabs-border-width;
+                        @include border-start-radius(0);
+                    }
+                }
+            }
+
+            @if $enable-nav-vertical and $enable-nav-reverse {
+                .nav-tabs.nav-vertical.nav-reverse {
+                    @extend %tabs-dropdown-start;
+                }
+                .nav-tabs.nav-vertical:not(.nav-reverse) {
+                    @extend %tabs-dropdown-end;
+                }
+                .nav-tabs.nav-reverse:not(.nav-vertical) {
+                    @extend %tabs-dropdown-top;
+                }
+                .nav-tabs:not(.nav-vertical):not(.nav-reverse) {
+                    @extend %tabs-dropdown-bottom;
+                }
+            } @else if $enable-nav-vertical {
+                .nav-tabs.nav-vertical {
+                    @extend %tabs-dropdown-end;
+                }
+                .nav-tabs:not(.nav-vertical) {
+                    @extend %tabs-dropdown-bottom;
+                }
+            } @else if $enable-nav-reverse {
+                .nav-tabs.nav-reverse {
+                    @extend %tabs-dropdown-top;
+                }
+                .nav-tabs:not(.nav-reverse) {
+                    @extend %tabs-dropdown-bottom;
+                }
+            } @else {
+                .nav-tabs {
+                    @extend %tabs-dropdown-bottom;
                 }
             }
         }
     }
-
 
     // Pills
     @if $enable-nav-pills {
@@ -113,11 +198,144 @@
         }
     }
 
+    // Lined
+    @if $enable-nav-lined {
+        .nav-lined {
+            flex-flow: row wrap;
+            gap: $nav-lined-gap;
+
+            .nav-link {
+                padding-right: 0;
+                padding-left: 0;
+                border-bottom: $nav-lined-border-width solid transparent;
+
+                @include hover-focus() {
+                    border-bottom-color: currentcolor;
+                }
+
+                &.active,
+                &.open {
+                    font-weight: $font-weight-bold;
+                    color: $nav-lined-active-color;
+                    border-bottom-color: currentcolor;
+                }
+            }
+
+            @if $enable-nav-reverse {
+                &.nav-reverse {
+                    .nav-link {
+                        border-top: $nav-lined-border-width solid transparent;
+                        border-bottom: 0;
+
+                        @include hover-focus() {
+                            border-top-color: currentcolor;
+                        }
+
+                        &.active,
+                        &.open {
+                            border-top-color: currentcolor;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // Vertical navigation
     @if $enable-nav-vertical {
         .nav-vertical {
             flex-direction: column;
+
+            @if $enable-nav-tabs {
+                &.nav-tabs {
+                    border-right: $nav-tabs-border-width solid $nav-tabs-border-color;
+                    border-bottom: 0;
+
+                    .nav-link {
+                        margin-right: -$nav-tabs-border-width;
+                        margin-bottom: 0;
+                        @include border-radius($border-radius 0 0 $border-radius);
+
+                        @include hover-focus() {
+                            border-color: $nav-tabs-hover-border-color $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
+                        }
+
+                        &.active,
+                        &.open {
+                            border-color: $nav-tabs-active-border-color $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
+                        }
+                    }
+                }
+
+                @if $enable-nav-reverse {
+                    &.nav-tabs.nav-reverse {
+                        border-top: 0;
+                        border-right: 0;
+                        border-left: $nav-tabs-border-width solid $nav-tabs-border-color;
+
+                        .nav-link {
+                            margin-top: 0;
+                            margin-right: 0;
+                            margin-left: -$nav-tabs-border-width;
+                            @include border-radius(0 $border-radius $border-radius 0);
+
+                            @include hover-focus() {
+                                border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
+                            }
+
+                            // stylelint-disable selector-max-class
+                            &.active,
+                            &.open {
+                                border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+                            }
+                            // stylelint-enable selector-max-class
+                        }
+                    }
+                }
+            }
+
+            @if $enable-nav-lined {
+                &.nav-lined {
+                    gap: 0;
+
+                    .nav-link {
+                        padding-right: $nav-link-padding-x;
+                        padding-left: $nav-link-padding-x;
+                        border-right: $nav-lined-border-width solid transparent;
+                        border-bottom: 0;
+
+                        @include hover-focus() {
+                            border-right-color: currentcolor;
+                        }
+
+                        &.active,
+                        &.open {
+                            border-right-color: currentcolor;
+                        }
+                    }
+                }
+
+                @if $enable-nav-reverse {
+                    &.nav-lined.nav-reverse {
+                        .nav-link {
+                            border-top: 0;
+                            border-right: 0;
+                            border-left: $nav-lined-border-width solid transparent;
+
+                            @include hover-focus() {
+                                border-left-color: currentcolor;
+                            }
+
+                            // stylelint-disable selector-max-class
+                            &.active,
+                            &.open {
+                                border-left-color: currentcolor;
+                            }
+                            // stylelint-enable selector-max-class
+                        }
+                    }
+                }
+            }
         }
     }
 

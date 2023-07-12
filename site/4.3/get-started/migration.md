@@ -9,6 +9,12 @@ toc: true
 ## v4.4.0
 
 ### CSS
+
+#### Nav
+- Added new lined variant using `.nav-lined`.
+- Added vertical tab and lined variants, both using `.nav-vertical`.
+- Added ability to flip the tab and line variants using `.nav-reverse`, which can be paired with `.nav-vertical`.
+
 #### Progress bars
 
 The markup for [progress bars]({{ site.path }}/{{ version.docs }}/components/progress/) has been updated. Due to the placement of `role` and various `aria-` attributes on the inner `.progress-bar` element, **some screen readers were not announcing zero value progress bars**. Now, `role="progressbar"` and the relevant `aria-*` attributes are on the outer `.progress` element, leaving the `.progress-bar` purely for the visual presentation of the bar and optional label.

@@ -105,10 +105,10 @@ Right-aligned with `.flex-end`:
 
 ### Vertical Alignment
 
-Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
+Stack your navigation by changing the flex item direction with the `.nav-vertical` modifier or with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
 {% capture example %}
-<ul class="nav flex-column">
+<ul class="nav nav-vertical">
   <li class="nav-item">
     <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
@@ -137,28 +137,6 @@ As always, vertical navigation is possible without `<ul>`s, too.
 {% endcapture %}
 {% renderExample example %}
 
-### Tabs
-
-Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [Tab JavaScript widget]({{ site.path}}/{{ version.docs }}/widgets/tab/).
-
-{% capture example %}
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a href="#" class="nav-link active" aria-current="page">Active</a>
-  </li>
-  <li class="nav-item">
-    <a href="#" class="nav-link">Link</a>
-  </li>
-  <li class="nav-item">
-    <a href="#" class="nav-link">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
-  </li>
-</ul>
-{% endcapture %}
-{% renderExample example %}
-
 ### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
@@ -181,12 +159,96 @@ Take that same HTML, but use `.nav-pills` instead:
 {% endcapture %}
 {% renderExample example %}
 
-### Vertical Pills
+### Tabs
 
-Add `.flex-column` to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas.
+Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [Tab JavaScript widget]({{ site.path}}/{{ version.docs }}/widgets/tab/).
 
 {% capture example %}
-<ul class="nav nav-pills flex-column">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+Flip the tabs upside down by adding `.nav-reverse` to the `.nav`.
+
+{% capture example %}
+<ul class="nav nav-tabs nav-reverse">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+### Lined
+
+Take that same HTML, but use `.nav-lined` instead:
+
+{% capture example %}
+<ul class="nav nav-lined">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+Move the line to the top of the lined nav links by adding `.nav-reverse` to the `.nav`.
+
+{% capture example %}
+<ul class="nav nav-lined nav-reverse">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+### Vertical Pills
+
+Add `.nav-vertical` modifier, or `.flex-column` utility, to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas.
+
+{% capture example %}
+<ul class="nav nav-pills nav-vertical">
   <li class="nav-item">
     <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
@@ -215,6 +277,114 @@ As always, vertical pills are possible without `<ul>`s.
 {% endcapture %}
 {% renderExample example %}
 
+### Vertical Tabs
+
+Add `.nav-vertical` modifier to the `.nav.nav-tabs` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas.
+
+{% capture example %}
+<ul class="nav nav-tabs nav-vertical" style="max-width: 15rem;">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+As always, vertical tabs are possible without `<ul>`s.
+
+{% capture example %}
+<nav class="nav nav-tabs nav-vertical" style="max-width: 15rem;">
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
+{% endcapture %}
+{% renderExample example %}
+
+The direction of the tabs can be swapped by adding `.nav-reverse` to the `.nav`.
+
+{% capture example %}
+<ul class="nav nav-tabs nav-vertical nav-reverse" style="max-width: 15rem;">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+### Vertical Lined
+
+Add `.nav-vertical` modifier to the `.nav.nav-lined` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas.
+
+{% capture example %}
+<ul class="nav nav-lined nav-vertical border-e" style="max-width: 15rem;">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
+As always, vertical lined nav links are possible without `<ul>`s.
+
+{% capture example %}
+<nav class="nav nav-lined nav-vertical border-e" style="max-width: 15rem;">
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
+{% endcapture %}
+{% renderExample example %}
+
+The side the lines appear on can be swapped by adding `.nav-reverse` to the `.nav`.
+
+{% capture example %}
+<ul class="nav nav-lined nav-vertical nav-reverse border-s" style="max-width: 15rem;">
+  <li class="nav-item">
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
 ### Fill and Justify
 
 Force your `.nav`’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-items`, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
@@ -225,7 +395,7 @@ Force your `.nav`’s contents to extend the full available width one of two mod
     <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link">Longer link nav</a>
+    <a href="#" class="nav-link">Much longer nav link</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -245,7 +415,7 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
     <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="nav-link">Longer link nav</a>
+    <a href="#" class="nav-link">Much longer nav link</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -257,13 +427,25 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
 {% endcapture %}
 {% renderExample example %}
 
+Similar to the `.nav-fill` example using a `<nav>`-based navigation.
+
+{% capture example %}
+<nav class="nav nav-pills nav-justify">
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
+  <a href="#" class="nav-link">Much longer nav link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
+{% endcapture %}
+{% renderExample example %}
+
 ## Working with Flex Utilities
 If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, the nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
 {% capture example %}
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a href="#" class="flex-sm-fill text-sm-center nav-link active" aria-current="page">Active</a>
-  <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
+  <a href="#" class="flex-sm-fill text-sm-center nav-link">Longer nav ink</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
 </nav>
@@ -374,11 +556,27 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-nav-lined</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of lined nav styles.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-nav-vertical</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable the generation of vertical nav style.
+          Enable the generation of vertical nav styles.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-nav-reverse</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of reverse nav styles.
         </td>
       </tr>
       <tr>
@@ -588,12 +786,37 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>
           Background color for pill navs in active state.
         </td>
-        <tr>
+      </tr>
+      <tr>
         <td><code>$nav-pills-active-color</code></td>
         <td>string</td>
         <td><code>$component-active-color</code></td>
         <td>
           Text color for pill navs in active state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-lined-gap</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Gap for lined nav when in horzontal mode.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-lined-border-width</code></td>
+        <td>string</td>
+        <td><code>.125rem</code></td>
+        <td>
+          Border thickness for lined nav.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-lined-active-color</code></td>
+        <td>string</td>
+        <td><code>$component-action-color</code></td>
+        <td>
+          Text color for lined navs in active state.
         </td>
       </tr>
     </tbody>
