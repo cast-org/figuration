@@ -289,6 +289,7 @@ $utility-border-breakpoints:        map-keys($grid-breakpoints) !default;
 $utility-display-breakpoints:       map-keys($grid-breakpoints) !default;
 $utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
 $utility-float-breakpoints:         map-keys($grid-breakpoints) !default;
+$utility-object-fit-breakpoints:    map-keys($grid-breakpoints) !default;
 $utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
 $utility-sticky-top-breakpoints:    map-keys($grid-breakpoints) !default;
 $utility-sticky-bottom-breakpoints: map-keys($grid-breakpoints) !default;
@@ -1477,6 +1478,13 @@ $utility-overflow-x:        auto, hidden, scroll, visible !default;
 $utility-overflow-y:        auto, hidden, scroll, visible !default;
 $utility-position:          static, relative, absolute, fixed, sticky !default;
 $utility-order-max:         6 !default;
+$utility-object-fit: (
+    contain: contain,
+    cover: cover,
+    fill: fill,
+    scale: scale-down,
+    none: none
+) !default;
 $utility-opacity: (
     "0": 0,
     "25":.25,

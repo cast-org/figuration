@@ -111,6 +111,7 @@ module.exports = {
           { "title": "Icons" },
           { "title": "Interactions" },
           { "title": "Links" },
+          { "title": "Object Fit" },
           { "title": "Opacity" },
           { "title": "Orientation" },
           { "title": "Overflow" },

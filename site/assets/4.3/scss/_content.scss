@@ -74,6 +74,7 @@ h4 {
 // ClipboardJS
 .cf-clipboard {
     position: relative;
+    z-index: 1;
 
     + .highlight {
         margin-top: 0;
