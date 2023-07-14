@@ -59,6 +59,10 @@ We've also introduced a new `.progress-stacked` class to more logically wrap [st
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+#### Utilities
+- Added more rules for `overflow` utilities along with x and y variants
+- Added new responsive `object-fit` utilities
+
 ## v4.3.3
 
 ### Widgets
