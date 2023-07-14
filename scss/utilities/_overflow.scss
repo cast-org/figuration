@@ -2,7 +2,25 @@
 
 // Overflow utilties
 @if $enable-utility-overflow {
-    @each $value in $utility-overflow {
-        .overflow-#{$value} { overflow: $value !important; }
+    @if $utility-overflow != null {
+        @each $value in $utility-overflow {
+            .overflow-#{$value} { overflow: $value !important; }
+        }
+    }
+}
+
+@if $enable-utility-overflow-x {
+    @if $utility-overflow-x != null {
+        @each $value in $utility-overflow-x {
+            .overflow-x-#{$value} { overflow: $value !important; }
+        }
+    }
+}
+
+@if $enable-utility-overflow-y {
+    @if $utility-overflow-y != null {
+        @each $value in $utility-overflow-y {
+            .overflow-y-#{$value} { overflow: $value !important; }
+        }
     }
 }

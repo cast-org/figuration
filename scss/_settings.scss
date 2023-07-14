@@ -1472,7 +1472,9 @@ $zindex-modal:              1065 !default;
 
 // Utilities
 $utility-display:           block, flex, inline, inline-block, inline-flex, grid, table, table-row, table-cell, none !default;
-$utility-overflow:          auto, hidden !default;
+$utility-overflow:          auto, hidden, scroll, visible !default;
+$utility-overflow-x:        auto, hidden, scroll, visible !default;
+$utility-overflow-y:        auto, hidden, scroll, visible !default;
 $utility-position:          static, relative, absolute, fixed, sticky !default;
 $utility-order-max:         6 !default;
 $utility-opacity: (

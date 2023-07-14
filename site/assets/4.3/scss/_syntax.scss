@@ -38,6 +38,7 @@ code.language-bash::before {
 
 /* Code blocks */
 pre[class*="language-"] {
+    position: relative;
     padding: 1.75em 1rem .5rem;
     background-color: palette($uibase, 25);
     border: 1px solid palette($uibase, 100);
