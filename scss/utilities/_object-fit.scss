@@ -9,7 +9,7 @@
             @include media-breakpoint-up($breakpoint) {
                 @each $name, $value in $utility-object-fit {
                     .object-fit#{$bprule}-#{$name} {
-                        object-fit: $value;
+                        object-fit: $value !important;
                     }
                 }
             }
