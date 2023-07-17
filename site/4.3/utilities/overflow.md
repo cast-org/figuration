@@ -131,7 +131,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>auto, hidden, scroll, visible</code></td>
         <td>
-          List of overflow values that will be used to generate overflow utilities.  Setting this to `null` not generete these utilities.
+          List of overflow values that will be used to generate overflow utilities.  Setting this to `null` will not generete these utilities.
         </td>
       </tr>
       <tr>
@@ -139,7 +139,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>auto, hidden, scroll, visible</code></td>
         <td>
-          List of overflow values that will be used to generate overflow-x utilities.  Setting this to `null` not generete these utilities.
+          List of overflow values that will be used to generate overflow-x utilities.  Setting this to `null` will not generete these utilities.
         </td>
       </tr>
       <tr>
@@ -147,7 +147,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>auto, hidden, scroll, visible</code></td>
         <td>
-          List of overflow values that will be used to generate overflow-y utilities.  Setting this to `null` not generete these utilities.
+          List of overflow values that will be used to generate overflow-y utilities.  Setting this to `null` will not generete these utilities.
         </td>
       </tr>
     </tbody>

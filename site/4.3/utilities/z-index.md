@@ -68,7 +68,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 3: 3
 )</code></pre></td>
         <td>
-          Map of values that will be used to generate z-index utilities. Setting this to `null` not generete these utilities.
+          Map of values that will be used to generate z-index utilities. Setting this to `null` will not generete these utilities.
         </td>
       </tr>
     </tbody>
