@@ -124,7 +124,8 @@ module.exports = {
           { "title": "Typography" },
           { "title": "Vertical Alignment" },
           { "title": "Vertical Rule" },
-          { "title": "Visibility" }
+          { "title": "Visibility" },
+          { "title": "Z-index" }
         ]
       },
       {

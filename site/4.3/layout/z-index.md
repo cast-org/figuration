@@ -8,7 +8,7 @@ toc: false
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
 
-We use a defined set because of the layered components—tooltips, popovers, navbars, dropdowns, modals—so they remain consistent in terms of behavior.
+We use a defined set because of the layered components—tooltips, popovers, navbars, dropdowns, modals, offcanvas—so they remain consistent in terms of behavior.
 
 Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.
 

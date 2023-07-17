@@ -1501,3 +1501,10 @@ $utility-rotate: (
     "270": rotate(270deg),
     "315": rotate(315deg)
 ) !default;
+$utility-zindex: (
+    n1: -1,
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3
+) !default;

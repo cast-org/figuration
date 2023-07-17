@@ -452,3 +452,40 @@
         @include border-radius($border-radius);
     }
 }
+
+.cf-example-zindex {
+    min-height: 15.5rem;
+    isolation: isolate;
+
+    > div {
+        padding: 3rem;
+        background-color: $uibase-50;
+        border: 1px solid $uibase-200;
+    }
+    > :nth-child(1) {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+    > :nth-child(2) {
+        top: 3rem;
+        left: 4rem;
+    }
+    > :nth-child(3) {
+        top: 4.5rem;
+        left: 6.5rem;
+    }
+    > :nth-child(4) {
+        top: 6rem;
+        left: 9rem;
+    }
+    > :nth-child(5) {
+        top: 7.5rem;
+        left: 11.5rem;
+    }
+
+    span {
+        position: absolute;
+        right: .25rem;
+        bottom: .125rem;
+    }
+}
