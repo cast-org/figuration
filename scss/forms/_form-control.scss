@@ -29,6 +29,16 @@
                 border: 0;
             }
 
+            &::-webkit-date-and-time-value {
+                // Android/iOS - form-control's "width: 100%" makes the input width too small
+                // iOS Safari, form-control's "appearance: none" + "width: 100%" makes the input width too small
+                min-width: 10ch;
+
+                // Android Chrome - Fix value alignment issue
+                // Due to browser default margin in shadow DOM
+                margin: 0;
+            }
+
             // Customize the `:focus` state to imitate native WebKit styles.
             @include form-control-focus();
 
