@@ -199,6 +199,7 @@ The `.font-weight-lighter` and `.font-weight-bolder` classes are relative by def
 {% capture example %}
 <p class="font-weight-light">Light weight text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
+<p class="font-weight-medium">Medium weight text.</p>
 <p class="font-weight-semibold">Semi-bold weight text.</p>
 <p class="font-weight-bold">Bold weight text.</p>
 <p class="font-weight-black">Black weight text.</p>
@@ -469,13 +470,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$font-weights</code></td>
         <td>map</td>
         <td><pre><code>(
-  "light":    $font-weight-light,
-  "normal":   $font-weight-normal,
-  "semibold": 600,
-  "bold":     $font-weight-bold,
-  "black":    900,
-  "lighter":  $font-weight-lighter,
-  "bolder":   $font-weight-bolder
+    "light":    $font-weight-light,
+    "normal":   $font-weight-normal,
+    "medium":   $font-weight-medium,
+    "semibold": $font-weight-semibold,
+    "bold":     $font-weight-bold,
+    "black":    $font-weight-black,
+    "lighter":  $font-weight-lighter,
+    "bolder":   $font-weight-bolder
 )</code></pre></td>
         <td>
           Map used to generate the font-weight utility classes.
