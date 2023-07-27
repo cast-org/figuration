@@ -72,6 +72,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Figurations's documentation, included in this repo in the root directory, is built with [Eleventy](https://www.11ty.io/) and publicly hosted on GitHub Pages at <https://figuration.org>. The docs may also be run locally.
 
+Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
 
 ### Running Documentation Locally
 
