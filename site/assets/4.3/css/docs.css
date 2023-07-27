@@ -272,6 +272,7 @@
   --docsearch-muted-color: #5e7182;
   --docsearch-hit-shadow: none;
   z-index: 2000;
+  cursor: auto;
 }
 
 .DocSearch-Button {
@@ -674,6 +675,7 @@ h4 > code {
 
 .cf-clipboard {
   position: relative;
+  z-index: 1;
 }
 
 .cf-clipboard + .highlight {
@@ -800,6 +802,7 @@ code.language-bash::before {
 
 /* Code blocks */
 pre[class*="language-"] {
+  position: relative;
   padding: 1.75em 1rem .5rem;
   background-color: #f7f8f9;
   border: 1px solid #dfe3e6;
@@ -947,8 +950,7 @@ pre[class*="language-"] {
   }
 }
 
-.cf-example > .progress + .progress,
-.cf-example > .progress + .btn {
+.cf-example > .progress + .progress {
   margin-top: 1rem;
 }
 
@@ -1389,6 +1391,48 @@ pre[class*="language-"] {
   border-radius: 0.375rem;
 }
 
+.cf-example-zindex {
+  min-height: 15.5rem;
+  isolation: isolate;
+}
+
+.cf-example-zindex > div {
+  padding: 3rem;
+  background-color: #eff1f3;
+  border: 1px solid #bfc6cd;
+}
+
+.cf-example-zindex > :nth-child(1) {
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.cf-example-zindex > :nth-child(2) {
+  top: 3rem;
+  left: 4rem;
+}
+
+.cf-example-zindex > :nth-child(3) {
+  top: 4.5rem;
+  left: 6.5rem;
+}
+
+.cf-example-zindex > :nth-child(4) {
+  top: 6rem;
+  left: 9rem;
+}
+
+.cf-example-zindex > :nth-child(5) {
+  top: 7.5rem;
+  left: 11.5rem;
+}
+
+.cf-example-zindex span {
+  position: absolute;
+  right: .25rem;
+  bottom: .125rem;
+}
+
 .cf-callout {
   padding: 1rem;
   margin: 1rem 0;
@@ -1485,6 +1529,7 @@ pre[class*="language-"] {
   display: inline-block;
   width: 34px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .player-time-remainder::before {
@@ -1499,7 +1544,8 @@ pre[class*="language-"] {
   vertical-align: middle;
 }
 
-.player-seek.progress {
+.player-seek > .progress {
+  width: 100%;
   vertical-align: middle;
 }
 

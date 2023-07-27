@@ -4,7 +4,7 @@
  * Copyright 2013-2023 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2023  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2023 The Bootstrap Authors
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -3277,6 +3277,12 @@ if (typeof jQuery === 'undefined') {
         _unlinkComplete : function() {
             var $element = this.$element;
             var type = this.type;
+            // TODO: Change original title to use internal variable instead of data attribute
+            var originalTtle = this.$element.attr('data-cfw-' + this.type + '-original-title');
+            if (typeof originalTtle !== 'undefined' && originalTtle.length > 0) {
+                this.$element.attr('title', originalTtle);
+            }
+            this.$element.removeAttr('data-cfw-' + this.type + '-original-title');
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
@@ -3996,7 +4002,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
-        this.$target.detach();
+        this.$target.remove();
         this.$target = null;
         this.dragAdded = false;
     };
@@ -4356,10 +4362,10 @@ if (typeof jQuery === 'undefined') {
             if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.offcanvas', function(e) {
                     if (e.which === KEYCODE_ESC) {
-                        if (!$selfRef.settings.keyboard) {
-                            $selfRef._hideBlocked();
-                        } else {
+                        if ($selfRef.settings.keyboard) {
                             $selfRef.hide();
+                        } else {
+                            $selfRef._hideBlocked();
                         }
                     }
                 });
@@ -4754,7 +4760,6 @@ if (typeof jQuery === 'undefined') {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
                     if (e.which === KEYCODE_ESC) {
                         if ($selfRef.settings.keyboard) {
-                            e.preventDefault();
                             $selfRef.hide();
                         } else {
                             $selfRef.hideBlocked();
@@ -6549,7 +6554,7 @@ if (typeof jQuery === 'undefined') {
 
             if ($seekElm.find('input[type="range"]').length) {
                 this.seekRange();
-            } else if ($seekElm.hasClass('progress')) {
+            } else {
                 this.seekProgress();
             }
         },
@@ -6604,17 +6609,22 @@ if (typeof jQuery === 'undefined') {
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
 
             var $curElm = this.$player.find('[data-cfw-player="seek-current"]');
-            $curElm.attr('role', 'progressbar').attr('aria-label', 'Playback progress');
+            // Handle legacy and revised (v4.4.0+) progress bar
+            // - determine if '.progress-bar' element is child or current element
+            var $barElm = $curElm.children('.progress-bar').length > 0 ? $curElm.children('.progress-bar').first() : $curElm;
 
             var cp = (this.media.currentTime / this.media.duration) * 100;
             if (cp > 100) { cp = 100; }
 
             $curElm
                 .attr({
+                    'role': 'progressbar',
+                    'aria-label': 'Playback progress',
                     'aria-valuemin' : 0,
                     'aria-valuemax' : 100,
                     'aria-valuenow' : cp
-                })
+                });
+            $barElm
                 .css('width', cp + '%');
         },
 
