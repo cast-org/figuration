@@ -316,7 +316,6 @@
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
                     if (e.which === KEYCODE_ESC) {
                         if ($selfRef.settings.keyboard) {
-                            e.preventDefault();
                             $selfRef.hide();
                         } else {
                             $selfRef.hideBlocked();

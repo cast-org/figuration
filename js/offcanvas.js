@@ -237,10 +237,10 @@
             if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.offcanvas', function(e) {
                     if (e.which === KEYCODE_ESC) {
-                        if (!$selfRef.settings.keyboard) {
-                            $selfRef._hideBlocked();
-                        } else {
+                        if ($selfRef.settings.keyboard) {
                             $selfRef.hide();
+                        } else {
+                            $selfRef._hideBlocked();
                         }
                     }
                 });
