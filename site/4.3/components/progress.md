@@ -70,6 +70,15 @@ To ensure that the label text remains legible even for low percentages, consider
 {% endcapture %}
 {% renderExample example %}
 
+Note that by default, the content inside the `.progress-bar` is controlled with `overflow: hidden`, so it doesn't bleed out of the bar. If your progress bar is shorter than its label, the content will be capped and may become unreadable. To change this behavior, you can use `.overflow-visible` from the [overflow utilities]({{ site.path }}/{{ version.docs }}/utilities/overflow/), but make sure to also define an explicit [text color]({{ site.path }}/{{ version.docs }}/utilities/color/#text) so the text remains readable.
+
+{% capture example %}
+<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar overflow-visible text-dark" style="width: 10%">Long label text for the progress bar, set to a dark color</div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## Width
 
 Using the [width sizing utilities]({{ site.path }}/{{ version.docs }}/utilities/sizing/#width) can help with quickly configure the width of the `.progress-bar`.
@@ -120,8 +129,8 @@ Note, when using labels with custom background colors, make sure to also set an 
 <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar bg-danger" style="width: 100%"></div>
 </div>
-<div class="progress bg-dark" role="progressbar" aria-label="Dark example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-cyan-300 text-dark" style="width: 50%">50%</div>
+<div class="progress bg-secondary" role="progressbar" aria-label="Dark example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-info-200 text-dark" style="width: 50%">50%</div>
 </div>
 {% endcapture %}
 {% renderExample example %}

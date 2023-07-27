@@ -507,7 +507,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 ### Horizontal & Vertical Gutters
 
-`.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+Use `.g-*` classes to control the horizontal and vertical grid gutters. In the example below, we use a smaller gutter width, so there is no need for the `.overflow-hidden` wrapper class.
 
 {% capture example %}
 <div class="container">
@@ -623,6 +623,8 @@ Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/f
 
 ### Vertical Alignment
 
+Change the horizontal alignment with the [align items flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/#align-items).
+
 {% capture example %}
 <div class="container">
   <div class="row flex-items-start">
@@ -664,6 +666,8 @@ Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/f
 {% endcapture %}
 {% renderExample example, "cf-example-row cf-example-row-grid cf-example-row-flex-v" %}
 
+Or, change the alignment of each column individually with the [align self flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/#align-self).
+
 {% capture example %}
 <div class="container">
   <div class="row">
@@ -682,6 +686,8 @@ Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/f
 {% renderExample example, "cf-example-row cf-example-row-grid cf-example-row-flex-v" %}
 
 ### Horizontal Alignment
+
+Change the horizontal alignment with the [justify content flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/#justify-content).
 
 {% capture example %}
 <div class="container">

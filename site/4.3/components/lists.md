@@ -648,7 +648,7 @@ Use contextual classes to style list items with a stateful background and color.
   <li class="list-item list-item-primary">Primary list item</li>
   <li class="list-item list-item-secondary">Secondary list item</li>
   <li class="list-item list-item-success">Success list item</li>
-  <li class="list-item list-item-info">Inof list item</li>
+  <li class="list-item list-item-info">Info list item</li>
   <li class="list-item list-item-warning">Warning list item</li>
   <li class="list-item list-item-danger">Danger list item</li>
   <li class="list-item list-item-light">Light list item</li>
