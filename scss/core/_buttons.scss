@@ -162,6 +162,10 @@
                 color: $btn-link-hover-color;
             }
 
+            &:focus {
+                box-shadow: $btn-focus-box-shadow-size rgba($btn-link-color, $btn-focus-box-shadow-alpha);
+            }
+
             &.disabled,
             &:disabled {
                 color: $btn-link-disabled-color;
@@ -177,6 +181,10 @@
                 background-color: transparent;
                 border-color: transparent;
                 box-shadow: none;
+
+                &:focus {
+                    box-shadow: $btn-focus-box-shadow-size rgba($btn-link-color, $btn-focus-box-shadow-alpha);
+                }
             }
         }
     }
