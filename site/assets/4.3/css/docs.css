@@ -21,6 +21,24 @@
   background-color: #246;
 }
 
+.cf-content a,
+.cf-content button,
+.cf-content h2,
+.cf-content h3,
+.cf-content h4,
+.cf-content [tabindex="0"] {
+  scroll-margin-top: 2rem;
+  scroll-margin-bottom: 2rem;
+}
+
+.cf-sidebar a,
+.cf-sidebar button,
+.cf-content-toc a,
+.cf-content-toc button {
+  scroll-margin-top: 2rem;
+  scroll-margin-bottom: 2rem;
+}
+
 @media (min-width: 48em) {
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .cf-header {
@@ -29,7 +47,12 @@
       top: 0;
       z-index: 1010;
     }
-    .cf-content > [id] {
+    .cf-content a,
+    .cf-content button,
+    .cf-content h2,
+    .cf-content h3,
+    .cf-content h4,
+    .cf-content [tabindex="0"] {
       scroll-margin-top: 4.5rem;
     }
   }
