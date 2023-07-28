@@ -497,7 +497,7 @@ progress {
 
 // 1. Change font properties to `inherit` in Safari.
 // 2. Correct the inability to style clickable types in iOS and Safari.
-::-webkit-file-upload-button {
+::file-selector-button {
     font: inherit; // 1
     -webkit-appearance: button; // 2
 }
