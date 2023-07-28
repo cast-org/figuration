@@ -4,6 +4,26 @@
     background-color: #246;
 }
 
+.cf-content {
+    a,
+    button,
+    h2,
+    h3,
+    h4,
+    [tabindex="0"] {
+        scroll-margin-top: 2rem;
+        scroll-margin-bottom: 2rem;
+    }
+}
+.cf-sidebar,
+.cf-content-toc {
+    a,
+    button {
+        scroll-margin-top: 2rem;
+        scroll-margin-bottom: 2rem;
+    }
+}
+
 @include media-breakpoint-up(md) {
     @supports (position: sticky) {
         .cf-header {
@@ -11,9 +31,13 @@
             top: 0;
             z-index: $zindex-sticky;
         }
-
         .cf-content {
-            > [id] {
+            a,
+            button,
+            h2,
+            h3,
+            h4,
+            [tabindex="0"] {
                 scroll-margin-top: 4.5rem;
             }
         }
