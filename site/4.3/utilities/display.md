@@ -21,6 +21,7 @@ Available utilities:
 - `.d-inline-block` sets `display: inline-block;`
 - `.d-inline-flex` sets `display: inline-flex;`
 - `.d-grid` sets `display: grid;`
+- `.d-inline-grid` sets `display: inline-grid;`
 - `.d-table` sets `display: table;`
 - `.d-table-row` sets `display: table-row;`
 - `.d-table-cell` sets `display: table-cell;`
@@ -243,6 +244,7 @@ You will need to take into account any other CSS properties, such as `visibility
 - `.print-inline-block`
 - `.print-inline-flex`
 - `.print-grid`
+- `.print-inline-grid`
 - `.print-table`
 - `.print-table-row`
 - `.print-table-cell`
