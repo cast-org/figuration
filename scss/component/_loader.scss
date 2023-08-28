@@ -24,7 +24,6 @@
             border: $loader-circle-border-width solid transparent;
             // stylelint-disable-next-line property-disallowed-list
             border-radius: 50%;
-
         }
         &::after {
             border-left-color: currentcolor;

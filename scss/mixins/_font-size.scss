@@ -73,11 +73,11 @@ $fs-minimum: strip-unit($fs-minimum);
         $variable-unit: if($responsive-font-size-fluid-two-dimensional, vmin, vw);
 
         // Calculate the variable width between 0 and $fs-breakpoint.
-        // stylelint-disable-next-line function-whitespace-after
+        // stylelint-disable-next-line stylistic/function-whitespace-after
         $variable-width: divide($fs-diff * 100, $fs-breakpoint)#{$variable-unit};
 
         // Set the calculated font-size.
-        // stylelint-disable-next-line function-whitespace-after
+        // stylelint-disable-next-line stylistic/function-whitespace-after
         $fs-fluid: add($fs-min, $variable-width)#{$fs-append};
     }
 
@@ -100,6 +100,7 @@ $fs-minimum: strip-unit($fs-minimum);
             font-size: $fs-static;
         }
 
+        // stylelint-disable media-query-no-invalid
         @if $responsive-font-size-fluid-two-dimensional {
             @media (max-width: #{$mq-value}), (max-height: #{$mq-value}) {
                 font-size: $fs-fluid;
@@ -109,6 +110,7 @@ $fs-minimum: strip-unit($fs-minimum);
                 font-size: $fs-fluid;
             }
         }
+        // stylelint-enable media-query-no-invalid
     }
 }
 

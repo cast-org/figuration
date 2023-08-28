@@ -100,9 +100,10 @@
     "slugify": "^1.6.6",
     "stylelint": "^15.10.3",
     "stylelint-config-recess-order": "^4.3.0",
-    "stylelint-config-recommended-scss": "^8.0.0",
-    "stylelint-config-standard": "^29.0.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-standard": "^34.0.0",
     "stylelint-scss": "^4.7.0",
+    "stylelint-stylistic": "^0.4.3",
     "time-grunt": "^2.0.0"
   },
   "files": [
