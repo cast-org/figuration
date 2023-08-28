@@ -570,8 +570,8 @@
     .cf-toc-align {
       display: grid;
       grid-template-areas: "lead toc" "content toc";
-      grid-template-columns: 3.25fr 1fr;
       grid-template-rows: auto 1fr;
+      grid-template-columns: 3.25fr 1fr;
     }
   }
   @media (min-width: 75em) {
@@ -788,11 +788,11 @@ pre[class*="language-"] {
   color: #3f3f3f;
   text-align: right;
   word-break: normal;
-  word-spacing: normal;
   -moz-tab-size: 4;
     -o-tab-size: 4;
        tab-size: 4;
   white-space: pre;
+  word-spacing: normal;
   direction: rtl;
 }
 
