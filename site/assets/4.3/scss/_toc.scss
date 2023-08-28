@@ -55,8 +55,8 @@
         @include media-breakpoint-up(lg) {
             display: grid;
             grid-template-areas: "lead toc" "content toc";
-            grid-template-columns: 3.25fr 1fr;
             grid-template-rows: auto 1fr;
+            grid-template-columns: 3.25fr 1fr;
         }
         @include media-breakpoint-up(xl) {
             grid-template-columns: 4fr 1fr;

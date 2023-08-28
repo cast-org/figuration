@@ -47,6 +47,7 @@
       "ignoreMediaFeatureNames": ["prefers-reduced-motion"]
     }],
     "media-feature-name-no-vendor-prefix": true,
+    "media-feature-range-notation": null,
     "no-descending-specificity": null,
     "no-duplicate-selectors": true,
     "property-disallowed-list": [
