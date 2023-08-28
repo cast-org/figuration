@@ -389,12 +389,12 @@
     box-sizing: border-box;
     width: $form-range-thumb-width;
     height: $form-range-thumb-height;
+    appearance: none;
     background-color: $form-range-thumb-bg;
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
     @include transition($input-transition);
-    appearance: none;
 
     &:active {
         background-color: $form-range-thumb-active-bg;

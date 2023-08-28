@@ -521,9 +521,9 @@
             @if $bprule == "" or ($enable-card-columns-responsive and $bprule != "") {
                 @include media-breakpoint-up(#{$breakpoint}) {
                     .card-columns#{$bprule} {
-                        margin-bottom: $card-margin-bottom;
                         column-count: $card-columns-count;
                         column-gap: $card-columns-column-gap;
+                        margin-bottom: $card-margin-bottom;
                         orphans: 1;
                         widows: 1;
 

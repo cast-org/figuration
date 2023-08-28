@@ -74,7 +74,7 @@
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
     $min: breakpoint-min($name, $breakpoints);
     @if $min {
-        @media (min-width: $min) {
+        @media (min-width: $min) { // stylelint-disable-line media-query-no-invalid
             @content;
         }
     } @else {
@@ -87,7 +87,7 @@
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
     $max: breakpoint-max($name, $breakpoints);
     @if $max {
-        @media (max-width: $max) {
+        @media (max-width: $max) { // stylelint-disable-line media-query-no-invalid
             @content;
         }
     } @else {
@@ -102,7 +102,7 @@
     $max: breakpoint-max($upper, $breakpoints);
 
     @if $min != null and $max != null {
-        @media (min-width: $min) and (max-width: $max) {
+        @media (min-width: $min) and (max-width: $max) { // stylelint-disable-line media-query-no-invalid
             @content;
         }
     } @else if $max == null {
@@ -124,7 +124,7 @@
     $max: breakpoint-max($name, $breakpoints);
 
     @if $min != null and $max != null {
-        @media (min-width: $min) and (max-width: $max) {
+        @media (min-width: $min) and (max-width: $max) { // stylelint-disable-line media-query-no-invalid
             @content;
         }
     } @else if $max == null {
