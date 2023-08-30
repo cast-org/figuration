@@ -41,7 +41,7 @@ docs/.jekyll-cache
 *.sublime-workspace
 nbproject
 Thumbs.db
-desktop.ini
+/.vscode/
 
 # grunt-html-validation
 validation-report.json
