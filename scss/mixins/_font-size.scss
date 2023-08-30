@@ -74,7 +74,7 @@ $fs-minimum: strip-unit($fs-minimum);
 
         // Calculate the variable width between 0 and $fs-breakpoint.
         // stylelint-disable-next-line stylistic/function-whitespace-after
-        $variable-width: divide($fs-diff * 100, $fs-breakpoint)#{$variable-unit};
+        $variable-width: #{divide($fs-diff * 100, $fs-breakpoint)}#{$variable-unit};
 
         // Set the calculated font-size.
         // stylelint-disable-next-line stylistic/function-whitespace-after
