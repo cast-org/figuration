@@ -16,6 +16,8 @@ Note that the float utilities do not have any affect on items inside flex contai
 
 Instead of using `left/right` designators, the float utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/).
 
+Use the [clearfix utility]({{ site.path }}/{{ version.docs }}/utilities/clearfix/) on a parent element to clear floats.
+
 {% capture example %}
 <div class="float-start">Float start aligned on all viewport sizes</div><br>
 <div class="float-end">Float end aligned on all viewport sizes</div><br>
