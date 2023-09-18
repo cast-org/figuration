@@ -61,7 +61,7 @@ Change the style of `.nav` components with modifiers and utilities. Mix and matc
 
 ### Horizontal Alignment
 
-Change the horizontal alignment of your nav with [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+Change the horizontal alignment of your nav with [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/#justify-content). By default, navs are left-aligned, but you can easily change them to center or right aligned.
 
 Centered with `.flex-center`:
 
@@ -387,7 +387,7 @@ The side the lines appear on can be swapped by adding `.nav-reverse` to the `.na
 
 ### Fill and Justify
 
-Force your `.nav`’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-items`, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
+Force your `.nav`’s contents to extend the full available width with one of two modifier classes. To proportionately fill all available space with your `.nav-items`, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
 {% capture example %}
 <ul class="nav nav-pills nav-fill">

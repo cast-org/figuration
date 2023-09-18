@@ -197,16 +197,16 @@ Use `.text-{color}` utility classes instead of the `border-{color}` ones because
 
 {% capture example %}
 <div class="d-flex flex-column flex-items-center">
-  <div class="loader-circle fs-4xlarge" role="status" aria-hidden="true"></div>
-  <strong>Loading...</strong>
+  <div class="loader-circle fs-4xlarge" aria-hidden="true"></div>
+  <strong role="status">Loading...</strong>
 </div>
 {% endcapture %}
 {% renderExample example %}
 
 {% capture example %}
 <div class="d-flex flex-items-center flex-between">
-  <strong>Loading...</strong>
-  <div class="loader-circle fs-4xlarge" role="status" aria-hidden="true"></div>
+  <strong role="status">Loading...</strong>
+  <div class="loader-circle fs-4xlarge" aria-hidden="true"></div>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -239,24 +239,24 @@ Use loaders within buttons to indicate that an action is taking place.
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="loader-circle" role="status" aria-hidden="true"></span>
-  <span class="sr-only">Loading...</span>
+  <span class="loader-circle" aria-hidden="true"></span>
+  <span class="sr-only" role="status">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="loader-circle" role="status" aria-hidden="true"></span>
-  Loading...
+  <span class="loader-circle" aria-hidden="true"></span>
+  <span role="status">Loading...</span>
 </button>
 {% endcapture %}
 {% renderExample example %}
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="loader-double" role="status" aria-hidden="true"></span>
-  <span class="sr-only">Loading...</span>
+  <span class="loader-double" aria-hidden="true"></span>
+  <span class="sr-only" role="status">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="loader-double" role="status" aria-hidden="true"></span>
-  Loading...
+  <span class="loader-double" aria-hidden="true"></span>
+  <span role="status">Loading...</span>
 </button>
 {% endcapture %}
 {% renderExample example %}
