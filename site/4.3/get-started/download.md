@@ -17,7 +17,7 @@ toc: true
             Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
         </div>
         <div class="card-footer text-sm-center">
-            <a href="{{ download.dist | valueIfEmpty: site.download.dist }}" class="btn btn-info"{% if site.environment == "production" %} onclick="gtag('event', 'Download compiled {{ site.version.current }}');"{% endif %}>Download Figuration</a>
+            <a href="{{ download.dist | valueIfEmpty: site.download.dist }}" class="btn btn-info" target="_blank" rel="noopener"{% if site.environment == "production" %} onclick="gtag('event', 'Download compiled {{ site.version.current }}');"{% endif %}>Download Figuration</a>
         </div>
       </div>
     </div>
@@ -25,10 +25,10 @@ toc: true
       <div class="card card-download">
         <h3 class="h4 card-header text-light" style="background-color: #246;">Source Files</h3>
         <div class="card-body">
-            Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc">postcss-calc</a>, and <a href="{{ site.path }}/{{ version.docs }}/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
+            Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer" target="_blank" rel="noopener">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes" target="_blank" rel="noopener">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc" target="_blank" rel="noopener">postcss-calc</a>, and <a href="{{ site.path }}/{{ version.docs }}/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
         </div>
         <div class="card-footer text-sm-center">
-            <a href="{{ download.source | valueIfEmpty: site.download.source }}" class="btn"{% if site.environment == "production" %} onclick="gtag('event', 'Download source {{ site.version.current }}');"{% endif %}>Download source</a>
+            <a href="{{ download.source | valueIfEmpty: site.download.source }}" class="btn" target="_blank" rel="noopener"{% if site.environment == "production" %} onclick="gtag('event', 'Download source {{ site.version.current }}');"{% endif %}>Download source</a>
         </div>
       </div>
     </div>
