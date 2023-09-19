@@ -5,6 +5,7 @@ const slugify = require('slugify');
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItAnchor = require('markdown-it-anchor');
+const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const nestingToc = require('eleventy-plugin-nesting-toc');
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
 
@@ -60,10 +61,20 @@ module.exports = function(eleventyConfig) {
              placement: 'after'
         })
     };
+    const markdownItLinkAttributesOptions = {
+        matcher(href) {
+            return href.match(/^https?:\/\//);
+        },
+        attrs: {
+            target: "_blank",
+            rel: "noopener"
+        }
+    };
     const md = new markdownIt();
     eleventyConfig.setLibrary('md', markdownIt(markdownItOptions)
         .use(markdownItAttrs)
         .use(markdownItAnchor, markdownItAnchorOptions)
+        .use(markdownItLinkAttributes, markdownItLinkAttributesOptions)
     );
 
     // Use singular short codes for syntax highlights and examples

@@ -87,6 +87,7 @@
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
+    "markdown-it-link-attributes": "^4.0.1",
     "node-sass": "^9.0.0",
     "npm-run-all2": "^6.0.6",
     "popper.js": "^1.16.1",
