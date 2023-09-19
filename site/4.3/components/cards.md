@@ -454,7 +454,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled aria-disabled="true"">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
