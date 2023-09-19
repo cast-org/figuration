@@ -58,7 +58,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
@@ -79,7 +79,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
@@ -107,7 +107,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="d-flex">
@@ -137,7 +137,7 @@ With the `.navbar-brand` in the collapsing area.
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="d-flex">
@@ -248,7 +248,7 @@ Here's an example of some sub-components included in a default, light navbar:
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <form class="d-flex">
@@ -333,7 +333,7 @@ Add `.active` directly to a `.nav-link`, to indicate a certain state, such as th
         <a href="#" class="nav-link">Pricing</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
@@ -355,7 +355,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
       <a href="#" class="nav-link active" aria-current="page">Home</a>
       <a href="#" class="nav-link">Features</a>
       <a href="#" class="nav-link">Pricing</a>
-      <a class="nav-link disabled">Disabled</a>
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
     </div>
   </div>
 </nav>
@@ -384,7 +384,7 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>
@@ -493,7 +493,7 @@ You can also use utility classes to align navbar text to other navbar elements l
         <a href="#" class="nav-link">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
     <span class="navbar-text">
@@ -524,7 +524,7 @@ Add `.disabled` to a `.nav-link` to indicate a disabled state.
         <a href="#" class="nav-link">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
       <li class="nav-item">
         <span class="nav-link disabled">Disabled</span>
@@ -545,7 +545,7 @@ Add `.disabled` to a `.nav-link` to indicate a disabled state.
         <a href="#" class="nav-link">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
       <li class="nav-item">
         <span class="nav-link disabled">Disabled</span>
@@ -647,7 +647,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
       <form class="d-flex float-end">
@@ -670,7 +670,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
       <form class="d-flex float-end">
@@ -693,7 +693,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
       <form class="d-flex float-end">

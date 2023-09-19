@@ -45,7 +45,7 @@ Here is a static example showing the dropdown layout and content pieces.
     <ul class="dropdown-menu open">
       <li class="dropdown-header">Sample Header</li>
       <li><a href="#">Action</a></li>
-      <li><a class="disabled">Disabled action</a></li>
+      <li><a class="disabled" aria-disabled="true">Disabled action</a></li>
       <li class="dropdown-submenu">
         <button class="dropdown-item open">Something else here</button>
         <ul class="dropdown-menu dropdown-subalign-forward open">
@@ -237,7 +237,7 @@ Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ d
 {% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
-  <li><a class="disabled">Disabled link</a></li>
+  <li><a class="disabled" aria-disabled="true">Disabled link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
 {% endcapture %}
@@ -310,7 +310,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
       </ul>
     </li>
     <li class="dropdown-divider"></li>
-    <li><a class="disabled">Disabled item</a></li>
+    <li><a class="disabled" aria-disabled="true">Disabled item</a></li>
   </ul>
 </div>
 {% endcapture %}
@@ -523,7 +523,7 @@ Add `.dropreverse` to a `.dropdown-menu` to align the dropdown menu to the right
       </ul>
     </li>
     <li class="dropdown-divider"></li>
-    <li><a class="disabled">Disabled link</a></li>
+    <li><a class="disabled" aria-disabled="true">Disabled link</a></li>
   </ul>
 </div>
 {% endcapture %}
@@ -559,7 +559,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the `.dropdown-menu
         </ul>
       </li>
       <li class="dropdown-divider"></li>
-      <li><a class="disabled">Disabled link</a></li>
+      <li><a class="disabled" aria-disabled="true">Disabled link</a></li>
     </ul>
   </div>
 </div>

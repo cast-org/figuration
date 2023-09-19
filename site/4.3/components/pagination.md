@@ -137,7 +137,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link disabled">Previous</a>
+      <a class="page-link disabled" aria-disabled="true">Previous</a>
     </li>
     <li class="page-item">
       <a href="#" class="page-link active" aria-current="page">1</a>
@@ -151,7 +151,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 <nav aria-label="...">
   <ul class="pagination pagination-spaced">
     <li class="page-item">
-      <a class="page-link disabled">Previous</a>
+      <a class="page-link disabled" aria-disabled="true">Previous</a>
     </li>
     <li class="page-item">
       <a href="#" class="page-link active" aria-current="page">1</a>
@@ -165,7 +165,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 <nav aria-label="...">
   <ul class="pagination pagination-group">
     <li class="page-item">
-      <a class="page-link disabled">Previous</a>
+      <a class="page-link disabled" aria-disabled="true">Previous</a>
     </li>
     <li class="page-item">
       <a href="#" class="page-link active" aria-current="page">1</a>
@@ -258,7 +258,7 @@ Fancy larger or smaller pagination? Add `.pagination-xsmall`, `.pagination-small
   </nav>
   <nav aria-label="...">
     <ul class="pagination pagination-group pagination-large">
-        <li class="page-item"><span class="page-link disabled">Previous</span></li>
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
       <li class="page-item"><a href="#" class="page-link">1</a></li>
       <li class="page-item"><a href="#" class="page-link">2</a></li>
       <li class="page-item"><span class="page-text">&hellip;</span></li>

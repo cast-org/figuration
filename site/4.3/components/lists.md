@@ -443,7 +443,7 @@ Be sure to **not use the standard `.btn` classes here**.
 <div class="list">
   <a href="#" class="list-item list-item-action active" aria-current="true">Active list item</a>
   <a href="#" class="list-item list-item-action">List item 2</a>
-  <a class="list-item list-item-action disabled">Disabled list item</a>
+  <a class="list-item list-item-action disabled" aria-disabled="true">Disabled list item</a>
 </div>
 {% endcapture %}
 {% renderExample example %}
