@@ -445,7 +445,7 @@
       overflow-y: auto;
     }
     .cf-search ~ .cf-links {
-      max-height: calc(100vh - 6.5rem - 1px);
+      max-height: calc(100vh - 6.6875rem - 1px);
     }
   }
 }

@@ -43,7 +43,7 @@
             overflow-y: auto;
 
             .cf-search ~ & {
-                max-height: subtract(100vh, add(3.375rem, add(3.125rem, 1px, false), false));
+                max-height: subtract(100vh, add(3.375rem, add(3.3125rem, 1px, false), false));
             }
         }
     }
