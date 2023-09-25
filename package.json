@@ -95,7 +95,7 @@
     "postcss-calc": "^9.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "prismjs": "^1.29.0",
-    "qunit": "^2.19.4",
+    "qunit": "^2.20.0",
     "shelljs": "^0.8.5",
     "shx": "^0.3.4",
     "slugify": "^1.6.6",
