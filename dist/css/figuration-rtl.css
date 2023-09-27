@@ -167,6 +167,7 @@ small, .small {
 
 mark, .mark {
   padding: 0.125em 0.25em;
+  color: #262d34;
   background-color: #ff0;
 }
 
