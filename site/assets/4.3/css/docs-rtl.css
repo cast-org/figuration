@@ -23,6 +23,9 @@
 
 .cf-content a,
 .cf-content button,
+.cf-content input,
+.cf-content select,
+.cf-content textarea,
 .cf-content h2,
 .cf-content h3,
 .cf-content h4,
@@ -49,6 +52,9 @@
     }
     .cf-content a,
     .cf-content button,
+    .cf-content input,
+    .cf-content select,
+    .cf-content textarea,
     .cf-content h2,
     .cf-content h3,
     .cf-content h4,
