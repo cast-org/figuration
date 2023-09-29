@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Static Top Navbar Example</title>
+
+<!-- Figuration CSS -->
+<link rel="stylesheet" href="/assets/4.4/dist/css/figuration.min.css">
+
+<!-- jQuery and Figuration JS -->
+<script src="/assets/4.4/js/vendor/jquery.slim.min.js"></script>
+<script src="/assets/4.4/js/vendor/popper.min.js"></script>
+<script src="/assets/4.4/dist/js/figuration.min.js"></script>
+
+<style>
+body {
+    min-height: 75rem;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
+    <a href="#" class="navbar-brand">Static Navbar</a>
+    <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR3" aria-label="Toggle navigation">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarR3">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link d-inline-flex" href="#" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="d-flex">
+            <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-info" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="jumbotron my-1">
+        <h1>Static Top Navbar Example</h1>
+        <p class="lead">
+            This example page shows off how a top-aligned navbar and its responsive behaviors.
+            This navbar will remain in its original position and moves with the rest of the page as you scroll.
+        </p>
+        <p>
+            In order to experience the responsive behavior of the navbar, you will have to resize your browser above and below the <code>lg</code> breakpoint.
+        </p>
+        <p>
+            <a href="/4.4/components/navbar/" class="btn btn-lg btn-primary">View navbar docs &raquo;</a>
+        </p>
+    </div>
+</main>
+
+</body>
+</html>

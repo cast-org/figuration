@@ -1,0 +1,102 @@
+// stylelint-disable selector-no-qualifying-type
+.cf-sidebar {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 0;
+    background-color: palette($uibase, 50);
+    border-bottom: 1px solid $uibase-200;
+
+    @include media-breakpoint-up(md) {
+        padding-top: 0;
+        padding-bottom: 1rem;
+        //overflow: hidden;
+        border-right: 1px solid $uibase-200;
+        border-bottom: 0;
+
+        @supports (position: sticky) {
+            position: sticky;
+            top: 3.375rem;
+            max-height: subtract(100vh, 3.375rem);
+        }
+    }
+}
+
+.cf-sidebar-header {
+    margin-bottom: .125rem;
+    margin-left: 0;
+    white-space: nowrap;
+}
+
+.cf-links {
+    padding-top: .5rem;
+
+    @include media-breakpoint-up(md) {
+        // stylelint-disable-next-line declaration-no-important
+        display: block !important;
+
+        @supports (position: sticky) {
+            max-height: subtract(100vh, 3.375rem);
+            padding-right: 1rem;
+            padding-bottom: 1rem;
+            margin-right: -1rem;
+            overflow-x: visible;
+            overflow-y: auto;
+
+            .cf-search ~ & {
+                max-height: subtract(100vh, add(3.375rem, add(3.3125rem, 1px, false), false));
+            }
+        }
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 0;
+        color: $uibase-700;
+        text-align: left;
+        text-decoration: none;
+        background-color: transparent;
+        border-width: 0;
+        @include border-radius(0);
+
+        .nav-link-inner {
+            display: inline-block;
+            padding: .125rem .5rem;
+        }
+
+        &.active {
+            font-weight: $font-weight-bolder;
+            color: $uibase-900;
+        }
+
+        @include hover-focus() {
+            outline: 0;
+
+            .nav-link-inner {
+                color: $white;
+                text-decoration: none;
+                background-color: $info;
+                @include border-radius($border-radius);
+            }
+        }
+    }
+
+    .has-children {
+        .caret {
+            position: relative;
+            left: -.25em;
+
+            &::after {
+                @include caret-end($caret-border-width);
+            }
+        }
+        .open .caret {
+            &::after {
+                @include caret-down($caret-border-width);
+            }
+        }
+        .nav-link:not(.cf-sidebar-header) {
+            margin-left: 1rem;
+        }
+    }
+}
