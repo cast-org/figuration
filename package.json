@@ -1,9 +1,9 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
-  "version": "4.3.4",
+  "version": "4.4.0",
   "config": {
-    "versionShort": "4.3"
+    "versionShort": "4.4"
   },
   "keywords": [
     "css",
@@ -91,7 +91,7 @@
     "node-sass": "^9.0.0",
     "npm-run-all2": "^6.0.6",
     "popper.js": "^1.16.1",
-    "postcss": "^8.4.30",
+    "postcss": "^8.4.31",
     "postcss-calc": "^9.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "prismjs": "^1.29.0",

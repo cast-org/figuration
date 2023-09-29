@@ -1,7 +1,7 @@
 module.exports = {
   "version": {
-    "current":      "4.3.4",
-    "docs":         "4.3"
+    "current":      "4.4.0",
+    "docs":         "4.4"
   },
   "date": "Last Modified",
   "sitemapIgnore":  false,
@@ -20,12 +20,12 @@ module.exports = {
   },
 
   "cdn": {
-      "css":            "https://cdn.jsdelivr.net/npm/figuration@4.3.4/dist/css/figuration.min.css",
-      "css_hash":       "sha384-27CNaeuUaKPPrvwYwtjW6JjqUhh89RcT4omYkXN4YpgUq6cfund39CEtVn1Q3Fah",
-      "js":             "https://cdn.jsdelivr.net/npm/figuration@4.3.4/dist/js/figuration.min.js",
-      "js_hash":        "sha384-mzBA/Zs5EuMaHKeM9e/x6uFYjpMlvciW2JRchT/WjcDgj7F4qPGHUDgJ/htfgHRg",
-      "css_rtl":        "https://cdn.jsdelivr.net/npm/figuration@4.3.4/dist/css/figuration-rtl.min.css",
-      "css_rtl_hash":   "sha384-+VpCfLupVBtE8AS2Pm1EhhHl1urQD+c5tzpnXngZ1TPJodt1pFDLGAYa4InFPJ2i",
+      "css":            "https://cdn.jsdelivr.net/npm/figuration@4.4.0/dist/css/figuration.min.css",
+      "css_hash":       "sha384-LoHzFyMpJ/5QljDjSWS5LLkG/cF8LTBrHzd5nljsHCu7kNjUjNBqO4xm7kax1Eqi",
+      "js":             "https://cdn.jsdelivr.net/npm/figuration@4.4.0/dist/js/figuration.min.js",
+      "js_hash":        "sha384-YE5dUlnt6uS3mOG8+ju4SsvmAjwr6J17gnJ4lYMFIcVl4K3BibdylOcS4E83iQBy",
+      "css_rtl":        "https://cdn.jsdelivr.net/npm/figuration@4.4.0/dist/css/figuration-rtl.min.css",
+      "css_rtl_hash":   "sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb",
       "jquery":         "https://code.jquery.com/jquery-3.7.1.slim.min.js",
       "jquery_hash":    "sha384-5AkRS45j4ukf+JbWAfHL8P4onPA9p0KwwP7pUdjSQA3ss9edbJUJc/XcYAiheSSz",
       "popper":         "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
@@ -35,8 +35,8 @@ module.exports = {
    },
 
   "download": {
-    "source":       "https://github.com/cast-org/figuration/archive/v4.3.4.zip",
-    "dist":         "https://github.com/cast-org/figuration/releases/download/v4.3.4/figuration-4.3.4-dist.zip"
+    "source":       "https://github.com/cast-org/figuration/archive/v4.4.0.zip",
+    "dist":         "https://github.com/cast-org/figuration/releases/download/v4.4.0/figuration-4.4.0-dist.zip"
   },
 
   "nav": [

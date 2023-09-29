@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Migration to v4.3.x
+title: Migration to v4.4.x
 description: A brief rundown of major changes to get you started upgrading.
 group: get-started
 toc: true
