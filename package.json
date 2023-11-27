@@ -82,7 +82,7 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-qunit": "^4.1.2",
     "karma-sauce-launcher": "^4.3.6",
-    "linkinator": "^5.0.2",
+    "linkinator": "^6.0.2",
     "load-grunt-tasks": "^5.1.0",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
