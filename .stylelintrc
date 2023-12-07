@@ -64,7 +64,6 @@
     'scss/at-extend-no-missing-placeholder': null,
     "scss/at-function-parentheses-space-before": "never",
     'scss/at-if-no-null': null,
-    "scss/at-import-no-partial-leading-underscore": true,
     "scss/at-mixin-argumentless-call-parentheses": "always",
     "scss/at-mixin-named-arguments": null,
     "scss/at-mixin-parentheses-space-before": "never",
@@ -77,6 +76,7 @@
     }],
     "scss/dollar-variable-no-missing-interpolation": true,
     'scss/function-quote-no-quoted-strings-inside': null,
+    "scss/load-no-partial-leading-underscore": true,
     "scss/media-feature-value-dollar-variable": null,
     "scss/no-duplicate-dollar-variables": [ null, {
         "ignoreInsideAtRules": [ "if", "mixin" ]
