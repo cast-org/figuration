@@ -84,7 +84,7 @@
     "karma-sauce-launcher": "^4.3.6",
     "linkinator": "^6.0.2",
     "load-grunt-tasks": "^5.1.0",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
     "markdown-it-link-attributes": "^4.0.1",
