@@ -91,7 +91,7 @@
     "node-sass": "^9.0.0",
     "npm-run-all2": "^6.1.1",
     "popper.js": "^1.16.1",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "postcss-calc": "^9.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "prismjs": "^1.29.0",
