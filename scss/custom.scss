@@ -1,0 +1,15 @@
+// Custom inclusion test
+
+@use "figuration" with (
+  $font-size-root: 2rem,
+  $border-width: 3px,
+);
+
+.customfont {
+  @include figuration.font-size(2rem);
+}
+
+.customcolor {
+  color: figuration.palette(red, 100);
+  background: figuration.$light;
+}

@@ -1,36 +1,35 @@
 // Toggles
 // Used in conjunction with global variables to enable certain theme features.
-@import "mixins/box-shadow";
-@import "mixins/font-size";
-@import "mixins/gradients";
-@import "mixins/transition";
+@forward "mixins/box-shadow";
+// @import "mixins/gradients";
+// @import "mixins/transition";
 
 // Utilities
-@import "mixins/border";
-@import "mixins/breakpoints";
-@import "mixins/hover";
-@import "mixins/images";
-@import "mixins/screen-reader";
-@import "mixins/reset-text";
-@import "mixins/text-emphasis";
-@import "mixins/text-truncate";
-@import "mixins/visibility";
+@forward "mixins/border";
+// @import "mixins/breakpoints";
+// @import "mixins/hover";
+@forward "mixins/images";
+// @import "mixins/screen-reader";
+// @import "mixins/reset-text";
+// @import "mixins/text-emphasis";
+// @import "mixins/text-truncate";
+// @import "mixins/visibility";
 
 // Components
-@import "mixins/alert";
-@import "mixins/backdrop";
-@import "mixins/buttons";
-@import "mixins/caret";
-@import "mixins/divider";
-@import "mixins/forms";
-@import "mixins/lists";
-@import "mixins/pagination";
-@import "mixins/switch";
-@import "mixins/tables";
-@import "mixins/modal";
+// @import "mixins/alert";
+// @import "mixins/backdrop";
+// @import "mixins/buttons";
+// @import "mixins/caret";
+// @import "mixins/divider";
+// @import "mixins/forms";
+@forward "mixins/lists";
+// @import "mixins/pagination";
+// @import "mixins/switch";
+@forward "mixins/tables";
+// @import "mixins/modal";
 
 // Layout
-@import "mixins/clearfix";
-@import "mixins/containers";
-@import "mixins/grid";
-@import "mixins/float";
+// @import "mixins/clearfix";
+// @import "mixins/containers";
+// @import "mixins/grid";
+// @import "mixins/float";

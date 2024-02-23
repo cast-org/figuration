@@ -1,3 +1,9 @@
+// Root CSS variables
+$enable-root:                               true !default;
+$enable-root-colors:                        true !default;
+$enable-root-breakpoints:                   true !default;
+$enable-root-fonts:                         true !default;
+
 // Container
 $enable-container:                          true !default;
 $enable-container-responsive:               true !default;
@@ -196,7 +202,7 @@ $enable-progress:                           true !default;
 $enable-progress-striped:                   true !default;
 $enable-progress-animated:                  true !default;
 
-// Dropdown
+//Dropdown
 $enable-dropdown:                           true !default;
 $enable-dropdown-header:                    true !default;
 $enable-dropdown-text:                      true !default;

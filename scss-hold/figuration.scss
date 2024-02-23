@@ -1,0 +1,65 @@
+/*!
+ * Figuration (v4.4.0)
+ * https://figuration.org
+ * Copyright 2013-2023 CAST, Inc.
+ * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
+ */
+
+// Functions
+@import "functions";
+
+// Settings variables
+@import "settings";
+
+// Enable/disable granular options
+@import "settings-options";
+
+// Mixins
+@import "mixins";
+
+// Core CSS items - extend on the base HTML
+@import "core/root";
+@import "core/reboot";
+@import "core/typography";
+@import "core/code";
+@import "core/images";
+@import "core/tables";
+@import "forms";
+@import "core/buttons";
+
+// Components - additional functionality and layout
+@import "component/container";
+@import "component/grid";
+@import "component/animation";
+@import "component/caret";
+@import "component/close";
+@import "component/drag";
+@import "component/progress";
+@import "component/list";
+@import "component/button-group";
+@import "component/input-group";
+@import "component/breadcrumb";
+@import "component/pagination";
+@import "component/dropdown";
+@import "component/nav";
+@import "component/navbar";
+@import "component/jumbotron";
+@import "component/badge";
+@import "component/media";
+@import "component/card";
+@import "component/alert";
+@import "component/loader";
+@import "component/placeholder";
+
+// Components w/ JavaScript
+@import "component/offcanvas";
+@import "component/modal";
+@import "component/tooltip";
+@import "component/popover";
+//@import "component/player"; -- Create base CSS ?
+
+// Utility classes
+@import "utilities";
+
+// Print overrides
+@import "core/print";

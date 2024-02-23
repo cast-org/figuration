@@ -1,0 +1,32 @@
+// Lists
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+@mixin list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+// List context color
+@mixin list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border, $active-bg: $hover-bg, $active-color: $hover-color, $active-border: $hover-border) {
+    @if $enable-list-item-action {
+        .list-item-action.list-item-#{$state} {
+            @include hover-focus() {
+                color: $hover-color;
+                background-color: $hover-bg;
+                border-color: $hover-border;
+            }
+        }
+    }
+
+    .list-item-#{$state} {
+        color: $color;
+        background-color: $bg;
+        border-color: $border;
+
+        &.active {
+            color: $active-color;
+            background-color: $active-bg;
+            border-color: $active-border;
+        }
+    }
+}

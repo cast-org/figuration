@@ -1,3 +1,11 @@
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../mixins" as *;
+@use "../vendor/rfs" as *;
+
 // Targeting th & td with universal selectors
 // Using:  `> :not(caption) > * > *`
 //
@@ -11,226 +19,226 @@
 
 
 @if $enable-table {
-    // Basic table
-    .table {
-        width: 100%;
-        margin-bottom: $table-margin-bottom;
-        vertical-align: $table-cell-vertical-align;
-        background-color: $table-bg;
-        border: 0 solid;
-        border-color: $table-border-color;
+  // Basic table
+  .table {
+    width: 100%;
+    margin-bottom: $table-margin-bottom;
+    vertical-align: $table-cell-vertical-align;
+    background-color: $table-bg;
+    border: 0 solid;
+    border-color: $table-border-color;
 
-        // stylelint-disable-next-line selector-max-universal
-        > :not(caption) > * > * {
-            padding: $table-cell-padding;
-            box-shadow: none;
-        }
-
-        thead {
-            th {
-                text-align: $table-head-horizontal-align;
-                vertical-align: $table-head-vertical-align;
-            }
-        }
-
-        tbody {
-            vertical-align: inherit;
-        }
+    // stylelint-disable-next-line selector-max-universal
+    > :not(caption) > * > * {
+      padding: $table-cell-padding;
+      box-shadow: none;
     }
 
-    // Horizontal borders
-    @if $enable-table-borders {
-        .table-bordered,
-        .table-celled,
-        .table-divided,
-        .table-ruled {
-            // stylelint-disable-next-line selector-max-universal
-            > :not(caption) > * > * {
-                border-top-width: $table-border-width;
-            }
-
-            // stylelint-disable-next-line selector-max-universal
-            > thead > * > * {
-                border-bottom-color: $table-head-border-color;
-                border-bottom-width: $table-head-border-width;
-            }
-
-            > tbody + tbody > :first-child {
-                border-top-color: $table-body-border-color;
-                border-top-width: $table-body-border-width;
-            }
-
-            > tfoot > :first-child > * {
-                border-top-color: $table-foot-border-color;
-                border-top-width: $table-foot-border-width;
-                border-bottom-width: 0;
-            }
-        }
-
-        .table-celled,
-        .table-divided {
-            > thead > :first-child > * {
-                border-top-width: 0;
-            }
-        }
-
-        .table-bordered,
-        .table-ruled {
-            // stylelint-disable-next-line selector-max-universal
-            > tfoot > * > * {
-                border-bottom-width: $table-border-width;
-            }
-        }
-
-        .table-bordered,
-        .table-wrapped,
-        .table-ruled {
-            border-top-width: $table-border-width;
-            border-bottom-width: $table-border-width;
-        }
-
-        // Vertical borders
-        .table-bordered,
-        .table-celled,
-        .table-pillared,
-        .table-walled {
-            // stylelint-disable selector-max-universal
-            > :not(caption) > * > * {
-                border-left-width: $table-border-width;
-
-                &:last-child {
-                    border-right-width: $table-border-width;
-                }
-            }
-            // stylelint-enable selector-max-universal
-        }
-
-        .table-pillared,
-        .table-celled {
-            // stylelint-disable selector-max-universal
-            > :not(caption) > * > * {
-                &:first-child {
-                    border-left-width: 0;
-                }
-                &:last-child {
-                    border-right-width: 0;
-                }
-            }
-            // stylelint-enable selector-max-universal
-        }
-
-        .table-bordered,
-        .table-wrapped,
-        .table-walled {
-            border-right-width: $table-border-width;
-            border-left-width: $table-border-width;
-        }
+    thead {
+      th {
+        text-align: $table-head-horizontal-align;
+        vertical-align: $table-head-vertical-align;
+      }
     }
 
-    // Striped rows
-    @if $enable-table-striped {
-        .table-striped {
-            > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
-                box-shadow: $table-striped-box-shadow;
-            }
-        }
-        .table-striped-alt {
-            > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
-                box-shadow: $table-striped-alt-box-shadow;
-            }
-        }
+    tbody {
+      vertical-align: inherit;
+    }
+  }
+
+  // Horizontal borders
+  @if $enable-table-borders {
+    .table-bordered,
+    .table-celled,
+    .table-divided,
+    .table-ruled {
+      // stylelint-disable-next-line selector-max-universal
+      > :not(caption) > * > * {
+        border-top-width: $table-border-width;
+      }
+
+      // stylelint-disable-next-line selector-max-universal
+      > thead > * > * {
+        border-bottom-color: $table-head-border-color;
+        border-bottom-width: $table-head-border-width;
+      }
+
+      > tbody + tbody > :first-child {
+        border-top-color: $table-body-border-color;
+        border-top-width: $table-body-border-width;
+      }
+
+      > tfoot > :first-child > * {
+        border-top-color: $table-foot-border-color;
+        border-top-width: $table-foot-border-width;
+        border-bottom-width: 0;
+      }
     }
 
-    // Striped cols
-    @if $enable-table-striped-cols {
-        .table-striped-cols {
-            > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
-                box-shadow: $table-striped-box-shadow;
-            }
-        }
-        .table-striped-cols-alt {
-            > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
-                box-shadow: $table-striped-alt-box-shadow;
-            }
-        }
+    .table-celled,
+    .table-divided {
+      > thead > :first-child > * {
+        border-top-width: 0;
+      }
     }
 
-    // Hover effect
-    // Needs to be after striped table in order to overrule background.
-    @if $enable-table-hover {
-        .table-hover {
-            > tbody > tr:hover > * {
-                box-shadow: $table-hover-box-shadow;
+    .table-bordered,
+    .table-ruled {
+      // stylelint-disable-next-line selector-max-universal
+      > tfoot > * > * {
+        border-bottom-width: $table-border-width;
+      }
+    }
+
+    .table-bordered,
+    .table-wrapped,
+    .table-ruled {
+      border-top-width: $table-border-width;
+      border-bottom-width: $table-border-width;
+    }
+
+    // Vertical borders
+    .table-bordered,
+    .table-celled,
+    .table-pillared,
+    .table-walled {
+      // stylelint-disable selector-max-universal
+      > :not(caption) > * > * {
+        border-left-width: $table-border-width;
+
+        &:last-child {
+          border-right-width: $table-border-width;
+        }
+      }
+      // stylelint-enable selector-max-universal
+    }
+
+    .table-pillared,
+    .table-celled {
+      // stylelint-disable selector-max-universal
+      > :not(caption) > * > * {
+        &:first-child {
+          border-left-width: 0;
+        }
+        &:last-child {
+          border-right-width: 0;
+        }
+      }
+      // stylelint-enable selector-max-universal
+    }
+
+    .table-bordered,
+    .table-wrapped,
+    .table-walled {
+      border-right-width: $table-border-width;
+      border-left-width: $table-border-width;
+    }
+  }
+
+  // Striped rows
+  @if $enable-table-striped {
+    .table-striped {
+      > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
+        box-shadow: $table-striped-box-shadow;
+      }
+    }
+    .table-striped-alt {
+      > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
+        box-shadow: $table-striped-alt-box-shadow;
+      }
+    }
+  }
+
+  // Striped cols
+  @if $enable-table-striped-cols {
+    .table-striped-cols {
+      > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
+        box-shadow: $table-striped-box-shadow;
+      }
+    }
+    .table-striped-cols-alt {
+      > :not(caption) > tr > :nth-child(#{$table-striped-cols-selector}) {
+        box-shadow: $table-striped-alt-box-shadow;
+      }
+    }
+  }
+
+  // Hover effect
+  // Needs to be after striped table in order to overrule background.
+  @if $enable-table-hover {
+    .table-hover {
+      > tbody > tr:hover > * {
+        box-shadow: $table-hover-box-shadow;
+      }
+    }
+    .table-hover-alt {
+      > tbody > tr:hover > * {
+        box-shadow: $table-hover-alt-box-shadow;
+      }
+    }
+  }
+
+  // Condensed table
+  @if $enable-table-condensed {
+    .table-condensed {
+      // stylelint-disable-next-line selector-max-universal
+      > :not(caption) > * > * {
+        padding: $table-condensed-cell-padding;
+      }
+    }
+  }
+
+  // Table backgrounds
+  // Active variant
+  @if $enable-table-active {
+    @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
+  }
+
+  // Theme generation
+  @if $enable-table-colors {
+    @if (meta.type-of($table-colors) == "map" and list.length($table-colors) != 0) {
+      $mixed-table-themes: mix-context-colors($table-colors, $table-levels);
+      $table-themes: map.merge($mixed-table-themes, $table-themes);
+    }
+
+    // Contextual variants
+    @if (meta.type-of($table-themes) == "map" and list.length($table-themes) != 0) {
+      @each $theme, $colors in $table-themes {
+        $bg:       map.get($colors, "bg");
+        $hover-bg: map.get($colors, "hover-bg");
+
+        @include table-row-variant("#{$theme}", $bg, $hover-bg);
+      }
+    }
+  }
+
+  // Scrolling table
+  // Add `.table-scroll` wrapper to a table to enable horizontal scrolling.
+  // Tables will scroll when they will no longer fit width-wise in their container.
+  @if $enable-table-scroll {
+    .table-scroll {
+      @include table-scroll();
+    }
+
+    // Responsive scrolling table
+    // Tables will no longer scroll when breakpoint is larger than the one designated.
+    @if $enable-table-scroll-responsive {
+      @each $bp in $table-scroll-breakpoints {
+
+        // Skip largest breakpoint for down (equivalent to `.table-scroll`)
+        @if breakpoint-max($bp, $grid-breakpoints) != null {
+          .table-scroll-#{$bp} {
+            @include media-breakpoint-down($bp) {
+              @include table-scroll();
             }
+          }
         }
-        .table-hover-alt {
-            > tbody > tr:hover > * {
-                box-shadow: $table-hover-alt-box-shadow;
-            }
-        }
+      }
     }
+  }
 
-    // Condensed table
-    @if $enable-table-condensed {
-        .table-condensed {
-            // stylelint-disable-next-line selector-max-universal
-            > :not(caption) > * > * {
-                padding: $table-condensed-cell-padding;
-            }
-        }
-    }
-
-    // Table backgrounds
-    // Active variant
-    @if $enable-table-active {
-        @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
-    }
-
-    // Theme generation
-    @if $enable-table-colors {
-        @if (type-of($table-colors) == "map" and length($table-colors) != 0) {
-            $mixed-table-themes: _mix-context-colors($table-colors, $table-levels);
-            $table-themes: map-merge($mixed-table-themes, $table-themes);
-        }
-
-        // Contextual variants
-        @if (type-of($table-themes) == "map" and length($table-themes) != 0) {
-            @each $theme, $colors in $table-themes {
-                $bg:       map-get($colors, "bg");
-                $hover-bg: map-get($colors, "hover-bg");
-
-                @include table-row-variant("#{$theme}", $bg, $hover-bg);
-            }
-        }
-    }
-
-    // Scrolling table
-    // Add `.table-scroll` wrapper to a table to enable horizontal scrolling.
-    // Tables will scroll when they will no longer fit width-wise in their container.
-    @if $enable-table-scroll {
-        .table-scroll {
-            @include table-scroll();
-        }
-
-        // Responsive scrolling table
-        // Tables will no longer scroll when breakpoint is larger than the one designated.
-        @if $enable-table-scroll-responsive {
-            @each $bp in $table-scroll-breakpoints {
-
-                // Skip largest breakpoint for down (equivalent to `.table-scroll`)
-                @if breakpoint-max($bp, $grid-breakpoints) != null {
-                    .table-scroll-#{$bp} {
-                        @include media-breakpoint-down($bp) {
-                            @include table-scroll();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Alternate caption placement
-    .caption-top {
-        caption-side: top;
-    }
+  // Alternate caption placement
+  .caption-top {
+    caption-side: top;
+  }
 }
