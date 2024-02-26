@@ -3,7 +3,7 @@
 @use "sass:string";
 
 // Return valid calc
-@function add($value1, $value2, $return-calc: true) {
+@function calc-add($value1, $value2, $return-calc: true) {
   @if $value1 == null {
     @return $value2;
   }
@@ -19,7 +19,7 @@
   @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
 }
 
-@function subtract($value1, $value2, $return-calc: true) {
+@function calc-subtract($value1, $value2, $return-calc: true) {
   @if $value1 == null and $value2 == null {
     @return null;
   }
@@ -43,7 +43,7 @@
   @return if($return-calc == true, calc(#{$value1} - #{$value2}), $value1 + unquote(" - ") + $value2);
 }
 
-@function divide($dividend, $divisor, $precision: 10) {
+@function calc-divide($dividend, $divisor, $precision: 10) {
   $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
   $dividend: math.abs($dividend);
   $divisor: math.abs($divisor);

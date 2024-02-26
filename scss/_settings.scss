@@ -3,7 +3,9 @@
 // https://github.com/iconic/open-iconic
 
 @use "sass:map";
+@use "functions/assert";
 @use "functions/palette";
+@use "functions/map-util";
 @use "functions/rem-calc";
 
 // Prefix for :root CSS variables
@@ -729,3 +731,55 @@ $thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 $figure-spacer-y:           .5rem !default;
 $figure-caption-font-size:  .875em !default;
 $figure-caption-color:      $uibase-500 !default;
+
+// Grid breakpoints
+// =====
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+// If only one breakpoint is desired, use: $grid-breakpoints: (xs: 0);
+$grid-breakpoints: (
+  "xs": 0,
+  "sm": rem-calc.bp-to-em(576px),
+  "md": rem-calc.bp-to-em(768px),
+  "lg": rem-calc.bp-to-em(992px),
+  "xl": rem-calc.bp-to-em(1200px)
+) !default;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$grid-breakpoints: map-util.map-sort-by-values($grid-breakpoints);
+
+@include assert.assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include assert.assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+// Component and utility breakpoints
+// =====
+// Each component and utility that uses breakpoints gets its own list
+// of breakpoint keys based upon the master `$grid-breakpoints` map.
+// This way each the CSS for each of the items can be controlled and reduced as needed.
+// The items in the following lists *must* be in the keys for the `$grid-breakpoints` map.
+$responsive-container-breakpoints:  map.keys($grid-breakpoints) !default;
+$responsive-gutter-breakpoints:     map.keys($grid-breakpoints) !default;
+$row-columns-breakpoints:           map.keys($grid-breakpoints) !default;
+$card-horizontal-breakpoints:       map.keys($grid-breakpoints) !default;
+$card-deck-breakpoints:             map.keys($grid-breakpoints) !default;
+$card-group-breakpoints:            map.keys($grid-breakpoints) !default;
+$card-columns-breakpoints:          map.keys($grid-breakpoints) !default;
+$navbar-expand-breakpoints:         map.keys($grid-breakpoints) !default;
+$offcanvas-breakpoints:             map.keys($grid-breakpoints) !default;
+$table-scroll-breakpoints:          map.keys($grid-breakpoints) !default;
+$modal-fullscreen-breakpoints:      map.keys($grid-breakpoints) !default;
+$utility-border-breakpoints:        map.keys($grid-breakpoints) !default;
+$utility-display-breakpoints:       map.keys($grid-breakpoints) !default;
+$utility-flex-breakpoints:          map.keys($grid-breakpoints) !default;
+$utility-float-breakpoints:         map.keys($grid-breakpoints) !default;
+$utility-object-fit-breakpoints:    map.keys($grid-breakpoints) !default;
+$utility-position-breakpoints:      map.keys($grid-breakpoints) !default;
+$utility-sticky-top-breakpoints:    map.keys($grid-breakpoints) !default;
+$utility-sticky-bottom-breakpoints: map.keys($grid-breakpoints) !default;
+$utility-placement-breakpoints:     "xs" !default;
+$utility-translate-breakpoints:     "xs" !default;
+$utility-screen-reader-breakpoints: map.keys($grid-breakpoints) !default;
+$utility-spacing-breakpoints:       map.keys($grid-breakpoints) !default;
+$utility-text-align-breakpoints:    map.keys($grid-breakpoints) !default;
+$utility-text-size-breakpoints:     map.keys($grid-breakpoints) !default;
+$utility-valign-breakpoints:        map.keys($grid-breakpoints) !default;

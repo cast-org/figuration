@@ -151,7 +151,7 @@
 //     var v =  (c < 0.04045) ? (c / 12.92) : Math.pow((c + 0.055) / 1.055, 2.4);
 //     console.log(v);
 // }
-// stylelint-disable number-max-precision, scss/dollar-variable-colon-space-after
+// stylelint-disable number-max-precision, scss/dollar-variable-colon-space-after, scss/dollar-variable-default
 $color-channel-lookup:
   0
   .0003035269835488375

@@ -47,7 +47,7 @@ $rfs-factor: 10 !default;
   $rfs-factor: $responsive-font-size-fluid-factor;
 }
 
-@if type-of($rfs-factor) != number or $rfs-factor <= 1 {
+@if meta.type-of($rfs-factor) != number or $rfs-factor <= 1 {
   @error "`#{$rfs-factor}` is not a valid  $rfs-factor, it must be greater than 1.";
 }
 

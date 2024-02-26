@@ -1,7 +1,7 @@
 // stylelint-disable length-zero-no-unit
 
 @use "sass:list";
-@use "../functions/calc-math";
+@use "../functions/calc-util";
 
 // Remove the unit from a value, returning number only.
 // From: https://css-tricks.com/snippets/sass/strip-unit-function/
@@ -9,7 +9,7 @@
 // @return {Number} - Unitless number
 @function strip-unit($number) {
   @if type-of($number) == "number" and not unitless($number) {
-    @return calc-math.divide($number, $number * 0 + 1);
+    @return calc-util.calc-divide($number, $number * 0 + 1);
   }
 
   @return $number;
@@ -34,7 +34,7 @@
   // Calculate rem if units for $value is not rem or em
   // Using 16px = 100% font size common in most browsers
   @if unit($value) != "rem" {
-    $value: calc-math.divide(strip-unit($value), strip-unit(16px)) * 1rem;
+    $value: calc-util.calc-divide(strip-unit($value), strip-unit(16px)) * 1rem;
   }
 
   // Turn 0rem into 0
