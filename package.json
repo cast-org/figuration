@@ -73,7 +73,7 @@
     "grunt-run": "^0.8.1",
     "grunt-sass": "^3.1.0",
     "grunt-stylelint": "^0.19.0",
-    "ip": "^1.1.8",
+    "ip": "^2.0.1",
     "jquery": "^3.7.1",
     "karma": "^6.4.2",
     "karma-chrome-launcher": "^3.2.0",
