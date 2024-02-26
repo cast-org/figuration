@@ -31,6 +31,7 @@
       "lighten",
       "darken"
     ],
+    "media-query-no-invalid": true,
     "no-descending-specificity": null,
     "property-disallowed-list": [
       "border-radius",

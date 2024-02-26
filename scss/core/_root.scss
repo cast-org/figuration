@@ -1,5 +1,7 @@
 @use "sass:meta";
 @use "../settings" as *;
+@use "../settings-options" as *;
+@use "../functions" as *;
 @use "../vendor/rfs" as *;
 
 :root {
@@ -9,11 +11,9 @@
   //   }
   // }
 
-  // @if $enable-root-breakpoints {
-  //   @each $bp, $value in $grid-breakpoints {
-  //     --breakpoint-#{$prefix}bp}: #{$prefix}value};
-  //   }
-  // }
+  @each $bp, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$bp}: #{$value};
+  }
 
   // Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172

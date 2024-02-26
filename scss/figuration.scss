@@ -1,5 +1,14 @@
-// Settings
+/*!
+ * Figuration (v5.0.0-alpha.1)
+ * https://figuration.org
+ * Copyright 2013-2024 CAST, Inc.
+ * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
+ */
+
+// Settings variables
 @forward "settings";
+
+// Enable/disable granular options
 @forward "settings-options";
 
 @forward "vendor/rfs";
@@ -11,4 +20,5 @@
 @forward "core/reboot";
 @forward "core/typography";
 @forward "core/images";
-//@forward "core/tables";
+@forward "core/tables";
+@forward "forms";

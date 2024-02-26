@@ -2,11 +2,11 @@
 // Used in conjunction with global variables to enable certain theme features.
 @forward "mixins/box-shadow";
 // @import "mixins/gradients";
-// @import "mixins/transition";
+@forward "mixins/transition";
 
 // Utilities
 @forward "mixins/border";
-// @import "mixins/breakpoints";
+@forward "mixins/breakpoints";
 // @import "mixins/hover";
 @forward "mixins/images";
 // @import "mixins/screen-reader";
@@ -21,7 +21,7 @@
 // @import "mixins/buttons";
 // @import "mixins/caret";
 // @import "mixins/divider";
-// @import "mixins/forms";
+@forward "mixins/forms";
 @forward "mixins/lists";
 // @import "mixins/pagination";
 // @import "mixins/switch";

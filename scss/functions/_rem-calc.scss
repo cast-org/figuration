@@ -1,6 +1,8 @@
 // stylelint-disable length-zero-no-unit
 
 @use "sass:list";
+@use "sass:math";
+@use "sass:meta";
 @use "../functions/calc-util";
 
 // Remove the unit from a value, returning number only.
@@ -8,8 +10,8 @@
 // @param {Number} $number - Number to remove unit from
 // @return {Number} - Unitless number
 @function strip-unit($number) {
-  @if type-of($number) == "number" and not unitless($number) {
-    @return calc-util.calc-divide($number, $number * 0 + 1);
+  @if meta.type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
   }
 
   @return $number;
@@ -21,7 +23,7 @@
 // @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function any-to-rem($value) {
   // Check if the value is a number
-  @if type-of($value) != "number" {
+  @if meta.type-of($value) != "number" {
     @warn inspect($value) + " was passed to rem(), which is not a number.";
     @return $value;
   }
@@ -48,7 +50,7 @@
 // Converts one or more values into matching rem values.
 // @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
 // @returns {List} A list of converted values.
-@function _rem($values) {
+@function rem($values) {
   $rem-values: ();
   $count: list.length($values);
 
@@ -67,7 +69,7 @@
 @function bp-to-em($value) {
   // Pixel and unitless values are converted to rem
   @if unit($value) == "px" or unitless($value) {
-    $value: _rem($value);
+    $value: rem($value);
   }
 
   // Convert to em

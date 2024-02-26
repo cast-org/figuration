@@ -3,6 +3,7 @@
 @use "sass:map";
 @use "../settings" as *;
 @use "../settings-options" as *;
+@use "../functions" as *;
 @use "../mixins" as *;
 @use "../vendor/rfs" as *;
 
@@ -195,14 +196,16 @@
 
   // Theme generation
   @if $enable-table-colors {
+    $merged-table-themes: null;
+
     @if (meta.type-of($table-colors) == "map" and list.length($table-colors) != 0) {
       $mixed-table-themes: mix-context-colors($table-colors, $table-levels);
-      $table-themes: map.merge($mixed-table-themes, $table-themes);
+      $merged-table-themes: map.merge($mixed-table-themes, $table-themes);
     }
 
     // Contextual variants
-    @if (meta.type-of($table-themes) == "map" and list.length($table-themes) != 0) {
-      @each $theme, $colors in $table-themes {
+    @if (meta.type-of($merged-table-themes) == "map" and list.length($merged-table-themes) != 0) {
+      @each $theme, $colors in $merged-table-themes {
         $bg:       map.get($colors, "bg");
         $hover-bg: map.get($colors, "hover-bg");
 

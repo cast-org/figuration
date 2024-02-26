@@ -1,8 +1,26 @@
 @use "sass:color";
 @use "sass:list";
 @use "sass:map";
+@use "sass:math";
 @use "sass:meta";
 @use "../settings" as *;
+@use "../functions/palette" as *;
+
+// Conversions
+@function to-rgb($value) {
+  @return color.red($value), color.green($value), color.blue($value);
+}
+
+@function rgba-css-var($identifier, $target) {
+  @if $identifier == "body" and $target == "bg" {
+    @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
+  } @if $identifier == "body" and $target == "text" {
+    @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
+  } @else {
+    @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
+  }
+}
+
 
 // Generate contextual color theme
 @function mix-context-colors($colors, $levels) {
@@ -130,7 +148,7 @@
   $lumfore: color-get-luminance(color-get-opaque($colorfore, $colorback)) + .05;
   $lumback: color-get-luminance($colorback) + .05;
 
-  @return math.divide(math.max($lumfore, $lumback), math.min($lumfore, $lumback));
+  @return math.div(math.max($lumfore, $lumback), math.min($lumfore, $lumback));
 }
 
 // Opaque color

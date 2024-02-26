@@ -4,9 +4,13 @@
 
 @use "sass:map";
 @use "functions/assert";
+@use "functions/calc-util";
+@use "functions/color-util";
+@use "functions/encode-svg";
 @use "functions/palette";
 @use "functions/map-util";
 @use "functions/rem-calc";
+@use "functions/str-util";
 
 // Prefix for :root CSS variables
 $prefix: cf- !default;
@@ -155,15 +159,6 @@ $btn-themes:            () !default;
 $btn-outline-themes:    () !default;
 $list-themes:           () !default;
 $table-themes:          () !default;
-
-// Characters to encode for SVG data URLs, used by `encode-svg()` SCSS function
-$encode-svg-chars: (
-  ("<", "%3c"),
-  (">", "%3e"),
-  ("#", "%23"),
-  ("(", "%28"),
-  (")", "%29")
-) !default;
 
 // Spacing
 // =====
@@ -366,7 +361,7 @@ $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
 $component-active-bg:           $primary !default;
-$component-active-color:        color-if-contrast($white, $primary) !default;
+$component-active-color:        color-util.color-if-contrast($white, $primary) !default;
 $component-active-border-color: palette.palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
@@ -433,6 +428,25 @@ $shadows: (
   "i5": inset 0 .125rem 1rem rgba($black, .15)
 ) !default;
 
+// Transitions
+// =====
+// Widget animations
+$transition-base:           all .15s ease-in-out !default;
+$transition-fade:           opacity .15s linear !default;
+$transition-lazy-fade:      opacity .3s linear !default;
+$transition-collapse-y:     height .3s ease !default;
+$transition-collapse-x:     width .3s ease !default;
+
+// Component transitions
+$btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$offcanvas-transition:      transform .3s linear !default;
+$modal-transition:          transform .15s linear !default;
+$navbar-toggle-transition:  box-shadow .15s ease-in-out !default;
+$nav-link-transition:       color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
+$progress-bar-transition:   width .3s ease !default;
+$switch-transition:         all .15s ease-in-out !default;
+
 // Tables
 // =====
 $table-margin-bottom:           $spacer !default;
@@ -493,14 +507,14 @@ $btn-block-spacing-y:       .25rem !default;
 $btn-icon-multiplier:       .5 !default;
 
 $btn-default-bg:                    $white !default;
-$btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;
+$btn-default-color:                 color-util.color-if-contrast($uibase-500, $btn-default-bg) !default;
 $btn-default-border-color:          $uibase-300 !default;
 $btn-default-focus-box-shadow-color: $component-active-bg !default;
 $btn-default-hover-bg:              $uibase-50 !default;
-$btn-default-hover-color:           color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
+$btn-default-hover-color:           color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
 $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
-$btn-default-active-color:          color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
+$btn-default-active-color:          color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
 $btn-default-active-border-color:   $uibase-400 !default;
 $btn-default-disabled-bg:           $btn-default-bg !default;
 $btn-default-disabled-color:        $btn-default-color !default;
@@ -576,12 +590,12 @@ $form-check-label-disabled-opacity: .6 !default;
 
 // Form checkradio
 $form-checkradio-size:                      1em !default;
-$form-checkradio-gutter:                    add($form-checkradio-size, .375em) !default;
+$form-checkradio-gutter:                    calc-util.add($form-checkradio-size, .375em) !default;
 $form-checkradio-bg:                        $white !default;
 $form-checkradio-border-width:              $border-width !default;
 $form-checkradio-border-color:              $uibase-300 !default;
 $form-checkradio-box-shadow:                map.get($shadows, "i1") !default;
-$form-checkradio-icon-size:                 subtract($form-checkradio-size, .375em) !default;
+$form-checkradio-icon-size:                 calc-util.subtract($form-checkradio-size, .375em) !default;
 
 $form-checkradio-focus-border-color:        $input-focus-border-color !default;
 $form-checkradio-focus-box-shadow:          $input-focus-box-shadow !default;
@@ -592,18 +606,18 @@ $form-checkradio-checked-border-color:      $primary !default;
 $form-checkradio-checked-box-shadow:        map.get($shadows, "i1") !default;
 
 $form-checkradio-checkbox-border-radius:    .25rem !default;
-$form-checkradio-checkbox-icon:             encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
+$form-checkradio-checkbox-icon:             encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-checkradio-checked-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
 
 $form-checkradio-radio-border-radius:       50% !default;
-$form-checkradio-radio-icon:                encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
+$form-checkradio-radio-icon:                encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
 
 $form-checkradio-indeterminate-bg:              $primary !default;
 $form-checkradio-indeterminate-border-color:    $form-checkradio-indeterminate-bg !default;
-$form-checkradio-indeterminate-icon:            encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
+$form-checkradio-indeterminate-icon:            encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
 
 // Form switch
 $form-switch-width:                         1.75em !default;
-$form-switch-gutter:                        add($form-switch-width, .375em) !default;
+$form-switch-gutter:                        calc-util.add($form-switch-width, .375em) !default;
 
 $form-switch-track-height:                  1em !default;
 $form-switch-track-bg:                      $white !default;
@@ -620,7 +634,7 @@ $form-switch-track-checked-bg:              $white !default;
 $form-switch-track-checked-border-color:    $primary !default;
 $form-switch-track-checked-box-shadow:      $form-switch-track-box-shadow !default;
 
-$form-switch-thumb-offset:                  subtract(.25em, $form-switch-track-border-width) !default;
+$form-switch-thumb-offset:                  calc-util.subtract(.25em, $form-switch-track-border-width) !default;
 $form-switch-thumb-width:                   .625em !default;
 $form-switch-thumb-height:                  .625em !default;
 $form-switch-thumb-bg:                      $uibase-300 !default;
@@ -642,16 +656,16 @@ $form-select-indicator-offset:      .375em !default;
 $form-select-indicator-width:       .75em !default;
 $form-select-indicator-height:      .75em !default;
 $form-select-indicator-color:       rgba($uibase-700, .85) !default;
-$form-select-indicator-image:       encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>")) !default;
+$form-select-indicator-image:       encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>")) !default;
 $form-select-indicator-position:    right $form-select-indicator-offset center !default;
 
 // Form file
 $form-file-button-bg:               $uibase-50 !default;
-$form-file-button-color:            color-if-contrast($uibase-600, $form-file-button-bg) !default;
+$form-file-button-color:            color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default;
 $form-file-button-font-family:      $btn-font-family !default;
 $form-file-button-font-weight:      $btn-font-weight !default;
 $form-file-button-hover-bg:         $uibase-100 !default;
-$form-file-button-hover-color:      color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
+$form-file-button-hover-color:      color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
 $form-file-button-disabled-color:   $component-disabled-color !default;
 $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;
@@ -675,7 +689,7 @@ $form-range-thumb-focus-box-shadow-width: .1875rem !default;
 $form-range-thumb-active-bg:              palette.palette($primary, 600) !default;
 $form-range-thumb-disabled-bg:            $uibase-300 !default;
 
-$form-range-height:                 add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
+$form-range-height:                 calc-util.add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
 $form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
@@ -691,11 +705,11 @@ $form-feedback-icon-width:          1em !default;
 $form-feedback-icon-height:         1em !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
-$form-feedback-icon-valid-image:    encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
+$form-feedback-icon-valid-image:    encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M6.41 1l-.69.72L2.94 4.5l-.81-.78L1.41 3 0 4.41l.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72L6.41 1z'/></svg>")) !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
-$form-feedback-icon-invalid-image:  encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>")) !default;
+$form-feedback-icon-invalid-image:  encode-svg.encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-invalid-color}' d='M3.09 0c-.06 0-.1.04-.13.09L.02 6.9c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19L4.01.09A.142.142 0 0 0 3.88 0h-.81zM3 3h1v2H3V3zm0 3h1v1H3V6z'/></svg>")) !default;
 
-$form-feedback-select-icon-position: right add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false)) center !default;
+$form-feedback-select-icon-position: right calc-util.add($form-feedback-icon-offset, calc-util.add($form-select-indicator-width, $form-select-indicator-offset, false)) center !default;
 
 $form-validation-states: (
   "valid": (

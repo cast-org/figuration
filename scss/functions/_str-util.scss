@@ -1,3 +1,4 @@
+@use "sass:meta";
 @use "sass:string";
 
 // Replace `$search` with `$replace` in `$string`
@@ -17,29 +18,10 @@
   @return $string;
 }
 
-// Encode SVG data URLs into CSS friendly versions, otherwise
-// pass through the original string.
-// Requires the use of quotes around data URIs.
-// From https://codepen.io/kevinweber/pen/dXWoRw
-@function encode-svg($string) {
-  @if string.index($string, "data:image/svg+xml") {
-    @each $char, $encoded in $encode-svg-chars{
-      // Do not escape the url brackets
-      @if string.index($string, "url(") == 1 {
-        $string: url("#{str-replace(string.slice($string, 6, -3), $char, $encoded)}");
-      } @else {
-        $string: str-replace($string, $char, $encoded);
-      }
-    }
-  }
-
-  @return $string;
-}
-
 // Strip the `calc` surrounding a string if one is found, leaves the '()'s
 // in place to preserve operator precedence.
 @function strip-calc($string) {
-  @if type-of($string) == "string" {
+  @if meta.type-of($string) == "string" {
     @if string.index($string, "calc(") == 1 {
       $string: string.lice($string, 5, -1);
     }

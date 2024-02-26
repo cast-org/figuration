@@ -1,13 +1,14 @@
 // stylelint-disable property-disallowed-list
 
 @use "sass:list";
+@use "sass:meta";
 @use "../settings" as *;
 
 // Helper function to replace negative values with 0
 @function valid-radius($radius) {
   $return: ();
   @each $value in $radius {
-    @if type-of($value) == number {
+    @if meta.type-of($value) == number {
       $return: list.append($return, max($value, 0));
     } @else {
       $return: list.append($return, $value);
