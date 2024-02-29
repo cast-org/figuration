@@ -5,7 +5,6 @@
 @use "sass:map";
 @use "functions/assert";
 @use "functions/calc-util";
-@use "functions/color-util";
 @use "functions/encode-svg";
 @use "functions/palette";
 @use "functions/map-util";
@@ -27,7 +26,7 @@ $enable-grid-classes:           true !default;      // true
 $enable-print-styles:           true !default;      // true
 $enable-sizing:                 true !default;      // true
 $enable-bp-smallest:            false !default;     // false
-$enable-rfs-main:               true !default;       // true
+$enable-rfs-main:               false !default;       // true :TODO:
 $enable-color-warnings:         false !default;     // false
 
 // Palette levels for use in mix-context-colors() to determine
@@ -361,7 +360,7 @@ $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
 $component-active-bg:           $primary !default;
-$component-active-color:        color-util.color-if-contrast($white, $primary) !default;
+$component-active-color:        $white !default; //color-util.color-if-contrast($white, $primary) !default; :TODO:
 $component-active-border-color: palette.palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
@@ -507,14 +506,14 @@ $btn-block-spacing-y:       .25rem !default;
 $btn-icon-multiplier:       .5 !default;
 
 $btn-default-bg:                    $white !default;
-$btn-default-color:                 color-util.color-if-contrast($uibase-500, $btn-default-bg) !default;
+$btn-default-color:                 $uibase-500 !default; //color-util.color-if-contrast($uibase-500, $btn-default-bg) !default; :TODO:
 $btn-default-border-color:          $uibase-300 !default;
 $btn-default-focus-box-shadow-color: $component-active-bg !default;
 $btn-default-hover-bg:              $uibase-50 !default;
-$btn-default-hover-color:           color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
+$btn-default-hover-color:           $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default; :TODO:
 $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
-$btn-default-active-color:          color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
+$btn-default-active-color:          $btn-default-hover-color !default; //color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default; :TODO:
 $btn-default-active-border-color:   $uibase-400 !default;
 $btn-default-disabled-bg:           $btn-default-bg !default;
 $btn-default-disabled-color:        $btn-default-color !default;
@@ -661,11 +660,11 @@ $form-select-indicator-position:    right $form-select-indicator-offset center !
 
 // Form file
 $form-file-button-bg:               $uibase-50 !default;
-$form-file-button-color:            color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default;
+$form-file-button-color:            $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default; :TODO:
 $form-file-button-font-family:      $btn-font-family !default;
 $form-file-button-font-weight:      $btn-font-weight !default;
 $form-file-button-hover-bg:         $uibase-100 !default;
-$form-file-button-hover-color:      color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
+$form-file-button-hover-color:      $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default; :TODO:
 $form-file-button-disabled-color:   $component-disabled-color !default;
 $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;

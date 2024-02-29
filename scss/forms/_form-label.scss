@@ -1,40 +1,47 @@
+@use "sass:map";
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../functions" as *;
+@use "../mixins" as *;
+@use "../vendor/rfs" as *;
+
 // Form label
 
 // For use with horizontal and inline forms, when you need the label
 // (or legend) text to align with the form controls.
 @if $enable-form and $enable-form-label {
-    .form-label {
-        padding-top: add($input-padding-y, $input-border-width);
-        padding-bottom: add($input-padding-y, $input-border-width);
-        margin-bottom: 0; // Override the `<label>/<legend>` default
-        @include font-size(inherit); // Override the `<legend>` default
-        font-weight: $form-label-font-weight;
-        line-height: $input-line-height;
-    }
+  .form-label {
+    padding-top: add($input-padding-y, $input-border-width);
+    padding-bottom: add($input-padding-y, $input-border-width);
+    margin-bottom: 0; // Override the `<label>/<legend>` default
+    @include font-size(inherit); // Override the `<legend>` default
+    font-weight: $form-label-font-weight;
+    line-height: $input-line-height;
+  }
 
-    // Form label sizing
-    // Build on `.form-label` with modifier classes to decrease or increase the
-    // height and font-size of form labels.
-    @if $enable-sizing {
-        @each $size, $dims in $input-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-line-height:   map-get($dims, "line-height");
-            $sz-padding-y:     map-get($dims, "padding-y");
+  // Form label sizing
+  // Build on `.form-label` with modifier classes to decrease or increase the
+  // height and font-size of form labels.
+  @if $enable-sizing {
+    @each $size, $dims in $input-sizes {
+      $sz-font-size:     map.get($dims, "font-size");
+      $sz-line-height:   map.get($dims, "line-height");
+      $sz-padding-y:     map.get($dims, "padding-y");
 
-            %form-label-#{$size} {
-                @if $sz-padding-y != null {
-                    padding-top: add($sz-padding-y, $input-border-width);
-                    padding-bottom: add($sz-padding-y, $input-border-width);
-                }
-                @include font-size($sz-font-size);
-                line-height: $sz-line-height;
-            }
-
-            @if $enable-form-label and $enable-form-label-sizing {
-                .form-label-#{$size} {
-                    @extend %form-label-#{$size};
-                }
-            }
+      %form-label-#{$size} {
+        @if $sz-padding-y != null {
+          padding-top: add($sz-padding-y, $input-border-width);
+          padding-bottom: add($sz-padding-y, $input-border-width);
         }
+        @include font-size($sz-font-size);
+        line-height: $sz-line-height;
+      }
+
+      @if $enable-form-label and $enable-form-label-sizing {
+        .form-label-#{$size} {
+          @extend %form-label-#{$size};
+        }
+      }
     }
+  }
 }

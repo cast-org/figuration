@@ -4,6 +4,7 @@ export default context => {
     annotation: true,
     sourcesContent: true,
     plugins: {
+      "postcss-calc": true,
       autoprefixer: {
         cascade: false
       }

@@ -2,6 +2,9 @@
 @use "../settings" as *;
 @use "../settings-options" as *;
 @use "../functions" as *;
+@use "border" as *;
+@use "box-shadow" as *;
+@use "transition" as *;
 @use "../vendor/rfs" as *;
 
 // Calculate input height

@@ -15,7 +15,7 @@
 $rfs-base-value: 1.25rem !default;
 $rfs-unit: rem !default;
 
-@if ($responsive-font-size-minimum-size) {
+@if (meta.variable-exists(responsive-font-size-minimum-size)) {
   $rfs-base-value: $responsive-font-size-minimum-size;
 }
 
@@ -26,7 +26,7 @@ $rfs-unit: rem !default;
 // Breakpoint at where values start decreasing if screen width is smaller
 $rfs-breakpoint: 1200px !default;
 $rfs-breakpoint-unit: px !default;
-@if ($responsive-font-size-fluid-breakpoint) {
+@if (meta.variable-exists(responsive-font-size-fluid-breakpoint)) {
   $rfs-breakpoint: $responsive-font-size-fluid-breakpoint;
   $rfs-breakpoint-unit: math.unit($rfs-breakpoint);
 }
@@ -37,13 +37,13 @@ $rfs-breakpoint-unit: px !default;
 
 // Resize values based on screen height and width
 $rfs-two-dimensional: false !default;
-@if ($responsive-font-size-fluid-two-dimensional) {
+@if (meta.variable-exists(responsive-font-size-fluid-two-dimensional)) {
   $rfs-two-dimensional: $responsive-font-size-fluid-two-dimensional;
 }
 
 // Factor of decrease
 $rfs-factor: 10 !default;
-@if ($responsive-font-size-fluid-factor) {
+@if (meta.variable-exists(responsive-font-size-fluid-factor)) {
   $rfs-factor: $responsive-font-size-fluid-factor;
 }
 
@@ -65,7 +65,7 @@ $rfs-safari-iframe-resize-bug-fix: false !default;
 
 // Disable RFS by setting $enable-rfs to false
 $enable-rfs: true !default;
-@if ($enable-rfs-main) {
+@if (meta.variable-exists(enable-rfs-main)) {
   $enable-rfs: $enable-rfs-main;
 }
 
