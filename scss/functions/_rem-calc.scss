@@ -36,7 +36,7 @@
   // Calculate rem if units for $value is not rem or em
   // Using 16px = 100% font size common in most browsers
   @if unit($value) != "rem" {
-    $value: calc-util.calc-divide(strip-unit($value), strip-unit(16px)) * 1rem;
+    $value: math.div(strip-unit($value), strip-unit(16px)) * 1rem;
   }
 
   // Turn 0rem into 0

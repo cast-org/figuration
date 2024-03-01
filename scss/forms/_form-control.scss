@@ -1,5 +1,5 @@
 // stylelint-disable selector-no-qualifying-type
-
+@use "sass:map";
 @use "../settings" as *;
 @use "../settings-options" as *;
 @use "../functions" as *;
@@ -114,7 +114,7 @@
       min-height: calc-input-height-outer($input-padding-y, $input-line-height);
 
       &:not([rows="1"]) {
-      height: auto;
+        height: auto;
       }
     }
   }
@@ -142,11 +142,11 @@
   // height and font-size of form controls.
   @if $enable-sizing {
     @each $size, $dims in $input-sizes {
-      $sz-font-size:     map-get($dims, "font-size");
-      $sz-line-height:   map-get($dims, "line-height");
-      $sz-padding-y:     map-get($dims, "padding-y");
-      $sz-padding-x:     map-get($dims, "padding-x");
-      $sz-border-radius: map-get($dims, "border-radius");
+      $sz-font-size:     map.get($dims, "font-size");
+      $sz-line-height:   map.get($dims, "line-height");
+      $sz-padding-y:     map.get($dims, "padding-y");
+      $sz-padding-x:     map.get($dims, "padding-x");
+      $sz-border-radius: map.get($dims, "border-radius");
 
       %form-control-#{$size} {
         height: calc-input-height-outer($sz-padding-y, $sz-line-height);

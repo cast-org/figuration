@@ -7,7 +7,6 @@
 // Utilities
 @forward "mixins/border";
 @forward "mixins/breakpoints";
-// @import "mixins/hover";
 @forward "mixins/images";
 // @import "mixins/screen-reader";
 // @import "mixins/reset-text";
@@ -18,7 +17,7 @@
 // Components
 // @import "mixins/alert";
 // @import "mixins/backdrop";
-// @import "mixins/buttons";
+@forward "mixins/buttons";
 // @import "mixins/caret";
 // @import "mixins/divider";
 @forward "mixins/forms";
@@ -30,6 +29,6 @@
 
 // Layout
 // @import "mixins/clearfix";
-// @import "mixins/containers";
-// @import "mixins/grid";
+@forward "mixins/containers";
+@forward "mixins/grid";
 // @import "mixins/float";

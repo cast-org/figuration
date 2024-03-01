@@ -22,3 +22,11 @@
 @forward "core/images";
 @forward "core/tables";
 @forward "forms";
+@forward "core/buttons";
+
+// Components - additional functionality and layout
+@forward "component/container";
+@forward "component/grid";
+
+// Print overrides
+@forward "core/print";

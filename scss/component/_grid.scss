@@ -1,0 +1,52 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../mixins" as *;
+
+// Row
+// Rows contain columns.
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+
+    > * {
+      @include make-col-ready();
+    }
+  }
+}
+
+// Responsive gutters
+@if $enable-grid-classes and $enable-grid-responsive-gutters {
+  @each $breakpoint in $responsive-gutter-breakpoints {
+    $bprule: breakpoint-designator($breakpoint);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      @each $key, $value in $gutters {
+        .g#{$bprule}-#{$key},
+        .gx#{$bprule}-#{$key} {
+          margin-right: $value * -.5;
+          margin-left: $value * -.5;
+
+          > * {
+            padding-right: $value * .5;
+            padding-left: $value * .5;
+          }
+        }
+
+        .g#{$bprule}-#{$key},
+        .gy#{$bprule}-#{$key} {
+          margin-top: -$value;
+
+          > * {
+            margin-top: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Columns
+// Common styles for grid columns
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}

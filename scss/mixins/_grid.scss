@@ -1,0 +1,127 @@
+@use "sass:math";
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../functions" as *;
+@use "breakpoints";
+
+/// Grid system
+// Generate semantic grid columns with these mixins.
+
+// Rows
+@mixin make-row($gutter: $grid-gutter-width) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: $gutter * -.5;
+  margin-left: $gutter * -.5;
+}
+
+
+// Columns
+@mixin make-col-ready($gutter: $grid-gutter-width) {
+  flex: 0 0 auto;
+  width: 100%; // Prevent too narrow - width is reset later
+  max-width: 100%; // Prevent too wide
+  padding-right: $gutter * .5;
+  padding-left: $gutter * .5;
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+  @if ($size) {
+    width: math.percentage(math.div($size, $columns));
+  } @else {
+    flex: 1 1 0;
+  }
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: math.div($size, $columns);
+  margin-left: if($num == 0, 0, math.percentage($num));
+}
+
+
+// Row Columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: math.percentage(math.div(1, $count));
+  }
+}
+
+// Grid generation
+// Generate the correct number of grid classes given any value of `$grid-columns`
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints, $gutter: $grid-gutter-width) {
+  // Use a placeholder selector to extend upon
+  %col {
+    @include make-col-ready();
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $bprule: breakpoints.breakpoint-designator($breakpoint);
+
+    @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$bprule} {
+        flex: 1 0 0%;
+      }
+    }
+  }
+
+  // Responsive Row Columns
+  @each $breakpoint in $row-columns-breakpoints {
+    $bprule: breakpoints.breakpoint-designator($breakpoint);
+
+    @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
+      @if $enable-grid-row-cols {
+        .row-cols#{$bprule}-auto > * {
+          @include make-col-auto();
+        }
+
+        @if $grid-row-columns > 0 {
+          @for $i from 1 through $grid-row-columns {
+            .row-cols#{$bprule}-#{$i} {
+              @include row-cols($i);
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // Standard columns
+  @each $breakpoint in map-keys($breakpoints) {
+    $bprule: breakpoints.breakpoint-designator($breakpoint);
+
+    @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
+      .col#{$bprule}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$bprule}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not($bprule == "" and $i == 0) { // Avoid emitting useless .offset-0
+            .offset#{$bprule}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+    }
+  }
+}

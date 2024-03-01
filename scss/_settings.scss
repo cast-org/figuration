@@ -764,6 +764,38 @@ $grid-breakpoints: map-util.map-sort-by-values($grid-breakpoints);
 @include assert.assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include assert.assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
+// Containers
+// =====
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  "sm": rem-calc.rem(544px),
+  "md": rem-calc.rem(720px),
+  "lg": rem-calc.rem(960px),
+  "xl": rem-calc.rem(1152px)
+) !default;
+
+@include assert.assert-ascending($container-max-widths, "$container-max-widths");
+
+// Grid
+// =====
+// Set the number of columns and specify the width of the gutter.
+$grid-columns:      12 !default;
+$grid-gutter-width: 2rem !default;
+$grid-row-columns:  6 !default;
+
+$gutters: (
+  "0":    0,
+  "0_5":  .5rem,
+  "1":    1rem,
+  "1_5":  1.5rem,
+  "2":    2rem,
+  "2_5":  2.5rem
+) !default;
+
+// Container padding
+// =====
+$container-padding-x:   $grid-gutter-width * .5 !default;
+
 // Component and utility breakpoints
 // =====
 // Each component and utility that uses breakpoints gets its own list
