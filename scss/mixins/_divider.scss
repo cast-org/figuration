@@ -1,0 +1,23 @@
+@use "../settings" as *;
+
+// Horizontal divider (basically an hr)
+@mixin divider-h($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer, $opacity: $divider-opacity) {
+  height: 0;
+  @if ($spacer != null) {
+    margin: $spacer 0;
+  }
+  overflow: hidden;
+  border-top: $dim solid $color;
+  opacity: $opacity;
+}
+
+// Vertical divider
+@mixin divider-v($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer, $opacity: $divider-opacity) {
+  width: 0;
+  @if ($spacer != null) {
+    margin: 0 $spacer;
+  }
+  overflow: hidden;
+  border-left: $dim solid $color;
+  opacity: $opacity;
+}

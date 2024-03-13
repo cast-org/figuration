@@ -1,0 +1,48 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../vendor/rfs" as *;
+
+@if $enable-utility-drag {
+  .drag {
+    @include font-size($drag-font-size);
+    font-weight: $drag-font-weight;
+    line-height: 1;
+    color: inherit;
+    text-decoration: none;
+    touch-action: none;
+    opacity: $drag-opacity;
+
+    // Override anchor styling
+    &:hover,
+    &:focus {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &:not(:disabled):not(.disabled) {
+      cursor: move;
+
+      &:hover,
+      &:focus {
+        opacity: $drag-hover-opacity;
+      }
+    }
+  }
+
+  // Additional properties for button version
+  // iOS requires the button element instead of an anchor tag.
+  // If you want the anchor version, it requires `href="#"`.
+  // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+  // stylelint-disable-next-line selector-no-qualifying-type
+  button.drag {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Future-proof disabling of clicks on `<a>` elements
+  // stylelint-disable-next-line selector-no-qualifying-type
+  a.drag.disabled {
+    pointer-events: none;
+  }
+}

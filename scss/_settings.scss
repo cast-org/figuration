@@ -3,6 +3,7 @@
 // https://github.com/iconic/open-iconic
 
 @use "sass:map";
+@use "sass:string";
 @use "functions/assert";
 @use "functions/calc-util";
 @use "functions/encode-svg";
@@ -829,6 +830,24 @@ $utility-text-align-breakpoints:    map.keys($grid-breakpoints) !default;
 $utility-text-size-breakpoints:     map.keys($grid-breakpoints) !default;
 $utility-valign-breakpoints:        map.keys($grid-breakpoints) !default;
 
+// Z-index master list
+// =====
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+// Figuration puts modals above popover/tooltip items that could be held open.
+// Tooltips/popovers should also be able to appear over fixed/sticky navbars.
+$zindex-dropdown:           1000 !default;
+$zindex-sticky:             1010 !default;
+$zindex-fixed:              1020 !default;
+$zindex-offcanvas-backdrop: 1030 !default;
+$zindex-offcanvas:          1035 !default;
+$zindex-popover:            1040 !default;
+$zindex-popover-draggable:  1045 !default;
+$zindex-tooltip:            1050 !default;
+$zindex-modal-backdrop:     1060 !default;
+$zindex-modal:              1065 !default;
+
 // Component pieces
 // =====
 $caret-width:               .75rem !default;
@@ -867,3 +886,139 @@ $tooltip-close-hover-opacity:   $close-hover-opacity !default;
 $tooltip-arrow-width:           .75rem !default;
 $tooltip-arrow-height:          .375rem !default;
 $tooltip-arrow-color:           $tooltip-bg !default;
+
+// Progress bars
+// =====
+$progress-height:               1rem !default;
+$progress-font-size:            ($font-size-base * .75) !default;
+$progress-bg:                   $uibase-100 !default;
+$progress-border-radius:        $border-radius !default;
+$progress-box-shadow:           map.get($shadows, "i1") !default;
+$progress-bar-color:            $white !default;
+$progress-bar-bg:               $uibase-300 !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
+$progress-bar-box-shadow:       inset 0 .125rem .25rem rgba($white, .25) !default;
+
+// Lists
+// =====
+$list-margin-left:              1.25rem !default;
+$list-margin-bottom:            1rem !default;
+
+$list-item-bg:                  transparent !default;
+$list-item-color:               null !default;
+$list-item-disabled-bg:         $list-item-bg !default;
+$list-item-disabled-color:      $component-disabled-color !default;
+$list-item-active-bg:           $component-active-bg !default;
+$list-item-active-color:        $component-active-color !default;
+$list-item-active-border:       $component-active-border-color !default;
+$list-item-action-color:        $component-action-color !default;
+$list-item-action-hover-color:  $list-item-action-color !default;
+$list-item-action-hover-bg:     $component-hover-bg !default;
+
+$list-border-width:             $border-width !default;
+$list-border-color:             $component-border-color !default;
+$list-group-border-radius:      $border-radius !default;
+
+$list-bulleted-content:         "\2022\00a0" !default; // Space, General Punctuation - bullet
+$list-ordered-delimeter:        ".\00a0" !default; // Period, Space
+$list-horizontal-padding:       .5em !default;
+$list-spaced-item-padding-y:    .5rem !default;
+$list-spaced-item-padding-x:    1rem !default;
+
+// Breadcrumbs
+// =====
+$breadcrumb-margin-bottom:      1rem !default;
+$breadcrumb-font-size:          null !default;
+
+$breadcrumb-active-color:       $uibase-700 !default;
+
+$breadcrumb-item-padding-x:     .5rem !default;
+$breadcrumb-divider-color:      $uibase-300 !default;
+$breadcrumb-divider:            string.quote("/") !default;
+
+// Pagination
+// =====
+$pagination-line-height:        $btn-line-height !default;
+$pagination-padding-x:          .5em !default;
+$pagination-padding-y:          $btn-padding-y !default;
+$pagination-margin-bottom:      1rem !default;
+
+$pagination-border-width:       $border-width !default;
+$pagination-border-color:       $btn-default-border-color !default;
+$pagination-border-radius:      $border-radius !default;
+
+$pagination-font-size:          $font-size-base !default;
+$pagination-font-weight:        null !default;
+$pagination-bg:                 $btn-default-bg !default;
+$pagination-color:              $btn-default-color !default;
+
+$pagination-hover-bg:           $btn-default-hover-bg !default;
+$pagination-hover-color:        $btn-default-hover-color !default;
+$pagination-hover-border-color: $pagination-border-color !default;
+
+$pagination-active-color:       $component-active-color !default;
+$pagination-active-bg:          $component-active-bg !default;
+$pagination-active-border-color: $component-active-border-color !default;
+
+$pagination-disabled-color:     $component-disabled-color !default;
+$pagination-disabled-bg:        $component-disabled-bg !default;
+
+$pagination-spaced-margin-end:  .25em !default;
+
+// Divider
+// =====
+$divider-border-color:  $uibase-100 !default;
+$divider-border-width:  $border-width !default;
+$divider-spacer:        ($spacer * .5) !default;
+$divider-opacity:       1 !default;
+
+// Dropdowns
+// =====
+$dropdown-min-width:            10rem !default;
+$dropdown-padding-x:            0 !default;
+$dropdown-padding-y:            .3125rem !default;
+$dropdown-spacer:               .125rem !default;
+$dropdown-font-size:            $font-size-base !default;
+$dropdown-line-height:          $line-height-base !default;
+$dropdown-bg:                   $component-bg !default;
+$dropdown-color:                $body-color !default;
+$dropdown-border-color:         $component-border-color !default;
+$dropdown-border-width:         $border-width !default;
+$dropdown-border-radius:        $border-radius !default;
+$dropdown-inner-border-radius:  calc-util.subtract($dropdown-border-radius, $dropdown-border-width) !default;
+$dropdown-divider-width:        $border-width !default;
+$dropdown-divider-color:        $component-section-border-color !default;
+$dropdown-divider-spacer:       .3125rem !default;
+$dropdown-divider-opacity:      1 !default;
+$dropdown-box-shadow:           map.get($shadows, "d2") !default;
+
+$dropdown-link-color:           $component-action-color !default;
+$dropdown-link-hover-color:     $component-action-hover-color !default;
+$dropdown-link-hover-bg:        $component-hover-bg !default;
+
+$dropdown-link-active-color:    $component-active-color !default;
+$dropdown-link-active-bg:       $component-active-bg !default;
+
+$dropdown-link-disabled-color:  $component-disabled-color !default;
+$dropdown-link-disabled-bg:     $component-disabled-bg !default;
+
+$dropdown-item-padding-x:       1.125rem !default;
+$dropdown-item-padding-y:       .125rem !default;
+
+$dropdown-header-padding:       $dropdown-item-padding-y $dropdown-item-padding-x !default;
+$dropdown-header-font-size:     ($font-size-base * .875) !default;
+$dropdown-header-font-weight:   $font-weight-bold !default;
+$dropdown-header-color:         $uibase-500 !default;
+
+$dropdown-text-color:           $body-color !default;
+
+$dropdown-caret-width:          $caret-border-width !default;
+$dropdown-caret-color:          $uibase-400 !default;
+$dropdown-caret-active-color:   $component-active-color !default;
+$dropdown-caret-spacer-x:       .375rem !default;
+$dropdown-caret-spacer-y:       calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5) !default; // stylelint-disable-line function-disallowed-list
+
+$dropdown-back-width:           $caret-border-width !default;
+$dropdown-back-color:           $uibase-400 !default;
+$dropdown-back-spacer-x:        .375rem !default;
+$dropdown-back-spacer-y:        calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5) !default; // stylelint-disable-line function-disallowed-list

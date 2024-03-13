@@ -27,6 +27,17 @@
 // Components - additional functionality and layout
 @forward "component/container";
 @forward "component/grid";
+@forward "component/animation";
+@forward "component/caret";
+@forward "component/close";
+@forward "component/drag";
+@forward "component/progress";
+@forward "component/list";
+@forward "component/button-group";
+@forward "component/input-group";
+@forward "component/breadcrumb";
+@forward "component/pagination";
+@forward "component/dropdown";
 
 // Print overrides
 @forward "core/print";

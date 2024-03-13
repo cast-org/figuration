@@ -1,7 +1,7 @@
 // Toggles
 // Used in conjunction with global variables to enable certain theme features.
 @forward "mixins/box-shadow";
-// @import "mixins/gradients";
+@forward "mixins/gradients";
 @forward "mixins/transition";
 
 // Utilities
@@ -18,11 +18,11 @@
 // @import "mixins/alert";
 // @import "mixins/backdrop";
 @forward "mixins/buttons";
-// @import "mixins/caret";
-// @import "mixins/divider";
+@forward "mixins/caret";
+@forward "mixins/divider";
 @forward "mixins/forms";
 @forward "mixins/lists";
-// @import "mixins/pagination";
+@forward "mixins/pagination";
 // @import "mixins/switch";
 @forward "mixins/tables";
 // @import "mixins/modal";
