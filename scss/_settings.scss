@@ -283,7 +283,7 @@ $headings-font-family:    null !default;
 $headings-font-style:     null !default;
 $headings-font-weight:    600 !default;
 $headings-line-height:    1.25 !default;
-$headings-color:          null !default;
+$headings-color:          inherit !default;
 
 // Paragraph
 // =====
@@ -1022,3 +1022,148 @@ $dropdown-back-width:           $caret-border-width !default;
 $dropdown-back-color:           $uibase-400 !default;
 $dropdown-back-spacer-x:        .375rem !default;
 $dropdown-back-spacer-y:        calc(#{$dropdown-line-height} * #{$dropdown-font-size} * .5) !default; // stylelint-disable-line function-disallowed-list
+
+// Navs
+// =====
+$nav-link-padding-x:            1rem !default;
+$nav-link-padding-y:            .3125rem !default;
+$nav-link-font-size:            null !default;
+$nav-link-font-weight:          null !default;
+$nav-link-color:                $link-color !default;
+$nav-link-decoration:           if($link-decoration == none, null, none) !default;
+$nav-link-hover-color:          $link-hover-color !default;
+$nav-link-hover-decoration:     if($link-hover-decoration == underline, none, null) !default;
+$nav-link-disabled-opacity:     .6 !default;
+$nav-link-disabled-color:       $component-disabled-color !default;
+
+$nav-tabs-border-color:         $component-border-color !default;
+$nav-tabs-border-width:         $border-width !default;
+$nav-tabs-hover-border-color:   $component-hover-bg !default;
+$nav-tabs-hover-bg:             $component-hover-bg !default;
+$nav-tabs-hover-color:          null !default;
+$nav-tabs-active-bg:            $body-bg !default;
+$nav-tabs-active-color:         $component-action-color !default;
+$nav-tabs-active-border-color:  $component-border-color !default;
+
+$nav-pills-border-radius:       $border-radius !default;
+$nav-pills-hover-bg:            $component-hover-bg !default;
+$nav-pills-hover-color:         null !default;
+$nav-pills-active-bg:           $component-active-bg !default;
+$nav-pills-active-color:        $component-active-color !default;
+
+$nav-lined-gap:                 1rem !default;
+$nav-lined-border-width:        .125rem !default;
+$nav-lined-active-color:        $component-action-color !default;
+
+// Navbar
+// =====
+$navbar-padding-x:                  $spacer !default;
+$navbar-padding-y:                  ($spacer * .5) !default;
+
+$navbar-item-padding-x:             .5rem !default;
+$navbar-item-padding-y:             .3125rem !default;
+
+$navbar-brand-padding-y:            .125rem !default;
+$navbar-brand-margin-x:             1rem !default;
+$navbar-brand-font-size:            ($font-size-base * 1.25) !default;
+$navbar-brand-font-weight:          $font-weight-bold !default;
+
+$navbar-divider-width:              $border-width !default;
+$navbar-divider-color:              rgba($black, .65) !default;
+$navbar-divider-margin-x:           .25rem !default;
+$navbar-divider-margin-y:           .25rem !default;
+
+$navbar-toggle-font-size:           ($font-size-base * 1.25) !default;
+$navbar-toggle-padding-y:           $btn-padding-y !default;
+$navbar-toggle-padding-x:           $btn-padding-x !default;
+$navbar-toggle-border-radius:       $btn-border-radius !default;
+$navbar-toggle-focus-box-shadow:    0 0 0 .1875rem !default;
+
+$navbar-dark-color:                 rgba($white, .65) !default;
+$navbar-dark-hover-color:           rgba($white, .9) !default;
+$navbar-dark-active-color:          rgba($white, .95) !default;
+$navbar-dark-disabled-color:        rgba($white, .5) !default;
+$navbar-dark-divider-color:         rgba($white, .7) !default;
+$navbar-dark-toggle-border:         rgba($white, .35) !default;
+$navbar-dark-brand-color:           $navbar-dark-active-color !default;
+$navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
+
+$navbar-light-color:                rgba($black, .6) !default;
+$navbar-light-hover-color:          rgba($black, .85) !default;
+$navbar-light-active-color:         rgba($black, .95) !default;
+$navbar-light-disabled-color:       rgba($black, .5) !default;
+$navbar-light-divider-color:        rgba($black, .65) !default;
+$navbar-light-toggle-border:        rgba($black, .35) !default;
+$navbar-light-brand-color:          $navbar-light-active-color !default;
+$navbar-light-brand-hover-color:    $navbar-light-active-color !default;
+
+// Jumbotron
+// =====
+$jumbotron-padding-y:       3rem !default;
+$jumbotron-padding-x:       1.5rem !default;
+$jumbotron-padding-xs-y:    1.5rem !default;
+$jumbotron-padding-xs-x:    .75rem !default;
+$jumbotron-bg:              $uibase-50 !default;
+$jumbotron-color:           null !default;
+$jumbotron-border-radius:   .3125rem !default;
+$jumbotron-breakpoint:      sm !default;
+
+// Badges
+// =====
+$badge-bg:                  $uibase-500 !default;
+$badge-color:               $white !default;
+$badge-font-family:         null !default;
+$badge-font-size:           .75em !default;
+$badge-font-weight:         $font-weight-bold !default;
+$badge-padding-x:           .4375em !default;
+$badge-padding-y:           .25em !default;
+$badge-line-height:         1 !default;
+$badge-border-radius:       .25em !default;
+$badge-border-width:        $border-width !default;
+
+$badge-close-padding-x:     .375em !default;
+$badge-close-font-size:     1.25em !default;
+
+// Media objects
+// =====
+$media-margin-y:                1rem !default;
+
+// Cards
+// =====
+$card-padding-y:            .75rem !default;
+$card-padding-x:            1rem !default;
+$card-margin-bottom:        1rem !default;
+$card-height:               null !default;
+$card-bg:                   $component-bg !default;
+$card-color:                null !default;
+$card-border-color:         $component-overlay-border-color !default;
+$card-border-width:         $border-width !default;
+$card-border-radius:        $border-radius !default;
+$card-box-shadow:           null !default;
+$card-inner-border-radius:  calc-util.subtract($card-border-radius, $card-border-width) !default;
+
+$card-link-margin-left:     1.25rem !default;
+
+$card-title-margin-bottom:  1rem !default;
+$card-subtitle-margin-top:  -.5rem !default;
+
+$card-header-padding-y:     .75rem !default;
+$card-header-padding-x:     1rem !default;
+$card-header-bg:            $component-section-bg !default;
+$card-header-color:         null !default;
+$card-header-border-color:  $component-section-border-color !default;
+$card-header-border-width:  $card-border-width !default;
+
+$card-footer-padding-y:     .75rem !default;
+$card-footer-padding-x:     1rem !default;
+$card-footer-bg:            $component-section-bg !default;
+$card-footer-color:         null !default;
+$card-footer-border-color:  $component-section-border-color !default;
+$card-footer-border-width:  $card-border-width !default;
+
+$card-img-overlay-padding:  $card-padding-y $card-padding-x !default;
+
+$card-deck-gutter:          $grid-gutter-width !default;
+
+$card-columns-count:            3 !default;
+$card-columns-column-gap:       1.25rem !default;

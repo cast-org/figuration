@@ -1,0 +1,23 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+
+@if $enable-media {
+  .media {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: $media-margin-y;
+
+    // Nested media
+    .media {
+      margin-top: $media-margin-y;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .media-body {
+    flex: 1;
+  }
+}
