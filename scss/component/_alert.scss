@@ -1,0 +1,72 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../functions" as *;
+@use "../mixins" as *;
+
+@if $enable-alert {
+  // Base styles
+  .alert {
+    position: relative;
+    padding: $alert-padding-y $alert-padding-x;
+    padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
+    margin-bottom: $alert-margin-bottom;
+    border: $alert-border-width solid transparent;
+    @include border-radius($alert-border-radius);
+
+    // Adjust close link position and color
+    @if $enable-alert-close {
+      .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: $link-stretch-z-index + 1;
+        padding: $alert-close-padding-y $alert-close-padding-x;
+      }
+    }
+  }
+
+  // Headings for larger alerts
+  @if $enable-alert-heading {
+    .alert-heading {
+      // Specified to prevent conflicts of changing $headings-color
+      color: inherit;
+    }
+  }
+
+  // Provide class for links that match alerts
+  @if $enable-alert-link {
+    .alert-link {
+      font-weight: $alert-link-font-weight;
+    }
+  }
+
+  // Theme generation
+  @if $enable-alert-colors {
+    $merged-alert-themes: null;
+
+    @if (meta.type-of($alert-colors) == "map" and list.length($alert-colors) != 0) {
+      $mixed-alert-themes: mix-context-colors($alert-colors, $alert-levels);
+      $merged-alert-themes: map.merge($mixed-alert-themes, $alert-themes);
+    }
+
+    // Contextual modifiers
+    @if (meta.type-of($merged-alert-themes) == "map" and list.length($merged-alert-themes) != 0) {
+      @each $theme, $colors in $merged-alert-themes {
+        $alert-bg:          map.get($colors, "bg");
+        $alert-color:       map.get($colors, "color");
+        $alert-border:      map.get($colors, "border-color");
+        $alert-hover-color: map.get($colors, "hover-color");
+
+        $alert-color:       color-if-contrast($alert-color, $alert-bg);
+        $alert-hover-color: color-if-contrast($alert-hover-color, $alert-bg);
+
+        .alert-#{$theme} {
+          @include alert-variant($alert-color, $alert-bg, $alert-border, $alert-hover-color);
+        }
+      }
+    }
+  }
+}

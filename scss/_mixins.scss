@@ -9,23 +9,22 @@
 @forward "mixins/breakpoints";
 @forward "mixins/images";
 // @import "mixins/screen-reader";
-// @import "mixins/reset-text";
+@forward "mixins/reset-text";
 // @import "mixins/text-emphasis";
 // @import "mixins/text-truncate";
 // @import "mixins/visibility";
 
 // Components
-// @import "mixins/alert";
-// @import "mixins/backdrop";
+@forward "mixins/alert";
+@forward "mixins/backdrop";
 @forward "mixins/buttons";
 @forward "mixins/caret";
 @forward "mixins/divider";
 @forward "mixins/forms";
 @forward "mixins/lists";
 @forward "mixins/pagination";
-// @import "mixins/switch";
 @forward "mixins/tables";
-// @import "mixins/modal";
+@forward "mixins/modal";
 
 // Layout
 // @import "mixins/clearfix";

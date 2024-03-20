@@ -44,6 +44,15 @@
 @forward "component/badge";
 @forward "component/media";
 @forward "component/card";
+@forward "component/alert";
+@forward "component/loader";
+@forward "component/placeholder";
+
+// Components w/ JavaScript
+@forward "component/offcanvas";
+@forward "component/modal";
+@forward "component/tooltip";
+@forward "component/popover";
 
 // Print overrides
 @forward "core/print";

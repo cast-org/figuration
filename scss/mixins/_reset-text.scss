@@ -1,0 +1,18 @@
+@use "../settings";
+
+@mixin reset-text {
+  font-family: settings.$font-family-base;
+  // We deliberately do NOT reset font-size or word-wrap.
+  font-style: normal;
+  font-weight: settings.$font-weight-normal;
+  line-height: settings.$line-height-base;
+  line-break: auto;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+}

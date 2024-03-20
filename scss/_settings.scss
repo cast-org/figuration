@@ -863,30 +863,6 @@ $drag-font-weight:          $font-weight-bold !default;
 $drag-opacity:              .65 !default;
 $drag-hover-opacity:        .85 !default;
 
-// Tooltips
-// =====
-$tooltip-max-width:             rem-calc.rem(208px) !default;  // 208px=>13rem
-$tooltip-padding-y:             .25rem !default;
-$tooltip-padding-x:             .5rem !default;
-$tooltip-margin:                .125rem !default;
-
-$tooltip-font-size:             ($font-size-base * .875) !default;
-$tooltip-bg:                    $uibase-900 !default;
-$tooltip-color:                 $white !default;
-$tooltip-opacity:               .9 !default;
-$tooltip-border-radius:         $border-radius !default;
-
-$tooltip-close-padding-y:       .125rem !default;
-$tooltip-close-padding-x:       .3125rem !default;
-$tooltip-close-color:           $tooltip-color !default;
-$tooltip-close-opacity:         $close-opacity !default;
-$tooltip-close-hover-color:     $tooltip-color !default;
-$tooltip-close-hover-opacity:   $close-hover-opacity !default;
-
-$tooltip-arrow-width:           .75rem !default;
-$tooltip-arrow-height:          .375rem !default;
-$tooltip-arrow-color:           $tooltip-bg !default;
-
 // Progress bars
 // =====
 $progress-height:               1rem !default;
@@ -1126,7 +1102,7 @@ $badge-close-font-size:     1.25em !default;
 
 // Media objects
 // =====
-$media-margin-y:                1rem !default;
+$media-margin-y:            1rem !default;
 
 // Cards
 // =====
@@ -1165,5 +1141,192 @@ $card-img-overlay-padding:  $card-padding-y $card-padding-x !default;
 
 $card-deck-gutter:          $grid-gutter-width !default;
 
-$card-columns-count:            3 !default;
-$card-columns-column-gap:       1.25rem !default;
+$card-columns-count:        3 !default;
+$card-columns-column-gap:   .25rem !default;
+
+// Alerts
+// =====
+$alert-padding-x:           1rem !default;
+$alert-padding-y:           1rem !default;
+$alert-margin-bottom:       $spacer !default;
+$alert-border-radius:       $border-radius !default;
+$alert-link-font-weight:    $font-weight-bold !default;
+$alert-border-width:        $border-width !default;
+$alert-close-padding-x:     .75rem !default;
+$alert-close-padding-y:     .75rem !default;
+
+// Loader
+// =====
+$loader-circle-size:              1em !default;
+$loader-circle-border-width:      3px !default;
+$loader-circle-alt-opacity:       .25 !default;
+$loader-circle-vertical-align:    ($loader-circle-border-width * -.5) !default;
+$loader-circle-animation-speed:   1s !default;
+
+// Placeholder
+// =====
+$placeholder-opacity-max:               .5 !default;
+$placeholder-opacity-min:               .2 !default;
+$placeholder-sizes: (
+  "xsmall":   .5em,
+  "small":    .75em,
+  "large":    1.25em
+) !default;
+
+// Offcanvas
+// =====
+$offcanvas-font-size:           $font-size-base !default;
+$offcanvas-bg:                  $component-bg !default;
+$offcanvas-color:               null !default;
+$offcanvas-border-color:        $component-overlay-border-color !default;
+$offcanvas-border-width:        $border-width !default;
+$offcanvas-box-shadow:          map.get($shadows, "d3") !default;
+
+$offcanvas-backdrop-bg:         $dark !default;
+$offcanvas-backdrop-opacity:    .5 !default;
+
+$offcanvas-header-padding-y:    .75rem !default;
+$offcanvas-header-padding-x:    1rem !default;
+$offcanvas-header-bg:           null !default;
+$offcanvas-header-color:        null !default;
+$offcanvas-header-border-color: rgba($uibase-900, .2) !default;
+$offcanvas-header-border-width: 0 !default;
+
+$offcanvas-title-line-height:   $line-height-base !default;
+
+$offcanvas-close-padding-y:     .75rem !default;
+$offcanvas-close-padding-x:     .75rem !default;
+
+$offcanvas-body-padding-y:      .75rem !default;
+$offcanvas-body-padding-x:      1rem !default;
+
+$offcanvas-footer-padding-y:    .75rem !default;
+$offcanvas-footer-padding-x:    1rem !default;
+$offcanvas-footer-bg:           null !default;
+$offcanvas-footer-color:        null !default;
+$offcanvas-footer-border-color: $offcanvas-header-border-color !default;
+$offcanvas-footer-border-width: $offcanvas-header-border-width !default;
+
+$offcanvas-horizontal-width:    rem-calc.rem(400px) !default; // 400px=>25rem !default;
+$offcanvas-vertical-height:     33vh !default;
+
+$offcanvas-blocked-transition:  transform .15s linear !default;
+$offcanvas-blocked-transform:   scale(1.01) !default;
+
+// Modals
+// =====
+// Padding applied to the modal body
+$modal-dialog-margin:           .625rem !default;
+$modal-dialog-bp-up-margin-y:   1.875rem !default;
+
+$modal-content-font-size:        $font-size-base !default;
+$modal-content-bg:               $component-bg !default;
+$modal-content-color:            null !default;
+$modal-content-border-color:     $component-overlay-border-color !default;
+$modal-content-border-width:     $border-width !default;
+$modal-content-box-shadow:       map.get($shadows, "d3") !default;
+$modal-content-bp-up-box-shadow: map.get($shadows, "d4") !default;
+
+$modal-border-radius:           .375rem !default;
+$modal-inner-border-radius:     calc-util.subtract($modal-border-radius, $modal-content-border-width) !default;
+
+$modal-backdrop-bg:             $dark !default;
+$modal-backdrop-opacity:        .5 !default;
+
+$modal-header-padding-y:        .75rem !default;
+$modal-header-padding-x:        1rem !default;
+$modal-header-bg:               null !default;
+$modal-header-color:            null !default;
+$modal-header-border-color:     rgba($uibase-900, .2) !default;
+$modal-header-border-width:     $modal-content-border-width !default;
+
+$modal-title-line-height:       $line-height-base !default;
+
+$modal-close-padding-y:         .75rem !default;
+$modal-close-padding-x:         .75rem !default;
+
+$modal-body-padding-y:          .75rem !default;
+$modal-body-padding-x:          1rem !default;
+
+$modal-footer-padding-y:        .75rem !default;
+$modal-footer-padding-x:        1rem !default;
+$modal-footer-bg:               null !default;
+$modal-footer-color:            null !default;
+$modal-footer-border-color:     $modal-header-border-color !default;
+$modal-footer-border-width:     $modal-header-border-width !default;
+
+$modal-sm:                      rem-calc.rem(304px) !default; // 304px=>19rem
+$modal-md:                      rem-calc.rem(528px) !default; // 528px=>33rem
+$modal-lg:                      rem-calc.rem(896px) !default; // 896px=>56rem
+
+$modal-breakpoint:              sm !default; // When to start scaling up modal width
+$modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`
+
+$modal-side-vertical-height:    33vh !default;
+
+// When fading in the modal, animate it to slide down
+$modal-transform-fade:          translate(0, -3rem) !default;
+$modal-transform-in:            none !default;
+$modal-transform-side-offset:   -5rem !default;
+$modal-transform-blocked:       scale(1.01) !default;
+// Remove slide when using fullscreen variant
+$modal-transform-fullscreen:    none !default;
+
+// Tooltips
+// =====
+$tooltip-max-width:             rem-calc.rem(208px) !default;  // 208px=>13rem
+$tooltip-padding-y:             .25rem !default;
+$tooltip-padding-x:             .5rem !default;
+$tooltip-margin:                .125rem !default;
+
+$tooltip-font-size:             ($font-size-base * .875) !default;
+$tooltip-bg:                    $uibase-900 !default;
+$tooltip-color:                 $white !default;
+$tooltip-opacity:               .9 !default;
+$tooltip-border-radius:         $border-radius !default;
+
+$tooltip-close-padding-y:       .125rem !default;
+$tooltip-close-padding-x:       .3125rem !default;
+$tooltip-close-color:           $tooltip-color !default;
+$tooltip-close-opacity:         $close-opacity !default;
+$tooltip-close-hover-color:     $tooltip-color !default;
+$tooltip-close-hover-opacity:   $close-hover-opacity !default;
+
+$tooltip-arrow-width:           .75rem !default;
+$tooltip-arrow-height:          .375rem !default;
+$tooltip-arrow-color:           $tooltip-bg !default;
+
+// Popovers
+// =====
+$popover-font-size:             .9375rem !default;
+$popover-bg:                    $component-bg !default;
+$popover-margin:                .125rem !default;
+$popover-max-width:             rem-calc.rem(288px) !default;  // 288px=>18rem
+$popover-border-width:          $border-width !default;
+$popover-border-color:          $component-overlay-border-color !default;
+$popover-border-radius:         .3125rem !default;
+$popover-inner-border-radius:   calc-util.subtract($popover-border-radius, $popover-border-width) !default;
+$popover-box-shadow:            map.get($shadows, "d2") !default;
+
+$popover-header-padding-y:      .5rem !default;
+$popover-header-padding-x:      .75rem !default;
+
+$popover-header-font-size:      $font-size-base !default;
+$popover-header-font-weight:    null !default;
+$popover-header-color:          $headings-color !default;
+$popover-header-bg:             $component-section-bg !default;
+$popover-header-border-width:   $border-width !default;
+$popover-header-border-color:   $component-section-border-color !default;
+
+$popover-control-padding-y:     .125rem !default;
+$popover-control-padding-x:     .3125rem !default;
+
+$popover-body-padding-y:        .5rem !default;
+$popover-body-padding-x:        .75rem !default;
+
+$popover-body-color:            $body-color !default;
+
+$popover-arrow-width:           1.25rem !default;
+$popover-arrow-height:          .625rem !default;
+$popover-arrow-color:           $popover-bg !default;
+$popover-arrow-outer-color:     $popover-border-color !default;
