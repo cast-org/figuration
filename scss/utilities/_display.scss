@@ -1,0 +1,38 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../mixins" as *;
+
+// stylelint-disable declaration-no-important
+
+// Display utilities
+@if $enable-utility-display {
+  @each $bp in $utility-display-breakpoints {
+    $bprule: breakpoint-designator($bp);
+
+    @include media-breakpoint-up($bp) {
+      @each $value in $utility-display {
+        .d#{$bprule}-#{$value} { display: $value !important; }
+      }
+    }
+
+    // Skip largest breakpoint for down (equivalent to `.d-none`)
+    @if $enable-utility-display-down-none {
+      @if breakpoint-max($bp, $grid-breakpoints) != null {
+        .d-#{$bp}-down-none {
+          @include media-breakpoint-down($bp) {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+
+  // Print display utilities
+  @if $enable-utility-display-print {
+    @media print {
+      @each $value in $utility-display {
+        .print-#{$value} { display: $value !important; }
+      }
+    }
+  }
+}

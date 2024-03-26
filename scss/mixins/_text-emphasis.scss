@@ -1,0 +1,33 @@
+@use "../functions" as *;
+
+// stylelint-disable declaration-no-important
+
+// Contextual text
+@mixin text-emphasis-variant($parent, $color, $level-delta) {
+  #{$parent} {
+    color: $color !important;
+  }
+  @if $level-delta != 0 {
+    a#{$parent} {
+      &:hover,
+      &:focus {
+        color: palette($color, 500 + $level-delta) !important;
+      }
+    }
+  }
+}
+
+// Palette text
+@mixin text-emphasis-palette-variant($parent, $color, $level, $level-delta) {
+  #{$parent} {
+    color: palette($color, $level) !important;
+  }
+  @if $level-delta != 0 {
+    a#{$parent} {
+      &:hover,
+      &:focus {
+        color: palette($color, $level + $level-delta) !important;
+      }
+    }
+  }
+}

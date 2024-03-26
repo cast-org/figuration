@@ -1,0 +1,32 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+
+@if $enable-utility-embed {
+
+  @if $enable-utility-embed-fluid {
+    .embed-fluid {
+      position: relative;
+      width: 100%;
+      aspect-ratio: $embed-fluid-default-ratio;
+
+      > .embed-fluid-item,
+      > iframe,
+      > embed,
+      > object,
+      > video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  // Fullscreen video
+  @if $enable-utility-embed-fullscreen {
+    :fullscreen .embed-fluid {
+      position: initial;
+    }
+  }
+}

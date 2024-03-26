@@ -1,0 +1,22 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../mixins" as *;
+
+// stylelint-disable declaration-no-important
+
+// Object-fit utilties
+@if $enable-utility-object-fit {
+  @if $utility-object-fit != null {
+    @each $breakpoint in $utility-object-fit-breakpoints {
+      $bprule: breakpoint-designator($breakpoint);
+
+      @include media-breakpoint-up($breakpoint) {
+        @each $name, $value in $utility-object-fit {
+          .object-fit#{$bprule}-#{$name} {
+            object-fit: $value !important;
+          }
+        }
+      }
+    }
+  }
+}

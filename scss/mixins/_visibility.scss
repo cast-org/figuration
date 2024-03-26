@@ -1,0 +1,10 @@
+// stylelint-disable declaration-no-important
+
+// Visibility
+@mixin invisible {
+  visibility: hidden !important;
+}
+
+@mixin visible {
+  visibility: visible !important;
+}

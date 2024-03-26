@@ -1,0 +1,8 @@
+@use "../settings-options" as *;
+@use "../mixins" as *;
+
+@if $enable-utility-clearfix {
+  .clearfix {
+    @include clearfix();
+  }
+}

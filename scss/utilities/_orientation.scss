@@ -1,0 +1,23 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+
+// stylelint-disable declaration-no-important
+
+@if $enable-utility-orientation {
+  @if $enable-utility-orientation-rotate {
+    @each $name, $value in $utility-rotate {
+      .rotate-#{$name} {
+        transform: $value !important;
+      }
+    }
+  }
+
+  @if $enable-utility-orientation-flip {
+    .flip-horizontal {
+      transform: scaleX(-1) !important;
+    }
+    .flip-vertical {
+      transform: scaleY(-1) !important;
+    }
+  }
+}

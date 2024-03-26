@@ -8,11 +8,11 @@
 @forward "mixins/border";
 @forward "mixins/breakpoints";
 @forward "mixins/images";
-// @import "mixins/screen-reader";
+@forward "mixins/screen-reader";
 @forward "mixins/reset-text";
-// @import "mixins/text-emphasis";
-// @import "mixins/text-truncate";
-// @import "mixins/visibility";
+@forward "mixins/text-emphasis";
+@forward "mixins/text-truncate";
+@forward "mixins/visibility";
 
 // Components
 @forward "mixins/alert";
@@ -27,7 +27,7 @@
 @forward "mixins/modal";
 
 // Layout
-// @import "mixins/clearfix";
+@forward "mixins/clearfix";
 @forward "mixins/containers";
 @forward "mixins/grid";
-// @import "mixins/float";
+@forward "mixins/float";

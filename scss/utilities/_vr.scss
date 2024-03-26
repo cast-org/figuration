@@ -1,0 +1,12 @@
+@use "../settings" as *;
+@use "../settings-options" as *;
+@use "../mixins" as *;
+
+@if $enable-utility-vr {
+  .vr {
+    display: inline-block;
+    align-self: stretch;
+    min-height: 1em;
+    @include divider-v($vr-border-color, $vr-border-width, null, $vr-opacity);
+  }
+}
