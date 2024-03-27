@@ -287,9 +287,12 @@ a:not([href]):not([class]) {
   // Inline code
   @if $enable-code-code {
     code {
+      padding: $code-padding-y $code-padding-x;
       @include font-size($code-font-size);
       color: var(--#{$prefix}code-color);
       word-wrap: break-word;
+      background-color: var(--#{$prefix}code-bg);
+      @include border-radius($code-border-radius);
 
       // Streamline the style when inside anchors to avoid broken underline and more
       a > & {

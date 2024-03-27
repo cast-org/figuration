@@ -125,7 +125,7 @@
 
       @include media-breakpoint-up($breakpoint) {
         @each $size, $dim in $font-sizes {
-          @if ($bpsize == null or $bpsize < $responsive-font-size-fluid-breakpoint) {
+          @if ($bpsize == null or $bpsize < $responsive-font-size-breakpoint) {
             .fs#{$bprule}-#{$size} { @include font-size($dim !important); }
           } @else {
             //stylelint-disable-next-line property-disallowed-list

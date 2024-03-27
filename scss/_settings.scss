@@ -204,12 +204,12 @@ $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
 
 // Only used when one of Responsive Typography methods is enabled.
-$responsive-font-size-minimum-size:           1rem !default;
-$responsive-font-size-fluid-breakpoint:       rem-calc.bp-to-em(1200px) !default;
-$responsive-font-size-fluid-factor:           10 !default;
-$responsive-font-size-two-dimensional:        false !default;
-$responsive-font-size-generate-class:         false !default;
-$responsive-font-size-fluid-two-dimensional:  false !default;
+$responsive-font-size-minimum-size:     1rem !default;
+$responsive-font-size-breakpoint:       rem-calc.bp-to-em(1200px) !default;
+$responsive-font-size-factor:           10 !default;
+$responsive-font-size-two-dimensional:  false !default;
+$responsive-font-size-generate-class:   false !default;
+$responsive-font-size-two-dimensional:  false !default;
 
 // Font size utility classes
 $font-sizes: (
@@ -440,7 +440,6 @@ $shadows: (
 // Widget animations
 $transition-base:           all .15s ease-in-out !default;
 $transition-fade:           opacity .15s linear !default;
-$transition-lazy-fade:      opacity .3s linear !default;
 $transition-collapse-y:     height .3s ease !default;
 $transition-collapse-x:     width .3s ease !default;
 

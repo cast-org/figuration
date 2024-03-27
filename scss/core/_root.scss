@@ -51,6 +51,7 @@
   }
 
   --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}code-bg: #{$code-bg};
   --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
 }

@@ -11,6 +11,7 @@
 }
 
 .customcolor {
-  color: figuration.palette(red, 100);
+  //color: figuration.palette(red, 100);
+  color: figuration.palette(#f00, 100);
   background: figuration.$light;
 }

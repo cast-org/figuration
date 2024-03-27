@@ -29,6 +29,7 @@
   --cf-link-hover-color: #00338c;
   --cf-link-hover-color-rgb: 0, 51, 140;
   --cf-code-color: #bf2012;
+  --cf-code-bg: ;
   --cf-highlight-color: #13171a;
   --cf-highlight-bg: #ff0;
 }
@@ -223,6 +224,7 @@ code {
   font-size: 0.875em;
   color: var(--cf-code-color);
   word-wrap: break-word;
+  background-color: var(--cf-code-bg);
 }
 a > code {
   color: inherit;
