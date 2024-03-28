@@ -1778,7 +1778,7 @@ textarea.form-control.has-validation-icon.is-invalid {
 .btn-check-input:not([disabled]):not(:disabled):checked ~ .btn, .btn:active,
 .btn.active,
 .btn.open[data-cfw=dropdown] {
-  color: #50606f;
+  color: #262d34;
   background-color: #bfc6cd;
   border-color: #7e8d9b;
 }
@@ -2057,7 +2057,7 @@ textarea.form-control.has-validation-icon.is-invalid {
 .btn-check-input:not([disabled]):not(:disabled):checked ~ .btn-outline, .btn-outline:active,
 .btn-outline.active,
 .btn-outline.open[data-cfw=dropdown] {
-  color: #50606f;
+  color: #262d34;
   background-color: #bfc6cd;
   border-color: #7e8d9b;
 }
@@ -12735,7 +12735,7 @@ mh-100 {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: palette(#0055e9, 600) !important;
+  color: #0048c6 !important;
 }
 
 .text-secondary {
@@ -12743,7 +12743,7 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
-  color: palette(#5e7182, 600) !important;
+  color: #50606f !important;
 }
 
 .text-info {
@@ -12751,7 +12751,7 @@ a.text-secondary:hover, a.text-secondary:focus {
 }
 
 a.text-info:hover, a.text-info:focus {
-  color: palette(#1680a4, 600) !important;
+  color: #136d8b !important;
 }
 
 .text-success {
@@ -12759,7 +12759,7 @@ a.text-info:hover, a.text-info:focus {
 }
 
 a.text-success:hover, a.text-success:focus {
-  color: palette(#0e8a16, 600) !important;
+  color: #0c7513 !important;
 }
 
 .text-warning {
@@ -12767,7 +12767,7 @@ a.text-success:hover, a.text-success:focus {
 }
 
 a.text-warning:hover, a.text-warning:focus {
-  color: palette(#f8c223, 600) !important;
+  color: #d3a51e !important;
 }
 
 .text-danger {
@@ -12775,7 +12775,7 @@ a.text-warning:hover, a.text-warning:focus {
 }
 
 a.text-danger:hover, a.text-danger:focus {
-  color: palette(#d42314, 600) !important;
+  color: #b41e11 !important;
 }
 
 .text-light {
@@ -12783,7 +12783,7 @@ a.text-danger:hover, a.text-danger:focus {
 }
 
 a.text-light:hover, a.text-light:focus {
-  color: palette(#eff1f3, 600) !important;
+  color: #cbcdcf !important;
 }
 
 .text-dark {
@@ -12791,647 +12791,647 @@ a.text-light:hover, a.text-light:focus {
 }
 
 a.text-dark:hover, a.text-dark:focus {
-  color: palette(#343e48, 600) !important;
+  color: #2c353d !important;
 }
 
 .text-uibase-50 {
-  color: palette(#5e7182, 50) !important;
+  color: #eff1f3 !important;
 }
 
 a.text-uibase-50:hover, a.text-uibase-50:focus {
-  color: palette(#5e7182, 150) !important;
+  color: #cfd4da !important;
 }
 
 .text-uibase-100 {
-  color: palette(#5e7182, 100) !important;
+  color: #dfe3e6 !important;
 }
 
 a.text-uibase-100:hover, a.text-uibase-100:focus {
-  color: palette(#5e7182, 200) !important;
+  color: #bfc6cd !important;
 }
 
 .text-uibase-200 {
-  color: palette(#5e7182, 200) !important;
+  color: #bfc6cd !important;
 }
 
 a.text-uibase-200:hover, a.text-uibase-200:focus {
-  color: palette(#5e7182, 300) !important;
+  color: #9eaab4 !important;
 }
 
 .text-uibase-300 {
-  color: palette(#5e7182, 300) !important;
+  color: #9eaab4 !important;
 }
 
 a.text-uibase-300:hover, a.text-uibase-300:focus {
-  color: palette(#5e7182, 400) !important;
+  color: #7e8d9b !important;
 }
 
 .text-uibase-400 {
-  color: palette(#5e7182, 400) !important;
+  color: #7e8d9b !important;
 }
 
 a.text-uibase-400:hover, a.text-uibase-400:focus {
-  color: palette(#5e7182, 500) !important;
+  color: #5e7182 !important;
 }
 
 .text-uibase-500 {
-  color: palette(#5e7182, 500) !important;
+  color: #5e7182 !important;
 }
 
 a.text-uibase-500:hover, a.text-uibase-500:focus {
-  color: palette(#5e7182, 600) !important;
+  color: #50606f !important;
 }
 
 .text-uibase-600 {
-  color: palette(#5e7182, 600) !important;
+  color: #50606f !important;
 }
 
 a.text-uibase-600:hover, a.text-uibase-600:focus {
-  color: palette(#5e7182, 700) !important;
+  color: #424f5b !important;
 }
 
 .text-uibase-700 {
-  color: palette(#5e7182, 700) !important;
+  color: #424f5b !important;
 }
 
 a.text-uibase-700:hover, a.text-uibase-700:focus {
-  color: palette(#5e7182, 800) !important;
+  color: #343e48 !important;
 }
 
 .text-uibase-800 {
-  color: palette(#5e7182, 800) !important;
+  color: #343e48 !important;
 }
 
 a.text-uibase-800:hover, a.text-uibase-800:focus {
-  color: palette(#5e7182, 900) !important;
+  color: #262d34 !important;
 }
 
 .text-uibase-900 {
-  color: palette(#5e7182, 900) !important;
+  color: #262d34 !important;
 }
 
 a.text-uibase-900:hover, a.text-uibase-900:focus {
-  color: palette(#5e7182, 1000) !important;
+  color: #181c21 !important;
 }
 
 .text-primary-50 {
-  color: palette(#0055e9, 50) !important;
+  color: #e6eefd !important;
 }
 
 a.text-primary-50:hover, a.text-primary-50:focus {
-  color: palette(#0055e9, 150) !important;
+  color: #b3ccf8 !important;
 }
 
 .text-primary-100 {
-  color: palette(#0055e9, 100) !important;
+  color: #ccddfb !important;
 }
 
 a.text-primary-100:hover, a.text-primary-100:focus {
-  color: palette(#0055e9, 200) !important;
+  color: #99bbf6 !important;
 }
 
 .text-primary-200 {
-  color: palette(#0055e9, 200) !important;
+  color: #99bbf6 !important;
 }
 
 a.text-primary-200:hover, a.text-primary-200:focus {
-  color: palette(#0055e9, 300) !important;
+  color: #6699f2 !important;
 }
 
 .text-primary-300 {
-  color: palette(#0055e9, 300) !important;
+  color: #6699f2 !important;
 }
 
 a.text-primary-300:hover, a.text-primary-300:focus {
-  color: palette(#0055e9, 400) !important;
+  color: #3377ed !important;
 }
 
 .text-primary-400 {
-  color: palette(#0055e9, 400) !important;
+  color: #3377ed !important;
 }
 
 a.text-primary-400:hover, a.text-primary-400:focus {
-  color: palette(#0055e9, 500) !important;
+  color: #0055e9 !important;
 }
 
 .text-primary-500 {
-  color: palette(#0055e9, 500) !important;
+  color: #0055e9 !important;
 }
 
 a.text-primary-500:hover, a.text-primary-500:focus {
-  color: palette(#0055e9, 600) !important;
+  color: #0048c6 !important;
 }
 
 .text-primary-600 {
-  color: palette(#0055e9, 600) !important;
+  color: #0048c6 !important;
 }
 
 a.text-primary-600:hover, a.text-primary-600:focus {
-  color: palette(#0055e9, 700) !important;
+  color: #003ca3 !important;
 }
 
 .text-primary-700 {
-  color: palette(#0055e9, 700) !important;
+  color: #003ca3 !important;
 }
 
 a.text-primary-700:hover, a.text-primary-700:focus {
-  color: palette(#0055e9, 800) !important;
+  color: #002f80 !important;
 }
 
 .text-primary-800 {
-  color: palette(#0055e9, 800) !important;
+  color: #002f80 !important;
 }
 
 a.text-primary-800:hover, a.text-primary-800:focus {
-  color: palette(#0055e9, 900) !important;
+  color: #00225d !important;
 }
 
 .text-primary-900 {
-  color: palette(#0055e9, 900) !important;
+  color: #00225d !important;
 }
 
 a.text-primary-900:hover, a.text-primary-900:focus {
-  color: palette(#0055e9, 1000) !important;
+  color: #00153a !important;
 }
 
 .text-secondary-50 {
-  color: palette(#5e7182, 50) !important;
+  color: #eff1f3 !important;
 }
 
 a.text-secondary-50:hover, a.text-secondary-50:focus {
-  color: palette(#5e7182, 150) !important;
+  color: #cfd4da !important;
 }
 
 .text-secondary-100 {
-  color: palette(#5e7182, 100) !important;
+  color: #dfe3e6 !important;
 }
 
 a.text-secondary-100:hover, a.text-secondary-100:focus {
-  color: palette(#5e7182, 200) !important;
+  color: #bfc6cd !important;
 }
 
 .text-secondary-200 {
-  color: palette(#5e7182, 200) !important;
+  color: #bfc6cd !important;
 }
 
 a.text-secondary-200:hover, a.text-secondary-200:focus {
-  color: palette(#5e7182, 300) !important;
+  color: #9eaab4 !important;
 }
 
 .text-secondary-300 {
-  color: palette(#5e7182, 300) !important;
+  color: #9eaab4 !important;
 }
 
 a.text-secondary-300:hover, a.text-secondary-300:focus {
-  color: palette(#5e7182, 400) !important;
+  color: #7e8d9b !important;
 }
 
 .text-secondary-400 {
-  color: palette(#5e7182, 400) !important;
+  color: #7e8d9b !important;
 }
 
 a.text-secondary-400:hover, a.text-secondary-400:focus {
-  color: palette(#5e7182, 500) !important;
+  color: #5e7182 !important;
 }
 
 .text-secondary-500 {
-  color: palette(#5e7182, 500) !important;
+  color: #5e7182 !important;
 }
 
 a.text-secondary-500:hover, a.text-secondary-500:focus {
-  color: palette(#5e7182, 600) !important;
+  color: #50606f !important;
 }
 
 .text-secondary-600 {
-  color: palette(#5e7182, 600) !important;
+  color: #50606f !important;
 }
 
 a.text-secondary-600:hover, a.text-secondary-600:focus {
-  color: palette(#5e7182, 700) !important;
+  color: #424f5b !important;
 }
 
 .text-secondary-700 {
-  color: palette(#5e7182, 700) !important;
+  color: #424f5b !important;
 }
 
 a.text-secondary-700:hover, a.text-secondary-700:focus {
-  color: palette(#5e7182, 800) !important;
+  color: #343e48 !important;
 }
 
 .text-secondary-800 {
-  color: palette(#5e7182, 800) !important;
+  color: #343e48 !important;
 }
 
 a.text-secondary-800:hover, a.text-secondary-800:focus {
-  color: palette(#5e7182, 900) !important;
+  color: #262d34 !important;
 }
 
 .text-secondary-900 {
-  color: palette(#5e7182, 900) !important;
+  color: #262d34 !important;
 }
 
 a.text-secondary-900:hover, a.text-secondary-900:focus {
-  color: palette(#5e7182, 1000) !important;
+  color: #181c21 !important;
 }
 
 .text-info-50 {
-  color: palette(#1680a4, 50) !important;
+  color: #e8f2f6 !important;
 }
 
 a.text-info-50:hover, a.text-info-50:focus {
-  color: palette(#1680a4, 150) !important;
+  color: #b9d9e4 !important;
 }
 
 .text-info-100 {
-  color: palette(#1680a4, 100) !important;
+  color: #d0e6ed !important;
 }
 
 a.text-info-100:hover, a.text-info-100:focus {
-  color: palette(#1680a4, 200) !important;
+  color: #a2ccdb !important;
 }
 
 .text-info-200 {
-  color: palette(#1680a4, 200) !important;
+  color: #a2ccdb !important;
 }
 
 a.text-info-200:hover, a.text-info-200:focus {
-  color: palette(#1680a4, 300) !important;
+  color: #73b3c8 !important;
 }
 
 .text-info-300 {
-  color: palette(#1680a4, 300) !important;
+  color: #73b3c8 !important;
 }
 
 a.text-info-300:hover, a.text-info-300:focus {
-  color: palette(#1680a4, 400) !important;
+  color: #4599b6 !important;
 }
 
 .text-info-400 {
-  color: palette(#1680a4, 400) !important;
+  color: #4599b6 !important;
 }
 
 a.text-info-400:hover, a.text-info-400:focus {
-  color: palette(#1680a4, 500) !important;
+  color: #1680a4 !important;
 }
 
 .text-info-500 {
-  color: palette(#1680a4, 500) !important;
+  color: #1680a4 !important;
 }
 
 a.text-info-500:hover, a.text-info-500:focus {
-  color: palette(#1680a4, 600) !important;
+  color: #136d8b !important;
 }
 
 .text-info-600 {
-  color: palette(#1680a4, 600) !important;
+  color: #136d8b !important;
 }
 
 a.text-info-600:hover, a.text-info-600:focus {
-  color: palette(#1680a4, 700) !important;
+  color: #0f5a73 !important;
 }
 
 .text-info-700 {
-  color: palette(#1680a4, 700) !important;
+  color: #0f5a73 !important;
 }
 
 a.text-info-700:hover, a.text-info-700:focus {
-  color: palette(#1680a4, 800) !important;
+  color: #0c465a !important;
 }
 
 .text-info-800 {
-  color: palette(#1680a4, 800) !important;
+  color: #0c465a !important;
 }
 
 a.text-info-800:hover, a.text-info-800:focus {
-  color: palette(#1680a4, 900) !important;
+  color: #093342 !important;
 }
 
 .text-info-900 {
-  color: palette(#1680a4, 900) !important;
+  color: #093342 !important;
 }
 
 a.text-info-900:hover, a.text-info-900:focus {
-  color: palette(#1680a4, 1000) !important;
+  color: #062029 !important;
 }
 
 .text-success-50 {
-  color: palette(#0e8a16, 50) !important;
+  color: #e7f3e8 !important;
 }
 
 a.text-success-50:hover, a.text-success-50:focus {
-  color: palette(#0e8a16, 150) !important;
+  color: #b7dcb9 !important;
 }
 
 .text-success-100 {
-  color: palette(#0e8a16, 100) !important;
+  color: #cfe8d0 !important;
 }
 
 a.text-success-100:hover, a.text-success-100:focus {
-  color: palette(#0e8a16, 200) !important;
+  color: #9fd0a2 !important;
 }
 
 .text-success-200 {
-  color: palette(#0e8a16, 200) !important;
+  color: #9fd0a2 !important;
 }
 
 a.text-success-200:hover, a.text-success-200:focus {
-  color: palette(#0e8a16, 300) !important;
+  color: #6eb973 !important;
 }
 
 .text-success-300 {
-  color: palette(#0e8a16, 300) !important;
+  color: #6eb973 !important;
 }
 
 a.text-success-300:hover, a.text-success-300:focus {
-  color: palette(#0e8a16, 400) !important;
+  color: #3ea145 !important;
 }
 
 .text-success-400 {
-  color: palette(#0e8a16, 400) !important;
+  color: #3ea145 !important;
 }
 
 a.text-success-400:hover, a.text-success-400:focus {
-  color: palette(#0e8a16, 500) !important;
+  color: #0e8a16 !important;
 }
 
 .text-success-500 {
-  color: palette(#0e8a16, 500) !important;
+  color: #0e8a16 !important;
 }
 
 a.text-success-500:hover, a.text-success-500:focus {
-  color: palette(#0e8a16, 600) !important;
+  color: #0c7513 !important;
 }
 
 .text-success-600 {
-  color: palette(#0e8a16, 600) !important;
+  color: #0c7513 !important;
 }
 
 a.text-success-600:hover, a.text-success-600:focus {
-  color: palette(#0e8a16, 700) !important;
+  color: #0a610f !important;
 }
 
 .text-success-700 {
-  color: palette(#0e8a16, 700) !important;
+  color: #0a610f !important;
 }
 
 a.text-success-700:hover, a.text-success-700:focus {
-  color: palette(#0e8a16, 800) !important;
+  color: #084c0c !important;
 }
 
 .text-success-800 {
-  color: palette(#0e8a16, 800) !important;
+  color: #084c0c !important;
 }
 
 a.text-success-800:hover, a.text-success-800:focus {
-  color: palette(#0e8a16, 900) !important;
+  color: #063709 !important;
 }
 
 .text-success-900 {
-  color: palette(#0e8a16, 900) !important;
+  color: #063709 !important;
 }
 
 a.text-success-900:hover, a.text-success-900:focus {
-  color: palette(#0e8a16, 1000) !important;
+  color: #042306 !important;
 }
 
 .text-warning-50 {
-  color: palette(#f8c223, 50) !important;
+  color: #fef9e9 !important;
 }
 
 a.text-warning-50:hover, a.text-warning-50:focus {
-  color: palette(#f8c223, 150) !important;
+  color: #fdedbd !important;
 }
 
 .text-warning-100 {
-  color: palette(#f8c223, 100) !important;
+  color: #fef3d3 !important;
 }
 
 a.text-warning-100:hover, a.text-warning-100:focus {
-  color: palette(#f8c223, 200) !important;
+  color: #fce7a7 !important;
 }
 
 .text-warning-200 {
-  color: palette(#f8c223, 200) !important;
+  color: #fce7a7 !important;
 }
 
 a.text-warning-200:hover, a.text-warning-200:focus {
-  color: palette(#f8c223, 300) !important;
+  color: #fbda7b !important;
 }
 
 .text-warning-300 {
-  color: palette(#f8c223, 300) !important;
+  color: #fbda7b !important;
 }
 
 a.text-warning-300:hover, a.text-warning-300:focus {
-  color: palette(#f8c223, 400) !important;
+  color: #f9ce4f !important;
 }
 
 .text-warning-400 {
-  color: palette(#f8c223, 400) !important;
+  color: #f9ce4f !important;
 }
 
 a.text-warning-400:hover, a.text-warning-400:focus {
-  color: palette(#f8c223, 500) !important;
+  color: #f8c223 !important;
 }
 
 .text-warning-500 {
-  color: palette(#f8c223, 500) !important;
+  color: #f8c223 !important;
 }
 
 a.text-warning-500:hover, a.text-warning-500:focus {
-  color: palette(#f8c223, 600) !important;
+  color: #d3a51e !important;
 }
 
 .text-warning-600 {
-  color: palette(#f8c223, 600) !important;
+  color: #d3a51e !important;
 }
 
 a.text-warning-600:hover, a.text-warning-600:focus {
-  color: palette(#f8c223, 700) !important;
+  color: #ae8819 !important;
 }
 
 .text-warning-700 {
-  color: palette(#f8c223, 700) !important;
+  color: #ae8819 !important;
 }
 
 a.text-warning-700:hover, a.text-warning-700:focus {
-  color: palette(#f8c223, 800) !important;
+  color: #886b13 !important;
 }
 
 .text-warning-800 {
-  color: palette(#f8c223, 800) !important;
+  color: #886b13 !important;
 }
 
 a.text-warning-800:hover, a.text-warning-800:focus {
-  color: palette(#f8c223, 900) !important;
+  color: #634e0e !important;
 }
 
 .text-warning-900 {
-  color: palette(#f8c223, 900) !important;
+  color: #634e0e !important;
 }
 
 a.text-warning-900:hover, a.text-warning-900:focus {
-  color: palette(#f8c223, 1000) !important;
+  color: #3e3109 !important;
 }
 
 .text-danger-50 {
-  color: palette(#d42314, 50) !important;
+  color: #fbe9e8 !important;
 }
 
 a.text-danger-50:hover, a.text-danger-50:focus {
-  color: palette(#d42314, 150) !important;
+  color: #f2bdb9 !important;
 }
 
 .text-danger-100 {
-  color: palette(#d42314, 100) !important;
+  color: #f6d3d0 !important;
 }
 
 a.text-danger-100:hover, a.text-danger-100:focus {
-  color: palette(#d42314, 200) !important;
+  color: #eea7a1 !important;
 }
 
 .text-danger-200 {
-  color: palette(#d42314, 200) !important;
+  color: #eea7a1 !important;
 }
 
 a.text-danger-200:hover, a.text-danger-200:focus {
-  color: palette(#d42314, 300) !important;
+  color: #e57b72 !important;
 }
 
 .text-danger-300 {
-  color: palette(#d42314, 300) !important;
+  color: #e57b72 !important;
 }
 
 a.text-danger-300:hover, a.text-danger-300:focus {
-  color: palette(#d42314, 400) !important;
+  color: #dd4f43 !important;
 }
 
 .text-danger-400 {
-  color: palette(#d42314, 400) !important;
+  color: #dd4f43 !important;
 }
 
 a.text-danger-400:hover, a.text-danger-400:focus {
-  color: palette(#d42314, 500) !important;
+  color: #d42314 !important;
 }
 
 .text-danger-500 {
-  color: palette(#d42314, 500) !important;
+  color: #d42314 !important;
 }
 
 a.text-danger-500:hover, a.text-danger-500:focus {
-  color: palette(#d42314, 600) !important;
+  color: #b41e11 !important;
 }
 
 .text-danger-600 {
-  color: palette(#d42314, 600) !important;
+  color: #b41e11 !important;
 }
 
 a.text-danger-600:hover, a.text-danger-600:focus {
-  color: palette(#d42314, 700) !important;
+  color: #94190e !important;
 }
 
 .text-danger-700 {
-  color: palette(#d42314, 700) !important;
+  color: #94190e !important;
 }
 
 a.text-danger-700:hover, a.text-danger-700:focus {
-  color: palette(#d42314, 800) !important;
+  color: #75130b !important;
 }
 
 .text-danger-800 {
-  color: palette(#d42314, 800) !important;
+  color: #75130b !important;
 }
 
 a.text-danger-800:hover, a.text-danger-800:focus {
-  color: palette(#d42314, 900) !important;
+  color: #550e08 !important;
 }
 
 .text-danger-900 {
-  color: palette(#d42314, 900) !important;
+  color: #550e08 !important;
 }
 
 a.text-danger-900:hover, a.text-danger-900:focus {
-  color: palette(#d42314, 1000) !important;
+  color: #350905 !important;
 }
 
 .text-gray-50 {
-  color: palette(#666, 50) !important;
+  color: #f0f0f0 !important;
 }
 
 a.text-gray-50:hover, a.text-gray-50:focus {
-  color: palette(#666, 150) !important;
+  color: #d1d1d1 !important;
 }
 
 .text-gray-100 {
-  color: palette(#666, 100) !important;
+  color: #e0e0e0 !important;
 }
 
 a.text-gray-100:hover, a.text-gray-100:focus {
-  color: palette(#666, 200) !important;
+  color: #c2c2c2 !important;
 }
 
 .text-gray-200 {
-  color: palette(#666, 200) !important;
+  color: #c2c2c2 !important;
 }
 
 a.text-gray-200:hover, a.text-gray-200:focus {
-  color: palette(#666, 300) !important;
+  color: #a3a3a3 !important;
 }
 
 .text-gray-300 {
-  color: palette(#666, 300) !important;
+  color: #a3a3a3 !important;
 }
 
 a.text-gray-300:hover, a.text-gray-300:focus {
-  color: palette(#666, 400) !important;
+  color: #858585 !important;
 }
 
 .text-gray-400 {
-  color: palette(#666, 400) !important;
+  color: #858585 !important;
 }
 
 a.text-gray-400:hover, a.text-gray-400:focus {
-  color: palette(#666, 500) !important;
+  color: #666 !important;
 }
 
 .text-gray-500 {
-  color: palette(#666, 500) !important;
+  color: #666 !important;
 }
 
 a.text-gray-500:hover, a.text-gray-500:focus {
-  color: palette(#666, 600) !important;
+  color: #575757 !important;
 }
 
 .text-gray-600 {
-  color: palette(#666, 600) !important;
+  color: #575757 !important;
 }
 
 a.text-gray-600:hover, a.text-gray-600:focus {
-  color: palette(#666, 700) !important;
+  color: #474747 !important;
 }
 
 .text-gray-700 {
-  color: palette(#666, 700) !important;
+  color: #474747 !important;
 }
 
 a.text-gray-700:hover, a.text-gray-700:focus {
-  color: palette(#666, 800) !important;
+  color: #383838 !important;
 }
 
 .text-gray-800 {
-  color: palette(#666, 800) !important;
+  color: #383838 !important;
 }
 
 a.text-gray-800:hover, a.text-gray-800:focus {
-  color: palette(#666, 900) !important;
+  color: #292929 !important;
 }
 
 .text-gray-900 {
-  color: palette(#666, 900) !important;
+  color: #292929 !important;
 }
 
 a.text-gray-900:hover, a.text-gray-900:focus {
-  color: palette(#666, 1000) !important;
+  color: #1a1a1a !important;
 }
 
 .text-body {

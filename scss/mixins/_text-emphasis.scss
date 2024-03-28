@@ -1,8 +1,11 @@
 @use "../settings";
-@use "../functions/palette";
+@use "../functions/color-util";
 
-palette.$light-interval: settings.$palette-light-interval;
-palette.$dark-interval: settings.$palette-dark-interval;
+color-util.$light-interval: settings.$palette-light-interval;
+color-util.$dark-interval: settings.$palette-dark-interval;
+color-util.$contrast-min-ratio:  settings.$color-contrast-min-ratio;
+color-util.$contrast-base-light: settings.$color-contrast-base-light;
+color-util.$contrast-base-dark:  settings.$color-contrast-base-dark;
 
 // stylelint-disable declaration-no-important
 
@@ -15,7 +18,7 @@ palette.$dark-interval: settings.$palette-dark-interval;
     a#{$parent} {
       &:hover,
       &:focus {
-        color: palette($color, 500 + $level-delta) !important;
+        color: color-util.palette($color, 500 + $level-delta) !important;
       }
     }
   }
@@ -24,13 +27,13 @@ palette.$dark-interval: settings.$palette-dark-interval;
 // Palette text
 @mixin text-emphasis-palette-variant($parent, $color, $level, $level-delta) {
   #{$parent} {
-    color: palette($color, $level) !important;
+    color: color-util.palette($color, $level) !important;
   }
   @if $level-delta != 0 {
     a#{$parent} {
       &:hover,
       &:focus {
-        color: palette($color, $level + $level-delta) !important;
+        color: color-util.palette($color, $level + $level-delta) !important;
       }
     }
   }

@@ -6,8 +6,8 @@
 @use "sass:string";
 @use "functions/assert";
 @use "functions/calc-util";
+@use "functions/color-util";
 @use "functions/encode-svg";
-@use "functions/palette";
 @use "functions/map-util";
 @use "functions/rem-calc";
 @use "functions/str-util";
@@ -29,7 +29,6 @@ $enable-palette:                true !default;      // true
 $enable-sizing:                 true !default;      // true
 $enable-bp-smallest:            false !default;     // false
 $enable-rfs-main:               false !default;       // true :TODO:
-$enable-color-warnings:         false !default;     // false
 
 // Palette
 // =====
@@ -39,9 +38,9 @@ $palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
 $palette-light-interval: .2% !default;
 $palette-dark-interval: .15% !default;
 
-// Override values in palette function
-palette.$light-interval: $palette-light-interval;
-palette.$dark-interval: $palette-dark-interval;
+// Override values in `color-util` functions
+color-util.$light-interval: $palette-light-interval;
+color-util.$dark-interval: $palette-dark-interval;
 
 // Palette levels for use in mix-context-colors() to determine
 // standardized contextual color mapping.
@@ -99,16 +98,16 @@ $cyan:      #1680a4 !default;
 $yellow:    #f8c223 !default;
 
 // Base UI Scale
-$uibase-50:   palette.palette($uibase, 50) !default;
-$uibase-100:  palette.palette($uibase, 100) !default;
-$uibase-200:  palette.palette($uibase, 200) !default;
-$uibase-300:  palette.palette($uibase, 300) !default;
-$uibase-400:  palette.palette($uibase, 400) !default;
-$uibase-500:  palette.palette($uibase, 500) !default;
-$uibase-600:  palette.palette($uibase, 600) !default;
-$uibase-700:  palette.palette($uibase, 700) !default;
-$uibase-800:  palette.palette($uibase, 800) !default;
-$uibase-900:  palette.palette($uibase, 900) !default;
+$uibase-50:   color-util.palette($uibase, 50) !default;
+$uibase-100:  color-util.palette($uibase, 100) !default;
+$uibase-200:  color-util.palette($uibase, 200) !default;
+$uibase-300:  color-util.palette($uibase, 300) !default;
+$uibase-400:  color-util.palette($uibase, 400) !default;
+$uibase-500:  color-util.palette($uibase, 500) !default;
+$uibase-600:  color-util.palette($uibase, 600) !default;
+$uibase-700:  color-util.palette($uibase, 700) !default;
+$uibase-800:  color-util.palette($uibase, 800) !default;
+$uibase-900:  color-util.palette($uibase, 900) !default;
 
 // Color Variables
 $primary:   $blue !default;
@@ -117,8 +116,8 @@ $info:      $cyan !default;
 $success:   $green !default;
 $warning:   $yellow !default;
 $danger:    $red !default;
-$light:     palette.palette($uibase, 50) !default;
-$dark:      palette.palette($uibase, 800) !default;
+$light:     color-util.palette($uibase, 50) !default;
+$dark:      color-util.palette($uibase, 800) !default;
 
 // Base Color Map - used for generating contextual variants
 $base-colors: (
@@ -151,6 +150,11 @@ $palette-colors: (
 $color-contrast-min-ratio:  4.5 !default;
 $color-contrast-base-light: $white !default;
 $color-contrast-base-dark:  $uibase-900 !default;
+
+// Override values in `color-util` functions
+color-util.$contrast-min-ratio:  $color-contrast-min-ratio;
+color-util.$contrast-base-light: $color-contrast-base-light;
+color-util.$contrast-base-dark:  $color-contrast-base-dark;
 
 // Component Color Variants and Levels
 // =====
@@ -285,7 +289,7 @@ $body-text-align:   null !default;
 // =====
 $link-color:                    $primary !default;
 $link-decoration:               underline !default;
-$link-hover-color:              palette.palette($primary, 700) !default;
+$link-hover-color:              color-util.palette($primary, 700) !default;
 $link-hover-decoration:         null !default;
 
 $link-stretch-pseudo-element:   after !default;
@@ -349,7 +353,7 @@ $mark-bg:           #ff0 !default;
 $code-font-size:      .875em !default;
 $code-padding-x:      null !default;
 $code-padding-y:      null !default;
-$code-color:          palette.palette($red, 550) !default;
+$code-color:          color-util.palette($red, 550) !default;
 $code-bg:             null !default;
 $code-border-radius:  null !default;
 
@@ -383,8 +387,8 @@ $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
 $component-active-bg:           $primary !default;
-$component-active-color:        $white !default; //color-util.color-if-contrast($white, $primary) !default; :TODO:
-$component-active-border-color: palette.palette($primary, 600) !default;
+$component-active-color:        color-util.color-if-contrast($white, $primary) !default;
+$component-active-border-color: color-util.palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
@@ -528,14 +532,14 @@ $btn-block-spacing-y:       .25rem !default;
 $btn-icon-multiplier:       .5 !default;
 
 $btn-default-bg:                    $white !default;
-$btn-default-color:                 $uibase-500 !default; //color-util.color-if-contrast($uibase-500, $btn-default-bg) !default; :TODO:
+$btn-default-color:                 color-util.color-if-contrast($uibase-500, $btn-default-bg) !default;
 $btn-default-border-color:          $uibase-300 !default;
 $btn-default-focus-box-shadow-color: $component-active-bg !default;
 $btn-default-hover-bg:              $uibase-50 !default;
-$btn-default-hover-color:           $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default; :TODO:
+$btn-default-hover-color:           color-util.color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
 $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
-$btn-default-active-color:          $btn-default-hover-color !default; //color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default; :TODO:
+$btn-default-active-color:          color-util.color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
 $btn-default-active-border-color:   $uibase-400 !default;
 $btn-default-disabled-bg:           $btn-default-bg !default;
 $btn-default-disabled-color:        $btn-default-color !default;
@@ -570,7 +574,7 @@ $input-box-shadow:              map.get($shadows, "i1") !default;
 
 $input-focus-bg:                $input-bg !default;
 $input-focus-color:             $input-color !default;
-$input-focus-border-color:      palette.palette($primary, 300) !default;
+$input-focus-border-color:      color-util.palette($primary, 300) !default;
 $input-focus-box-shadow-size:   0 0 0 .1875rem !default;
 $input-focus-box-shadow-alpha:  .35 !default;
 $input-focus-box-shadow:        $input-focus-box-shadow-size rgba($component-active-bg, $input-focus-box-shadow-alpha) !default;
@@ -664,7 +668,7 @@ $form-switch-thumb-border-color:            $form-switch-thumb-bg !default;
 $form-switch-thumb-border-radius:           50% !default;
 $form-switch-thumb-box-shadow:              none !default;
 
-$form-switch-thumb-focus-bg:                palette.palette($primary, 300) !default;
+$form-switch-thumb-focus-bg:                color-util.palette($primary, 300) !default;
 $form-switch-thumb-focus-border-color:      $form-switch-thumb-focus-bg !default;
 $form-switch-thumb-focus-box-shadow:        null !default;
 
@@ -682,11 +686,11 @@ $form-select-indicator-position:    right $form-select-indicator-offset center !
 
 // Form file
 $form-file-button-bg:               $uibase-50 !default;
-$form-file-button-color:            $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default; :TODO:
+$form-file-button-color:            color-util.color-if-contrast($uibase-600, $form-file-button-bg) !default;
 $form-file-button-font-family:      $btn-font-family !default;
 $form-file-button-font-weight:      $btn-font-weight !default;
 $form-file-button-hover-bg:         $uibase-100 !default;
-$form-file-button-hover-color:      $uibase-600 !default; //color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default; :TODO:
+$form-file-button-hover-color:      color-util.color-if-contrast($uibase-600, $form-file-button-hover-bg) !default;
 $form-file-button-disabled-color:   $component-disabled-color !default;
 $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;
@@ -707,7 +711,7 @@ $form-range-thumb-border-radius:          50% !default;
 $form-range-thumb-box-shadow:             map.get($shadows, "d1") !default;
 $form-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width: .1875rem !default;
-$form-range-thumb-active-bg:              palette.palette($primary, 600) !default;
+$form-range-thumb-active-bg:              color-util.palette($primary, 600) !default;
 $form-range-thumb-disabled-bg:            $uibase-300 !default;
 
 $form-range-height:                 calc-util.add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2) !default;
