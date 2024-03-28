@@ -3,11 +3,39 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
-@use "../settings" as *;
-@use "../functions/palette" as *;
 
-$light-interval: $palette-light-interval;
-$dark-interval: $palette-dark-interval;
+$enable-color-warnings: false !default;
+
+$base: 500 !default;
+$light-interval: .2% !default;
+$dark-interval: .2% !default;
+$contrast-min-ratio:  4.5 !default;
+$contrast-base-light: #fff !default;
+$contrast-base-dark:  #000 !default;
+
+// Generate palette colors
+
+// Valid levels 0-1000
+@function palette($color, $level) {
+  $level-delta: $level - $base;
+
+  @if $level < 0 {
+    @return #fff;
+  } @else if $level > 1000 {
+    @return #000;
+  } @else if $level < $base {
+    // lighten - flip negative value
+    $light-pct: if($level-delta * $light-interval > 100, 100, $level-delta * $light-interval);
+    @return mix(#fff, $color, $light-pct * -1);
+  } @else if $level > $base {
+    // darken
+    $dark-pct: if($level-delta * $dark-interval > 100, 100, $level-delta * $dark-interval);
+    @return mix(#000, $color, $dark-pct);
+  }
+
+  // level==500
+  @return $color;
+}
 
 // Conversions
 @function to-rgb($value) {
@@ -81,8 +109,8 @@ $dark-interval: $palette-dark-interval;
 
 // Get color with hopefully minimum contrast ratio against a given one
 // based on the minimum contrast ratio setting.
-@function color-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
-  @if (color-get-contrast-ratio($light, $color) <= $color-contrast-min-ratio) {
+@function color-contrast($color, $light: $contrast-base-light, $dark: $contrast-base-dark) {
+  @if (color-get-contrast-ratio($light, $color) <= $contrast-min-ratio) {
     @return $dark;
   }
   @return $light;
@@ -100,32 +128,32 @@ $dark-interval: $palette-dark-interval;
 
 // Check to see if standard contrast function meets the minimum contrast
 // ratio, otherwise get the max contrast.
-@function color-auto-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
+@function color-auto-contrast($color, $light: $contrast-base-light, $dark: $contrast-base-dark) {
   @if meta.type-of($color) != color {
     @return $color;
   }
   $colorauto: color-contrast($color, $light, $dark);
-  @if (color-get-contrast-ratio($colorauto, $color) >= $color-contrast-min-ratio) {
+  @if (color-get-contrast-ratio($colorauto, $color) >= $contrast-min-ratio) {
     @return $colorauto;
   }
 
   @if $enable-color-warnings {
-    @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
+    @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
   }
   @return color-max-contrast($color);
 }
 
 // Check to see if a color meets minimum contrast ratio and use it,
 // otherwise get the best color contrast possible.
-@function color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
+@function color-if-contrast($colorfore, $colorback, $light: $contrast-base-light, $dark: $contrast-base-dark) {
   @if meta.type-of($colorfore) != color or meta.type-of($colorback) != color {
     @return $colorfore;
   }
-  @if (color-get-contrast-ratio($colorfore, $colorback) >= $color-contrast-min-ratio) {
+  @if (color-get-contrast-ratio($colorfore, $colorback) >= $contrast-min-ratio) {
     @return $colorfore;
   }
   @if $enable-color-warnings {
-    @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color that should meet minimum contrast.";
+    @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{$contrast-min-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color that should meet minimum contrast.";
   }
   @return color-auto-contrast($colorback, $light, $dark);
 }
@@ -172,7 +200,7 @@ $dark-interval: $palette-dark-interval;
 //     var v =  (c < 0.04045) ? (c / 12.92) : Math.pow((c + 0.055) / 1.055, 2.4);
 //     console.log(v);
 // }
-// stylelint-disable number-max-precision, scss/dollar-variable-colon-space-after, scss/dollar-variable-default
+// stylelint-disable number-max-precision, scss/dollar-variable-colon-space-after
 $color-channel-lookup:
   0
   .0003035269835488375
