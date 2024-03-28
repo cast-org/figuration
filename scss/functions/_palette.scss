@@ -3,11 +3,13 @@
 @use "sass:color";
 @use "sass:math";
 
+$base: 500 !default;
+$light-interval: .2% !default;
+$dark-interval: .2% !default;
+
 // Valid levels 0-1000
 @function palette($color, $level) {
-  $base: 500;
   $level-delta: $level - $base;
-  $level-pct: if($level-delta * .2 > 100, 100, $level-delta * .2%);
 
   @if $level < 0 {
     @return #fff;
@@ -15,10 +17,12 @@
     @return #000;
   } @else if $level < $base {
     // lighten - flip negative value
-    @return color.mix(#fff, $color, $level-pct * -1);
+    $light-pct: if($level-delta * $light-interval > 100, 100, $level-delta * $light-interval);
+    @return mix(#fff, $color, $light-pct * -1);
   } @else if $level > $base {
     // darken
-    @return color.mix(#000, $color, $level-pct);
+    $dark-pct: if($level-delta * $dark-interval > 100, 100, $level-delta * $dark-interval);
+    @return mix(#000, $color, $dark-pct);
   }
 
   // level==500

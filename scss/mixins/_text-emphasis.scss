@@ -1,4 +1,8 @@
-@use "../functions" as *;
+@use "../settings";
+@use "../functions/palette";
+
+palette.$light-interval: settings.$palette-light-interval;
+palette.$dark-interval: settings.$palette-dark-interval;
 
 // stylelint-disable declaration-no-important
 

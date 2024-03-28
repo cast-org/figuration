@@ -36,6 +36,12 @@ $enable-color-warnings:         false !default;     // false
 // List of levels to build CSS out for each of the palette themes
 // Valid levels 0-1000
 $palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
+$palette-light-interval: .2% !default;
+$palette-dark-interval: .15% !default;
+
+// Override values in palette function
+palette.$light-interval: $palette-light-interval;
+palette.$dark-interval: $palette-dark-interval;
 
 // Palette levels for use in mix-context-colors() to determine
 // standardized contextual color mapping.
@@ -73,15 +79,24 @@ $level-delta-hover-color:           100 !default;
 // Colors
 // =====
 // Base Colors
-$uibase:    #5c7685 !default;
+// $uibase:    #5c7685 !default;
+// $white:     #fff !default;
+// $gray:      #70787c !default;
+// $black:     #000 !default;
+// $red:       #d92a27 !default;
+// $green:     #138835 !default;
+// $blue:      #0055e9 !default;
+// $cyan:      #10819f !default;
+// $yellow:    #f9c215 !default;
+$uibase:    #5e7182 !default;
 $white:     #fff !default;
-$gray:      #70787c !default;
+$gray:      #666 !default;
 $black:     #000 !default;
-$red:       #d92a27 !default;
-$green:     #138835 !default;
+$red:       #d42314 !default;
+$green:     #0e8a16 !default;
 $blue:      #0055e9 !default;
-$cyan:      #10819f !default;
-$yellow:    #f9c215 !default;
+$cyan:      #1680a4 !default;
+$yellow:    #f8c223 !default;
 
 // Base UI Scale
 $uibase-50:   palette.palette($uibase, 50) !default;

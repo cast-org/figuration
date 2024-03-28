@@ -3,6 +3,9 @@
 @use "../functions" as *;
 @use "../mixins" as *;
 
+$light-interval: $palette-light-interval;
+$dark-interval: $palette-dark-interval;
+
 // stylelint-disable declaration-no-important, property-disallowed-list
 
 @if $enable-utility-border {

@@ -6,6 +6,9 @@
 @use "../settings" as *;
 @use "../functions/palette" as *;
 
+$light-interval: $palette-light-interval;
+$dark-interval: $palette-dark-interval;
+
 // Conversions
 @function to-rgb($value) {
   @return color.red($value), color.green($value), color.blue($value);

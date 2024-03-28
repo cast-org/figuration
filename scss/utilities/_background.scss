@@ -2,6 +2,9 @@
 @use "../settings-options" as *;
 @use "../functions" as *;
 
+$light-interval: $palette-light-interval;
+$dark-interval: $palette-dark-interval;
+
 // stylelint-disable declaration-no-important
 
 @if $enable-utility-bg {
