@@ -2,7 +2,7 @@
 
 @use "sass:list";
 @use "sass:meta";
-@use "../settings" as *;
+@use "../settings";
 
 // Helper function to replace negative values with 0
 @function valid-radius($radius) {
@@ -18,8 +18,8 @@
 }
 
 // All
-@mixin border-radius($radius: $border-radius, $fallback-radius: false) {
-  @if $enable-rounded {
+@mixin border-radius($radius: settings.$border-radius, $fallback-radius: false) {
+  @if settings.$enable-rounded {
     border-radius: valid-radius($radius);
   }
   @else if $fallback-radius != false {
@@ -28,62 +28,62 @@
 }
 
 // Sides
-@mixin border-top-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
     border-top-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-end-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-top-right-radius: valid-radius($radius);
     border-bottom-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-bottom-right-radius: valid-radius($radius);
     border-bottom-left-radius: valid-radius($radius);
   }
 }
 
-@mixin border-start-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
     border-bottom-left-radius: valid-radius($radius);
   }
 }
 
 // Corners
-@mixin border-top-end-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-top-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-top-start-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-top-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-top-left-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-end-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-bottom-right-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-start-radius($radius: $border-radius) {
-  @if $enable-rounded {
+@mixin border-bottom-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
     border-bottom-left-radius: valid-radius($radius);
   }
 }
 
 // Radius utility generators
 // Build classes to control by side
-@mixin radius-sides($radius: $radius-border-radius, $size: null) {
+@mixin radius-sides($radius: settings.$radius-border-radius, $size: null) {
   // Add the dash for rule naming
   $sizerule: if($size, -#{$size}, "");
 
@@ -109,7 +109,7 @@
 }
 
 // Build classes to control by corner
-@mixin radius-corners($radius: $radius-border-radius, $size: null) {
+@mixin radius-corners($radius: settings.$radius-border-radius, $size: null) {
   // Add the dash for rule naming
   $sizerule: if($size, -#{$size}, "");
 

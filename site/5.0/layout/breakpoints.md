@@ -88,7 +88,7 @@ Some reference material - may be competing points of view:
 
 ## Breakpoint Nomenclature
 
-Since Figuration is developed to be mobile first by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding `$enable-bp-smallest` option referenced in the [Global Options]({{ site.path }}/{{ version.docs }}/get-started/options/#global-options) settings.
+Since Figuration is developed to be mobile first by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.
 
 Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 

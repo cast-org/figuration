@@ -234,11 +234,6 @@ You can find and customize these variables for key global options in our `_setti
         <td>Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. <code>.btn-small</code>, <code>.radius-t-xsmall</code>, etc.).</td>
       </tr>
       <tr>
-        <td><code>$enable-bp-smallest</code></td>
-        <td><code>true</code> or <code>false</code> (default)</td>
-        <td>Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. <code>.col-xs-12</code>).  Also refer to the <a href="{{ site.path }}/{{ version.docs }}/layout/breakpoints/#breakpoint-nomenclature">Breakpoint Nomenclature</a> section.</td>
-      </tr>
-      <tr>
         <td><code>$enable-rfs-fluid</code></td>
         <td><code>true</code> or <code>false</code> (default)</td>
         <td>Enables the *fluid* Responsive typography option, , which fluidly scales element's <code>font-size</code> based on the dimensions of the viewport.  See the <a href="{{ site.path }}/{{ version.docs }}/content/typography/#responsive-typography">Responsive Typography</a> section for more details.</td>

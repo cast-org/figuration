@@ -23,9 +23,12 @@
     "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/:dist/css/",
     "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
     "css-lint-stylelint": "stylelint \"{dist,scss}/**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache",
-    "css-lint-vars": "fusv scss/",
+    "css-lint-vars": "cross-env-shell \"fusv scss/ site/assets/$npm_package_config_versionShort/scss/\"",
     "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\"",
-    "css-prefix": "postcss --config build/postcss.config.mjs --replace \"dist/css/*.css\" \"!dist/css/*.min.css\""
+    "css-prefix": "postcss --config build/postcss.config.mjs --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
+    "watch": "npm-run-all --parallel watch-*",
+    "watch-css-core": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
+    "watch-css-docs": "cross-env-shell \"nodemon --watch site/assets/$npm_package_config_versionShort/scss/ --ext scss --exec \\\"npm run css-lint\\\"\""
   },
   "style": "dist/css/figuration.css",
   "sass": "scss/figuration.scss",
@@ -45,6 +48,7 @@
     "@stylistic/stylelint-config": "^1.0.1",
     "autoprefixer": "^10.4.17",
     "clean-css-cli": "^5.6.3",
+    "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "find-unused-sass-variables": "^5.0.0",
     "jquery": "^3.7.1",

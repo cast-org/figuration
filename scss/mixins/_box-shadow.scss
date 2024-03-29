@@ -1,8 +1,8 @@
 @use "sass:list";
-@use "../settings" as *;
+@use "../settings";
 
 @mixin box-shadow($shadow...) {
-  @if $enable-shadows {
+  @if settings.$enable-shadows {
     $result: ();
 
     @if (list.length($shadow) == 1 and list.nth($shadow, 1) != null) {

@@ -3,7 +3,6 @@
 @use "sass:list";
 @use "sass:math";
 @use "sass:meta";
-@use "../functions/calc-util";
 
 // Remove the unit from a value, returning number only.
 // From: https://css-tricks.com/snippets/sass/strip-unit-function/

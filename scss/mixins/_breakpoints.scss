@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:map";
+@use "../settings";
+
 // Breakpoint viewport sizes and media queries.
 //
 // Breakpoints are defined as a map of (name: minimum width), order from small to large:
@@ -5,10 +9,6 @@
 //    (xs: 0, sm: 36em, md: 48em, lg: 62em, xl: 75em)
 //
 // The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
-
-@use "sass:list";
-@use "sass:map";
-@use "../settings" as *;
 
 // Name of the previous breakpoint, or null for the first breakpoint.
 //
@@ -18,7 +18,7 @@
 //    xs
 //    >> breakpoint-prev(sm, $breakpoint-names: (xs sm md lg xl))
 //    xs
-@function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
+@function breakpoint-prev($name, $breakpoints: settings.$grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
   $n: list.index($breakpoint-names, $name);
   @if not $n {
     @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
@@ -34,7 +34,7 @@
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
 //    md
-@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
+@function breakpoint-next($name, $breakpoints: settings.$grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
   $n: list.index($breakpoint-names, $name);
   @if not $n {
     @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
@@ -46,7 +46,7 @@
 //
 //    >> breakpoint-min(sm, (xs: 0, sm: 36em, md: 48em, lg: 62em, xl: 75em))
 //    36em
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-min($name, $breakpoints: settings.$grid-breakpoints) {
   $min: map.get($breakpoints, $name);
   @return if($min != 0, $min, null);
 }
@@ -56,7 +56,7 @@
 //
 //    >> breakpoint-max(sm, (xs: 0, sm: 36em, md: 48em, lg: 62em, xl: 75em))
 //    47.98em
-@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-max($name, $breakpoints: settings.$grid-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
   @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
 }
@@ -68,14 +68,14 @@
 //    "" (empty string)
 //    >> breakpoint-designator(lg)
 //    -lg
-@function breakpoint-designator($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-designator($name, $breakpoints: settings.$grid-breakpoints) {
   $min: map.get($breakpoints, $name);
-  @return if($min != 0 or $enable-bp-smallest, -#{$name}, "");
+  @return if($min != 0, -#{$name}, "");
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
-@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+@mixin media-breakpoint-up($name, $breakpoints: settings.$grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
     @media (min-width: $min) { // stylelint-disable-line media-query-no-invalid
@@ -88,7 +88,7 @@
 
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
-@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+@mixin media-breakpoint-down($name, $breakpoints: settings.$grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
     @media (max-width: $max) { // stylelint-disable-line media-query-no-invalid
@@ -101,7 +101,7 @@
 
 // Media that spans multiple breakpoint widths.
 // Makes the @content apply between the min and max breakpoints
-@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: settings.$grid-breakpoints) {
   $min: breakpoint-min($lower, $breakpoints);
   $max: breakpoint-max($upper, $breakpoints);
 
@@ -123,7 +123,7 @@
 // Media between the breakpoint's minimum and maximum widths.
 // No minimum for the smallest breakpoint, and no maximum for the largest one.
 // Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
-@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+@mixin media-breakpoint-only($name, $breakpoints: settings.$grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   $max: breakpoint-max($name, $breakpoints);
 
