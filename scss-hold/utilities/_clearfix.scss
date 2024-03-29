@@ -1,5 +1,0 @@
-@if $enable-utility-clearfix {
-    .clearfix {
-        @include clearfix();
-    }
-}

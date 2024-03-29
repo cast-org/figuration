@@ -1,9 +1,0 @@
-// Containers
-@mixin make-container($padding-x: $container-padding-x) {
-    width: 100%;  // Prevent too narrow
-    max-width: 100%; // Prevent too wide
-    padding-right: $padding-x;
-    padding-left: $padding-x;
-    margin-right: auto;
-    margin-left: auto;
-}
