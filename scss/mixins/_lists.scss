@@ -1,4 +1,4 @@
-@use "../settings-options" as *;
+@use "../settings-options";
 
 // Lists
 
@@ -10,7 +10,7 @@
 
 // List context color
 @mixin list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border, $active-bg: $hover-bg, $active-color: $hover-color, $active-border: $hover-border) {
-  @if $enable-list-item-action {
+  @if settings-options.$enable-list-item-action {
     .list-item-action.list-item-#{$state} {
       &:hover,
       &:focus {

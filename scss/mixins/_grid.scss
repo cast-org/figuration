@@ -1,14 +1,13 @@
 @use "sass:math";
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../functions" as *;
+@use "../settings";
+@use "../settings-options";
 @use "breakpoints";
 
 /// Grid system
 // Generate semantic grid columns with these mixins.
 
 // Rows
-@mixin make-row($gutter: $grid-gutter-width) {
+@mixin make-row($gutter: settings.$grid-gutter-width) {
   display: flex;
   flex-wrap: wrap;
   margin-right: $gutter * -.5;
@@ -17,7 +16,7 @@
 
 
 // Columns
-@mixin make-col-ready($gutter: $grid-gutter-width) {
+@mixin make-col-ready($gutter: settings.$grid-gutter-width) {
   flex: 0 0 auto;
   width: 100%; // Prevent too narrow - width is reset later
   max-width: 100%; // Prevent too wide
@@ -25,7 +24,7 @@
   padding-left: $gutter * .5;
 }
 
-@mixin make-col($size: false, $columns: $grid-columns) {
+@mixin make-col($size: false, $columns: settings.$grid-columns) {
   @if ($size) {
     width: math.percentage(math.div($size, $columns));
   } @else {
@@ -58,7 +57,7 @@
 
 // Grid generation
 // Generate the correct number of grid classes given any value of `$grid-columns`
-@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints, $gutter: $grid-gutter-width) {
+@mixin make-grid-columns($columns: settings.$grid-columns, $breakpoints: settings.$grid-breakpoints, $gutter: settings.$grid-gutter-width) {
   // Use a placeholder selector to extend upon
   %col {
     @include make-col-ready();
@@ -76,17 +75,17 @@
   }
 
   // Responsive Row Columns
-  @each $breakpoint in $row-columns-breakpoints {
+  @each $breakpoint in settings.$row-columns-breakpoints {
     $bprule: breakpoints.breakpoint-designator($breakpoint);
 
     @include breakpoints.media-breakpoint-up($breakpoint, $breakpoints) {
-      @if $enable-grid-row-cols {
+      @if settings-options.$enable-grid-row-cols {
         .row-cols#{$bprule}-auto > * {
           @include make-col-auto();
         }
 
-        @if $grid-row-columns > 0 {
-          @for $i from 1 through $grid-row-columns {
+        @if settings.$grid-row-columns > 0 {
+          @for $i from 1 through settings.$grid-row-columns {
             .row-cols#{$bprule}-#{$i} {
               @include row-cols($i);
             }

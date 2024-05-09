@@ -1,4 +1,4 @@
-@use "../settings" as *;
+@use "../settings";
 
 // Tables
 @mixin table-row-variant($state, $bg, $hover-bg) {
@@ -26,7 +26,7 @@
 // Scrolling table
 // Tables will scroll when they will no longer fit width-wise in their container.
 @mixin table-scroll() {
-  margin-bottom: $table-margin-bottom;
+  margin-bottom: settings.$table-margin-bottom;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 

@@ -1,11 +1,10 @@
 @use "sass:map";
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../functions" as *;
-@use "border" as *;
-@use "box-shadow" as *;
-@use "transition" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../functions/str-util";
+@use "border";
+@use "box-shadow";
+@use "../vendor/rfs";
 
 // Button variants
 //
@@ -13,7 +12,7 @@
 // and disabled options for all buttons
 
 @mixin button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border) {
-  $extender: str-replace($parent, ".", "");
+  $extender: str-util.str-replace($parent, ".", "");
 
   %btn-variant-#{$extender}-base {
     color: $color;
@@ -33,16 +32,16 @@
   // Focus state
   %btn-variant-#{$extender}-focus {
     // No mixin use, so feedback is always present
-    @if $enable-shadows {
-      @include box-shadow($btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+    @if settings.$enable-shadows {
+      @include box-shadow.box-shadow(settings.$btn-box-shadow, settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha));
     } @else {
-      box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+      box-shadow: settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha);
     }
   }
   #{$parent}:focus {
     @extend %btn-variant-#{$extender}-focus;
   }
-  @if $enable-btn-check {
+  @if settings-options.$enable-btn-check {
     .btn-check-input:focus ~ #{$parent} {
       @extend %btn-variant-#{$extender}-focus;
     }
@@ -61,7 +60,7 @@
   #{$parent}:disabled {
     @extend %btn-variant-#{$extender}-disable;
   }
-  @if $enable-btn-check {
+  @if settings-options.$enable-btn-check {
     .btn-check-input {
       &[disabled],
       &:disabled {
@@ -83,23 +82,23 @@
   #{$parent}.open[data-cfw="dropdown"] {
     @extend %btn-variant-#{$extender}-active;
   }
-  @if $enable-btn-check {
+  @if settings-options.$enable-btn-check {
     .btn-check-input:not([disabled]):not(:disabled):checked ~ #{$parent} {
       @extend %btn-variant-#{$extender}-active;
     }
   }
 
   // Active focus state
-  @if $enable-shadows {
+  @if settings.$enable-shadows {
     %btn-variant-#{$extender}-active-focus {
-      @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+      @include box-shadow.box-shadow(settings.$btn-active-box-shadow, settings.$btn-focus-box-shadow-size rgba($focus-shadow, settings.$btn-focus-box-shadow-alpha));
     }
     #{$parent}:active:focus,
     #{$parent}.active:focus,
     #{$parent}.open[data-cfw="dropdown"]:focus {
       @extend %btn-variant-#{$extender}-active-focus;
     }
-    @if $enable-btn-check {
+    @if settings-options.$enable-btn-check {
       .btn-check-input:not([disabled]):not(:disabled):checked:focus ~ #{$parent} {
         @extend %btn-variant-#{$extender}-active-focus;
       }
@@ -153,8 +152,8 @@
   } @else {
     padding: $padding-y $padding-x;
   }
-  @include font-size($font-size);
+  @include rfs.font-size($font-size);
   line-height: $line-height;
   // Provide a fallback to override to the browser default
-  @include border-radius($border-radius, 0);
+  @include border.border-radius($border-radius, 0);
 }

@@ -1,7 +1,7 @@
-@use "../settings" as *;
+@use "../settings";
 
 // Horizontal divider (basically an hr)
-@mixin divider-h($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer, $opacity: $divider-opacity) {
+@mixin divider-h($color: settings.$divider-border-color, $dim: settings.$divider-border-width, $spacer: settings.$divider-spacer, $opacity: settings.$divider-opacity) {
   height: 0;
   @if ($spacer != null) {
     margin: $spacer 0;
@@ -12,7 +12,7 @@
 }
 
 // Vertical divider
-@mixin divider-v($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer, $opacity: $divider-opacity) {
+@mixin divider-v($color: settings.$divider-border-color, $dim: settings.$divider-border-width, $spacer: settings.$divider-spacer, $opacity: settings.$divider-opacity) {
   width: 0;
   @if ($spacer != null) {
     margin: 0 $spacer;

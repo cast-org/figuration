@@ -1,4 +1,4 @@
-@use "../settings" as *;
+@use "../settings";
 @use "border";
 @use "../vendor/rfs";
 
@@ -9,8 +9,8 @@
     @if $padding-y == null and $padding-x == null {
       // No padding output
     } @else if $padding-y == null or $padding-x == null {
-      $padding-y: if($padding-y != null, $padding-y, $pagination-padding-y);
-      $padding-x: if($padding-x != null, $padding-x, $pagination-padding-x);
+      $padding-y: if($padding-y != null, $padding-y, settings.$pagination-padding-y);
+      $padding-x: if($padding-x != null, $padding-x, settings.$pagination-padding-x);
       padding: $padding-y $padding-x;
     } @else {
       padding: $padding-y $padding-x;
