@@ -1,7 +1,7 @@
-@use "../settings-options" as *;
+@use "../settings-options";
 
-@if $enable-utility-stacks {
-  @if $enable-utility-stacks-horizontal {
+@if settings-options.$enable-utility-stacks {
+  @if settings-options.$enable-utility-stacks-horizontal {
     .hstack {
       display: flex;
       flex-direction: row;
@@ -9,7 +9,7 @@
       align-self: stretch;
     }
   }
-  @if $enable-utility-stacks-vertical {
+  @if settings-options.$enable-utility-stacks-vertical {
     .vstack {
       display: flex;
       flex: 1 1 auto;

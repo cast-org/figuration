@@ -1,8 +1,8 @@
-@use "../settings-options" as *;
-@use "../mixins" as *;
+@use "../settings-options";
+@use "../mixins/clearfix";
 
-@if $enable-utility-clearfix {
+@if settings-options.$enable-utility-clearfix {
   .clearfix {
-    @include clearfix();
+    @include clearfix.clearfix();
   }
 }

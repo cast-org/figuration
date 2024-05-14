@@ -1,8 +1,8 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
+@use "../settings";
+@use "../settings-options";
 
-@if $enable-utility-ratio {
-  @each $key, $ratio in $aspect-ratios {
+@if settings-options.$enable-utility-ratio {
+  @each $key, $ratio in settings.$aspect-ratios {
     .ratio-#{$key} {
       aspect-ratio: $ratio;
     }

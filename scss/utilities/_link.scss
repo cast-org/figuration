@@ -1,15 +1,15 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
+@use "../settings";
+@use "../settings-options";
 
-@if $enable-utility-link-stretch {
+@if settings-options.$enable-utility-link-stretch {
   .link-stretch {
-    &::#{$link-stretch-pseudo-element} {
+    &::#{settings.$link-stretch-pseudo-element} {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: $link-stretch-z-index;
+      z-index: settings.$link-stretch-z-index;
       content: "";
     }
   }

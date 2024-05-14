@@ -7,7 +7,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
-@use "../settings" as *;
+@use "../settings";
 
 // Configuration
 
@@ -15,8 +15,8 @@
 $rfs-base-value: 1.25rem !default;
 $rfs-unit: rem !default;
 
-@if (meta.variable-exists(responsive-font-size-minimum-size)) {
-  $rfs-base-value: $responsive-font-size-minimum-size;
+@if (meta.global-variable-exists(responsive-font-size-minimum-size, settings)) {
+  $rfs-base-value: settings.$responsive-font-size-minimum-size;
 }
 
 @if $rfs-unit != rem and $rfs-unit != px {
@@ -26,8 +26,8 @@ $rfs-unit: rem !default;
 // Breakpoint at where values start decreasing if screen width is smaller
 $rfs-breakpoint: 1200px !default;
 $rfs-breakpoint-unit: px !default;
-@if (meta.variable-exists(responsive-font-size-breakpoint)) {
-  $rfs-breakpoint: $responsive-font-size-breakpoint;
+@if (meta.global-variable-exists(responsive-font-size-breakpoint, settings)) {
+  $rfs-breakpoint: settings.$responsive-font-size-breakpoint;
   $rfs-breakpoint-unit: math.unit($rfs-breakpoint);
 }
 
@@ -37,14 +37,14 @@ $rfs-breakpoint-unit: px !default;
 
 // Resize values based on screen height and width
 $rfs-two-dimensional: false !default;
-@if (meta.variable-exists(responsive-font-size-two-dimensional)) {
-  $rfs-two-dimensional: $responsive-font-size-two-dimensional;
+@if (meta.global-variable-exists(responsive-font-size-two-dimensional, settings)) {
+  $rfs-two-dimensional: settings.$responsive-font-size-two-dimensional;
 }
 
 // Factor of decrease
 $rfs-factor: 10 !default;
-@if (meta.variable-exists(responsive-font-size-factor)) {
-  $rfs-factor: $responsive-font-size-factor;
+@if (meta.global-variable-exists(responsive-font-size-factor, settings)) {
+  $rfs-factor: settings.$responsive-font-size-factor;
 }
 
 @if meta.type-of($rfs-factor) != number or $rfs-factor <= 1 {
@@ -56,8 +56,8 @@ $rfs-mode: min-media-query !default;
 
 // Generate enable or disable classes. Possibilities: false, "enable" or "disable"
 $rfs-class: false !default;
-@if (meta.variable-exists(responsive-font-size-generate-class)) {
-  $rfs-class: $responsive-font-size-generate-class;
+@if (meta.global-variable-exists(responsive-font-size-generate-class, settings)) {
+  $rfs-class: settings.$responsive-font-size-generate-class;
 }
 
 // 1 rem = $rfs-rem-value px
@@ -68,8 +68,8 @@ $rfs-safari-iframe-resize-bug-fix: false !default;
 
 // Disable RFS by setting $enable-rfs to false
 $enable-rfs: true !default;
-@if (meta.variable-exists(enable-rfs-main)) {
-  $enable-rfs: $enable-rfs-main;
+@if (meta.global-variable-exists(enable-rfs-main, settings)) {
+  $enable-rfs: settings.$enable-rfs-main;
 }
 
 // Cache $rfs-base-value unit
