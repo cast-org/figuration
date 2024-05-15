@@ -1,6 +1,6 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/forms";
 
 // Form validation
 
@@ -8,8 +8,8 @@
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
-@if $enable-form and $enable-form-validation {
-  @each $state, $data in $form-validation-states {
-    @include form-validation-state($state, $data...);
+@if settings-options.$enable-form and settings-options.$enable-form-validation {
+  @each $state, $data in settings.$form-validation-states {
+    @include forms.form-validation-state($state, $data...);
   }
 }

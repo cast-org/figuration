@@ -1241,14 +1241,8 @@ textarea.form-control:not([rows="1"]) {
 .form-range:focus::-moz-range-thumb {
   box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
 }
-.form-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
-}
 .form-range::-moz-focus-outer {
   border: 0;
-}
-.form-range::-ms-tooltip {
-  display: none;
 }
 .form-range::-webkit-slider-runnable-track {
   box-sizing: border-box;
@@ -1271,26 +1265,6 @@ textarea.form-control:not([rows="1"]) {
   border: 0;
   border-radius: 0.5em;
   background-color: #dfe3e6;
-}
-.form-range::-ms-track {
-  box-sizing: border-box;
-  width: 100%;
-  height: 0.5em;
-  margin: 0 0.1875rem;
-  color: transparent;
-  cursor: pointer;
-  border: 0;
-  border-radius: 0.5em;
-  background-color: transparent;
-}
-.form-range::-ms-fill-lower {
-  background-color: #dfe3e6;
-  border-radius: 0.5em;
-}
-.form-range::-ms-fill-upper {
-  margin-right: 0.5625em;
-  background-color: #dfe3e6;
-  border-radius: 0.5em;
 }
 .form-range::-webkit-slider-thumb {
   box-sizing: border-box;
@@ -1335,29 +1309,6 @@ textarea.form-control:not([rows="1"]) {
 .form-range::-moz-range-thumb:active {
   background-color: #0048c6;
 }
-.form-range::-ms-thumb {
-  box-sizing: border-box;
-  width: 1.125em;
-  height: 1.125em;
-  appearance: none;
-  background-color: #0055e9;
-  border: 0;
-  border-radius: 50%;
-  -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  margin-top: 0;
-  margin-right: 0.1875rem;
-  margin-left: 0.1875rem;
-}
-@media (prefers-reduced-motion: reduce) {
-  .form-range::-ms-thumb {
-    -ms-transition: none;
-    transition: none;
-  }
-}
-.form-range::-ms-thumb:active {
-  background-color: #0048c6;
-}
 .form-range:disabled {
   pointer-events: none;
 }
@@ -1365,9 +1316,6 @@ textarea.form-control:not([rows="1"]) {
   background-color: #9eaab4;
 }
 .form-range:disabled::-moz-range-thumb {
-  background-color: #9eaab4;
-}
-.form-range:disabled::-ms-thumb {
   background-color: #9eaab4;
 }
 
