@@ -1,16 +1,16 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../vendor/rfs";
 
-@if $enable-utility-drag {
+@if settings-options.$enable-utility-drag {
   .drag {
-    @include font-size($drag-font-size);
-    font-weight: $drag-font-weight;
+    @include rfs.font-size(settings.$drag-font-size);
+    font-weight: settings.$drag-font-weight;
     line-height: 1;
     color: inherit;
     text-decoration: none;
     touch-action: none;
-    opacity: $drag-opacity;
+    opacity: settings.$drag-opacity;
 
     // Override anchor styling
     &:hover,
@@ -24,7 +24,7 @@
 
       &:hover,
       &:focus {
-        opacity: $drag-hover-opacity;
+        opacity: settings.$drag-hover-opacity;
       }
     }
   }

@@ -1,48 +1,37 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/lists";
+@use "../vendor/rfs";
 
-@if $enable-breadcrumb {
+@if settings-options.$enable-breadcrumb {
   .breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: $breadcrumb-margin-bottom;
-    @include font-size($breadcrumb-font-size);
-    @include list-unstyled();
+    margin-bottom: settings.$breadcrumb-margin-bottom;
+    @include rfs.font-size(settings.$breadcrumb-font-size);
+    @include lists.list-unstyled();
   }
 
   .breadcrumb-item {
 
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item {
-      padding-left: $breadcrumb-item-padding-x;
+      padding-left: settings.$breadcrumb-item-padding-x;
 
       &::before {
         float: left; // Suppress inline spacing and underlining of the separator
-        padding-right: $breadcrumb-item-padding-x;
-        color: $breadcrumb-divider-color;
-        content: $breadcrumb-divider;
+        padding-right: settings.$breadcrumb-item-padding-x;
+        color: settings.$breadcrumb-divider-color;
+        content: settings.$breadcrumb-divider;
       }
     }
 
-    // IE10-11 hack to properly handle hyperlink underlines for breadcrumbs built
-    // without `<ul>`s. The `::before` pseudo-element generates an element
-    // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
-    //
-    // To trick IE into suppressing the underline, we give the pseudo-element an
-    // underline and then immediately remove it.
-    // stylelint-disable no-duplicate-selectors
-    + .breadcrumb-item:hover::before {
-      text-decoration: underline;
-    }
     + .breadcrumb-item:hover::before {
       text-decoration: none;
     }
-    // stylelint-enable no-duplicate-selectors
 
     &.active {
-      color: $breadcrumb-active-color;
+      color: settings.$breadcrumb-active-color;
     }
   }
 }

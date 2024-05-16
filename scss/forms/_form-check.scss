@@ -18,7 +18,7 @@
       margin-bottom: settings.$form-check-margin-bottom;
 
       > input {
-        margin-left: (settings.$form-check-gutter * -1);
+        margin-left: settings.$form-check-gutter * -1;
 
         // stylelint-disable selector-no-qualifying-type
         &[disabled],
@@ -47,7 +47,7 @@
           > input {
             float: right;
             margin-top: calc((1em * #{settings.$line-height-base} - #{settings.$input-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
-            margin-right: (settings.$form-check-gutter * -1);
+            margin-right: settings.$form-check-gutter * -1;
             margin-left: 0;
           }
         }
@@ -79,7 +79,7 @@
         width: settings.$form-checkradio-size;
         height: settings.$form-checkradio-size;
         margin-top: calc(((1em * #{settings.$line-height-base}) - #{settings.$form-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
-        margin-left: (settings.$form-checkradio-gutter * -1);
+        margin-left: settings.$form-checkradio-gutter * -1;
         @extend %form-check-input-hide;
       }
 
@@ -90,7 +90,7 @@
           width: settings.$form-checkradio-size;
           height: settings.$form-checkradio-size;
           margin-top: calc(((1em * #{settings.$line-height-base}) - #{settings.$form-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
-          margin-left: (settings.$form-checkradio-gutter * -1);
+          margin-left: settings.$form-checkradio-gutter * -1;
           content: "";
           background-color: settings.$form-checkradio-bg;
           background-repeat: no-repeat;
@@ -176,14 +176,14 @@
           padding-left: 0;
 
           .form-check-input {
-            margin-right: (settings.$form-checkradio-gutter * -1);
+            margin-right: settings.$form-checkradio-gutter * -1;
             margin-left: 0;
           }
 
           .form-check-label {
             &::before {
               float: right;
-              margin-right: (settings.$form-checkradio-gutter * -1);
+              margin-right: settings.$form-checkradio-gutter * -1;
               margin-left: 0;
             }
           }

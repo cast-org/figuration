@@ -9,10 +9,10 @@
 // Normalize is licensed MIT. https://github.com/necolas/normalize.css
 // Bootstrap is licensed MIT. https://github.com/twbs/bootstrap
 
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../vendor/rfs";
 
 
 // Document
@@ -29,11 +29,11 @@
 // Set the value of the root font size, affecting the value of `rem`.
 // null by default - so nothing will be generated.
 :root {
-  @if $font-size-root != null {
-    @include rfs(var(--#{$prefix}root-font-size));
+  @if settings.$font-size-root != null {
+    @include rfs.rfs(var(--#{settings.$prefix}root-font-size));
   }
 
-  @if $enable-smooth-scroll {
+  @if settings.$enable-smooth-scroll {
     @media (prefers-reduced-motion: no-preference) {
       scroll-behavior: smooth;
     }
@@ -48,25 +48,25 @@
 // 4. Change the default tap highlight to be completely transparent in iOS.
 body{
   margin: 0; // 1
-  font-family: var(--#{$prefix}body-font-family);
-  @include font-size(var(--#{$prefix}body-font-size));
-  font-weight: var(--#{$prefix}body-font-weight);
-  line-height: var(--#{$prefix}body-line-height);
-  color: var(--#{$prefix}body-color);
-  text-align: var(--#{$prefix}body-text-align);
-  background-color: var(--#{$prefix}body-bg); // 2
+  font-family: var(--#{settings.$prefix}body-font-family);
+  @include rfs.font-size(var(--#{settings.$prefix}body-font-size));
+  font-weight: var(--#{settings.$prefix}body-font-weight);
+  line-height: var(--#{settings.$prefix}body-line-height);
+  color: var(--#{settings.$prefix}body-color);
+  text-align: var(--#{settings.$prefix}body-text-align);
+  background-color: var(--#{settings.$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
+  -webkit-tap-highlight-color: rgba(settings.$black, 0); // 4
 }
 
 // Content grouping
 // =====
 hr {
-  margin: $hr-margin-y 0;
-  color: $hr-color; // Reset Firefox's gray color
+  margin: settings.$hr-margin-y 0;
+  color: settings.$hr-color; // Reset Firefox's gray color
   border: 0;
-  border-top: $hr-border-width solid $hr-border-color;
-  opacity: $hr-opacity;
+  border-top: settings.$hr-border-width solid settings.$hr-border-color;
+  opacity: settings.$hr-opacity;
 }
 
 // Typography
@@ -76,42 +76,42 @@ hr {
 // margin for easier control within type scales as it avoids margin collapsing.
 %heading {
   margin-top: 0;
-  margin-bottom: $headings-margin-bottom;
-  font-family: $headings-font-family;
-  font-style: $headings-font-style;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color);
+  margin-bottom: settings.$headings-margin-bottom;
+  font-family: settings.$headings-font-family;
+  font-style: settings.$headings-font-style;
+  font-weight: settings.$headings-font-weight;
+  line-height: settings.$headings-line-height;
+  color: var(--#{settings.$prefix}heading-color);
 }
 
 h1 {
   @extend %heading;
-  @include font-size($h1-font-size);
+  @include rfs.font-size(settings.$h1-font-size);
 }
 
 h2 {
   @extend %heading;
-  @include font-size($h2-font-size);
+  @include rfs.font-size(settings.$h2-font-size);
 }
 
 h3 {
   @extend %heading;
-  @include font-size($h3-font-size);
+  @include rfs.font-size(settings.$h3-font-size);
 }
 
 h4 {
   @extend %heading;
-  @include font-size($h4-font-size);
+  @include rfs.font-size(settings.$h4-font-size);
 }
 
 h5 {
   @extend %heading;
-  @include font-size($h5-font-size);
+  @include rfs.font-size(settings.$h5-font-size);
 }
 
 h6 {
   @extend %heading;
-  @include font-size($h6-font-size);
+  @include rfs.font-size(settings.$h6-font-size);
 }
 
 // Paragraphs
@@ -121,7 +121,7 @@ h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
   margin-top: 0;
-  margin-bottom: $paragraph-spacer-y;
+  margin-bottom: settings.$paragraph-spacer-y;
 }
 
 // Abbreviations
@@ -168,7 +168,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $dt-font-weight;
+  font-weight: settings.$dt-font-weight;
 }
 
 // 1. Undo browser default
@@ -188,22 +188,22 @@ blockquote {
 // Add the correct font weight in Chrome, Edge, and Safari
 b,
 strong {
-  font-weight: $font-weight-bolder;
+  font-weight: settings.$font-weight-bolder;
 }
 
 // Small
 // =====
 // Add the correct font size in all browsers
 small {
-  @include font-size($small-font-size);
+  @include rfs.font-size(settings.$small-font-size);
 }
 
 // Mark/highlight
 // =====
 mark {
-  padding: $mark-padding;
-  color: var(--#{$prefix}highlight-color);
-  background-color: var(--#{$prefix}highlight-bg);
+  padding: settings.$mark-padding;
+  color: var(--#{settings.$prefix}highlight-color);
+  background-color: var(--#{settings.$prefix}highlight-bg);
 }
 
 // Sub and sup
@@ -213,7 +213,7 @@ mark {
 sub,
 sup {
   position: relative;
-  @include font-size($sub-sup-font-size);
+  @include rfs.font-size(settings.$sub-sup-font-size);
   line-height: 0;
   vertical-align: baseline;
 }
@@ -229,12 +229,12 @@ sup {
 // Links
 // =====
 a {
-  color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
-  text-decoration: $link-decoration;
+  color: rgba(var(--#{settings.$prefix}link-color-rgb), var(--#{settings.$prefix}link-opacity, 1));
+  text-decoration: settings.$link-decoration;
 
   &:hover {
-    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
-    text-decoration: $link-hover-decoration;
+    --#{settings.$prefix}link-color-rgb: var(--#{settings.$prefix}link-hover-color-rgb);
+    text-decoration: settings.$link-hover-decoration;
   }
 }
 
@@ -254,17 +254,17 @@ a:not([href]):not([class]) {
 
 // Code
 // =====
-@if $enable-code {
+@if settings-options.$enable-code {
   pre,
   code,
   kbd,
   samp {
-    font-family: $font-family-code;
-    @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+    font-family: settings.$font-family-code;
+    @include rfs.font-size(1em); // Correct the odd `em` font sizing in all browsers.
   }
 
   // Blocks of code
-  @if $enable-code-pre {
+  @if settings-options.$enable-code-pre {
     // 1. Remove browser default top margin
     // 2. Reset browser default of `1em` to use `rem`s
     // 3. Don't allow content to break outside
@@ -272,12 +272,12 @@ a:not([href]):not([class]) {
       margin-top: 0; // 1
       margin-bottom: 1rem; // 2
       overflow: auto; // 3
-      @include font-size($code-font-size);
-      color: $pre-color;
+      @include rfs.font-size(settings.$code-font-size);
+      color: settings.$pre-color;
 
       // Account for some code outputs that place code tags in pre tags
       code {
-        @include font-size(inherit);
+        @include rfs.font-size(inherit);
         color: inherit;
         word-break: normal;
       }
@@ -285,14 +285,14 @@ a:not([href]):not([class]) {
   }
 
   // Inline code
-  @if $enable-code-code {
+  @if settings-options.$enable-code-code {
     code {
-      padding: $code-padding-y $code-padding-x;
-      @include font-size($code-font-size);
-      color: var(--#{$prefix}code-color);
+      padding: settings.$code-padding-y settings.$code-padding-x;
+      @include rfs.font-size(settings.$code-font-size);
+      color: var(--#{settings.$prefix}code-color);
       word-wrap: break-word;
-      background-color: var(--#{$prefix}code-bg);
-      @include border-radius($code-border-radius);
+      background-color: var(--#{settings.$prefix}code-bg);
+      @include border.border-radius(settings.$code-border-radius);
 
       // Streamline the style when inside anchors to avoid broken underline and more
       a > & {
@@ -302,17 +302,17 @@ a:not([href]):not([class]) {
   }
 
   // User input typically entered via keyboard
-  @if $enable-code-kbd {
+  @if settings-options.$enable-code-kbd {
     kbd {
-      padding: $kbd-padding-y $kbd-padding-x;
-      @include font-size($kbd-font-size);
-      color: $kbd-color;
-      background-color: $kbd-bg;
-      @include border-radius($kbd-border-radius);
+      padding: settings.$kbd-padding-y settings.$kbd-padding-x;
+      @include rfs.font-size(settings.$kbd-font-size);
+      color: settings.$kbd-color;
+      background-color: settings.$kbd-bg;
+      @include border.border-radius(settings.$kbd-border-radius);
 
       kbd {
         padding: 0;
-        @include font-size(1em);
+        @include rfs.font-size(1em);
       }
     }
   }
@@ -339,9 +339,9 @@ table {
 }
 
 caption {
-  padding-top: $table-cell-padding;
-  padding-bottom: $table-cell-padding;
-  color: $table-caption-color;
+  padding-top: settings.$table-cell-padding;
+  padding-bottom: settings.$table-cell-padding;
+  color: settings.$table-caption-color;
   text-align: left;
 }
 
@@ -350,7 +350,7 @@ caption {
 // 2. Matches default `<td>` alignment by inheriting `text-align`.
 // 3. Fix alignment for Safari
 th {
-  font-weight: $table-th-font-weight; // 1
+  font-weight: settings.$table-th-font-weight; // 1
   text-align: inherit; // 2
   text-align: -webkit-match-parent; // 3
 }
@@ -372,7 +372,7 @@ td {
 // =====
 label {
   display: inline-block;
-  margin-bottom: $label-margin-bottom; // Allow labels to use `margin` for spacing.
+  margin-bottom: settings.$label-margin-bottom; // Allow labels to use `margin` for spacing.
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
@@ -397,7 +397,7 @@ optgroup,
 textarea {
   margin: 0; // Remove the margin in Firefox and Safari
   font-family: inherit;
-  @include font-size(inherit);
+  @include rfs.font-size(inherit);
   line-height: inherit;
 }
 
@@ -452,8 +452,8 @@ button,
 // Opinionated normalize of dimensions across browsers
 input[type="radio"],
 input[type="checkbox"] {
-  width: $input-checkradio-size;
-  height: $input-checkradio-size;
+  width: settings.$input-checkradio-size;
+  height: settings.$input-checkradio-size;
 }
 
 // Textareas should really only resize vertically so they don't break their (horizontal) containers.
@@ -480,9 +480,9 @@ legend {
   float: left; // 1
   width: 100%;
   padding: 0;
-  margin-bottom: $legend-margin-bottom;
-  @include font-size($legend-font-size);
-  font-weight: $legend-font-weight;
+  margin-bottom: settings.$legend-margin-bottom;
+  @include rfs.font-size(settings.$legend-font-size);
+  font-weight: settings.$legend-font-weight;
   line-height: inherit;
 
   + * {

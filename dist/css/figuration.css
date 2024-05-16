@@ -4193,14 +4193,6 @@ a.drag.disabled {
   min-width: 0;
   margin-bottom: 0;
 }
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .input-group > .form-control,
-  .input-group > .form-control-static,
-  .input-group > .form-file {
-    flex-basis: auto;
-    width: 1%;
-  }
-}
 .input-group > .form-control:focus {
   z-index: 3;
 }
@@ -4299,9 +4291,6 @@ a.drag.disabled {
   padding-right: 0.5rem;
   color: #9eaab4;
   content: "/";
-}
-.breadcrumb-item + .breadcrumb-item:hover::before {
-  text-decoration: underline;
 }
 .breadcrumb-item + .breadcrumb-item:hover::before {
   text-decoration: none;

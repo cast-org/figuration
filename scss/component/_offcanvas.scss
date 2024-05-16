@@ -1,75 +1,79 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/backdrop";
+@use "../mixins/breakpoints";
+@use "../mixins/box-shadow";
+@use "../mixins/reset-text";
+@use "../mixins/transition";
+@use "../vendor/rfs";
 
-@if $enable-offcanvas {
+@if settings-options.$enable-offcanvas {
 
-  @each $bp in $offcanvas-breakpoints {
-    $next: breakpoint-next($bp, $grid-breakpoints);
-    $bprule: breakpoint-designator($next);
+  @each $bp in settings.$offcanvas-breakpoints {
+    $next: breakpoints.breakpoint-next($bp, settings.$grid-breakpoints);
+    $bprule: breakpoints.breakpoint-designator($next);
 
-    @include media-breakpoint-down($bp) {
+    @include breakpoints.media-breakpoint-down($bp) {
       // stylelint-disable scss/percent-placeholder-pattern
       %offcanvas#{$bp} {
         position: fixed;
         bottom: 0;
-        z-index: $zindex-offcanvas;
+        z-index: settings.$zindex-offcanvas;
         display: flex;
         flex-direction: column;
         max-width: 100%;
-        color: $offcanvas-color;
+        color: settings.$offcanvas-color;
         // Our parent element can be arbitrary since offcanvas can be inserted into specified containers.
         // So reset our font and text properties to avoid inheriting weird values.
-        @include reset-text();
-        @include font-size($offcanvas-font-size);
+        @include reset-text.reset-text();
+        @include rfs.font-size(settings.$offcanvas-font-size);
         // Allow breaking very long words so they don't overflow the offcanvas bounds
         word-wrap: break-word;
         visibility: hidden;
-        background-color: $offcanvas-bg;
+        background-color: settings.$offcanvas-bg;
         background-clip: padding-box;
         outline: 0;
-        @include box-shadow($offcanvas-box-shadow);
+        @include box-shadow.box-shadow(settings.$offcanvas-box-shadow);
 
-        @if $enable-offcanvas-side-start {
+        @if settings-options.$enable-offcanvas-side-start {
           &.offcanvas-start {
             top: 0;
             left: 0;
-            width: $offcanvas-horizontal-width;
-            border-right: $offcanvas-border-width solid $offcanvas-border-color;
+            width: settings.$offcanvas-horizontal-width;
+            border-right: settings.$offcanvas-border-width solid settings.$offcanvas-border-color;
             transform: translateX(-100%);
           }
         }
 
-        @if $enable-offcanvas-side-end {
+        @if settings-options.$enable-offcanvas-side-end {
           &.offcanvas-end {
             top: 0;
             right: 0;
-            width: $offcanvas-horizontal-width;
-            border-left: $offcanvas-border-width solid $offcanvas-border-color;
+            width: settings.$offcanvas-horizontal-width;
+            border-left: settings.$offcanvas-border-width solid settings.$offcanvas-border-color;
             transform: translateX(100%);
           }
         }
 
-        @if $enable-offcanvas-side-top {
+        @if settings-options.$enable-offcanvas-side-top {
           &.offcanvas-top {
             top: 0;
             right: 0;
             left: 0;
-            height: $offcanvas-vertical-height;
+            height: settings.$offcanvas-vertical-height;
             max-height: 100%;
-            border-bottom: $offcanvas-border-width solid $offcanvas-border-color;
+            border-bottom: settings.$offcanvas-border-width solid settings.$offcanvas-border-color;
             transform: translateY(-100%);
           }
         }
 
-        @if $enable-offcanvas-side-bottom {
+        @if settings-options.$enable-offcanvas-side-bottom {
           &.offcanvas-bottom {
             right: 0;
             left: 0;
-            height: $offcanvas-vertical-height;
+            height: settings.$offcanvas-vertical-height;
             max-height: 100%;
-            border-top: $offcanvas-border-width solid $offcanvas-border-color;
+            border-top: settings.$offcanvas-border-width solid settings.$offcanvas-border-color;
             transform: translateY(100%);
           }
         }
@@ -81,7 +85,7 @@
 
         &.showing,
         &.in.hiding {
-          @include transition($offcanvas-transition);
+          @include transition.transition(settings.$offcanvas-transition);
         }
 
         &.showing,
@@ -98,8 +102,8 @@
       // stylelint-enable scss/percent-placeholder-pattern
 
       // Skip largest breakpoint
-      @if breakpoint-max($bp, $grid-breakpoints) != null {
-        @if $enable-offcanvas-responsive {
+      @if breakpoints.breakpoint-max($bp, settings.$grid-breakpoints) != null {
+        @if settings-options.$enable-offcanvas-responsive {
           .offcanvas#{$bprule} {
             @extend %offcanvas#{$bp};
           }
@@ -112,8 +116,8 @@
     }
 
     @if not ($next == null) {
-      @if $enable-offcanvas-responsive {
-        @include media-breakpoint-up($next) {
+      @if settings-options.$enable-offcanvas-responsive {
+        @include breakpoints.media-breakpoint-up($next) {
           .offcanvas#{$bprule} {
             height: auto;
             background-color: transparent !important; // stylelint-disable-line declaration-no-important
@@ -138,7 +142,7 @@
   }
 
   .offcanvas-backdrop {
-    @include backdrop-overlay($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+    @include backdrop.backdrop-overlay(settings.$zindex-offcanvas-backdrop, settings.$offcanvas-backdrop-bg, settings.$offcanvas-backdrop-opacity);
 
     // Offcanvas rootElement specified
     .offcanvas-open:not(body) & {
@@ -149,51 +153,51 @@
   }
 
 
-  @if $enable-offcanvas-header {
+  @if settings-options.$enable-offcanvas-header {
     .offcanvas-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding: $offcanvas-header-padding-y $offcanvas-header-padding-x;
-      color: $offcanvas-header-color;
-      background-color: $offcanvas-header-bg;
-      border-bottom: $offcanvas-header-border-width solid $offcanvas-header-border-color;
+      padding: settings.$offcanvas-header-padding-y settings.$offcanvas-header-padding-x;
+      color: settings.$offcanvas-header-color;
+      background-color: settings.$offcanvas-header-bg;
+      border-bottom: settings.$offcanvas-header-border-width solid settings.$offcanvas-header-border-color;
 
       // Close icon
       .close {
         // Make sure close appears 'after' the title
         order: 1;
-        padding: $offcanvas-close-padding-y $offcanvas-close-padding-x;
+        padding: settings.$offcanvas-close-padding-y settings.$offcanvas-close-padding-x;
         // Left auto margin keeps close pushed to the right side even when no title
-        margin: (-$offcanvas-header-padding-y) (-$offcanvas-header-padding-x) (-$offcanvas-header-padding-y) auto;
+        margin: (settings.$offcanvas-header-padding-y * -1) (settings.$offcanvas-header-padding-x * -1) (settings.$offcanvas-header-padding-y * -1) auto;
       }
     }
   }
 
-  @if $enable-offcanvas-title {
+  @if settings-options.$enable-offcanvas-title {
     .offcanvas-title {
       margin: 0;
-      line-height: $offcanvas-title-line-height;
+      line-height: settings.$offcanvas-title-line-height;
     }
   }
 
-  @if $enable-offcanvas-body {
+  @if settings-options.$enable-offcanvas-body {
     .offcanvas-body {
       flex-grow: 1;
-      padding: $offcanvas-body-padding-y $offcanvas-body-padding-x;
+      padding: settings.$offcanvas-body-padding-y settings.$offcanvas-body-padding-x;
       overflow-y: auto;
     }
   }
 
-  @if $enable-offcanvas-footer {
+  @if settings-options.$enable-offcanvas-footer {
     .offcanvas-footer {
       display: flex;
       align-items: center;
       justify-content: flex-end; // right align buttons
-      padding: $offcanvas-footer-padding-y $offcanvas-footer-padding-x;
-      color: $offcanvas-footer-color;
-      background-color: $offcanvas-footer-bg;
-      border-top: $offcanvas-footer-border-width solid $offcanvas-footer-border-color;
+      padding: settings.$offcanvas-footer-padding-y settings.$offcanvas-footer-padding-x;
+      color: settings.$offcanvas-footer-color;
+      background-color: settings.$offcanvas-footer-bg;
+      border-top: settings.$offcanvas-footer-border-width solid settings.$offcanvas-footer-border-color;
 
       // Simulate spaces between footer elements with margins
       > :not(:first-child) { margin-left: .25rem; }
@@ -203,7 +207,7 @@
 
   // Close is blocked animation
   .offcanvas.offcanvas-blocked.in {
-    @include transition($offcanvas-blocked-transition);
-    transform: $offcanvas-blocked-transform;
+    @include transition.transition(settings.$offcanvas-blocked-transition);
+    transform: settings.$offcanvas-blocked-transform;
   }
 }

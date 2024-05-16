@@ -114,7 +114,7 @@
     display: block;
     flex-shrink: 0;
     padding: settings.$input-padding-y settings.$input-padding-x;
-    margin-left: (settings.$input-border-width * -1);
+    margin-left: settings.$input-border-width * -1;
     font-family: settings.$form-file-button-font-family;
     font-weight: settings.$form-file-button-font-weight;
     color: settings.$form-file-button-color;

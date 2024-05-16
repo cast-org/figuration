@@ -1,14 +1,14 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
+@use "../settings";
+@use "../settings-options";
 
-@if $enable-placeholder {
+@if settings-options.$enable-placeholder {
   .placeholder {
     display: inline-block;
     min-height: 1em;
     vertical-align: middle;
     cursor: wait;
     background-color: currentcolor;
-    opacity: $placeholder-opacity-max;
+    opacity: settings.$placeholder-opacity-max;
 
     &.btn::before {
       display: inline-block;
@@ -17,8 +17,8 @@
   }
 
   // Sizes
-  @if $enable-placeholder-sizes {
-    @each $name, $value in $placeholder-sizes {
+  @if settings-options.$enable-placeholder-sizes {
+    @each $name, $value in settings.$placeholder-sizes {
       .placeholder-#{$name} {
         min-height: $value;
       }
@@ -26,7 +26,7 @@
   }
 
   // Animations
-  @if $enable-placeholder-glow {
+  @if settings-options.$enable-placeholder-glow {
     .placeholder-glow {
       .placeholder {
         animation: placeholder-glow 2s ease-in-out infinite;
@@ -34,14 +34,14 @@
     }
     @keyframes placeholder-glow {
       50% {
-        opacity: $placeholder-opacity-min;
+        opacity: settings.$placeholder-opacity-min;
       }
     }
   }
 
-  @if $enable-placeholder-wave {
+  @if settings-options.$enable-placeholder-wave {
     .placeholder-wave {
-      mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, (1 - $placeholder-opacity-min)) 75%, $black 95%);
+      mask-image: linear-gradient(130deg, settings.$black 55%, rgba(0, 0, 0, (1 - settings.$placeholder-opacity-min)) 75%, settings.$black 95%);
       mask-size: 200% 100%;
       animation: placeholder-wave 2s linear infinite;
     }

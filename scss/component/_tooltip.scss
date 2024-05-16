@@ -1,19 +1,20 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../functions" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../functions/calc-util";
+@use "../mixins/border";
+@use "../mixins/reset-text";
+@use "../vendor/rfs";
 
-@if $enable-tooltip {
+@if settings-options.$enable-tooltip {
   .tooltip {
     position: absolute;
-    z-index: $zindex-tooltip;
+    z-index: settings.$zindex-tooltip;
     display: none;
-    margin: $tooltip-margin;
+    margin: settings.$tooltip-margin;
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
-    @include reset-text();
-    @include font-size($tooltip-font-size);
+    @include reset-text.reset-text();
+    @include rfs.font-size(settings.$tooltip-font-size);
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     outline: 0;
@@ -21,25 +22,25 @@
 
     // Showing
     &.in {
-      opacity: $tooltip-opacity;
+      opacity: settings.$tooltip-opacity;
     }
 
     // Close
-    @if $enable-tooltip-close {
+    @if settings-options.$enable-tooltip-close {
       .close {
         position: static;
         float: right;
-        padding: $tooltip-close-padding-y $tooltip-close-padding-x;
-        color: $tooltip-close-color;
-        @include font-size(1.25rem);
+        padding: settings.$tooltip-close-padding-y settings.$tooltip-close-padding-x;
+        color: settings.$tooltip-close-color;
+        @include rfs.font-size(settings.$tooltip-close-font-size);
         text-shadow: none;
-        opacity: $tooltip-close-opacity;
+        opacity: settings.$tooltip-close-opacity;
 
         &:not(:disabled):not(.disabled) {
           &:hover,
           &:focus {
-            color: $tooltip-close-hover-color;
-            opacity: $tooltip-close-hover-opacity;
+            color: settings.$tooltip-close-hover-color;
+            opacity: settings.$tooltip-close-hover-opacity;
           }
         }
       }
@@ -47,12 +48,12 @@
   }
 
   // Arrow base
-  @if $enable-tooltip-arrow {
+  @if settings-options.$enable-tooltip-arrow {
     .tooltip-arrow {
       position: absolute;
       display: block;
-      width: $tooltip-arrow-width;
-      height: $tooltip-arrow-height;
+      width: settings.$tooltip-arrow-width;
+      height: settings.$tooltip-arrow-height;
 
       &::before {
         position: absolute;
@@ -66,58 +67,58 @@
 
     // Directions
     .cfw-tooltip-top {
-      padding-bottom: $tooltip-arrow-height;
+      padding-bottom: settings.$tooltip-arrow-height;
 
       .tooltip-arrow {
         bottom: 0;
 
         &::before {
           top: 0;
-          border-width: $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-          border-top-color: $tooltip-arrow-color;
+          border-width: settings.$tooltip-arrow-height (settings.$tooltip-arrow-width * .5) 0;
+          border-top-color: settings.$tooltip-arrow-color;
         }
       }
     }
     .cfw-tooltip-right {
-      padding-left: $tooltip-arrow-height;
+      padding-left: settings.$tooltip-arrow-height;
 
       .tooltip-arrow {
         left: 0;
-        width: $tooltip-arrow-height;
-        height: $tooltip-arrow-width;
+        width: settings.$tooltip-arrow-height;
+        height: settings.$tooltip-arrow-width;
 
         &::before {
           right: 0;
-          border-width: ($tooltip-arrow-width * .5) $tooltip-arrow-height ($tooltip-arrow-width * .5) 0;
-          border-right-color: $tooltip-arrow-color;
+          border-width: (settings.$tooltip-arrow-width * .5) settings.$tooltip-arrow-height (settings.$tooltip-arrow-width * .5) 0;
+          border-right-color: settings.$tooltip-arrow-color;
         }
       }
     }
     .cfw-tooltip-bottom {
-      padding-top: $tooltip-arrow-height;
+      padding-top: settings.$tooltip-arrow-height;
 
       .tooltip-arrow {
         top: 0;
 
         &::before {
           bottom: 0;
-          border-width: 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-          border-bottom-color: $tooltip-arrow-color;
+          border-width: 0 (settings.$tooltip-arrow-width * .5) settings.$tooltip-arrow-height;
+          border-bottom-color: settings.$tooltip-arrow-color;
         }
       }
     }
     .cfw-tooltip-left {
-      padding-right: $tooltip-arrow-height;
+      padding-right: settings.$tooltip-arrow-height;
 
       .tooltip-arrow {
         right: 0;
-        width: $tooltip-arrow-height;
-        height: $tooltip-arrow-width;
+        width: settings.$tooltip-arrow-height;
+        height: settings.$tooltip-arrow-width;
 
         &::before {
           left: 0;
-          border-width: ($tooltip-arrow-width * .5) 0 ($tooltip-arrow-width * .5) $tooltip-arrow-height;
-          border-left-color: $tooltip-arrow-color;
+          border-width: (settings.$tooltip-arrow-width * .5) 0 (settings.$tooltip-arrow-width * .5) settings.$tooltip-arrow-height;
+          border-left-color: settings.$tooltip-arrow-color;
         }
       }
     }
@@ -142,16 +143,16 @@
 
   // Wrapper for the tooltip content
   .tooltip-body {
-    max-width: $tooltip-max-width;
-    padding: $tooltip-padding-y $tooltip-padding-x;
-    color: $tooltip-color;
+    max-width: settings.$tooltip-max-width;
+    padding: settings.$tooltip-padding-y settings.$tooltip-padding-x;
+    color: settings.$tooltip-color;
     text-align: center;
-    background-color: $tooltip-bg;
-    @include border-radius($tooltip-border-radius);
+    background-color: settings.$tooltip-bg;
+    @include border.border-radius(settings.$tooltip-border-radius);
 
-    @if $enable-tooltip-close {
+    @if settings-options.$enable-tooltip-close {
       .close + & {
-        padding-right: add(1.25rem, $tooltip-close-padding-x);
+        padding-right: calc-util.add(settings.$tooltip-close-font-size, settings.$tooltip-close-padding-x);
       }
     }
   }

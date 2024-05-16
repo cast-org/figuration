@@ -1,22 +1,23 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/breakpoints";
 
-@if $enable-card {
+@if settings-options.$enable-card {
   .card {
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
-    height: $card-height;
-    margin-bottom: $card-margin-bottom;
-    color: $card-color;
+    height: settings.$card-height;
+    margin-bottom: settings.$card-margin-bottom;
+    color: settings.$card-color;
     word-wrap: break-word;
-    background-color: $card-bg;
-    border: $card-border-width solid $card-border-color;
-    @include border-radius($card-border-radius);
-    @include box-shadow($card-box-shadow);
+    background-color: settings.$card-bg;
+    border: settings.$card-border-width solid settings.$card-border-color;
+    @include border.border-radius(settings.$card-border-radius);
+    @include box-shadow.box-shadow(settings.$card-box-shadow);
 
     > hr {
       margin-right: 0;
@@ -24,43 +25,43 @@
     }
   }
 
-  @if $enable-card-body {
+  @if settings-options.$enable-card-body {
     .card-body {
       // Enable `flex-grow: 1` for decks and groups so that card blocks take up
       // as much space as possible, ensuring footers are aligned to the bottom.
       flex: 1 1 auto;
       // Set a min-height to keep IE in check with image stretching
       min-height: 1px;
-      padding: $card-padding-y $card-padding-x;
+      padding: settings.$card-padding-y settings.$card-padding-x;
     }
   }
 
-  @if $enable-card-title {
+  @if settings-options.$enable-card-title {
     .card-title {
-      margin-bottom: $card-title-margin-bottom;
+      margin-bottom: settings.$card-title-margin-bottom;
     }
   }
 
-  @if $enable-card-subtitle {
+  @if settings-options.$enable-card-subtitle {
     .card-subtitle {
-      margin-top: $card-subtitle-margin-top;
+      margin-top: settings.$card-subtitle-margin-top;
       margin-bottom: 0;
     }
   }
 
-  @if $enable-card-text {
+  @if settings-options.$enable-card-text {
     .card-text:last-child {
       margin-bottom: 0;
     }
   }
 
-  @if $enable-card-link {
+  @if settings-options.$enable-card-link {
     .card-link + .card-link {
-      margin-left: $card-link-margin-left;
+      margin-left: settings.$card-link-margin-left;
     }
   }
 
-  @if $enable-card-list {
+  @if settings-options.$enable-card-list {
     .card-list {
       margin-bottom: 0;
 
@@ -70,16 +71,16 @@
         }
       }
       &:first-child {
-        @include border-top-radius($card-inner-border-radius);
+        @include border.border-top-radius(settings.$card-inner-border-radius);
 
         > .list-item:first-child {
           border-top: 0;
-          @include border-top-radius($card-inner-border-radius);
+          @include border.border-top-radius(settings.$card-inner-border-radius);
         }
       }
       &:not(:first-child) {
         > .list-item:first-child {
-          @include border-top-radius(0);
+          @include border.border-top-radius(0);
         }
       }
 
@@ -92,22 +93,22 @@
         }
       }
       &:last-child {
-        @include border-bottom-radius($card-inner-border-radius);
+        @include border.border-bottom-radius(settings.$card-inner-border-radius);
 
         > .list-item:last-child {
           border-bottom: 0;
-          @include border-bottom-radius($card-inner-border-radius);
+          @include border.border-bottom-radius(settings.$card-inner-border-radius);
         }
       }
       &:not(:last-child) {
         > .list-item:last-child {
-          @include border-top-radius(0);
+          @include border.border-top-radius(0);
         }
       }
     }
   }
 
-  @if $enable-card-table {
+  @if settings-options.$enable-card-table {
     .card-table {
       &:last-child {
         margin-bottom: 0;
@@ -116,79 +117,79 @@
   }
 
   // Optional caps
-  @if $enable-card-header {
+  @if settings-options.$enable-card-header {
     .card-header {
-      padding: $card-header-padding-y $card-header-padding-x;
+      padding: settings.$card-header-padding-y settings.$card-header-padding-x;
       margin-bottom: 0; // Removes the default margin-bottom of <hN>
-      color: $card-header-color;
-      background-color: $card-header-bg;
-      border-bottom: $card-header-border-width solid $card-header-border-color;
+      color: settings.$card-header-color;
+      background-color: settings.$card-header-bg;
+      border-bottom: settings.$card-header-border-width solid settings.$card-header-border-color;
 
       &:first-child {
-        @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+        @include border.border-radius(settings.$card-inner-border-radius settings.$card-inner-border-radius 0 0);
       }
     }
   }
 
-  @if $enable-card-footer {
+  @if settings-options.$enable-card-footer {
     .card-footer {
-      padding: $card-footer-padding-y $card-footer-padding-x;
-      color: $card-footer-color;
-      background-color: $card-footer-bg;
-      border-top: $card-footer-border-width solid $card-footer-border-color;
+      padding: settings.$card-footer-padding-y settings.$card-footer-padding-x;
+      color: settings.$card-footer-color;
+      background-color: settings.$card-footer-bg;
+      border-top: settings.$card-footer-border-width solid settings.$card-footer-border-color;
 
       &:last-child {
-        @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+        @include border.border-radius(0 0 settings.$card-inner-border-radius settings.$card-inner-border-radius);
       }
     }
   }
 
   // Header navs
-  @if $enable-card-header-tabs {
+  @if settings-options.$enable-card-header-tabs {
     .card-header-tabs {
-      margin-right: $card-header-padding-x * -.5;
-      margin-bottom: -$card-header-padding-y;
-      margin-left: $card-header-padding-x * -.5;
+      margin-right: settings.$card-header-padding-x * -.5;
+      margin-bottom: settings.$card-header-padding-y * -1;
+      margin-left: settings.$card-header-padding-x * -.5;
       border-bottom: 0;
 
       .nav-link.active {
-        @if $nav-tabs-active-bg != $card-bg {
-          background-color: $card-bg;
-          border-bottom-color: $card-bg;
+        @if settings.$nav-tabs-active-bg != settings.$card-bg {
+          background-color: settings.$card-bg;
+          border-bottom-color: settings.$card-bg;
         }
 
-        @if $nav-tabs-border-color != $card-header-border-color {
-          border-color: $card-header-border-color;
+        @if settings.$nav-tabs-border-color != settings.$card-header-border-color {
+          border-color: settings.$card-header-border-color;
         }
 
-        @if $nav-tabs-border-color != $card-header-border-color or $nav-tabs-active-bg != $card-bg {
-          border-bottom-color: $card-bg;
+        @if settings.$nav-tabs-border-color != settings.$card-header-border-color or settings.$nav-tabs-active-bg != settings.$card-bg {
+          border-bottom-color: settings.$card-bg;
         }
       }
     }
   }
-  @if $enable-card-header-pills {
+  @if settings-options.$enable-card-header-pills {
     .card-header-pills {
-      margin-right: $card-header-padding-x * -.5;
-      margin-left: $card-header-padding-x * -.5;
+      margin-right: settings.$card-header-padding-x * -.5;
+      margin-left: settings.$card-header-padding-x * -.5;
     }
   }
 
   // Card image overlay
-  @if $enable-card-img-overlay {
+  @if settings-options.$enable-card-img-overlay {
     .card-img-overlay {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      padding: $card-img-overlay-padding;
-      @include border-radius($card-inner-border-radius);
+      padding: settings.$card-img-overlay-padding;
+      @include border.border-radius(settings.$card-inner-border-radius);
     }
   }
 
   // Card images
-  @if $enable-card-img {
+  @if settings-options.$enable-card-img {
     .card-img,
     .card-img-top,
     .card-img-bottom {
@@ -196,19 +197,19 @@
       min-height: 1px;  // Stop stretch/white-space due to flexbox w/ images in IE
     }
     .card-img-top {
-      @include border-top-radius($card-inner-border-radius);
+      @include border.border-top-radius(settings.$card-inner-border-radius);
     }
     .card-img-bottom {
-      @include border-bottom-radius($card-inner-border-radius);
+      @include border.border-bottom-radius(settings.$card-inner-border-radius);
     }
   }
 
   // Horizontal Cards
-  @if $enable-card-horizontal {
-    @each $breakpoint in $card-horizontal-breakpoints {
-      $bprule: breakpoint-designator($breakpoint);
+  @if settings-options.$enable-card-horizontal {
+    @each $breakpoint in settings.$card-horizontal-breakpoints {
+      $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-      @include media-breakpoint-up($breakpoint) {
+      @include breakpoints.media-breakpoint-up($breakpoint) {
         .card-horizontal#{$bprule},
         .card-horizontal#{$bprule}-reverse {
           flex-flow: row wrap;
@@ -231,41 +232,41 @@
       padding-left: 0;
     }
 
-    @if $enable-rounded {
-      @each $breakpoint in $card-horizontal-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
-        $prev: breakpoint-prev($breakpoint, $grid-breakpoints);
+    @if settings.$enable-rounded {
+      @each $breakpoint in settings.$card-horizontal-breakpoints {
+        $bprule: breakpoints.breakpoint-designator($breakpoint);
+        $prev: breakpoints.breakpoint-prev($breakpoint, settings.$grid-breakpoints);
 
         // Skip smallest breakpoint
-        @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-          @include media-breakpoint-down($prev) {
+        @if breakpoints.breakpoint-min($breakpoint, settings.$grid-breakpoints) != null {
+          @include breakpoints.media-breakpoint-down($prev) {
             %card-hz-col-reset-top-#{$bprule} {
-              @include border-top-radius(0);
+              @include border.border-top-radius(0);
             }
             %card-hz-col-reset-bottom-#{$bprule} {
-              @include border-bottom-radius(0);
+              @include border.border-bottom-radius(0);
             }
             .card-horizontal#{$bprule},
             .card-horizontal#{$bprule}-reverse {
               > .card-col:not(:first-child) {
-                @if $enable-card-header {
+                @if settings-options.$enable-card-header {
                   .card-header {
                     @extend %card-hz-col-reset-top-#{$bprule};
                   }
                 }
-                @if $enable-card-img {
+                @if settings-options.$enable-card-img {
                   .card-img-top {
                     @extend %card-hz-col-reset-top-#{$bprule};
                   }
                 }
               }
               > .card-col:not(:last-child) {
-                @if $enable-card-footer {
+                @if settings-options.$enable-card-footer {
                   .card-footer {
                     @extend %card-hz-col-reset-bottom-#{$bprule};
                   }
                 }
-                @if $enable-card-img {
+                @if settings-options.$enable-card-img {
                   .card-img-bottom {
                     @extend %card-hz-col-reset-bottom-#{$bprule};
                   }
@@ -275,32 +276,32 @@
           }
         }
 
-        @include media-breakpoint-up($breakpoint) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
           %card-hz-reset-top-start-#{$bprule} {
-            @include border-top-start-radius(0);
+            @include border.border-top-start-radius(0);
           }
           %card-hz-reset-bottom-start-#{$bprule} {
-            @include border-bottom-start-radius(0);
+            @include border.border-bottom-start-radius(0);
           }
           %card-hz-reset-top-end-#{$bprule} {
-            @include border-top-end-radius(0);
+            @include border.border-top-end-radius(0);
           }
           %card-hz-reset-bottom-end-#{$bprule} {
-            @include border-bottom-end-radius(0);
+            @include border.border-bottom-end-radius(0);
           }
           .card-horizontal#{$bprule} {
             > .card-col:not(:first-child) {
-              @if $enable-card-header {
+              @if settings-options.$enable-card-header {
                 .card-header {
                   @extend %card-hz-reset-top-start-#{$bprule};
                 }
               }
-              @if $enable-card-footer {
+              @if settings-options.$enable-card-footer {
                 .card-footer {
                   @extend %card-hz-reset-bottom-start-#{$bprule};
                 }
               }
-              @if $enable-card-img {
+              @if settings-options.$enable-card-img {
                 .card-img-top {
                   @extend %card-hz-reset-top-start-#{$bprule};
                 }
@@ -310,17 +311,17 @@
               }
             }
             > .card-col:not(:last-child) {
-              @if $enable-card-header {
+              @if settings-options.$enable-card-header {
                 .card-header {
                   @extend %card-hz-reset-top-end-#{$bprule};
                 }
               }
-              @if $enable-card-footer {
+              @if settings-options.$enable-card-footer {
                 .card-footer {
                   @extend %card-hz-reset-bottom-end-#{$bprule};
                 }
               }
-              @if $enable-card-img {
+              @if settings-options.$enable-card-img {
                 .card-img-top {
                   @extend %card-hz-reset-top-end-#{$bprule};
                 }
@@ -332,17 +333,17 @@
           }
           .card-horizontal#{$bprule}-reverse {
             > .card-col:not(:first-child) {
-              @if $enable-card-header {
+              @if settings-options.$enable-card-header {
                 .card-header {
                   @extend %card-hz-reset-top-end-#{$bprule};
                 }
               }
-              @if $enable-card-footer {
+              @if settings-options.$enable-card-footer {
                 .card-footer {
                   @extend %card-hz-reset-bottom-end-#{$bprule};
                 }
               }
-              @if $enable-card-img {
+              @if settings-options.$enable-card-img {
                 .card-img-top {
                   @extend %card-hz-reset-top-end-#{$bprule};
                 }
@@ -352,17 +353,17 @@
               }
             }
             > .card-col:not(:last-child) {
-              @if $enable-card-header {
+              @if settings-options.$enable-card-header {
                 .card-header {
                   @extend %card-hz-reset-top-start-#{$bprule};
                 }
               }
-              @if $enable-card-footer {
+              @if settings-options.$enable-card-footer {
                 .card-footer {
                   @extend %card-hz-reset-bottom-start-#{$bprule};
                 }
               }
-              @if $enable-card-img {
+              @if settings-options.$enable-card-img {
                 .card-img-top {
                   @extend %card-hz-reset-top-start-#{$bprule};
                 }
@@ -380,29 +381,29 @@
   // Card deck
   // 1. Individual cards have margin-bottom by default.
   //    Replace with single margin on the deck.
-  @if $enable-card-deck {
+  @if settings-options.$enable-card-deck {
     %card-deck-base {
       display: flex;
       flex-direction: column;
-      margin-right: $card-deck-gutter * -.5;
-      margin-left: $card-deck-gutter * -.5;
+      margin-right: settings.$card-deck-gutter * -.5;
+      margin-left: settings.$card-deck-gutter * -.5;
 
       > .card {
-        margin-right: $card-deck-gutter * .5;
-        margin-left: $card-deck-gutter * .5;
+        margin-right: settings.$card-deck-gutter * .5;
+        margin-left: settings.$card-deck-gutter * .5;
       }
     }
 
-    @each $breakpoint in $card-deck-breakpoints {
-      $bprule: breakpoint-designator($breakpoint);
+    @each $breakpoint in settings.$card-deck-breakpoints {
+      $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-      @if $bprule == "" or ($enable-card-deck-responsive and $bprule != "") {
+      @if $bprule == "" or (settings-options.$enable-card-deck-responsive and $bprule != "") {
         .card-deck#{$bprule} {
           @extend %card-deck-base;
 
-          @include media-breakpoint-up(#{$breakpoint}) {
+          @include breakpoints.media-breakpoint-up(#{$breakpoint}) {
             flex-flow: row wrap;
-            margin-bottom: $card-margin-bottom; // 1
+            margin-bottom: settings.$card-margin-bottom; // 1
 
             > .card {
               // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
@@ -419,22 +420,22 @@
   // Card group
   // 1. Individual cards have margin-bottom by default,
   //    Replace with single margin on the group.
-  @if $enable-card-group {
+  @if settings-options.$enable-card-group {
     %card-group-base {
       display: flex;
       flex-direction: column;
     }
 
-    @each $breakpoint in $card-group-breakpoints {
-      $bprule: breakpoint-designator($breakpoint);
+    @each $breakpoint in settings.$card-group-breakpoints {
+      $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-      @if $bprule == "" or ($enable-card-group-responsive and $bprule != "") {
+      @if $bprule == "" or (settings-options.$enable-card-group-responsive and $bprule != "") {
         .card-group#{$bprule} {
           @extend %card-group-base;
 
-          @include media-breakpoint-up(#{$breakpoint}) {
+          @include breakpoints.media-breakpoint-up(#{$breakpoint}) {
             flex-flow: row wrap;
-            margin-bottom: $card-margin-bottom; // 1
+            margin-bottom: settings.$card-margin-bottom; // 1
 
             > .card {
               // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
@@ -447,64 +448,64 @@
               }
 
               // Handle rounded corners
-              @if $enable-rounded {
+              @if settings.$enable-rounded {
                 &:not(:last-child) {
-                  @include border-end-radius(0);
+                  @include border.border-end-radius(0);
 
                   %card-group-reset-top-end#{$bprule} {
-                    @include border-top-end-radius(0);
+                    @include border.border-top-end-radius(0);
                   }
-                  @if $enable-card-header {
+                  @if settings-options.$enable-card-header {
                     .card-header {
                       @extend %card-group-reset-top-end#{$bprule};
                     }
                   }
-                  @if $enable-card-img {
+                  @if settings-options.$enable-card-img {
                     .card-img-top {
                       @extend %card-group-reset-top-end#{$bprule};
                     }
                   }
 
                   %card-group-reset-bottom-end#{$bprule} {
-                    @include border-bottom-end-radius(0);
+                    @include border.border-bottom-end-radius(0);
                   }
-                  @if $enable-card-footer {
+                  @if settings-options.$enable-card-footer {
                     .card-footer {
                       @extend %card-group-reset-bottom-end#{$bprule};
                     }
                   }
-                  @if $enable-card-img {
+                  @if settings-options.$enable-card-img {
                     .card-img-bottom {
                       @extend %card-group-reset-bottom-end#{$bprule};
                     }
                   }
                 }
                 &:not(:first-child) {
-                  @include border-start-radius(0);
+                  @include border.border-start-radius(0);
 
                   %card-group-reset-top-start#{$bprule} {
-                    @include border-top-start-radius(0);
+                    @include border.border-top-start-radius(0);
                   }
-                  @if $enable-card-header {
+                  @if settings-options.$enable-card-header {
                     .card-header {
                       @extend %card-group-reset-top-start#{$bprule};
                     }
                   }
-                  @if $enable-card-img {
+                  @if settings-options.$enable-card-img {
                     .card-img-top {
                       @extend %card-group-reset-top-start#{$bprule};
                     }
                   }
 
                   %card-group-reset-bottom-start#{$bprule} {
-                    @include border-bottom-start-radius(0);
+                    @include border.border-bottom-start-radius(0);
                   }
-                  @if $enable-card-footer {
+                  @if settings-options.$enable-card-footer {
                     .card-footer {
                       @extend %card-group-reset-bottom-start#{$bprule};
                     }
                   }
-                  @if $enable-card-img {
+                  @if settings-options.$enable-card-img {
                     .card-img-bottom {
                       @extend %card-group-reset-bottom-start#{$bprule};
                     }
@@ -519,21 +520,21 @@
   }
 
   // Card columns
-  @if $enable-card-columns {
-    @each $breakpoint in $card-columns-breakpoints {
-      $bprule: breakpoint-designator($breakpoint);
+  @if settings-options.$enable-card-columns {
+    @each $breakpoint in settings.$card-columns-breakpoints {
+      $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-      @if $bprule == "" or ($enable-card-columns-responsive and $bprule != "") {
-        @include media-breakpoint-up(#{$breakpoint}) {
+      @if $bprule == "" or (settings-options.$enable-card-columns-responsive and $bprule != "") {
+        @include breakpoints.media-breakpoint-up(#{$breakpoint}) {
           .card-columns#{$bprule} {
-            column-count: $card-columns-count;
-            column-gap: $card-columns-column-gap;
-            margin-bottom: $card-margin-bottom;
+            column-count: settings.$card-columns-count;
+            column-gap: settings.$card-columns-column-gap;
+            margin-bottom: settings.$card-margin-bottom;
             orphans: 1;
             widows: 1;
 
             > .card {
-              margin-top: $card-margin-bottom;
+              margin-top: settings.$card-margin-bottom;
               margin-bottom: 0;
               break-inside: avoid;
               backface-visibility: hidden;

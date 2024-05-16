@@ -1,12 +1,13 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
-@use "../vendor/rfs" as *;
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/transition";
+@use "../vendor/rfs";
 
 // Base class
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
-@if $enable-nav {
+@if settings-options.$enable-nav {
   .nav {
     display: flex;
     flex-wrap: wrap;
@@ -17,100 +18,100 @@
 
   .nav-link {
     display: block;
-    padding: $nav-link-padding-y $nav-link-padding-x;
-    @include font-size($nav-link-font-size);
-    font-weight: $nav-link-font-weight;
-    color: $nav-link-color;
-    text-decoration: $nav-link-decoration;
+    padding: settings.$nav-link-padding-y settings.$nav-link-padding-x;
+    @include rfs.font-size(settings.$nav-link-font-size);
+    font-weight: settings.$nav-link-font-weight;
+    color: settings.$nav-link-color;
+    text-decoration: settings.$nav-link-decoration;
     background: none;
     border: 0;
-    @include transition($nav-link-transition);
+    @include transition.transition(settings.$nav-link-transition);
 
     &:hover,
     &:focus {
-      color: $nav-link-hover-color;
-      text-decoration: $nav-link-hover-decoration;
+      color: settings.$nav-link-hover-color;
+      text-decoration: settings.$nav-link-hover-decoration;
     }
 
     // Disabled state lightens text and removes hover/focus effects
     // By default it also influences `.nav-tab` and `.nav-pills`
     &.disabled,
     &:disabled {
-      color: $nav-link-disabled-color;
+      color: settings.$nav-link-disabled-color;
       text-decoration: none;
       pointer-events: none;
       cursor: default;
-      opacity: $nav-link-disabled-opacity;
+      opacity: settings.$nav-link-disabled-opacity;
     }
   }
 
 
   // Tabs
-  @if $enable-nav-tabs {
+  @if settings-options.$enable-nav-tabs {
     .nav-tabs {
       flex-flow: row wrap;
-      border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+      border-bottom: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
 
       .nav-link {
         // Make the list-items overlay the bottom border
-        margin-bottom: -$nav-tabs-border-width;
-        border: $nav-tabs-border-width solid transparent;
-        @include border-radius($border-radius $border-radius 0 0);
+        margin-bottom: settings.$nav-tabs-border-width * -1;
+        border: settings.$nav-tabs-border-width solid transparent;
+        @include border.border-radius(settings.$border-radius settings.$border-radius 0 0);
 
         &:hover,
         &:focus {
-          color: $nav-tabs-hover-color;
-          background-color: $nav-tabs-hover-bg;
-          border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
+          color: settings.$nav-tabs-hover-color;
+          background-color: settings.$nav-tabs-hover-bg;
+          border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color;
         }
 
         &.disabled,
         &:disabled {
-          color: $nav-link-disabled-color;
+          color: settings.$nav-link-disabled-color;
           background-color: transparent;
           border-color: transparent;
         }
 
         &.active,
         &.open {
-          color: $nav-tabs-active-color;
-          background-color: $nav-tabs-active-bg;
-          border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+          color: settings.$nav-tabs-active-color;
+          background-color: settings.$nav-tabs-active-bg;
+          border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg;
         }
       }
 
-      @if $enable-nav-reverse {
+      @if settings-options.$enable-nav-reverse {
         &.nav-reverse {
-          border-top: $nav-tabs-border-width solid $nav-tabs-border-color;
+          border-top: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
           border-bottom: 0;
 
           .nav-link {
-            margin-top: -$nav-tabs-border-width;
+            margin-top: settings.$nav-tabs-border-width * -1;
             margin-bottom: 0;
-            @include border-radius(0 0 $border-radius $border-radius);
+            @include border.border-radius(0 0 settings.$border-radius settings.$border-radius);
 
             &:hover,
             &:focus {
-              border-color: $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
+              border-color: settings.$nav-tabs-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color;
             }
 
             &.active,
             &.open {
-              border-color: $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
+              border-color: settings.$nav-tabs-active-bg settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color;
             }
           }
         }
       }
     }
 
-    @if $enable-dropdown {
+    @if settings-options.$enable-dropdown {
       // Make dropdown border overlap tab border
       // Remove the rounded corners where there is a hard edge
       %tabs-dropdown-bottom {
         .dropdown-menu {
           &[x-placement^="bottom"] {
-            margin-top: -$nav-tabs-border-width;
-            @include border-top-radius(0);
+            margin-top: settings.$nav-tabs-border-width * -1;
+            @include border.border-top-radius(0);
           }
         }
       }
@@ -118,8 +119,8 @@
       %tabs-dropdown-top {
         .dropdown-menu {
           &[x-placement^="top"] {
-            margin-bottom: -$nav-tabs-border-width;
-            @include border-bottom-radius(0);
+            margin-bottom: settings.$nav-tabs-border-width * -1;
+            @include border.border-bottom-radius(0);
           }
         }
       }
@@ -127,8 +128,8 @@
       %tabs-dropdown-start {
         .dropdown-menu {
           &[x-placement^="left"] {
-            margin-right: -$nav-tabs-border-width;
-            @include border-end-radius(0);
+            margin-right: settings.$nav-tabs-border-width * -1;
+            @include border.border-end-radius(0);
           }
         }
       }
@@ -136,13 +137,13 @@
       %tabs-dropdown-end {
         .dropdown-menu {
           &[x-placement^="right"] {
-            margin-left: -$nav-tabs-border-width;
-            @include border-start-radius(0);
+            margin-left: settings.$nav-tabs-border-width * -1;
+            @include border.border-start-radius(0);
           }
         }
       }
 
-      @if $enable-nav-vertical and $enable-nav-reverse {
+      @if settings-options.$enable-nav-vertical and settings-options.$enable-nav-reverse {
         .nav-tabs.nav-vertical.nav-reverse {
           @extend %tabs-dropdown-start;
         }
@@ -155,14 +156,14 @@
         .nav-tabs:not(.nav-vertical):not(.nav-reverse) {
           @extend %tabs-dropdown-bottom;
         }
-      } @else if $enable-nav-vertical {
+      } @else if settings-options.$enable-nav-vertical {
         .nav-tabs.nav-vertical {
           @extend %tabs-dropdown-end;
         }
         .nav-tabs:not(.nav-vertical) {
           @extend %tabs-dropdown-bottom;
         }
-      } @else if $enable-nav-reverse {
+      } @else if settings-options.$enable-nav-reverse {
         .nav-tabs.nav-reverse {
           @extend %tabs-dropdown-top;
         }
@@ -178,45 +179,45 @@
   }
 
   // Pills
-  @if $enable-nav-pills {
+  @if settings-options.$enable-nav-pills {
     .nav-pills {
       flex-flow: row wrap;
 
       .nav-link {
-        @include border-radius($nav-pills-border-radius);
+        @include border.border-radius(settings.$nav-pills-border-radius);
 
         &:hover,
         &:focus {
-          color: $nav-pills-hover-color;
-          background-color: $nav-pills-hover-bg;
+          color: settings.$nav-pills-hover-color;
+          background-color: settings.$nav-pills-hover-bg;
         }
 
         &.disabled,
         &:disabled {
-          color: $nav-link-disabled-color;
+          color: settings.$nav-link-disabled-color;
           background-color: transparent;
           border-color: transparent;
         }
 
         &.active,
         &.open {
-          color: $nav-pills-active-color;
-          background-color: $nav-pills-active-bg;
+          color: settings.$nav-pills-active-color;
+          background-color: settings.$nav-pills-active-bg;
         }
       }
     }
   }
 
   // Lined
-  @if $enable-nav-lined {
+  @if settings-options.$enable-nav-lined {
     .nav-lined {
       flex-flow: row wrap;
-      gap: $nav-lined-gap;
+      gap: settings.$nav-lined-gap;
 
       .nav-link {
         padding-right: 0;
         padding-left: 0;
-        border-bottom: $nav-lined-border-width solid transparent;
+        border-bottom: settings.$nav-lined-border-width solid transparent;
 
         &:hover,
         &:focus {
@@ -225,16 +226,16 @@
 
         &.active,
         &.open {
-          font-weight: $font-weight-bold;
-          color: $nav-lined-active-color;
+          font-weight: settings.$font-weight-bold;
+          color: settings.$nav-lined-active-color;
           border-bottom-color: currentcolor;
         }
       }
 
-      @if $enable-nav-reverse {
+      @if settings-options.$enable-nav-reverse {
         &.nav-reverse {
           .nav-link {
-            border-top: $nav-lined-border-width solid transparent;
+            border-top: settings.$nav-lined-border-width solid transparent;
             border-bottom: 0;
 
             &:hover,
@@ -253,53 +254,53 @@
   }
 
   // Vertical navigation
-  @if $enable-nav-vertical {
+  @if settings-options.$enable-nav-vertical {
     .nav-vertical {
       flex-direction: column;
 
-      @if $enable-nav-tabs {
+      @if settings-options.$enable-nav-tabs {
         &.nav-tabs {
-          border-right: $nav-tabs-border-width solid $nav-tabs-border-color;
+          border-right: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
           border-bottom: 0;
 
           .nav-link {
-            margin-right: -$nav-tabs-border-width;
+            margin-right: settings.$nav-tabs-border-width * -1;
             margin-bottom: 0;
-            @include border-radius($border-radius 0 0 $border-radius);
+            @include border.border-radius(settings.$border-radius 0 0 settings.$border-radius);
 
             &:hover,
             &:focus {
-              border-color: $nav-tabs-hover-border-color $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
+              border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color;
             }
 
             &.active,
             &.open {
-              border-color: $nav-tabs-active-border-color $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
+              border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color;
             }
           }
         }
 
-        @if $enable-nav-reverse {
+        @if settings-options.$enable-nav-reverse {
           &.nav-tabs.nav-reverse {
             border-top: 0;
             border-right: 0;
-            border-left: $nav-tabs-border-width solid $nav-tabs-border-color;
+            border-left: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
 
             .nav-link {
               margin-top: 0;
               margin-right: 0;
-              margin-left: -$nav-tabs-border-width;
-              @include border-radius(0 $border-radius $border-radius 0);
+              margin-left: settings.$nav-tabs-border-width * -1;
+              @include border.border-radius(0 settings.$border-radius settings.$border-radius 0);
 
               &:hover,
               &:focus {
-                border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
+                border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color;
               }
 
               // stylelint-disable selector-max-class
               &.active,
               &.open {
-                border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+                border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg;
               }
               // stylelint-enable selector-max-class
             }
@@ -307,14 +308,14 @@
         }
       }
 
-      @if $enable-nav-lined {
+      @if settings-options.$enable-nav-lined {
         &.nav-lined {
           gap: 0;
 
           .nav-link {
-            padding-right: $nav-link-padding-x;
-            padding-left: $nav-link-padding-x;
-            border-right: $nav-lined-border-width solid transparent;
+            padding-right: settings.$nav-link-padding-x;
+            padding-left: settings.$nav-link-padding-x;
+            border-right: settings.$nav-lined-border-width solid transparent;
             border-bottom: 0;
 
             &:hover,
@@ -329,12 +330,12 @@
           }
         }
 
-        @if $enable-nav-reverse {
+        @if settings-options.$enable-nav-reverse {
           &.nav-lined.nav-reverse {
             .nav-link {
               border-top: 0;
               border-right: 0;
-              border-left: $nav-lined-border-width solid transparent;
+              border-left: settings.$nav-lined-border-width solid transparent;
 
               &:hover,
               &:focus {
@@ -355,7 +356,7 @@
   }
 
   // Justified variants
-  @if $enable-nav-fill {
+  @if settings-options.$enable-nav-fill {
     .nav-fill {
       > .nav-link,
       .nav-item {
@@ -365,7 +366,7 @@
     }
   }
 
-  @if $enable-nav-justify {
+  @if settings-options.$enable-nav-justify {
     .nav-justify {
       > .nav-link,
       .nav-item {
@@ -382,12 +383,12 @@
       width: 100%;
     }
   }
-  @if $enable-nav-fill {
+  @if settings-options.$enable-nav-fill {
     .nav-fill {
       @extend %nav-fill-justify-link-grow;
     }
   }
-  @if $enable-nav-justify {
+  @if settings-options.$enable-nav-justify {
     .nav-justify {
       @extend %nav-fill-justify-link-grow;
     }
@@ -396,7 +397,7 @@
 
 // Tab content panes
 // Hide tabbable panes to start, show them when `.active`
-@if $enable-tab-content {
+@if settings-options.$enable-tab-content {
   .tab-content {
     > .tab-pane {
       display: none;

@@ -1,10 +1,9 @@
-@use "../settings" as *;
-@use "../settings-options" as *;
-@use "../mixins" as *;
+@use "../settings";
+@use "../mixins/transition";
 
 .fade {
   opacity: 0;
-  @include transition($transition-fade);
+  @include transition.transition(settings.$transition-fade);
 
   &.in {
     opacity: 1;
@@ -21,15 +20,15 @@
   height: 0;
   overflow: hidden;
 
-  @include transition($transition-collapse-y);
+  @include transition.transition(settings.$transition-collapse-y);
 
   // Horizontal collapse variant
   &.width {
     width: 0;
     height: auto;
 
-    @if $enable-transitions {
-      @include transition($transition-collapse-x);
+    @if settings.$enable-transitions {
+      @include transition.transition(settings.$transition-collapse-x);
     }
   }
 }
