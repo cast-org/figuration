@@ -1,10 +1,10 @@
 /*!
- * Figuration (v4.4.0)
+ * Figuration (v5.0.0-alpha.1)
  * https://figuration.org
- * Copyright 2013-2023 CAST, Inc.
+ * Copyright 2013-2024 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2023 The Bootstrap Authors
+ * Portions Copyright 2011-2024 The Bootstrap Authors
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -27,7 +27,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Util_Backdrop = function(options) {
         this.element = null;
@@ -145,7 +144,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var KEYCODE_TAB = 9;
     var NAV_DIR_FORWARD = 'forward';
@@ -335,7 +333,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var SELECTOR_CONTENT_FIXED = '.fixed-top, .fixed-bottom, .is-fixed';
     var SELECTOR_CONTENT_STICKY = '.sticky-top, .sticky-bottom, .is-sticky';
@@ -530,7 +527,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     // =====
     // Private util helpers
@@ -1202,7 +1198,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Drag = function(element, options) {
         this.$element = $(element);
@@ -1392,7 +1387,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Collapse = function(element, options) {
         this.$element = $(element);
@@ -1634,7 +1628,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Dropdown = function(element, options) {
         this.$element = $(element);
@@ -2407,7 +2400,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Tab = function(element, options) {
         this.$element = $(element);
@@ -2672,7 +2664,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Affix = function(element, options) {
         this.$element = $(element);
@@ -2846,7 +2837,6 @@ if (typeof jQuery === 'undefined') {
 /* global CFW_Focuser */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Tooltip = function(element, options) {
         this._init('tooltip', element, options);
@@ -3674,7 +3664,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     if (typeof $.fn.CFW_Tooltip === 'undefined') { throw new Error('CFW_Popover requires CFW_Tooltip'); }
 
@@ -3866,7 +3855,6 @@ if (typeof jQuery === 'undefined') {
                     case KEYCODE_UP: { offsetY -= step; break; }
                     case KEYCODE_RIGHT: { offsetX += step; break; }
                     case KEYCODE_DOWN: { offsetY += step; break; }
-                    default:
                 }
 
                 // Move it
@@ -3897,7 +3885,6 @@ if (typeof jQuery === 'undefined') {
                 return element.ownerDocument.body;
             case '#document':
                 return element.body;
-            default:
                 // Nothing for default
         }
 
@@ -4132,7 +4119,6 @@ if (typeof jQuery === 'undefined') {
 /* global CFW_Backdrop, CFW_Focuser, CFW_Scrollbar */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Offcanvas = function(element, options) {
         this.$rootElement = null;
@@ -4451,7 +4437,6 @@ if (typeof jQuery === 'undefined') {
 /* global CFW_Backdrop, CFW_Focuser, CFW_Scrollbar */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Modal = function(element, options) {
         this.$rootElement = null;
@@ -4935,7 +4920,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_Accordion requires CFW_Collapse'); }
 
@@ -5011,7 +4995,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Tab'); }
     if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Collapse'); }
@@ -5148,7 +5131,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_Slideshow requires CFW_Tab'); }
 
@@ -5330,7 +5312,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Scrollspy = function(element, options) {
         this.$body = $('body');
@@ -5524,7 +5505,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Alert = function(element, options) {
         this.$element = $(element);
@@ -5654,7 +5634,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Lazy = function(element, options) {
         this.$element = $(element);
@@ -5860,7 +5839,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var CFW_Widget_Equalize = function(element, options) {
         this.$element = $(element);
@@ -6077,7 +6055,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/audio.js
     var audioTest = function() {
@@ -6783,7 +6760,6 @@ if (typeof jQuery === 'undefined') {
         // https://github.com/iandevlin/iandevlin.github.io/blob/master/mdn/video-player-with-captions/js/video-player.js
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
-            // eslint-disable-next-line compat/compat
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
             return $fsNode.is(this.$element);
         },
@@ -7737,7 +7713,6 @@ if (typeof jQuery === 'undefined') {
                     this.mute();
                     break;
                 }
-                default:
             }
         },
 
@@ -7895,7 +7870,6 @@ if (typeof jQuery === 'undefined') {
  */
 
 (function($) {
-    'use strict';
 
     var cfwList = {
         '[data-cfw="collapse"]': 'CFW_Collapse',
@@ -7951,3 +7925,4 @@ if (typeof jQuery === 'undefined') {
         }
     });
 }(jQuery));
+//# sourceMappingURL=figuration.js.map
