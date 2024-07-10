@@ -25,20 +25,20 @@ const browsers = {
     browserName: 'MicrosoftEdge',
     browserVersion: 'latest'
   },
-  edgeWin10: {
+  edgeWin: {
     base: 'SauceLabs',
     platformName: 'Windows 11',
     browserName: 'MicrosoftEdge',
     browserVersion: 'latest',
-    flags: ['-guest']
+    flags: ['--guest']
   },
-  chromeWin10: {
+  chromeWin: {
     base: 'SauceLabs',
     platformName: 'Windows 11',
     browserName: 'chrome',
     browserVersion: 'latest'
   },
-  firefoxWin10: {
+  firefoxWin: {
     base: 'SauceLabs',
     platformName: 'Windows 11',
     browserName: 'firefox',
