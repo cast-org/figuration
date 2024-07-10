@@ -29,8 +29,7 @@ const browsers = {
     base: 'SauceLabs',
     platformName: 'Windows 11',
     browserName: 'MicrosoftEdge',
-    browserVersion: 'latest',
-    flags: ['--guest']
+    browserVersion: 'latest'
   },
   chromeWin: {
     base: 'SauceLabs',
