@@ -45,9 +45,9 @@
 
     // Thumb
     &::-webkit-slider-thumb {
-      @include forms.form-range-thumb();
       // Vertically align thumb
       margin-top: (settings.$form-range-track-height - settings.$form-range-thumb-height) * .5;
+      @include forms.form-range-thumb();
     }
     &::-moz-range-thumb {
       @include forms.form-range-thumb();

@@ -35,6 +35,9 @@
     // needing special overrides.
     @if settings-options.$enable-form-file {
       > .form-file {
+        display: flex;
+        align-items: center;
+
         // Bring input back above label for drag and drop to work if
         // the custom file input is focused.
         .form-file-input:focus {
@@ -51,9 +54,6 @@
             z-index: 3;
           }
         }
-
-        display: flex;
-        align-items: center;
 
         &:not(:last-child) .form-file-label { @include border.border-end-radius(0); }
         &:not(:first-child) .form-file-label { @include border.border-start-radius(0); }

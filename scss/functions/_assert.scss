@@ -8,7 +8,7 @@
   $prev-key: null;
   $prev-num: null;
   @each $key, $num in $map {
-    @if $prev-num == null or unit($prev-num) == "%" or unit($num) == "%" {
+    @if $prev-num == null or math.unit($prev-num) == "%" or math.unit($num) == "%" {
       // Do nothing
     } @else if not math.compatible($prev-num, $num) {
       @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";

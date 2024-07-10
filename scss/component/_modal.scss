@@ -36,8 +36,8 @@
     //-webkit-overflow-scrolling: touch;
 
     &.fade .modal-dialog {
-      @include transition.transition(settings.$modal-transition);
       transform: settings.$modal-transform-fade;
+      @include transition.transition(settings.$modal-transition);
     }
   }
 
@@ -184,8 +184,8 @@
 
   // Close is blocked animation
   .modal.modal-blocked .modal-content {
-    @include transition.transition(settings.$modal-transition);
     transform: settings.$modal-transform-blocked;
+    @include transition.transition(settings.$modal-transition);
   }
 
   // Actual modal

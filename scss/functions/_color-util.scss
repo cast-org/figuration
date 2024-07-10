@@ -25,11 +25,11 @@ $contrast-base-dark:  #000 !default;
   } @else if $level < $base {
     // lighten - flip negative value
     $light-pct: if($level-delta * $light-interval > 100, 100, $level-delta * $light-interval);
-    @return mix(#fff, $color, $light-pct * -1);
+    @return color.mix(#fff, $color, $light-pct * -1);
   } @else if $level > $base {
     // darken
     $dark-pct: if($level-delta * $dark-interval > 100, 100, $level-delta * $dark-interval);
-    @return mix(#000, $color, $dark-pct);
+    @return color.mix(#000, $color, $dark-pct);
   }
 
   // level==500

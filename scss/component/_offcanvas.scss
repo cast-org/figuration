@@ -207,7 +207,7 @@
 
   // Close is blocked animation
   .offcanvas.offcanvas-blocked.in {
-    @include transition.transition(settings.$offcanvas-blocked-transition);
     transform: settings.$offcanvas-blocked-transform;
+    @include transition.transition(settings.$offcanvas-blocked-transition);
   }
 }

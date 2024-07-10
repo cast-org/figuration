@@ -97,9 +97,9 @@
           background-position: center;
           background-size: settings.$form-checkradio-icon-size;
           border: settings.$form-checkradio-border-width solid settings.$form-checkradio-border-color;
+          print-color-adjust: exact;
           @include box-shadow.box-shadow(settings.$form-checkradio-box-shadow);
           @include transition.transition(settings.$input-transition);
-          print-color-adjust: exact;
         }
       }
 
@@ -213,8 +213,8 @@
           position: absolute;
           display: inline-block;
           content: "";
-          @include transition.transition(settings.$switch-transition);
           print-color-adjust: exact;
+          @include transition.transition(settings.$switch-transition);
         }
 
         // Track

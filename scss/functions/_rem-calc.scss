@@ -9,7 +9,7 @@
 // @param {Number} $number - Number to remove unit from
 // @return {Number} - Unitless number
 @function strip-unit($number) {
-  @if meta.type-of($number) == "number" and not unitless($number) {
+  @if meta.type-of($number) == "number" and not math.is-unitless($number) {
     @return math.div($number, $number * 0 + 1);
   }
 
@@ -23,18 +23,18 @@
 @function any-to-rem($value) {
   // Check if the value is a number
   @if meta.type-of($value) != "number" {
-    @warn inspect($value) + " was passed to rem(), which is not a number.";
+    @warn meta.inspect($value) + " was passed to rem(), which is not a number.";
     @return $value;
   }
 
   // Convert em into rem
-  @if unit($value) == "em" {
+  @if math.unit($value) == "em" {
     $value: strip-unit($value) * 1rem;
   }
 
   // Calculate rem if units for $value is not rem or em
   // Using 16px = 100% font size common in most browsers
-  @if unit($value) != "rem" {
+  @if math.unit($value) != "rem" {
     $value: math.div(strip-unit($value), strip-unit(16px)) * 1rem;
   }
 
@@ -67,7 +67,7 @@
 // Converts a unitless, pixel, or rem value to em, for use in breakpoints.
 @function bp-to-em($value) {
   // Pixel and unitless values are converted to rem
-  @if unit($value) == "px" or unitless($value) {
+  @if math.unit($value) == "px" or math.is-unitless($value) {
     $value: rem($value);
   }
 
