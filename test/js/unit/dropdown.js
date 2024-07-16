@@ -448,7 +448,7 @@ $(function() {
     });
 
     QUnit.test('should close menu if clicking on input field not within dropdown menu', function(assert) {
-        assert.expect(0);
+        assert.expect(1);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
             '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
@@ -460,7 +460,10 @@ $(function() {
         var $input = $('<input type="text">').appendTo('#qunit-fixture');
 
         $dropdown.on('afterHide.cfw.dropdown', function() {
-            done();
+            setTimeout(function() {
+                assert.ok($(document.activeElement).is($input), 'input focused');
+                done();
+            });
         });
 
         $dropdown.on('afterShow.cfw.dropdown', function() {
