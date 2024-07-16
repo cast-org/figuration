@@ -23,15 +23,18 @@ const browsers = {
     base: 'SauceLabs',
     platformName: 'macOS 11.00',
     browserName: 'MicrosoftEdge',
-    browserVersion: 'latest'
+    browserVersion: 'latest',
+    'ms:edgeOptions': {
+      args: ['--guest']
+    }
   },
   edgeWin: {
     base: 'SauceLabs',
     platformName: 'Windows 11',
     browserName: 'MicrosoftEdge',
     browserVersion: 'latest',
-    prerun: {
-      args: '--guest'
+    'ms:edgeOptions': {
+      args: ['--guest']
     }
   },
   chromeWin: {
