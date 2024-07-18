@@ -1,59 +1,67 @@
-@if $enable-progress {
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/gradients";
+@use "../mixins/transition";
+@use "../vendor/rfs";
 
-    @if $enable-transitions and $enable-progress-animated {
-        @keyframes progress-bar-stripes {
-            0% { background-position-x: $progress-height; }
+@if settings-options.$enable-progress {
+
+  @if settings.$enable-transitions and settings-options.$enable-progress-animated {
+    @keyframes progress-bar-stripes {
+      0% { background-position-x: settings.$progress-height; }
+    }
+  }
+
+  .progress,
+  .progress-stacked {
+    display: flex;
+    height: settings.$progress-height;
+    overflow: hidden; // Force rounded corners by cropping
+    @include rfs.font-size(settings.$progress-font-size);
+    background-color: settings.$progress-bg;
+    @include border.border-radius(settings.$progress-border-radius);
+    @include box-shadow.box-shadow(settings.$progress-box-shadow);
+  }
+
+  .progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: settings.$progress-bar-color;
+    text-align: center;
+    white-space: nowrap;
+    background-color: settings.$progress-bar-bg;
+    @include box-shadow.box-shadow(settings.$progress-bar-box-shadow);
+    @include transition.transition(settings.$progress-bar-transition);
+  }
+
+  .progress-stacked > .progress {
+    overflow: visible;
+  }
+
+  .progress-stacked > .progress > .progress-bar {
+    width: 100%;
+  }
+
+  @if settings-options.$enable-progress-striped {
+    .progress-bar-striped {
+      @include gradients.gradient-striped();
+      background-size: settings.$progress-height settings.$progress-height;
+    }
+  }
+
+  @if settings.$enable-transitions and settings-options.$enable-progress-animated {
+    .progress-bar-animated {
+      animation: progress-bar-stripes settings.$progress-bar-animation-timing;
+
+      @if settings.$enable-transitions-reduced {
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
         }
+      }
     }
-
-    .progress,
-    .progress-stacked {
-        display: flex;
-        height: $progress-height;
-        overflow: hidden; // Force rounded corners by cropping
-        @include font-size($progress-font-size);
-        background-color: $progress-bg;
-        @include border-radius($progress-border-radius);
-        @include box-shadow($progress-box-shadow);
-    }
-
-    .progress-bar {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        color: $progress-bar-color;
-        text-align: center;
-        white-space: nowrap;
-        background-color: $progress-bar-bg;
-        @include box-shadow($progress-bar-box-shadow);
-        @include transition($progress-bar-transition);
-    }
-
-    .progress-stacked > .progress {
-        overflow: visible;
-    }
-
-    .progress-stacked > .progress > .progress-bar {
-        width: 100%;
-    }
-
-    @if $enable-progress-striped {
-        .progress-bar-striped {
-            @include gradient-striped();
-            background-size: $progress-height $progress-height;
-        }
-    }
-
-    @if $enable-transitions and $enable-progress-animated {
-        .progress-bar-animated {
-            animation: progress-bar-stripes $progress-bar-animation-timing;
-
-            @if $enable-transitions-reduced {
-                @media (prefers-reduced-motion: reduce) {
-                    animation: none;
-                }
-            }
-        }
-    }
+  }
 }

@@ -1,94 +1,67 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/forms";
+
 // Form range
 
 // Each browser's pseudo-elements need to be separate and cannot be
 // combined to provide for shared state support. Duplication is handled
 // with mixins.  Also some additional rules per browser.
-@if $enable-form and $enable-form-range {
-    .form-range {
-        width: 100%;
-        // Min width needed for inline use in IE to keep from crushing to unusable width
-        min-width: $form-range-min-width;
-        height: $form-range-height;
-        padding: 0;
-        margin: 0;
-        vertical-align: middle;
-        appearance: none;
-        background-color: transparent;
+@if settings-options.$enable-form and settings-options.$enable-form-range {
+  .form-range {
+    width: 100%;
+    // Min width needed for inline use in IE to keep from crushing to unusable width
+    min-width: settings.$form-range-min-width;
+    height: settings.$form-range-height;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    appearance: none;
+    background-color: transparent;
 
-        &:focus {
-            outline: 0;
-            &::-webkit-slider-thumb {
-                box-shadow: $form-range-thumb-focus-box-shadow;
-            }
-            &::-moz-range-thumb {
-                box-shadow: $form-range-thumb-focus-box-shadow;
-            }
-            &::-ms-thumb {
-                box-shadow: $form-range-thumb-focus-box-shadow;
-            }
-        }
-
-        &::-moz-focus-outer {
-            border: 0;
-        }
-
-        &::-ms-tooltip {
-            display: none;
-        }
-
-        // Track
-        &::-webkit-slider-runnable-track {
-            @include form-range-track();
-            background-color: $form-range-track-bg;
-        }
-        &::-moz-range-track {
-            @include form-range-track();
-            background-color: $form-range-track-bg;
-        }
-        &::-ms-track {
-            @include form-range-track();
-            background-color: transparent;
-        }
-        &::-ms-fill-lower {
-            background-color: $form-range-track-bg;
-            @include border-radius($form-range-track-border-radius);
-        }
-        &::-ms-fill-upper {
-            margin-right: $form-range-thumb-width * .5;
-            background-color: $form-range-track-bg;
-            @include border-radius($form-range-track-border-radius);
-        }
-
-        // Thumb
-        &::-webkit-slider-thumb {
-            @include form-range-thumb();
-            // Vertically align thumb
-            margin-top: ($form-range-track-height - $form-range-thumb-height) * .5;
-        }
-        &::-moz-range-thumb {
-            @include form-range-thumb();
-        }
-        &::-ms-thumb {
-            @include form-range-thumb();
-            // Vertically align thumb
-            margin-top: 0;
-            // Stop clipping focus box-shadow
-            margin-right: $form-range-thumb-focus-box-shadow-width;
-            margin-left: $form-range-thumb-focus-box-shadow-width;
-        }
-
-        &:disabled {
-            pointer-events: none;
-
-            &::-webkit-slider-thumb {
-                background-color: $form-range-thumb-disabled-bg;
-            }
-            &::-moz-range-thumb {
-                background-color: $form-range-thumb-disabled-bg;
-            }
-            &::-ms-thumb {
-                background-color: $form-range-thumb-disabled-bg;
-            }
-        }
+    &:focus {
+      outline: 0;
+      &::-webkit-slider-thumb {
+        box-shadow: settings.$form-range-thumb-focus-box-shadow;
+      }
+      &::-moz-range-thumb {
+        box-shadow: settings.$form-range-thumb-focus-box-shadow;
+      }
     }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    // Track
+    &::-webkit-slider-runnable-track {
+      @include forms.form-range-track();
+      background-color: settings.$form-range-track-bg;
+    }
+    &::-moz-range-track {
+      @include forms.form-range-track();
+      background-color: settings.$form-range-track-bg;
+    }
+
+    // Thumb
+    &::-webkit-slider-thumb {
+      // Vertically align thumb
+      margin-top: (settings.$form-range-track-height - settings.$form-range-thumb-height) * .5;
+      @include forms.form-range-thumb();
+    }
+    &::-moz-range-thumb {
+      @include forms.form-range-thumb();
+    }
+
+    &:disabled {
+      pointer-events: none;
+
+      &::-webkit-slider-thumb {
+        background-color: settings.$form-range-thumb-disabled-bg;
+      }
+      &::-moz-range-thumb {
+        background-color: settings.$form-range-thumb-disabled-bg;
+      }
+    }
+  }
 }

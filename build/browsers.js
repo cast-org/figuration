@@ -3,55 +3,49 @@
 const browsers = {
     safariMac: {
         base: 'SauceLabs',
-        platformName: 'macOS 10.13',
+        platformName: 'macOS 11.00',
         browserName: 'safari',
         browserVersion: 'latest'
     },
     chromeMac: {
         base: 'SauceLabs',
-        platformName: 'macOS 10.13',
+        platformName: 'macOS 11.00',
         browserName: 'chrome',
         browserVersion: 'latest'
     },
     firefoxMac: {
         base: 'SauceLabs',
-        platformName: 'macOS 10.13',
+        platformName: 'macOS 11.00',
         browserName: 'firefox',
         browserVersion: 'latest'
     },
     edgeMac: {
-        base: 'SauceLabs',
-        platformName: 'macOS 10.13',
-        browserName: 'MicrosoftEdge',
-        browserVersion: 'latest'
+        'base': 'SauceLabs',
+        'platformName': 'macOS 11.00',
+        'browserName': 'MicrosoftEdge',
+        'browserVersion': 'latest',
+        'ms:edgeOptions': {
+            args: ['--guest']
+        }
     },
-    edgeWin10Legacy: {
-        base: 'SauceLabs',
-        platform: 'Windows 10',
-        browserName: 'MicrosoftEdge',
-        version: '16'
+    edgeWin: {
+        'base': 'SauceLabs',
+        'platformName': 'Windows 11',
+        'browserName': 'MicrosoftEdge',
+        'browserVersion': '119',
+        'ms:edgeOptions': {
+            args: ['--guest']
+        }
     },
-    edgeWin10: {
+    chromeWin: {
         base: 'SauceLabs',
-        platformName: 'Windows 10',
-        browserName: 'MicrosoftEdge',
-        browserVersion: 'latest'
-    },
-    ie11Win10: {
-        base: 'SauceLabs',
-        platformName: 'Windows 10',
-        browserName: 'internet explorer',
-        browserVersion: 'latest'
-    },
-    chromeWin10: {
-        base: 'SauceLabs',
-        platformName: 'Windows 10',
+        platformName: 'Windows 11',
         browserName: 'chrome',
         browserVersion: 'latest'
     },
-    firefoxWin10: {
+    firefoxWin: {
         base: 'SauceLabs',
-        platformName: 'Windows 10',
+        platformName: 'Windows 11',
         browserName: 'firefox',
         browserVersion: 'latest'
     },
@@ -59,9 +53,9 @@ const browsers = {
      * tries to run both Selenium and Appiums test - ???
     iPhone: {
         base: 'SauceLabs',
-        deviceName: 'iPhone 11 Simulator',
+        deviceName: 'iPhone Simulator',
         platformName: 'iOS',
-        platformVersion: '13.0',
+        platformVersion: '15.0',
         browserName: 'Safari',
         deviceOrientation: 'portrait',
     },
@@ -70,7 +64,7 @@ const browsers = {
         base: 'SauceLabs',
         deviceName: 'Android GoogleAPI Emulator',
         platformName: 'Android',
-        platformVersion: '9.0',
+        platformVersion: '11.0',
         browserName: 'Chrome',
         deviceOrientation: 'portrait'
     }

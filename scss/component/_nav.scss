@@ -1,395 +1,409 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/transition";
+@use "../vendor/rfs";
+
 // Base class
 // Kickstart any navigation component with a set of style resets. Works with
 // `<nav>`s or `<ul>`s.
-@if $enable-nav {
-    .nav {
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
+@if settings-options.$enable-nav {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  .nav-link {
+    display: block;
+    padding: settings.$nav-link-padding-y settings.$nav-link-padding-x;
+    @include rfs.font-size(settings.$nav-link-font-size);
+    font-weight: settings.$nav-link-font-weight;
+    color: settings.$nav-link-color;
+    text-decoration: settings.$nav-link-decoration;
+    background: none;
+    border: 0;
+    @include transition.transition(settings.$nav-link-transition);
+
+    &:hover,
+    &:focus {
+      color: settings.$nav-link-hover-color;
+      text-decoration: settings.$nav-link-hover-decoration;
     }
 
-    .nav-link {
-        display: block;
-        padding: $nav-link-padding-y $nav-link-padding-x;
-        @include font-size($nav-link-font-size);
-        font-weight: $nav-link-font-weight;
-        color: $nav-link-color;
-        text-decoration: $nav-link-decoration;
-        background: none;
-        border: 0;
-        @include transition($nav-link-transition);
+    // Disabled state lightens text and removes hover/focus effects
+    // By default it also influences `.nav-tab` and `.nav-pills`
+    &.disabled,
+    &:disabled {
+      color: settings.$nav-link-disabled-color;
+      text-decoration: none;
+      pointer-events: none;
+      cursor: default;
+      opacity: settings.$nav-link-disabled-opacity;
+    }
+  }
 
-        @include hover-focus() {
-            color: $nav-link-hover-color;
-            text-decoration: $nav-link-hover-decoration;
+
+  // Tabs
+  @if settings-options.$enable-nav-tabs {
+    .nav-tabs {
+      flex-flow: row wrap;
+      border-bottom: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
+
+      .nav-link {
+        // Make the list-items overlay the bottom border
+        margin-bottom: settings.$nav-tabs-border-width * -1;
+        border: settings.$nav-tabs-border-width solid transparent;
+        @include border.border-radius(settings.$border-radius settings.$border-radius 0 0);
+
+        &:hover,
+        &:focus {
+          color: settings.$nav-tabs-hover-color;
+          background-color: settings.$nav-tabs-hover-bg;
+          border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color;
         }
 
-        // Disabled state lightens text and removes hover/focus effects
-        // By default it also influences `.nav-tab` and `.nav-pills`
         &.disabled,
         &:disabled {
-            color: $nav-link-disabled-color;
-            text-decoration: none;
-            pointer-events: none;
-            cursor: default;
-            opacity: $nav-link-disabled-opacity;
+          color: settings.$nav-link-disabled-color;
+          background-color: transparent;
+          border-color: transparent;
         }
+
+        &.active,
+        &.open {
+          color: settings.$nav-tabs-active-color;
+          background-color: settings.$nav-tabs-active-bg;
+          border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg;
+        }
+      }
+
+      @if settings-options.$enable-nav-reverse {
+        &.nav-reverse {
+          border-top: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
+          border-bottom: 0;
+
+          .nav-link {
+            margin-top: settings.$nav-tabs-border-width * -1;
+            margin-bottom: 0;
+            @include border.border-radius(0 0 settings.$border-radius settings.$border-radius);
+
+            &:hover,
+            &:focus {
+              border-color: settings.$nav-tabs-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color;
+            }
+
+            &.active,
+            &.open {
+              border-color: settings.$nav-tabs-active-bg settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color;
+            }
+          }
+        }
+      }
     }
 
+    @if settings-options.$enable-dropdown {
+      // Make dropdown border overlap tab border
+      // Remove the rounded corners where there is a hard edge
+      %tabs-dropdown-bottom {
+        .dropdown-menu {
+          &[x-placement^="bottom"] {
+            margin-top: settings.$nav-tabs-border-width * -1;
+            @include border.border-top-radius(0);
+          }
+        }
+      }
 
-    // Tabs
-    @if $enable-nav-tabs {
+      %tabs-dropdown-top {
+        .dropdown-menu {
+          &[x-placement^="top"] {
+            margin-bottom: settings.$nav-tabs-border-width * -1;
+            @include border.border-bottom-radius(0);
+          }
+        }
+      }
+
+      %tabs-dropdown-start {
+        .dropdown-menu {
+          &[x-placement^="left"] {
+            margin-right: settings.$nav-tabs-border-width * -1;
+            @include border.border-end-radius(0);
+          }
+        }
+      }
+
+      %tabs-dropdown-end {
+        .dropdown-menu {
+          &[x-placement^="right"] {
+            margin-left: settings.$nav-tabs-border-width * -1;
+            @include border.border-start-radius(0);
+          }
+        }
+      }
+
+      @if settings-options.$enable-nav-vertical and settings-options.$enable-nav-reverse {
+        .nav-tabs.nav-vertical.nav-reverse {
+          @extend %tabs-dropdown-start;
+        }
+        .nav-tabs.nav-vertical:not(.nav-reverse) {
+          @extend %tabs-dropdown-end;
+        }
+        .nav-tabs.nav-reverse:not(.nav-vertical) {
+          @extend %tabs-dropdown-top;
+        }
+        .nav-tabs:not(.nav-vertical):not(.nav-reverse) {
+          @extend %tabs-dropdown-bottom;
+        }
+      } @else if settings-options.$enable-nav-vertical {
+        .nav-tabs.nav-vertical {
+          @extend %tabs-dropdown-end;
+        }
+        .nav-tabs:not(.nav-vertical) {
+          @extend %tabs-dropdown-bottom;
+        }
+      } @else if settings-options.$enable-nav-reverse {
+        .nav-tabs.nav-reverse {
+          @extend %tabs-dropdown-top;
+        }
+        .nav-tabs:not(.nav-reverse) {
+          @extend %tabs-dropdown-bottom;
+        }
+      } @else {
         .nav-tabs {
-            flex-flow: row wrap;
-            border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+          @extend %tabs-dropdown-bottom;
+        }
+      }
+    }
+  }
+
+  // Pills
+  @if settings-options.$enable-nav-pills {
+    .nav-pills {
+      flex-flow: row wrap;
+
+      .nav-link {
+        @include border.border-radius(settings.$nav-pills-border-radius);
+
+        &:hover,
+        &:focus {
+          color: settings.$nav-pills-hover-color;
+          background-color: settings.$nav-pills-hover-bg;
+        }
+
+        &.disabled,
+        &:disabled {
+          color: settings.$nav-link-disabled-color;
+          background-color: transparent;
+          border-color: transparent;
+        }
+
+        &.active,
+        &.open {
+          color: settings.$nav-pills-active-color;
+          background-color: settings.$nav-pills-active-bg;
+        }
+      }
+    }
+  }
+
+  // Lined
+  @if settings-options.$enable-nav-lined {
+    .nav-lined {
+      flex-flow: row wrap;
+      gap: settings.$nav-lined-gap;
+
+      .nav-link {
+        padding-right: 0;
+        padding-left: 0;
+        border-bottom: settings.$nav-lined-border-width solid transparent;
+
+        &:hover,
+        &:focus {
+          border-bottom-color: currentcolor;
+        }
+
+        &.active,
+        &.open {
+          font-weight: settings.$font-weight-bold;
+          color: settings.$nav-lined-active-color;
+          border-bottom-color: currentcolor;
+        }
+      }
+
+      @if settings-options.$enable-nav-reverse {
+        &.nav-reverse {
+          .nav-link {
+            border-top: settings.$nav-lined-border-width solid transparent;
+            border-bottom: 0;
+
+            &:hover,
+            &:focus {
+              border-top-color: currentcolor;
+            }
+
+            &.active,
+            &.open {
+              border-top-color: currentcolor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Vertical navigation
+  @if settings-options.$enable-nav-vertical {
+    .nav-vertical {
+      flex-direction: column;
+
+      @if settings-options.$enable-nav-tabs {
+        &.nav-tabs {
+          border-right: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
+          border-bottom: 0;
+
+          .nav-link {
+            margin-right: settings.$nav-tabs-border-width * -1;
+            margin-bottom: 0;
+            @include border.border-radius(settings.$border-radius 0 0 settings.$border-radius);
+
+            &:hover,
+            &:focus {
+              border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color;
+            }
+
+            &.active,
+            &.open {
+              border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color;
+            }
+          }
+        }
+
+        @if settings-options.$enable-nav-reverse {
+          &.nav-tabs.nav-reverse {
+            border-top: 0;
+            border-right: 0;
+            border-left: settings.$nav-tabs-border-width solid settings.$nav-tabs-border-color;
 
             .nav-link {
-                // Make the list-items overlay the bottom border
-                margin-bottom: -$nav-tabs-border-width;
-                border: $nav-tabs-border-width solid transparent;
-                @include border-radius($border-radius $border-radius 0 0);
+              margin-top: 0;
+              margin-right: 0;
+              margin-left: settings.$nav-tabs-border-width * -1;
+              @include border.border-radius(0 settings.$border-radius settings.$border-radius 0);
 
-                @include hover-focus() {
-                    color: $nav-tabs-hover-color;
-                    background-color: $nav-tabs-hover-bg;
-                    border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
-                }
+              &:hover,
+              &:focus {
+                border-color: settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-hover-border-color settings.$nav-tabs-border-color;
+              }
 
-                &.disabled,
-                &:disabled {
-                    color: $nav-link-disabled-color;
-                    background-color: transparent;
-                    border-color: transparent;
-                }
+              // stylelint-disable selector-max-class
+              &.active,
+              &.open {
+                border-color: settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-border-color settings.$nav-tabs-active-bg;
+              }
+              // stylelint-enable selector-max-class
+            }
+          }
+        }
+      }
 
-                &.active,
-                &.open {
-                    color: $nav-tabs-active-color;
-                    background-color: $nav-tabs-active-bg;
-                    border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
-                }
+      @if settings-options.$enable-nav-lined {
+        &.nav-lined {
+          gap: 0;
+
+          .nav-link {
+            padding-right: settings.$nav-link-padding-x;
+            padding-left: settings.$nav-link-padding-x;
+            border-right: settings.$nav-lined-border-width solid transparent;
+            border-bottom: 0;
+
+            &:hover,
+            &:focus {
+              border-right-color: currentcolor;
             }
 
-            @if $enable-nav-reverse {
-                &.nav-reverse {
-                    border-top: $nav-tabs-border-width solid $nav-tabs-border-color;
-                    border-bottom: 0;
-
-                    .nav-link {
-                        margin-top: -$nav-tabs-border-width;
-                        margin-bottom: 0;
-                        @include border-radius(0 0 $border-radius $border-radius);
-
-                        @include hover-focus() {
-                            border-color: $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
-                        }
-
-                        &.active,
-                        &.open {
-                            border-color: $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
-                        }
-                    }
-                }
+            &.active,
+            &.open {
+              border-right-color: currentcolor;
             }
+          }
         }
 
-        @if $enable-dropdown {
-            // Make dropdown border overlap tab border
-            // Remove the rounded corners where there is a hard edge
-            %tabs-dropdown-bottom {
-                .dropdown-menu {
-                    &[x-placement^="bottom"] {
-                        margin-top: -$nav-tabs-border-width;
-                        @include border-top-radius(0);
-                    }
-                }
-            }
-
-            %tabs-dropdown-top {
-                .dropdown-menu {
-                    &[x-placement^="top"] {
-                        margin-bottom: -$nav-tabs-border-width;
-                        @include border-bottom-radius(0);
-                    }
-                }
-            }
-
-            %tabs-dropdown-start {
-                .dropdown-menu {
-                    &[x-placement^="left"] {
-                        margin-right: -$nav-tabs-border-width;
-                        @include border-end-radius(0);
-                    }
-                }
-            }
-
-            %tabs-dropdown-end {
-                .dropdown-menu {
-                    &[x-placement^="right"] {
-                        margin-left: -$nav-tabs-border-width;
-                        @include border-start-radius(0);
-                    }
-                }
-            }
-
-            @if $enable-nav-vertical and $enable-nav-reverse {
-                .nav-tabs.nav-vertical.nav-reverse {
-                    @extend %tabs-dropdown-start;
-                }
-                .nav-tabs.nav-vertical:not(.nav-reverse) {
-                    @extend %tabs-dropdown-end;
-                }
-                .nav-tabs.nav-reverse:not(.nav-vertical) {
-                    @extend %tabs-dropdown-top;
-                }
-                .nav-tabs:not(.nav-vertical):not(.nav-reverse) {
-                    @extend %tabs-dropdown-bottom;
-                }
-            } @else if $enable-nav-vertical {
-                .nav-tabs.nav-vertical {
-                    @extend %tabs-dropdown-end;
-                }
-                .nav-tabs:not(.nav-vertical) {
-                    @extend %tabs-dropdown-bottom;
-                }
-            } @else if $enable-nav-reverse {
-                .nav-tabs.nav-reverse {
-                    @extend %tabs-dropdown-top;
-                }
-                .nav-tabs:not(.nav-reverse) {
-                    @extend %tabs-dropdown-bottom;
-                }
-            } @else {
-                .nav-tabs {
-                    @extend %tabs-dropdown-bottom;
-                }
-            }
-        }
-    }
-
-    // Pills
-    @if $enable-nav-pills {
-        .nav-pills {
-            flex-flow: row wrap;
-
+        @if settings-options.$enable-nav-reverse {
+          &.nav-lined.nav-reverse {
             .nav-link {
-                @include border-radius($nav-pills-border-radius);
+              border-top: 0;
+              border-right: 0;
+              border-left: settings.$nav-lined-border-width solid transparent;
 
-                @include hover-focus() {
-                    color: $nav-pills-hover-color;
-                    background-color: $nav-pills-hover-bg;
-                }
+              &:hover,
+              &:focus {
+                border-left-color: currentcolor;
+              }
 
-                &.disabled,
-                &:disabled {
-                    color: $nav-link-disabled-color;
-                    background-color: transparent;
-                    border-color: transparent;
-                }
-
-                &.active,
-                &.open {
-                    color: $nav-pills-active-color;
-                    background-color: $nav-pills-active-bg;
-                }
+              // stylelint-disable selector-max-class
+              &.active,
+              &.open {
+                border-left-color: currentcolor;
+              }
+              // stylelint-enable selector-max-class
             }
+          }
         }
+      }
     }
+  }
 
-    // Lined
-    @if $enable-nav-lined {
-        .nav-lined {
-            flex-flow: row wrap;
-            gap: $nav-lined-gap;
-
-            .nav-link {
-                padding-right: 0;
-                padding-left: 0;
-                border-bottom: $nav-lined-border-width solid transparent;
-
-                @include hover-focus() {
-                    border-bottom-color: currentcolor;
-                }
-
-                &.active,
-                &.open {
-                    font-weight: $font-weight-bold;
-                    color: $nav-lined-active-color;
-                    border-bottom-color: currentcolor;
-                }
-            }
-
-            @if $enable-nav-reverse {
-                &.nav-reverse {
-                    .nav-link {
-                        border-top: $nav-lined-border-width solid transparent;
-                        border-bottom: 0;
-
-                        @include hover-focus() {
-                            border-top-color: currentcolor;
-                        }
-
-                        &.active,
-                        &.open {
-                            border-top-color: currentcolor;
-                        }
-                    }
-                }
-            }
-        }
+  // Justified variants
+  @if settings-options.$enable-nav-fill {
+    .nav-fill {
+      > .nav-link,
+      .nav-item {
+        flex: 1 1 auto;
+        text-align: center;
+      }
     }
+  }
 
-    // Vertical navigation
-    @if $enable-nav-vertical {
-        .nav-vertical {
-            flex-direction: column;
-
-            @if $enable-nav-tabs {
-                &.nav-tabs {
-                    border-right: $nav-tabs-border-width solid $nav-tabs-border-color;
-                    border-bottom: 0;
-
-                    .nav-link {
-                        margin-right: -$nav-tabs-border-width;
-                        margin-bottom: 0;
-                        @include border-radius($border-radius 0 0 $border-radius);
-
-                        @include hover-focus() {
-                            border-color: $nav-tabs-hover-border-color $nav-tabs-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color;
-                        }
-
-                        &.active,
-                        &.open {
-                            border-color: $nav-tabs-active-border-color $nav-tabs-active-bg $nav-tabs-active-border-color $nav-tabs-active-border-color;
-                        }
-                    }
-                }
-
-                @if $enable-nav-reverse {
-                    &.nav-tabs.nav-reverse {
-                        border-top: 0;
-                        border-right: 0;
-                        border-left: $nav-tabs-border-width solid $nav-tabs-border-color;
-
-                        .nav-link {
-                            margin-top: 0;
-                            margin-right: 0;
-                            margin-left: -$nav-tabs-border-width;
-                            @include border-radius(0 $border-radius $border-radius 0);
-
-                            @include hover-focus() {
-                                border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
-                            }
-
-                            // stylelint-disable selector-max-class
-                            &.active,
-                            &.open {
-                                border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
-                            }
-                            // stylelint-enable selector-max-class
-                        }
-                    }
-                }
-            }
-
-            @if $enable-nav-lined {
-                &.nav-lined {
-                    gap: 0;
-
-                    .nav-link {
-                        padding-right: $nav-link-padding-x;
-                        padding-left: $nav-link-padding-x;
-                        border-right: $nav-lined-border-width solid transparent;
-                        border-bottom: 0;
-
-                        @include hover-focus() {
-                            border-right-color: currentcolor;
-                        }
-
-                        &.active,
-                        &.open {
-                            border-right-color: currentcolor;
-                        }
-                    }
-                }
-
-                @if $enable-nav-reverse {
-                    &.nav-lined.nav-reverse {
-                        .nav-link {
-                            border-top: 0;
-                            border-right: 0;
-                            border-left: $nav-lined-border-width solid transparent;
-
-                            @include hover-focus() {
-                                border-left-color: currentcolor;
-                            }
-
-                            // stylelint-disable selector-max-class
-                            &.active,
-                            &.open {
-                                border-left-color: currentcolor;
-                            }
-                            // stylelint-enable selector-max-class
-                        }
-                    }
-                }
-            }
-        }
+  @if settings-options.$enable-nav-justify {
+    .nav-justify {
+      > .nav-link,
+      .nav-item {
+        flex-basis: 0;
+        flex-grow: 1;
+        text-align: center;
+      }
     }
+  }
 
-    // Justified variants
-    @if $enable-nav-fill {
-        .nav-fill {
-            > .nav-link,
-            .nav-item {
-                flex: 1 1 auto;
-                text-align: center;
-            }
-        }
+  // Make sure button will grow
+  %nav-fill-justify-link-grow {
+    .nav-item .nav-link {
+      width: 100%;
     }
-
-    @if $enable-nav-justify {
-        .nav-justify {
-            > .nav-link,
-            .nav-item {
-                flex-basis: 0;
-                flex-grow: 1;
-                text-align: center;
-            }
-        }
+  }
+  @if settings-options.$enable-nav-fill {
+    .nav-fill {
+      @extend %nav-fill-justify-link-grow;
     }
-
-    // Make sure button will grow
-    %nav-fill-justify-link-grow {
-        .nav-item .nav-link {
-            width: 100%;
-        }
+  }
+  @if settings-options.$enable-nav-justify {
+    .nav-justify {
+      @extend %nav-fill-justify-link-grow;
     }
-    @if $enable-nav-fill {
-        .nav-fill {
-            @extend %nav-fill-justify-link-grow;
-
-        }
-    }
-    @if $enable-nav-justify {
-        .nav-justify {
-            @extend %nav-fill-justify-link-grow;
-
-        }
-    }
+  }
 }
 
 // Tab content panes
 // Hide tabbable panes to start, show them when `.active`
-@if $enable-tab-content {
-    .tab-content {
-        > .tab-pane {
-            display: none;
-        }
-        > .active {
-            display: block;
-        }
+@if settings-options.$enable-tab-content {
+  .tab-content {
+    > .tab-pane {
+      display: none;
     }
+    > .active {
+      display: block;
+    }
+  }
 }

@@ -1,30 +1,33 @@
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-sizing {
-    // Width and height
-    @each $prop, $abbrev in (width: w, height: h) {
-        @if ($abbrev == w and $enable-utility-sizing-width) or ($abbrev == h and $enable-utility-sizing-height) {
-            $sizes-map: if($abbrev == w, $sizes-width, $sizes-height);
-            @each $size, $length in $sizes-map {
-                .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
-            }
-        }
+@if settings-options.$enable-utility-sizing {
+  // Width and height
+  @each $prop, $abbrev in (width: w, height: h) {
+    @if ($abbrev == w and settings-options.$enable-utility-sizing-width) or ($abbrev == h and settings-options.$enable-utility-sizing-height) {
+      $sizes-map: if($abbrev == w, settings.$sizes-width, settings.$sizes-height);
+      @each $size, $length in $sizes-map {
+        .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+      }
     }
+  }
 
-    // Max width/height
-    @if $enable-utility-sizing-width {
-        .mw-100 { max-width: 100% !important; }
-    }
-    @if $enable-utility-sizing-height {
-        .mh-100 { max-height: 100% !important; }
-    }
+  // Max width/height
+  @if settings-options.$enable-utility-sizing-width {
+    .mw-100 { max-width: 100% !important; }
+  }
+  @if settings-options.$enable-utility-sizing-height {
+    .mh-100 { max-height: 100% !important; }
+  }
 
-    // Viewport
-    @if $enable-utility-sizing-viewport {
-        .min-vw-100 { min-width: 100vw !important; }
-        .min-vh-100 { min-height: 100vh !important; }
+  // Viewport
+  @if settings-options.$enable-utility-sizing-viewport {
+    .min-vw-100 { min-width: 100vw !important; }
+    .min-vh-100 { min-height: 100vh !important; }
 
-        .vw-100 { width: 100vw !important; }
-        .vh-100 { height: 100vh !important; }
-    }
+    .vw-100 { width: 100vw !important; }
+    .vh-100 { height: 100vh !important; }
+  }
 }

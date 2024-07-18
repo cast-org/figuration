@@ -1,46 +1,59 @@
+@use "sass:list";
+@use "sass:meta";
+@use "../settings";
+@use "../settings-options";
+@use "../functions/color-util";
+
+color-util.$light-interval: settings.$palette-light-interval;
+color-util.$dark-interval: settings.$palette-dark-interval;
+color-util.$color-warnings: settings.$enable-color-warnings;
+color-util.$contrast-min-ratio: settings.$color-contrast-min-ratio;
+color-util.$contrast-base-light: settings.$color-contrast-base-light;
+color-util.$contrast-base-dark: settings.$color-contrast-base-dark;
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-bg {
-    // Contextual backgrounds
-    @if $enable-utility-bg-colors {
-        @if (type-of($utility-bg-colors) == "map" and length($utility-bg-colors) != 0) {
-            @each $theme, $color in $utility-bg-colors {
-                .bg-#{$theme} {
-                    background-color: $color !important;
-                }
-            }
+@if settings-options.$enable-utility-bg {
+  // Contextual backgrounds
+  @if settings-options.$enable-utility-bg-colors {
+    @if (meta.type-of(settings.$utility-bg-colors) == "map" and list.length(settings.$utility-bg-colors) != 0) {
+      @each $theme, $color in settings.$utility-bg-colors {
+        .bg-#{$theme} {
+          background-color: $color !important;
         }
+      }
     }
+  }
 
-    // Palette colors
-    @if $enable-palette and $enable-utility-bg-palette {
-        $palette-colors-bg: $palette-colors !default;
-        $palette-levels-bg: $palette-levels !default;
+  // Palette colors
+  @if settings.$enable-palette and settings-options.$enable-utility-bg-palette {
+    $palette-colors-bg: settings.$palette-colors !default;
+    $palette-levels-bg: settings.$palette-levels !default;
 
-        @each $theme, $color in $palette-colors-bg {
-            @each $level in $palette-levels-bg {
-                .bg-#{$theme}-#{$level} {
-                    background-color: palette($color, $level) !important;
-                }
-            }
+    @each $theme, $color in $palette-colors-bg {
+      @each $level in $palette-levels-bg {
+        .bg-#{$theme}-#{$level} {
+          background-color: color-util.palette($color, $level) !important;
         }
+      }
     }
+  }
 
-    // Special background colors
-    @if $enable-utility-bg-special {
-        .bg-body { background-color: $body-bg !important; }
-        .bg-white { background-color: $white !important; }
-        .bg-black { background-color: $black !important; }
-        .bg-transparent { background-color: transparent !important; }
-    }
+  // Special background colors
+  @if settings-options.$enable-utility-bg-special {
+    .bg-body { background-color: settings.$body-bg !important; }
+    .bg-white { background-color: settings.$white !important; }
+    .bg-black { background-color: settings.$black !important; }
+    .bg-transparent { background-color: transparent !important; }
+  }
 
-    // Background colors with contrasting text
-    @if $enable-utility-bgtext {
-        @each $color, $value in $utility-bgtext-colors {
-            .bgtext-#{$color} {
-                color: color-contrast($value) !important;
-                background-color: $value !important;
-            }
-        }
+  // Background colors with contrasting text
+  @if settings-options.$enable-utility-bgtext {
+    @each $color, $value in settings.$utility-bgtext-colors {
+      .bgtext-#{$color} {
+        color: color-util.color-contrast($value) !important;
+        background-color: $value !important;
+      }
     }
+  }
 }

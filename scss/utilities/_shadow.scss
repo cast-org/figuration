@@ -1,12 +1,17 @@
+@use "sass:list";
+@use "sass:meta";
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
 // Shadows
-@if $enable-utility-shadow {
-    @if (type-of($shadows) == "map" and length($shadows) != 0) {
-        @each $key, $value in $shadows {
-            .shadow-#{$key} {
-                box-shadow: #{$value} !important;
-            }
-        }
+@if settings-options.$enable-utility-shadow {
+  @if (meta.type-of(settings.$shadows) == "map" and list.length(settings.$shadows) != 0) {
+    @each $key, $value in settings.$shadows {
+      .shadow-#{$key} {
+        box-shadow: #{$value} !important;
+      }
     }
+  }
 }

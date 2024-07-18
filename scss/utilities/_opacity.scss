@@ -1,9 +1,12 @@
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-opacity {
-    @each $name, $value in $utility-opacity {
-        .opacity-#{$name} {
-            opacity: $value !important;
-        }
+@if settings-options.$enable-utility-opacity {
+  @each $name, $value in settings.$utility-opacity {
+    .opacity-#{$name} {
+      opacity: $value !important;
     }
+  }
 }

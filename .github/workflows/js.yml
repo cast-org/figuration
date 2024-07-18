@@ -9,7 +9,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 18
+  NODE: 20
 
 permissions:
   contents: read
@@ -33,8 +33,11 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: JS Lint and Karma headless
-        run: grunt test-js
+      - name: JS Lint
+        run: npm run js-lint
+
+      - name: JS Karma headless
+        run: npm run js-test-karma
 
       - name: JS Dist
-        run: grunt dist-js
+        run: npm run js

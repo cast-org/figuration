@@ -1,39 +1,46 @@
-@if $enable-img {
-    // Fluid images
-    // Keep images from scaling beyond the width of their parents.
-    @if $enable-img-fluid {
-        .img-fluid {
-            @include img-fluid();
-        }
-    }
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/images";
+@use "../vendor/rfs";
 
-    // Image thumbnails
-    @if $enable-img-thumbnail {
-        .img-thumbnail {
-            padding: $thumbnail-padding;
-            background-color: $thumbnail-bg;
-            border: $thumbnail-border-width solid $thumbnail-border-color;
-            @include border-radius($thumbnail-border-radius);
-            @include box-shadow($thumbnail-box-shadow);
-
-            // Keep them at most 100% wide
-            @include img-fluid();
-        }
+@if settings-options.$enable-img {
+  // Fluid images
+  // Keep images from scaling beyond the width of their parents.
+  @if settings-options.$enable-img-fluid {
+    .img-fluid {
+      @include images.img-fluid();
     }
+  }
+
+  // Image thumbnails
+  @if settings-options.$enable-img-thumbnail {
+    .img-thumbnail {
+      padding: settings.$thumbnail-padding;
+      background-color: settings.$thumbnail-bg;
+      border: settings.$thumbnail-border-width solid settings.$thumbnail-border-color;
+      @include border.border-radius(settings.$thumbnail-border-radius);
+      @include box-shadow.box-shadow(settings.$thumbnail-box-shadow);
+
+      // Keep them at most 100% wide
+      @include images.img-fluid();
+    }
+  }
 }
 
 // Figures
-@if $enable-figure {
-    .figure {
-        // Ensures the caption's text aligns with the image.
-        display: inline-block;
-    }
-    .figure-img {
-        margin-bottom: $figure-spacer-y;
-        line-height: 1;
-    }
-    .figure-caption {
-        @include font-size($figure-caption-font-size);
-        color: $figure-caption-color;
-    }
+@if settings-options.$enable-figure {
+  .figure {
+    // Ensures the caption's text aligns with the image.
+    display: inline-block;
+  }
+  .figure-img {
+    margin-bottom: settings.$figure-spacer-y;
+    line-height: 1;
+  }
+  .figure-caption {
+    @include rfs.font-size(settings.$figure-caption-font-size);
+    color: settings.$figure-caption-color;
+  }
 }

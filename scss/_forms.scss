@@ -1,8 +1,8 @@
-@import "forms/form-control";
-@import "forms/form-label";
-@import "forms/form-check";
-@import "forms/form-file";
-@import "forms/form-range";
-@import "forms/form-color";
-@import "forms/form-layout";
-@import "forms/form-validation";
+@forward "forms/form-control";
+@forward "forms/form-label";
+@forward "forms/form-check";
+@forward "forms/form-file";
+@forward "forms/form-range";
+@forward "forms/form-color";
+@forward "forms/form-layout";
+@forward "forms/form-validation";

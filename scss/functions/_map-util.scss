@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:map";
+
 // Map deep get
 // @author Kitty Giraudel
 // From: https://css-tricks.com/snippets/sass/deep-getset-maps/
@@ -7,10 +10,10 @@
 // @return {*} - Desired value
 // Example: $color: map-deep-get($context-themes, "primary", "control-bg");
 @function map-deep-get($map, $keys...) {
-    @each $key in $keys {
-        $map: map-get($map, $key);
-    }
-    @return $map;
+  @each $key in $keys {
+    $map: map.get($map, $key);
+  }
+  @return $map;
 }
 
 // Sorts a map ascending by values
@@ -21,48 +24,48 @@
 // @param {Map} $map - Initial map
 // @return {Map} - Sorted map
 @function map-sort-by-values($map) {
-    // Transform map to zipped list
-    $keys: ();
-    $values: ();
+  // Transform map to zipped list
+  $keys: ();
+  $values: ();
 
-    @each $key, $val in $map {
-        $keys: append($keys, $key);
-        $values: append($values, $val);
+  @each $key, $val in $map {
+    $keys: list.append($keys, $key);
+    $values: list.append($values, $val);
+  }
+
+  $list: list.zip($keys, $values);
+
+  // Sort zipped list and create sorted map
+  $sorted-map: ();
+  @while list.length($list) > 0 {
+
+    // Find smallest pair
+    $smallest-pair: list.nth($list, 1);
+    @each $pair in $list {
+      $value: list.nth($pair, 2);
+      $smallest-value: list.nth($smallest-pair, 2);
+      @if $value < $smallest-value {
+        $smallest-pair: $pair;
+      }
     }
 
-    $list: zip($keys, $values);
+    // Add smallest pair to sorted map
+    $key: list.nth($smallest-pair, 1);
+    $value: list.nth($smallest-pair, 2);
+    $sorted-map: map.merge($sorted-map, ($key: $value));
 
-    // Sort zipped list and create sorted map
-    $sortedMap: ();
-    @while length($list) > 0 {
-
-        // Find smallest pair
-        $smallestPair: nth($list, 1);
-        @each $pair in $list {
-            $value: nth($pair, 2);
-            $smallestValue: nth($smallestPair, 2);
-            @if $value < $smallestValue {
-                $smallestPair: $pair;
-            }
-        }
-
-        // Add smallest pair to sorted map
-        $key: nth($smallestPair, 1);
-        $value: nth($smallestPair, 2);
-        $sortedMap: map-merge($sortedMap, ($key: $value));
-
-        // Remove from list smallest pair
-        $newList: ();
-        $smallestPairIndex: index($list, $smallestPair);
-        @for $i from 1 through length($list) {
-            @if $i != $smallestPairIndex {
-                $newList: append($newList, nth($list, $i), "space");
-            }
-        }
-        $list: $newList;
+    // Remove from list smallest pair
+    $new-list: ();
+    $smallest-pair-index: list.index($list, $smallest-pair);
+    @for $i from 1 through list.length($list) {
+      @if $i != $smallest-pair-index {
+        $new-list: list.append($new-list, list.nth($list, $i), "space");
+      }
     }
+    $list: $new-list;
+  }
 
-    @return $sortedMap;
+  @return $sorted-map;
 }
 
 // Merge multiple maps together into a single map
@@ -70,11 +73,11 @@
 // @param {Arglist} $maps - list of maps
 // @return {Map} - Merged map
 @function map-merge-multiple($maps...) {
-    $mergedMap: ();
+  $merged-map: ();
 
-    @each $map in $maps {
-        $mergedMap: map-merge($mergedMap, $map);
-    }
+  @each $map in $maps {
+    $merged-map: map.merge($merged-map, $map);
+  }
 
-    @return $mergedMap;
+  @return $merged-map;
 }

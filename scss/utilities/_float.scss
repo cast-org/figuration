@@ -1,17 +1,22 @@
-@if $enable-utility-float {
-    @each $breakpoint in $utility-float-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/breakpoints";
+@use "../mixins/float";
 
-        @include media-breakpoint-up($breakpoint) {
-            .float#{$bprule}-start {
-                @include float-start();
-            }
-            .float#{$bprule}-end {
-                @include float-end();
-            }
-            .float#{$bprule}-none {
-                @include float-none();
-            }
-        }
+@if settings-options.$enable-utility-float {
+  @each $breakpoint in settings.$utility-float-breakpoints {
+    $bprule: breakpoints.breakpoint-designator($breakpoint);
+
+    @include breakpoints.media-breakpoint-up($breakpoint) {
+      .float#{$bprule}-start {
+        @include float.float-start();
+      }
+      .float#{$bprule}-end {
+        @include float.float-end();
+      }
+      .float#{$bprule}-none {
+        @include float.float-none();
+      }
     }
+  }
 }

@@ -1,0 +1,10 @@
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-utility-ratio {
+  @each $key, $ratio in settings.$aspect-ratios {
+    .ratio-#{$key} {
+      aspect-ratio: $ratio;
+    }
+  }
+}

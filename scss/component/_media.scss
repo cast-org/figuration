@@ -1,20 +1,23 @@
-@if $enable-media {
+@use "../settings";
+@use "../settings-options";
+
+@if settings-options.$enable-media {
+  .media {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: settings.$media-margin-y;
+
+    // Nested media
     .media {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: $media-margin-y;
+      margin-top: settings.$media-margin-y;
 
-        // Nested media
-        .media {
-            margin-top: $media-margin-y;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
 
-    .media-body {
-        flex: 1;
-    }
+  .media-body {
+    flex: 1;
+  }
 }

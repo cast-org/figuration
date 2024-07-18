@@ -8,94 +8,97 @@
 // http://www.phpied.com/delay-loading-your-print-css/
 // ==========================================================================
 
-@if $enable-print-styles {
-    @media print {
-        *,
-        *::before,
-        *::after {
-            // color: #000 !important; // Black prints faster: http://www.sanbeiji.com/archives/953
-            text-shadow: none !important;
-            // background: transparent !important;
-            box-shadow: none !important;
-        }
+@use "../settings";
+@use "../settings-options";
 
-        a,
-        a:visited {
-            text-decoration: underline;
-        }
+@if settings.$enable-print-styles {
+  @media print {
+    *,
+    *::before,
+    *::after {
+      // color: #000 !important; // Black prints faster: http://www.sanbeiji.com/archives/953
+      text-shadow: none !important;
+      // background: transparent !important;
+      box-shadow: none !important;
+    }
 
-        // a[href]::after {
-        //     content: " (" attr(href) ")";
-        // }
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
 
-        // a[href^="#"]::after,
-        // a[href^="javascript:"]::after {
-        //     content: "";
-        // }
+    // a[href]::after {
+    //     content: " (" attr(href) ")";
+    // }
 
-        abbr[title]::after {
-            content: " (" attr(title) ")";
-        }
+    // a[href^="#"]::after,
+    // a[href^="javascript:"]::after {
+    //     content: "";
+    // }
 
-        pre {
-            white-space: pre-wrap !important;
-        }
-        pre,
-        blockquote {
-            border: $border-width solid #999;   // Figuration change - use `$border-width` setting instead of 1px default
-            page-break-inside: avoid;
-        }
+    abbr[title]::after {
+      content: " (" attr(title) ")";
+    }
 
-        // Printing Tables:
-        // http://css-discuss.incutio.com/wiki/Printing_Tables
-        thead {
-            display: table-header-group;
+    pre {
+      white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+      border: settings.$border-width solid #999;   // Figuration change - use `$border-width` setting instead of 1px default
+      page-break-inside: avoid;
+    }
+
+    // Printing Tables:
+    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    thead {
+      display: table-header-group;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+
+    // Figuration components start
+
+    .badge {
+      border: settings.$border-width solid #000;
+    }
+
+    @if settings-options.$enable-table {
+      .table {
+        color: inherit !important;
+        border-collapse: collapse !important;
+        border-color: settings.$table-border-color !important;
+
+        thead,
+        tbody,
+        tfoot {
+          color: inherit !important;
         }
 
         tr,
-        img {
-            page-break-inside: avoid;
+        td,
+        th {
+          color: inherit !important;
+          background-color: #fff !important;
         }
-
-        p,
-        h2,
-        h3 {
-            orphans: 3;
-            widows: 3;
-        }
-
-        h2,
-        h3 {
-            page-break-after: avoid;
-        }
-
-        // Figuration components start
-
-        .badge {
-            border: $border-width solid #000;
-        }
-
-        @if $enable-table {
-            .table {
-                color: inherit !important;
-                border-collapse: collapse !important;
-                border-color: $table-border-color !important;
-
-                thead,
-                tbody,
-                tfoot {
-                    color: inherit !important;
-                }
-
-                tr,
-                td,
-                th {
-                    color: inherit !important;
-                    background-color: #fff !important;
-                }
-            }
-        }
-
-        // Figuration components end
+      }
     }
+
+    // Figuration components end
+  }
 }

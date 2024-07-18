@@ -1,157 +1,166 @@
+@use "sass:map";
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/box-shadow";
+@use "../mixins/border";
+@use "../mixins/forms";
+@use "../mixins/transition";
+@use "../vendor/rfs";
+
 // File input
-@if $enable-form and $enable-form-file {
-    .form-file {
-        position: relative;
-        @include font-size($input-font-size);
-        line-height: $input-line-height;
+@if settings-options.$enable-form and settings-options.$enable-form-file {
+  .form-file {
+    position: relative;
+    @include rfs.font-size(settings.$input-font-size);
+    line-height: settings.$input-line-height;
+  }
+
+  .form-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: forms.calc-input-height-outer(settings.$input-padding-y, settings.$input-line-height);
+    margin: 0;
+    opacity: 0;
+
+    // Separate rules for :focus and :focus-within
+    // IE doesn't support :focus-within and will ignore ruleset otherwise
+    &:focus {
+      ~ .form-file-label {
+        color: settings.$input-focus-color;
+        background-color: settings.$input-focus-bg;
+        border-color: settings.$input-focus-border-color;
+        outline: 0;
+
+        @if settings.$enable-shadows {
+          @include box-shadow.box-shadow(settings.$input-box-shadow, settings.$input-focus-box-shadow);
+        } @else {
+          // Avoid using mixin so we can pass custom focus shadow properly
+          box-shadow: settings.$input-focus-box-shadow;
+        }
+      }
     }
 
-    .form-file-input {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: calc-input-height-outer($input-padding-y, $input-line-height);
-        margin: 0;
-        opacity: 0;
+    &:focus-within {
+      ~ .form-file-label {
+        color: settings.$input-focus-color;
+        background-color: settings.$input-focus-bg;
+        border-color: settings.$input-focus-border-color;
+        outline: 0;
+        @if settings.$enable-shadows {
+          @include box-shadow.box-shadow(settings.$input-box-shadow, settings.$input-focus-box-shadow);
+        } @else {
+          // Avoid using mixin so we can pass custom focus shadow properly
+          box-shadow: settings.$input-focus-box-shadow;
+        }
+      }
+    }
 
-        // Separate rules for :focus and :focus-within
-        // IE doesn't support :focus-within and will ignore ruleset otherwise
-        &:focus {
-            ~ .form-file-label {
-                color: $input-focus-color;
-                background-color: $input-focus-bg;
-                border-color: $input-focus-border-color;
-                outline: 0;
+    &:hover:not([disabled]):not(:disabled):not([readonly]) {
+      ~ .form-file-label {
+        .form-file-button {
+          color: settings.$form-file-button-hover-color;
+          background-color: settings.$form-file-button-hover-bg;
+        }
+      }
+    }
 
-                @if $enable-shadows {
-                    @include box-shadow($input-box-shadow, $input-focus-box-shadow);
-                } @else {
-                    // Avoid using mixin so we can pass custom focus shadow properly
-                    box-shadow: $input-focus-box-shadow;
-                }
-            }
+    &[disabled],
+    &:disabled {
+      & ~ .form-file-label {
+        color: settings.$input-disabled-color;
+        background-color: settings.$input-disabled-bg;
+
+        .form-file-button {
+          color: settings.$form-file-button-disabled-color;
+          background-color: settings.$form-file-button-disabled-bg;
+          opacity: settings.$form-file-button-disabled-opacity;
+        }
+      }
+    }
+  }
+
+  .form-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    height: forms.calc-input-height-outer(settings.$input-padding-y, settings.$input-line-height);
+    color: settings.$input-color;
+    background-color: settings.$input-bg;
+    border-color: settings.$input-border-color;
+    @include border.border-radius(settings.$input-border-radius);
+    @include box-shadow.box-shadow(settings.$input-box-shadow);
+    @include transition.transition(settings.$input-transition);
+  }
+
+  .form-file-text {
+    display: block;
+    flex-grow: 1;
+    padding: settings.$input-padding-y settings.$input-padding-x;
+    overflow: hidden;
+    font-family: settings.$input-font-family;
+    font-weight: settings.$input-font-weight;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: settings.$input-border-width solid;
+    border-color: inherit;
+    @include border.border-start-radius(inherit);
+  }
+
+  .form-file-button {
+    display: block;
+    flex-shrink: 0;
+    padding: settings.$input-padding-y settings.$input-padding-x;
+    margin-left: settings.$input-border-width * -1;
+    font-family: settings.$form-file-button-font-family;
+    font-weight: settings.$form-file-button-font-weight;
+    color: settings.$form-file-button-color;
+    background-color: settings.$form-file-button-bg;
+    border: settings.$input-border-width solid;
+    border-color: inherit;
+    @include border.border-end-radius(inherit);
+  }
+
+  // Sizing
+  @if settings.$enable-sizing {
+    @each $size, $dims in settings.$input-sizes {
+      $sz-font-size:     map.get($dims, "font-size");
+      $sz-line-height:   map.get($dims, "line-height");
+      $sz-padding-y:     map.get($dims, "padding-y");
+      $sz-padding-x:     map.get($dims, "padding-x");
+      $sz-border-radius: map.get($dims, "border-radius");
+
+      %form-file-#{$size} {
+        @include rfs.font-size($sz-font-size);
+        line-height: $sz-line-height;
+
+        .form-file-input,
+        .form-file-label {
+          height: forms.calc-input-height-outer($sz-padding-y, $sz-line-height);
         }
 
-        &:focus-within {
-            ~ .form-file-label {
-                color: $input-focus-color;
-                background-color: $input-focus-bg;
-                border-color: $input-focus-border-color;
-                outline: 0;
-                @if $enable-shadows {
-                    @include box-shadow($input-box-shadow, $input-focus-box-shadow);
-                } @else {
-                    // Avoid using mixin so we can pass custom focus shadow properly
-                    box-shadow: $input-focus-box-shadow;
-                }
-            }
+        .form-file-label {
+          @include border.border-radius($sz-border-radius);
         }
 
-        &:hover:not([disabled]):not(:disabled):not([readonly]) {
-            ~ .form-file-label {
-                .form-file-button {
-                    color: $form-file-button-hover-color;
-                    background-color: $form-file-button-hover-bg;
-                }
-            }
+        .form-file-text,
+        .form-file-button {
+          @if $sz-padding-y != null and $sz-padding-x != null {
+            $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
+            $my-padding-x: if($sz-padding-x != null, $sz-padding-x, $input-padding-x);
+            padding: $my-padding-y $my-padding-x;
+          }
         }
+      }
 
-        &[disabled],
-        &:disabled {
-            & ~ .form-file-label {
-                color: $input-disabled-color;
-                background-color: $input-disabled-bg;
-
-                .form-file-button {
-                    color: $form-file-button-disabled-color;
-                    background-color: $form-file-button-disabled-bg;
-                    opacity: $form-file-button-disabled-opacity;
-                }
-            }
+      @if settings-options.$enable-form-file-sizing {
+        .form-file-#{$size} {
+          @extend %form-file-#{$size};
         }
+      }
     }
-
-    .form-file-label {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1;
-        display: flex;
-        height: calc-input-height-outer($input-padding-y, $input-line-height);
-        color: $input-color;
-        background-color: $input-bg;
-        border-color: $input-border-color;
-        @include border-radius($input-border-radius);
-        @include box-shadow($input-box-shadow);
-        @include transition($input-transition);
-    }
-
-    .form-file-text {
-        display: block;
-        flex-grow: 1;
-        padding: $input-padding-y $input-padding-x;
-        overflow: hidden;
-        font-family: $input-font-family;
-        font-weight: $input-font-weight;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        border: $input-border-width solid;
-        border-color: inherit;
-        @include border-start-radius(inherit);
-    }
-
-    .form-file-button {
-        display: block;
-        flex-shrink: 0;
-        padding: $input-padding-y $input-padding-x;
-        margin-left: -$input-border-width;
-        font-family: $form-file-button-font-family;
-        font-weight: $form-file-button-font-weight;
-        color: $form-file-button-color;
-        background-color: $form-file-button-bg;
-        border: $input-border-width solid;
-        border-color: inherit;
-        @include border-end-radius(inherit);
-    }
-
-    // Sizing
-    @if $enable-sizing {
-        @each $size, $dims in $input-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-line-height:   map-get($dims, "line-height");
-            $sz-padding-y:     map-get($dims, "padding-y");
-            $sz-padding-x:     map-get($dims, "padding-x");
-            $sz-border-radius: map-get($dims, "border-radius");
-
-            %form-file-#{$size} {
-                @include font-size($sz-font-size);
-                line-height: $sz-line-height;
-
-                .form-file-input,
-                .form-file-label {
-                    height: calc-input-height-outer($sz-padding-y, $sz-line-height);
-                }
-
-                .form-file-label {
-                    @include border-radius($sz-border-radius);
-                }
-
-                .form-file-text,
-                .form-file-button {
-                    @if $sz-padding-y != null and $sz-padding-x != null {
-                        $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
-                        $my-padding-x: if($sz-padding-x != null, $sz-padding-x, $input-padding-x);
-                        padding: $my-padding-y $my-padding-x;
-                    }
-                }
-            }
-
-            @if $enable-form-file-sizing {
-                .form-file-#{$size} {
-                    @extend %form-file-#{$size};
-                }
-            }
-        }
-    }
+  }
 }

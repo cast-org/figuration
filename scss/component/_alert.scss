@@ -1,63 +1,73 @@
-@if $enable-alert {
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "../settings";
+@use "../settings-options";
+@use "../functions/color-util";
+@use "../mixins/alert";
+@use "../mixins/border";
 
-    // Base styles
-    .alert {
-        position: relative;
-        padding: $alert-padding-y $alert-padding-x;
-        padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
-        margin-bottom: $alert-margin-bottom;
-        border: $alert-border-width solid transparent;
-        @include border-radius($alert-border-radius);
+@if settings-options.$enable-alert {
+  // Base styles
+  .alert {
+    position: relative;
+    padding: settings.$alert-padding-y settings.$alert-padding-x;
+    padding-right: (settings.$alert-padding-x + (settings.$alert-close-padding-x * 2));
+    margin-bottom: settings.$alert-margin-bottom;
+    border: settings.$alert-border-width solid transparent;
+    @include border.border-radius(settings.$alert-border-radius);
 
-        // Adjust close link position and color
-        @if $enable-alert-close {
-            .close {
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: $link-stretch-z-index + 1;
-                padding: $alert-close-padding-y $alert-close-padding-x;
-            }
-        }
+    // Adjust close link position and color
+    @if settings-options.$enable-alert-close {
+      .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: settings.$link-stretch-z-index + 1;
+        padding: settings.$alert-close-padding-y settings.$alert-close-padding-x;
+      }
+    }
+  }
+
+  // Headings for larger alerts
+  @if settings-options.$enable-alert-heading {
+    .alert-heading {
+      // Specified to prevent conflicts of changing $headings-color
+      color: inherit;
+    }
+  }
+
+  // Provide class for links that match alerts
+  @if settings-options.$enable-alert-link {
+    .alert-link {
+      font-weight: settings.$alert-link-font-weight;
+    }
+  }
+
+  // Theme generation
+  @if settings-options.$enable-alert-colors {
+    $merged-alert-themes: null;
+
+    @if (meta.type-of(settings.$alert-colors) == "map" and list.length(settings.$alert-colors) != 0) {
+      $mixed-alert-themes: color-util.mix-context-colors(settings.$alert-colors, settings.$alert-levels);
+      $merged-alert-themes: map.merge($mixed-alert-themes, settings.$alert-themes);
     }
 
-    // Headings for larger alerts
-    @if $enable-alert-heading {
-        .alert-heading {
-            // Specified to prevent conflicts of changing $headings-color
-            color: inherit;
+    // Contextual modifiers
+    @if (meta.type-of($merged-alert-themes) == "map" and list.length($merged-alert-themes) != 0) {
+      @each $theme, $colors in $merged-alert-themes {
+        $alert-bg:          map.get($colors, "bg");
+        $alert-color:       map.get($colors, "color");
+        $alert-border:      map.get($colors, "border-color");
+        $alert-hover-color: map.get($colors, "hover-color");
+
+        $alert-color:       color-util.color-if-contrast($alert-color, $alert-bg);
+        $alert-hover-color: color-util.color-if-contrast($alert-hover-color, $alert-bg);
+
+        .alert-#{$theme} {
+          @include alert.alert-variant($alert-color, $alert-bg, $alert-border, $alert-hover-color);
         }
+      }
     }
-
-    // Provide class for links that match alerts
-    @if $enable-alert-link {
-        .alert-link {
-            font-weight: $alert-link-font-weight;
-        }
-    }
-
-    // Theme generation
-    @if $enable-alert-colors {
-        @if (type-of($alert-colors) == "map" and length($alert-colors) != 0) {
-            $mixed-alert-themes: _mix-context-colors($alert-colors, $alert-levels);
-            $alert-themes: map-merge($mixed-alert-themes, $alert-themes);
-        }
-
-        // Contextual modifiers
-        @if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
-            @each $theme, $colors in $alert-themes {
-                $alert-bg:          map-get($colors, "bg");
-                $alert-color:       map-get($colors, "color");
-                $alert-border:      map-get($colors, "border-color");
-                $alert-hover-color: map-get($colors, "hover-color");
-
-                $alert-color:       color-if-contrast($alert-color, $alert-bg);
-                $alert-hover-color: color-if-contrast($alert-hover-color, $alert-bg);
-
-                .alert-#{$theme} {
-                    @include alert-variant($alert-color, $alert-bg, $alert-border, $alert-hover-color);
-                }
-            }
-        }
-    }
+  }
 }

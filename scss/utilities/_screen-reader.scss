@@ -1,63 +1,68 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/breakpoints";
+@use "../mixins/screen-reader";
+
 // Screenreaders
-@if $enable-utility-sronly {
-    %sr-only-base {
-        @include sr-only();
+@if settings-options.$enable-utility-sronly {
+  %sr-only-base {
+    @include screen-reader.sr-only();
+  }
+
+  @if settings-options.$enable-utility-sronly-common {
+    .sr-only {
+      @extend %sr-only-base;
     }
+  }
 
-    @if $enable-utility-sronly-common {
-        .sr-only {
-            @extend %sr-only-base;
-        }
+  @if settings-options.$enable-utility-sronly-focusable {
+    .sr-only-focusable:not(:focus):not(:focus-within) {
+      @extend %sr-only-base;
     }
+  }
 
-    @if $enable-utility-sronly-focusable {
-        .sr-only-focusable:not(:focus):not(:focus-within) {
-            @extend %sr-only-base;
-        }
-    }
+  // Responsive visibility utilities
+  @each $bp in settings.$utility-screen-reader-breakpoints {
+    // Skip smallest breakpoint for up (equivalent to `.sr-only`)
+    @if settings-options.$enable-utility-sronly-responsive {
+      @if breakpoints.breakpoint-min($bp, settings.$grid-breakpoints) != null {
+        @include breakpoints.media-breakpoint-up($bp) {
+          %sr-only-#{$bp} {
+            @include screen-reader.sr-only();
+          }
 
-    // Responsive visibility utilities
-    @each $bp in $utility-screen-reader-breakpoints {
-        // Skip smallest breakpoint for up (equivalent to `.sr-only`)
-        @if $enable-utility-sronly-responsive {
-            @if breakpoint-min($bp, $grid-breakpoints) != null {
-                @include media-breakpoint-up($bp) {
-                    %sr-only-#{$bp} {
-                        @include sr-only();
-                    }
+          .sr-only-#{$bp} {
+            @extend %sr-only-#{$bp};
+          }
 
-                    .sr-only-#{$bp} {
-                        @extend %sr-only-#{$bp};
-                    }
-
-                    @if $enable-utility-sronly-focusable {
-                        .sr-only-#{$bp}-focusable:not(:focus):not(:focus-within) {
-                            @extend %sr-only-#{$bp};
-                        }
-                    }
-                }
+          @if settings-options.$enable-utility-sronly-focusable {
+            .sr-only-#{$bp}-focusable:not(:focus):not(:focus-within) {
+              @extend %sr-only-#{$bp};
             }
+          }
         }
-
-        // Skip largest breakpoint for down (equivalent to `.sr-only`)
-        @if $enable-utility-sronly-responsive-down {
-            @if breakpoint-max($bp, $grid-breakpoints) != null {
-                @include media-breakpoint-down($bp) {
-                    %sr-only-#{$bp}-down {
-                        @include sr-only();
-                    }
-
-                    .sr-only-#{$bp}-down {
-                        @extend %sr-only-#{$bp}-down;
-                    }
-
-                    @if $enable-utility-sronly-focusable {
-                        .sr-only-#{$bp}-down-focusable:not(:focus) {
-                            @extend %sr-only-#{$bp}-down;
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+
+    // Skip largest breakpoint for down (equivalent to `.sr-only`)
+    @if settings-options.$enable-utility-sronly-responsive-down {
+      @if breakpoints.breakpoint-max($bp, settings.$grid-breakpoints) != null {
+        @include breakpoints.media-breakpoint-down($bp) {
+          %sr-only-#{$bp}-down {
+            @include screen-reader.sr-only();
+          }
+
+          .sr-only-#{$bp}-down {
+            @extend %sr-only-#{$bp}-down;
+          }
+
+          @if settings-options.$enable-utility-sronly-focusable {
+            .sr-only-#{$bp}-down-focusable:not(:focus) {
+              @extend %sr-only-#{$bp}-down;
+            }
+          }
+        }
+      }
+    }
+  }
 }

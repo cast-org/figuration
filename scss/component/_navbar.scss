@@ -1,375 +1,393 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/breakpoints";
+@use "../mixins/transition";
+@use "../vendor/rfs";
+
 // Navbar
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
-@if $enable-navbar {
-    .navbar {
-        position: relative;
+@if settings-options.$enable-navbar {
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    padding: settings.$navbar-padding-y settings.$navbar-padding-x;
+
+    // Because flex properties aren't inherited, we need to redeclare these first
+    // few properities so that content nested within behave properly.
+    @if settings.$enable-grid-classes {
+      > .container,
+      > .container-fluid {
         display: flex;
-        flex-wrap: wrap; // allow us to do the line break for collapsing content
+        flex-wrap: inherit;
         align-items: center;
-        padding: $navbar-padding-y $navbar-padding-x;
-
-        // Because flex properties aren't inherited, we need to redeclare these first
-        // few properities so that content nested within behave properly.
-        @if $enable-grid-classes {
-            > .container,
-            > .container-fluid {
-                display: flex;
-                flex-wrap: inherit;
-                align-items: center;
-            }
-        }
-
-        @if $enable-navbar-nav and $enable-dropdown {
-            &:not([class*="navbar-expand"]) {
-                .navbar-nav {
-                    .dropdown-menu {
-                        position: static;
-                        margin: 0;
-                    }
-                }
-            }
-        }
+      }
     }
 
-    // Navbar Brand
-    // Used for brand, project, or site name.
-    @if $enable-navbar-brand {
-        .navbar-brand {
-            display: inline-block;
-            padding-top: $navbar-brand-padding-y;
-            padding-bottom: $navbar-brand-padding-y;
-            margin-right: $navbar-brand-margin-x;
-            @include font-size($navbar-brand-font-size);
-            font-weight: $navbar-brand-font-weight;
-            text-decoration: if($link-decoration == none, null, none);
-            white-space: nowrap;
-
-            @include hover-focus() {
-                text-decoration: if($link-hover-decoration == underline, none, null);
-            }
-
-            > img {
-                display: block;
-            }
-        }
-    }
-
-    // Navbar Nav
-    // Navbar navigation based the base `.nav` styles.
-    @if $enable-navbar-nav {
+    @if settings-options.$enable-navbar-nav and settings-options.$enable-dropdown {
+      &:not([class*="navbar-expand"]) {
         .navbar-nav {
-            display: flex;
-            flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
-            padding-left: 0;
-            margin-bottom: 0;
-            list-style: none;
+          .dropdown-menu {
+            position: static;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
 
-            .nav-link {
-                padding-right: 0;
-                padding-left: 0;
-                text-decoration: if($link-decoration == none, null, none);
+  // Navbar Brand
+  // Used for brand, project, or site name.
+  @if settings-options.$enable-navbar-brand {
+    .navbar-brand {
+      display: inline-block;
+      padding-top: settings.$navbar-brand-padding-y;
+      padding-bottom: settings.$navbar-brand-padding-y;
+      margin-right: settings.$navbar-brand-margin-x;
+      @include rfs.font-size(settings.$navbar-brand-font-size);
+      font-weight: settings.$navbar-brand-font-weight;
+      text-decoration: if(settings.$link-decoration == none, null, none);
+      white-space: nowrap;
 
-                @include hover-focus() {
-                    text-decoration: if($link-hover-decoration == underline, none, null);
+      &:hover,
+      &:focus {
+        text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+      }
+
+      > img {
+        display: block;
+      }
+    }
+  }
+
+  // Navbar Nav
+  // Navbar navigation based the base `.nav` styles.
+  @if settings-options.$enable-navbar-nav {
+    .navbar-nav {
+      display: flex;
+      flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      .nav-link {
+        padding-right: 0;
+        padding-left: 0;
+        text-decoration: if(settings.$link-decoration == none, null, none);
+
+        &:hover,
+        &:focus {
+          text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+        }
+      }
+    }
+  }
+
+  //Navbar Text
+  @if settings-options.$enable-navbar-text {
+    .navbar-text {
+      padding-top: settings.$navbar-item-padding-y;
+      padding-bottom: settings.$navbar-item-padding-y;
+    }
+  }
+
+  // Navbar Divider
+  @if settings-options.$enable-navbar-divider {
+    .navbar-divider {
+      align-self: stretch;
+      margin: settings.$navbar-divider-margin-x settings.$navbar-divider-margin-y;
+      overflow: hidden;
+      border-left: settings.$navbar-divider-width solid settings.$navbar-divider-color;
+    }
+  }
+
+  // Responsive navbar
+  //
+  // Custom styles for responsive collapsing and toggling of navbar contents.
+  // Powered by the collapse Bootstrap JavaScript plugin.
+
+  // When collapsed, prevent the toggleable navbar contents from appearing in
+  // the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
+  // on the `.navbar` parent.
+  @if settings-options.$enable-navbar-collapse {
+    .navbar-collapse {
+      flex: 1 1 100%;
+      // Align content vertically in all instances.  Use flexbox utils to override.
+      align-items: center;
+    }
+  }
+
+  // Navbar Toggle
+  // Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
+  @if settings-options.$enable-navbar-toggle {
+    .navbar-toggle {
+      padding: settings.$navbar-toggle-padding-y settings.$navbar-toggle-padding-x;
+      @include rfs.font-size(settings.$navbar-toggle-font-size);
+      line-height: 1;
+      text-decoration: if(settings.$link-decoration == none, null, none);
+      background-color: transparent; // Remove default button style
+      border: settings.$border-width solid transparent; // Remove default button style
+      @include border.border-radius(settings.$navbar-toggle-border-radius);
+      @include transition.transition(settings.$navbar-toggle-transition);
+
+      &:hover {
+        text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+      }
+
+      &:focus {
+        text-decoration: if(settings.$link-hover-decoration == underline, none, null);
+        outline: 0;
+        box-shadow: settings.$navbar-toggle-focus-box-shadow;
+      }
+    }
+  }
+
+  // Generate series of `.navbar-expand-*` responsive classes for configuring
+  // where your navbar collapses.
+  .navbar-expand {
+    @each $bp in settings.$navbar-expand-breakpoints {
+      $bprule: breakpoints.breakpoint-designator($bp);
+      $prev: breakpoints.breakpoint-prev($bp, settings.$grid-breakpoints);
+
+      &#{$bprule} {
+        // Skip smallest breakpoint
+        @if breakpoints.breakpoint-min($bp, settings.$grid-breakpoints) != null {
+          @include breakpoints.media-breakpoint-down($prev) {
+            @if settings-options.$enable-navbar-nav and settings-options.$enable-dropdown {
+              .navbar-nav {
+                .dropdown-menu {
+                  position: static;
+                  margin: 0;
                 }
-            }
-        }
-    }
-
-    //Navbar Text
-    @if $enable-navbar-text {
-        .navbar-text {
-            padding-top: $navbar-item-padding-y;
-            padding-bottom: $navbar-item-padding-y;
-        }
-    }
-
-    // Navbar Divider
-    @if $enable-navbar-divider {
-        .navbar-divider {
-            align-self: stretch;
-            margin: $navbar-divider-margin-x $navbar-divider-margin-y;
-            overflow: hidden;
-            border-left: $navbar-divider-width solid $navbar-divider-color;
-        }
-    }
-
-    // Responsive navbar
-    //
-    // Custom styles for responsive collapsing and toggling of navbar contents.
-    // Powered by the collapse Bootstrap JavaScript plugin.
-
-    // When collapsed, prevent the toggleable navbar contents from appearing in
-    // the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
-    // on the `.navbar` parent.
-    @if $enable-navbar-collapse {
-        .navbar-collapse {
-            flex: 1 1 100%;
-            // Align content vertically in all instances.  Use flexbox utils to override.
-            align-items: center;
-        }
-    }
-
-    // Navbar Toggle
-    // Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
-    @if $enable-navbar-toggle {
-        .navbar-toggle {
-            padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
-            @include font-size($navbar-toggle-font-size);
-            line-height: 1;
-            text-decoration: if($link-decoration == none, null, none);
-            background-color: transparent; // Remove default button style
-            border: $border-width solid transparent; // Remove default button style
-            @include border-radius($navbar-toggle-border-radius);
-            @include transition($navbar-toggle-transition);
-
-            &:hover {
-                text-decoration: if($link-hover-decoration == underline, none, null);
+              }
             }
 
+            @if settings-options.$enable-navbar-divider {
+              .navbar-divider {
+                margin: settings.$navbar-divider-margin-x 0;
+                border-top: settings.$navbar-divider-width solid settings.$navbar-divider-color;
+                border-left: 0;
+              }
+            }
+          }
+        }
+
+        @include breakpoints.media-breakpoint-up($bp) {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+
+          @if settings-options.$enable-navbar-nav {
+            .navbar-nav {
+              flex-direction: row;
+              align-items: center;
+
+              @if settings-options.$enable-dropdown {
+                .dropdown-menu {
+                  position: absolute;
+                }
+              }
+
+              .nav-link {
+                padding-right: settings.$navbar-item-padding-x;
+                padding-left: settings.$navbar-item-padding-x;
+              }
+            }
+          }
+
+          @if settings-options.$enable-navbar-collapse {
+            .navbar-collapse {
+              display: flex !important;   // stylelint-disable-line declaration-no-important
+              flex-basis: auto;
+            }
+          }
+
+          @if settings-options.$enable-navbar-toggle {
+            .navbar-toggle {
+              display: none;
+            }
+          }
+
+          @if settings-options.$enable-navbar-offcanvas and settings-options.$enable-offcanvas {
+            .offcanvas {
+              // stylelint-disable declaration-no-important
+              position: static;
+              z-index: auto;
+              flex-grow: 1;
+              width: auto !important;
+              height: auto !important;
+              visibility: visible !important;
+              background-color: transparent !important;
+              border: 0 !important;
+              transform: none !important;
+              @include box-shadow.box-shadow(none);
+              @include transition.transition(none);
+              // stylelint-enable declaration-no-important
+            }
+
+            @if settings-options.$enable-offcanvas-header {
+              .offcanvas-header {
+                display: none;
+              }
+            }
+
+            @if settings-options.$enable-offcanvas-body {
+              .offcanvas-body {
+                display: flex;
+                flex-grow: 0;
+                padding: 0;
+                overflow-y: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Navbar Themes
+  // Dark links against a light background
+  @if settings-options.$enable-navbar-light {
+    .navbar-light {
+      .navbar-brand {
+        color: settings.$navbar-light-brand-color;
+
+        &:hover,
+        &:focus {
+          color: settings.$navbar-light-brand-hover-color;
+        }
+      }
+
+      @if settings-options.$enable-navbar-nav {
+        .navbar-nav {
+          .nav-link {
+            color: settings.$navbar-light-color;
+
+            &:hover,
             &:focus {
-                text-decoration: if($link-hover-decoration == underline, none, null);
-                outline: 0;
-                box-shadow: $navbar-toggle-focus-box-shadow;
+              color: settings.$navbar-light-hover-color;
             }
+
+            &.disabled {
+              color: settings.$navbar-light-disabled-color;
+              background-color: transparent;
+              border-color: transparent;
+            }
+
+            &.open,
+            &.active {
+              color: settings.$navbar-light-active-color;
+            }
+          }
         }
-    }
+      }
 
-    // Generate series of `.navbar-expand-*` responsive classes for configuring
-    // where your navbar collapses.
-    .navbar-expand {
-        @each $bp in $navbar-expand-breakpoints {
-            $bprule: breakpoint-designator($bp);
-            $prev: breakpoint-prev($bp, $grid-breakpoints);
+      @if settings-options.$enable-navbar-toggle {
+        .navbar-toggle {
+          color: settings.$navbar-light-color;
+          border-color: settings.$navbar-light-toggle-border;
 
-            &#{$bprule} {
-                // Skip smallest breakpoint
-                @if breakpoint-min($bp, $grid-breakpoints) != null {
-                    @include media-breakpoint-down($prev) {
-                        @if $enable-navbar-nav and $enable-dropdown {
-                            .navbar-nav {
-                                .dropdown-menu {
-                                    position: static;
-                                    margin: 0;
-                                }
-                            }
-                        }
-
-                        @if $enable-navbar-divider {
-                            .navbar-divider {
-                                margin: $navbar-divider-margin-x 0;
-                                border-top: $navbar-divider-width solid $navbar-divider-color;
-                                border-left: 0;
-                            }
-                        }
-                    }
-                }
-
-                @include media-breakpoint-up($bp) {
-                    flex-wrap: nowrap;
-                    justify-content: flex-start;
-
-                    @if $enable-navbar-nav {
-                        .navbar-nav {
-                            flex-direction: row;
-                            align-items: center;
-
-                            @if $enable-dropdown {
-                                .dropdown-menu {
-                                    position: absolute;
-                                }
-                            }
-
-                            .nav-link {
-                                padding-right: $navbar-item-padding-x;
-                                padding-left: $navbar-item-padding-x;
-                            }
-                        }
-                    }
-
-                    @if $enable-navbar-collapse {
-                        .navbar-collapse {
-                            display: flex !important;   // stylelint-disable-line declaration-no-important
-                            flex-basis: auto;
-                        }
-                    }
-
-                    @if $enable-navbar-toggle {
-                        .navbar-toggle {
-                            display: none;
-                        }
-                    }
-
-                    @if $enable-navbar-offcanvas and $enable-offcanvas {
-                        .offcanvas {
-                            // stylelint-disable declaration-no-important
-                            position: static;
-                            z-index: auto;
-                            flex-grow: 1;
-                            width: auto !important;
-                            height: auto !important;
-                            visibility: visible !important;
-                            background-color: transparent !important;
-                            border: 0 !important;
-                            transform: none !important;
-                            @include box-shadow(none);
-                            @include transition(none);
-                            // stylelint-enable declaration-no-important
-                        }
-
-                        @if $enable-offcanvas-header {
-                            .offcanvas-header {
-                                display: none;
-                            }
-                        }
-
-                        @if $enable-offcanvas-body {
-                            .offcanvas-body {
-                                display: flex;
-                                flex-grow: 0;
-                                padding: 0;
-                                overflow-y: visible;
-                            }
-                        }
-                    }
-                }
-            }
+          &:hover,
+          &:focus {
+            color: settings.$navbar-light-active-color;
+          }
         }
-    }
+      }
 
-    // Navbar Themes
-    // Dark links against a light background
-    @if $enable-navbar-light {
-        .navbar-light {
-            .navbar-brand {
-                color: $navbar-light-brand-color;
+      @if settings-options.$enable-navbar-text {
+        .navbar-text {
+          color: settings.$navbar-light-color;
 
-                @include hover-focus() {
-                    color: $navbar-light-brand-hover-color;
-                }
+          a {
+            color: settings.$navbar-light-hover-color;
+
+            &:hover,
+            &:focus {
+              color: settings.$navbar-light-active-color;
             }
-
-            @if $enable-navbar-nav {
-                .navbar-nav {
-                    .nav-link {
-                        color: $navbar-light-color;
-
-                        @include hover-focus() {
-                            color: $navbar-light-hover-color;
-                        }
-
-                        &.disabled {
-                            color: $navbar-light-disabled-color;
-                            background-color: transparent;
-                            border-color: transparent;
-                        }
-
-                        &.open,
-                        &.active {
-                            color: $navbar-light-active-color;
-                        }
-                    }
-                }
-            }
-
-            @if $enable-navbar-toggle {
-                .navbar-toggle {
-                    color: $navbar-light-color;
-                    border-color: $navbar-light-toggle-border;
-
-                    @include hover-focus() {
-                        color: $navbar-light-active-color;
-                    }
-                }
-            }
-
-            @if $enable-navbar-text {
-                .navbar-text {
-                    color: $navbar-light-color;
-
-                    a {
-                        color: $navbar-light-hover-color;
-
-                        @include hover-focus() {
-                            color: $navbar-light-active-color;
-                        }
-                    }
-                }
-            }
-
-            @if $enable-navbar-divider {
-                .navbar-divider {
-                    border-color: $navbar-light-divider-color;
-                }
-            }
+          }
         }
-    }
+      }
 
-    // White links against a dark background
-    @if $enable-navbar-dark {
-        .navbar-dark {
-            .navbar-brand {
-                color: $navbar-dark-brand-color;
-
-                @include hover-focus() {
-                    color: $navbar-dark-brand-hover-color;
-                }
-            }
-
-            @if $enable-navbar-nav {
-                .navbar-nav {
-                    .nav-link {
-                        color: $navbar-dark-color;
-
-                        @include hover-focus() {
-                            color: $navbar-dark-hover-color;
-                        }
-
-                        &.disabled {
-                            color: $navbar-dark-disabled-color;
-                            background-color: transparent;
-                            border-color: transparent;
-                        }
-
-                        &.open,
-                        &.active {
-                            color: $navbar-dark-active-color;
-                        }
-                    }
-                }
-            }
-
-            @if $enable-navbar-toggle {
-                .navbar-toggle {
-                    color: $navbar-dark-color;
-                    border-color: $navbar-dark-toggle-border;
-
-                    @include hover-focus() {
-                        color: $navbar-dark-active-color;
-                    }
-                }
-            }
-
-            @if $enable-navbar-text {
-                .navbar-text {
-                    color: $navbar-dark-color;
-
-                    a {
-                        color: $navbar-dark-hover-color;
-
-                        @include hover-focus() {
-                            color: $navbar-dark-active-color;
-                        }
-                    }
-                }
-            }
-
-            @if $enable-navbar-divider {
-                .navbar-divider {
-                    border-color: $navbar-dark-divider-color;
-                }
-            }
+      @if settings-options.$enable-navbar-divider {
+        .navbar-divider {
+          border-color: settings.$navbar-light-divider-color;
         }
+      }
     }
+  }
+
+  // White links against a dark background
+  @if settings-options.$enable-navbar-dark {
+    .navbar-dark {
+      .navbar-brand {
+        color: settings.$navbar-dark-brand-color;
+
+        &:hover,
+        &:focus {
+          color: settings.$navbar-dark-brand-hover-color;
+        }
+      }
+
+      @if settings-options.$enable-navbar-nav {
+        .navbar-nav {
+          .nav-link {
+            color: settings.$navbar-dark-color;
+
+            &:hover,
+            &:focus {
+              color: settings.$navbar-dark-hover-color;
+            }
+
+            &.disabled {
+              color: settings.$navbar-dark-disabled-color;
+              background-color: transparent;
+              border-color: transparent;
+            }
+
+            &.open,
+            &.active {
+              color: settings.$navbar-dark-active-color;
+            }
+          }
+        }
+      }
+
+      @if settings-options.$enable-navbar-toggle {
+        .navbar-toggle {
+          color: settings.$navbar-dark-color;
+          border-color: settings.$navbar-dark-toggle-border;
+
+          &:hover,
+          &:focus {
+            color: settings.$navbar-dark-active-color;
+          }
+        }
+      }
+
+      @if settings-options.$enable-navbar-text {
+        .navbar-text {
+          color: settings.$navbar-dark-color;
+
+          a {
+            color: settings.$navbar-dark-hover-color;
+
+            &:hover,
+            &:focus {
+              color: settings.$navbar-dark-active-color;
+            }
+          }
+        }
+      }
+
+      @if settings-options.$enable-navbar-divider {
+        .navbar-divider {
+          border-color: settings.$navbar-dark-divider-color;
+        }
+      }
+    }
+  }
 }

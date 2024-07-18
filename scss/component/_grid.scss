@@ -1,48 +1,53 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/breakpoints";
+@use "../mixins/grid";
+
 // Row
 // Rows contain columns.
-@if $enable-grid-classes {
-    .row {
-        @include make-row();
+@if settings.$enable-grid-classes {
+  .row {
+    @include grid.make-row();
 
-        > * {
-            @include make-col-ready();
-        }
+    > * {
+      @include grid.make-col-ready();
     }
+  }
 }
 
 // Responsive gutters
-@if $enable-grid-classes and $enable-grid-responsive-gutters {
-    @each $breakpoint in $responsive-gutter-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
+@if settings.$enable-grid-classes and settings-options.$enable-grid-responsive-gutters {
+  @each $breakpoint in settings.$responsive-gutter-breakpoints {
+    $bprule: breakpoints.breakpoint-designator($breakpoint);
 
-        @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-            @each $key, $value in $gutters {
-                .g#{$bprule}-#{$key},
-                .gx#{$bprule}-#{$key} {
-                    margin-right: $value * -.5;
-                    margin-left: $value * -.5;
+    @include breakpoints.media-breakpoint-up($breakpoint, settings.$grid-breakpoints) {
+      @each $key, $value in settings.$gutters {
+        .g#{$bprule}-#{$key},
+        .gx#{$bprule}-#{$key} {
+          margin-right: $value * -.5;
+          margin-left: $value * -.5;
 
-                    > * {
-                        padding-right: $value * .5;
-                        padding-left: $value * .5;
-                    }
-                }
-
-                .g#{$bprule}-#{$key},
-                .gy#{$bprule}-#{$key} {
-                    margin-top: -$value;
-
-                    > * {
-                        margin-top: $value;
-                    }
-                }
-            }
+          > * {
+            padding-right: $value * .5;
+            padding-left: $value * .5;
+          }
         }
+
+        .g#{$bprule}-#{$key},
+        .gy#{$bprule}-#{$key} {
+          margin-top: -$value;
+
+          > * {
+            margin-top: $value;
+          }
+        }
+      }
     }
+  }
 }
 
 // Columns
 // Common styles for grid columns
-@if $enable-grid-classes {
-    @include make-grid-columns();
+@if settings.$enable-grid-classes {
+  @include grid.make-grid-columns();
 }

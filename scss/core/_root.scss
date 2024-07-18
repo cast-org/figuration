@@ -1,24 +1,57 @@
-// Custom variable values only support SassScript inside `#{}`.
-@if $enable-root {
-    :root {
-        @if $enable-root-colors {
-            @each $color, $value in $root-colors {
-                --color-#{$color}: #{$value};
-            }
-        }
+@use "sass:meta";
+@use "../settings";
+@use "../settings-options";
+@use "../functions/color-util";
+@use "../vendor/rfs";
 
-        @if $enable-root-breakpoints {
-            @each $bp, $value in $grid-breakpoints {
-                --breakpoint-#{$bp}: #{$value};
-            }
-        }
+:root {
+  // @if settings-options.$enable-root-colors {
+  //   @each $color, $value in $root-colors {
+  //     color-#{settings.$prefix}color}: #{settings.$prefix}value};
+  //   }
+  // }
 
-        @if $enable-root-fonts {
-            // Use `inspect` for lists so that quoted items keep the quotes.
-            // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-            --font-family-sans-serif: #{inspect($font-family-sans-serif)};
-            --font-family-serif: #{inspect($font-family-serif)};
-            --font-family-monospace: #{inspect($font-family-monospace)};
-        }
-    }
+  @each $bp, $value in settings.$grid-breakpoints {
+    --#{settings.$prefix}breakpoint-#{$bp}: #{$value};
+  }
+
+  // Use `inspect` for lists so that quoted items keep the quotes.
+  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+  --#{settings.$prefix}font-family-sans-serif: #{meta.inspect(settings.$font-family-sans-serif)};
+  --#{settings.$prefix}font-family-serif: #{meta.inspect(settings.$font-family-serif)};
+  --#{settings.$prefix}font-family-monospace: #{meta.inspect(settings.$font-family-monospace)};
+
+  // Root and body
+  @if settings.$font-size-root != null {
+    --#{settings.$prefix}root-font-size: #{settings.$font-size-root};
+  }
+  --#{settings.$prefix}body-font-family: #{meta.inspect(settings.$font-family-base)};
+  @include rfs.rfs(settings.$font-size-base, --#{settings.$prefix}body-font-size);
+  --#{settings.$prefix}body-font-weight: #{settings.$font-weight-base};
+  --#{settings.$prefix}body-line-height: #{settings.$line-height-base};
+  @if settings.$body-text-align != null {
+    --#{settings.$prefix}body-text-align: #{settings.$body-text-align};
+  }
+
+  --#{settings.$prefix}body-color: #{settings.$body-color};
+  --#{settings.$prefix}body-color-rgb: #{color-util.to-rgb(settings.$body-color)};
+  --#{settings.$prefix}body-bg: #{settings.$body-bg};
+  --#{settings.$prefix}body-bg-rgb: #{color-util.to-rgb(settings.$body-bg)};
+
+  --#{settings.$prefix}heading-color: #{settings.$headings-color};
+
+  --#{settings.$prefix}link-color: #{settings.$link-color};
+  --#{settings.$prefix}link-color-rgb: #{color-util.to-rgb(settings.$link-color)};
+  --#{settings.$prefix}link-decoration: #{settings.$link-decoration};
+  --#{settings.$prefix}link-hover-color: #{settings.$link-hover-color};
+  --#{settings.$prefix}link-hover-color-rgb: #{color-util.to-rgb(settings.$link-hover-color)};
+
+  @if settings.$link-hover-decoration != null {
+    --#{settings.$prefix}link-hover-decoration: #{settings.$link-hover-decoration};
+  }
+
+  --#{settings.$prefix}code-color: #{settings.$code-color};
+  --#{settings.$prefix}code-bg: #{settings.$code-bg};
+  --#{settings.$prefix}highlight-color: #{settings.$mark-color};
+  --#{settings.$prefix}highlight-bg: #{settings.$mark-bg};
 }

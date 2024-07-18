@@ -1,26 +1,29 @@
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
 // Overflow utilties
-@if $enable-utility-overflow {
-    @if $utility-overflow != null {
-        @each $value in $utility-overflow {
-            .overflow-#{$value} { overflow: $value !important; }
-        }
+@if settings-options.$enable-utility-overflow {
+  @if settings.$utility-overflow != null {
+    @each $value in settings.$utility-overflow {
+      .overflow-#{$value} { overflow: $value !important; }
     }
+  }
 }
 
-@if $enable-utility-overflow-x {
-    @if $utility-overflow-x != null {
-        @each $value in $utility-overflow-x {
-            .overflow-x-#{$value} { overflow: $value !important; }
-        }
+@if settings-options.$enable-utility-overflow-x {
+  @if settings.$utility-overflow-x != null {
+    @each $value in settings.$utility-overflow-x {
+      .overflow-x-#{$value} { overflow: $value !important; }
     }
+  }
 }
 
-@if $enable-utility-overflow-y {
-    @if $utility-overflow-y != null {
-        @each $value in $utility-overflow-y {
-            .overflow-y-#{$value} { overflow: $value !important; }
-        }
+@if settings-options.$enable-utility-overflow-y {
+  @if settings.$utility-overflow-y != null {
+    @each $value in settings.$utility-overflow-y {
+      .overflow-y-#{$value} { overflow: $value !important; }
     }
+  }
 }

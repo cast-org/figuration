@@ -1,435 +1,433 @@
+@use "../settings";
+@use "../settings-options";
+@use "../functions/calc-util";
+@use "../mixins/backdrop";
+@use "../mixins/border";
+@use "../mixins/box-shadow";
+@use "../mixins/breakpoints";
+@use "../mixins/modal";
+@use "../mixins/transition";
+@use "../mixins/reset-text";
+@use "../vendor/rfs";
+
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg, border, border-radius, etc
 
-@if $enable-modal {
-    // Container that the modal scrolls within
-    .modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: $zindex-modal;
-        display: none;
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-        direction: ltr #{"/*rtl:ignore*/"};
-        // Prevent Chrome on Windows from adding a focus outline. For details, see
-        // https://github.com/twbs/bootstrap/pull/10951.
-        outline: 0;
-        // Don't use `-webkit-overflow-scrolling: touch;` due to a
-        // iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-        // See also https://github.com/twbs/bootstrap/issues/17695
-        //-webkit-overflow-scrolling: touch;
+@if settings-options.$enable-modal {
+  // Container that the modal scrolls within
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: settings.$zindex-modal;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    direction: ltr #{"/*rtl:ignore*/"};
+    // Prevent Chrome on Windows from adding a focus outline. For details, see
+    // https://github.com/twbs/bootstrap/pull/10951.
+    outline: 0;
+    // Don't use `-webkit-overflow-scrolling: touch;` due to a
+    // iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+    // See also https://github.com/twbs/bootstrap/issues/17695
+    //-webkit-overflow-scrolling: touch;
 
-        &.fade .modal-dialog {
-            @include transition($modal-transition);
-            transform: $modal-transform-fade;
-        }
+    &.fade .modal-dialog {
+      transform: settings.$modal-transform-fade;
+      @include transition.transition(settings.$modal-transition);
     }
+  }
 
-    // Shell div to position the modal
-    .modal-dialog {
-        position: relative;
-        display: flex;
-        width: auto;
-        margin: $modal-dialog-margin;
-        direction: ltr;
-        // Allow clicks to pass through for custom click handling to close modal
-        pointer-events: none;
-    }
+  // Shell div to position the modal
+  .modal-dialog {
+    position: relative;
+    display: flex;
+    width: auto;
+    margin: settings.$modal-dialog-margin;
+    direction: ltr;
+    // Allow clicks to pass through for custom click handling to close modal
+    pointer-events: none;
+  }
 
-    @if $enable-modal-scrollable {
-        .modal-dialog-scrollable {
-            max-height: subtract(100%, $modal-dialog-margin * 2);
+  @if settings-options.$enable-modal-scrollable {
+    .modal-dialog-scrollable {
+      max-height: calc-util.subtract(100%, settings.$modal-dialog-margin * 2);
 
-            .modal-content {
-                max-height: subtract(100vh, $modal-dialog-margin * 2);  // IE10/11
-                overflow: hidden;
-            }
+      .modal-content {
+        max-height: calc-util.subtract(100vh, settings.$modal-dialog-margin * 2);  // IE10/11
+        overflow: hidden;
+      }
 
-            .modal-header,
-            .modal-footer {
-                flex-shrink: 0;
-            }
-
-            .modal-body {
-                overflow-y: auto;
-            }
-        }
-    }
-
-    @if $enable-modal-centered {
-        .modal-dialog-centered {
-            align-items: center;
-            min-height: subtract(100%, $modal-dialog-margin * 2);
-
-            // Extend `modal-dialog-centered` to full viewport height
-            // to allow centered modal in IE
-            &::before {
-                display: block;
-                height: subtract(100vh, $modal-dialog-margin * 2);
-                //stylelint-disable-next-line declaration-block-no-duplicate-properties
-                height: min-content; // Reset height to 0 except on IE
-                content: "";
-            }
-
-            @if $enable-modal-scrollable {
-                // Ensure `.modal-body` shows scrollbar (IE10/11)
-                &.modal-dialog-scrollable {
-                    flex-direction: column;
-                    justify-content: center;
-                    height: 100%;
-
-                    .modal-content {
-                        max-height: none;
-                    }
-
-                    &::before {
-                        content: none;
-                    }
-                }
-            }
-        }
-    }
-
-    @if $enable-modal-side-start {
-        .modal-dialog-side-start {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            min-height: 100%;
-            // stylelint-disable-next-line declaration-no-important
-            margin: 0 !important;
-
-            .modal.fade & {
-                transform: translate($modal-transform-side-offset, 0);
-            }
-        }
-    }
-
-    @if $enable-modal-side-end {
-        .modal-dialog-side-end {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            min-height: 100%;
-            // stylelint-disable-next-line declaration-no-important
-            margin: 0 !important;
-
-            .modal.fade & {
-                transform: translate(-$modal-transform-side-offset, 0);
-            }
-        }
-    }
-
-    @if $enable-modal-side-top {
-        .modal-dialog-side-top {
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            // stylelint-disable-next-line declaration-no-important
-            max-width: 100% !important;
-            height: $modal-side-vertical-height;
-            max-height: 100%;
-            // stylelint-disable-next-line declaration-no-important
-            margin: 0 !important;
-
-            .modal.fade & {
-                transform: translate(0, $modal-transform-side-offset);
-            }
-        }
-    }
-
-
-    @if $enable-modal-side-bottom {
-        .modal-dialog-side-bottom {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            // stylelint-disable-next-line declaration-no-important
-            max-width: 100% !important;
-            height: $modal-side-vertical-height;
-            max-height: 100%;
-            // stylelint-disable-next-line declaration-no-important
-            margin: 0 !important;
-
-            .modal {
-                overflow: none;
-            }
-            .modal.fade & {
-                transform: translate(0, -$modal-transform-side-offset);
-            }
-        }
-    }
-
-    .modal.in .modal-dialog {
-        transform: $modal-transform-in;
-    }
-
-    // Close is blocked animation
-    .modal.modal-blocked .modal-content {
-        @include transition($modal-transition);
-        transform: $modal-transform-blocked;
-    }
-
-    // Actual modal
-    .modal-content {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-        color: $modal-content-color;
-        // Our parent element can be arbitrary since modals can be inserted into specified containers.
-        // So reset our font and text properties to avoid inheriting weird values.
-        @include reset-text();
-        @include font-size($modal-content-font-size);
-        // Allow breaking very long words so they don't overflow the modal bounds
-        word-wrap: break-word;
-        // Override the `pointer-events: none;` in the .modal-dialog
-        pointer-events: auto;
-        background-color: $modal-content-bg;
-        background-clip: padding-box;
-        border: $modal-content-border-width solid $modal-content-border-color;
-        @include border-radius($modal-border-radius);
-        @include box-shadow($modal-content-box-shadow);
-        // Remove focus outline from opened modal
-        outline: 0;
-    }
-
-    %modal-side-h-content {
-        // IE fix to get modal full height
-        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-            min-height: 100vh;
-        }
-        @include border-radius(0);
-    }
-    %modal-side-v-content {
-        @include border-radius(0);
-    }
-
-    @if $enable-modal-side-start {
-        .modal-dialog-side-start .modal-content {
-            border-width: 0 $modal-content-border-width 0 0;
-            @extend %modal-side-h-content;
-        }
-    }
-    @if $enable-modal-side-end {
-        .modal-dialog-side-end .modal-content {
-            border-width: 0 0 0 $modal-content-border-width;
-            @extend %modal-side-h-content;
-        }
-    }
-    @if $enable-modal-side-top {
-        .modal-dialog-side-top .modal-content {
-            border-width: 0 0 $modal-content-border-width 0;
-            @extend %modal-side-v-content;
-        }
-    }
-    @if $enable-modal-side-bottom {
-        .modal-dialog-side-bottom .modal-content {
-            border-width: $modal-content-border-width 0 0 0;
-            @extend %modal-side-v-content;
-        }
-    }
-
-    .modal-backdrop {
-        @include backdrop-overlay($zindex-modal-backdrop, $modal-backdrop-bg, $modal-backdrop-opacity);
-    }
-
-    // Modal rootElement specified
-    .modal-open:not(body) {
-        .modal,
-        .modal-backdrop {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    // Modal header
-    // Top section of the modal w/ title and dismiss
-    @if $enable-modal-header {
-        .modal-header {
-            display: flex;
-            align-items: flex-start; // Keep items aligned to the top
-            justify-content: space-between; // Separate title and close items to each side
-            padding: $modal-header-padding-y $modal-header-padding-x;
-            color: $modal-header-color;
-            background-color: $modal-header-bg;
-            border-bottom: $modal-header-border-width solid $modal-header-border-color;
-            @include border-top-radius($modal-inner-border-radius);
-
-            // Close icon
-            .close {
-                // Make sure close appears 'after' the title
-                order: 1;
-                padding: $modal-close-padding-y $modal-close-padding-x;
-                // Left auto margin keeps close pushed to the right side even when no title
-                margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
-            }
-        }
-    }
-
-    // Title text within header
-    @if $enable-modal-title {
-        .modal-title {
-            margin: 0;
-            line-height: $modal-title-line-height;
-        }
-    }
-
-    // Modal body
-    // Where all modal content resides (sibling of `.modal-header` and `.modal-footer`)
-    @if $enable-modal-body {
-        .modal-body {
-            position: relative;
-            // Make body as tall as possible if there is a height defined on `.modal-content`
-            flex: 1 1 auto;
-            padding: $modal-body-padding-y $modal-body-padding-x;
-        }
-    }
-
-    %modal-side-body {
+      .modal-header,
+      .modal-footer {
         flex-shrink: 0;
+      }
+
+      .modal-body {
+        overflow-y: auto;
+      }
     }
-    @if $enable-modal-side-start {
-        .modal-dialog-side-start .modal-body {
-            @extend %modal-side-body;
+  }
+
+  @if settings-options.$enable-modal-centered {
+    .modal-dialog-centered {
+      align-items: center;
+      min-height: calc-util.subtract(100%, settings.$modal-dialog-margin * 2);
+
+      // Extend `modal-dialog-centered` to full viewport height
+      // to allow centered modal in IE
+      &::before {
+        display: block;
+        height: min-content; // Reset height to 0
+        content: "";
+      }
+
+      @if settings-options.$enable-modal-scrollable {
+        // Ensure `.modal-body` shows scrollbar (IE10/11)
+        &.modal-dialog-scrollable {
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+
+          .modal-content {
+            max-height: none;
+          }
+
+          &::before {
+            content: none;
+          }
         }
+      }
     }
-    @if $enable-modal-side-end {
-        .modal-dialog-side-end .modal-body {
-            @extend %modal-side-body;
-        }
+  }
+
+  @if settings-options.$enable-modal-side-start {
+    .modal-dialog-side-start {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100%;
+      // stylelint-disable-next-line declaration-no-important
+      margin: 0 !important;
+
+      .modal.fade & {
+        transform: translate(settings.$modal-transform-side-offset, 0);
+      }
     }
-    @if $enable-modal-side-top {
-        .modal-dialog-side-top .modal-body {
-            @extend %modal-side-body;
-        }
+  }
+
+  @if settings-options.$enable-modal-side-end {
+    .modal-dialog-side-end {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      min-height: 100%;
+      // stylelint-disable-next-line declaration-no-important
+      margin: 0 !important;
+
+      .modal.fade & {
+        transform: translate(settings.$modal-transform-side-offset * -1, 0);
+      }
     }
-    @if $enable-modal-side-bottom {
-        .modal-dialog-side-bottom .modal-body {
-            @extend %modal-side-body;
-        }
+  }
+
+  @if settings-options.$enable-modal-side-top {
+    .modal-dialog-side-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      // stylelint-disable-next-line declaration-no-important
+      max-width: 100% !important;
+      height: settings.$modal-side-vertical-height;
+      max-height: 100%;
+      // stylelint-disable-next-line declaration-no-important
+      margin: 0 !important;
+
+      .modal.fade & {
+        transform: translate(0, settings.$modal-transform-side-offset);
+      }
+    }
+  }
+
+
+  @if settings-options.$enable-modal-side-bottom {
+    .modal-dialog-side-bottom {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      // stylelint-disable-next-line declaration-no-important
+      max-width: 100% !important;
+      height: settings.$modal-side-vertical-height;
+      max-height: 100%;
+      // stylelint-disable-next-line declaration-no-important
+      margin: 0 !important;
+
+      .modal {
+        overflow: none;
+      }
+      .modal.fade & {
+        transform: translate(0, settings.$modal-transform-side-offset * -1);
+      }
+    }
+  }
+
+  .modal.in .modal-dialog {
+    transform: settings.$modal-transform-in;
+  }
+
+  // Close is blocked animation
+  .modal.modal-blocked .modal-content {
+    transform: settings.$modal-transform-blocked;
+    @include transition.transition(settings.$modal-transition);
+  }
+
+  // Actual modal
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
+    color: settings.$modal-content-color;
+    // Our parent element can be arbitrary since modals can be inserted into specified containers.
+    // So reset our font and text properties to avoid inheriting weird values.
+    @include reset-text.reset-text();
+    @include rfs.font-size(settings.$modal-content-font-size);
+    // Allow breaking very long words so they don't overflow the modal bounds
+    word-wrap: break-word;
+    // Override the `pointer-events: none;` in the .modal-dialog
+    pointer-events: auto;
+    background-color: settings.$modal-content-bg;
+    background-clip: padding-box;
+    border: settings.$modal-content-border-width solid settings.$modal-content-border-color;
+    @include border.border-radius(settings.$modal-border-radius);
+    @include box-shadow.box-shadow(settings.$modal-content-box-shadow);
+    // Remove focus outline from opened modal
+    outline: 0;
+  }
+
+
+  @if settings-options.$enable-modal-side-start {
+    .modal-dialog-side-start .modal-content {
+      border-width: 0 settings.$modal-content-border-width 0 0;
+      @include border.border-radius(0);
+    }
+  }
+  @if settings-options.$enable-modal-side-end {
+    .modal-dialog-side-end .modal-content {
+      border-width: 0 0 0 settings.$modal-content-border-width;
+      @include border.border-radius(0);
+    }
+  }
+  @if settings-options.$enable-modal-side-top {
+    .modal-dialog-side-top .modal-content {
+      border-width: 0 0 settings.$modal-content-border-width 0;
+      @include border.border-radius(0);
+    }
+  }
+  @if settings-options.$enable-modal-side-bottom {
+    .modal-dialog-side-bottom .modal-content {
+      border-width: settings.$modal-content-border-width 0 0 0;
+      @include border.border-radius(0);
+    }
+  }
+
+  .modal-backdrop {
+    @include backdrop.backdrop-overlay(settings.$zindex-modal-backdrop, settings.$modal-backdrop-bg, settings.$modal-backdrop-opacity);
+  }
+
+  // Modal rootElement specified
+  .modal-open:not(body) {
+    .modal,
+    .modal-backdrop {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Modal header
+  // Top section of the modal w/ title and dismiss
+  @if settings-options.$enable-modal-header {
+    .modal-header {
+      display: flex;
+      align-items: flex-start; // Keep items aligned to the top
+      justify-content: space-between; // Separate title and close items to each side
+      padding: settings.$modal-header-padding-y settings.$modal-header-padding-x;
+      color: settings.$modal-header-color;
+      background-color: settings.$modal-header-bg;
+      border-bottom: settings.$modal-header-border-width solid settings.$modal-header-border-color;
+      @include border.border-top-radius(settings.$modal-inner-border-radius);
+
+      // Close icon
+      .close {
+        // Make sure close appears 'after' the title
+        order: 1;
+        padding: settings.$modal-close-padding-y settings.$modal-close-padding-x;
+        // Left auto margin keeps close pushed to the right side even when no title
+        margin: (settings.$modal-header-padding-y * -1) (settings.$modal-header-padding-x * -1) (settings.$modal-header-padding-y * -1) auto;
+      }
+    }
+  }
+
+  // Title text within header
+  @if settings-options.$enable-modal-title {
+    .modal-title {
+      margin: 0;
+      line-height: settings.$modal-title-line-height;
+    }
+  }
+
+  // Modal body
+  // Where all modal content resides (sibling of `.modal-header` and `.modal-footer`)
+  @if settings-options.$enable-modal-body {
+    .modal-body {
+      position: relative;
+      // Make body as tall as possible if there is a height defined on `.modal-content`
+      flex: 1 1 auto;
+      padding: settings.$modal-body-padding-y settings.$modal-body-padding-x;
+    }
+  }
+
+  %modal-side-body {
+    flex-shrink: 0;
+  }
+  @if settings-options.$enable-modal-side-start {
+    .modal-dialog-side-start .modal-body {
+      @extend %modal-side-body;
+    }
+  }
+  @if settings-options.$enable-modal-side-end {
+    .modal-dialog-side-end .modal-body {
+      @extend %modal-side-body;
+    }
+  }
+  @if settings-options.$enable-modal-side-top {
+    .modal-dialog-side-top .modal-body {
+      @extend %modal-side-body;
+    }
+  }
+  @if settings-options.$enable-modal-side-bottom {
+    .modal-dialog-side-bottom .modal-body {
+      @extend %modal-side-body;
+    }
+  }
+
+  // Footer (for actions)
+  @if settings-options.$enable-modal-footer {
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; // right align buttons
+      padding: settings.$modal-footer-padding-y settings.$modal-footer-padding-x;
+      color: settings.$modal-footer-color;
+      background-color: settings.$modal-footer-bg;
+      border-top: settings.$modal-footer-border-width solid settings.$modal-footer-border-color;
+      @include border.border-bottom-radius(settings.$modal-inner-border-radius);
+
+      // Simulate spaces between footer elements with margins
+      > :not(:first-child) { margin-left: .25rem; }
+      > :not(:last-child) { margin-right: .25rem; }
+    }
+  }
+
+  // Scale up the modal
+  @include breakpoints.media-breakpoint-up(#{settings.$modal-breakpoint}) {
+    // Automatically set modal's width for larger viewports
+    .modal-dialog {
+      max-width: settings.$modal-md;
+      margin: settings.$modal-dialog-bp-up-margin-y auto;
     }
 
-    // Footer (for actions)
-    @if $enable-modal-footer {
-        .modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; // right align buttons
-            padding: $modal-footer-padding-y $modal-footer-padding-x;
-            color: $modal-footer-color;
-            background-color: $modal-footer-bg;
-            border-top: $modal-footer-border-width solid $modal-footer-border-color;
-            @include border-bottom-radius($modal-inner-border-radius);
-
-            // Simulate spaces between footer elements with margins
-            > :not(:first-child) { margin-left: .25rem; }
-            > :not(:last-child) { margin-right: .25rem; }
-        }
+    .modal-content {
+      @include box-shadow.box-shadow(settings.$modal-content-bp-up-box-shadow);
     }
 
-    // Scale up the modal
-    @include media-breakpoint-up(#{$modal-breakpoint}) {
-        // Automatically set modal's width for larger viewports
-        .modal-dialog {
-            max-width: $modal-md;
-            margin: $modal-dialog-bp-up-margin-y auto;
-        }
+    @if settings-options.$enable-modal-scrollable {
+      .modal-dialog-scrollable {
+        max-height: calc-util.subtract(100%, settings.$modal-dialog-bp-up-margin-y * 2);
 
         .modal-content {
-            @include box-shadow($modal-content-bp-up-box-shadow);
+          max-height: calc-util.subtract(100vh, settings.$modal-dialog-bp-up-margin-y * 2);
         }
-
-        @if $enable-modal-scrollable {
-            .modal-dialog-scrollable {
-                max-height: subtract(100%, $modal-dialog-bp-up-margin-y * 2);
-
-                .modal-content {
-                    max-height: subtract(100vh, $modal-dialog-bp-up-margin-y * 2);
-                }
-            }
-        }
-
-        @if $enable-modal-centered {
-            .modal-dialog-centered {
-                min-height: subtract(100%, $modal-dialog-bp-up-margin-y * 2);
-
-                &::before {
-                    height: subtract(100vh, $modal-dialog-bp-up-margin-y * 2);
-                    //stylelint-disable-next-line declaration-block-no-duplicate-properties
-                    height: min-content; // Reset height to 0 except on IE
-                }
-            }
-        }
-
-        .modal-sm { max-width: $modal-sm; }
+      }
     }
 
-    @include media-breakpoint-up(#{$modal-lg-breakpoint}) {
-        .modal-lg { max-width: $modal-lg; }
+    @if settings-options.$enable-modal-centered {
+      .modal-dialog-centered {
+        min-height: calc-util.subtract(100%, settings.$modal-dialog-bp-up-margin-y * 2);
+
+        &::before {
+          height: min-content; // Reset height to 0
+        }
+      }
     }
 
-    // Ovveride heights for scrollable side variant
-    @if $enable-modal-scrollable {
-        %modal-side-scrollable {
-            max-height: 100%;
+    .modal-sm { max-width: settings.$modal-sm; }
+  }
 
-            .modal-content {
-                max-height: 100vh;
-            }
+  @include breakpoints.media-breakpoint-up(#{settings.$modal-lg-breakpoint}) {
+    .modal-lg { max-width: settings.$modal-lg; }
+  }
 
-            .modal-body {
-                flex-shrink: 1;
-            }
-        }
-        @if $enable-modal-side-start {
-            .modal-dialog-side-start.modal-dialog-scrollable {
-                @extend %modal-side-scrollable;
-            }
-        }
-        @if $enable-modal-side-end {
-            .modal-dialog-side-end.modal-dialog-scrollable {
-                @extend %modal-side-scrollable;
-            }
-        }
-        @if $enable-modal-side-top {
-            .modal-dialog-side-top.modal-dialog-scrollable {
-                @extend %modal-side-scrollable;
-            }
-        }
-        @if $enable-modal-side-bottom {
-            .modal-dialog-side-bottom.modal-dialog-scrollable {
-                @extend %modal-side-scrollable;
-            }
-        }
+  // Ovveride heights for scrollable side variant
+  @if settings-options.$enable-modal-scrollable {
+    %modal-side-scrollable {
+      max-height: 100%;
+
+      .modal-content {
+        max-height: 100vh;
+      }
+
+      .modal-body {
+        flex-shrink: 1;
+      }
     }
-
-    @if $enable-modal-fullscreen {
-        .modal-fullscreen {
-            @include modal-fullscreen();
-        }
+    @if settings-options.$enable-modal-side-start {
+      .modal-dialog-side-start.modal-dialog-scrollable {
+        @extend %modal-side-scrollable;
+      }
     }
-
-    @if $enable-modal-fullscreen-responsive {
-        @each $bp in $modal-fullscreen-breakpoints {
-
-            // Skip largest for down (equivalent to `.modal-fullscreen`)
-            @if breakpoint-max($bp, $grid-breakpoints) != null {
-                @include media-breakpoint-down($bp) {
-                    .modal-fullscreen-#{$bp}-down {
-                        @include modal-fullscreen();
-                    }
-                }
-            }
-        }
+    @if settings-options.$enable-modal-side-end {
+      .modal-dialog-side-end.modal-dialog-scrollable {
+        @extend %modal-side-scrollable;
+      }
     }
+    @if settings-options.$enable-modal-side-top {
+      .modal-dialog-side-top.modal-dialog-scrollable {
+        @extend %modal-side-scrollable;
+      }
+    }
+    @if settings-options.$enable-modal-side-bottom {
+      .modal-dialog-side-bottom.modal-dialog-scrollable {
+        @extend %modal-side-scrollable;
+      }
+    }
+  }
+
+  @if settings-options.$enable-modal-fullscreen {
+    .modal-fullscreen {
+      @include modal.modal-fullscreen();
+    }
+  }
+
+  @if settings-options.$enable-modal-fullscreen-responsive {
+    @each $bp in settings.$modal-fullscreen-breakpoints {
+
+      // Skip largest for down (equivalent to `.modal-fullscreen`)
+      @if breakpoints.breakpoint-max($bp, settings.$grid-breakpoints) != null {
+        @include breakpoints.media-breakpoint-down($bp) {
+          .modal-fullscreen-#{$bp}-down {
+            @include modal.modal-fullscreen();
+          }
+        }
+      }
+    }
+  }
 }

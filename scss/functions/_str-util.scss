@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "sass:string";
+
 // Replace `$search` with `$replace` in `$string`
 // @author Kitty Giraudel
 // From https://css-tricks.com/snippets/sass/str-replace-function/
@@ -6,42 +9,23 @@
 // @param {String} $replace ("") - New value
 // @return {String} - Updated string
 @function str-replace($string, $search, $replace: "") {
-    $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
-    @if $index {
-        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-    }
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+  }
 
-    @return $string;
-}
-
-// Encode SVG data URLs into CSS friendly versions, otherwise
-// pass through the original string.
-// Requires the use of quotes around data URIs.
-// From https://codepen.io/kevinweber/pen/dXWoRw
-@function encode-svg($string) {
-    @if str-index($string, "data:image/svg+xml") {
-        @each $char, $encoded in $encode-svg-chars{
-            // Do not escape the url brackets
-            @if str-index($string, "url(") == 1 {
-                $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
-            } @else {
-                $string: str-replace($string, $char, $encoded);
-            }
-        }
-    }
-
-    @return $string;
+  @return $string;
 }
 
 // Strip the `calc` surrounding a string if one is found, leaves the '()'s
 // in place to preserve operator precedence.
 @function strip-calc($string) {
-    @if type-of($string) == "string" {
-        @if str-index($string, "calc(") == 1 {
-            $string: str-slice($string, 5, -1);
-        }
+  @if meta.type-of($string) == "string" {
+    @if string.index($string, "calc(") == 1 {
+      $string: string.lice($string, 5, -1);
     }
+  }
 
-    @return $string;
+  @return $string;
 }

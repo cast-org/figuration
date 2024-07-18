@@ -1,124 +1,128 @@
 // stylelint-disable property-disallowed-list
 
+@use "sass:list";
+@use "sass:meta";
+@use "../settings";
+
 // Helper function to replace negative values with 0
 @function valid-radius($radius) {
-    $return: ();
-    @each $value in $radius {
-        @if type-of($value) == number {
-            $return: append($return, max($value, 0));
-        } @else {
-            $return: append($return, $value);
-        }
+  $return: ();
+  @each $value in $radius {
+    @if meta.type-of($value) == number {
+      $return: list.append($return, max($value, 0));
+    } @else {
+      $return: list.append($return, $value);
     }
-    @return $return;
+  }
+  @return $return;
 }
 
 // All
-@mixin border-radius($radius: $border-radius, $fallback-radius: false) {
-    @if $enable-rounded {
-        border-radius: valid-radius($radius);
-    }
-    @else if $fallback-radius != false {
-        border-radius: $fallback-radius;
-    }
+@mixin border-radius($radius: settings.$border-radius, $fallback-radius: false) {
+  @if settings.$enable-rounded {
+    border-radius: valid-radius($radius);
+  }
+  @else if $fallback-radius != false {
+    border-radius: $fallback-radius;
+  }
 }
 
 // Sides
-@mixin border-top-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-top-left-radius: valid-radius($radius);
-        border-top-right-radius: valid-radius($radius);
-    }
+@mixin border-top-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-top-right-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-end-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-top-right-radius: valid-radius($radius);
-        border-bottom-right-radius: valid-radius($radius);
-    }
+@mixin border-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+    border-bottom-right-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-bottom-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-bottom-right-radius: valid-radius($radius);
-        border-bottom-left-radius: valid-radius($radius);
-    }
+@mixin border-bottom-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-start-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-top-left-radius: valid-radius($radius);
-        border-bottom-left-radius: valid-radius($radius);
-    }
+@mixin border-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+    border-bottom-left-radius: valid-radius($radius);
+  }
 }
 
 // Corners
-@mixin border-top-end-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-top-right-radius: valid-radius($radius);
-    }
+@mixin border-top-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-top-right-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-top-start-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-top-left-radius: valid-radius($radius);
-    }
+@mixin border-top-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-top-left-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-bottom-end-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-bottom-right-radius: valid-radius($radius);
-    }
+@mixin border-bottom-end-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-bottom-right-radius: valid-radius($radius);
+  }
 }
 
-@mixin border-bottom-start-radius($radius: $border-radius) {
-    @if $enable-rounded {
-        border-bottom-left-radius: valid-radius($radius);
-    }
+@mixin border-bottom-start-radius($radius: settings.$border-radius) {
+  @if settings.$enable-rounded {
+    border-bottom-left-radius: valid-radius($radius);
+  }
 }
 
 // Radius utility generators
 // Build classes to control by side
-@mixin radius-sides($radius: $radius-border-radius, $size: null) {
-    // Add the dash for rule naming
-    $sizerule: if($size, -#{$size}, "");
+@mixin radius-sides($radius: settings.$radius-border-radius, $size: null) {
+  // Add the dash for rule naming
+  $sizerule: if($size, -#{$size}, "");
 
-    .radius#{$sizerule} {
-        border-radius: $radius;
-    }
-    .radius-t#{$sizerule} {
-        border-top-left-radius: $radius;
-        border-top-right-radius: $radius;
-    }
-    .radius-e#{$sizerule} {
-        border-top-right-radius: $radius;
-        border-bottom-right-radius: $radius;
-    }
-    .radius-b#{$sizerule} {
-        border-bottom-right-radius: $radius;
-        border-bottom-left-radius: $radius;
-    }
-    .radius-s#{$sizerule} {
-        border-top-left-radius: $radius;
-        border-bottom-left-radius: $radius;
-    }
+  .radius#{$sizerule} {
+    border-radius: $radius;
+  }
+  .radius-t#{$sizerule} {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  .radius-e#{$sizerule} {
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+  .radius-b#{$sizerule} {
+    border-bottom-right-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+  .radius-s#{$sizerule} {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
 }
 
 // Build classes to control by corner
-@mixin radius-corners($radius: $radius-border-radius, $size: null) {
-    // Add the dash for rule naming
-    $sizerule: if($size, -#{$size}, "");
+@mixin radius-corners($radius: settings.$radius-border-radius, $size: null) {
+  // Add the dash for rule naming
+  $sizerule: if($size, -#{$size}, "");
 
-    .radius-te#{$sizerule} {
-        border-top-right-radius: $radius;
-    }
-    .radius-ts#{$sizerule} {
-        border-top-left-radius: $radius;
-    }
-    .radius-be#{$sizerule} {
-        border-bottom-right-radius: $radius;
-    }
-    .radius-bs#{$sizerule} {
-        border-bottom-left-radius: $radius;
-    }
+  .radius-te#{$sizerule} {
+    border-top-right-radius: $radius;
+  }
+  .radius-ts#{$sizerule} {
+    border-top-left-radius: $radius;
+  }
+  .radius-be#{$sizerule} {
+    border-bottom-right-radius: $radius;
+  }
+  .radius-bs#{$sizerule} {
+    border-bottom-left-radius: $radius;
+  }
 }

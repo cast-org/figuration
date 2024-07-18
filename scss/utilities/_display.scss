@@ -1,34 +1,38 @@
+@use "../settings";
+@use "../settings-options";
+@use "../mixins/breakpoints";
+
 // stylelint-disable declaration-no-important
 
 // Display utilities
-@if $enable-utility-display {
-    @each $bp in $utility-display-breakpoints {
-        $bprule: breakpoint-designator($bp);
+@if settings-options.$enable-utility-display {
+  @each $bp in settings.$utility-display-breakpoints {
+    $bprule: breakpoints.breakpoint-designator($bp);
 
-        @include media-breakpoint-up($bp) {
-            @each $value in $utility-display {
-                .d#{$bprule}-#{$value} { display: $value !important; }
-            }
-        }
-
-        // Skip largest breakpoint for down (equivalent to `.d-none`)
-        @if $enable-utility-display-down-none {
-            @if breakpoint-max($bp, $grid-breakpoints) != null {
-                .d-#{$bp}-down-none {
-                    @include media-breakpoint-down($bp) {
-                        display: none !important;
-                    }
-                }
-            }
-        }
+    @include breakpoints.media-breakpoint-up($bp) {
+      @each $value in settings.$utility-display {
+        .d#{$bprule}-#{$value} { display: $value !important; }
+      }
     }
 
-    // Print display utilities
-    @if $enable-utility-display-print {
-        @media print {
-            @each $value in $utility-display {
-                .print-#{$value} { display: $value !important; }
-            }
+    // Skip largest breakpoint for down (equivalent to `.d-none`)
+    @if settings-options.$enable-utility-display-down-none {
+      @if breakpoints.breakpoint-max($bp, settings.$grid-breakpoints) != null {
+        .d-#{$bp}-down-none {
+          @include breakpoints.media-breakpoint-down($bp) {
+            display: none !important;
+          }
         }
+      }
     }
+  }
+
+  // Print display utilities
+  @if settings-options.$enable-utility-display-print {
+    @media print {
+      @each $value in settings.$utility-display {
+        .print-#{$value} { display: $value !important; }
+      }
+    }
+  }
 }

@@ -1,9 +1,12 @@
+@use "../settings-options";
+@use "../mixins/visibility";
+
 // Visibility utilities
-@if $enable-utility-visibility {
-    .invisible {
-        @include invisible();
-    }
-    .visible {
-        @include visible();
-    }
+@if settings-options.$enable-utility-visibility {
+  .invisible {
+    @include visibility.invisible();
+  }
+  .visible {
+    @include visibility.visible();
+  }
 }

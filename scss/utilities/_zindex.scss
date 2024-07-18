@@ -1,12 +1,15 @@
+@use "../settings";
+@use "../settings-options";
+
 // stylelint-disable declaration-no-important
 
 // z-index utilties
-@if $enable-utility-zindex {
-    @if $utility-zindex != null {
-        @each $name, $value in $utility-zindex{
-            .z-#{$name} {
-                z-index: $value !important;
-            }
-        }
+@if settings-options.$enable-utility-zindex {
+  @if settings.$utility-zindex != null {
+    @each $name, $value in settings.$utility-zindex{
+      .z-#{$name} {
+        z-index: $value !important;
+      }
     }
+  }
 }
