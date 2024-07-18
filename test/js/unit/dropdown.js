@@ -459,6 +459,8 @@ $(function() {
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
         var $input = $('<input type="text">').appendTo('#qunit-fixture');
 
+        $dropdown.CFW_Dropdown();
+
         $dropdown.on('afterHide.cfw.dropdown', function() {
             setTimeout(function() {
                 assert.ok($(document.activeElement).is($input), 'input focused');
@@ -467,12 +469,9 @@ $(function() {
         });
 
         $dropdown.on('afterShow.cfw.dropdown', function() {
-            setTimeout(function() {
-                $input[0].focus();
-            }, 100);
+            $input[0].focus();
         });
 
-        $dropdown.CFW_Dropdown();
         $dropdown.trigger('click');
     });
 
