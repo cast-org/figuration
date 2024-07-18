@@ -447,33 +447,29 @@ $(function() {
         $dropdown.trigger('click');
     });
 
-    // QUnit.test('should close menu if clicking on input field not within dropdown menu', function(assert) {
-    //     assert.expect(1);
-    //     var done = assert.async();
-    //     var dropdownHTML = '<div class="dropdown">' +
-    //         '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
-    //         '<ul class="dropdown-menu">' +
-    //         '<li><a href="#" id="focusable">Menu link</a></li>' +
-    //         '</ul>' +
-    //         '</div>';
-    //     var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
-    //     var $input = $('<input type="text">').appendTo('#qunit-fixture');
+    QUnit.test('should close menu if clicking on input field not within dropdown menu', function(assert) {
+        assert.expect(0);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $input = $('<input type="text">').appendTo('#qunit-fixture');
 
-    //     $dropdown.CFW_Dropdown();
+        $dropdown.on('afterHide.cfw.dropdown', function() {
+            done();
+        });
 
-    //     $dropdown.on('afterHide.cfw.dropdown', function() {
-    //         setTimeout(function() {
-    //             assert.ok($(document.activeElement).is($input), 'input focused');
-    //             done();
-    //         });
-    //     });
+        $dropdown.on('afterShow.cfw.dropdown', function() {
+            $input[0].focus();
+        });
 
-    //     $dropdown.on('afterShow.cfw.dropdown', function() {
-    //         $input[0].focus();
-    //     });
-
-    //     $dropdown.trigger('click');
-    // });
+        $dropdown.CFW_Dropdown();
+        $dropdown.trigger('click');
+    });
 
     QUnit.test('ESC should not propagate when menu is open', function(assert) {
         assert.expect(1);

@@ -89,5 +89,8 @@
     "dist/{css,js}/*.{css,js,map}",
     "js/*.js",
     "scss/**/*.scss"
-  ]
+  ],
+  "overrides": {
+    "webdriverio": "^7.19.5"
+  }
 }
