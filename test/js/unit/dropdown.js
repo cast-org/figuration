@@ -469,8 +469,7 @@ $(function() {
         $dropdown.on('afterShow.cfw.dropdown', function() {
             setTimeout(function() {
                 $input[0].focus();
-                $input.trigger('focus');
-            }, 10);
+            }, 100);
         });
 
         $dropdown.CFW_Dropdown();
