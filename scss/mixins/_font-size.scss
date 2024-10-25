@@ -62,7 +62,7 @@ $fs-minimum: strip-unit($fs-minimum);
     $fs-fluid: null;
     @if $fs > $fs-minimum and $responsive-font-size-fluid-factor != 1 {
         // Calculate minimum font-size for given font-size.
-        $fs-min: divide($fs-minimum + ($fs - $fs-minimum), $responsive-font-size-fluid-factor);
+        $fs-min: $fs-minimum + divide($fs - $fs-minimum, $responsive-font-size-fluid-factor);
         // Calculate difference between given font-size and minimum font-size for given font-size.
         $fs-diff: $fs - $fs-min;
 
