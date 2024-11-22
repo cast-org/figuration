@@ -1,6 +1,6 @@
 module.exports = {
   "version": {
-    "current":      "4.4.0",
+    "current":      "4.4.1",
     "docs":         "4.4"
   },
   "sitemapIgnore":  false,

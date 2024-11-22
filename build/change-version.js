@@ -2,7 +2,7 @@
 
 /*!
  * Script to update version number references in the project.
- * Portions Copyright 2011-2023 The Bootstrap Authors
+ * Portions Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.4.0): player.js
+ * Figuration (v4.4.1): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -539,7 +539,7 @@
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
 
             var $curElm = this.$player.find('[data-cfw-player="seek-current"]');
-            // Handle legacy and revised (v4.4.0+) progress bar
+            // Handle legacy and revised (v4.4.1+) progress bar
             // - determine if '.progress-bar' element is child or current element
             var $barElm = $curElm.children('.progress-bar').length > 0 ? $curElm.children('.progress-bar').first() : $curElm;
 
