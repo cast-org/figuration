@@ -23,7 +23,7 @@ module.exports = {
       "css":            "https://cdn.jsdelivr.net/npm/figuration@4.4.1/dist/css/figuration.min.css",
       "css_hash":       "sha384-y4BY/ij1absrGLFQfSimJZpdYYlqZm3trwCtEjewUSo3g2echS1N7Q+XSFmxjcHU",
       "js":             "https://cdn.jsdelivr.net/npm/figuration@4.4.1/dist/js/figuration.min.js",
-      "js_hash":        "sha384-/jN1DzxMYT8KqX7iFetPCZNzpb0kUVWyECfmcDGn98Cr6F+6eqeam/JYEzkD+A64",
+      "js_hash":        "sha384-gGDsn/6ZOImDd4DHt747nYhNPVTfAIgdxqEgnEBHruXlDd6/FBjLhXnDlYVPefsu",
       "css_rtl":        "https://cdn.jsdelivr.net/npm/figuration@4.4.1/dist/css/figuration-rtl.min.css",
       "css_rtl_hash":   "sha384-ehO3XH+8zybNcfE1mpLZIJTrS43BcwQWpNs+Wf6+lnoxECfMoldASqkqPbidM8o8",
       "jquery":         "https://code.jquery.com/jquery-3.7.1.slim.min.js",
