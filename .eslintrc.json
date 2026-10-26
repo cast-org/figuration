@@ -10,6 +10,7 @@
     "CFW_API": true,
     "Popper": true
   },
+  "ignorePatterns": ["**/*.min.js", "**/vendor/", "/dist/", "/_gh_pages/"],
   "rules": {
     // Plugins
     "compat/compat": "error",

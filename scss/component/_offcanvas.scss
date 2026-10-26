@@ -10,6 +10,7 @@
                 bottom: 0;
                 z-index: $zindex-offcanvas;
                 display: flex;
+                visibility: hidden;
                 flex-direction: column;
                 max-width: 100%;
                 color: $offcanvas-color;
@@ -19,10 +20,9 @@
                 @include font-size($offcanvas-font-size);
                 // Allow breaking very long words so they don't overflow the offcanvas bounds
                 word-wrap: break-word;
-                visibility: hidden;
+                outline: 0;
                 background-color: $offcanvas-bg;
                 background-clip: padding-box;
-                outline: 0;
                 @include box-shadow($offcanvas-box-shadow);
 
                 @if $enable-offcanvas-side-start {
@@ -135,6 +135,7 @@
         @include backdrop-overlay($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
 
         // Offcanvas rootElement specified
+        // stylelint-disable-next-line selector-no-qualifying-type
         .offcanvas-open:not(body) & {
             position: absolute;
             width: 100%;

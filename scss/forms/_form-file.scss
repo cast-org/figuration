@@ -19,10 +19,9 @@
         &:focus {
             ~ .form-file-label {
                 color: $input-focus-color;
+                outline: 0;
                 background-color: $input-focus-bg;
                 border-color: $input-focus-border-color;
-                outline: 0;
-
                 @if $enable-shadows {
                     @include box-shadow($input-box-shadow, $input-focus-box-shadow);
                 } @else {
@@ -35,9 +34,9 @@
         &:focus-within {
             ~ .form-file-label {
                 color: $input-focus-color;
+                outline: 0;
                 background-color: $input-focus-bg;
                 border-color: $input-focus-border-color;
-                outline: 0;
                 @if $enable-shadows {
                     @include box-shadow($input-box-shadow, $input-focus-box-shadow);
                 } @else {
@@ -92,9 +91,9 @@
         flex-grow: 1;
         padding: $input-padding-y $input-padding-x;
         overflow: hidden;
+        text-overflow: ellipsis;
         font-family: $input-font-family;
         font-weight: $input-font-weight;
-        text-overflow: ellipsis;
         white-space: nowrap;
         border: $input-border-width solid;
         border-color: inherit;

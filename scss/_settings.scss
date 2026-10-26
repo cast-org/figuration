@@ -2,6 +2,8 @@
 // Released under MIT and copyright 2014 Waybury.
 // https://github.com/iconic/open-iconic
 
+@use "sass:map";
+
 // Options
 // =====
 // Quickly modify global styling by enabling or disabling optional features.
@@ -147,7 +149,7 @@ $color-contrast-base-dark:  $uibase-900 !default;
 
 // Component Color Variants and Levels
 // =====
-$root-colors:           map-merge($base-colors, $palette-colors) !default;
+$root-colors:           map.merge($base-colors, $palette-colors) !default;
 $alert-colors:          $base-colors !default;
 $btn-colors:            $base-colors !default;
 $btn-outline-colors:    $base-colors !default;

@@ -524,14 +524,14 @@
                         column-count: $card-columns-count;
                         column-gap: $card-columns-column-gap;
                         margin-bottom: $card-margin-bottom;
-                        orphans: 1;
                         widows: 1;
+                        orphans: 1;
 
                         > .card {
                             margin-top: $card-margin-bottom;
                             margin-bottom: 0;
-                            break-inside: avoid;
                             backface-visibility: hidden;
+                            break-inside: avoid;
 
                             &:first-child {
                                 margin-top: 0;

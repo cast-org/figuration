@@ -4,10 +4,10 @@
         display: inline-block;
         font-family: $btn-font-family;
         font-weight: $btn-font-weight;
-        text-align: center;
-        text-decoration: if($link-decoration == none, null, none);
-        white-space: $btn-white-space;
         vertical-align: middle;
+        text-align: center;
+        white-space: $btn-white-space;
+        text-decoration: if($link-decoration == none, null, none);
         cursor: pointer;
         user-select: none;
         background-color: transparent;
@@ -255,8 +255,8 @@
         // Place input behind the label
         .btn-check-input {
             position: absolute;
-            clip: rect(0, 0, 0, 0);
             pointer-events: none;
+            clip: rect(0, 0, 0, 0);
 
             // Override label margin
             ~ .btn {

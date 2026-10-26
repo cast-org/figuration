@@ -18,12 +18,14 @@
 
             // Add width 1% and flex-basis auto to ensure proper sizing in IE
             // when inline or auto-sizing column.
+            // stylelint-disable block-no-redundant-nested-style-rules
             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
                 & {
                     flex-basis: auto;
                     width: 1%;
                 }
             }
+            // stylelint-enable block-no-redundant-nested-style-rules
         }
 
         // Bring the "active" form control to the top of surrounding elements

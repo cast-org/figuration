@@ -9,13 +9,13 @@
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     'use strict';
 
     // Force use of Unix newlines
     grunt.util.linefeed = '\n';
 
-    RegExp.quote = function(string) {
+    RegExp.quote = function (string) {
         return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
     };
 
@@ -27,31 +27,28 @@ module.exports = function(grunt) {
     var autoprefixer = require('autoprefixer');
     var flexbugs = require('postcss-flexbugs-fixes');
     var calc = require('postcss-calc');
-    var sass = require('node-sass');
-    if (process.env.DART_SASS === 'true') {
-        sass = require('sass');
-    }
+    var sass = require('sass');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
-                ' * Figuration (v<%= pkg.version %>)\n' +
-                ' * <%= pkg.homepage %>\n' +
-                ' * Copyright 2013-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-                ' * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)\n' +
-                ' * -----\n' +
-                ' * Portions Copyright 2011-<%= grunt.template.today("yyyy") %> The Bootstrap Authors\n' +
-                ' * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
-                ' */\n',
+            ' * Figuration (v<%= pkg.version %>)\n' +
+            ' * <%= pkg.homepage %>\n' +
+            ' * Copyright 2013-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+            ' * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)\n' +
+            ' * -----\n' +
+            ' * Portions Copyright 2011-<%= grunt.template.today("yyyy") %> The Bootstrap Authors\n' +
+            ' * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
+            ' */\n',
         jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
-                     '  throw new Error(\'CAST Figuration\\\'s JavaScript requires jQuery\');\n' +
-                     '}\n',
+            '  throw new Error(\'CAST Figuration\\\'s JavaScript requires jQuery\');\n' +
+            '}\n',
         jqueryVersionCheck: '(function($) {\n' +
-                            '  var version = $.fn.jquery.split(\' \')[0].split(\'.\');\n' +
-                            '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 4)) {\n' +
-                            '    throw new Error(\'CAST Figuration\\\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0\');\n' +
-                            '  }\n' +
-                            '})(jQuery);\n\n',
+            '  var version = $.fn.jquery.split(\' \')[0].split(\'.\');\n' +
+            '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 4)) {\n' +
+            '    throw new Error(\'CAST Figuration\\\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0\');\n' +
+            '  }\n' +
+            '})(jQuery);\n\n',
 
         // File definitions
         // ==========
@@ -97,13 +94,15 @@ module.exports = function(grunt) {
         },
 
         eslint: {
-            options: {
-                overrideConfigFile: '.eslintrc.json',
+            linterOptions: {
                 reportUnusedDisableDirectives: 'error'
+            },
+            options: {
+                overrideConfigFile: 'eslint.config.mjs'
             },
             build: {
                 options: {
-                    overrideConfigFile: 'build/.eslintrc.json'
+                    overrideConfigFile: 'build/eslint.config.mjs'
                 },
                 src: 'build/*.js'
             },
@@ -112,11 +111,11 @@ module.exports = function(grunt) {
             },
             test: {
                 options: {
-                    overrideConfigFile: 'test/js/unit/.eslintrc.json'
+                    overrideConfigFile: 'test/js/unit/eslint.config.mjs'
                 },
                 src: 'test/js/unit/**/*.js'
             },
-            docs : {
+            docs: {
                 src: ['site/assets/<%= pkg.config.versionShort %>/js/src/*.js', 'site/assets/<%= pkg.config.versionShort %>/js/*.js', '!site/assets/<%= pkg.config.versionShort %>/js/*.min.js']
             }
         },

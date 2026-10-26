@@ -25,8 +25,8 @@
         line-height: $dropdown-line-height;
         color: $dropdown-color;
         text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-        list-style: none;
         pointer-events: auto;
+        list-style: none;
         background-color: $dropdown-bg;
         background-clip: padding-box;
         border: $dropdown-border-width solid $dropdown-border-color;
@@ -87,16 +87,16 @@
     // 1- `<button>`s require some overrides
     .dropdown-menu a,
     .dropdown-item {
+        clear: both;
         display: block;
         width: 100%; // 1
         padding: $dropdown-item-padding-y $dropdown-item-padding-x;
         margin: 0;
-        clear: both;
         font-weight: $font-weight-normal;
         color: $dropdown-link-color;
         text-align: inherit; // 1
-        text-decoration: if($link-decoration == none, null, none);
         white-space: nowrap; // prevent links from randomly breaking onto new lines
+        text-decoration: if($link-decoration == none, null, none);
         background: none; // 1
         border: 0; // 1
 

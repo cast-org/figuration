@@ -155,6 +155,7 @@
     }
 
     @if $enable-form-control and $enable-form-validation-icon {
+        // stylelint-disable-next-line selector-no-qualifying-type
         .form-control:not(textarea):not(select) {
             @include form-validation-state-selector-icon($state) {
                 padding-right: add($input-padding-x, add($form-feedback-icon-width, $form-feedback-icon-offset, false));
@@ -162,7 +163,7 @@
         }
 
         // Apply both the select indicator and validaton icons.
-        // stylelint-disable-next-line selector-no-qualifying-type
+        // stylelint-disable-next-line selector-max-attribute, selector-no-qualifying-type
         select.form-control:not([size]):not([size="1"]):not([multiple]) {
             @include form-validation-state-selector-icon($state) {
                 padding-right: add($input-padding-x, add($form-feedback-icon-width, add($form-feedback-icon-offset, add($form-select-indicator-width, $form-select-indicator-offset, false), false), false));
@@ -360,9 +361,9 @@
 @mixin form-control-focus() {
     &:focus {
         color: $input-focus-color;
+        outline: 0;
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
-        outline: 0;
         @if $enable-shadows {
             @include box-shadow($input-box-shadow, $input-focus-box-shadow);
         } @else {

@@ -6,14 +6,13 @@
     font-style: normal;
     font-weight: $font-weight-normal;
     line-height: $line-height-base;
-    line-break: auto;
     text-align: left; // Fallback for where `start` is not supported
     text-align: start;
-    text-decoration: none;
-    text-shadow: none;
     text-transform: none;
-    letter-spacing: normal;
+    word-spacing: normal;
+    line-break: auto;
     word-break: normal;
     white-space: normal;
-    word-spacing: normal;
+    text-decoration: none;
+    text-shadow: none;
 }

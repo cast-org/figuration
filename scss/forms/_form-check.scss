@@ -78,12 +78,13 @@
 
             .form-check-label {
                 &::before {
-                    display: inline-block;
                     float: left;
+                    display: inline-block;
                     width: $form-checkradio-size;
                     height: $form-checkradio-size;
                     margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) * .5); // stylelint-disable-line function-disallowed-list
                     margin-left: -$form-checkradio-gutter;
+                    print-color-adjust: exact;
                     content: "";
                     background-color: $form-checkradio-bg;
                     background-repeat: no-repeat;
@@ -92,7 +93,6 @@
                     border: $form-checkradio-border-width solid $form-checkradio-border-color;
                     @include box-shadow($form-checkradio-box-shadow);
                     @include transition($input-transition);
-                    print-color-adjust: exact;
                 }
             }
 
@@ -117,8 +117,8 @@
 
             .form-check-input:focus ~ .form-check-label {
                 &::before {
-                    border-color: $form-checkradio-focus-border-color;
                     outline: 0;
+                    border-color: $form-checkradio-focus-border-color;
                     @if $enable-shadows {
                         @include box-shadow($form-checkradio-box-shadow, $form-checkradio-focus-box-shadow);
                     } @else {
@@ -205,9 +205,9 @@
                 &::after {
                     position: absolute;
                     display: inline-block;
+                    print-color-adjust: exact;
                     content: "";
                     @include transition($switch-transition);
-                    print-color-adjust: exact;
                 }
 
                 // Track
@@ -244,9 +244,9 @@
 
             .form-check-input:focus ~ .form-check-label {
                 &::before {
+                    outline: 0;
                     background-color: $form-switch-track-focus-bg;
                     border-color: $form-switch-track-focus-border-color;
-                    outline: 0;
                     @if $enable-shadows {
                         @include box-shadow($form-switch-track-box-shadow, $form-switch-track-focus-box-shadow);
                     } @else {
@@ -254,9 +254,9 @@
                     }
                 }
                 &::after {
+                    outline: 0;
                     background-color: $form-switch-thumb-focus-bg;
                     border-color: $form-switch-thumb-focus-border-color;
-                    outline: 0;
                     @if $enable-shadows {
                         @include box-shadow($form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow);
                     } @else {

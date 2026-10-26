@@ -42,8 +42,8 @@
             margin-right: $navbar-brand-margin-x;
             @include font-size($navbar-brand-font-size);
             font-weight: $navbar-brand-font-weight;
-            text-decoration: if($link-decoration == none, null, none);
             white-space: nowrap;
+            text-decoration: if($link-decoration == none, null, none);
 
             @include hover-focus() {
                 text-decoration: if($link-hover-decoration == underline, none, null);
@@ -206,10 +206,10 @@
                             // stylelint-disable declaration-no-important
                             position: static;
                             z-index: auto;
+                            visibility: visible !important;
                             flex-grow: 1;
                             width: auto !important;
                             height: auto !important;
-                            visibility: visible !important;
                             background-color: transparent !important;
                             border: 0 !important;
                             transform: none !important;

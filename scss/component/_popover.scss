@@ -11,12 +11,12 @@
         @include font-size($popover-font-size);
         // Allow breaking very long words so they don't overflow the popover's bounds
         word-wrap: break-word;
+        outline: 0;
         background-color: $popover-bg;
         background-clip: padding-box;
         border: $popover-border-width solid $popover-border-color;
         @include border-radius($popover-border-radius);
         @include box-shadow($popover-box-shadow);
-        outline: 0;
 
         // Showing
         &.in {
@@ -98,13 +98,13 @@
 
                 &::before {
                     top: 0;
-                    border-width: 0 ($popover-arrow-width * .5) $popover-arrow-height ($popover-arrow-width * .5);
+                    border-width: 0 ($popover-arrow-width * .5) $popover-arrow-height;
                     border-bottom-color: $popover-arrow-outer-color;
                 }
 
                 &::after {
                     top: $popover-border-width;
-                    border-width: 0 ($popover-arrow-width * .5) $popover-arrow-height ($popover-arrow-width * .5);
+                    border-width: 0 ($popover-arrow-width * .5) $popover-arrow-height;
                     border-bottom-color: $popover-arrow-color;
                 }
             }

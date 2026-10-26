@@ -161,8 +161,8 @@ abbr[data-cfw-tooltip-original-title],  // 1
 abbr[data-cfw-popover-original-title] { // 1
     text-decoration: underline; // 2
     text-decoration: underline dotted; // 2
-    cursor: help; // 3
     text-decoration-skip-ink: none; // 4
+    cursor: help; // 3
 }
 // stylelint-enable declaration-block-no-duplicate-properties
 
@@ -311,8 +311,8 @@ caption {
 // 3. Fix alignment for Safari
 th {
     font-weight: $table-th-font-weight; // 1
-    text-align: inherit; // 2
     // stylelint-disable-next-line declaration-block-no-duplicate-properties
+    text-align: inherit; // 2
     text-align: -webkit-match-parent; // 3
 }
 
@@ -389,7 +389,7 @@ select {
 
 // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
 // See https://stackoverflow.com/a/54997118
-
+//stylelint-disable-next-line selector-max-attribute
 [list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
     display: none !important;
 }
